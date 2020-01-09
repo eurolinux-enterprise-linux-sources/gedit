@@ -1,0 +1,3767 @@
+commit 2e62b8b0cc8d21a98b4812b9e52e650de16c2ffe
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:   2010-03-23
+
+    Release 2.28.4
+
+M	NEWS
+M	README
+
+commit ea4ed230d0d1dba34c5ee470f78c4ad3e60eac91
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2010-03-23
+
+    Satisfy picky linker flags
+
+M	configure.ac
+
+commit b6c3106093dee099f8ca3884480e8194b88aa042
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2010-03-22
+
+    Respect GNOME22_USER_DIR env variable.
+
+M	gedit/gedit-dirs.c
+M	plugins/externaltools/tools/library.py
+M	plugins/snippets/snippets/__init__.py
+M	plugins/taglist/gedit-taglist-plugin-parser.c
+
+commit 0aece1b4fb5a7c243c7f9ebe00bd3f9609f72e18
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2010-03-14
+
+    Properly handle selection in sort plugin
+
+    Fixes bug 342795. Patch by Garrett Regier.
+
+M	plugins/sort/gedit-sort-plugin.c
+
+commit d907ebe215c8daf709a1111b1b3c7a8c95a2308a
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2010-03-13
+
+    Restore the ability to remember the dialog position
+
+    The code was there but it was broken not sure since when. This also
+    fixes refocusing the dialog if it is already open and ctrl+F is
+    pressed
+
+M	gedit/gedit-commands-search.c
+
+commit 5a6fdd7d2805cec0de21e21267b5a219375d96be
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2010-01-24
+
+    Add support for python plugins
+
+M	gedit/gedit.c
+M	win32/build-installer.sh
+M	win32/gedit.iss.in
+
+commit 269c2a814f938719e02a5c174e3214c3ac9f2d52
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2010-01-23
+
+    Updated authors in about dialog
+
+M	gedit/gedit-commands-help.c
+
+commit 36175a14e328f9755d2894905d8bfc69ab9e7078
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2010-01-12
+
+    Add osx dir to fix distcheck
+
+M	Makefile.am
+
+commit bb00cb42cf5f398d8dc3c99842cf20afc761e951
+Author: Jesse van den Kieboom <jessevdk@gnome.org>
+Date:	2009-12-30
+
+    Added osx/geditdoc.icns icon
+
+A	osx/geditdoc.icns
+
+commit 95e45f81cbf247759bec69151e405d0de310dfb4
+Author: Jesse van den Kieboom <jessevdk@gnome.org>
+Date:	2009-12-30
+
+    Include gedit-commands.h fixes compile warning
+
+M	gedit/osx/gedit-osx-delegate.m
+
+commit b799bf5ab89d33402d18687b591dbc6880d234f1
+Author: Jesse van den Kieboom <jessevdk@gnome.org>
+Date:	2009-12-30
+
+    Copy over all of gconf configuration
+
+    This fixes bug #604122
+
+M	osx/gedit.bundle
+
+commit 02840dfcb5ff0b0d47328e434409a4e1e835aa34
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2010-01-09
+
+    Use  instead of  to pass on cmd arguments
+
+M	osx/launcher.sh
+
+commit 77754566a2cd22e86e4b9a28d72603f8dc0c4547
+Author: Jesse van den Kieboom <jessevdk@gnome.org>
+Date:	2009-12-31
+
+    Process Info.plist with configure for version
+
+M	configure.ac
+R098	osx/Info.plist	osx/Info.plist.in
+A	osx/Makefile.am
+
+commit de48e0b8c91eb1504d3849b8dd3770b1d73f801d
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-12-29
+
+    Do not persist the number of printed copies, bug 546617
+
+M	gedit/gedit-tab.c
+
+commit 80c3207edd0ad268cbf67661f4258a89f4e1a486
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-12-28
+
+    Scroll the file into view after a rename
+
+M	plugins/filebrowser/gedit-file-browser-view.c
+
+commit 0684c2053504e14c6f009d4de27aeaba4031592e
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-12-26
+
+    Add xslt snippets
+
+A	plugins/snippets/data/xslt.xml
+
+commit c387e35e708ed2e3a048ead5afdbac218ca110c4
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-12-19
+
+    Release 2.28.3
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 422678d12613af7bbc0ed3a762ae79774a282ce2
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-14
+
+    Make sure to update accelerator state properly
+
+M	plugins/externaltools/tools/manager.py
+
+commit c66958ad0bbbc66908da6f53975dcf28872664a2
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-15
+
+    Fix single click behavior when item is selected for file browser view
+
+M	plugins/filebrowser/gedit-file-browser-view.c
+
+commit 67b02d5bc99b5afed07c82c009ac4e2facc0b941
+Author: Travis Fickett <tfickett@ufl.edu>
+Date:	2009-10-22
+
+    Select item on cursor when right clicking in file browser view
+
+    This fixes bug #598212
+
+M	plugins/filebrowser/gedit-file-browser-widget.c
+
+commit c2edfd47af2997e69e2b2bd91147054097ded7c0
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-15
+
+    Order hidden files after normal files (fixes bug #599949)
+
+M	plugins/filebrowser/gedit-file-browser-store.c
+
+commit 20d81f003982aad0a954fb5adcde4be84059b9ca
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-15
+
+    Fixed regression in restoring external tools manager window size
+
+M	plugins/externaltools/tools/__init__.py
+M	plugins/externaltools/tools/manager.py
+
+commit a9ce9d62b1c5a293a460cb39bab86bd583d2d934
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-15
+
+    Fixed escaping literals for shell placeholder
+
+M	plugins/snippets/snippets/Placeholder.py
+
+commit 2e87332b09b58f9c618934f1b688eb5b557fa332
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-10-29
+
+    Update git.mk from pango
+
+M	git.mk
+
+commit 31f38849d431a32d4e001ca4a84c0021997afab7
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-10-11
+
+    Grab focus on the view when activating a snippet
+
+M	plugins/snippets/snippets/Document.py
+
+commit d8f483a84075cc6227e797a36fb01901b420c480
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-10-11
+
+    Override setattr/getattr for gedit.Message to return message values
+
+    By default, an attribute is now looked up in the message first before
+    calling the default attribute handlers of python. This makes the
+    message
+    API a bit more pythonic (you can do message.<key> instead of
+    message.get_value(<key>)).
+
+M	plugin-loaders/python/bindings/geditmessage.override
+
+commit 461172aaa936e6085f06b49defd60958e52cda79
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-10-11
+
+    Bind gedit_document_set_uri in python
+
+    Signed-off-by: Jesse van den Kieboom <jesse@icecrew.nl>
+
+M	plugin-loaders/python/bindings/gedit.defs
+
+commit 18d23bf0c742c090c01aca7a8aedf4aa2318b3e0
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-28
+
+    Guard against spaces in path in osx launcher script
+
+M	osx/launcher.sh
+
+commit c9befdfe2de0666721874f7f07a5d39c07198e3a
+Author: Nikos Charonitakis <nikosx@gmail.com>
+Date:	2009-11-23
+
+    Updated Greek translation
+
+M	po/el.po
+
+commit 15ed822be542350cc47ecdf607788ece9941e830
+Author: Nikos Charonitakis <nikosx@gmail.com>
+Date:	2009-11-23
+
+    Updated Greek translation
+
+M	po/el.po
+
+commit 20e2696a826b405c821f65d2a782eb757d9d37d6
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-11-20
+
+    Fix refcounting error in doc.get_search_text
+
+M	plugin-loaders/python/bindings/gedit.override
+
+commit 4d9370e40e72c2f7005c9f2b6f1e0a0ccbde3e29
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-15
+
+    Move FileClose to separate action group to manage it on OS X
+
+    On OS X, File Close should be sensitive even if there are no tabs
+    since
+    it will then close the window (but not the app) OS X style
+
+M	gedit/gedit-ui.h
+M	gedit/gedit-window-private.h
+M	gedit/gedit-window.c
+
+commit ed17807e230918a87aa64efcaa5d289e3f0994c5
+Author: Jesse van den Kieboom <jesse.vandenkieboom@epfl.ch>
+Date:	2009-11-11
+
+    Release 2.28.2
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit c89998f6eea01c69425edb72b0d5d5aeddc70ce9
+Author: Jesse van den Kieboom <jesse.vandenkieboom@epfl.ch>
+Date:	2009-11-11
+
+    Fixed action group of FileClose action
+
+    The OS X integration patch introduced a bug in the action group
+    of the FileClose menu action. This has been reverted and the
+    sensitivity of the FileClose action on OS X is now handled
+    more correctly.
+
+M	gedit/gedit-ui.h
+M	gedit/gedit-window.c
+
+commit ffb45e44265b1b03a303c85bf3eb8d5c34f9ee12
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-09
+
+    Ingore new translation in gedit-app.c
+
+    The new translation is only for the OS X port and will be ignored on
+    stable
+
+M	po/POTFILES.skip
+
+commit 73ab7ef4deca70597ec5505525f37a9fe3ad09ec
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-11-09
+
+    Release 2.28.1
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 9f855b8eedefc79bdbd8f17abb450f24b3c2ba77
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-11-09
+
+    AC_PROG_OBJC cannot be inside a condition
+
+M	configure.ac
+
+commit 8d4febbf32c31a71c32f52b4841238897eafcb78
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-10-25
+
+    Remove tab-removed handler on modeline plugin deactivation
+
+M	plugins/modelines/gedit-modeline-plugin.c
+
+commit 8674d9cec704f955c9eec59450de0f2b31edae5e
+Author: Jesse van den Kieboom <jesse.vandenkieboom@epfl.ch>
+Date:	2009-11-09
+
+    Revert per OS default font in schemas
+
+    The per OS default font conflicts with translated font names
+    and as such has been reverted. It would still be nice to support
+    different default fonts on different OSes somehow.
+
+M	data/gedit.schemas.in.in
+
+commit 84f31c0dcdab7de2b0ca14650b466a5d4f28a2a8
+Author: Jesse van den Kieboom <jesse.vandenkieboom@epfl.ch>
+Date:	2009-11-09
+
+    Update dnd snippets environment variables to new style
+
+M	plugins/snippets/snippets/Document.py
+
+commit e79e97dc87860039f65842de698c2c710cbd2975
+Author: Jesse van den Kieboom <jesse.vandenkieboom@epfl.ch>
+Date:	2009-11-09
+
+    Basic mac OS X integration (menu, dock, bundle)
+
+M	Makefile.am
+M	configure.ac
+M	data/gedit.schemas.in.in
+M	gedit/Makefile.am
+M	gedit/gedit-app.c
+M	gedit/gedit-commands-file.c
+M	gedit/gedit-dirs.c
+M	gedit/gedit-help.c
+M	gedit/gedit-prefs-manager.h
+M	gedit/gedit-ui.h
+M	gedit/gedit-window-private.h
+M	gedit/gedit-window.c
+M	gedit/gedit-window.h
+M	gedit/gedit.c
+A	gedit/osx/Makefile.am
+A	gedit/osx/gedit-osx-delegate.h
+A	gedit/osx/gedit-osx-delegate.m
+A	gedit/osx/gedit-osx.c
+A	gedit/osx/gedit-osx.h
+M	gedit/smclient/Makefile.am
+A	osx/Info.plist
+A	osx/dmg-data/background.png
+A	osx/dmg-data/background.svg
+A	osx/gedit.bundle
+A	osx/gedit.icns
+A	osx/gtkrc
+A	osx/launcher.sh
+A	osx/makebundle.sh
+A	osx/makedmg.sh
+A	osx/template.dmg
+M	plugins/checkupdate/gedit-check-update-plugin.c
+
+commit 87d6f10ff0ccef7b3a3768a1c49b0ea88153793a
+Author: Dumitru Mișu Moldovan <dumol@gnome.ro>
+Date:	2009-11-08
+
+    Updated Romanian translation
+
+M	po/ro.po
+
+commit 2455c10507c8cf330f082b03054d5a71b358b272
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-07
+
+    Fixed getting current word for snippets and external tools
+
+M	plugins/externaltools/tools/functions.py
+M	plugins/snippets/snippets/Helper.py
+
+commit 5b117cf5362ac8ee5d970ce9db662137d30a0062
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-07
+
+    Escape mnemonics in external tools menu items
+
+M	plugins/externaltools/tools/__init__.py
+
+commit 8b82e989785150a9ee35e7219e96d04401c8c51c
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-07
+
+    Execute external tool in shell if no hash bang is specified
+
+M	plugins/externaltools/tools/capture.py
+M	plugins/externaltools/tools/functions.py
+M	plugins/externaltools/tools/library.py
+
+commit 1c9a72cd6339d3843bcc68b6649aa77d6fbecec9
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-11-07
+
+    Separate stdout and stderr for external tools
+
+M	plugins/externaltools/tools/capture.py
+
+commit 0b46cfd91d55833a0bc4f53d817eef55eecffa62
+Author: Leonid Kanter <leon@asplinux.ru>
+Date:	2009-10-20
+
+    Updated Russian translation
+
+M	po/ru.po
+
+commit 8d7eecf0a09476f8e1277140c1ad33289d446dfa
+Author: Peteris Krisjanis <pecisk@gmail.com>
+Date:	2009-10-19
+
+    Updated Latvian translation.
+
+M	po/lv.po
+
+commit 8f581a97eb5884f016e56ad791730fe60fe45061
+Author: Reşat SABIQ <tilde.birlik@gmail.com>
+Date:	2009-10-19
+
+    Another minor update for Crimean Tatar (Crimean Turkish) translation
+
+M	po/crh.po
+
+commit c625b6b19fbbef82a3b1ea6067ecb37160488a87
+Author: Reşat SABIQ <tilde.birlik@gmail.com>
+Date:	2009-10-19
+
+    Updated Crimean Tatar (Crimean Turkish) translation
+
+M	po/crh.po
+
+commit deaeb548fa37e633e740a3ba0bf90b081b4902a9
+Author: Theppitak Karoonboonyanan <thep@linux.thai.net>
+Date:	2009-10-17
+
+    Updated Thai help translation.
+
+M	help/th/th.po
+
+commit 47b44d1764f5d0047c626418697a151fe5e9193f
+Author: Akom C <knight2000@gmail.com>
+Date:	2009-10-17
+
+    Updated Thai translation.
+
+M	po/th.po
+
+commit fd7b5bd3b0318868fa3396ef8858af23201bfaff
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-10-15
+
+    Scroll to cursor when the document is loaded.
+
+    This should fix bug #598082
+
+M	gedit/gedit-tab.c
+M	gedit/gedit-view.c
+
+commit 99ba08e9d093feedd682014353d92d79b739fd27
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-10-11
+
+    Correct message value setter call in gedit.MessageType.instantiate
+
+    The wrong function was called for the 'instantiate' function of
+    gedit.MessageType in the custom python bindings for this function.
+
+M	plugin-loaders/python/bindings/geditmessage.override
+
+commit e1934362cb99f0149654ed723a2297b98ad85e35
+Author: Gil Forcada <gforcada@gnome.org>
+Date:	2009-09-24
+
+    Minor fix to Catalan translation
+
+M	po/ca.po
+
+commit d60e215b303a863923ef4e0626295835b3afa947
+Author: Matej Urbančič <mateju@svn.gnome.org>
+Date:	2009-09-22
+
+    Updated Slovenian translation
+
+M	po/sl.po
+
+commit ec8710e8d76edb7a75f1aa7d16c14bc5ba1c7ba7
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-09-21
+
+    Release 2.28.0
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit a34cf36c78a866b6327487c6dae8c0f6c7b6cd41
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-09-21
+
+    Fix distcheck failure introduced by previous rename of file
+
+    Rename of file win32/build-installer introduced by commit 718dd01a was
+    not renamed in win32/Makefile.am EXTRA_DIST causing distcheck to fail.
+
+M	win32/Makefile.am
+
+commit 23560794e6a82d8c8c470636298c40eca022fc75
+Author: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+Date:	2009-09-21
+
+    Updated Traditional Chinese translation(Hong Kong and Taiwan)
+
+M	po/zh_HK.po
+M	po/zh_TW.po
+
+commit 898b0120445edaf9e0fd26b8cb067bf34fa324dc
+Author: Amitakhya Phukan <aphukan@fedoraproject.org>
+Date:	2009-09-21
+
+    Updating Assamese translations
+
+M	po/as.po
+
+commit d4c585da73106d3132f3d9a7d85d1e490ad9e5fd
+Author: Mattias Põldaru <mahfiaz gmail com>
+Date:	2009-09-21
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 68fe7306fc9563837eafcb25735d6a3f29687736
+Author: Ani <peter.ani@gmail.com>
+Date:	2009-09-20
+
+    Updated Malayalam Translations
+
+M	po/ml.po
+
+commit 9d79565117fa30f829431ecd3ed0fd915ff4b0f8
+Author: Jiri Eischmann <jiri@eischmann.cz>
+Date:	2009-09-20
+
+    Update Czech translation
+
+M	po/cs.po
+
+commit 2a19dfd0aef94362e701e85e58ec6eba11de7a40
+Author: Rajesh Ranjan <rranjan@rranjan.csb>
+Date:	2009-09-20
+
+    maithili update, translated by Sangeeta Kumari
+
+M	po/mai.po
+
+commit 465af9ac9da7f3d1caca1e5b0ca9e4b6d7f3dfd7
+Author: Gil Forcada <gforcada@gnome.org>
+Date:	2009-09-19
+
+    Updated Catalan translation
+
+M	po/ca.po
+
+commit 0c1e7ed19c975724e5ac11e7297233c9aa7537f9
+Author: Manoj Kumar Giri <mgiri@mgiri.csb>
+Date:	2009-09-17
+
+    Upadated Oriya Translation
+
+M	po/or.po
+
+commit 4d3a606a50e957b78a0ff160f255c516252515f2
+Author: ifelix <ifelix@redhat.com>
+Date:	2009-09-17
+
+    Updated Tamil Translations
+
+M	po/ta.po
+
+commit 835b44d7330b888df5f72544834a44116a13f57a
+Author: Maxim V. Dziumanenko <dziumanenko@gmail.com>
+Date:	2009-09-16
+
+    Added Ukrainian translation
+
+M	po/uk.po
+
+commit 4d1556e60b9408585f5ff6e2d8739ee2233bda88
+Author: Maxim V. Dziumanenko <dziumanenko@gmail.com>
+Date:	2009-09-16
+
+    Added Ukrainian translation
+
+M	po/uk.po
+
+commit 73d1642958ef26c2885f8666e39b885f90f568db
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-09-16
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 08f66b2e169a16dd6e82f27a66b5a84bb3d7ff5b
+Author: Antón Méixome <meixome@mancomun.org>
+Date:	2009-09-16
+
+    Updated Galician Translation
+
+M	po/gl.po
+
+commit 86f0b8c903f1553649fe81e2c7e9e1c815c1470d
+Author: Matej Urbančič <mateju@svn.gnome.org>
+Date:	2009-09-16
+
+    Updated Slovenian translation
+
+M	po/sl.po
+
+commit 1e9ceb1abac17465badea6dd92e862821e84399e
+Author: Runa Bhattacharjee <runab@redhat.com>
+Date:	2009-09-16
+
+    Updated Bengali India Translations
+
+M	po/bn_IN.po
+
+commit c4fe38ec24b0c56fe457f9bf8f8ca2b10fe96295
+Author: Shankar Prasad <svenkate@redhat.com>
+Date:	2009-09-15
+
+    Updated Kannada(kn) translation
+
+M	po/kn.po
+
+commit 7792bbe28a070bda4046d86048b38ed27b7ec19c
+Author: Rajesh Ranjan <rranjan@rranjan.csb>
+Date:	2009-09-15
+
+    hindi update by Rajesh Ranjan
+
+M	po/hi.po
+
+commit 1fd5f5d562c0302b481d704822d48af2e0573dae
+Author: Adi Roiban <adi@roiban.ro>
+Date:	2009-09-15
+
+    Updated Romanian translation
+
+M	po/ro.po
+
+commit 718dd01a23cdced0b622dc05a58f98e606857d21
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-14
+
+    Remanme build-installer to build-installer.sh
+
+R100	win32/build-installer	win32/build-installer.sh
+
+commit 0f551983a7c456973a7b66ea0d97d8572e821c78
+Author: Frédéric Péters <fpeters@0d.be>
+Date:	2009-09-14
+
+    Fixed capitalisation of X-GNOME-FullName key.
+
+M	data/gedit.desktop.in.in
+
+commit 5b869e23ca1f60a31acc8c06cfd943077cc46648
+Author: Kjartan Maraas <kmaraas@gnome.org>
+Date:	2009-09-14
+
+    Update Norwegian bokmål translation.
+
+M	po/nb.po
+
+commit 0d1d5005aa7bf3d02b393509e2e4b048cc07f985
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-14
+
+    Add aspell support and fix gconf schemas
+
+M	win32/build-installer
+
+commit ced1ce1bb3a23be190e2e19598506910e895c8c7
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-14
+
+    Fix the locale instalation and downgrade libxml because of gconf
+
+M	win32/build-installer
+
+commit 94bb89d40d9d9ba72b801e3eb2a6b48e1d9a2f06
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-13
+
+    Avoid warning on win32
+
+M	plugins/taglist/gedit-taglist-plugin-parser.c
+
+commit 1fddf50e1d62422d482e4d694b0fd6b9850456e2
+Author: Ask H. Larsen <asklarsen@gmail.com>
+Date:	2009-09-13
+
+    Updated Danish translation
+
+M	po/da.po
+
+commit a63e44bdf646a07fa20ec23197464ef917a4b587
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-13
+
+    Cleanup the installer scripts.
+
+    Make the installer scripts more dynamic, now you can configure the
+    paths and they are easier to maintain.
+
+M	win32/build-installer
+M	win32/gedit.iss.in
+
+commit addaff8fbcb7a1c5a87ecf6a9be87bafd081d684
+Author: Philip Withnall <philip@tecnocode.co.uk>
+Date:	2009-09-12
+
+    Updated British English translation
+
+M	po/en_GB.po
+
+commit 4fe90116dc8407e91b1e37629b9f40a0e1cf7fe7
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-09-12
+
+    Be more paranoid about a case that should never happen...
+
+M	plugins/modelines/gedit-modeline-plugin.c
+
+commit 8c124f0b49e4d59d725fe9a0e9c1dc14f3ff9955
+Author: Tommi Vainikainen <thv@iki.fi>
+Date:	2009-09-12
+
+    Updated Finnish translation
+
+M	help/fi/fi.po
+M	po/fi.po
+
+commit 6c258aaf0049730d151c67b65e82c31fbe71539d
+Author: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+Date:	2009-09-12
+
+    Updated Traditional Chinese translation(Hong Kong and Taiwan)
+
+M	po/zh_HK.po
+M	po/zh_TW.po
+
+commit 3c6868f31b211f56004d93d309974cb8bdcfc6c1
+Author: Ask H. Larsen <asklarsen@gmail.com>
+Date:	2009-09-12
+
+    Updated Danish translation
+
+M	po/da.po
+
+commit 5c1a0260c47d31463511a571278223d077c9bac6
+Author: Ani <peter.ani@gmail.com>
+Date:	2009-09-12
+
+    Updaeted Malayalam Translations
+
+M	po/ml.po
+
+commit ef4760261a390a27ac6c27929f606d1da8ba41a3
+Author: Miloš Popović <mpopovic@src.gnome.org>
+Date:	2009-09-11
+
+    Updated Serbian translation
+
+M	po/sr.po
+M	po/sr@latin.po
+
+commit 55bc3d69daa3018198f2a38c2390f098043d3e7d
+Author: Gintautas Miliauskas <gintautas@miliauskas.lt>
+Date:	2009-09-10
+
+    Updated Lithuanian translation.
+
+M	po/lt.po
+
+commit 70872a69978ae806411aa3f130a7ee307c327b84
+Author: krishnababu k <kkrothap@redhat.ocm>
+Date:	2009-09-10
+
+    Updated Telugu Translation
+
+M	po/te.po
+
+commit 8e1020e2be55fbdff4ff01b38cb7fdadf8f64681
+Author: Baris Cicek <baris@teamforce.name.tr>
+Date:	2009-09-10
+
+    Updated Turkish translation.
+
+M	po/tr.po
+
+commit bc788401230aa5a275093db8ee563f144b9f0d03
+Author: Sandeep Shedmake <sshedmak@redhat.com>
+Date:	2009-09-09
+
+    Updated Marathi Translations
+
+M	po/mr.po
+
+commit f6ae08cfcf094342a55d087d057c3828d080fdca
+Author: Denis ARNAUD <darnaud@src.gnome.org>
+Date:	2009-09-09
+
+    Updated breton translation
+
+M	po/br.po
+
+commit 18beace9dda083011008ab8c80e98f0b5244fbea
+Author: Carlos José Pereira <carlao2005@gmail.com>
+Date:	2009-09-08
+
+    Updated Brazilian Portuguese translation file
+
+M	po/pt_BR.po
+
+commit b534d564dd989241c5f3d5b0a759758158780186
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-08
+
+    Reserve memory to avoid memory corruptions
+
+M	gedit/gedit-document.c
+
+commit 03b602d39589d45fad851823cf17ef0c48174c4f
+Author: Sweta Kothari <swkothar@redhat.com>
+Date:	2009-09-08
+
+    Updated Gujarati Translations
+
+M	po/gu.po
+
+commit 94ff0f24e6422b770e7d6baa890b55b01c5f4649
+Author: Alexander Shopov <ash@contact.bg>
+Date:	2009-09-08
+
+    Updated Bulgarian translation
+
+M	po/bg.po
+
+commit b91c1b7096b7e6168d4e6456b17786502dc3dc7b
+Author: A S Alam <aalam@users.sf.net>
+Date:	2009-09-08
+
+    Updating Trnaslation
+
+M	po/pa.po
+
+commit e6e802633bc0946a38dc8252d36b367e9f76def2
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-09-07
+
+    Release 2.27.6
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 4a28b9c7d3999dd9f47619897cb7cf4c2c438b78
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-09-07
+
+    Change ifdef condition
+
+M	gedit/gedit.c
+
+commit 2997ceca2c56b1eeca0ecb6269dfce979c66d779
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-09-07
+
+    Misc cleanups pointed out by clang static analyzer
+
+M	gedit/gedit-commands-search.c
+M	gedit/gedit-panel.c
+M	plugins/filebrowser/gedit-file-browser-plugin.c
+M	plugins/filebrowser/gedit-file-browser-store.c
+M	plugins/spell/gedit-spell-plugin.c
+M	plugins/time/gedit-time-plugin.c
+
+commit 2643f28eef2ebd3f3f7abf3e8577d11749882d78
+Author: Inaki Larranaga Murgoitio <dooteo@zundan.com>
+Date:	2009-09-07
+
+    Updated Basque language
+
+M	po/eu.po
+
+commit 1069303e575069829e7f5f6408f745dd959653d3
+Author: Milo Casagrande <milo@ubuntu.com>
+Date:	2009-09-06
+
+    Updated Italian translation
+
+M	po/it.po
+
+commit 1238c336fd81aea882ac0635ae08862b850ed88e
+Author: Milo Casagrande <milo@ubuntu.com>
+Date:	2009-09-06
+
+    Updated Italian translation
+
+M	po/it.po
+
+commit 40995dbf73999b52ae0386dbd6b9ec27b1694ff4
+Author: Duarte Loreto <happyguy_pt@hotmail.com>
+Date:	2009-09-06
+
+    Updated Portuguese translation
+
+M	po/pt.po
+
+commit 880270be6524345876074045900666b1985eb18a
+Author: Tomasz Dominikowski <dominikowski@gmail.com>
+Date:	2009-09-06
+
+    Updated Polish translation
+
+M	po/pl.po
+
+commit f26bb4dfdaf7cc03c44fdde6e13d10518233846c
+Author: Gabor Kelemen <kelemeng@gnome.hu>
+Date:	2009-09-06
+
+    Hungarian translation updated
+
+M	po/hu.po
+
+commit 6ff77510ae321cc613b951b28046ceefe7c658a0
+Author: Μάριος Ζηντίλης <m.zindilis@dmajor.org>
+Date:	2009-09-06
+
+    Updated Greek translation
+
+M	help/el/el.po
+
+commit 9d17ae749da313b7240a99902db7e192ca1dfa5f
+Author: Mario Blättermann <mariobl@gnome.org>
+Date:	2009-09-05
+
+    Updated German translation
+
+M	po/de.po
+
+commit 4e9e3f6afb87589a9f8aa04ce48ce67996abd073
+Author: Jorge González <jorgegonz@svn.gnome.org>
+Date:	2009-09-05
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit 796bcec206664acc21421566eb97a0d6dc9d4fe7
+Author: Milo Casagrande <milo@ubuntu.com>
+Date:	2009-09-04
+
+    Updated Italian translation
+
+M	po/it.po
+
+commit 84766b72aa527ccbc0407f3fb0313dd1e09dcdf9
+Author: Claude Paroz <claude@2xlibre.net>
+Date:	2009-09-04
+
+    Updated French translation
+
+M	po/fr.po
+
+commit 7b6d4ca798bc5128fff45bafb711e32f358bb205
+Author: Khaled Hosny <khaledhosny@eglug.org>
+Date:	2009-09-04
+
+    Updated Arabic translation
+
+M	po/ar.po
+
+commit 43b978990f23f325fce85595ecf287aa8ab73786
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-09-04
+
+    Updated Swedish translation
+
+M	po/sv.po
+
+commit f0fe78300afc2eacc35d84417cd01aef01ed8199
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-09-04
+
+    Add missing string in desktop file.
+
+    I had to add "gedit Text Editor" so it can be shown in the
+    menu. (Fixes bug 590180)
+
+M	data/gedit.desktop.in.in
+
+commit 06469f8fe5e4f4087e30110dd1ddae8a6c1dc761
+Author: Inaki Larranaga Murgoitio <dooteo@zundan.com>
+Date:	2009-09-02
+
+    Updated Basque language
+
+M	po/eu.po
+
+commit 7338ee1e07904052a224ff843b14ab3ca15066d0
+Author: Jader Henrique <vovozito@gmail.com>
+Date:	2009-09-02
+
+    Updated Brazilian Portuguese translation.
+
+    Reviewed by Fábio Nogueira <fnogueira@gnome.org>.
+
+M	po/pt_BR.po
+
+commit 4a4c81b15704c2e12e21a8b48a0d4e5eec0d958c
+Author: Rodrigo L. M. Flores <rlmflores@src.gnome.org>
+Date:	2009-09-01
+
+    Updated Brazilian Portuguese doc translation.
+
+M	help/pt_BR/pt_BR.po
+
+commit 54530b498ad04e7482ab75fc68b329b146ae7f40
+Author: Kjartan Maraas <kmaraas@gnome.org>
+Date:	2009-09-01
+
+    Update Norwegian bokmål translation.
+
+M	po/nb.po
+
+commit c4c2f9be0e8c8c31d4e180ee7a3ad8f97adc3903
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-09-01
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit fc85f9f8f98458fbde264dbeecaf999516f76f44
+Author: Shankar Prasad <svenkate@redhat.com>
+Date:	2009-09-01
+
+    Updated Kannada(kn) translation
+
+M	po/kn.po
+
+commit 8d2bec0c76764414c2641fc8766f41ad95eedf71
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-09-01
+
+    Updated Swedish translation
+
+M	po/sv.po
+
+commit aedc0f5a61260267267ee9c2fe236bd9b50963e4
+Author: Javier Jardón <javierjc1982@gmail.com>
+Date:	2009-08-31
+
+    Use gtk accessor functions instead direct access
+
+    First batch of Bug #593601. Some functions still remaining because
+    there
+    is not API in GTK+ yet
+
+M	gedit/dialogs/gedit-close-confirmation-dialog.c
+M	gedit/dialogs/gedit-encodings-dialog.c
+M	gedit/dialogs/gedit-preferences-dialog.c
+M	gedit/dialogs/gedit-search-dialog.c
+M	gedit/gedit-encodings-option-menu.c
+M	gedit/gedit-notebook.c
+M	gedit/gedit-plugins-engine.c
+M	gedit/gedit-print-preview.c
+M	gedit/gedit-statusbar.c
+M	gedit/gedit-utils.c
+M	gedit/gedit-window.c
+M	gedit/gedit.c
+M	plugins/filebrowser/gedit-file-browser-view.c
+M	plugins/filebrowser/gedit-file-browser-widget.c
+M	plugins/spell/gedit-automatic-spell-checker.c
+M	plugins/spell/gedit-spell-checker-dialog.c
+M	plugins/spell/gedit-spell-language-dialog.c
+M	plugins/time/gedit-time-plugin.c
+
+commit 49ef7fd965970766e7cc291b4aeab66dc4238e5e
+Author: Claude Paroz <claude@2xlibre.net>
+Date:	2009-08-31
+
+    Updated French translation
+
+M	po/fr.po
+
+commit 2e74d77b63c4c35befc50ab6b0613757293344fb
+Author: Jorge González <jorgegonz@svn.gnome.org>
+Date:	2009-08-31
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit f73163945e87d9fc96532906ed62ec6ec9746180
+Author: Khaled Hosny <khaledhosny@eglug.org>
+Date:	2009-08-31
+
+    Updated Arabic translation
+
+M	po/ar.po
+
+commit 28b1efd2afc8e72c828be1f58a63a7b0e8d490a2
+Author: Tomasz Dominikowski <dominikowski@gmail.com>
+Date:	2009-08-31
+
+    Updated Polish translation
+
+M	po/pl.po
+
+commit 87f77f3aab989cc592de929a40950a5d81a84376
+Author: Sweta Kothari <swkothar@redhat.com>
+Date:	2009-08-31
+
+    Updated Gujarati Translations
+
+M	po/gu.po
+
+commit 89c6996f9ef8a892ef85584ebac1e5cd5965d195
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-08-31
+
+    Fixed access keys for "Edit Anyway" and "Don't Edit"
+
+    Fixed access keys for "Edit Anyway" and "Don't Edit" (Fixes bug
+    #346844)
+
+M	gedit/gedit-io-error-message-area.c
+
+commit d96d86ee2d01ab7b53a8ce581eb01cca0e36f76b
+Author: Runa Bhattacharjee <runab@redhat.com>
+Date:	2009-08-31
+
+    Updated Bengali India Translations
+
+M	po/bn_IN.po
+
+commit 45c384883a7cc7154fba2d0e3296700964bab93c
+Author: Sweta Kothari <swkothar@redhat.com>
+Date:	2009-08-31
+
+    Updated Gujarati Translations
+
+M	po/gu.po
+
+commit f4a9365dec2ea45be701ab5ea80feb3f157727a8
+Author: Denis Arnaud <darnaud@src.gnome.org>
+Date:	2009-08-31
+
+    Updated breton translation
+
+M	po/br.po
+
+commit fac801b07f9e654c3b6596f99d88722244c5eed1
+Author: Duarte Loreto <happyguy_pt@hotmail.com>
+Date:	2009-08-31
+
+    Updated Portuguese translation
+
+M	po/pt.po
+
+commit d4d1ac9310008d98ca14e9e3ed312b4ae8c3be37
+Author: Tomasz Dominikowski <dominikowski@gmail.com>
+Date:	2009-08-30
+
+    Updated Polish translation
+
+M	po/pl.po
+
+commit 63d6334809aac58ccc3ea5905d8c0cf4cf628195
+Author: Jamil Ahmed <itsjamil@gmail.com>
+Date:	2009-08-31
+
+    Updated Bengali translation
+
+M	po/bn.po
+
+commit 5f14b17de05d142bfd2811490e9fa5a9568f3e3d
+Author: Baris Cicek <baris@teamforce.name.tr>
+Date:	2009-08-30
+
+    Updated Turkish translation.
+
+M	po/tr.po
+
+commit 2372f3ad4d570fa2231636f915027cfe23c16a65
+Author: Mario Blättermann <mariobl@gnome.org>
+Date:	2009-08-30
+
+    Updated German translation
+
+M	po/de.po
+
+commit 69f3f880ef350e2ca70be93e570a45d7e80b399c
+Author: Changwoo Ryu <cwryu@debian.org>
+Date:	2009-08-30
+
+    Update Korean translation
+
+M	po/ko.po
+
+commit 79c696aac76ccd996a4b84826610e928589850ed
+Author: Petr Kovar <pknbe@volny.cz>
+Date:	2009-08-29
+
+    Updated Czech translation by Jiri Eischmann
+
+    Reviewed by: Petr Kovar.
+
+M	po/cs.po
+
+commit 30dd764c5a7d2acc5b0d15b2f2c9e12ed85a3cba
+Author: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+Date:	2009-08-29
+
+    Updated Traditional Chinese translation(Hong Kong and Taiwan)
+
+M	po/zh_HK.po
+M	po/zh_TW.po
+
+commit 1f018dc0afabc8dec309eee5fead8fe93d9483c6
+Author: Miloš Popović <mpopovic@src.gnome.org>
+Date:	2009-08-29
+
+    Updated Serbian translation
+
+M	po/sr.po
+M	po/sr@latin.po
+
+commit 906b08126c5db95bf1af7ed77163c952064fc178
+Author: Claude Paroz <claude@2xlibre.net>
+Date:	2009-08-28
+
+    Updated French translation
+
+M	po/fr.po
+
+commit a277a7264b993ff89b7ec49f4ae8e2794cd0e035
+Author: Denis Arnaud <darnaud@src.gnome.org>
+Date:	2009-08-27
+
+    Updated breton translation
+
+M	po/br.po
+
+commit ba718cd40672b3f65ac9056e04b80cfb7621d30d
+Author: Inaki Larranaga Murgoitio <dooteo@zundan.com>
+Date:	2009-08-25
+
+    Updated Basque language
+
+M	po/eu.po
+
+commit 744c0768b8b0b551fbe470f432810698e48dfab0
+Author: Tomasz Dominikowski <dominikowski@gmail.com>
+Date:	2009-08-25
+
+    Updated Polish translation
+
+M	po/pl.po
+
+commit 96db2cb1d9f8a3d7607b93407671263905a12db0
+Author: ifelix <ifelix@redhat.com>
+Date:	2009-08-25
+
+    Updated Tamil Translations
+
+M	po/ta.po
+
+commit f426d798ef5494d35f1294d1cb26e9cb3a6e1ae7
+Author: Og B. Maciel <ogmaciel@gnome.org>
+Date:	2009-08-24
+
+    Updated Brazilian Portuguese translation.
+
+M	po/pt_BR.po
+
+commit 3aaa7833c6565b362c73b51fc85873184f3ab388
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-24
+
+    Release 2.27.5
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 2474bdd2b35154a5f314b45c81501e1a9c11402c
+Author: Alexander Shopov <ash@contact.bg>
+Date:	2009-08-24
+
+    Updated Bulgarian translation
+
+M	po/bg.po
+
+commit b4bf42322868c63fe332cd4d26314cabb122d2d0
+Author: Marek Kašík <mkasik@redhat.com>
+Date:	2009-08-24
+
+    Persist page-setup when using the embedded page setup.
+
+M	gedit/gedit-print-job.c
+M	gedit/gedit-print-job.h
+M	gedit/gedit-tab.c
+
+commit cd4fd8aec6620f06407a3a96c216df7c259f806f
+Author: Jani Monoses <jani@ubuntu.com>
+Date:	2009-08-24
+
+    Romanian translation updated by Lucian Adrian Grijincu
+
+M	po/ro.po
+
+commit a3359fee31034e9ad95de3d793d155287aa4f2ae
+Author: Gil Forcada <gforcada@gnome.org>
+Date:	2009-08-24
+
+    Minor fix to Catalan translation
+
+M	po/ca.po
+
+commit b277dffe7729ee733069cb88ae2dba418e0de01e
+Author: Carles Ferrando <carles.ferrando@gmail.com>
+Date:	2009-08-24
+
+    Added Catalan (Valencian) translation
+
+M	po/LINGUAS
+A	po/ca@valencia.po
+
+commit 978ae6499cd17154d8619343151a3f4c120c211a
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-08-24
+
+    Remove sexy-icon-entry and bump gtk+ to 2.16.0
+
+M	configure.ac
+M	gedit/Makefile.am
+M	gedit/gedit-view.c
+D	gedit/sexy-icon-entry.c
+D	gedit/sexy-icon-entry.h
+
+commit d537c157fd93cdbab3016cc2d5d3fcfe0346d923
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-24
+
+    Fix print preview fit-to-page in landscape mode
+
+M	gedit/gedit-print-preview.c
+
+commit 0a627837b5870469793430ae0c25b572a460279e
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-08-24
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit f46bc72f359ffa66172a6be2cbe904749dde7f6a
+Author: Denis Arnaud <darnaud@src.gnome.org>
+Date:	2009-08-24
+
+    Updated breton translation
+
+M	po/br.po
+
+commit 8c9b1a1f231ef3c29a8b29f40db84170fe8f286a
+Author: Denis Arnaud <darnaud@src.gnome.org>
+Date:	2009-08-24
+
+    Updated breton translation
+
+M	po/br.po
+
+commit 66a209d072d154c8764b46888f8e817a8d174434
+Author: Denis Arnaud <darnaud@src.gnome.org>
+Date:	2009-08-24
+
+    Updated breton translation
+
+M	po/br.po
+
+commit 16c4e1dc206ec1e6ad5976599f0c2d84ec38bdf7
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-08-23
+
+    Updated Swedish translation
+
+M	help/sv/sv.po
+
+commit 24cc95a5bb96438ed087b1f950c41382f258fa7d
+Author: Jorge González <jorgegonz@svn.gnome.org>
+Date:	2009-08-23
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit badb32da35981f2a3c7d791bc5411d0c966787ef
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-08-23
+
+    Updated Swedish translation
+
+M	po/sv.po
+
+commit 2f65961794e6db7a49d4fba07a0fd7d53e0f0a92
+Author: Javier Jardón <javierjc1982@gmail.com>
+Date:	2009-08-22
+
+    Fix .desktop file (GnomeBug:590180)
+
+M	data/gedit.desktop.in.in
+
+commit 9c95fbdb630b978d3fd503b19e60c6ca0bb202d5
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-22
+
+    Update smclient from libegg
+
+M	gedit/smclient/eggsmclient-osx.c
+
+commit b9b5264242b7e668f15e82e385fa356b15b6da71
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-08-22
+
+    Print the invalid encoding error always in the client.
+
+M	gedit/gedit.c
+
+commit 80a4a6e4b37b5b789e168a8f0a0d807eb8b62408
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-08-22
+
+    Ignores the command line option --encoding when there is already an
+    opened file.
+
+    Ignores the command line option --encoding when there is already an
+    opened file
+    and fixed some memory leaks too. Fixes bug #436227.
+
+M	gedit/gedit.c
+
+commit 7f5aac9ec3b74a4f0a3d02ac5d171001fb88c6b7
+Author: Robert L Toscano <robert.l.toscano@gmail.com>
+Date:	2009-08-12
+
+    Added get_view message that returns the FBView
+
+    The view can be used, for instance, to get which files have been
+    selected
+    which would be needed in executing context menu items.
+
+M	plugins/filebrowser/gedit-file-browser-messages.c
+
+commit aaaaf161d18bd0fd18e262110a11e6b9546fb8a7
+Author: Akom C <knight2000@gmail.com>
+Date:	2009-08-21
+
+    Updated Thai translation.
+
+M	po/th.po
+
+commit f226ebd2f186bbbc39469a78467ea029c994f127
+Author: Khaled Hosny <khaledhosny@eglug.org>
+Date:	2009-08-21
+
+    Updated Arabic translation
+
+M	po/ar.po
+
+commit 553d7f006fcdc8a373aea3983156eab7bc4b2319
+Author: Piotr Drąg <piotrdrag@gmail.com>
+Date:	2009-08-20
+
+    Updated Polish translation
+
+M	po/pl.po
+
+commit f2c03e2f816acaf226d2548dae4fac94f5456f04
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Use the proper word_wrap setting when printing.
+
+    When printing word wrap should be set according to the specified
+    value,
+    not according to the current view. Bug #576090.
+
+M	gedit/gedit-print-job.c
+
+commit e88d76c474edaebd344dec959e0bd7bc8b3164d6
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Fix some GCC warnings
+
+M	gedit/gedit-debug.c
+M	gedit/gedit-encodings.c
+M	gedit/gedit-gio-document-saver.c
+M	gedit/gedit-history-entry.c
+M	gedit/gedit-metadata-manager.c
+M	gedit/gedit-panel.c
+M	gedit/gedit-prefs-manager-app.c
+M	gedit/gedit-prefs-manager.c
+M	gedit/gedit-session.c
+M	gedit/gedit-view.c
+M	gedit/gedit-window.c
+
+commit dab36a10bf3a898cfa8097a2f17c9bcb0410f40b
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Avoid potentianl memory corruption in the g_return_if_fail case
+
+M	gedit/gedit-utils.c
+
+commit e14adb68d3319192c0acc09222d313f7b826bda2
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Correctly check for the encoding command line message
+
+M	gedit/gedit.c
+
+commit 1b883d0341373b17721af7b162f6ed50fdb1ea3d
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Fix some coding style issues
+
+M	gedit/gedit-gio-document-loader.c
+M	gedit/gedit-io-error-message-area.c
+M	gedit/gedit-plugins-engine.c
+M	gedit/gedit-status-combo-box.c
+
+commit 7c4b0beb2d6ae4c893e9b6cda9597f349e3d2ad2
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Do not return a GtkTreeIter by value
+
+M	gedit/gedit-documents-panel.c
+
+commit 4843c8206d70b1be855527f27e89cf872949f0b8
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Fix some compiler warnings in the filebrowser plugin
+
+M	plugins/filebrowser/gedit-file-bookmarks-store.c
+M	plugins/filebrowser/gedit-file-browser-store.c
+M	plugins/filebrowser/gedit-file-browser-utils.c
+M	plugins/filebrowser/gedit-file-browser-view.c
+
+commit ea09072f07601290415213e12861aebe876b655c
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Use void for functions without params
+
+M	gedit/gedit-dirs.c
+
+commit 42c06b44a7de863c97556282464fac161ab2085c
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-19
+
+    Error bell when entering text in the goto line
+
+M	gedit/gedit-view.c
+
+commit a972fa660f0110272b6c31ee76ae5e22074ada6a
+Author: Alexander Shopov <ash@contact.bg>
+Date:	2009-08-19
+
+    Updated Bulgarian translation
+
+M	po/bg.po
+
+commit 2879565b06dbd68d65f7c0692f1888e957c72866
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-18
+
+    Make sure to get the content type when loading
+
+    Query info on the file, not the stream, since the latter is not
+    able to
+    provide the content type
+
+M	gedit/gedit-gio-document-loader.c
+
+commit 0198a0b5a2f39d8b94fc12b6198ab04c0ee9224f
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-08-17
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 09a7a70fa2122343f5883b3d065494949f44f5cc
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-16
+
+    Overwrite gzipped tag files
+
+M	plugins/taglist/Makefile.am
+
+commit 4b15b15dece54b813f946b90bf06fe3d3c058a17
+Author: Tommi Vainikainen <thv@iki.fi>
+Date:	2009-08-15
+
+    Updated Finnish translation
+
+M	po/fi.po
+
+commit 7de30e476587cd1efdf5bfb6d2ab9d4dfd1b9d75
+Author: Marcus Carlson <gnomebugzilla@mejlamej.nu>
+Date:	2009-08-15
+
+    Respect button-image setting for docstats
+
+M	plugins/docinfo/docinfo.ui
+
+commit 3165df90e206f6cf4f7521087692419e59d6d7a8
+Author: Paolo Borelli <pborelli@gnome.org>
+Date:	2009-08-15
+
+    No need to keep the uncompressed taglists around
+
+M	plugins/taglist/Makefile.am
+
+commit 09f0f8fd10256810466291d77dccf7c2182c8845
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-08-13
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit f239f8b0bfed09ef14e69373241901424e654586
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-08-13
+
+    Updated Swedish translation
+
+M	po/sv.po
+
+commit 673f65db572ee66358b28091a25842792969e5ef
+Author: Antón Méixome <meixome@mancoumun.org>
+Date:	2009-08-12
+
+    Updated Galician translation
+
+M	po/gl.po
+
+commit 069ebe1d280ec9976076d3b5e63b0fe32bd9ca57
+Author: André Gondim <andregondim@ubuntu.com>
+Date:	2009-08-11
+
+    Updated Brazilian Portuguese translation.
+
+M	po/pt_BR.po
+
+commit 1aeed4c8a16c2a4d0f48c84ec7da297500eaf86b
+Author: Jacob Nordfalk <jacob.nordfalk@gmail.com>
+Date:	2009-08-11
+
+    Updated Esperanto translation
+
+M	po/LINGUAS
+A	po/eo.po
+
+commit e9d13c4307ebea8beeecc4e107edf77079710560
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-10
+
+    Release 2.27.4
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 493cf789742b7398f965d25f497ec201da234995
+Author: Robert L Toscano <robert.l.toscano@gmail.com>
+Date:	2009-08-09
+
+    Fixed registration of add_context_item message
+
+    add_context_item message registration was missing the "path"
+    argument making the message impossible to use. This fix adds that
+    argument.
+
+M	plugins/filebrowser/gedit-file-browser-messages.c
+
+commit b31143c7985a794f56739f2b6b83721eeccbe004
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-10
+
+    With gtk > 2.17.4 use page setup embedded in print dialog
+
+    Based on a patch by Marek Kašík, bug #591338
+
+M	gedit/gedit-commands-file-print.c
+M	gedit/gedit-commands.h
+M	gedit/gedit-print-job.c
+M	gedit/gedit-tab.c
+M	gedit/gedit-tab.h
+M	gedit/gedit-ui.h
+M	gedit/gedit-ui.xml
+M	gedit/gedit-window.c
+
+commit 1e18ae038b63dfb5889c15fb3108937dbf8aad9f
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-10
+
+    Be quiet about marshallers and enums generation
+
+M	gedit/Makefile.am
+M	plugins/filebrowser/Makefile.am
+M	plugins/spell/Makefile.am
+
+commit d834aaa73bc1e27020bc4198fb4ad6b8804ca5fc
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-10
+
+    Better automation of message of doom
+
+M	Makefile.am
+M	configure.ac
+D	message-of-doom
+
+commit 0654e6572e90ff2583f7fb4b528f0e748dd3e428
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-08-08
+
+    Overwrite the change_current_page binding on gedit-notebook.
+
+    Overwrite the change_current_page binding vfunc to manage the
+    wrap around
+    by our own, so we can have it when we hide the tabbar for example when
+    we are on fullscreen. (Fixes bug #591121)
+
+M	gedit/gedit-notebook.c
+
+commit e2a9aa4f4adfb287f03280bac54cb919bec85ef6
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-08
+
+    Add a popup menu to the bookmarks list
+
+    Add a right click popup menu to the bookmark list of the filebrowser
+    plugin so that setting root to the active document is always available
+
+M	plugins/filebrowser/gedit-file-browser-plugin.c
+M	plugins/filebrowser/gedit-file-browser-widget-ui.xml
+M	plugins/filebrowser/gedit-file-browser-widget.c
+
+commit fc53caeeeb8ad1f5f10176b96f073a0e258c491b
+Author: Jochen Skulj <jochen@jochenskulj.de>
+Date:	2009-08-08
+
+    Updated German translation
+
+M	po/de.po
+
+commit 5e6f1f1683c08d0c86d7eb945b8cb055a9decfbd
+Author: Seán de Búrca <leftmostcat@gmail.com>
+Date:	2009-08-07
+
+    Updated Irish translation
+
+M	po/ga.po
+
+commit 6f33e2fcbc1c95ab542d1e169606af91221824aa
+Author: Iestyn Pryce <dylunio@gmail.com>
+Date:	2009-08-07
+
+    Updated Welsh translation
+
+M	po/cy.po
+
+commit 14dc28113cd7eecb9deeeea25ce67abf675f8432
+Author: Robert Toscano <robert.l.toscano@gmail.com>
+Date:	2009-08-07
+
+    Changed ordering of FileBrowser's signals
+
+    This patch ensures that root_changed signals come *before* inserted
+    signals.
+
+M	plugins/filebrowser/gedit-file-browser-store.c
+
+commit 51ff8a56b7b128f8e1590b0e6fa3f5f5b2178442
+Author: Jorge González <jorgegonz@svn.gnome.org>
+Date:	2009-08-04
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit a56b1736c918348cb21eb09ae68c72b99cef994f
+Author: Kjartan Maraas <kmaraas@gnome.org>
+Date:	2009-08-03
+
+    Updated Norwegian bokmål translation.
+
+M	po/nb.po
+
+commit 8746edf887e9a10d40768ef6b045df08dde029cc
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-02
+
+    Respect button-image setting for add scheme button
+
+M	gedit/dialogs/gedit-preferences-dialog.c
+M	gedit/dialogs/gedit-preferences-dialog.ui
+
+commit 44e27e8427e99971cd0c20d61c9c925914e96ef2
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-08-01
+
+    Fix regression of cursor placement after snippet insertion
+
+    This fixes a regression introduced by commit 6efd048. This previous
+    fix
+    would always skip to the end placeholder even if there were other
+    placeholders present.
+
+M	plugins/snippets/snippets/Document.py
+
+commit 6efd048552f823a3def2efcf7c5504562e374bb9
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-08-01
+
+    Fixed cursor going to end placeholder if there are no other
+    placeholders
+
+    For instance, the 'main' snippet in the C language only defines an end
+    placeholder ($0). Upon activating the snippet, the cursor was
+    not moved.
+    This has now been fixed.
+
+M	plugins/snippets/snippets/Document.py
+
+commit e2c7c27bf1c88f4e6329f87c883f6d74adbc656c
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Properly set search color according to the theme
+
+    Unset the search hl tag properties if the theme does not specify a
+    color. Fixes bug #579358
+
+M	gedit/gedit-document.c
+
+commit 302d41a59537914c6a10b6f7626053d3e0f443dd
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Grab focus on the python console when showing it
+
+M	plugins/pythonconsole/pythonconsole/console.py
+
+commit 190b8971a9ac061b5aec926c832d73425981fc71
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Do not use the reserved GZIP variable. Bug #583940
+
+M	configure.ac
+M	plugins/taglist/Makefile.am
+
+commit 3ffeaebfa642cb127ee3d41fdb25b6c57bc0837e
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-08-01
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 597b2b8ff323c61370620927234b327e8ca21595
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Backport EOG UI improvements to the plugin manager
+
+M	gedit/gedit-plugin-manager.c
+
+commit 53760d0ae606ec02692287cfc55e39ab43f8e111
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Fix runtime warning in last patch
+
+M	plugins/changecase/gedit-changecase-plugin.c
+
+commit 69f3c603f9cf27517619c503c44728ae7061b429
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Make Change Case sensitivity depend on selection
+
+M	plugins/changecase/gedit-changecase-plugin.c
+
+commit 4585957f669559838d77ea59a3bf0277542440c5
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-08-01
+
+    Update plugins ui when selection changes
+
+M	gedit/gedit-window.c
+
+commit 607fb72cebd9430921159e8958e6cdaf104ffd18
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-29
+
+    Automate the message of doom printing
+
+M	configure.ac
+
+commit e7346810f9c336dce981fbd9bed2776dacc226d8
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-07-29
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit 37fd686b3d74a832023d3836537d3196e3985804
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-07-29
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit 84c15d95cee712294b74eefa7cc1183192fe5340
+Author: Khaled Hosny <khaledhosny@eglug.org>
+Date:	2009-07-28
+
+    Updated Arabic translation
+
+M	po/ar.po
+
+commit 4b674a5536d4a1f448be796a4c2880302e207e32
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-27
+
+    Release 2.27.3
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 9f9534a083d8f8d7bf8eff60c56c0350250aff40
+Author: Antón Méixome <meixome@mancomun.org>
+Date:	2009-07-26
+
+    Updated Galician Translation
+
+M	po/gl.po
+
+commit af870493eb920359b450c75d4420b2bcfa05c49f
+Author: Mario Blättermann <mariobl@gnome.org>
+Date:	2009-07-26
+
+    Updated German translation
+
+M	help/de/de.po
+
+commit d42648f5da53c5e5afb61156222753f683236a15
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-25
+
+    Split the time plugin ui files in two files
+
+    Use one file per toplevel to avoid duplicated ids
+
+M	plugins/time/Makefile.am
+A	plugins/time/gedit-time-dialog.ui
+M	plugins/time/gedit-time-plugin.c
+A	plugins/time/gedit-time-setup-dialog.ui
+D	plugins/time/time.ui
+M	po/POTFILES.in
+
+commit a49305578550d22309a4a927476c18bc7c6894e3
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-24
+
+    Update smclient from libegg
+
+M	gedit/smclient/eggdesktopfile.c
+M	gedit/smclient/eggdesktopfile.h
+M	gedit/smclient/eggsmclient-xsmp.c
+
+commit 55719c2e76729131cf931ad71878259339e09cf8
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-25
+
+    Plug small leak on error path
+
+M	gedit/gedit-utils.c
+
+commit 65fae1b9dae68fcc18443053da745258ae76ecb9
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-07-22
+
+    Updated Swedish translation
+
+M	po/sv.po
+
+commit 254f8d0aa2194ecbb6c88feda86378509c24509d
+Author: César Veiga <tombs@linuxmail.org>
+Date:	2009-07-20
+
+    Updated Brazilian Portuguese translation.
+
+M	po/pt_BR.po
+
+commit 8cf5bac50c7976aa60d26076103646627f49313b
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-19
+
+    Use consistent PEP-8 style in pythonconsole
+
+M	plugins/pythonconsole/pythonconsole/__init__.py
+M	plugins/pythonconsole/pythonconsole/config.py
+M	plugins/pythonconsole/pythonconsole/console.py
+
+commit 578301e7cd8a781f54cd0a07c80429b36d726bed
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-18
+
+    "Save As" should be sensitive after a saving error
+
+    Let the user select an alternative location if saving fails. Bug
+    #576094.
+
+M	gedit/gedit-window.c
+
+commit 6dfb899adbc28caffcaa8aaf4c460796d3b64891
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-18
+
+    Remove overzealous assertion
+
+    parent can be null for http uris.
+
+M	gedit/gedit-commands-file.c
+
+commit 7aa0d06f1649f45555c82525b68387c4d278a6d9
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-18
+
+    Code cleanup
+
+M	gedit/gedit-app.c
+M	gedit/gedit-utils.c
+
+commit 8051714a74b023bf9b11e6b160960eec288323ff
+Author: Jorge González <jorgegonz@svn.gnome.org>
+Date:	2009-07-18
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit a93d4c8cb8ebd57928eb427c3955fe8511d35679
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-18
+
+    Add mnemoning to the External Tools submenu
+
+M	plugins/externaltools/tools/__init__.py
+
+commit 3a32ce3dc33d1c02e84d94b221963c794167ef9a
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:	2009-07-18
+
+    Respect the button-images setting
+
+    Streamline the construction of some buttons, with the nice side-effect
+    that they now respect the button-images setting. See bug 588806.
+
+M	plugins/sort/sort.ui
+M	plugins/spell/gedit-spell-checker-dialog.c
+M	plugins/spell/spell-checker.ui
+
+commit 2c5ab2224ef3a416a462ef107fc8d4d763418a0d
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-07-15
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit 820d9887397833cec0dc7167e7a2658e20836051
+Author: Sweta Kothari <swkothar@redhat.com>
+Date:	2009-07-13
+
+    Updated Gujarati Translations
+
+M	po/gu.po
+
+commit d20ddc10c39072bf37f46fcbf25c3a63254e6a93
+Author: Jesse van den Kieboom <jesse.vandenkieboom@epfl.ch>
+Date:	2009-07-13
+
+    Fixed 'close' snippet (copy/paste error from open)
+
+    Patch from Jens Domke
+
+M	plugins/snippets/data/fortran.xml
+
+commit 17ead0f1587bab9b0d00125acbfe14df2f834094
+Author: Petr Kovar <pknbe@volny.cz>
+Date:	2009-07-12
+
+    Updated Czech help translation by Marek Cernocky
+
+M	help/cs/cs.po
+
+commit f6eb7ff3202bbab94250e609c238e7c23c74ab56
+Author: Maxim V. Dziumanenko <dziumanenko@gmail.com>
+Date:	2009-07-09
+
+    Updated Ukrainian translation
+
+M	po/uk.po
+
+commit 79225f3710931c71c4c08c1809fba550767d465a
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-07-09
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit 610a2c28f948dd0d05b3f5c70d25e4d1a320075c
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-07-03
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit f50d8f66807c64e4e88093ee12461fae5f48b14d
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-07-07
+
+    Updated Swedish translation
+
+M	po/sv.po
+
+commit e7773995b8481d09f08264407c6485f496191f2b
+Author: Daniel Nylander <po@danielnylander.se>
+Date:	2009-06-14
+
+    Updated sv translation (Daniel Nylander)
+
+M	po/sv.po
+
+commit 600bf89644607ff0b31f5d5a19c13b88ab44e1ad
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-04
+
+    Add MAINTAINERCLEANFILES for the sake of git.mk
+
+    Add files to remove on make maintainer-clean so that git.mk figures
+    out
+    that they should be ignored
+
+M	Makefile.am
+
+commit 4c6034d8700192cbd5a9b9beeb87dc172e422171
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-04
+
+    Move panes actions to a separate action group
+
+    Move panes actions to a separate action group since thei sensitivity
+    depends only on the fact that there are items in the pane itself
+    and not
+    on the fact that there are documents open.
+
+M	gedit/gedit-ui.h
+M	gedit/gedit-window-private.h
+M	gedit/gedit-window.c
+
+commit d6cf85fdaee59320e806598be562931694b89d4d
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-07-04
+
+    Fix python runtime warning
+
+M	plugins/externaltools/tools/outputpanel.py
+
+commit 249dcc6c3efc403794b9ebc502bfa2178a8f2910
+Author: Petr Kovar <pknbe@volny.cz>
+Date:	2009-06-28
+
+    Fixed Czech help translation by Marek Cernocky
+
+    Reviewed by: Lucas Lommer and Petr Kovar.
+
+M	help/cs/cs.po
+
+commit c42b6b8ce7a5bfbcfaa3d78f0c98660b2dea0610
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-06-27
+
+    Enable silent mode when using a modern automake
+
+M	configure.ac
+
+commit 66a1009910c51d2de3b295d33b732c718661afcd
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-06-26
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit ebbee92d28756678b8fcd3b1102b7bb6d7e3c552
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-06-26
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 2137b3a464f219646d360ab2f6a9b8948d2a9d12
+Author: Petr Kovar <pknbe@volny.cz>
+Date:	2009-06-21
+
+    Fixed Czech translation by Lucas Lommer
+
+    Reviewed by Petr Kovar.
+
+M	po/cs.po
+
+commit 07a428ba7d0931aa2da6a3c684d56e12befc7a9a
+Author: Petr Kovar <pknbe@volny.cz>
+Date:	2009-06-21
+
+    Added Czech help translation by Marek Cernocky
+
+    Reviewed by Petr Kovar.
+
+M	help/Makefile.am
+A	help/cs/cs.po
+A	help/cs/figures/gedit_window.png
+
+commit b4662053efa6f0588c94674584dea5562d51fa95
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-21
+
+    Fix detection for libsoup on win32 and add it to the build script.
+
+M	configure.ac
+M	plugins/checkupdate/gedit-check-update-plugin.c
+M	win32/build-installer
+M	win32/gedit.iss.in
+
+commit 1f9ed3a1dd448e220f2e57e86d811318f8e08650
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-21
+
+    release 2.27.2
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit fcae337dfd1292ef1f13f2f3db86740a5bcd676a
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-21
+
+    Fix plugins distcheck.
+
+M	configure.ac
+M	plugins/Makefile.am
+
+commit 650971fe2302a099d506c5d486fdb6a6e5e76ecf
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-21
+
+    Remove gedit-message-area from docs.
+
+    Now that gedit-message-area is optional the docs have to be removed.
+
+M	docs/reference/Makefile.am
+M	docs/reference/gedit-docs.sgml
+M	docs/reference/gedit-sections.txt
+M	docs/reference/gedit.types
+M	docs/reference/tmpl/gedit-unused.sgml
+
+commit 82bcc956ecd82efc221ecd11acdd2e24ab2a2536
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-06-21
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit cda3fddaff08172b790f52fe34f7273f416116a2
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-20
+
+    Update POTFILES
+
+M	po/POTFILES.in
+M	po/POTFILES.skip
+
+commit b7e37fa32253324a6408e999c9a978a1c93f3496
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-20
+
+    Add check update plugin.
+
+    This plugin provides a way to check on win32 or mac osx if there is
+    a new release.
+
+M	configure.ac
+M	data/Makefile.am
+R099	data/gedit.schemas.in	data/gedit.schemas.in.in
+M	plugins/Makefile.am
+A	plugins/checkupdate/Makefile.am
+A	plugins/checkupdate/checkupdate.gedit-plugin.desktop.in
+A	plugins/checkupdate/gedit-check-update-plugin.c
+A	plugins/checkupdate/gedit-check-update-plugin.h
+
+commit 57cbc3cef035859e739703b32d4809c5652cf306
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-18
+
+    Update the message of doom
+
+M	message-of-doom
+
+commit e827e1c01de4d58017f40e4e7848a303e575a52c
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-18
+
+    Show the message of doom
+
+M	configure.ac
+
+commit d4ead5e444d38775157b9e49b0d58f6e1e7e9f3a
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-17
+
+    When opeing gedit from console on win32 visualize the stdout.
+
+M	gedit/gedit.c
+
+commit 0b738c5229fde62a5f52fae785e1c25a6e6c1a3d
+Author: Gil Forcada <gforcada@gnome.org>
+Date:	2009-06-14
+
+    Minor fix to Catalan translation
+
+M	po/ca.po
+
+commit 5c2e391238fff919c8449ea139e675a4dbcd3b76
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-13
+
+    Add gedit-message-area as public api.
+
+    This was already public api but with the infobar patch I removed it
+    by mistake.
+
+M	gedit/Makefile.am
+
+commit b0b7a86205dfde2081e0b22de77a3811b9e33893
+Author: Jesse van den Kieboom <jessevdk@gnome.org>
+Date:	2009-06-13
+
+    Set initial external tool text not undoable
+
+M	plugins/externaltools/tools/manager.py
+
+commit 7a5c1c261a61009b6a4ab4940d912b30889ab141
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-06
+
+    Use gtkinfobar in case we have gtk+ >= 2.17.1
+
+M	configure.ac
+M	gedit/Makefile.am
+M	gedit/gedit-io-error-message-area.c
+M	gedit/gedit-progress-message-area.c
+M	gedit/gedit-progress-message-area.h
+M	gedit/gedit-tab.c
+
+commit d11b28ee6e977b0a5b57ccd8ad2541bc4fb4560c
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-10
+
+    Remember the search dialog position.
+
+    Remember the search dialog position for the current window. (Fixes
+    bug #165267).
+
+M	gedit/dialogs/gedit-search-dialog.c
+M	gedit/gedit-commands-search.c
+
+commit 30f824352b3a9165f44f867973f4f6fa673cc5d7
+Author: Kjartan Maraas <kmaraas@gnome.org>
+Date:	2009-06-10
+
+    Updated Norwegian bokmål translation.
+
+M	po/nb.po
+
+commit 28052e18a60ec5c83a4c059d8f326dceb36b665a
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-06-08
+
+    gedit-commands header is public
+
+M	gedit/Makefile.am
+
+commit 92d642191efe674cc336f47f783eb9fc156a29f5
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-06-08
+
+    Avoid sync stat for the icon of remote bookmarks
+
+    For remote bookmarks we use the generic folder icon instead of
+    performing a sync get_info otherwise we may block during startup
+    waiting
+    gvfs mounts. Fixes bug #582443.
+
+M	plugins/filebrowser/gedit-file-bookmarks-store.c
+
+commit e4d4750d43557218d44a0475c2e1b7d8cda7e58d
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-06-07
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit d39551315985319b413dedd3e3336470cc98c6cc
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-06
+
+    Add translator comments.
+
+M	gedit/gedit-commands-search.c
+
+commit 8ef1dfdc39c152b6bdc106c533c8c2e4d297e775
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-06-06
+
+    Remove the use of "Phrase" when searching.
+
+    Remove the word "Phrase" and use "%s" instead to visualized what it
+    was searched. (Fixes bug #572901).
+
+M	gedit/gedit-commands-search.c
+M	gedit/gedit-utils.c
+M	gedit/gedit-utils.h
+
+commit 80a35dfb1f74f9bb8edeabb32e086affe0c097ca
+Author: Ivar Smolin <okul@linux.ee>
+Date:	2009-06-03
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 4c7f050c2f9324a4b450128849948589f7bae8f8
+Author: Praveen Arimbrathodiyil <pravi.a@gmail.com>
+Date:	2009-06-02
+
+    Malayalam translation updated
+
+M	po/ml.po
+
+commit 85d532cf11637d2e5dedaef353971315f951d0d4
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-06-02
+
+    Do not append the final endline for empty files
+
+M	gedit/gedit-document-saver.c
+M	gedit/gedit-gio-document-saver.c
+
+commit 2c6ca9cba9a69c6a6e351db04c65461766fde8a9
+Author: Praveen Arimbrathodiyil <pravi.a@gmail.com>
+Date:	2009-06-01
+
+    Malayalam translation corrections
+
+M	po/ml.po
+
+commit 470f1cc62b5673f598a84a1e8b9098378319a12a
+Author: Praveen Arimbrathodiyil <pravi.a@gmail.com>
+Date:	2009-06-01
+
+    Malayalam translation updated
+
+M	po/ml.po
+
+commit c5aab1fda7cef9caaebc4279c3948dae38a26780
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-30
+
+    Snippet insertion should be not undoable.
+
+    Snippet insertion should be not undoable. (Fixes bug #584288).
+
+M	plugins/snippets/snippets/Manager.py
+
+commit 34093e0435f08f5727b472b2195fb1090ebe7928
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-30
+
+    Do not use deprecated gtk.Tooltips.
+
+M	plugins/snippets/snippets/Manager.py
+
+commit 6d6923d2005d145d52a57bfab11556d4b24ebb22
+Author: Ask H. Larsen <asklarsen@gmail.com>
+Date:	2009-05-30
+
+    Updated Danish translation
+
+M	po/da.po
+
+commit bba4279f7db04364a5bca64c4946a23a6913de78
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-29
+
+    Show the help on windows.
+
+    Show the help on windows on library.gnome.org.
+
+M	gedit/gedit-help.c
+
+commit bc23a9a2250ca5a16d98c0beee453032b7e7d0bf
+Author: dooteo <dooteo@dhcppc1.zundan.com>
+Date:	2009-05-28
+
+    Updated Basque language
+
+M	po/eu.po
+
+commit 8f1324a9f72a0bbbf9fcdd1e6b8578dfb3c648e6
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-28
+
+    Hide the fullscreen control when minimizing gedit.
+
+    Hide the fullscreen control when you change from workspace or when
+    you minimize gedit. (Fixes #584017)
+
+M	gedit/gedit-window.c
+
+commit a1fde95ae9e687f8a3260e915e1ffe61a8a1379d
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-26
+
+    release 2.27.1
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit 9ffadadc9111efc4568fbf9724baf93fb6332dc7
+Author: Jesse van den Kieboom <jvanden@grijpc10.epfl.ch>
+Date:	2009-05-26
+
+    Make Ctrl/Shift navigation more similar to tree navigation behavior
+
+M	plugins/quickopen/quickopen/popup.py
+
+commit af2f79a83e1855f08e07cb55b3bb1c3defed7877
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-26
+
+    Implemented multi select for quick open list
+
+M	plugins/quickopen/quickopen/popup.py
+
+commit b2b097d7b9a84c7615033710afe7ab5d66a3f905
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-26
+
+    Make sure to escape when no replacement is found
+
+M	plugins/quickopen/quickopen/popup.py
+
+commit ecf3af24d1aa44cd9724f4016103006573140faa
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-05-25
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit a2f55e06c262d428650b69171d4420b580f41f8b
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Import xml.sax.saxutils instead of xml.sax to fix the sax problem
+
+M	plugins/quickopen/quickopen/popup.py
+
+commit 7eccfa04f03334db9b58d4dde03115edd103af16
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Import xml.sax instead of xml to properly import the sax module
+
+M	plugins/quickopen/quickopen/popup.py
+
+commit f5b01f7b91572cec45cac67929a7d6e2b81dfc3f
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Remove gpdefs left over from quick open being in gedit-plugins
+
+M	plugins/quickopen/quickopen/popup.py
+M	plugins/quickopen/quickopen/windowhelper.py
+
+commit a22093d218e031757ddd81da912c6600c87651e5
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-05-23
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit 214da4c0ee59cddc7ea7c66bec089a92edc1b2b0
+Author: Claude Paroz <claude@2xlibre.net>
+Date:	2009-05-23
+
+    Updated French translation
+
+M	po/fr.po
+
+commit 3df829e0b2d9f209c959999b0bbd600a80461605
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Disconnect handlers for modeline on tab removed
+
+    This should solve the issue where modelines will be doubly active
+    (and not properly
+    deactivated) when moving tabs from one window to another.
+
+M	plugins/modelines/gedit-modeline-plugin.c
+
+commit c67f9c4db95e93c7f0d8cafcc4ca109ff842bb6c
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Only apply default values for modelines when strictly necessary
+
+    This solves the bug where modeline will always restore default values
+    for all settings
+    there are modelines for by default (even when there is no modeline
+    in the document).
+
+    Basicly, modelines will now only restore to default if the current
+    setting of a value was
+    due to the previous modeline.
+
+M	plugins/modelines/gedit-modeline-plugin.c
+M	plugins/modelines/modeline-parser.c
+M	plugins/modelines/modeline-parser.h
+
+commit 5a1a774b45860ec2e0e609b0e1f65300cf9e9b91
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Removed debug print statements
+
+M	plugins/externaltools/tools/functions.py
+
+commit 44c1759aa453f4eef556584221479524ba2f92a0
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-23
+
+    Removed glade files.
+
+D	gedit/dialogs/gedit-encodings-dialog.glade
+D	gedit/dialogs/gedit-preferences-dialog.glade
+D	gedit/dialogs/gedit-search-dialog.glade
+D	gedit/dialogs/gedit-style-scheme-dialog.glade
+D	gedit/gedit-print-preferences.glade
+D	plugins/docinfo/docinfo.glade2
+D	plugins/externaltools/tools/tools.glade
+D	plugins/snippets/snippets/snippets.glade
+D	plugins/sort/sort.glade2
+D	plugins/spell/languages-dialog.glade2
+D	plugins/spell/spell-checker.glade2
+D	plugins/time/time.glade2
+M	po/POTFILES.in
+M	po/POTFILES.skip
+
+commit f77e4bec974b11e059f3426d65515ef236821f94
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Updated meta-snippets to resemble new environment variables
+
+M	plugins/snippets/data/snippets.xml
+
+commit f7d80e97e50fbbeb13a10b3b7322f000d1f6dd3d
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-23
+
+    Changed old environment variables to new ones
+
+M	plugins/snippets/data/c.xml
+M	plugins/snippets/data/chdr.xml
+M	plugins/snippets/data/cpp.xml
+M	plugins/snippets/data/snippets.xml
+
+commit 90324d89d216b72e263fe068e85ff02c90632f47
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Prevent warning on closing gedit
+
+M	plugins/snippets/snippets/WindowHelper.py
+
+commit 3ad296abc4f048b2390e52c6cfc7b8c1f1c96f0f
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Changed environment variables to match external tools
+
+    Present variables are:
+      GEDIT_CURRENT_DOCUMENT_URI
+      GEDIT_CURRENT_DOCUMENT_NAME
+      GEDIT_CURRENT_DOCUMENT_SCHEME
+      GEDIT_CURRENT_DOCUMENT_PATH
+      GEDIT_CURRENT_DOCUMENT_DIR
+      GEDIT_CURRENT_DOCUMENT_TYPE
+      GEDIT_DOCUMENTS_URI
+      GEDIT_DOCUMENTS_PATH
+      GEDIT_CURRENT_WORD
+      GEDIT_CURRENT_LINE
+      GEDIT_SELECTED_TEXT
+      GEDIT_CURRENT_LINE_NUMBER
+
+M	plugins/snippets/snippets/Document.py
+
+commit fafb622e710de3064beca738dca1422f5104434c
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Added some additional environment variables
+
+    Added GEDIT_CURRENT_LINE, GEDIT_CURRENT_LINE_NUMBER,
+    GEDIT_CURRENT_WORD and
+    GEDIT_SELECTED_TEXT, GEDIT_CURRENT_DOCUMENT_TYPE
+
+M	plugins/externaltools/tools/functions.py
+
+commit cfb6dd10a0de6501a2d12031dfba1e99d2150e5c
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Implemented asynchronous reading and writing
+
+    Before, writing to STDIN was done in one go, which fails for large
+    buffers. This is now
+    done asynchronously with 16K at the time, in an idle
+    loop. Furthermore, STDERR and STDOUT
+    are now non blocking and use 'read' instead of 'readline' to prevent
+    blocking.
+
+M	plugins/externaltools/tools/capture.py
+
+commit 275f6305cec1e59583bce5a07768e51824ab25ff
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Added filename detection to output panel and implemented click-open
+
+    Patch original from Mathias Hasselmann, modified to to be less
+    gcc specific.
+    Fixes bug #407368.
+
+M	plugins/externaltools/tools/functions.py
+M	plugins/externaltools/tools/outputpanel.py
+M	plugins/externaltools/tools/outputpanel.ui
+
+commit ddd7116cf67e4cc97a680b4faadfd494e8125b47
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Fixed accelerator update problem
+
+    This also makes changes to an accelerator from the menu actually
+    persistent for the tool.
+    Pretty nifty stuff!
+
+M	plugins/externaltools/tools/__init__.py
+M	plugins/externaltools/tools/manager.py
+
+commit 8852670b288c31d5ce7ebe2520ac2ceb987c44b3
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Added language tree in left tree view for tools
+
+    This now resembles the way snippets are organized. This should make
+    the overview
+    of tools much better. Also, tools are now sorted alphabetically.
+
+M	plugins/externaltools/tools/__init__.py
+M	plugins/externaltools/tools/manager.py
+
+commit 1ccfc978ed02522509a0d907bdfe9e91709c58ed
+Author: Jesse van den Kieboom <jvanden@grijpc10.epfl.ch>
+Date:	2009-05-22
+
+    Added additional input type (selection, with default to document)
+
+    This fixes bug #331222.
+
+M	plugins/externaltools/tools/functions.py
+M	plugins/externaltools/tools/tools.ui
+
+commit 1ff23cf0dc70cb4604cd1b853c6153055bb1c027
+Author: Jesse van den Kieboom <jvanden@grijpc10.epfl.ch>
+Date:	2009-05-22
+
+    Make sure last output line is properly read
+
+M	plugins/externaltools/tools/capture.py
+
+commit 0c7b636c3820fb90600cfe49278b1aca9b41ea06
+Author: Jesse van den Kieboom <jvanden@grijpc10.epfl.ch>
+Date:	2009-05-22
+
+    Removed explicit gtk+ version dependency introduced by glade
+
+M	plugins/externaltools/tools/tools.ui
+
+commit 3d972c85e808af52c980ba0a5e442c902d40f44f
+Author: Jesse van den Kieboom <jvanden@grijpc10.epfl.ch>
+Date:	2009-05-22
+
+    Fixed syntax error in splitting datadirs
+
+    This should have never been committed in the first place, but it
+    was late last night...
+
+M	plugins/snippets/snippets/__init__.py
+
+commit 351b27938d46219cd2dc4e8486d0497344a1ab80
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Highlight current line and matching brackets for snippets
+
+M	plugins/snippets/snippets/snippets.ui
+
+commit 424448baa9b402627b7d1fa7290aaa8f8d9c1ddd
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Use os.pathsep instead of hardcoded ':' separator
+
+M	plugins/snippets/snippets/__init__.py
+
+commit 7da3437fd6511db7d230dfa0b14f96c73fa0bf2a
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Add default Save-files and Languages fields to system tools
+
+    For all default tools, Save-files is set to 'nothing' and Languages
+    to the empty
+    string (maching all languages) so that tools have the same behavior
+    as before
+
+M	plugins/externaltools/data/build.desktop.in
+M	plugins/externaltools/data/open-terminal-here.desktop.in
+M	plugins/externaltools/data/remove-trailing-spaces.desktop.in
+M	plugins/externaltools/data/run-command.desktop.in
+
+commit fe308f6423662e64178b7f9e755af8697ddb9207
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Added language support for external tools
+
+    Each tool can now be assigned any number of languages. Only tools
+    that apply to the
+    current documents language will be shown in the menu.
+
+M	plugins/externaltools/tools/__init__.py
+M	plugins/externaltools/tools/library.py
+M	plugins/externaltools/tools/manager.py
+M	plugins/externaltools/tools/tools.ui
+
+commit c3537f8ab4e4e330288354f34414a578367fbd5a
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Changed location of exernal tools to $(PLUGINSDIR)/externaltools/tools
+
+    Before, external tools were installed in $(PLUGINSDIR)/tools,
+    and other
+    external tools files in the proper location. Now all files are neatly
+    installed in the
+    correct externaltools directory
+
+M	plugins/externaltools/data/Makefile.am
+M	plugins/externaltools/tools/__init__.py
+M	plugins/externaltools/tools/library.py
+
+commit 961a58d9bbaa5c3820408e0ec1e1f37988e4727e
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-22
+
+    Added plugins_ui update on language change
+
+M	gedit/gedit-window.c
+
+commit 07f3917e2cc285820f8cccb23976fa4944dab719
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Fixed vertical alignment of Edit label
+
+M	plugins/snippets/snippets/snippets.ui
+
+commit ea9a7dcfa72b293c6610a352105b2f728e33d959
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Added save document before execution, no output and made UI more
+    similar with snippets
+
+    The manager of snippets and external tools are now more or less
+    similar looking. Saving
+    the active document, or all documents is now
+    implemented. Additionally, it is now possible to
+    disable showing tool output (unless there is an error)
+
+M	plugins/externaltools/tools/__init__.py
+M	plugins/externaltools/tools/functions.py
+M	plugins/externaltools/tools/library.py
+M	plugins/externaltools/tools/manager.py
+M	plugins/externaltools/tools/outputpanel.py
+M	plugins/externaltools/tools/tools.ui
+
+commit 4499cc4a4e5be5682a8b42c0317f21a98e358ee5
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Fixed typo bug when checking existence of accelerator
+
+M	plugins/externaltools/tools/manager.py
+
+commit ecc717c33c09cd867fe3c3c80ba1aa872fb4b579
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Fixed preserving headers and placing tool properties in correct
+    location
+
+    This handles shebang and modeline headers better. It also fixes the
+    problem of tools
+    not being properly saved after they are created (fixes bug #559121)
+
+M	plugins/externaltools/tools/library.py
+
+commit 25dc29c9450649be1c084d1dc843b7aab30c9b0a
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Set default tool script to #!/bin/sh
+
+M	plugins/externaltools/tools/library.py
+
+commit a5a513ceb476f17e9ee72d42ed1132445823a770
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Put external tools in a submenu
+
+M	plugins/externaltools/tools/__init__.py
+
+commit fe96f29b9c1500b707a39d25316dab60114d2729
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Improved external tool process handling
+
+    No longer use shell. This ensures that when the tool is
+    cancelled/terminated, there is
+    no child process left running. Bind STDERR to STDOUT if both should
+    be used (this will ensure
+    more consistent output). Lastly, if killing the tool cleanly does
+    not work, a second cancellation
+    will end the process with SIGKILL.
+
+M	plugins/externaltools/tools/capture.py
+
+commit 1fe34288479ca6b73368a3074f58a21a437e4fee
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-21
+
+    Added public API for document saving
+
+    This adds gedit_commands_save_document and
+    gedit_commands_save_all_documents
+    to be used in plugins.
+
+M	gedit/gedit-commands-file.c
+M	gedit/gedit-commands.h
+M	plugin-loaders/python/bindings/geditcommands.defs
+M	plugin-loaders/python/bindings/geditcommands.override
+
+commit 15cbac479c46d0110edbfffe80dfb3362b12088b
+Author: drtvasudevan <agnihot3@gmail.com>
+Date:	2009-05-21
+
+    Updated Tamil translation
+
+M	po/ta.po
+
+commit 44cad26ff64cb3b224e032e147cbc3b0d7daf76b
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-19
+
+    Remember filechooser location also for remote files
+
+    With gnomevfs we special cased remote files and in that case we
+    did not
+    store the current file chooser dir, since that triggered blocking
+    behavior when opening the file chooser. Lift that limitations in the
+    hope that gvfs works better. Also convert all related code to
+    deal with
+    GFiles directly. Bug #549465.
+
+M	gedit/gedit-commands-file.c
+M	gedit/gedit-window-private.h
+M	gedit/gedit-window.c
+M	gedit/gedit-window.h
+
+commit e3bfa1527da57219b46cfad571eca52ca3b19a0c
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-05-18
+
+    Updated Spanish translation
+
+M	help/es/es.po
+
+commit 3ddca07e5b8068b936891f89c3b8887f13eb681a
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-05-18
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit 08f888b5c79f3a903350cff6db988efde2a5d7d5
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-18
+
+    Set "Print" short label
+
+    Force the short label of the print action so that it does not include
+    ellipsis. Fixes bug #577859.
+
+M	gedit/gedit-window.c
+
+commit e22e63dc5aacd96b97feeb3ace2d113f460ca70a
+Author: Claude Paroz <claude@2xlibre.net>
+Date:	2009-05-17
+
+    Removed reference to deprecated username plugin (Bug 318408)
+
+M	help/C/gedit.xml
+
+commit 8a241c530f87999233041369332175078423e50e
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Revert "Remove the use of AsyncData"
+
+    This reverts commit 9e97ec942808a801941a36370762d8742d0dd53f.
+    AsyncData is needed because the loader can be finalized before
+    the async
+    cancellation happens. We could ref the loader or something else,
+    but at
+    that point simply having a struct with the correct life cycle seems
+    better.
+
+M	gedit/gedit-gio-document-loader.c
+
+commit 26c2dfbd90b2f973f8540b15be4da38216e3a70b
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Remove open location dialog
+
+    Remove the open location dialog: it's obsolete and no one uses it,
+    besides these days you can open uris by the usual file chooser.
+
+M	gedit/dialogs/Makefile.am
+D	gedit/dialogs/gedit-open-location-dialog.c
+D	gedit/dialogs/gedit-open-location-dialog.glade
+D	gedit/dialogs/gedit-open-location-dialog.h
+D	gedit/dialogs/gedit-open-location-dialog.ui
+M	gedit/gedit-commands-file.c
+M	gedit/gedit-ui.h
+M	gedit/gedit-ui.xml
+M	gedit/gedit-window.c
+
+commit 946c90386c9710863758185092eededb02dd45d1
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Remove sample plugin
+
+    Remove the sample plugin: it's too trivial and not very useful for the
+    end users to be distributed with gedit. Inserting the username
+    is better
+    done with a snippet or an external tool.
+
+M	configure.ac
+M	plugins/Makefile.am
+D	plugins/sample/Makefile.am
+D	plugins/sample/gedit-sample-plugin.c
+D	plugins/sample/gedit-sample-plugin.h
+D	plugins/sample/sample.gedit-plugin.desktop.in
+
+commit 3b452f68100228eeee651cba81f3846b2bbf250d
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Getter to access the saver's document
+
+    Add gedit_document_saver_get_document and use it.
+
+M	gedit/gedit-document-saver.c
+M	gedit/gedit-document-saver.h
+M	gedit/gedit-gio-document-saver.c
+
+commit 65f2fe525e063936f4b8dfbf8e85f57ad6a0898b
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Remove the mmap document loader
+
+    Remove the old mmap document loader, we always use gio.
+
+M	gedit/Makefile.am
+M	gedit/gedit-document-loader.c
+D	gedit/gedit-mmap-document-loader.c
+D	gedit/gedit-mmap-document-loader.h
+
+commit 5eb923751bbae5f6dca7854d89ad423fbc1adc27
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Always use Gio Document Loader
+
+    Always use the Gio doc loader since it's good enough to be used in all
+    the cases. We keep the abstract loader and the factory method to
+    be able
+    to introduce other loaders in the future. E.g. a PolicyKit loader.
+
+M	gedit/gedit-document-loader.c
+
+commit 9e97ec942808a801941a36370762d8742d0dd53f
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Remove the use of AsyncData
+
+    Cleanup the code to not use an additional struct when we can
+    simply use
+    the object itself.
+
+M	gedit/gedit-gio-document-loader.c
+
+commit ca9fa911d0360e10aa4e77060353cc2bd05e2a63
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-17
+
+    Getter to access the loader's document
+
+    Add gedit_document_loader_get_document and use it.
+
+M	gedit/gedit-document-loader.c
+M	gedit/gedit-document-loader.h
+M	gedit/gedit-gio-document-loader.c
+
+commit bfb97f3691cbe2704620e210ab7057d440f2ca73
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-17
+
+    Added new plugin: quickopen
+
+    This plugin allows to quickly open files by partially matching file
+    names from root directories such
+    as the users' home, desktop, current document, recent files, open
+    documents and bookmarks.
+
+M	configure.ac
+M	plugins/Makefile.am
+A	plugins/quickopen/Makefile.am
+A	plugins/quickopen/quickopen.gedit-plugin.desktop.in
+A	plugins/quickopen/quickopen/Makefile.am
+A	plugins/quickopen/quickopen/__init__.py
+A	plugins/quickopen/quickopen/popup.py
+A	plugins/quickopen/quickopen/virtualdirs.py
+A	plugins/quickopen/quickopen/windowhelper.py
+M	po/POTFILES.in
+
+commit ad243f6998b1cbd6196a0def45389bf7651829c1
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-17
+
+    Change CRLF endings to LF.
+
+M	win32/README
+
+commit 2100d5beccb9f6ddc2f0cdab2138d6491721bfbf
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-17
+
+    Move to LINE:NUM in the popup goto line.
+
+    Been able to move to a line and a character number. E.g. 39:30
+    (Fixes bug #582060).
+
+M	gedit/gedit-document.c
+M	gedit/gedit-document.h
+M	gedit/gedit-view.c
+
+commit 0e342910137b7b393db893c994a3c0d262435ab0
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-16
+
+    Command line option to list supported encodings
+
+    Add a --list-encodings command line option to print a list of the
+    encodings supported by the --encoding option. Fixes bug #570585.
+
+M	data/gedit.1
+M	gedit/gedit.c
+
+commit 24dfcf7d9645faec7a5265d52cccaabc2286d48b
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-16
+
+    Fix id.po validation
+
+    Remove message that was not passing the msgfmt -c validation
+    and run make update-po on the file.
+
+M	po/id.po
+
+commit 20f88c81ebb18fcfc0fa249a535abd0bf221ca39
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-16
+
+    Fix bn.po validation
+
+    Remove two messages that were not passing the msgfmt -c validation and
+    run make update-po on the file.
+
+M	po/bn.po
+
+commit 77d919927a62547651c0e18fa13230b38f40dc54
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-16
+
+    Release 2.26.2
+
+M	NEWS
+M	README
+M	configure.ac
+
+commit aefc0b9565b0f206fdc17ba5673f2b61fb8871cc
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-16
+
+    Dist doap file
+
+M	Makefile.am
+
+commit 0063061bc63227c70210ca8be2117296aa7cc994
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-16
+
+    Improve ChangeLog generation
+
+    Use dist-hook so that the generated changelog goes only in distdir
+
+M	Makefile.am
+
+commit c378a5aafca0b9904dec7ab3fb058b1ec4527959
+Author: Jesse van den Kieboom <jvanden@grijpc10.epfl.ch>
+Date:	2009-05-11
+
+    Fixed moving to next line when iter is at line end
+
+    forward_line_end will of course move to the _next_
+    line if the iter is already at the end of the line
+
+M	plugins/snippets/snippets/Helper.py
+
+commit 1ca6df0d04e490e15127b666039b1bc2f6a0a39f
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-10
+
+    Implemented GEDIT_CURRENT_LINE environment variable
+
+    This variable has the same special characteristics as
+    GEDIT_CURRENT_WORD. So
+    if there is no selection, the line will be selected and replaced by
+    the placeholder.
+
+M	plugins/snippets/snippets/Document.py
+M	plugins/snippets/snippets/Helper.py
+
+commit df91529fa6dd5d6aa764766d84692cab44b1e5ee
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-10
+
+    Fixed bug with placeholder advancement incorrect when at active
+    snippet
+
+    This does fix the problem, although all of this code is so confusing,
+    that I'm not
+    entirely confident that this does not introduce some other kind
+    of problem...
+
+M	plugins/snippets/snippets/Document.py
+
+commit 1dcef327b6030e2a4feffab58762c824c126136f
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-05-10
+
+    Implemented fallback strategy for saving files when opening files
+    read/write is not supported
+
+    This should fix a problem with file systems that do not support
+    opening files for read/write
+    (such as the fuse file system: curlftpfs). The strategy is to open
+    the file write only when read/write
+    fails with ENOTSUP. This means that we will not be able to make a
+    backup (and the user receives
+    a warning for this), but at least we can safe the file now.
+
+M	gedit/gedit-local-document-saver.c
+
+commit c940ab824adcce1523334ae761e4ee738ea5b38d
+Author: root <root@murdock.localdomain>
+Date:	2009-05-10
+
+    Small cleanup
+
+    Use saxutils escape and quoteattr fuctions instead of hand coded
+    functions
+
+M	plugins/snippets/snippets/Helper.py
+
+commit 0d2e5a2b778ddb182beb66f2c5d9e5041cd1a971
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-07
+
+    Add class diagram.
+
+M	docs/Makefile.am
+A	docs/class-diagram.dia
+
+commit 9680df0ad9f4c818ee2fe0595a35c853c103d306
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-05
+
+    Add git.mk to generate the .gitignore.
+
+M	Makefile.am
+M	data/Makefile.am
+M	docs/Makefile.am
+M	docs/reference/Makefile.am
+M	gedit/Makefile.am
+M	gedit/dialogs/Makefile.am
+M	gedit/smclient/Makefile.am
+A	git.mk
+M	help/C/Makefile.am
+M	help/Makefile.am
+M	omf-install/Makefile.am
+M	pixmaps/Makefile.am
+M	plugin-loaders/Makefile.am
+M	plugin-loaders/c/Makefile.am
+M	plugin-loaders/python/Makefile.am
+M	plugin-loaders/python/bindings/Makefile.am
+M	plugins/Makefile.am
+M	plugins/changecase/Makefile.am
+M	plugins/docinfo/Makefile.am
+M	plugins/externaltools/Makefile.am
+M	plugins/externaltools/data/Makefile.am
+M	plugins/externaltools/scripts/Makefile.am
+M	plugins/externaltools/tools/Makefile.am
+M	plugins/filebrowser/Makefile.am
+M	plugins/indent/Makefile.am
+M	plugins/modelines/Makefile.am
+M	plugins/pythonconsole/Makefile.am
+M	plugins/pythonconsole/pythonconsole/Makefile.am
+M	plugins/sample/Makefile.am
+M	plugins/snippets/Makefile.am
+M	plugins/snippets/data/Makefile.am
+M	plugins/snippets/data/lang/Makefile.am
+M	plugins/snippets/snippets/Makefile.am
+M	plugins/sort/Makefile.am
+M	plugins/spell/Makefile.am
+M	plugins/taglist/Makefile.am
+M	plugins/time/Makefile.am
+M	tools/plugin_template/Makefile.am
+M	win32/Makefile.am
+
+commit 832f0f422da778060294b0682d428b64e15b6d85
+Author: Brian Cameron <Brian.Cameron@sun.com>
+Date:	2009-05-04
+
+    Update configure.ac to check for libsocket
+
+    On Solaris, libsocket is needed for bacon-connection.  This commit
+    enhances
+    gedit to check for this.  (Bug 581056)
+
+M	configure.ac
+
+commit 425ab556c1283c0f55e825d47cc3fe931f93a931
+Author: Ignacio Casal Quinteiro <icq@gnome.org>
+Date:	2009-05-04
+
+    Add gedit.rc to EXTRA_DIST
+
+    This is needed for win32 releases so people do not have to download
+    the package from git.
+
+M	gedit/Makefile.am
+
+commit b2db1396b1cf3d2b634be0ee3c2b60a9b5c75457
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-05-03
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit a8ec4e45bbeba07f4b8268b3eae79133d907f960
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-03
+
+    Fix mbox elements in the doap file
+
+M	gedit.doap
+
+commit 7d13146b335762d03d3585c3c33b71a424a422c2
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-05-03
+
+    Make sure the config dir exists
+
+    Make sure to create the user config dir before saving the print
+    settings. Bug #580613.
+
+M	gedit/gedit-app.c
+
+commit 502baeae81daa1feb81ffd46d9a14dc11209f856
+Author: David Planella <david.planella@gmail.com>
+Date:	2009-05-02
+
+    Added Catalan translation by Joan Duran
+
+M	help/Makefile.am
+A	help/ca/ca.po
+A	help/ca/figures/gedit_window.png
+
+commit a52c85cf3a6bb66ec4da43cf09103080dd642f81
+Author: Jonathan Rascher <jrascher@gmail.com>
+Date:	2009-05-01
+
+    Fix off-by-one error in modeline scanning
+
+    Modified parse_modeline to work properly with line numbers indexed
+    from
+    one, not zero. This makes the modelines plugin scan the correct lines
+    (as stated in the manual) and fixes GNOME bug #580494.
+
+M	plugins/modelines/modeline-parser.c
+
+commit 76ee9c0d04b5c94c85d44d6a1c8ff01fea9aaef0
+Author: Jorge Gonzalez <jorgegonz@svn.gnome.org>
+Date:	2009-05-02
+
+    Updated Spanish translation
+
+M	po/es.po
+
+commit 9dc99073f5f963a5569f97be7653506ac5fc2e09
+Author: Michael Kotsarinis <mk73628@hotmail.com>
+Date:	2009-04-29
+
+    Updated Greek translation
+
+M	help/el/el.po
+
+commit 5c2551467bd78638e1927a56e00a5a9726e69342
+Author: Mattias Põldaru <mahfiaz gmail com>
+Date:	2009-04-29
+
+    Updating Estonian translation
+
+M	po/et.po
+
+commit 279629369fd14f0d94ed018c19c07323d629bb2f
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-04-25
+
+    Do not fail when there is no virtual root or root set
+
+    Before, g_return_val_if_fail was used if there was no virtual
+    root/root when requestion get_virtual_root/get_root. This has been
+    changed to simply returning NULL.
+
+M	plugins/filebrowser/gedit-file-browser-store.c
+
+commit d7e3a1361289fbb7fba281ba71a9dc4cdbe72cac
+Author: Jesse van den Kieboom <jesse@icecrew.nl>
+Date:	2009-04-25
+
+    Fixed wrong use of args where it should be kwargs in message bus
+    bindings
+
+M	plugin-loaders/python/bindings/geditmessage.override
+
+commit 7f8e6ea7696026e5de940f5253cc4c7a1acfd101
+Author: Olav Vitters <olav@bkor.dhs.org>
+Date:	2009-04-23
+
+    doap: Add desktop category
+
+M	gedit.doap
+
+commit 5e96ecc8c676df25b539c6d9431f6eb0562137ac
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    configure.ac cleanups
+
+    Remove unneeded lines from configure.ac
+
+M	configure.ac
+
+commit 09ebf583a75fa2e0f50692ca5ce1b46777a36ef2
+Author: Khaled Hosny <khaledhosny@eglug.org>
+Date:	2009-04-18
+
+    Updated Arabic translation.
+
+M	help/ar/ar.po
+
+commit a980c1823a04ee0a3919ff9b7755da2529a4af82
+Author: Osama Khalid <osamak.wfm@gmail.com>
+Date:	2009-04-18
+
+    Added Arabic translation
+
+M	help/Makefile.am
+A	help/ar/ar.po
+
+commit d0a70945f322a447ad92f6da66c42930e3347bb8
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    Autogenerated ChangeLog
+
+    Actually add the rule to generate the ChangeLog... yay git
+
+M	Makefile.am
+
+commit 2ed0a4a20670fb8507192e8a99a372c063f53298
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    remove spurius file
+
+    Remove a bzrignore file that was left there by mistake
+
+D	.bzrignore
+
+commit f8800db5a019aa50c81cef83f8a0640b2d3c2f30
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    Autogenerate ChangeLog file
+
+    ChangeLog is now generated from the git log when creating a release.
+
+A	ChangeLog
+
+commit fb7b847513758c47d6c7057b5258c03592fe90a1
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    Rename old ChangeLog files
+
+    Rename old ChangeLog files to ChangeLog-20090418, with git we will
+    not use a manual ChangeLog file anymore.
+
+R100	ChangeLog	ChangeLog-20090418
+R100	help/ChangeLog	help/ChangeLog-20090418
+R100	po/ChangeLog	po/ChangeLog-20090418
+
+commit ff9854a77ef874753b109714597a3a690260fff5
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    Update HACKING and README for git
+
+    Some updates to HACKING and README for the new git repo
+
+M	HACKING
+M	README
+
+commit 30667e0d903006a3c3fc14bf24c47f082463bca8
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-18
+
+    Improve doap file
+
+    Add bugzilla and download urls to the doap file
+
+M	gedit.doap
+
+commit d6ba56f69f90aa25d2228c40859d2f5e5909ad39
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-17
+
+    Add gedit.doap file
+
+    Add gedit.doap file useful for cgit and other infos.
+
+A	gedit.doap
+
+commit f368949b99df36040a77ccce0fab6b7b13433863
+Author: Paolo Borelli <porelli@gnome.org>
+Date:	2009-04-17
+
+    Update MAINTAINERS
+
+    Update MAINTAINERS to reflect reality
+
+M	MAINTAINERS
+
+commit 7c6b8e1e5f2f57e73df5406168b2b8024dd5bbbb
+Author: TeliuTe <teliute.163.com>
+Date:	2009-04-17
+
+    Updated zh_CN.po
+
+M	help/zh_CN/zh_CN.po
+
+commit 9d3aaa2e4d73eb7edf5db8a75228c368d362ec92
+Author: Paolo Borelli <pborelli@src.gnome.org>
+Date:	2009-04-13
+
+    2.26.1
+
+    svn path=/trunk/; revision=6989
+
+M	ChangeLog
+M	NEWS
+M	README
+M	configure.ac
+M	help/ChangeLog
+M	po/ChangeLog
+
+commit b61b64c30fb347be16b96e2b5eed6613875f5b07
+Author: Jorge Gonzalez Gonzalez <jorgegonz@src.gnome.org>
+Date:	2009-04-12
+
+    Updated Spanish translation
+
+    svn path=/trunk/; revision=6988
+
+M	po/ChangeLog
+M	po/es.po

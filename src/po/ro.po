@@ -1,0 +1,5725 @@
+# Romanian translation for gedit
+# Copyright (C) 2003-2008 Free Software Foundation, Inc.
+# Mugurel Tudor <mugurelu@gnome.ro>, 2003, 2004.
+# Dan Damian <dand@ubuntu.ro>, 2005-2007.
+# Mișu Moldovan <dumol@gnome.ro>, 2003, 2004, 2008.
+# Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009
+msgid ""
+msgstr ""
+"Project-Id-Version: gedit\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-08 21:26+0200\n"
+"PO-Revision-Date: 2009-11-08 21:27+0200\n"
+"Last-Translator: Adi Roiban <adi@roiban.ro>\n"
+"Language-Team: Gnome Romanian Team <gnomero-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.3.1\n"
+"X-Launchpad-Export-Date: 2009-08-24 08:32+0000\n"
+
+#: ../data/gedit.desktop.in.in.h:1
+msgid "Edit text files"
+msgstr "Editare fișiere text"
+
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:759
+msgid "Text Editor"
+msgstr "Editor de text"
+
+#: ../data/gedit.desktop.in.in.h:3
+msgid "gedit"
+msgstr "gedit"
+
+#: ../data/gedit.desktop.in.in.h:4
+msgid "gedit Text Editor"
+msgstr "Editor de text gedit"
+
+#: ../data/gedit.schemas.in.in.h:1
+msgid ""
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
+msgstr ""
+"Un font personalizat care va fi utilizat la editare. Această configurare va "
+"avea efect doar dacă opțiunea „Utilizează fontul implicit“ este nebifată."
+
+#: ../data/gedit.schemas.in.in.h:2
+msgid "Active plugins"
+msgstr "Module active"
+
+#: ../data/gedit.schemas.in.in.h:3
+msgid "Auto Detected Encodings"
+msgstr "Codări auto-detectate"
+
+#: ../data/gedit.schemas.in.in.h:4
+msgid "Auto Save"
+msgstr "Salvare automată"
+
+#: ../data/gedit.schemas.in.in.h:5
+msgid "Auto Save Interval"
+msgstr "Interval pentru salvare automată"
+
+#: ../data/gedit.schemas.in.in.h:6
+msgid "Auto indent"
+msgstr "Indentare automată"
+
+#: ../data/gedit.schemas.in.in.h:7
+msgid "Backup Copy Extension"
+msgstr "Extensia copiei de siguranță"
+
+#: ../data/gedit.schemas.in.in.h:8
+msgid "Body Font for Printing"
+msgstr "Font utilizat la tipărirea textului"
+
+#: ../data/gedit.schemas.in.in.h:9
+msgid "Bottom Panel is Visible"
+msgstr "Panoul de jos este vizibil"
+
+#: ../data/gedit.schemas.in.in.h:10
+msgid "Create Backup Copies"
+msgstr "Creează cópii de siguranță"
+
+#: ../data/gedit.schemas.in.in.h:11
+msgid "Display Line Numbers"
+msgstr "Numerotează liniile"
+
+#: ../data/gedit.schemas.in.in.h:12
+msgid "Display Right Margin"
+msgstr "Arată marginea dreaptă"
+
+#: ../data/gedit.schemas.in.in.h:13
+msgid "Editor Font"
+msgstr "Font de editare"
+
+#: ../data/gedit.schemas.in.in.h:14
+msgid "Enable Search Highlighting"
+msgstr "Activează evidențierea sintaxei la căutare"
+
+#: ../data/gedit.schemas.in.in.h:15
+msgid "Enable Syntax Highlighting"
+msgstr "Activează evidențierea sintaxei"
+
+#: ../data/gedit.schemas.in.in.h:16
+msgid "Encodings shown in menu"
+msgstr "Codări afișate în meniu"
+
+#: ../data/gedit.schemas.in.in.h:17
+msgid ""
+"Extension or suffix to use for backup file names. This will only take effect "
+"if the \"Create Backup Copies\" option is turned on."
+msgstr ""
+"Extensie sau sufix utilizate pentru numele copiilor de siguranță. Această "
+"opțiune va avea efect doar dacă opțiunea „Creează copii de siguranță“ este "
+"bifată."
+
+#: ../data/gedit.schemas.in.in.h:18
+msgid "Header Font for Printing"
+msgstr "Font utilizat la tipărirea antetului"
+
+#: ../data/gedit.schemas.in.in.h:19
+msgid "Highlight Current Line"
+msgstr "Evidențiază linia curentă"
+
+#: ../data/gedit.schemas.in.in.h:20
+msgid "Highlight Matching Bracket"
+msgstr "Evidențiază paranteza pereche"
+
+#: ../data/gedit.schemas.in.in.h:21
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"Dacă această valoare este 0, atunci nici un număr de linie nu va fi inserat "
+"la tipărirea documentului. Pentru o valoare „n“, gedit va tipări numărul "
+"liniei la fiecare „n“ număr de linii."
+
+#: ../data/gedit.schemas.in.in.h:22
+msgid "Insert spaces"
+msgstr "Inserează spații"
+
+#: ../data/gedit.schemas.in.in.h:23
+msgid "Line Number Font for Printing"
+msgstr "Font pentru numerotarea liniilor la tipărire"
+
+#: ../data/gedit.schemas.in.in.h:24
+msgid "Line Wrapping Mode"
+msgstr "Mod de rupere al liniilor"
+
+#: ../data/gedit.schemas.in.in.h:25
+msgid ""
+"List of VFS schemes gedit supports in write mode. The 'file' scheme is "
+"writable by default."
+msgstr ""
+"Lista schemelor VFS pe care gedit le suportă la scriere. Schema „fișier” "
+"este implicit disponibilă pentru scriere."
+
+#: ../data/gedit.schemas.in.in.h:26
+msgid ""
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr ""
+"Lista modulelor active. Conține „Locația” modulelor active. Pentru a obține "
+"„Locația” unui anumit modul consultați fișierul de module gedit .gedit-"
+"plugin."
+
+#: ../data/gedit.schemas.in.in.h:27
+msgid ""
+"List of encodings shown in Character Coding menu in open/save file selector. "
+"Only recognized encodings are used."
+msgstr ""
+"Lista codărilor afișate în meniul „Codare Caractere“ în selectorul de "
+"deschidere/salvare fișiere. Doar codările recunoscute sunt utilizate."
+
+#: ../data/gedit.schemas.in.in.h:28
+msgid "Max Number of Undo Actions"
+msgstr "Număr maxim al acțiunilor de anulare"
+
+#: ../data/gedit.schemas.in.in.h:29
+msgid "Maximum Recent Files"
+msgstr "Număr maxim de fișiere recente"
+
+#: ../data/gedit.schemas.in.in.h:30
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
+"\" for unlimited number of actions."
+msgstr ""
+"Numărul maxim de acțiuni pe care gedit le va putea anula sau reface. "
+"Utilizați „-1” pentru un număr nelimitat de acțiuni."
+
+#: ../data/gedit.schemas.in.in.h:31
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
+"\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr ""
+"Numărul maxim de acțiuni pe care gedit le va putea anula sau reface. "
+"Utilizați „-1” pentru un număr nelimitat de acțiuni. Opțiune neutilizată din "
+"versiunea 2.12.0"
+
+#. Translators: This is the Editor Font.
+#. This is a Pango font
+#: ../data/gedit.schemas.in.in.h:34
+msgid "Monospace 12"
+msgstr "Monospace 12"
+
+#. Translators: This is the Body font for printing.
+#. This is a Pango font.
+#: ../data/gedit.schemas.in.in.h:37
+msgid "Monospace 9"
+msgstr "Monospace 9"
+
+#: ../data/gedit.schemas.in.in.h:38
+msgid ""
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Auto Save\" option is turned on."
+msgstr ""
+"Număr de minute după care gedit va salva automat fișierele modificate. "
+"Această configurare va avea efect doar dacă opțiunea „Salvare automată“ este "
+"bifată."
+
+#: ../data/gedit.schemas.in.in.h:39
+msgid "Print Header"
+msgstr "Tipărește antetul"
+
+#: ../data/gedit.schemas.in.in.h:40
+msgid "Print Line Numbers"
+msgstr "Numerotează liniile la tipărire"
+
+#: ../data/gedit.schemas.in.in.h:41
+msgid "Print Syntax Highlighting"
+msgstr "Tipărește sintaxa evidențiată"
+
+#: ../data/gedit.schemas.in.in.h:42
+msgid "Printing Line Wrapping Mode"
+msgstr "Mod de rupere al liniilor la tipărire"
+
+#: ../data/gedit.schemas.in.in.h:43
+msgid "Restore Previous Cursor Position"
+msgstr "Restaurează poziția precedentă a cursorului"
+
+#: ../data/gedit.schemas.in.in.h:44
+msgid "Right Margin Position"
+msgstr "Poziția marginii din dreapta"
+
+#. Translators: This is the Header font for printing.
+#. This is a Pango font.
+#: ../data/gedit.schemas.in.in.h:47
+msgid "Sans 11"
+msgstr "Sans 11"
+
+#. Translators: This is the Line Number font for printing.
+#. This is a Pango font.
+#: ../data/gedit.schemas.in.in.h:50
+msgid "Sans 8"
+msgstr "Sans 8"
+
+#: ../data/gedit.schemas.in.in.h:51
+msgid "Side Pane is Visible"
+msgstr "Panoul lateral este vizibil"
+
+#: ../data/gedit.schemas.in.in.h:52
+msgid "Smart Home End"
+msgstr "Taste inteligente Home/End"
+
+#: ../data/gedit.schemas.in.in.h:53
+msgid ""
+"Sorted list of encodings used by gedit for auto-detecting the encoding of a "
+"file. \"CURRENT\" represents the current locale encoding. Only recognized "
+"encodings are used."
+msgstr ""
+"Listă de codări utilizate de gedit pentru autodetecția codării unui fișier. "
+"„CURRENT“ este codarea locală curentă. Doar codările recunoscute sunt "
+"utilizate."
+
+#: ../data/gedit.schemas.in.in.h:54
+msgid ""
+"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
+"\"DISABLED\" to always move at the start/end of the line, \"AFTER\" to move "
+"to the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, \"BEFORE\" to move to the start/end of the text before moving to "
+"the start/end of the line and \"ALWAYS\" to always move to the start/end of "
+"the text instead of the start/end of the line."
+msgstr ""
+"Specifică unde sare cursorul când se apasă tastele HOME sau END. Utilizați "
+"„DISABLED” pentru a sări întotdeuna la începutul ori sfârșitul liniei, "
+"„AFTER” pentru începutul ori sfârșitul liniei la prima apăsare și începutul "
+"ori sfârșitul textului (fără a lua în considerare spațiile goale) la a doua "
+"apăsare, „BEFORE” pentru salt la începutul ori sfârșitului textului înainte "
+"de începutul ori sfârșitului liniei și „ALWAYS” pentru a sări totdeauna la "
+"sfârșitul ori începutul textului în loc de sfârșitul ori începutul liniei."
+
+#: ../data/gedit.schemas.in.in.h:55
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"GTK_WRAP_NONE\" for no "
+"wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
+msgstr ""
+"Specifică felul în care vor fi rupte liniile lungi la tipărire. Utilizați "
+"„GTK_WRAP_NONE“ pentru ca liniile să nu fie rupte, „GTK_WRAP_WORD“ pentru "
+"rupere între cuvinte, și „GTK_WRAP_CHAR“ pentru rupere între caractere. "
+"Valorile sunt sensibile la majuscule, așa că vă rugăm să vă asigurați că "
+"apar exact așa cum sunt menționate aici."
+
+#: ../data/gedit.schemas.in.in.h:56
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"GTK_WRAP_NONE\" "
+"for no wrapping, \"GTK_WRAP_WORD\" for wrapping at word boundaries, and "
+"\"GTK_WRAP_CHAR\" for wrapping at individual character boundaries. Note that "
+"the values are case-sensitive, so make sure they appear exactly as mentioned "
+"here."
+msgstr ""
+"Specifică felul în care vor fi rupte liniile lungi la editare. Utilizați "
+"„GTK_WRAP_NONE“ pentru ca liniile să nu fie rupte, „GTK_WRAP_WORD“ pentru "
+"rupere între cuvinte, și „GTK_WRAP_CHAR“ pentru rupere între caractere. "
+"Majusculele sunt semnificative, așa că vă rugăm să vă asigurați apat exact "
+"așa cum sunt menționate aici."
+
+#: ../data/gedit.schemas.in.in.h:57
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
+msgstr "Specifică fontul utilizat pentru corpul documentului la tipărire."
+
+#: ../data/gedit.schemas.in.in.h:58
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+"Specifică fontul utilizat pentru numerotarea liniilor la tipărire. Această "
+"opțiune are efect doar dacă opțiunea „Numerotează liniile la tipărire“ este "
+"diferită de zero."
+
+#: ../data/gedit.schemas.in.in.h:59
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"Specifică fontul utilizat pentru antetele paginilor la tipărirea "
+"documentului. Această opțiune are efect doar dacă opțiunea „Tipărește "
+"antetul“ este bifată."
+
+#: ../data/gedit.schemas.in.in.h:60
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"Specifică numărul maxim de fișiere deschise recent care vor fi afișate în "
+"submeniul „Fișiere recente“."
+
+#: ../data/gedit.schemas.in.in.h:61
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr ""
+"Specifică numărul de spații care vor fi afișate în locul caracterelor tab."
+
+#: ../data/gedit.schemas.in.in.h:62
+msgid "Specifies the position of the right margin."
+msgstr "Specifică poziția marginii din dreapta."
+
+#: ../data/gedit.schemas.in.in.h:63
+msgid "Status Bar is Visible"
+msgstr "Bara de stare este vizibilă"
+
+#: ../data/gedit.schemas.in.in.h:64
+msgid "Style Scheme"
+msgstr "Scheme de stil"
+
+#: ../data/gedit.schemas.in.in.h:65
+msgid ""
+"Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM\" "
+"to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display icons "
+"only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and text, and "
+"\"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text beside icons. "
+"Note that the values are case-sensitive, so make sure they appear exactly as "
+"mentioned here."
+msgstr ""
+"Stilul pentru butoanele din bara de unelte. Valorile posibile sunt: "
+"„GEDIT_TOOLBAR_SYSTEM“ pentru stilul implicit al sistemului, "
+"„GEDIT_TOOLBAR_ICONS“ pentru a afișa doar iconițele,"
+"„GEDIT_TOOLBAR_ICONS_AND_TEXT“ pentru a afișa atât iconițe cât și text, "
+"„GEDIT_TOOLBAR_ICONS_BOTH_HORIZ“ pentru a afișa text prioritar sub iconițe. "
+"Majusculele sunt semnificative, așa că e recomandat să fie utilizate exact "
+"așa cum au fost menționate aici."
+
+#: ../data/gedit.schemas.in.in.h:66
+msgid "Tab Size"
+msgstr "Lungime tab"
+
+#: ../data/gedit.schemas.in.in.h:67
+msgid "The id of a GtkSourceView Style Scheme used to color the text."
+msgstr ""
+"ID-ul cu schema de stil GtkSourceView de utilizat pentru culoarea textului."
+
+#: ../data/gedit.schemas.in.in.h:68
+msgid "Toolbar Buttons Style"
+msgstr "Stil bară cu unelte"
+
+#: ../data/gedit.schemas.in.in.h:69
+msgid "Toolbar is Visible"
+msgstr "Bara cu unelte este vizibilă"
+
+#: ../data/gedit.schemas.in.in.h:70
+msgid "Undo Actions Limit (DEPRECATED)"
+msgstr "Număr maxim al acțiunilor de anulare (OPȚIUNE ÎNVECHITĂ)"
+
+#: ../data/gedit.schemas.in.in.h:71
+msgid "Use Default Font"
+msgstr "Utilizează fontul implicit"
+
+#: ../data/gedit.schemas.in.in.h:72
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Auto Save Interval\" "
+"option."
+msgstr ""
+"Specifică dacă gedit ar trebui să salveze automat fișierele modificate după "
+"un anumit timp. Intervalul de timp poate fi configurat cu opțiunea „Interval "
+"pentru salvare automată“."
+
+#: ../data/gedit.schemas.in.in.h:73
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"Specifică dacă gedit ar trebui să creeze cópii de siguranță pentru fișierele "
+"pe care le salvează. Puteți definii extensia pentru fișierele de siguranță "
+"create cu opțiunea „Extensia copiei de siguranță“."
+
+#: ../data/gedit.schemas.in.in.h:74
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr ""
+"Specifică dacă gedit ar trebui să numeroteze liniile în zona de editare."
+
+#: ../data/gedit.schemas.in.in.h:75
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr ""
+"Specifică dacă gedit ar trebui să afișeze marginea dreaptă în zona de "
+"editare."
+
+#: ../data/gedit.schemas.in.in.h:76
+msgid "Whether gedit should enable auto indentation."
+msgstr "Specifică dacă gedit ar trebui să activeze indentarea automată."
+
+#: ../data/gedit.schemas.in.in.h:77
+msgid "Whether gedit should enable syntax highlighting."
+msgstr "Specifică dacă gedit ar trebui să activeze sintaxa evidențiată."
+
+#: ../data/gedit.schemas.in.in.h:78
+msgid ""
+"Whether gedit should highlight all the occurrences of the searched text."
+msgstr ""
+"Specifică dacă gedit ar trebui să evidențieze toate aparițiile textului "
+"căutat."
+
+#: ../data/gedit.schemas.in.in.h:79
+msgid "Whether gedit should highlight matching bracket."
+msgstr "Specifică dacă gedit ar trebui să evidențieze parantezele pereche."
+
+#: ../data/gedit.schemas.in.in.h:80
+msgid "Whether gedit should highlight the current line."
+msgstr "Specifică dacă gedit ar trebui să evidențieze linia curentă."
+
+#: ../data/gedit.schemas.in.in.h:81
+msgid "Whether gedit should include a document header when printing documents."
+msgstr ""
+"Specifică dacă gedit ar trebui să includă antetul la tipărirea documentelor."
+
+#: ../data/gedit.schemas.in.in.h:82
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "Specifică dacă gedit ar trebui să insereze spații în loc de taburi."
+
+#: ../data/gedit.schemas.in.in.h:83
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr ""
+"Specifică dacă gedit ar trebui să tipărească sintaxa evidențiată pentru "
+"documente."
+
+#: ../data/gedit.schemas.in.in.h:84
+msgid ""
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
+msgstr ""
+"Specifică dacă gedit ar trebui să restaureze poziția precedentă a cursorului "
+"când un fișier este încărcat."
+
+#: ../data/gedit.schemas.in.in.h:85
+msgid ""
+"Whether the bottom panel at the bottom of editing windows should be visible."
+msgstr ""
+"Specifică dacă panoul de la baza ferestrei de editare ar trebui să fie "
+"vizibil."
+
+#: ../data/gedit.schemas.in.in.h:86
+msgid ""
+"Whether the side pane at the left of the editing window should be visible."
+msgstr ""
+"Specifică dacă panoul din lateralul ferestrei de editare ar trebui să fie "
+"vizibil."
+
+#: ../data/gedit.schemas.in.in.h:87
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr ""
+"Specifică dacă bara de stare de la baza ferestrei de editare ar trebui să "
+"fie vizibilă."
+
+#: ../data/gedit.schemas.in.in.h:88
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr ""
+"Specifică dacă bara cu unelte ar trebui să fie vizibilă în ferestrele de "
+"editare."
+
+#: ../data/gedit.schemas.in.in.h:89
+msgid ""
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
+msgstr ""
+"Specifică dacă să fie utilizat fontul implicit al sistemului pentru editarea "
+"textului în locul celui specificat de gedit. Dacă această opțiune este "
+"nebifată, atunci fontul specificat în opțiunea „Font editare“ va fi utilizat "
+"în locul fontului de sistem."
+
+#: ../data/gedit.schemas.in.in.h:90
+msgid "Writable VFS schemes"
+msgstr "Scheme VFS disponibile pentru scriere"
+
+#. Translators: This is the list of encodings shown by default in the Character Coding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/gedit.schemas.in.in.h:93
+msgid "[ISO-8859-15]"
+msgstr "[ISO-8859-15]"
+
+#. Translators: This is the sorted list of encodings used by gedit
+#. for auto-detecting the encoding of a file. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese	translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://svn.gnome.org/viewcvs/gedit/trunk/gedit/gedit-encodings.c?view=markup for
+#. a list of supported encodings
+#: ../data/gedit.schemas.in.in.h:105
+msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
+msgstr "[UTF-8,CURRENT,ISO-8859-2,ISO-8859-16,UTF-16]"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:140
+msgid "Logout _without Saving"
+msgstr "Închide _fără a salva"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:144
+msgid "_Cancel Logout"
+msgstr "_Renunță la ieșire"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:151
+msgid "Close _without Saving"
+msgstr "Închide _fără a salva"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:212
+msgid "Question"
+msgstr "Întrebare"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:412
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+"Dacă nu salvați, modificările din ultima secundă vor fi pierdute definitiv."
+msgstr[1] ""
+"Dacă nu salvați, modificările din ultimele %ld secunde vor fi pierdute "
+"definitiv."
+msgstr[2] ""
+"Dacă nu salvați, modificările din ultimele %ld de secunde vor fi pierdute "
+"definitiv."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:421
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
+msgstr "Dacă nu salvați, modificările din ultimul minut vor fi pierdute."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:427
+#, c-format
+msgid ""
+"If you don't save, changes from the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+"Dacă nu salvați, modificările din ultimul minut și o secundă vor fi pierdute."
+msgstr[1] ""
+"Dacă nu salvați, modificările din ultimul minut și %ld secunde vor fi "
+"pierdute."
+msgstr[2] ""
+"Dacă nu salvați, modificările din ultimul minut și %ld de secunde vor fi "
+"pierdute."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:437
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+"Dacă nu salvați, modificările din ultimul minut vor fi pierdute definitiv."
+msgstr[1] ""
+"Dacă nu salvați, modificările din ultimele %ld minute vor fi pierdute "
+"definitiv."
+msgstr[2] ""
+"Dacă nu salvați, modificările din ultimele %ld minute vor fi pierdute "
+"definitiv."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:452
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr ""
+"Dacă nu salvați, modificările din ultima oră vor fi pierdute definitiv."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:458
+#, c-format
+msgid ""
+"If you don't save, changes from the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+"Dacă nu salvați, modificările din ultima oră și un minut vor fi pierdute "
+"definitiv."
+msgstr[1] ""
+"Dacă nu salvați, modificările din ultima oră și %d minute vor fi pierdute "
+"definitiv."
+msgstr[2] ""
+"Dacă nu salvați, modificările din ultima oră și %d de minute vor fi pierdute "
+"definitiv."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:473
+#, c-format
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] ""
+"Dacă nu salvați, modificările din ultima oră vor fi pierdute definitiv."
+msgstr[1] ""
+"Dacă nu salvați, modificările din ultimele %d ore vor fi pierdute definitiv."
+msgstr[2] ""
+"Dacă nu salvați, modificările din ultimele %d de ore vor fi pierdute "
+"definitiv."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:516
+#, c-format
+msgid "Changes to document \"%s\" will be permanently lost."
+msgstr "Modificările aduse documentului „%s” în ultima oră vor fi pierdute."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:521
+#, c-format
+msgid "Save changes to document \"%s\" before closing?"
+msgstr "Salvează modificările documentului „%s” înainte de închidere?"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:535
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:746
+msgid "Saving has been disabled by the system administrator."
+msgstr "Salvarea a fost dezactivată de către administratorul de sistem"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:701
+#, c-format
+msgid "Changes to %d document will be permanently lost."
+msgid_plural "Changes to %d documents will be permanently lost."
+msgstr[0] "Modificările pentru un document vor fi pierdute."
+msgstr[1] "Modificările pentru %d documente vor fi pierdute."
+msgstr[2] "Modificările pentru %d de documente vor fi pierdute."
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:707
+#, c-format
+msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] ""
+"Există un document cu modificări nesalvate. Salvați modificările înainte de "
+"închidere?"
+msgstr[1] ""
+"Există %d documente cu modificări nesalvate. Salvați modificările înainte de "
+"închidere?"
+msgstr[2] ""
+"Există %d de documente cu modificări nesalvate. Salvați modificările înainte "
+"de închidere?"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:725
+msgid "Docum_ents with unsaved changes:"
+msgstr "Docum_ente cu modificări nesalvate:"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:727
+msgid "S_elect the documents you want to save:"
+msgstr "S_electați documentele pe care doriți să le salvați:"
+
+#: ../gedit/dialogs/gedit-close-confirmation-dialog.c:748
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Dacă nu salvați, toate modificările aduse vor fi pierdute."
+
+#: ../gedit/dialogs/gedit-encodings-dialog.c:321
+msgid "Character Codings"
+msgstr "Codări caractere"
+
+#: ../gedit/dialogs/gedit-encodings-dialog.c:384
+#: ../gedit/dialogs/gedit-encodings-dialog.c:445
+msgid "_Description"
+msgstr "_Descriere"
+
+#: ../gedit/dialogs/gedit-encodings-dialog.c:393
+#: ../gedit/dialogs/gedit-encodings-dialog.c:454
+msgid "_Encoding"
+msgstr "_Codare"
+
+#: ../gedit/dialogs/gedit-encodings-dialog.ui.h:1
+msgid "A_vailable encodings:"
+msgstr "Codări _disponibile:"
+
+#: ../gedit/dialogs/gedit-encodings-dialog.ui.h:2
+msgid "Character codings"
+msgstr "Codări caractere"
+
+#: ../gedit/dialogs/gedit-encodings-dialog.ui.h:3
+msgid "E_ncodings shown in menu:"
+msgstr "C_odări afișate în meniu:"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:571
+msgid "Push this button to select the font to be used by the editor"
+msgstr "Apăsați acest buton pentru a selecta fontul utilizat în editor"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:581
+#, c-format
+msgid "_Use the system fixed width font (%s)"
+msgstr "_Utilizează fontul monospațiat din sistem (%s)"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:784
+msgid "The selected color scheme cannot be installed."
+msgstr "Schema de culori selectată nu poate fi instalată."
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:809
+msgid "Add Scheme"
+msgstr "Adăugare schemă"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:816
+msgid "A_dd Scheme"
+msgstr "A_daugă schema"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:824
+msgid "Color Scheme Files"
+msgstr "Fișiere cu scheme de culori"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:831
+#: ../gedit/gedit-file-chooser-dialog.c:51
+msgid "All Files"
+msgstr "Toate fișierele"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:876
+#, c-format
+msgid "Could not remove color scheme \"%s\"."
+msgstr "Nu s-a putut șterge schema de culori „%s“."
+
+#: ../gedit/dialogs/gedit-preferences-dialog.c:1087
+msgid "gedit Preferences"
+msgstr "Preferințe gedit"
+
+#. ex:ts=4:et:
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:1
+#: ../plugins/docinfo/docinfo.ui.h:1
+#: ../plugins/externaltools/tools/tools.ui.h:1
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+#: ../plugins/time/gedit-time-dialog.ui.h:1
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
+msgid "    "
+msgstr "    "
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:2
+msgid "<b>Automatic Indentation</b>"
+msgstr "<b>Indentare automată</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:3
+msgid "<b>Bracket Matching</b>"
+msgstr "<b>Paranteze pereche</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:4
+msgid "<b>Current Line</b>"
+msgstr "<b>Linie curentă</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:5
+msgid "<b>File Saving</b>"
+msgstr "<b>Salvare fișier</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:6
+msgid "<b>Font</b>"
+msgstr "<b>Font</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:7
+#: ../gedit/gedit-print-preferences.ui.h:2
+msgid "<b>Line Numbers</b>"
+msgstr "<b>Numerotare linii</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:8
+msgid "<b>Right Margin</b>"
+msgstr "<b>Marginea dreaptă</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:9
+msgid "<b>Tab Stops</b>"
+msgstr "<b>Oprire taburi</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:10
+#: ../gedit/gedit-print-preferences.ui.h:5
+msgid "<b>Text Wrapping</b>"
+msgstr "<b>Formatare text</b>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:11
+msgid "<span weight=\"bold\">Color Scheme</span>"
+msgstr "<span weight=\"bold\">Schemă culoare</span>"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:12
+msgid "Create a _backup copy of files before saving"
+msgstr "Creează o copie de _siguranță pentru fișiere înainte de a salva"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:13
+msgid "Display right _margin"
+msgstr "Afișează _marginea dreaptă"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:14
+#: ../gedit/gedit-print-preferences.ui.h:6
+msgid "Do not _split words over two lines"
+msgstr "_Nu despărți cuvintele pe două linii"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:15
+msgid "Editor"
+msgstr "Editor"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:16
+msgid "Editor _font: "
+msgstr "_Font editare: "
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:17
+#: ../gedit/gedit-print-preferences.ui.h:7
+msgid "Enable text _wrapping"
+msgstr "Activează _formatarea textului"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:18
+msgid "Font & Colors"
+msgstr "Font și culori"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:19
+msgid "Highlight current _line"
+msgstr "Evidențiază _linia curentă"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:20
+msgid "Highlight matching _bracket"
+msgstr "Evidențiază paranteza _pereche"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:21
+msgid "Insert _spaces instead of tabs"
+msgstr "Inserează _spații în loc de taburi"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:22
+msgid "Pick the editor font"
+msgstr "Alegeți fontul de editare"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:23
+msgid "Plugins"
+msgstr "Module"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:24
+msgid "Preferences"
+msgstr "Preferințe"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:25
+msgid "View"
+msgstr "Vizualizare"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:26
+msgid "_Add..."
+msgstr "_Adaugă..."
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:27
+msgid "_Autosave files every"
+msgstr "_Salvează automat fișierele la fiecare"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-view.c:1968
+msgid "_Display line numbers"
+msgstr "_Numerotează liniile"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:29
+msgid "_Enable automatic indentation"
+msgstr "_Activează indentarea automată"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:30
+msgid "_Right margin at column:"
+msgstr "Marginea _dreaptă la coloana:"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:31
+msgid "_Tab width:"
+msgstr "Lățime _taburi:"
+
+#: ../gedit/dialogs/gedit-preferences-dialog.ui.h:32
+msgid "_minutes"
+msgstr "_minut(e)"
+
+#: ../gedit/dialogs/gedit-search-dialog.c:300
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:2 ../gedit/gedit-window.c:1457
+msgid "Replace"
+msgstr "Înlocuiește"
+
+#: ../gedit/dialogs/gedit-search-dialog.c:311 ../gedit/gedit-window.c:1455
+msgid "Find"
+msgstr "Caută"
+
+#: ../gedit/dialogs/gedit-search-dialog.c:414
+msgid "Replace _All"
+msgstr "Înlocuiește t_ot"
+
+#: ../gedit/dialogs/gedit-search-dialog.c:415
+#: ../gedit/gedit-commands-file.c:582
+msgid "_Replace"
+msgstr "Î_nlocuiește"
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:1
+msgid "Match _entire word only"
+msgstr "_Potrivire doar pentru întreg cuvântul"
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:3
+msgid "Replace All"
+msgstr "Înlocuiește tot"
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:4
+msgid "Replace _with: "
+msgstr "Înlocuiește c_u: "
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:5
+msgid "Search _backwards"
+msgstr "Caută în sens _invers"
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:6
+msgid "_Match case"
+msgstr "_Majuscule semnificative"
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:7
+msgid "_Search for: "
+msgstr "Cau_tă: "
+
+#: ../gedit/dialogs/gedit-search-dialog.ui.h:8
+msgid "_Wrap around"
+msgstr "_Reia de la început"
+
+#: ../gedit/gedit.c:117
+msgid "Show the application's version"
+msgstr "Afișează versiunea aplicației"
+
+#: ../gedit/gedit.c:120
+msgid ""
+"Set the character encoding to be used to open the files listed on the "
+"command line"
+msgstr ""
+"Codarea utilizată la deschiderea fișierelor listate în linia de comandă"
+
+#: ../gedit/gedit.c:120
+msgid "ENCODING"
+msgstr "CODARE"
+
+#: ../gedit/gedit.c:123
+msgid "Display list of possible values for the encoding option"
+msgstr "Afișează o listă de valori posbile pentru opțiunea de codificare"
+
+#: ../gedit/gedit.c:126
+msgid "Create a new toplevel window in an existing instance of gedit"
+msgstr "Crează o nouă fereastră într-o instanță gedit deja existentă"
+
+#: ../gedit/gedit.c:129
+msgid "Create a new document in an existing instance of gedit"
+msgstr "Crează un nou document într-o instanță gedit deja existentă"
+
+#: ../gedit/gedit.c:132
+msgid "[FILE...]"
+msgstr "[FIȘIER...]"
+
+#: ../gedit/gedit.c:187
+#, c-format
+msgid "%s: invalid encoding.\n"
+msgstr "%s: codare nevalidă.\n"
+
+#. Setup command line options
+#: ../gedit/gedit.c:569
+msgid "- Edit text files"
+msgstr "- Editare fișiere text"
+
+#: ../gedit/gedit.c:605
+#, c-format
+msgid ""
+"%s\n"
+"Run '%s --help' to see a full list of available command line options.\n"
+msgstr ""
+"%s\n"
+"Rulați „%s --help” pentru a vedea lista tuturor opțiunilor comenzii.\n"
+
+#: ../gedit/gedit-commands-file.c:255
+#, c-format
+msgid "Loading file '%s'…"
+msgstr "Încarc fișierul „%s”..."
+
+#: ../gedit/gedit-commands-file.c:264
+#, c-format
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
+msgstr[0] "Încarc %d fișier..."
+msgstr[1] "Încarc %d fișiere..."
+msgstr[2] "Încarc %d de fișiere..."
+
+#. Translators: "Open Files" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:458
+msgid "Open Files"
+msgstr "Deschide fișiere"
+
+#: ../gedit/gedit-commands-file.c:569
+#, c-format
+msgid "The file \"%s\" is read-only."
+msgstr "Fișierul „%s“ poate fi doar citit."
+
+#: ../gedit/gedit-commands-file.c:574
+msgid "Do you want to try to replace it with the one you are saving?"
+msgstr "Doriți să încercați să-l înlocuiți cu cel pe care îl salvați?"
+
+#: ../gedit/gedit-commands-file.c:641 ../gedit/gedit-commands-file.c:858
+#, c-format
+msgid "Saving file '%s'…"
+msgstr "Salvez fișierul „%s”..."
+
+#: ../gedit/gedit-commands-file.c:748
+msgid "Save As…"
+msgstr "Salvează ca..."
+
+#: ../gedit/gedit-commands-file.c:1072
+#, c-format
+msgid "Reverting the document '%s'…"
+msgstr "Restaurez documentul „%s“..."
+
+#: ../gedit/gedit-commands-file.c:1117
+#, c-format
+msgid "Revert unsaved changes to document '%s'?"
+msgstr "Doriți să reveniți la ultima salvare a documentului „%s”?"
+
+#: ../gedit/gedit-commands-file.c:1126
+#, c-format
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+"Modificările aduse documentului în ultima %ld secundă vor fi pierdute "
+"definitiv."
+msgstr[1] ""
+"Modificările aduse documentului în ultimele %ld secunde vor fi pierdute "
+"definitiv."
+msgstr[2] ""
+"Modificările aduse documentului în ultimele %ld de secunde vor fi pierdute "
+"definitiv."
+
+#: ../gedit/gedit-commands-file.c:1135
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
+msgstr "Modificările aduse documentului în ultimul minut vor fi pierdute."
+
+#: ../gedit/gedit-commands-file.c:1141
+#, c-format
+msgid ""
+"Changes made to the document in the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+"Modificările aduse documentului în ultimul minut și %ld secundă vor fi "
+"pierdute."
+msgstr[1] ""
+"Modificările aduse documentului în ultimul minut și %ld secunde vor fi "
+"pierdute."
+msgstr[2] ""
+"Modificările aduse documentului în ultimul minut și %ld de secunde vor fi "
+"pierdute."
+
+#: ../gedit/gedit-commands-file.c:1151
+#, c-format
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+"Modificările aduse documentului în ultimul %ld minut vor fi pierdute."
+msgstr[1] ""
+"Modificările aduse documentului în ultimele %ld minute vor fi pierdute."
+msgstr[2] ""
+"Modificările aduse documentului în ultimele %ld de minute vor fi pierdute."
+
+#: ../gedit/gedit-commands-file.c:1166
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr "Modificările aduse documentului în ultima oră vor fi pierdute."
+
+#: ../gedit/gedit-commands-file.c:1172
+#, c-format
+msgid ""
+"Changes made to the document in the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+"Modificările aduse documentului în ultima oră și %d minut vor fi pierdute."
+msgstr[1] ""
+"Modificările aduse documentului în ultima oră și %d minute vor fi pierdute."
+msgstr[2] ""
+"Modificările aduse documentului în ultima oră și %d de minute vor fi "
+"pierdute."
+
+#: ../gedit/gedit-commands-file.c:1187
+#, c-format
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] "Modificările aduse documentului în ultima %d oră vor fi pierdute."
+msgstr[1] "Modificările aduse documentului în ultimele %d ore vor fi pierdute."
+msgstr[2] ""
+"Modificările aduse documentului în ultimele %d de ore vor fi pierdute."
+
+#: ../gedit/gedit-commands-file.c:1213
+msgid "_Revert"
+msgstr "Restaurea_ză"
+
+#: ../gedit/gedit-commands-help.c:81
+msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "gedit este un editor de text mic și rapid pentru Gnome"
+
+#: ../gedit/gedit-commands-help.c:106
+msgid "translator-credits"
+msgstr ""
+"Mișu Moldovan <dumol@go.ro>\n"
+"Mugurel Tudor <mugurelu@go.ro>\n"
+"Felix Petrescu <wakax@yahoo.com>\n"
+"Dan Damian <dand@gnome.ro>\n"
+"\n"
+"Launchpad Contributions:\n"
+"  Adi Roiban https://launchpad.net/~adiroiban\n"
+"  Adrian Harabulă https://launchpad.net/~opensoft\n"
+"  Adrian Nita https://launchpad.net/~nitzadrian-deactivatedaccount\n"
+"  Cristian KLEIN https://launchpad.net/~cristiklein\n"
+"  Dan Damian https://launchpad.net/~dand\n"
+"  Doru Horișco https://launchpad.net/~doruhushhush\n"
+"  Ionuț Jula https://launchpad.net/~ionutjula\n"
+"  Lucian Adrian Grijincu https://launchpad.net/~lucian.grijincu\n"
+"  Mișu Moldovan https://launchpad.net/~dumol-gnome"
+
+#: ../gedit/gedit-commands-search.c:114
+#, c-format
+msgid "Found and replaced %d occurrence"
+msgid_plural "Found and replaced %d occurrences"
+msgstr[0] "A fost găsită și înlocuită %d apariție."
+msgstr[1] "Au fost găsite și înlocuite %d apariții."
+msgstr[2] "Au fost găsite și înlocuite %d de apariții."
+
+#: ../gedit/gedit-commands-search.c:124
+msgid "Found and replaced one occurrence"
+msgstr "A fost găsită și înlocuită o apariție."
+
+#. Translators: %s is replaced by the text
+#. entered by the user in the search box
+#: ../gedit/gedit-commands-search.c:145
+#, c-format
+msgid "\"%s\" not found"
+msgstr "„%s” nu a fost găsit"
+
+#: ../gedit/gedit-document.c:889 ../gedit/gedit-document.c:902
+#, c-format
+msgid "Unsaved Document %d"
+msgstr "Document nesalvat %d"
+
+#: ../gedit/gedit-documents-panel.c:89 ../gedit/gedit-documents-panel.c:103
+#: ../gedit/gedit-window.c:2191 ../gedit/gedit-window.c:2196
+msgid "Read Only"
+msgstr "Doar citire"
+
+#: ../gedit/gedit-documents-panel.c:771 ../gedit/gedit-window.c:3556
+msgid "Documents"
+msgstr "Documente"
+
+#: ../gedit/gedit-encodings.c:140 ../gedit/gedit-encodings.c:184
+#: ../gedit/gedit-encodings.c:186 ../gedit/gedit-encodings.c:188
+#: ../gedit/gedit-encodings.c:190 ../gedit/gedit-encodings.c:192
+#: ../gedit/gedit-encodings.c:194 ../gedit/gedit-encodings.c:196
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../gedit/gedit-encodings.c:153 ../gedit/gedit-encodings.c:179
+#: ../gedit/gedit-encodings.c:231 ../gedit/gedit-encodings.c:274
+msgid "Western"
+msgstr "Vestică"
+
+#: ../gedit/gedit-encodings.c:155 ../gedit/gedit-encodings.c:233
+#: ../gedit/gedit-encodings.c:270
+msgid "Central European"
+msgstr "Central Europeană"
+
+#: ../gedit/gedit-encodings.c:157
+msgid "South European"
+msgstr "Sud Europeană"
+
+#: ../gedit/gedit-encodings.c:159 ../gedit/gedit-encodings.c:175
+#: ../gedit/gedit-encodings.c:284
+msgid "Baltic"
+msgstr "Baltică"
+
+#: ../gedit/gedit-encodings.c:161 ../gedit/gedit-encodings.c:235
+#: ../gedit/gedit-encodings.c:248 ../gedit/gedit-encodings.c:252
+#: ../gedit/gedit-encodings.c:254 ../gedit/gedit-encodings.c:272
+msgid "Cyrillic"
+msgstr "Chirilică"
+
+#: ../gedit/gedit-encodings.c:163 ../gedit/gedit-encodings.c:241
+#: ../gedit/gedit-encodings.c:282
+msgid "Arabic"
+msgstr "Arabă"
+
+#: ../gedit/gedit-encodings.c:165 ../gedit/gedit-encodings.c:276
+msgid "Greek"
+msgstr "Greacă"
+
+#: ../gedit/gedit-encodings.c:167
+msgid "Hebrew Visual"
+msgstr "Ebraică vizuală"
+
+#: ../gedit/gedit-encodings.c:169 ../gedit/gedit-encodings.c:239
+#: ../gedit/gedit-encodings.c:280
+msgid "Hebrew"
+msgstr "Ebraică"
+
+#: ../gedit/gedit-encodings.c:171 ../gedit/gedit-encodings.c:237
+#: ../gedit/gedit-encodings.c:278
+msgid "Turkish"
+msgstr "Turcă"
+
+#: ../gedit/gedit-encodings.c:173
+msgid "Nordic"
+msgstr "Nordică"
+
+#: ../gedit/gedit-encodings.c:177
+msgid "Celtic"
+msgstr "Celtică"
+
+#: ../gedit/gedit-encodings.c:181
+msgid "Romanian"
+msgstr "Română"
+
+#: ../gedit/gedit-encodings.c:199
+msgid "Armenian"
+msgstr "Armeană"
+
+#: ../gedit/gedit-encodings.c:201 ../gedit/gedit-encodings.c:203
+#: ../gedit/gedit-encodings.c:217
+msgid "Chinese Traditional"
+msgstr "Chineză tradițională"
+
+#: ../gedit/gedit-encodings.c:205
+msgid "Cyrillic/Russian"
+msgstr "Chirilică/Rusă"
+
+#: ../gedit/gedit-encodings.c:208 ../gedit/gedit-encodings.c:210
+#: ../gedit/gedit-encodings.c:212 ../gedit/gedit-encodings.c:244
+#: ../gedit/gedit-encodings.c:259
+msgid "Japanese"
+msgstr "Japoneză"
+
+#: ../gedit/gedit-encodings.c:215 ../gedit/gedit-encodings.c:246
+#: ../gedit/gedit-encodings.c:250 ../gedit/gedit-encodings.c:265
+msgid "Korean"
+msgstr "Coreeană"
+
+#: ../gedit/gedit-encodings.c:220 ../gedit/gedit-encodings.c:222
+#: ../gedit/gedit-encodings.c:224 ../gedit/gedit-encodings.c:228
+msgid "Chinese Simplified"
+msgstr "Chineză simplificată"
+
+#: ../gedit/gedit-encodings.c:226
+msgid "Georgian"
+msgstr "Georgiană"
+
+#: ../gedit/gedit-encodings.c:256
+msgid "Cyrillic/Ukrainian"
+msgstr "Chirilică/Ucrainiană"
+
+#: ../gedit/gedit-encodings.c:261 ../gedit/gedit-encodings.c:267
+#: ../gedit/gedit-encodings.c:286
+msgid "Vietnamese"
+msgstr "Vietnameză"
+
+#: ../gedit/gedit-encodings.c:263
+msgid "Thai"
+msgstr "Thailandeză"
+
+#: ../gedit/gedit-encodings.c:437
+msgid "Unknown"
+msgstr "Necunoscut"
+
+#: ../gedit/gedit-encodings-option-menu.c:220
+msgid "Auto Detected"
+msgstr "Detectare automată"
+
+#: ../gedit/gedit-encodings-option-menu.c:240
+#: ../gedit/gedit-encodings-option-menu.c:262
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Configurare locală curentă (%s)"
+
+#: ../gedit/gedit-encodings-option-menu.c:323
+msgid "Add or _Remove..."
+msgstr "Adaugă sau șter_ge..."
+
+#: ../gedit/gedit-file-chooser-dialog.c:52
+msgid "All Text Files"
+msgstr "Toate fișierele text"
+
+#: ../gedit/gedit-file-chooser-dialog.c:78
+msgid "C_haracter Coding:"
+msgstr "Codare c_aracter:"
+
+#: ../gedit/gedit-help.c:89
+msgid "There was an error displaying help."
+msgstr "A intervenit o eroare la afișarea ajutorului."
+
+#: ../gedit/gedit-io-error-message-area.c:213
+#, c-format
+msgid "Could not find the file %s."
+msgstr "Nu s-a putut găsi fișierul „%s“."
+
+#: ../gedit/gedit-io-error-message-area.c:215
+#: ../gedit/gedit-io-error-message-area.c:254
+#: ../gedit/gedit-io-error-message-area.c:261
+msgid "Please check that you typed the location correctly and try again."
+msgstr ""
+"Vă rugăm verificați corectitudinea adresei introduse și încercați din nou."
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-message-area.c:230
+#, c-format
+msgid "gedit cannot handle %s locations."
+msgstr "gedit nu poate gestiona locații %s."
+
+#: ../gedit/gedit-io-error-message-area.c:236
+msgid "gedit cannot handle this location."
+msgstr "gedit nu poate gestiona această adresă."
+
+#: ../gedit/gedit-io-error-message-area.c:244
+msgid "The location of the file cannot be mounted."
+msgstr "Locația fișierului nu a putut fi montată."
+
+#: ../gedit/gedit-io-error-message-area.c:248
+msgid "The location of the file cannot be accessed because it is not mounted."
+msgstr "Locația fișierului nu poate fi accesată doarece nu este montată."
+
+#: ../gedit/gedit-io-error-message-area.c:252
+#, c-format
+msgid "%s is a directory."
+msgstr "„%s” nu  este un dosar."
+
+#: ../gedit/gedit-io-error-message-area.c:259
+#, c-format
+msgid "%s is not a valid location."
+msgstr "„%s” nu este o adresă validă."
+
+#: ../gedit/gedit-io-error-message-area.c:289
+#, c-format
+msgid ""
+"Host %s could not be found. Please check that your proxy settings are "
+"correct and try again."
+msgstr ""
+"Gazda „%s“ nu a putut fi găsită. Vă rugăm verificați corectitudinea "
+"configurărilor de proxy și încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:302
+#, c-format
+msgid ""
+"Host name was invalid. Please check that you typed the location correctly "
+"and try again."
+msgstr ""
+"Numele gazdei nu este valid. Verificați corectitudinea adresei introduse și "
+"încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:310
+#, c-format
+msgid "%s is not a regular file."
+msgstr "„%s” nu este un fișier obișnuit."
+
+#: ../gedit/gedit-io-error-message-area.c:315
+msgid "Connection timed out. Please try again."
+msgstr "Limita de timp a conexiunii a expirat. Vă rugăm încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:338
+msgid "The file is too big."
+msgstr "Fișierul este prea mare."
+
+#: ../gedit/gedit-io-error-message-area.c:379
+#, c-format
+msgid "Unexpected error: %s"
+msgstr "Eroare neașteptată: %s"
+
+#: ../gedit/gedit-io-error-message-area.c:415
+msgid ""
+"The number of followed links is limited and the actual file could not be "
+"found within this limit."
+msgstr ""
+"Numărul legăturilor de urmat este limitat iar fișierul nu a putut fi găsit "
+"în această limită."
+
+#: ../gedit/gedit-io-error-message-area.c:419
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Nu aveți permisiunile necesare pentru a deschide fișierul."
+
+#: ../gedit/gedit-io-error-message-area.c:427
+#: ../gedit/gedit-io-error-message-area.c:669
+#, c-format
+msgid "Could not open the file %s."
+msgstr "Nu s-a putut deschide fișierul „%s“."
+
+#: ../gedit/gedit-io-error-message-area.c:437
+#: ../gedit/gedit-io-error-message-area.c:442
+#: ../gedit/gedit-io-error-message-area.c:563
+#: ../gedit/gedit-io-error-message-area.c:572
+msgid "_Retry"
+msgstr "_Reîncearcă"
+
+#: ../gedit/gedit-io-error-message-area.c:486
+msgid "gedit cannot find the file. Perhaps it has recently been deleted."
+msgstr "gedit nu poate găsi fișierul. Probabil a fost șters recent."
+
+#: ../gedit/gedit-io-error-message-area.c:495
+#, c-format
+msgid "Could not revert the file %s."
+msgstr "Nu s-a putut restaura fișierul „%s“."
+
+#: ../gedit/gedit-io-error-message-area.c:519
+msgid "Ch_aracter Coding:"
+msgstr "Codare c_aracter:"
+
+#: ../gedit/gedit-io-error-message-area.c:671
+msgid "gedit has not been able to detect the character coding."
+msgstr "gedit nu a putut detecta codarea de caractere."
+
+#: ../gedit/gedit-io-error-message-area.c:673
+#: ../gedit/gedit-io-error-message-area.c:682
+msgid "Please check that you are not trying to open a binary file."
+msgstr "Vă rog să vă asigurați că nu încercați să deschideți un fișier binar."
+
+#: ../gedit/gedit-io-error-message-area.c:674
+msgid "Select a character coding from the menu and try again."
+msgstr "Selectați o codare de caractere din meniu și încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:679
+#, c-format
+msgid "Could not open the file %s using the %s character coding."
+msgstr "Nu s-a putut deschide fișierul „%s“ utilizănd codarea „%s”."
+
+#: ../gedit/gedit-io-error-message-area.c:683
+#: ../gedit/gedit-io-error-message-area.c:735
+msgid "Select a different character coding from the menu and try again."
+msgstr ""
+"Selectați o codare de caractere diferită din meniu și încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:730
+#, c-format
+msgid "Could not save the file %s using the %s character coding."
+msgstr "Nu s-a putut salva fișierul „%s“ utilizănd codarea „%s”."
+
+#: ../gedit/gedit-io-error-message-area.c:733
+msgid ""
+"The document contains one or more characters that cannot be encoded using "
+"the specified character coding."
+msgstr ""
+"Documentul conține unul sau mai multe caractere ce nu pot fi codate "
+"utilizând codarea de caractere specificată."
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-message-area.c:801
+#: ../gedit/gedit-io-error-message-area.c:811
+msgid "Edit Any_way"
+msgstr "_Editează oricum"
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-message-area.c:804
+#: ../gedit/gedit-io-error-message-area.c:816
+msgid "D_on't Edit"
+msgstr "Nu _edita"
+
+#: ../gedit/gedit-io-error-message-area.c:834
+#, c-format
+msgid "This file (%s) is already open in another gedit window."
+msgstr "Acest fișier (%s) este deja deschis în altă fereastră gedit."
+
+#: ../gedit/gedit-io-error-message-area.c:849
+msgid ""
+"gedit opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
+msgstr ""
+"gedit a deschis această instanță a fișierului într-un mod ne-editabil. "
+"Doriți să îl editați oricum?"
+
+#: ../gedit/gedit-io-error-message-area.c:908
+#: ../gedit/gedit-io-error-message-area.c:918
+#: ../gedit/gedit-io-error-message-area.c:1018
+#: ../gedit/gedit-io-error-message-area.c:1028
+msgid "S_ave Anyway"
+msgstr "S_alvează oricum"
+
+#: ../gedit/gedit-io-error-message-area.c:912
+#: ../gedit/gedit-io-error-message-area.c:922
+#: ../gedit/gedit-io-error-message-area.c:1022
+#: ../gedit/gedit-io-error-message-area.c:1032
+msgid "D_on't Save"
+msgstr "N_u salva"
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. could be interpreted as the changes he made in the document. beside "reading" is
+#. not accurate (since last load/save)
+#: ../gedit/gedit-io-error-message-area.c:943
+#, c-format
+msgid "The file %s has been modified since reading it."
+msgstr "Fișierul „%s” a fost modificat de la ultima citire."
+
+#: ../gedit/gedit-io-error-message-area.c:959
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr ""
+"Dacă îl salvați, toate modificările exterioare ar putea fi pierdute. Doriți "
+"să îl salvați oricum?"
+
+#: ../gedit/gedit-io-error-message-area.c:1053
+#, c-format
+msgid "Could not create a backup file while saving %s"
+msgstr "Nu s-a putut crea o copie de siguranță la salvarea „%s”."
+
+#: ../gedit/gedit-io-error-message-area.c:1056
+#, c-format
+msgid "Could not create a temporary backup file while saving %s"
+msgstr "Nu s-a putut crea o copie temporară de siguranță la salvarea „%s”."
+
+#: ../gedit/gedit-io-error-message-area.c:1073
+msgid ""
+"gedit could not backup the old copy of the file before saving the new one. "
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
+msgstr ""
+"gedit nu a putut crea o copie de siguranță a vechiului fișier înainte de "
+"salvarea celui nou. Puteți ignora această avertizare și salva oricum "
+"fișierul, însă în eventualitatea producerii unei erori la salvare, ați putea "
+"pierde vechea copie a fișierului. Doriți să salvați oricum?"
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-message-area.c:1133
+#, c-format
+msgid ""
+"gedit cannot handle %s locations in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"gedit nu poate opera locații „%s” în modul de scriere. Vă rog să verificați "
+"corectitudinea adresei introduse și să încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:1141
+msgid ""
+"gedit cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"gedit nu poate opera la această adresă în modul de scriere. Vă rog să "
+"verificați corectitudinea adresei introduse și să încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:1150
+#, c-format
+msgid ""
+"%s is not a valid location. Please check that you typed the location "
+"correctly and try again."
+msgstr ""
+"„%s” nu este o adresă validă. Vă rugăm verificați corectitudinea adresei "
+"introduse și încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:1156
+msgid ""
+"You do not have the permissions necessary to save the file. Please check "
+"that you typed the location correctly and try again."
+msgstr ""
+"Nu aveți permisiunile necesare pentru a salva fișierul. Vă rugăm verificați "
+"corectitudinea adresei introduse și încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:1162
+msgid ""
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr ""
+"Nu este destul spațiu pe disc pentru a salva fișierul. Eliberați vă rugăm "
+"spațiu pe disc și încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:1167
+msgid ""
+"You are trying to save the file on a read-only disk. Please check that you "
+"typed the location correctly and try again."
+msgstr ""
+"Încercați să salvați fișierul pe un disc disponibil doar pentru citire. Vă "
+"rugăm să verificați corectitudinea adresei introduse și să încercați din nou."
+
+#: ../gedit/gedit-io-error-message-area.c:1173
+msgid "A file with the same name already exists. Please use a different name."
+msgstr ""
+"Un fișier cu același nume există deja. Vă rugăm să selectați un alt nume."
+
+#: ../gedit/gedit-io-error-message-area.c:1178
+msgid ""
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr ""
+"Discul pe care încercați să salvați fișierul are o limitare la dimensiunea "
+"maximă a numelui de fișiere. Vă rugăm să folosiți un nume mai scurt."
+
+#: ../gedit/gedit-io-error-message-area.c:1185
+msgid ""
+"The disk where you are trying to save the file has a limitation on file "
+"sizes.  Please try saving a smaller file or saving it to a disk that does "
+"not have this limitation."
+msgstr ""
+"Discul pe care încercați să salvați fișierul are o limitare la dimensiunea "
+"maximă a fișierului. Încercați vă rugăm să salvați un fișier mai mic sau să "
+"salvați pe un disc ce nu are această limitare."
+
+#: ../gedit/gedit-io-error-message-area.c:1200
+#, c-format
+msgid "Could not save the file %s."
+msgstr "Nu s-a putut salva fișierul „%s“."
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. could be interpreted as the changes he made in the document. beside "reading" is
+#. not accurate (since last load/save)
+#: ../gedit/gedit-io-error-message-area.c:1242
+#, c-format
+msgid "The file %s changed on disk."
+msgstr "Fișierul „%s“ a fost modificat pe disc."
+
+#: ../gedit/gedit-io-error-message-area.c:1247
+msgid "Do you want to drop your changes and reload the file?"
+msgstr "Doriți să renunțați la modificările dvs. și să reîncărcați fișierul?"
+
+#: ../gedit/gedit-io-error-message-area.c:1249
+msgid "Do you want to reload the file?"
+msgstr "Doriți să reîncărcați fișierul?"
+
+#: ../gedit/gedit-io-error-message-area.c:1255
+#: ../gedit/gedit-io-error-message-area.c:1266
+msgid "_Reload"
+msgstr "_Reîncarcă"
+
+#. bad bad luck...
+#: ../gedit/gedit-local-document-saver.c:375
+msgid "Could not obtain backup filename"
+msgstr "Nu s-a putut obține un nume pentru copia de siguranță."
+
+#: ../gedit/gedit-notebook.c:903
+msgid "Close document"
+msgstr "Închide documentul"
+
+#: ../gedit/gedit-panel.c:355 ../gedit/gedit-panel.c:563
+msgid "Empty"
+msgstr "Gol"
+
+#: ../gedit/gedit-panel.c:508 ../gedit/gedit-panel.c:582
+msgid "Hide panel"
+msgstr "Ascunde panoul"
+
+#: ../gedit/gedit-plugin-manager.c:54
+msgid "Plugin"
+msgstr "Modul"
+
+#: ../gedit/gedit-plugin-manager.c:55
+msgid "Enabled"
+msgstr "Activat"
+
+#: ../gedit/gedit-plugin-manager.c:504
+msgid "_About"
+msgstr "_Despre"
+
+#: ../gedit/gedit-plugin-manager.c:512
+msgid "C_onfigure"
+msgstr "C_onfigurează"
+
+#: ../gedit/gedit-plugin-manager.c:521
+msgid "A_ctivate"
+msgstr "A_ctivează"
+
+#: ../gedit/gedit-plugin-manager.c:532
+msgid "Ac_tivate All"
+msgstr "Activează _toate"
+
+#: ../gedit/gedit-plugin-manager.c:537
+msgid "_Deactivate All"
+msgstr "_Dezactivează toate"
+
+#: ../gedit/gedit-plugin-manager.c:800
+msgid "Active _Plugins:"
+msgstr "Module acti_ve:"
+
+#: ../gedit/gedit-plugin-manager.c:825
+msgid "_About Plugin"
+msgstr "_Despre modul"
+
+#: ../gedit/gedit-plugin-manager.c:829
+msgid "C_onfigure Plugin"
+msgstr "C_onfigurare modul"
+
+#: ../gedit/gedit-prefs-manager.c:170
+msgid "Cannot initialize preferences manager."
+msgstr "Nu s-a putut inițializa managerul de preferințe."
+
+#: ../gedit/gedit-prefs-manager.c:1148
+#, c-format
+msgid "Expected `%s' got `%s' for key %s"
+msgstr "Așteptatul „%s“ a primit „%s“ pentru cheia %s"
+
+#: ../gedit/gedit-print-job.c:541
+#, c-format
+msgid "File: %s"
+msgstr "Fișier: %s"
+
+#: ../gedit/gedit-print-job.c:550
+msgid "Page %N of %Q"
+msgstr "Pagina %N din %Q"
+
+#: ../gedit/gedit-print-job.c:809
+msgid "Preparing..."
+msgstr "Se pregătește..."
+
+#: ../gedit/gedit-print-preferences.ui.h:1
+msgid "<b>Fonts</b>"
+msgstr "<b>Fonturi</b>"
+
+#: ../gedit/gedit-print-preferences.ui.h:3
+msgid "<b>Page header</b>"
+msgstr "<b>Antet pagină</b>"
+
+#: ../gedit/gedit-print-preferences.ui.h:4
+msgid "<b>Syntax Highlighting</b>"
+msgstr "<b>Evidențiere sintaxă</b>"
+
+#: ../gedit/gedit-print-preferences.ui.h:8
+msgid "He_aders and footers:"
+msgstr "Antete și note de _subsol:"
+
+#: ../gedit/gedit-print-preferences.ui.h:9
+msgid "Print line nu_mbers"
+msgstr "Tipărește nu_mere pagină"
+
+#: ../gedit/gedit-print-preferences.ui.h:10
+msgid "Print page _headers"
+msgstr "Tipărește antet pagină"
+
+#: ../gedit/gedit-print-preferences.ui.h:11
+msgid "Print synta_x highlighting"
+msgstr "Tipărește evidențiere sinta_xă"
+
+#: ../gedit/gedit-print-preferences.ui.h:12
+msgid "_Body:"
+msgstr "C_orp:"
+
+#: ../gedit/gedit-print-preferences.ui.h:13
+msgid "_Line numbers:"
+msgstr "_Numerotare linii:"
+
+#: ../gedit/gedit-print-preferences.ui.h:14
+msgid "_Number every"
+msgstr "Nu_merotează la"
+
+#: ../gedit/gedit-print-preferences.ui.h:15
+msgid "_Restore Default Fonts"
+msgstr "Restaurea_ză fonturile implicite"
+
+#: ../gedit/gedit-print-preferences.ui.h:16
+msgid "lines"
+msgstr "linii"
+
+#: ../gedit/gedit-print-preview.c:565
+msgid "Show the previous page"
+msgstr "Afișează pagina precedentă"
+
+#: ../gedit/gedit-print-preview.c:577
+msgid "Show the next page"
+msgstr "Afișează pagina următoare"
+
+#: ../gedit/gedit-print-preview.c:593
+msgid "Current page (Alt+P)"
+msgstr "Pagina curentă (Alt+P)"
+
+#: ../gedit/gedit-print-preview.c:615
+msgid "of"
+msgstr "din"
+
+#: ../gedit/gedit-print-preview.c:623
+msgid "Page total"
+msgstr "Total pagini"
+
+#: ../gedit/gedit-print-preview.c:624
+msgid "The total number of pages in the document"
+msgstr "Numărul total de pagini din document"
+
+#: ../gedit/gedit-print-preview.c:641
+msgid "Show multiple pages"
+msgstr "Afișează pagini multiple"
+
+#: ../gedit/gedit-print-preview.c:654
+msgid "Zoom 1:1"
+msgstr "Zoom 1:1"
+
+#: ../gedit/gedit-print-preview.c:663
+msgid "Zoom to fit the whole page"
+msgstr "Zoom la întreaga pagină"
+
+#: ../gedit/gedit-print-preview.c:672
+msgid "Zoom the page in"
+msgstr "Apropie pagina"
+
+#: ../gedit/gedit-print-preview.c:681
+msgid "Zoom the page out"
+msgstr "Depărtează pagina"
+
+#: ../gedit/gedit-print-preview.c:693
+msgid "_Close Preview"
+msgstr "În_chide previzualizarea de tipărire"
+
+#: ../gedit/gedit-print-preview.c:696
+msgid "Close print preview"
+msgstr "Închide previzualizarea de tipărire"
+
+#: ../gedit/gedit-print-preview.c:766
+#, c-format
+msgid "Page %d of %d"
+msgstr "Pagina %d din %d"
+
+#: ../gedit/gedit-print-preview.c:950
+msgid "Page Preview"
+msgstr "Previzualizare pagină"
+
+#: ../gedit/gedit-print-preview.c:951
+msgid "The preview of a page in the document to be printed"
+msgstr "Previzualizarea pentru tipărire a unei pagini din document"
+
+#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+msgid "OVR"
+msgstr "SUPR"
+
+#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+msgid "INS"
+msgstr "INTR"
+
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+#. use abbreviations if possible to avoid space problems.
+#: ../gedit/gedit-statusbar.c:332
+#, c-format
+msgid "  Ln %d, Col %d"
+msgstr "  Ln %d, Col %d"
+
+#: ../gedit/gedit-statusbar.c:431
+#, c-format
+msgid "There is a tab with errors"
+msgid_plural "There are %d tabs with errors"
+msgstr[0] "Există %d tab cu erori"
+msgstr[1] "Există %d taburi cu erori"
+msgstr[2] "Există %d de taburi cu erori"
+
+#: ../gedit/gedit-style-scheme-manager.c:207
+#, c-format
+msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgstr "Dosarul „%s” nu a putut fi creat: g_mkdir_with_parents() a eșuat: %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:669
+#, c-format
+msgid "Reverting %s from %s"
+msgstr "Restaurez documentul „%s“ din „%s”"
+
+#: ../gedit/gedit-tab.c:676
+#, c-format
+msgid "Reverting %s"
+msgstr "Restaurez „%s”"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:692
+#, c-format
+msgid "Loading %s from %s"
+msgstr "Încarc „%s” din „%s”"
+
+#: ../gedit/gedit-tab.c:699
+#, c-format
+msgid "Loading %s"
+msgstr "Încarc „%s”"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:782
+#, c-format
+msgid "Saving %s to %s"
+msgstr "Salvez „%s” în „%s”"
+
+#: ../gedit/gedit-tab.c:789
+#, c-format
+msgid "Saving %s"
+msgstr "Salvez „%s”"
+
+#. Read only
+#: ../gedit/gedit-tab.c:1706
+msgid "RO"
+msgstr "RO"
+
+#: ../gedit/gedit-tab.c:1753
+#, c-format
+msgid "Error opening file %s"
+msgstr "Eroare la deschiderea fișierului „%s”"
+
+#: ../gedit/gedit-tab.c:1758
+#, c-format
+msgid "Error reverting file %s"
+msgstr "Eroare la restaurarea fișierului „%s”"
+
+#: ../gedit/gedit-tab.c:1763
+#, c-format
+msgid "Error saving file %s"
+msgstr "Eroare la salvarea fișierului „%s”"
+
+#: ../gedit/gedit-tab.c:1784
+msgid "Unicode (UTF-8)"
+msgstr "Unicode (UTF-8)"
+
+#: ../gedit/gedit-tab.c:1791
+msgid "Name:"
+msgstr "Nume:"
+
+#: ../gedit/gedit-tab.c:1792
+msgid "MIME Type:"
+msgstr "Tip MIME:"
+
+#: ../gedit/gedit-tab.c:1793
+msgid "Encoding:"
+msgstr "Codare:"
+
+#. Toplevel
+#: ../gedit/gedit-ui.h:47
+msgid "_File"
+msgstr "_Fișier"
+
+#: ../gedit/gedit-ui.h:48
+msgid "_Edit"
+msgstr "_Editare"
+
+#: ../gedit/gedit-ui.h:49
+msgid "_View"
+msgstr "_Vizualizare"
+
+#: ../gedit/gedit-ui.h:50
+msgid "_Search"
+msgstr "_Căutare"
+
+#: ../gedit/gedit-ui.h:51
+msgid "_Tools"
+msgstr "_Unelte"
+
+#: ../gedit/gedit-ui.h:52
+msgid "_Documents"
+msgstr "_Documente"
+
+#: ../gedit/gedit-ui.h:53
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: ../gedit/gedit-ui.h:57
+msgid "Create a new document"
+msgstr "Creează un nou document"
+
+#: ../gedit/gedit-ui.h:58
+msgid "_Open..."
+msgstr "_Deschide..."
+
+#: ../gedit/gedit-ui.h:59 ../gedit/gedit-window.c:1385
+msgid "Open a file"
+msgstr "Deschide un fișier"
+
+#. Edit menu
+#: ../gedit/gedit-ui.h:62
+msgid "Pr_eferences"
+msgstr "_Preferințe"
+
+#: ../gedit/gedit-ui.h:63
+msgid "Configure the application"
+msgstr "Configurare aplicație"
+
+#. Help menu
+#: ../gedit/gedit-ui.h:66
+msgid "_Contents"
+msgstr "_Conținut"
+
+#: ../gedit/gedit-ui.h:67
+msgid "Open the gedit manual"
+msgstr "Deschide manualul gedit"
+
+#: ../gedit/gedit-ui.h:69
+msgid "About this application"
+msgstr "Despre această aplicație"
+
+#: ../gedit/gedit-ui.h:73
+msgid "Leave fullscreen mode"
+msgstr "Părăsește modul pe tot ecranul"
+
+#: ../gedit/gedit-ui.h:81
+msgid "Save the current file"
+msgstr "Salvează fișierul curent"
+
+#: ../gedit/gedit-ui.h:82
+msgid "Save _As..."
+msgstr "Salvează c_a..."
+
+#: ../gedit/gedit-ui.h:83
+msgid "Save the current file with a different name"
+msgstr "Salvează fișierul curent cu un alt nume"
+
+#: ../gedit/gedit-ui.h:85
+msgid "Revert to a saved version of the file"
+msgstr "Revino la versiunea salvată a fișierului"
+
+#: ../gedit/gedit-ui.h:87
+msgid "Page Set_up..."
+msgstr "Co_nfigurare pagină..."
+
+#: ../gedit/gedit-ui.h:88
+msgid "Setup the page settings"
+msgstr "Definește caracteristicile paginii"
+
+#: ../gedit/gedit-ui.h:90
+msgid "Print Previe_w"
+msgstr "Pre_vizualizare tipărire"
+
+#: ../gedit/gedit-ui.h:91
+msgid "Print preview"
+msgstr "Previzualizare tipărire"
+
+#: ../gedit/gedit-ui.h:92
+msgid "_Print..."
+msgstr "_Tipărește..."
+
+#: ../gedit/gedit-ui.h:93
+msgid "Print the current page"
+msgstr "Tipărește pagina curentă"
+
+#: ../gedit/gedit-ui.h:95
+msgid "Close the current file"
+msgstr "Închide fișierul curent"
+
+#: ../gedit/gedit-ui.h:99
+msgid "Undo the last action"
+msgstr "Anulează ultima acțiune"
+
+#: ../gedit/gedit-ui.h:101
+msgid "Redo the last undone action"
+msgstr "Refă ultima acțiune anulată"
+
+#: ../gedit/gedit-ui.h:103
+msgid "Cut the selection"
+msgstr "Taie selecția"
+
+#: ../gedit/gedit-ui.h:105
+msgid "Copy the selection"
+msgstr "Copiază selecția"
+
+#: ../gedit/gedit-ui.h:107
+msgid "Paste the clipboard"
+msgstr "Lipește textul din clipboard"
+
+#: ../gedit/gedit-ui.h:109
+msgid "Delete the selected text"
+msgstr "Șterge textul selectat"
+
+#: ../gedit/gedit-ui.h:110
+msgid "Select _All"
+msgstr "Selectează t_ot"
+
+#: ../gedit/gedit-ui.h:111
+msgid "Select the entire document"
+msgstr "Selectează tot documentul"
+
+#. View menu
+#: ../gedit/gedit-ui.h:114
+msgid "_Highlight Mode"
+msgstr "_Evidențiere text"
+
+#. Search menu
+#: ../gedit/gedit-ui.h:117
+msgid "_Find..."
+msgstr "Cau_tă..."
+
+#: ../gedit/gedit-ui.h:118
+msgid "Search for text"
+msgstr "Caută text"
+
+#: ../gedit/gedit-ui.h:119
+msgid "Find Ne_xt"
+msgstr "Caută _următorul"
+
+#: ../gedit/gedit-ui.h:120
+msgid "Search forwards for the same text"
+msgstr "Caută înainte după același text"
+
+#: ../gedit/gedit-ui.h:121
+msgid "Find Pre_vious"
+msgstr "Caută _precedentul"
+
+#: ../gedit/gedit-ui.h:122
+msgid "Search backwards for the same text"
+msgstr "Caută înapoi după același text"
+
+#: ../gedit/gedit-ui.h:123
+msgid "_Replace..."
+msgstr "Î_nlocuiește..."
+
+#: ../gedit/gedit-ui.h:124
+msgid "Search for and replace text"
+msgstr "Caută și înlocuiește un text"
+
+#: ../gedit/gedit-ui.h:125
+msgid "_Clear Highlight"
+msgstr "E_limină evidențierea textului"
+
+#: ../gedit/gedit-ui.h:126
+msgid "Clear highlighting of search matches"
+msgstr "Elimină evidențierea rezultatelor căutării"
+
+#: ../gedit/gedit-ui.h:127
+msgid "Go to _Line..."
+msgstr "_Du-te la linia..."
+
+#: ../gedit/gedit-ui.h:128
+msgid "Go to a specific line"
+msgstr "Du-te la o anumită linie"
+
+#: ../gedit/gedit-ui.h:129
+msgid "_Incremental Search..."
+msgstr "Căutare _incrementală..."
+
+#: ../gedit/gedit-ui.h:130
+msgid "Incrementally search for text"
+msgstr "Caută incremental text"
+
+#. Documents menu
+#: ../gedit/gedit-ui.h:133
+msgid "_Save All"
+msgstr "_Salvează tot"
+
+#: ../gedit/gedit-ui.h:134
+msgid "Save all open files"
+msgstr "Salvează toate fișierele deschise"
+
+#: ../gedit/gedit-ui.h:135
+msgid "_Close All"
+msgstr "În_chide tot"
+
+#: ../gedit/gedit-ui.h:136
+msgid "Close all open files"
+msgstr "Închide toate fișierele deschise"
+
+#: ../gedit/gedit-ui.h:137
+msgid "_Previous Document"
+msgstr "Documentul _precedent"
+
+#: ../gedit/gedit-ui.h:138
+msgid "Activate previous document"
+msgstr "Activează documentul precedent"
+
+#: ../gedit/gedit-ui.h:139
+msgid "_Next Document"
+msgstr "Documentul _următor"
+
+#: ../gedit/gedit-ui.h:140
+msgid "Activate next document"
+msgstr "Activează documentul următor"
+
+#: ../gedit/gedit-ui.h:141
+msgid "_Move to New Window"
+msgstr "_Mută în fereastră nouă"
+
+#: ../gedit/gedit-ui.h:142
+msgid "Move the current document to a new window"
+msgstr "Mută documentul curent într-o nouă fereastră"
+
+#: ../gedit/gedit-ui.h:149
+msgid "Quit the program"
+msgstr "Ieșire din program"
+
+#: ../gedit/gedit-ui.h:154
+msgid "_Toolbar"
+msgstr "Bară cu _unelte"
+
+#: ../gedit/gedit-ui.h:155
+msgid "Show or hide the toolbar in the current window"
+msgstr "Arată/ascunde bara cu unelte în fereastra curentă"
+
+#: ../gedit/gedit-ui.h:157
+msgid "_Statusbar"
+msgstr "Bara de _stare"
+
+#: ../gedit/gedit-ui.h:158
+msgid "Show or hide the statusbar in the current window"
+msgstr "Arată/ascunde bara de stare în fereastra curentă"
+
+#: ../gedit/gedit-ui.h:161
+msgid "Edit text at fullscreen"
+msgstr "Editare text pe tot ecranul"
+
+#: ../gedit/gedit-ui.h:168
+msgid "Side _Pane"
+msgstr "_Panou lateral"
+
+#: ../gedit/gedit-ui.h:169
+msgid "Show or hide the side pane in the current window"
+msgstr "Arată/ascunde panoul lateral în fereastra curentă"
+
+#: ../gedit/gedit-ui.h:171
+msgid "_Bottom Pane"
+msgstr "Panou _inferior"
+
+#: ../gedit/gedit-ui.h:172
+msgid "Show or hide the bottom pane in the current window"
+msgstr "Arată/ascunde panoul inferior în fereastra curentă"
+
+#: ../gedit/gedit-utils.c:1072
+msgid "Please check your installation."
+msgstr "Vă rugăm verificați instalarea dvs."
+
+#: ../gedit/gedit-utils.c:1141
+#, c-format
+msgid "Unable to open ui file %s. Error: %s"
+msgstr "Nu s-a putut deschide fișierul cu interfața utilizator %s. Eroare: %s"
+
+#: ../gedit/gedit-utils.c:1161
+#, c-format
+msgid "Unable to find the object '%s' inside file %s."
+msgstr "Nu s-a putut găsi obiectul „%s” în fișierul %s."
+
+#. Translators: '/ on <remote-share>'
+#: ../gedit/gedit-utils.c:1321
+#, c-format
+msgid "/ on %s"
+msgstr "/ la %s"
+
+#. create "Wrap Around" menu item.
+#: ../gedit/gedit-view.c:1218
+msgid "_Wrap Around"
+msgstr "Reia de la începu_t"
+
+#. create "Match Entire Word Only" menu item.
+#: ../gedit/gedit-view.c:1228
+msgid "Match _Entire Word Only"
+msgstr "_Potrivire doar pentru întreg cuvântul"
+
+#. create "Match Case" menu item.
+#: ../gedit/gedit-view.c:1238
+msgid "_Match Case"
+msgstr "_Majuscule semnificative"
+
+#: ../gedit/gedit-view.c:1352
+msgid "String you want to search for"
+msgstr "Șirul după care se va căuta:"
+
+#: ../gedit/gedit-view.c:1361
+msgid "Line you want to move the cursor to"
+msgstr "Linia la care doriți să mutați cursorul"
+
+#: ../gedit/gedit-window.c:938
+#, c-format
+msgid "Use %s highlight mode"
+msgstr "Utilizează modul %s de evidențiere"
+
+#. add the "Plain Text" item before all the others
+#. Translators: "Plain Text" means that no highlight mode is selected in the
+#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
+#: ../gedit/gedit-window.c:995 ../gedit/gedit-window.c:1896
+#: ../plugins/externaltools/tools/manager.py:121
+#: ../plugins/externaltools/tools/manager.py:423
+#: ../plugins/externaltools/tools/manager.py:533
+#: ../plugins/externaltools/tools/manager.py:844
+msgid "Plain Text"
+msgstr "Text simplu"
+
+#: ../gedit/gedit-window.c:996
+msgid "Disable syntax highlighting"
+msgstr "Dezactivează evidențierea sintaxei"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1282
+#, c-format
+msgid "Open '%s'"
+msgstr "Deschide '%s'"
+
+#: ../gedit/gedit-window.c:1387
+msgid "Open a recently used file"
+msgstr "Deschide un fișier recent utilizat"
+
+#: ../gedit/gedit-window.c:1393
+msgid "Open"
+msgstr "Deschide"
+
+#: ../gedit/gedit-window.c:1451
+msgid "Save"
+msgstr "Salvează"
+
+#: ../gedit/gedit-window.c:1453
+msgid "Print"
+msgstr "Tipărește"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1621
+#, c-format
+msgid "Activate '%s'"
+msgstr "Activează „%s”"
+
+#: ../gedit/gedit-window.c:1874
+msgid "Use Spaces"
+msgstr "Folosește spații"
+
+#: ../gedit/gedit-window.c:1945
+msgid "Tab Width"
+msgstr "Lățime tab"
+
+#: ../plugins/changecase/changecase.gedit-plugin.desktop.in.h:1
+msgid "Change Case"
+msgstr "Inversează mărimea"
+
+#: ../plugins/changecase/changecase.gedit-plugin.desktop.in.h:2
+msgid "Changes the case of selected text."
+msgstr "Schimbă mărimile literelor în textul selectat"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:222
+msgid "C_hange Case"
+msgstr "In_versează mărimile"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:223
+msgid "All _Upper Case"
+msgstr "Toate _majuscule"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:224
+msgid "Change selected text to upper case"
+msgstr "Schimbă textul selectat în majuscule"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:226
+msgid "All _Lower Case"
+msgstr "Toate _normale"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:227
+msgid "Change selected text to lower case"
+msgstr "Elimină majusculele în textul selectat"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:229
+msgid "_Invert Case"
+msgstr "_Inversează mărimile"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:230
+msgid "Invert the case of selected text"
+msgstr "Inversează mărimile în textul selectat"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:232
+msgid "_Title Case"
+msgstr "Mărimi _titlu"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:233
+msgid "Capitalize the first letter of each selected word"
+msgstr "Transformă în majusculă prima literă a fiecărui cuvânt selectat"
+
+#: ../plugins/checkupdate/checkupdate.gedit-plugin.desktop.in.h:1
+msgid "Check for latest version of gedit"
+msgstr "Verifică pentru ulima versiune a gedit"
+
+#: ../plugins/checkupdate/checkupdate.gedit-plugin.desktop.in.h:2
+msgid "Check update"
+msgstr "Verifică actualizarea"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:192
+msgid "There was an error displaying the url."
+msgstr "S-a produs o eroare la afișarea url-ului."
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:222
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:233
+msgid "_Download"
+msgstr "_Descarcă"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:250
+msgid "There is a new version of gedit"
+msgstr "Există o versiune mai noua a gedit"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:251
+msgid ""
+"You can download the new version of gedit by pressing on the download button"
+msgstr ""
+"Puteți începe descărcarea noii versiuni de gedit apăsând butonul de "
+"descărcare"
+
+#: ../plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:1
+msgid ""
+"Analyzes the current document and reports the number of words, lines, "
+"characters and non-space characters in it."
+msgstr ""
+"Analizează documentul curent și raportează numărul de cuvinte, linii, "
+"caractere și caractere excluzând spațiile."
+
+#: ../plugins/docinfo/docinfo.gedit-plugin.desktop.in.h:2
+#: ../plugins/docinfo/docinfo.ui.h:8
+msgid "Document Statistics"
+msgstr "Statistici document"
+
+#: ../plugins/docinfo/docinfo.ui.h:2
+msgid "0"
+msgstr "0"
+
+#: ../plugins/docinfo/docinfo.ui.h:3
+msgid "<span weight=\"bold\">File Name</span>"
+msgstr "<span weight=\"bold\">Nume fișier</span>"
+
+#: ../plugins/docinfo/docinfo.ui.h:4
+msgid "Bytes"
+msgstr "Octeți"
+
+#: ../plugins/docinfo/docinfo.ui.h:5
+msgid "Characters (no spaces)"
+msgstr "Caractere (fără spații)"
+
+#: ../plugins/docinfo/docinfo.ui.h:6
+msgid "Characters (with spaces)"
+msgstr "Caractere (cu spații)"
+
+#: ../plugins/docinfo/docinfo.ui.h:7
+msgid "Document"
+msgstr "Document"
+
+#: ../plugins/docinfo/docinfo.ui.h:9
+msgid "Lines"
+msgstr "Linii"
+
+#: ../plugins/docinfo/docinfo.ui.h:10
+msgid "Selection"
+msgstr "Selecție"
+
+#: ../plugins/docinfo/docinfo.ui.h:11
+msgid "Words"
+msgstr "Cuvinte"
+
+#: ../plugins/docinfo/docinfo.ui.h:12
+msgid "_Update"
+msgstr "_Actualizează"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:422
+msgid "_Document Statistics"
+msgstr "Statistici _document"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:424
+msgid "Get statistic info on current document"
+msgstr "Informații statistice despre documentul curent"
+
+#: ../plugins/externaltools/externaltools.gedit-plugin.desktop.in.h:1
+msgid "Execute external commands and shell scripts."
+msgstr "Execută comenzi externe și script-uri shell"
+
+#: ../plugins/externaltools/externaltools.gedit-plugin.desktop.in.h:2
+msgid "External Tools"
+msgstr "Unelte externe"
+
+#: ../plugins/externaltools/tools/__init__.py:172
+msgid "Manage _External Tools..."
+msgstr "Administrează uneltele _externe"
+
+#: ../plugins/externaltools/tools/__init__.py:174
+msgid "Opens the External Tools Manager"
+msgstr "Deschide administratorul de unelte externe"
+
+#: ../plugins/externaltools/tools/__init__.py:178
+msgid "External _Tools"
+msgstr "Unel_te externe"
+
+#: ../plugins/externaltools/tools/__init__.py:180
+msgid "External tools"
+msgstr "Unelte externe"
+
+#: ../plugins/externaltools/tools/__init__.py:212
+msgid "Shell Output"
+msgstr "„Rezultat comandă shell“"
+
+#: ../plugins/externaltools/tools/capture.py:92
+#, python-format
+msgid "Could not execute command: %s"
+msgstr "Nu s-a putut executa comanda: %s"
+
+#: ../plugins/externaltools/tools/functions.py:162
+msgid "You must be inside a word to run this command"
+msgstr ""
+"Trebuie să fiți în interiorul unui cuvânt pentru a rula această comandă"
+
+#: ../plugins/externaltools/tools/functions.py:267
+msgid "Running tool:"
+msgstr "Unealtă de rulare:"
+
+#: ../plugins/externaltools/tools/functions.py:292
+msgid "Done."
+msgstr "Gata."
+
+#: ../plugins/externaltools/tools/functions.py:294
+msgid "Exited"
+msgstr "Terminat"
+
+#: ../plugins/externaltools/tools/manager.py:119
+msgid "All languages"
+msgstr "Toate limbile"
+
+#: ../plugins/externaltools/tools/manager.py:522
+#: ../plugins/externaltools/tools/manager.py:526
+#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/tools.ui.h:2
+msgid "All Languages"
+msgstr "Toate limbile"
+
+#: ../plugins/externaltools/tools/manager.py:632
+msgid "New tool"
+msgstr "Unealtă nouă"
+
+#: ../plugins/externaltools/tools/manager.py:760
+#, python-format
+msgid "This accelerator is already bound to %s"
+msgstr "Aceast accelerator este deja asociat cu „%s”"
+
+#: ../plugins/externaltools/tools/manager.py:809
+msgid "Type a new accelerator, or press Backspace to clear"
+msgstr "Introduceți un nou accelerator sau apăsați [Backspace] pentru ștergere"
+
+#: ../plugins/externaltools/tools/manager.py:811
+msgid "Type a new accelerator"
+msgstr "Introduceți un nou accelerator"
+
+#: ../plugins/externaltools/tools/outputpanel.py:100
+msgid "Stopped."
+msgstr "Oprit."
+
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "All documents"
+msgstr "Toate documentele"
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "All documents except untitled ones"
+msgstr "Toate documentele cu excepția celor nedenumite"
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Append to current document"
+msgstr "Adaugă la documentul curent"
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Create new document"
+msgstr "Creează un nou document"
+
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Current document"
+msgstr "Document curent"
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current line"
+msgstr "Linie curentă"
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection"
+msgstr "Selecție curentă"
+
+#: ../plugins/externaltools/tools/tools.ui.h:10
+msgid "Current selection (default to document)"
+msgstr "Selecția curentă (implicit, tot documentul)"
+
+#: ../plugins/externaltools/tools/tools.ui.h:11
+msgid "Current word"
+msgstr "Cuvânt curent"
+
+#: ../plugins/externaltools/tools/tools.ui.h:12
+msgid "Display in bottom pane"
+msgstr "Afișează în panoul inferior"
+
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "External Tools Manager"
+msgstr "Administrator unelte externe"
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Insert at cursor position"
+msgstr "Inserează la poziția curentă a cursorului"
+
+#: ../plugins/externaltools/tools/tools.ui.h:15
+msgid "Local files only"
+msgstr "Doar fișierele locale"
+
+#: ../plugins/externaltools/tools/tools.ui.h:16
+msgid "Nothing"
+msgstr "Nimic"
+
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Remote files only"
+msgstr "Doar fișierele la distanță"
+
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Replace current document"
+msgstr "Înlocuiește documentul curent"
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "Replace current selection"
+msgstr "Înlocuiește selecția curentă"
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "Untitled documents only"
+msgstr "Doar documentele nesalvate"
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "_Applicability:"
+msgstr "_Aplicabilitate:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+#: ../plugins/snippets/snippets/snippets.ui.h:12
+msgid "_Edit:"
+msgstr "_Editare:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "_Input:"
+msgstr "_Intrare:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
+msgid "_Output:"
+msgstr "Fereastră de _ieșire:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "_Save:"
+msgstr "_Salvează:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:26
+msgid "_Shortcut Key:"
+msgstr "Tastă _scurtătură:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:27
+msgid "_Tools:"
+msgstr "_Unelte:"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:1
+msgid "Build"
+msgstr "Build"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:2
+msgid "Run \"make\" in the document directory"
+msgstr "Execută „make” în dosarul documentului"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
+msgid "Open a terminal in the document location"
+msgstr "Deschide un fișier dintr-o adresă specificată"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
+msgid "Open terminal here"
+msgstr "Deschide un terminal aici"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
+msgid "Remove trailing spaces"
+msgstr "Elimină spațiile din capete"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
+msgid "Remove useless trailing spaces in your file"
+msgstr "Elimită spațiile inutile din fișier"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:1
+msgid "Execute a custom command and put its output in a new document"
+msgstr ""
+"Execută o comandă specifică și plasează rezultatul într-un document nou"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+msgid "Run command"
+msgstr "Execută o comandă"
+
+#: ../plugins/filebrowser/filebrowser.gedit-plugin.desktop.in.h:1
+msgid "Easy file access from the side pane"
+msgstr "Accesează facil fișiere din panoul lateral"
+
+#: ../plugins/filebrowser/filebrowser.gedit-plugin.desktop.in.h:2
+msgid "File Browser Pane"
+msgstr "Panoul de navigare fișiere"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:235
+msgid "File System"
+msgstr "Sistem de fișiere"
+
+#. ex:ts=8:noet:
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:1
+msgid "Enable Restore of Remote Locations"
+msgstr "Activează restaurarea adreselor la distanță"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:2
+msgid "File Browser Filter Mode"
+msgstr "Mod filtrare navigator fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:3
+msgid "File Browser Filter Pattern"
+msgstr "Model filtrare navigator fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:4
+msgid "File Browser Root Directory"
+msgstr "Dosar rădăcină al navigatorului de fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:5
+msgid "File Browser Virtual Root Directory"
+msgstr "Dosar rădăcină virtual al navigatorului de fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:6
+msgid ""
+"If TRUE the file browser plugin will view the directory of the first opened "
+"document given that the file browser hasn't been used yet. (Thus this "
+"generally applies to opening a document from the command line or opening it "
+"with nautilus etc)"
+msgstr ""
+"Dacă este definit pe TRUE, modulul de navigare în fișiere va vizualiza "
+"doarul primului document, atâta timp cât navigatorul de fișiere n-a fost "
+"utilizat încă. (Aceasta se aplică în mod general la deschiderea unui "
+"document din linia de comandă sau din nautilus etc)"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:7
+msgid "Open With Tree View"
+msgstr "Deschide cu vizualizarea arbore"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:8
+msgid ""
+"Open the tree view when the file browser plugin gets loaded instead of the "
+"bookmarks view"
+msgstr ""
+"Deschide vizualizarea arbore când modulul de navigare în fișiere este "
+"încărcat în locul vizualizării favoritelor"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:9
+msgid "Set Location To First Document"
+msgstr "Definește locația la primul document"
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:10
+msgid "Sets whether to enable restoring of remote locations."
+msgstr "Definește activarea restaurărilor de la locațiile la distanță."
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:11
+msgid ""
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
+msgstr ""
+"Dosarul rădăcină al navigatorului de fișiere ce va fi utilizat la încărcarea "
+"modului de navigare în fișiere când onload/tree_view este definit la TRUE."
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:12
+msgid ""
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
+msgstr ""
+"Dosarul rădăcină virtual al navigatorului de fișiere ce va fi utilizat la "
+"încărcarea modului de navigare în fișiere când onload/tree_view este definit "
+"la TRUE. Dosarul rădăcină virtual trebuie să fie tot timpul sub rădăcina "
+"actuală."
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:13
+msgid ""
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr ""
+"Modelul pentru filtrarea din navigatorul de fișiere. Acest filtru lucrează "
+"peste filter_mode."
+
+#: ../plugins/filebrowser/gedit-file-browser.schemas.in.h:14
+msgid ""
+"This value determines what files get filtered from the file browser. Valid "
+"values are: none (filter nothing), hidden (filter hidden files), binary "
+"(filter binary files) and hidden_and_binary (filter both hidden and binary "
+"files)."
+msgstr ""
+"Această valoare determină ce fișiere vor fi filtrate din navigatorul de "
+"fișiere. Valori valide sunt: none (nu filtrează nimic), hidden (filtrează "
+"fișierele ascunse), binary (filtrează fișierele binare) și hidden_and_binary "
+"(filtrează fișierele ascunse și binare)."
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:597
+msgid "_Set root to active document"
+msgstr "_Definește rădăcina la documentul activ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:599
+msgid "Set the root to the active document location"
+msgstr "Definește rădăcina la locația documentului activ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:604
+msgid "_Open terminal here"
+msgstr "_Deschide terminal aici"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:606
+msgid "Open a terminal at the currently opened directory"
+msgstr "Deschide un terminal în dosarul curent"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:742
+msgid "File Browser"
+msgstr "Navigator fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:873
+msgid "An error occurred while creating a new directory"
+msgstr "A intervenit o eroare la crearea unui dosar nou"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:876
+msgid "An error occurred while creating a new file"
+msgstr "A intervenit o eroare la crearea unui fișier nou"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:881
+msgid "An error occurred while renaming a file or directory"
+msgstr "A intervenit o eroare la redenumirea unui fișier sau dosar"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:886
+msgid "An error occurred while deleting a file or directory"
+msgstr "A intervenit o eroare la ștergerea unui fișier sau dosar"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:891
+msgid "An error occurred while opening a directory in the file manager"
+msgstr ""
+"A intervenit o eroare la deschiderea unui dosar în administratorul de fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:895
+msgid "An error occurred while setting a root directory"
+msgstr "A intervenit o eroare la definierea dosarului rădăcină"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:899
+msgid "An error occurred while loading a directory"
+msgstr "A intervenit o eroare la încărcarea unui dosar"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
+msgid "An error occurred"
+msgstr "S-a produs o eroare"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1194
+msgid ""
+"Cannot move file to trash, do you\n"
+"want to delete permanently?"
+msgstr ""
+"Nu pot muta fișierul la gunoi, doriți\n"
+"să îl ștergeți permanent?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1198
+#, c-format
+msgid "The file \"%s\" cannot be moved to the trash."
+msgstr "Fișierul „%s” nu poate fi mutat la gunoi."
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1201
+msgid "The selected files cannot be moved to the trash."
+msgstr "Fișierele selectate nu pot fi mutate la gunoi"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1234
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr "Sigur doriți să ștergeți permanent „%s”?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1237
+msgid "Are you sure you want to permanently delete the selected files?"
+msgstr "Sigur doriți ștergerea permanentă a fișierelor selectate?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1240
+msgid "If you delete an item, it is permanently lost."
+msgstr "Dacă ștergeți un element, nu îl veți mai putea recupera."
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1659
+msgid "(Empty)"
+msgstr "(Gol)"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3297
+msgid ""
+"The renamed file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+"Fișierul redenumit este momentat filtrat. Pentru a-l face vizibil este "
+"nevoie de modificare opțiunilor de filtrare"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3535
+msgid "file"
+msgstr "fișier"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3559
+msgid ""
+"The new file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+"Fișierul nou este momentan filtrat. Pentru a-l face vizibil trebuie să "
+"modificați opțiunile de filtrare"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3587
+msgid "directory"
+msgstr "dosar"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3607
+msgid ""
+"The new directory is currently filtered out. You need to adjust your filter "
+"settings to make the directory visible"
+msgstr ""
+"Dosarul nou este momentat filtrat. Pentru a-l face vizibil este nevoie de "
+"modificare opțiunilor de filtrare"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:701
+msgid "Bookmarks"
+msgstr "Favorite"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:782
+msgid "_Filter"
+msgstr "_Filtru"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:787
+msgid "_Move To Trash"
+msgstr "_Mută la gunoi"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:788
+msgid "Move selected file or folder to trash"
+msgstr "Mută fișierele sau dosarele selectate la gunoi"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:790
+msgid "_Delete"
+msgstr "Șter_ge"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:791
+msgid "Delete selected file or folder"
+msgstr "Șterge fișierul sau dosarul selectat"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:797
+msgid "Up"
+msgstr "Sus"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:798
+msgid "Open the parent folder"
+msgstr "Deschide dosarul părinte"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:803
+msgid "_New Folder"
+msgstr "Dosar _nou"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:804
+msgid "Add new empty folder"
+msgstr "Adaugă un dosar nou"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:806
+msgid "New F_ile"
+msgstr "F_ișier nou"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:807
+msgid "Add new empty file"
+msgstr "Adaugă un fișier nou"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:812
+msgid "_Rename"
+msgstr "_Redenumește"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:813
+msgid "Rename selected file or folder"
+msgstr "Redenumește fișierul sau dosarul selectat"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:819
+msgid "_Previous Location"
+msgstr "Adresa _precedentă"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
+msgid "Go to the previous visited location"
+msgstr "Salt la adresa precedentă vizitată"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:823
+msgid "_Next Location"
+msgstr "Adresa _următoare"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:824
+msgid "Go to the next visited location"
+msgstr "Salt la adresa următoare vizitată"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:825
+msgid "Re_fresh View"
+msgstr "Actualizează a_fișarea"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:826
+msgid "Refresh the view"
+msgstr "Actualizează afișarea"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:845
+msgid "_View Folder"
+msgstr "_Vizualizare dosar"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:828
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:846
+msgid "View folder in file manager"
+msgstr "Vizualizează dosarul într-un administrator de fișiere"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:835
+msgid "Show _Hidden"
+msgstr "Afișează a_scunse"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:836
+msgid "Show hidden files and folders"
+msgstr "Afișează fișierele sau dosarele ascunse"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
+msgid "Show _Binary"
+msgstr "Afișează fișiere _binare"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:839
+msgid "Show binary files"
+msgstr "Afișează fișierele binare"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:962
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:971
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:992
+msgid "Previous location"
+msgstr "Adresa precedentă"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:964
+msgid "Go to previous location"
+msgstr "Salt la adresa precedentă"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:966
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:987
+msgid "Go to a previously opened location"
+msgstr "Salt la o adresă deschisă precedent"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:983
+msgid "Next location"
+msgstr "Adresa următoare"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:985
+msgid "Go to next location"
+msgstr "Salt la adresa următoare"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1197
+msgid "_Match Filename"
+msgstr "_Potrivește numele de fișier"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
+#, c-format
+msgid "No mount object for mounted volume: %s"
+msgstr "Nu exită obiect de montare pentru volumul montat: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2152
+#, c-format
+msgid "Could not open media: %s"
+msgstr "Nu s-a putut deschide mediu: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2199
+#, c-format
+msgid "Could not mount volume: %s"
+msgstr "Nu s-a putut monta volumul: %s"
+
+#: ../plugins/indent/gedit-indent-plugin.c:56
+msgid "_Indent"
+msgstr "_Indentează"
+
+#: ../plugins/indent/gedit-indent-plugin.c:58
+msgid "Indent selected lines"
+msgstr "Indentează liniile selectate"
+
+#: ../plugins/indent/gedit-indent-plugin.c:63
+msgid "U_nindent"
+msgstr "_Deindentează"
+
+#: ../plugins/indent/gedit-indent-plugin.c:65
+msgid "Unindent selected lines"
+msgstr "Deindentează liniile selectate"
+
+#: ../plugins/indent/indent.gedit-plugin.desktop.in.h:1
+msgid "Indent Lines"
+msgstr "Indentează linii"
+
+#: ../plugins/indent/indent.gedit-plugin.desktop.in.h:2
+msgid "Indents or un-indents selected lines."
+msgstr "Indentează sau deindentează liniile selectate"
+
+#: ../plugins/modelines/modelines.gedit-plugin.desktop.in.h:1
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr ""
+"Suport gedit pentru linii de mod (modelines) în stilul Emacs, Kate și Vim."
+
+#: ../plugins/modelines/modelines.gedit-plugin.desktop.in.h:2
+msgid "Modelines"
+msgstr "Linii de mod (modelines)"
+
+#: ../plugins/pythonconsole/pythonconsole.gedit-plugin.desktop.in.h:1
+msgid "Interactive python console standing in the bottom panel"
+msgstr "Consolă python în panoul inferior"
+
+#: ../plugins/pythonconsole/pythonconsole.gedit-plugin.desktop.in.h:2
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:49
+msgid "Python Console"
+msgstr "Consolă Python"
+
+#. ex:et:ts=4:
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
+msgid "C_ommand color:"
+msgstr "Culoare c_omandă:"
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
+msgid "_Error color:"
+msgstr "Culoare _eroare:"
+
+#. ex:ts=8:et:
+#: ../plugins/quickopen/quickopen/popup.py:34
+#: ../plugins/quickopen/quickopen.gedit-plugin.desktop.in.h:1
+msgid "Quick Open"
+msgstr "Deschidere rapidă"
+
+#: ../plugins/quickopen/quickopen/windowhelper.py:68
+msgid "Quick open"
+msgstr "Deschidere rapidă"
+
+#: ../plugins/quickopen/quickopen/windowhelper.py:69
+msgid "Quickly open documents"
+msgstr "Deschidere rapidă a documentelor"
+
+#: ../plugins/quickopen/quickopen.gedit-plugin.desktop.in.h:2
+msgid "Quickly open files"
+msgstr "Deschidere rapidă a fișierelor"
+
+#: ../plugins/snippets/snippets.gedit-plugin.desktop.in.h:1
+msgid "Insert often used pieces of text in a fast way"
+msgstr "Inserează într-un mod facil bucăți de text folosite des"
+
+#: ../plugins/snippets/snippets.gedit-plugin.desktop.in.h:2
+msgid "Snippets"
+msgstr "Bucăți de text"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:2
+msgid "<b>Activation</b>"
+msgstr "<b>Activare</b>"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:3
+msgid "Create new snippet"
+msgstr "Creează fragment nou"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+#: ../plugins/snippets/snippets/Manager.py:420
+msgid "Delete selected snippet"
+msgstr "Șterge fragment selectat"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:5
+msgid "Export selected snippets"
+msgstr "Exportă fragmentele selectate"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:6
+#: ../plugins/snippets/snippets/Manager.py:808
+msgid "Import snippets"
+msgstr "Importă fragmente"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:7
+msgid "S_hortcut key:"
+msgstr "Tastă _scurtătură:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:8
+msgid "Shortcut key with which the snippet is activated"
+msgstr "Combinația de taste cu care se activează fragmentul"
+
+#. self['hbox_tab_trigger'].set_spacing(0)
+#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: ../plugins/snippets/snippets/Manager.py:697
+msgid "Single word with which the snippet is activated after pressing tab"
+msgstr "Un singur cuvânt care activează fragmentul după ce se apasă tasta TAB"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:10
+msgid "Snippets Manager"
+msgstr "Administrator bucăți de text"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:11
+msgid "_Drop targets:"
+msgstr "Aban_donează și renunță la următoarele ținte:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+msgid "_Snippets:"
+msgstr "_Bucăți de text:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:14
+msgid "_Tab trigger:"
+msgstr "Declanșator _tab:"
+
+#: ../plugins/snippets/snippets/WindowHelper.py:74
+msgid "Manage _Snippets..."
+msgstr "Administrează _blocuri de text..."
+
+#: ../plugins/snippets/snippets/WindowHelper.py:75
+msgid "Manage snippets"
+msgstr "Administrează bucăți de text"
+
+#: ../plugins/snippets/snippets/Manager.py:45
+msgid "Snippets archive"
+msgstr "Arhivă fragmente"
+
+#: ../plugins/snippets/snippets/Manager.py:70
+msgid "Add a new snippet..."
+msgstr "Adaugă o nouă bucată de text"
+
+#: ../plugins/snippets/snippets/Manager.py:120
+msgid "Global"
+msgstr "Global"
+
+#: ../plugins/snippets/snippets/Manager.py:417
+msgid "Revert selected snippet"
+msgstr "Refă fragmente selectate"
+
+#. self['hbox_tab_trigger'].set_spacing(3)
+#: ../plugins/snippets/snippets/Manager.py:690
+msgid ""
+"This is not a valid tab trigger. Triggers can either contain letters or a "
+"single, non alphanumeric, character like {, [, etcetera."
+msgstr ""
+"Acesta nu este un declanșator valid de tab. Declanșatoarele pot conține fie "
+"litere sau un singur caracter non alfanumeric, ca {, [, etc."
+
+#: ../plugins/snippets/snippets/Manager.py:787
+#, python-format
+msgid "The following error occurred while importing: %s"
+msgstr "S-a produs următoarea eroare la importare: %s"
+
+#: ../plugins/snippets/snippets/Manager.py:794
+msgid "Import successfully completed"
+msgstr "Import finalizat cu succes"
+
+#: ../plugins/snippets/snippets/Manager.py:813
+#: ../plugins/snippets/snippets/Manager.py:899
+#: ../plugins/snippets/snippets/Manager.py:962
+msgid "All supported archives"
+msgstr "Toate arhivele suportate"
+
+#: ../plugins/snippets/snippets/Manager.py:814
+#: ../plugins/snippets/snippets/Manager.py:900
+#: ../plugins/snippets/snippets/Manager.py:963
+msgid "Gzip compressed archive"
+msgstr "Arhivă Gzip"
+
+#: ../plugins/snippets/snippets/Manager.py:815
+#: ../plugins/snippets/snippets/Manager.py:901
+#: ../plugins/snippets/snippets/Manager.py:964
+msgid "Bzip2 compressed archive"
+msgstr "Arhivă comprimată bzip2"
+
+#: ../plugins/snippets/snippets/Manager.py:816
+msgid "Single snippets file"
+msgstr "Fișier cu un singur fragment"
+
+#: ../plugins/snippets/snippets/Manager.py:817
+#: ../plugins/snippets/snippets/Manager.py:903
+#: ../plugins/snippets/snippets/Manager.py:966
+msgid "All files"
+msgstr "Toate fișierele"
+
+#: ../plugins/snippets/snippets/Manager.py:829
+#, python-format
+msgid "The following error occurred while exporting: %s"
+msgstr "S-a produs următoarea eroare la exportare: %s"
+
+#: ../plugins/snippets/snippets/Manager.py:833
+msgid "Export successfully completed"
+msgstr "Export finalizat cu succes"
+
+#. Ask if system snippets should also be exported
+#: ../plugins/snippets/snippets/Manager.py:873
+#: ../plugins/snippets/snippets/Manager.py:940
+msgid "Do you want to include selected <b>system</b> snippets in your export?"
+msgstr "Doriți să excludeți din export fragmentele <b>sistem</b> selectate?"
+
+#: ../plugins/snippets/snippets/Manager.py:888
+#: ../plugins/snippets/snippets/Manager.py:958
+msgid "There are no snippets selected to be exported"
+msgstr "Nu au fost selectate fragmente pentru exportare"
+
+#: ../plugins/snippets/snippets/Manager.py:893
+#: ../plugins/snippets/snippets/Manager.py:931
+msgid "Export snippets"
+msgstr "Export fragmente"
+
+#: ../plugins/snippets/snippets/Manager.py:1070
+msgid "Type a new shortcut, or press Backspace to clear"
+msgstr ""
+"Introduceți o nouă combinație de taste sau apăsați [Backspace] pentru "
+"ștergere"
+
+#: ../plugins/snippets/snippets/Manager.py:1072
+msgid "Type a new shortcut"
+msgstr "Introduceți o nouă combinație de taste"
+
+#: ../plugins/snippets/snippets/Exporter.py:65
+#, python-format
+msgid "The archive `%s` could not be created"
+msgstr "Nu s-a putut crea arhiva „%s”"
+
+#: ../plugins/snippets/snippets/Exporter.py:82
+#, python-format
+msgid "Target directory `%s` does not exist"
+msgstr "Dosarul destinație „%s” nu există"
+
+#: ../plugins/snippets/snippets/Exporter.py:85
+#, python-format
+msgid "Target directory `%s` is not a valid directory"
+msgstr "Dosarul destinație „%s” nu este un dosar valid"
+
+#: ../plugins/snippets/snippets/Importer.py:29
+#: ../plugins/snippets/snippets/Importer.py:83
+#, python-format
+msgid "File `%s` does not exist"
+msgstr "Fișierul „%s” nu există"
+
+#: ../plugins/snippets/snippets/Importer.py:32
+#, python-format
+msgid "File `%s` is not a valid snippets file"
+msgstr "Fișierul „%s” nu este un fișier valid de fragmente"
+
+#: ../plugins/snippets/snippets/Importer.py:42
+#, python-format
+msgid "Imported file `%s` is not a valid snippets file"
+msgstr "Fișierul importat „%s” nu este un fișier valid de fragmente"
+
+#: ../plugins/snippets/snippets/Importer.py:52
+#, python-format
+msgid "The archive `%s` could not be extracted"
+msgstr "Nu s-a putut extrage arhiva „%s”"
+
+#: ../plugins/snippets/snippets/Importer.py:70
+#, python-format
+msgid "The following files could not be imported: %s"
+msgstr "Următoarele fișiere nu au putut fi importate: %s"
+
+#: ../plugins/snippets/snippets/Importer.py:86
+#: ../plugins/snippets/snippets/Importer.py:99
+#, python-format
+msgid "File `%s` is not a valid snippets archive"
+msgstr "Fișierul „%s” nu este o arhivă validă de fragmente"
+
+#: ../plugins/snippets/snippets/Placeholder.py:571
+#, python-format
+msgid ""
+"Execution of the python command (%s) exceeds the maximum time, execution "
+"aborted."
+msgstr ""
+"Execuția comenzii python (%s) a depășit timpul maxim, abandonez execuția."
+
+#: ../plugins/snippets/snippets/Placeholder.py:579
+#, python-format
+msgid "Execution of the python command (%s) failed: %s"
+msgstr "Execuția comenzii python (%s) a eșuat: %s"
+
+#: ../plugins/sort/gedit-sort-plugin.c:86
+msgid "S_ort..."
+msgstr "_Sortează..."
+
+#: ../plugins/sort/gedit-sort-plugin.c:88
+msgid "Sort the current document or selection"
+msgstr "Sortează documentul sau selecția curentă"
+
+#: ../plugins/sort/sort.gedit-plugin.desktop.in.h:1
+#: ../plugins/sort/sort.ui.h:3
+msgid "Sort"
+msgstr "Sortare"
+
+#: ../plugins/sort/sort.gedit-plugin.desktop.in.h:2
+msgid "Sorts a document or selected text."
+msgstr "Sortează un document sau un text selectat."
+
+#: ../plugins/sort/sort.ui.h:1
+msgid "R_emove duplicates"
+msgstr "Ș_terge duplicatele"
+
+#: ../plugins/sort/sort.ui.h:2
+msgid "S_tart at column:"
+msgstr "Î_ncepe de la coloana:"
+
+#: ../plugins/sort/sort.ui.h:4
+msgid "You cannot undo a sort operation"
+msgstr "Nu puteți anula o operație de sortare"
+
+#: ../plugins/sort/sort.ui.h:5
+msgid "_Ignore case"
+msgstr "_Ignoră majusculele"
+
+#: ../plugins/sort/sort.ui.h:6
+msgid "_Reverse order"
+msgstr "Ordine _inversă"
+
+#: ../plugins/sort/sort.ui.h:7
+msgid "_Sort"
+msgstr "_Sortează"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:418
+#: ../plugins/spell/gedit-spell-checker-dialog.c:499
+msgid "(no suggested words)"
+msgstr "(nici o sugestie)"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:442
+msgid "_More..."
+msgstr "_Mai mult..."
+
+#. Ignore all
+#: ../plugins/spell/gedit-automatic-spell-checker.c:497
+msgid "_Ignore All"
+msgstr "_Ignoră tot"
+
+#. + Add to Dictionary
+#: ../plugins/spell/gedit-automatic-spell-checker.c:512
+msgid "_Add"
+msgstr "Ada_ugă"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:551
+msgid "_Spelling Suggestions..."
+msgstr "_Sugestii ortografice..."
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:289
+msgid "Check Spelling"
+msgstr "Verificare ortografică"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:300
+msgid "Suggestions"
+msgstr "Sugestii"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:605
+msgid "(correct spelling)"
+msgstr "(ortografie corectă)"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:748
+msgid "Completed spell checking"
+msgstr "Verificarea ortografică s-a terminat"
+
+#. Translators: the first %s is the language name, and
+#. * the second %s is the locale name. Example:
+#. * "French (France)"
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:285
+#: ../plugins/spell/gedit-spell-checker-language.c:291
+#, c-format
+msgctxt "language"
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#. Translators: this refers to an unknown language code
+#. * (one which isn't in our built-in list).
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:300
+#, c-format
+msgctxt "language"
+msgid "Unknown (%s)"
+msgstr "Necunoscut (%s)"
+
+#. Translators: this refers the Default language used by the
+#. * spell checker
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:406
+msgctxt "language"
+msgid "Default"
+msgstr "Implicit"
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:141
+#: ../plugins/spell/languages-dialog.ui.h:2
+msgid "Set language"
+msgstr "Definire limbă"
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:195
+msgid "Languages"
+msgstr "Limbi"
+
+#: ../plugins/spell/gedit-spell-plugin.c:75
+msgid "_Check Spelling..."
+msgstr "_Verifică ortografie..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:77
+msgid "Check the current document for incorrect spelling"
+msgstr "Verifică documentul curent pentru greșeli de ortografie"
+
+#: ../plugins/spell/gedit-spell-plugin.c:83
+msgid "Set _Language..."
+msgstr "Definire _limbă..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:85
+msgid "Set the language of the current document"
+msgstr "Definiți limba documentului curent"
+
+#: ../plugins/spell/gedit-spell-plugin.c:94
+msgid "_Autocheck Spelling"
+msgstr "Verificare ortografică _automată"
+
+#: ../plugins/spell/gedit-spell-plugin.c:96
+msgid "Automatically spell-check the current document"
+msgstr "Verifică automat ortografia documentului curent"
+
+#: ../plugins/spell/gedit-spell-plugin.c:760
+msgid "The document is empty."
+msgstr "Acest document este gol."
+
+#: ../plugins/spell/gedit-spell-plugin.c:792
+msgid "No misspelled words"
+msgstr "Nici un cuvânt ortografiat greșit"
+
+#: ../plugins/spell/languages-dialog.ui.h:1
+msgid "Select the _language of the current document."
+msgstr "Selectați _limba documentului curent."
+
+#: ../plugins/spell/spell-checker.ui.h:1
+#: ../plugins/time/gedit-time-dialog.ui.h:2
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
+msgid "*"
+msgstr "*"
+
+#: ../plugins/spell/spell-checker.ui.h:2
+msgid "<b>Language</b>"
+msgstr "<b>Limbă</b>"
+
+#: ../plugins/spell/spell-checker.ui.h:3
+msgid "<b>word</b>"
+msgstr "<b>cuvânt</b>"
+
+#: ../plugins/spell/spell-checker.ui.h:4
+msgid "Add w_ord"
+msgstr "Adaugă cu_vântul"
+
+#: ../plugins/spell/spell-checker.ui.h:5
+msgid "Cha_nge"
+msgstr "_Schimbă"
+
+#: ../plugins/spell/spell-checker.ui.h:6
+msgid "Change A_ll"
+msgstr "Schimbă t_ot"
+
+#: ../plugins/spell/spell-checker.ui.h:7
+msgid "Change _to:"
+msgstr "Schimbă î_n:"
+
+#: ../plugins/spell/spell-checker.ui.h:8
+msgid "Check _Word"
+msgstr "Verifică _cuvântul"
+
+#: ../plugins/spell/spell-checker.ui.h:9
+msgid "Check spelling"
+msgstr "Verificare ortografică"
+
+#: ../plugins/spell/spell-checker.ui.h:10
+msgid "Ignore _All"
+msgstr "Ignoră _tot"
+
+#: ../plugins/spell/spell-checker.ui.h:11
+msgid "Language:"
+msgstr "Limbă:"
+
+#: ../plugins/spell/spell-checker.ui.h:12
+msgid "Misspelled word:"
+msgstr "Cuvânt ortografiat greșit:"
+
+#: ../plugins/spell/spell-checker.ui.h:13
+msgid "User dictionary:"
+msgstr "Dicționar personal:"
+
+#: ../plugins/spell/spell-checker.ui.h:14
+msgid "_Ignore"
+msgstr "_Ignoră"
+
+#: ../plugins/spell/spell-checker.ui.h:15
+msgid "_Suggestions:"
+msgstr "_Sugestii:"
+
+#: ../plugins/spell/spell.gedit-plugin.desktop.in.h:1
+msgid "Checks the spelling of the current document."
+msgstr "Verifică ortografia documentului curent."
+
+#: ../plugins/spell/spell.gedit-plugin.desktop.in.h:2
+msgid "Spell Checker"
+msgstr "Verificare ortografică"
+
+#: ../plugins/taglist/gedit-taglist-plugin.c:98
+#: ../plugins/taglist/gedit-taglist-plugin-panel.c:694
+#: ../plugins/taglist/gedit-taglist-plugin-panel.c:710
+msgid "Tags"
+msgstr "Etichete"
+
+#: ../plugins/taglist/gedit-taglist-plugin-panel.c:605
+msgid "Select the group of tags you want to use"
+msgstr "Selectați grupul de etichete pe care doriți să-l utilizați"
+
+#: ../plugins/taglist/gedit-taglist-plugin-panel.c:624
+msgid "_Preview"
+msgstr "_Previzualizare"
+
+#: ../plugins/taglist/gedit-taglist-plugin-panel.c:691
+msgid "Available Tag Lists"
+msgstr "Lista de etichete disponibile"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:1
+msgid "Abbreviated form"
+msgstr "Formă abreviată"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:2
+msgid "Abbreviation"
+msgstr "Abreviere"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:3
+msgid "Above"
+msgstr "Sus"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:4
+msgid "Accessibility key character"
+msgstr "Caracter pentru cheie de acesibilitate"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:5
+msgid "Acronym"
+msgstr "Acronim"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:6
+msgid "Align"
+msgstr "Aliniere"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:7
+msgid "Alignment character"
+msgstr "Caracter de aliniere"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:8
+msgid "Alternative"
+msgstr "Alternative"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:9
+msgid "Anchor"
+msgstr "Ancoră"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:10
+msgid "Anchor URI"
+msgstr "URI ancoră"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:11
+msgid "Applet class file code"
+msgstr "Cod clasă applet"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:13
+msgid "Applet class file code (deprecated)"
+msgstr "Fișier cu cod clasă applet (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:14
+msgid "Array"
+msgstr "Vector"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:15
+msgid "Associated information"
+msgstr "Informație asociată"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:16
+msgid "Author info"
+msgstr "Info autor"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:17
+msgid "Axis related headers"
+msgstr "Antet legat de axe"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:18
+msgid "Background color"
+msgstr "Culoare fundal"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:20
+msgid "Background color (deprecated)"
+msgstr "Culoare fundal (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:21
+msgid "Background texture tile"
+msgstr "Textură tapet fundal"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:23
+msgid "Background texture tile (deprecated)"
+msgstr "Textură tapet fundal (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:24
+msgid "Base URI"
+msgstr "URI de bază"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:25
+msgid "Base font"
+msgstr "Font de bază"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:27
+msgid "Base font (deprecated)"
+msgstr "Font de bază (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:28
+msgid "Bold"
+msgstr "Aldin"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:29
+msgid "Border"
+msgstr "Contur"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:31
+msgid "Border (deprecated)"
+msgstr "Chenar (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:32
+msgid "Border color"
+msgstr "Culoare contur"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:33
+msgid "Cell rowspan"
+msgstr "Expensiune rând celule"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:34
+msgid "Center"
+msgstr "Centru"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:36
+msgid "Center (deprecated)"
+msgstr "Centrare (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:37
+msgid "Character encoding of linked resource"
+msgstr "Codări caractere ale resurselor referite"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:38
+msgid "Checked (state)"
+msgstr "Bifat(stare)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:39
+msgid "Checked state"
+msgstr "Stare bifare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:40
+msgid "Citation"
+msgstr "Citat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:41
+msgid "Cite reason for change"
+msgstr "Menționați motivul schimbării"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:42
+msgid "Class implementation ID"
+msgstr "ID implementare clasă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:43
+msgid "Class list"
+msgstr "Listă clase"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:44
+msgid "Clear text flow control"
+msgstr "Curăță control aranjare text"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:45
+msgid "Code content type"
+msgstr "Cod tip conținut"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:46
+msgid "Color of selected links"
+msgstr "Culoare legături selectate"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:48
+msgid "Color of selected links (deprecated)"
+msgstr "Culoare legături selectate (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:49
+msgid "Column span"
+msgstr "Expansiune coloană"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:50
+msgid "Columns"
+msgstr "Coloane"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:51
+msgid "Comment"
+msgstr "Comentariu"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:52
+msgid "Computer code fragment"
+msgstr "Fragment cod computer"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:53
+msgid "Content scheme"
+msgstr "Schemă conținut"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:54
+msgid "Content type"
+msgstr "Tip conținut"
+
+#. The "type" attribute is deprecated for the "ol" tag only,
+#. since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:57
+msgid "Content type (deprecated)"
+msgstr "Tip conținut (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:58
+msgid "Coordinates"
+msgstr "Coordonate"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:59
+msgid "DIV Style container"
+msgstr "Container stil DIV"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:60
+msgid "DIV container"
+msgstr "Container DIV"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:61
+msgid "Date and time of change"
+msgstr "Data și timpul modificării"
+
+#. NOTE: used in "object" tag
+#: ../plugins/taglist/HTML.tags.xml.in.h:63
+msgid "Declare flag"
+msgstr "Indicator declarație"
+
+#. Translators: DEFER is an optional attribute of the <script> tag.
+#. It indicates that the script is not going to generate any document
+#. content. The browser can continue parsing and drawing the page.
+#: ../plugins/taglist/HTML.tags.xml.in.h:67
+msgid "Defer attribute"
+msgstr "Atribut deferire"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:68
+msgid "Definition description"
+msgstr "Descriere definiție"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:69
+msgid "Definition list"
+msgstr "Listă definiții"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:70
+msgid "Definition term"
+msgstr "Termen definiție"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:71
+msgid "Deleted text"
+msgstr "Text șters"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:72
+msgid "Direction"
+msgstr "Direcție"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:73
+msgid "Directionality"
+msgstr "Direcție"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:75
+msgid "Directionality (deprecated)"
+msgstr "Direcție (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:76
+msgid "Directory list"
+msgstr "Listă dosare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:77
+msgid "Disabled"
+msgstr "Dezactivat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:78
+msgid "Document base"
+msgstr "Bază document"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:79
+msgid "Document body"
+msgstr "Corp document"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:80
+msgid "Document head"
+msgstr "Antet document"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:81
+msgid "Document title"
+msgstr "Titlu document"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:82
+msgid "Document type"
+msgstr "Tip document"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:83
+msgid "Element ID"
+msgstr "ID element"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:84
+msgid "Embedded object"
+msgstr "Obiect encapsulat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:85
+#: ../plugins/taglist/Latex.tags.xml.in.h:9
+msgid "Emphasis"
+msgstr "Accentuare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:86
+msgid "Encode type"
+msgstr "Tip codare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:87
+msgid "Figure"
+msgstr "Figură"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:88
+msgid "Font face"
+msgstr "Nume font"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:90
+msgid "Font face (deprecated)"
+msgstr "Aspect font (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:91
+msgid "For label"
+msgstr "Etichetă font"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:92
+msgid "Forced line break"
+msgstr "Sfârșit de linie forțat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:93
+msgid "Form"
+msgstr "Formular"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:94
+msgid "Form action handler"
+msgstr "Operator de acțiuni în formular"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:95
+msgid "Form control group"
+msgstr "Grup de controale în forumular"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:96
+msgid "Form field label text"
+msgstr "Etichetă text de câmp în formular"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:97
+msgid "Form input"
+msgstr "Câmp de introducere în formular"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:98
+msgid "Form input type"
+msgstr "Tip câmp de introducere în formular"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:99
+msgid "Form method"
+msgstr "Metodă a formularului"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:100
+msgid "Forward link"
+msgstr "Legătură redirecționare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:101
+msgid "Frame"
+msgstr "Cadru"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:102
+msgid "Frame render parts"
+msgstr "Porțiuni cadru de render"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:103
+msgid "Frame source"
+msgstr "Sursă cadru"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:104
+msgid "Frame target"
+msgstr "Țintă cadru"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:105
+msgid "Frameborder"
+msgstr "Margine cadru"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:106
+msgid "Frameset"
+msgstr "Set cadre"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:107
+msgid "Frameset columns"
+msgstr "Coloane set de cadre"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:108
+msgid "Frameset rows"
+msgstr "Rânduri set de cadre"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:109
+msgid "Framespacing"
+msgstr "Spațiere set de cadre"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:110
+msgid "Generic embedded object"
+msgstr "Obiect înglobat generic"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:111
+msgid "Generic metainformation"
+msgstr "Metainformație generică"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:112
+msgid "Generic span"
+msgstr "Delimitare generică"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:113
+msgid "HREF URI"
+msgstr "URI HREF"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:114
+msgid "HTML - Special Characters"
+msgstr "HTML - caractere speciale"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:115
+msgid "HTML - Tags"
+msgstr "HTML - Tag-uri"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:116
+msgid "HTML root element"
+msgstr "HTML - element rădăcină"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:117
+msgid "HTML version"
+msgstr "HTML - versiune"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:118
+msgid "HTTP header name"
+msgstr "HTTP - nume antet"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:119
+msgid "Header cell ID's"
+msgstr "ID-ul celulei antet"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:120
+msgid "Heading"
+msgstr "Subtitlu"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:121
+msgid "Heading 1"
+msgstr "Subtitlu 1"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:122
+msgid "Heading 2"
+msgstr "Subtitlu 2"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:123
+msgid "Heading 3"
+msgstr "Subtitlu 3"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:124
+msgid "Heading 4"
+msgstr "Subtitlu 4"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:125
+msgid "Heading 5"
+msgstr "Subtitlu 5"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:126
+msgid "Heading 6"
+msgstr "Subtitlu 6"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:127
+msgid "Height"
+msgstr "Înălțime"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:128
+msgid "Horizontal rule"
+msgstr "Linie orizontală"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:129
+msgid "Horizontal space"
+msgstr "Spațiu orizontal"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:131
+msgid "Horizontal space (deprecated)"
+msgstr "Spațiu orizontal (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:132
+msgid "HttP header name"
+msgstr "Nume antet HTTP"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:133
+msgid "I18N BiDi over-ride"
+msgstr "Suprascriere BiDi I18N"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:134
+msgid "Image"
+msgstr "Imagine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:135
+msgid "Image map"
+msgstr "Hartă imagine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:136
+msgid "Image map area"
+msgstr "Zonă hartă imagine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:137
+msgid "Image map name"
+msgstr "Nume hartă imagine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:138
+msgid "Image source"
+msgstr "Sursă imagine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:139
+msgid "Inline frame"
+msgstr "Cadru înglobat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:140
+msgid "Inline layer"
+msgstr "Strat inline"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:141
+msgid "Inserted text"
+msgstr "Text inserat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:142
+msgid "Instance definition"
+msgstr "Definiție instanță"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:143
+msgid "Italic text"
+msgstr "Text italic"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:144
+msgid "Java applet"
+msgstr "Applet Java"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:146
+msgid "Java applet (deprecated)"
+msgstr "Applet Java (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:147
+msgid "Label"
+msgstr "Etichetă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:148
+msgid "Language code"
+msgstr "Cod limbaj"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:149
+msgid "Large text style"
+msgstr "Stil text mărit"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:150
+msgid "Layer"
+msgstr "Strat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:151
+msgid "Link color"
+msgstr "Culoare legătură"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:153
+msgid "Link color (deprecated)"
+msgstr "Culoare legătură (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:154
+msgid "List item"
+msgstr "Element listă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:155
+msgid "List of MIME types for file upload"
+msgstr "Lista tipurilor MIME de încărcat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:156
+msgid "List of supported character sets"
+msgstr "Lista seturilor de caractere suportate"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:157
+msgid "Listing"
+msgstr "Listă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:158
+msgid "Local change to font"
+msgstr "Font schimbare locală"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:159
+msgid "Long description link"
+msgstr "Legătură descriere lungă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:160
+msgid "Long quotation"
+msgstr "Citat lung"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:161
+msgid "Mail link"
+msgstr "Legătură email"
+
+#. Supported in XHTML 1.0 Frameset DTD only.
+#: ../plugins/taglist/HTML.tags.xml.in.h:163
+msgid "Margin pixel height"
+msgstr "Înălțime pixel de margine"
+
+#. Supported in XHTML 1.0 Frameset DTD only.
+#: ../plugins/taglist/HTML.tags.xml.in.h:165
+msgid "Margin pixel width"
+msgstr "Lungime pixel de margine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:166
+msgid "Marquee"
+msgstr "Marquee"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:167
+msgid "Maximum length of text field"
+msgstr "Lungime maximă a câmpului text"
+
+#. Here I take some liberties: There's no mandatory attributes,
+#. but those are most common, and will likely be used.
+#: ../plugins/taglist/HTML.tags.xml.in.h:170
+msgid "Media-independent link"
+msgstr "Legătură independentă de mediu"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:171
+msgid "Menu list"
+msgstr "Listă meniu"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:173
+msgid "Menu list (deprecated)"
+msgstr "Listă meniu (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:174
+msgid "Multi-line text field"
+msgstr "Câmp text multilinie"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:175
+msgid "Multicolumn"
+msgstr "Multicoloană"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:176
+msgid "Multiple"
+msgstr "Multiplu"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:177
+msgid "Name"
+msgstr "Nume"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:178
+msgid "Named property value"
+msgstr "Valoare proprietate numită"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:179
+msgid "Next ID"
+msgstr "ID următor"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:180
+msgid "No URI"
+msgstr "Fără URI"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:181
+msgid "No embedded objects"
+msgstr "Fără obiecte înglobate"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:182
+msgid "No frames"
+msgstr "Fără cadre"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:183
+msgid "No layers"
+msgstr "Fără straturi"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:184
+msgid "No line break"
+msgstr "Fără sfârșit de linie"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:185
+msgid "No resize"
+msgstr "Fără redimensionare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:186
+msgid "No script"
+msgstr "Fără script"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:187
+msgid "No shade"
+msgstr "Fără umbră"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:189
+msgid "No shade (deprecated)"
+msgstr "Fără umbră (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:190
+msgid "No word wrap"
+msgstr "Fără potrivire de cuvinte"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:192
+msgid "No word wrap (deprecated)"
+msgstr "Fără despărțire pe linii (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:193
+msgid "Non-breaking space"
+msgstr "Spațiu inseparabil"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:194
+msgid "Note"
+msgstr "Notă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:195
+msgid "Object applet file"
+msgstr "Fișier obiect applet"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:197
+msgid "Object applet file (deprecated)"
+msgstr "Fișier obiect applet (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:198
+msgid "Object data reference"
+msgstr "Referință date obiect"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:199
+msgid "Offset for alignment character"
+msgstr "Deplasament pentru caracter de aliniere"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:200
+msgid "OnBlur event"
+msgstr "Eveniment onBlur"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:201
+msgid "OnChange event"
+msgstr "Eveniment onChange"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:202
+msgid "OnClick event"
+msgstr "Eveniment onClick"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:203
+msgid "OnDblClick event"
+msgstr "Eveniment onDblClick"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:204
+msgid "OnFocus event"
+msgstr "Eveniment onFocus"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:205
+msgid "OnKeyDown event"
+msgstr "Eveniment onKeyDown"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:206
+msgid "OnKeyPress event"
+msgstr "Eveniment onKeyPress"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:207
+msgid "OnKeyUp event"
+msgstr "Eveniment onKeyUp"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:208
+msgid "OnLoad event"
+msgstr "Eveniment onLoad"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:209
+msgid "OnMouseDown event"
+msgstr "Eveniment onMouseDown"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:210
+msgid "OnMouseMove event"
+msgstr "Eveniment onMouseMove"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:211
+msgid "OnMouseOut event"
+msgstr "Eveniment onMouseOut"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:212
+msgid "OnMouseOver event"
+msgstr "Eveniment onMouseOver"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:213
+msgid "OnMouseUp event"
+msgstr "Eveniment onMouseUp"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:214
+msgid "OnReset event"
+msgstr "Eveniment onReset"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:215
+msgid "OnSelect event"
+msgstr "Eveniment onSelect"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:216
+msgid "OnSubmit event"
+msgstr "Eveniment onSubmit"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:217
+msgid "OnUnload event"
+msgstr "Eveniment onUnload"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:218
+msgid "Option group"
+msgstr "Grup opțiuni"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:219
+msgid "Option selector"
+msgstr "Selector opțiune"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:220
+msgid "Ordered list"
+msgstr "Listă ordonată"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:221
+msgid "Output media"
+msgstr "Mediu ieșire"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:222
+msgid "Paragraph"
+msgstr "Paragraf"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:223
+msgid "Paragraph class"
+msgstr "Clasă paragraf"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:224
+msgid "Paragraph style"
+msgstr "Stil paragraf"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:225
+msgid "Preformatted listing"
+msgstr "Listă preformatată"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:226
+msgid "Preformatted text"
+msgstr "Text preformatat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:227
+msgid "Profile metainfo dictionary"
+msgstr "Dicționar de metainformații ale profilului"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:228
+msgid "Prompt message"
+msgstr "Mesaj de prompt"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:229
+msgid "Push button"
+msgstr "Buton apăsare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:230
+msgid "Quote"
+msgstr "Citat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:231
+msgid "Range"
+msgstr "Zonă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:232
+msgid "ReadOnly text and password"
+msgstr "Text și parolă ReadOnly"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:233
+msgid "Reduced spacing"
+msgstr "Spațiere redusă"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:235
+msgid "Reduced spacing (deprecated)"
+msgstr "Spațiere redusă (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:236
+msgid "Reverse link"
+msgstr "Legătură inversă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:237
+msgid "Root"
+msgstr "Rădăcină"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:238
+msgid "Rows"
+msgstr "Rânduri"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:239
+msgid "Rulings between rows and columns"
+msgstr "Marcaje între rânduri și coloane"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:240
+msgid "Sample program output, scripts"
+msgstr "Rezultatul programului exemplu, script-uri"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:241
+msgid "Scope covered by header cells"
+msgstr "Zonă cuprinsă în celulele antet"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:243
+msgid "Script language name"
+msgstr "Nume limbaj script"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:244
+msgid "Script statements"
+msgstr "Instrucțiuni script"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:245
+msgid "Scrollbar"
+msgstr "Bară de derulare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:246
+msgid "Selectable option"
+msgstr "Opțiune selectabilă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:247
+msgid "Selected"
+msgstr "Selectat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:248
+msgid "Server-side image map"
+msgstr "Hartă imagine pe server"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:249
+msgid "Shape"
+msgstr "Formă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:250
+msgid "Short inline quotation"
+msgstr "Citat scurt înglobat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:251
+msgid "Single line prompt"
+msgstr "Prompt pe o singură linie"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:252
+msgid "Size"
+msgstr "Dimensiune"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:254
+msgid "Size (deprecated)"
+msgstr "Dimensiune (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:255
+msgid "Small text style"
+msgstr "Stil text mic"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:256
+msgid "Soft line break"
+msgstr "Sfârșit de linie „soft”"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:257
+msgid "Sound"
+msgstr "Sunet"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:258
+msgid "Source"
+msgstr "Sursă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:259
+msgid "Space separated archive list"
+msgstr "Listă de arhive separată prin spațiu"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:260
+msgid "Spacer"
+msgstr "Spațiator"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:261
+msgid "Spacing between cells"
+msgstr "Spațiu între celule"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:262
+msgid "Spacing within cells"
+msgstr "Spațiu în interiorul celulelor"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:263
+msgid "Span"
+msgstr "Delimitare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:264
+msgid "Square root"
+msgstr "Rădăcină pătrată"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:265
+msgid "Standby load msg"
+msgstr "Mesaj de așteptare a încărcării"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:266
+msgid "Starting sequence number"
+msgstr "Număr de start a secvenței"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:268
+msgid "Starting sequence number (deprecated)"
+msgstr "Număr de start a secvenței (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:269
+msgid "Strike-through text"
+msgstr "Text tăiat"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:271
+msgid "Strike-through text (deprecated)"
+msgstr "Stil text tăiat (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:272
+msgid "Strike-through text style"
+msgstr "Stil text tăiat"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:274
+msgid "Strike-through text style (deprecated)"
+msgstr "Stil text tăiat (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:275
+msgid "Strong emphasis"
+msgstr "Accentuare puternică"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:276
+msgid "Style info"
+msgstr "Info stil"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:277
+msgid "Subscript"
+msgstr "Indice"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:278
+msgid "Superscript"
+msgstr "Exponent"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:279
+msgid "Tab order position"
+msgstr "Poziție ordine tab"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:280
+msgid "Table"
+msgstr "Tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:281
+msgid "Table body"
+msgstr "Corp tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:282
+msgid "Table caption"
+msgstr "Titlu tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:283
+msgid "Table column group properties"
+msgstr "Proprietăți grup de colane ale tabelei"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:284
+msgid "Table column properties"
+msgstr "Proprietăți coloane tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:285
+msgid "Table data cell"
+msgstr "Celulă de date"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:286
+msgid "Table footer"
+msgstr "Subsol tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:287
+msgid "Table header"
+msgstr "Antet tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:288
+msgid "Table header cell"
+msgstr "Celulă antet tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:289
+msgid "Table row"
+msgstr "Rând tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:290
+msgid "Table summary"
+msgstr "Sumar tabelă"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:291
+msgid "Target - Blank"
+msgstr "Destinație - blanc"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:292
+msgid "Target - Parent"
+msgstr "Destinație - părinte"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:293
+msgid "Target - Self"
+msgstr "Destinație - identică"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:294
+msgid "Target - Top"
+msgstr "Destinație - sus"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:295
+msgid "Teletype or monospace text style"
+msgstr "Stil text telex sau monospațiat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:296
+msgid "Text"
+msgstr "Text"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:297
+msgid "Text color"
+msgstr "Culoare text"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:299
+msgid "Text color (deprecated)"
+msgstr "Culoare text (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:300
+msgid "Text entered by user"
+msgstr "Text introdus de utilizator"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:301
+msgid "Title"
+msgstr "Titlu"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:302
+msgid "Topmargin in pixels"
+msgstr "Margine de sus în pixeli"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:303
+msgid "URL"
+msgstr "URL"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:304
+msgid "Underlined text style"
+msgstr "Stil text subliniat"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:305
+msgid "Unordered list"
+msgstr "Listă neordonată"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:306
+msgid "Use image map"
+msgstr "Utilizează hartă de imagine"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:307
+msgid "Value"
+msgstr "Valoare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:308
+msgid "Value interpretation"
+msgstr "Interpretare valoare"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:309
+msgid "Variable or program argument"
+msgstr "Variabilă sau argument program"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:310
+msgid "Vertical cell alignment"
+msgstr "Aliniere verticală a celulei"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:311
+msgid "Vertical space"
+msgstr "Spațiu vertical"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:313
+msgid "Vertical space (deprecated)"
+msgstr "Spațiu vertical (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:314
+msgid "Visited link color"
+msgstr "Culoare legătură vizitată"
+
+#. Deprecated since HTML 4.01, not supported in XHTML 1.0 Strict DTD.
+#: ../plugins/taglist/HTML.tags.xml.in.h:316
+msgid "Visited link color (deprecated)"
+msgstr "Culoare legătură vizitată (depășit)"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:317
+msgid "Width"
+msgstr "Lungime"
+
+#: ../plugins/taglist/HTML.tags.xml.in.h:318
+msgid "XHTML 1.0 - Tags"
+msgstr "XHTML 1.0 - Tag-uri"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:1
+msgid "Bibliography (cite)"
+msgstr "Bibliografie (citat)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:2
+msgid "Bibliography (item)"
+msgstr "Bibliografie (element)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:3
+msgid "Bibliography (shortcite)"
+msgstr "Bibliografie (citat scurt)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:4
+msgid "Bibliography (thebibliography)"
+msgstr "Bibliografie (bibiliografia)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:5
+msgid "Brackets ()"
+msgstr "Paranteze ()"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:6
+msgid "Brackets <>"
+msgstr "Paranteze <>"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:7
+msgid "Brackets []"
+msgstr "Paranteze []"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:8
+msgid "Brackets {}"
+msgstr "Paranteze {}"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:10
+msgid "File input"
+msgstr "Intrare fișier"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:11
+msgid "Footnote"
+msgstr "Notă subsol"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:12
+msgid "Function cosin"
+msgstr "Funcția cosin"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:13
+msgid "Function e^"
+msgstr "Funcția e^"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:14
+msgid "Function exp"
+msgstr "Funcția exp"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:15
+msgid "Function log"
+msgstr "Funcția log"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:16
+msgid "Function log10"
+msgstr "Funcția log10"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:17
+msgid "Function sine"
+msgstr "Funcția sine"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:18
+msgid "Greek alpha"
+msgstr "Alfa grecesc"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:19
+msgid "Greek beta"
+msgstr "Beta grecesc"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:20
+msgid "Greek epsilon"
+msgstr "Epsilon grecesc"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:21
+msgid "Greek gamma"
+msgstr "Gama grecesc"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:22
+msgid "Greek lambda"
+msgstr "Lambda grecească"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:23
+msgid "Greek rho"
+msgstr "Rho grecesc"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:24
+msgid "Greek tau"
+msgstr "Tau grecesc"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:25
+msgid "Header 0 (chapter)"
+msgstr "Subtitlu 0 (capitol)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:26
+msgid "Header 0 (chapter*)"
+msgstr "Subtitlu 0 (capitol*)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:27
+msgid "Header 1 (section)"
+msgstr "Subtitlu 1 (secțiune)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:28
+msgid "Header 1 (section*)"
+msgstr "Subtitlu 1 (secțiune*)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:29
+msgid "Header 2 (subsection)"
+msgstr "Subtitlu 2 (subsecțiune)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:30
+msgid "Header 2 (subsection*)"
+msgstr "Subtitlu 2 (subsecțiune*)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:31
+msgid "Header 3 (subsubsection)"
+msgstr "Subtitlu 3 (subsubsecțiune)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:32
+msgid "Header 3 (subsubsection*)"
+msgstr "Subtitlu 3 (subsubsecțiune*)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:33
+msgid "Header 4 (paragraph)"
+msgstr "Subtitlu 4 (paragraf)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:34
+msgid "Header appendix"
+msgstr "Subtitlu anexă"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:35
+msgid "Item"
+msgstr "Element"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:36
+msgid "Item with label"
+msgstr "Element cu etichetă"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:37
+msgid "Latex - Tags"
+msgstr "Latex - Tag-uri"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:38
+msgid "List description"
+msgstr "Descriere listă"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:39
+msgid "List enumerate"
+msgstr "Enumerare listă"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:40
+msgid "List itemize"
+msgstr "Populare listă"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:41
+msgid "Maths (display)"
+msgstr "Matematice (afișare)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:42
+msgid "Maths (inline)"
+msgstr "Matematice (inline)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:43
+msgid "Operator fraction"
+msgstr "Operator fracție"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:44
+msgid "Operator integral (display)"
+msgstr "Operator integrală (afișare)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:45
+msgid "Operator integral (inline)"
+msgstr "Operator integrală (inline)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:46
+msgid "Operator sum (display)"
+msgstr "Operator sumă (afișare)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:47
+msgid "Operator sum (inline)"
+msgstr "Operator sumă (inline)"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:48
+msgid "Reference label"
+msgstr "Etichetă referință"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:49
+msgid "Reference ref"
+msgstr "Ref al referinței"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:50
+msgid "Symbol <<"
+msgstr "Simbol <<"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:51
+msgid "Symbol <="
+msgstr "Simbol <="
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:52
+msgid "Symbol >="
+msgstr "Simbol >="
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:53
+msgid "Symbol >>"
+msgstr "Simbol >>"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:54
+msgid "Symbol and"
+msgstr "Simbol and"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:55
+msgid "Symbol const"
+msgstr "Simbol const"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:56
+msgid "Symbol d-by-dt"
+msgstr "Simbol d-by-dt"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:57
+msgid "Symbol d-by-dt-partial"
+msgstr "Simbol d-by-dt-partial"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:58
+msgid "Symbol d2-by-dt2-partial"
+msgstr "Simbol d2-by-dt2-partial"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:59
+msgid "Symbol dagger"
+msgstr "Simbol dagger"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:60
+msgid "Symbol equiv"
+msgstr "Simbol equiv"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:61
+msgid "Symbol hyphen --"
+msgstr "Simbol cratimă --"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:62
+msgid "Symbol hyphen ---"
+msgstr "Simbol cratimă ---"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:63
+msgid "Symbol infinity"
+msgstr "Simbol infinit"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:64
+msgid "Symbol mathspace ,"
+msgstr "Simbol spațiu matematic ,"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:65
+msgid "Symbol mathspace ."
+msgstr "Simbol spațiu matematic ."
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:66
+msgid "Symbol mathspace _"
+msgstr "Simbol spațiu matematic _"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:67
+msgid "Symbol mathspace __"
+msgstr "Simbol spațiu matematic __"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:68
+msgid "Symbol simeq"
+msgstr "Simbol simeq"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:69
+msgid "Symbol star"
+msgstr "Simbol steluță"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:70
+msgid "Typeface bold"
+msgstr "Font aldin"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:71
+msgid "Typeface italic"
+msgstr "Font italic"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:72
+msgid "Typeface slanted"
+msgstr "Font înclinat"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:73
+msgid "Typeface type"
+msgstr "Tip font"
+
+#: ../plugins/taglist/Latex.tags.xml.in.h:74
+msgid "Unbreakable text"
+msgstr "Text nedespărțibil"
+
+#: ../plugins/taglist/taglist.gedit-plugin.desktop.in.h:1
+msgid ""
+"Provides a method to easily insert into a document commonly used tags/"
+"strings without having to type them."
+msgstr ""
+"Furnizează o metodă ușoară de a insera într-un document etichete sau șiruri "
+"frecvent utilizate fără a fi nevoiți să le scrieți."
+
+#: ../plugins/taglist/taglist.gedit-plugin.desktop.in.h:2
+msgid "Tag list"
+msgstr "Listă etichete"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:1
+msgid "XSLT - Axes"
+msgstr "XSLT - Axe"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:2
+msgid "XSLT - Elements"
+msgstr "XSLT - Elemente"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:3
+msgid "XSLT - Functions"
+msgstr "Fun"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:4
+msgid "ancestor"
+msgstr "înaintaș"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:5
+msgid "ancestor-or-self"
+msgstr "înaintaș-sau-sine"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:6
+msgid "attribute"
+msgstr "atribut"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:7
+msgid "child"
+msgstr "copil"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:8
+msgid "descendant"
+msgstr "descendent"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:9
+msgid "descendant-or-self"
+msgstr "descendent-sau-sine"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:10
+msgid "following"
+msgstr "următor"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:11
+msgid "following-sibling"
+msgstr "următorul-sibling"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:12
+msgid "namespace"
+msgstr "namespace"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:13
+msgid "parent"
+msgstr "părinte"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:14
+msgid "preceding"
+msgstr "precedent"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:15
+msgid "preceding-sibling"
+msgstr "precedentul-sibling"
+
+#: ../plugins/taglist/XSLT.tags.xml.in.h:16
+msgid "self"
+msgstr "sine"
+
+#: ../plugins/taglist/XUL.tags.xml.in.h:1
+msgid "XUL - Tags"
+msgstr "XUL - Tag-uri"
+
+#: ../plugins/time/gedit-time-plugin.c:182
+msgid "In_sert Date and Time..."
+msgstr "In_serează data și ora..."
+
+#: ../plugins/time/gedit-time-plugin.c:184
+msgid "Insert current date and time at the cursor position"
+msgstr "Inserează data și ora curentă la poziția curentă a cursorului"
+
+#: ../plugins/time/gedit-time-plugin.c:613
+msgid "Available formats"
+msgstr "Formate disponibile"
+
+#: ../plugins/time/gedit-time-plugin.c:766
+msgid "Configure insert date/time plugin..."
+msgstr "Configurați modulul „Inserare dată și oră“..."
+
+#: ../plugins/time/time.gedit-plugin.desktop.in.h:1
+msgid "Insert Date/Time"
+msgstr "Inserare dată și oră"
+
+#: ../plugins/time/time.gedit-plugin.desktop.in.h:2
+msgid "Inserts current date and time at the cursor position."
+msgstr "Inserează data și ora curentă la poziția cursorului."
+
+#: ../plugins/time/gedit-time-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+msgid "<span size=\"small\">01/11/2002 17:52:00</span>"
+msgstr "<span size=\"small\">01/11/2002 17:52:00</span>"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:4
+msgid "Insert Date and Time"
+msgstr "Inserare dată și oră"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:5
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
+msgid "Use the _selected format"
+msgstr "Utilizează formatul _selectat"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:6
+msgid "_Insert"
+msgstr "_Inserează"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:7
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+msgid "_Use custom format"
+msgstr "_Utilizează un format personalizat"
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+msgid "<span weight=\"bold\"> When inserting date/time...</span>"
+msgstr "<span weight=\"bold\"> La inserare dată și oră...</span>"
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+msgid "Configure date/time plugin"
+msgstr "Configurați modulul „Inserare dată și oră“"
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:7
+msgid "_Prompt for a format"
+msgstr "_Solicită un format"
+
+#, fuzzy
+#~| msgid "Color Scheme Files"
+#~ msgid "Color Scheme"
+#~ msgstr "Fișiere cu scheme de culori"
+
+#, fuzzy
+#~| msgid "Current line"
+#~ msgid "Current Line"
+#~ msgstr "Linie curentă"
+
+#, fuzzy
+#~| msgid "Footnote"
+#~ msgid "Font"
+#~ msgstr "Notă subsol"
+
+#, fuzzy
+#~| msgid "_Line numbers:"
+#~ msgid "Line Numbers"
+#~ msgstr "_Numerotare linii:"
+
+#, fuzzy
+#~| msgid "Footnote"
+#~ msgid "Fonts"
+#~ msgstr "Notă subsol"
+
+#, fuzzy
+#~| msgid "Table header"
+#~ msgid "Page header"
+#~ msgstr "Antet tabelă"
+
+#, fuzzy
+#~| msgid "Print Syntax Highlighting"
+#~ msgid "Syntax Highlighting"
+#~ msgstr "Tipărește sintaxa evidențiată"
+
+#~ msgid "Phrase not found"
+#~ msgstr "Frază negăsită"
+
+#~ msgid "Open Location"
+#~ msgstr "Deschide adresa"
+
+#~ msgid "Edit tool <i>%s</i>:"
+#~ msgstr "Unealtă de editare <i>%s</i>:"
+
+#~ msgid "Open a file from a specified location"
+#~ msgstr "Deschide un fișier dintr-o adresă specificată"
+
+#~ msgid "Open _Location..."
+#~ msgstr "Deschide _adresa..."
+
+#~ msgid "_External Tools..."
+#~ msgstr "Unelte _externe..."
+
+#~ msgid "Edit tool <i>make</i>:"
+#~ msgstr "Unealtă editare <i>make</i>:"
+
+#~ msgid "Insert the user name at the cursor position"
+#~ msgstr "Inserează numele utilizatorului la poziția curentă a cursorului"
+
+#~ msgid "User name"
+#~ msgstr "Nume utilizator"
+
+#~ msgid "Co_mmand(s):"
+#~ msgstr "Co_mandă:"
+
+#~ msgid "Ch_aracter coding:"
+#~ msgstr "Codare c_aracter:"
+
+#~ msgid "Insert User Na_me"
+#~ msgstr "Inserează nume _utilizator"
+
+#~ msgid "Enter the _location (URI) of the file you would like to open:"
+#~ msgstr ""
+#~ "Introduceți _adresa fișierului (URI) pe care doriți să-l deschideți:"
+
+#~ msgid "A Brand New Tool"
+#~ msgstr "O unealtă nou-nouță"
+
+#~ msgid "Inserts the user name at the cursor position."
+#~ msgstr "Inserează numele utilizatorului la poziția curentă a cursorului"
+
+#~ msgid "_Description:"
+#~ msgstr "_Descriere:"
+
+#~ msgid "gtk-revert-to-saved"
+#~ msgstr "gtk-revert-to-saved"
+
+#~ msgid "gedit application"
+#~ msgstr "aplicația gedit"
+
+#~ msgid "gedit automation factory"
+#~ msgstr "Fabrica de automatizare gedit"
+
+#~ msgid "Go to Line"
+#~ msgstr "Du-te la linia"
+
+#~ msgid "The text \"%s\" was not found."
+#~ msgstr "Textul „%s“ nu a fost găsit."
+
+#~ msgid ""
+#~ "The %s plugin uses an external program, called <tt>%s</tt>, to perform "
+#~ "its task.\n"
+#~ "\n"
+#~ "Please, specify the location of the <tt>%s</tt> program."
+#~ msgstr ""
+#~ "Modulul %s utilizează un program extern, numit <tt>%s</tt>, pentru a "
+#~ "funcționa.\n"
+#~ "\n"
+#~ "Vă rugăm specificați adresa programului <tt>%s</tt>."
+
+#~ msgid "Goto Line"
+#~ msgstr "Du-te la linia"
+
+#~ msgid "_Line number:"
+#~ msgstr "_Număr linie:"
+
+#~ msgid "button1"
+#~ msgstr "button1"
+
+#~ msgid "dialog1"
+#~ msgstr "dialog1"
+
+#~ msgid "Browse for program location..."
+#~ msgstr "Selectați adresa programului..."
+
+#~ msgid "label"
+#~ msgstr "etichetă"
+
+#~ msgid "Find Next"
+#~ msgstr "Caută următorul"
+
+#~ msgid "Open from URI"
+#~ msgstr "Deschide dintr-un URI"
+
+#~ msgid "%s %d"
+#~ msgstr "%s %d"
+
+#~ msgid "Invalid UTF-8 data"
+#~ msgstr "Date UTF-8 invalide"
+
+#~ msgid "Could not read symbolic link information for %s"
+#~ msgstr "Nu s-a putut citi datele legăturii simbolice pentru %s"
+
+#~ msgid "The file has too many symbolic links."
+#~ msgstr "Acest fișier are prea multe legături simbolice."
+
+#~ msgid "gedit cannot handle %s: locations in write mode."
+#~ msgstr "gedit nu poate gestiona %s: locații în modul scriere."
+
+#~ msgid "gedit cannot handle this kind of location in write mode."
+#~ msgstr "gedit nu poate gestiona această adresă în modul scriere."
+
+#~ msgid "A file named \"%s\" already exists.\n"
+#~ msgstr "Un fișier cu numele „%s“ există deja.\n"
+
+#~ msgid "Select a file to open"
+#~ msgstr "Selectați un fișier pentru deschidere"
+
+#~ msgid "Select files to open"
+#~ msgstr "Selectați un fișier pentru deschidere"
+
+#~ msgid "Select a filename to save"
+#~ msgstr "Selectați un nume de fișier pentru salvare"
+
+#~ msgid "Saving document \"%s\"..."
+#~ msgstr "Salvez documentul „%s“..."
+
+#~ msgid "The document \"%s\" has not been saved."
+#~ msgstr "Documentul „%s” nu a fost salvat."
+
+#~ msgid "The document \"%s\" has been saved."
+#~ msgstr "Documentul „%s” a fost salvat."
+
+#~ msgid "Save as..."
+#~ msgstr "Salvează ca..."
+
+#~ msgid "Error reverting the document \"%s\"."
+#~ msgstr "Nu s-a putut restaura documentul „%s“."
+
+#~ msgid "The document \"%s\" has not been reverted."
+#~ msgstr "Documentul „%s” nu a fost restaurat."
+
+#~ msgid "The document \"%s\" has been reverted."
+#~ msgstr "Documentul „%s” a fost restaurat."
+
+#~ msgid "Could not read data from stdin."
+#~ msgstr "Nu s-a putut citi date de la stdin."
+
+#~ msgid "Loaded file \"%s\""
+#~ msgstr "Am încărcat fișierul „%s“"
+
+#~ msgid "Loaded %d file"
+#~ msgid_plural "Loaded %d files"
+#~ msgstr[0] "Am încărcat %d fișier"
+#~ msgstr[1] "Am încărcat %d fișiere"
+#~ msgstr[2] "Am încărcat %d de fișiere"
+
+#~ msgid "Created file \"%s\""
+#~ msgstr "Am creat fișierul „%s“"
+
+#~ msgid "Access was denied."
+#~ msgstr "Accesul a fost interzis."
+
+#~ msgid ""
+#~ "there are too many open files. Please, close some open files and try "
+#~ "again."
+#~ msgstr ""
+#~ "sunt prea multe fișiere deschise. Vă rugăm închideți o parte din "
+#~ "fișierele deschise și încercați din nou."
+
+#~ msgid ""
+#~ "gedit was not able to automatically detect the character coding. Please, "
+#~ "check that you are not trying to open a binary file and try again "
+#~ "selecting a character coding in the 'Open File...' (or 'Open Location') "
+#~ "dialog."
+#~ msgstr ""
+#~ "gedit nu a putut detecta automat codarea caracterelor. Verificați ca nu "
+#~ "cumva să încercați să deschideți un fișier binar și încercați din nou "
+#~ "selectând o codare în dialogul „Deschide...“ (sau „Deschide adresa...“)"
+
+#~ msgid ""
+#~ "Please, check that you are not trying to open a binary file and that you "
+#~ "selected the right character coding in the 'Open File... ' (or 'Open "
+#~ "Location') dialog and try again."
+#~ msgstr ""
+#~ "Vă rugăm verificați faptul că nu încercați să deschideți un fișier binar "
+#~ "și că ați selectat codarea corectă a caracterelor în dialogul „Deschide "
+#~ "fișierul...“ (sau „Deschide adresa“) apoi încercați din nou."
+
+#~ msgid ""
+#~ "The file contains data in an invalid format. Probably, you are trying to "
+#~ "open a binary file."
+#~ msgstr ""
+#~ "Fișierul conține date într-un format invalid. Probabil încercați să "
+#~ "deschideți un fișier binar."
+
+#~ msgid ""
+#~ "Not enough available memory. Please, close some running applications and "
+#~ "try again."
+#~ msgstr ""
+#~ "Nu este suficientă memorie liberă. Vă rugăm închideți o parte din "
+#~ "aplicațiile pornite și încercați din nou."
+
+#~ msgid ""
+#~ "The host name was empty. Please, check that your proxy settings are "
+#~ "correct and try again."
+#~ msgstr ""
+#~ "Numele gazdei este gol. Vă rugăm verificați dacă setările proxy sunt "
+#~ "corecte și încercați din nou."
+
+#~ msgid ""
+#~ "The file contains invalid UTF-8 data. Probably, you are trying to revert "
+#~ "a binary file."
+#~ msgstr ""
+#~ "Fișierul conține date invalide UTF-8. Probabil încercați să restaurați un "
+#~ "fișier binar."
+
+#~ msgid "It is not possible to revert an Untitled document."
+#~ msgstr "Nu este posibilă restaurarea unui document fără titlu."
+
+#~ msgid "Could not create the file \"%s\""
+#~ msgstr "Nu s-a putut crea fișierul „%s“"
+
+#~ msgid "Make sure you have the appropriate write permissions."
+#~ msgstr "Asigurați-vă că aveți permisiile necesare pentru scriere."
+
+#~ msgid "The file name is too long."
+#~ msgstr "Numele fișierului este prea lung."
+
+#~ msgid ""
+#~ "A directory component in the file name does not exist or is a dangling "
+#~ "symbolic link."
+#~ msgstr ""
+#~ "Un director din numele fișierului nu există sau este o legătură simbolică "
+#~ "greșită."
+
+#~ msgid ""
+#~ "There is not enough disk space to create the file. Please free some disk "
+#~ "space and try again."
+#~ msgstr ""
+#~ "Nu este destul spațiu pe disc. Eliberați spațiu pe disc și încercați din "
+#~ "nou."
+
+#~ msgid "Close the output window"
+#~ msgstr "Închide fereastra de ieșire"
+
+#~ msgid "Clear the output window"
+#~ msgstr "Șterge conținutul ferestrei de ieșire"
+
+#~ msgid "Output Lines"
+#~ msgstr "Linii de ieșire"
+
+#~ msgid "Printing page %d of %d..."
+#~ msgstr "Tipăresc pagina %d din %d..."
+
+#~ msgid "Change the visibility of the output window in the current window"
+#~ msgstr "Schimbă vizibilitatea ferestrei de ieșire în fereastra curentă"
+
+#~ msgid "Close"
+#~ msgstr "Închide"
+
+#~ msgid "Copy"
+#~ msgstr "Copiază"
+
+#~ msgid "Cu_t"
+#~ msgstr "_Taie"
+
+#~ msgid "Cut"
+#~ msgstr "Taie"
+
+#~ msgid "Delete"
+#~ msgstr "Șterge"
+
+#~ msgid "Find Previous"
+#~ msgstr "Caută precedentul"
+
+#~ msgid "Main toolbar"
+#~ msgstr "Bară cu unelte principală"
+
+#~ msgid "New"
+#~ msgstr "Nou"
+
+#~ msgid "Open Location..."
+#~ msgstr "Deschide adresa..."
+
+#~ msgid "Paste"
+#~ msgstr "Lipește"
+
+#~ msgid "Print Previe_w..."
+#~ msgstr "Pre_vizualizare tipărire..."
+
+#~ msgid "Quit"
+#~ msgstr "Ieșire"
+
+#~ msgid "Redo"
+#~ msgstr "Refă"
+
+#~ msgid "Revert"
+#~ msgstr "Restaurează"
+
+#~ msgid "Select All"
+#~ msgstr "Selectează tot"
+
+#~ msgid ""
+#~ "Set toolbar button style according to desktop Menu and Toolbar Preferences"
+#~ msgstr ""
+#~ "Setează stilul butoanelor din bara cu unelte conform setărilor desktop "
+#~ "implicite"
+
+#~ msgid "Show only icons in the toolbar"
+#~ msgstr "Arată doar iconițe în bara cu unelte"
+
+#~ msgid "Show text below every icon in the toolbar"
+#~ msgstr "Arată textul sub fiecare iconiță din bara cu unelte"
+
+#~ msgid "Show text only beside important icons in the toolbar"
+#~ msgstr ""
+#~ "Arată textul doar lângă cele mai importante iconițe din bara cu unelte"
+
+#~ msgid "T_ext for Important Icons"
+#~ msgstr "T_ext pentru iconițe importante"
+
+#~ msgid "Set program location..."
+#~ msgstr "Setează adresa programului..."
+
+#~ msgid "The file \"%s\" already exists"
+#~ msgstr "Fișierul „%s“ există deja"
+
+#~ msgid "Undo"
+#~ msgstr "Anulare"
+
+#~ msgid "_Close"
+#~ msgstr "În_chide"
+
+#~ msgid "_Copy"
+#~ msgstr "_Copiază"
+
+#~ msgid "_Customize Toolbar"
+#~ msgstr "_Personalizare bară cu unelte"
+
+#~ msgid "_Desktop Default"
+#~ msgstr "Setări implicite _desktop"
+
+#~ msgid "_Icons Only"
+#~ msgstr "Doar _iconițe"
+
+#~ msgid "_New"
+#~ msgstr "_Nou"
+
+#~ msgid "_Paste"
+#~ msgstr "_Lipește"
+
+#~ msgid "_Quit"
+#~ msgstr "_Ieșire"
+
+#~ msgid "_Redo"
+#~ msgstr "_Refă"
+
+#~ msgid "_Text for All Icons"
+#~ msgstr "_Text pentru toate iconițele"
+
+#~ msgid "_Undo"
+#~ msgstr "_Anulează"
+
+#~ msgid "Quit an existing instance of gedit"
+#~ msgstr "Închide o instanță existentă a gedit"
+
+#~ msgid "The file you are trying to open contains an invalid byte sequence."
+#~ msgstr ""
+#~ "Fișierul pe care doriți să îl deschideți conține o secvență de octeți "
+#~ "invalidă."
+
+#~ msgid ""
+#~ "gedit was not able to automatically determine the encoding of the file "
+#~ "you want to open."
+#~ msgstr ""
+#~ "gedit nu a putut să determine automat codarea fișierului pe care doriți "
+#~ "să îl deschideți."
+
+#~ msgid "Update"
+#~ msgstr "Actualizează"
+
+#~ msgid "gedit: Document Info plugin"
+#~ msgstr "gedit: modulul „Statistici document“"
+
+#~ msgid "Sa_ve Copy..."
+#~ msgstr "Sal_vează o copie..."
+
+#~ msgid "Could not save a copy of the file to \"%s\""
+#~ msgstr "Nu s-a putut salva o copie a fișierului în „%s”."
+
+#~ msgid "You are trying to overwrite the original file"
+#~ msgstr "Dvs. încercați să suprascrieți fișierul original"
+
+#~ msgid "Save Copy..."
+#~ msgstr "Salvează o copie..."
+
+#~ msgid "%s (copy)"
+#~ msgstr "%s (copie)"
+
+#~ msgid "Save a Copy"
+#~ msgstr "Salvează o copie"
+
+#~ msgid "Saves a copy of the current document to a local or remote location."
+#~ msgstr ""
+#~ "Salvează o copie a documentului curent la o adresă locală sau la distanță."
+
+#~ msgid "_Run Command..."
+#~ msgstr "_Execută comanda..."
+
+#~ msgid "Run Command"
+#~ msgstr "Execută comanda"
+
+#~ msgid "_Run"
+#~ msgstr "_Execută"
+
+#~ msgid "Failed"
+#~ msgstr "Eșec"
+
+#~ msgid ""
+#~ "The shell command entry is empty.\n"
+#~ "\n"
+#~ "Please, insert a valid shell command."
+#~ msgstr ""
+#~ "Nu a fost dată nici o comandă shell.\n"
+#~ "\n"
+#~ "Vă rugăm să introduceți o comandă validă."
+
+#~ msgid ""
+#~ "Error parsing the shell command.\n"
+#~ "\n"
+#~ "Please, insert a valid shell command."
+#~ msgstr ""
+#~ "Eroare la execuția comenzii shell.\n"
+#~ "\n"
+#~ "Vă rugăm să introduceți o comandă validă."
+
+#~ msgid "Executing command"
+#~ msgstr "Execut comanda"
+
+#~ msgid ""
+#~ "Executes an external program and, if required, displays its output in the "
+#~ "output window."
+#~ msgstr ""
+#~ "Execută o comandă externă și la nevoie inserează ieșirea sa în fereastra "
+#~ "de ieșire."
+
+#~ msgid "Shell command"
+#~ msgstr "Comandă shell"
+
+#~ msgid "Select the working directory..."
+#~ msgstr "Selectați directorul de lucru..."
+
+#~ msgid "_Show results in Output Window"
+#~ msgstr "_Arată rezultatele in fereastra de ieșire"
+
+#~ msgid "_Working directory:"
+#~ msgstr "_Director de lucru:"
+
+#~ msgid "The selected text does not contain misspelled words."
+#~ msgstr "Textul selectat nu conține cuvinte scrise greșit."
+
+#~ msgid "The document does not contain misspelled words."
+#~ msgstr "Documentul nu conține cuvinte scrise greșit."
+
+#~ msgid "Tag list plugin"
+#~ msgstr "Modul „Listă etichete“"
+
+#~ msgid "Tag _List"
+#~ msgstr "Listă _etichete"
+
+#~ msgid "Show the tag list window"
+#~ msgstr "Arată fereastra cu lista de etichete"
+
+#~ msgid "gedit View"
+#~ msgstr "Vizualizare gedit"
+
+#~ msgid "gedit View."
+#~ msgstr "Vizualizare gedit."
+
+#~ msgid "gedit viewer factory"
+#~ msgstr "Fabrica de vizualizare gedit"

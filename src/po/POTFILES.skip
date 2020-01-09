@@ -1,0 +1,13 @@
+gedit/gedit-app.c
+data/gedit.desktop.in
+data/gedit.schemas.in
+gedit/dialogs/gedit-style-scheme-dialog.c
+gedit/dialogs/gedit-style-scheme-dialog.ui
+gedit/dialogs/gedit-style-scheme-generator.c
+gedit/smclient/eggdesktopfile.c
+gedit/smclient/eggsmclient.c
+plugins/snippets/data/lang/snippets.lang
+tools/plugin_template/gedit-plugin.desktop.in
+tools/generate-plugin.py
+tools/plugin_template/gedit-plugin-helper.py
+tools/plugin_template/gedit-plugin-nohelper.py
