@@ -1,0 +1,12 @@
+diff -up gedit-2.28.4/po/zh_CN.po.accelerator gedit-2.28.4/po/zh_CN.po
+--- gedit-2.28.4/po/zh_CN.po.accelerator	2016-01-12 14:36:59.001297709 -0500
++++ gedit-2.28.4/po/zh_CN.po	2016-01-12 14:37:08.353946429 -0500
+@@ -603,7 +603,7 @@ msgstr "编码(_E)"
+ 
+ #: ../gedit/dialogs/gedit-encodings-dialog.ui.h:1
+ msgid "A_vailable encodings:"
+-msgstr "可用编码(&V)："
++msgstr "可用编码(_V)："
+ 
+ #: ../gedit/dialogs/gedit-encodings-dialog.ui.h:2
+ msgid "Character codings"

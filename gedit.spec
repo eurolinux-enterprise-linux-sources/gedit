@@ -18,7 +18,7 @@
 Summary:	Text editor for the GNOME desktop
 Name:		gedit
 Version: 	2.28.4
-Release: 	3%{?dist}
+Release: 	4%{?dist}
 Epoch:		1
 License:	GPLv2+ and GFDL
 Group:		Applications/Editors
@@ -51,6 +51,9 @@ Patch3: print-to-file.patch
 # update translations
 # https://bugzilla.redhat.com/show_bug.cgi?id=575754
 Patch4: gedit-translations.patch
+# fix a mistranslation
+# https://bugzilla.redhat.com/show_bug.cgi?id=902624
+Patch5: gedit-accelerator.patch
 
 BuildRequires: gnome-common
 BuildRequires: glib2-devel >= %{glib2_version}
@@ -119,6 +122,7 @@ Install gedit-devel if you want to write plugins for gedit.
 %patch2 -p1 -b .fix-python-path
 %patch3 -p1 -b .print-to-file
 %patch4 -p1 -b .translations
+%patch5 -p1 -b .accelerator
 
 autoreconf -f -i
 
@@ -235,6 +239,10 @@ fi
 
 
 %changelog
+* Tue Jan 12 2016 Matthias Clasen <mclasen@redhat.com> 2.28.4-4
+- Fix a mistranslation
+  Resolves: #902624
+
 * Thu Aug 05 2010 Ray Strode <rstrode@redhat.com> 2.28.4-3
 - Update translations again
   Resolves: #575754
