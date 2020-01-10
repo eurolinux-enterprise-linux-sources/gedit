@@ -12,9 +12,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Insert the current date/time at the cursor position.</desc>
+  <desc>Insert the current date/time at the cursor position</desc>
 </info>
 
 <title>Insert date/time</title>

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs-moving" xml:lang="pt-BR">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs-moving" xml:lang="pt-BR">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
-    <link type="seealso" xref="gedit-tabs"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Altere a posição de uma aba na janela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -18,11 +15,6 @@
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -69,15 +61,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -121,13 +107,15 @@
       </item>
     </steps>
 
+    <p>ou, enquanto a aba movida é aberta, escolha <guiseq><gui>Documentos</gui><gui>Mover para nova janela</gui></guiseq></p>
+
     <note style="tip">
       <p>Para mover a aba para uma nova janela quando o <app>gedit</app> está maximizado, arraste a aba até a barra superior no canto superior da tela.</p>
     </note>
   </section>
 
   <section id="tabs-moving-other-window">
-    <title>Movendo uma aba para outra janela do gedit</title>
+    <title>Movendo um aba para outra janela do gedit</title>
 
     <p>Se você deseja mover uma aba de uma janela para outra:</p>
 

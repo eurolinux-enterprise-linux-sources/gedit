@@ -15,7 +15,8 @@
  *  GNU Library General Public License for more details.
  *
  *  You should have received a copy of the GNU Library General Public License
- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -23,7 +24,6 @@
 #endif
 
 #include "gedit-view-activatable.h"
-
 #include "gedit-view.h"
 
 /**
@@ -37,23 +37,30 @@
 
 G_DEFINE_INTERFACE(GeditViewActivatable, gedit_view_activatable, G_TYPE_OBJECT)
 
-static void
+void
 gedit_view_activatable_default_init (GeditViewActivatableInterface *iface)
 {
-	/**
-	 * GeditViewActivatable:view:
-	 *
-	 * The window property contains the gedit window for this
-	 * #GeditViewActivatable instance.
-	 */
-	g_object_interface_install_property (iface,
-	                                     g_param_spec_object ("view",
-	                                                          "view",
-	                                                          "A gedit view",
-	                                                          GEDIT_TYPE_VIEW,
-	                                                          G_PARAM_READWRITE |
-	                                                          G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
+	static gboolean initialized = FALSE;
+
+	if (!initialized)
+	{
+		/**
+		 * GeditViewActivatable:view:
+		 *
+		 * The window property contains the gedit window for this
+		 * #GeditViewActivatable instance.
+		 */
+		g_object_interface_install_property (iface,
+		                                     g_param_spec_object ("view",
+		                                                          "view",
+		                                                          "A gedit view",
+		                                                          GEDIT_TYPE_VIEW,
+		                                                          G_PARAM_READWRITE |
+		                                                          G_PARAM_CONSTRUCT_ONLY |
+		                                                          G_PARAM_STATIC_STRINGS));
+
+		initialized = TRUE;
+	}
 }
 
 /**

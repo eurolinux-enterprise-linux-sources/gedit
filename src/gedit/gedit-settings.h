@@ -21,8 +21,9 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_SETTINGS_H
-#define GEDIT_SETTINGS_H
+
+#ifndef __GEDIT_SETTINGS_H__
+#define __GEDIT_SETTINGS_H__
 
 #include <glib-object.h>
 #include <glib.h>
@@ -30,17 +31,37 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SETTINGS (gedit_settings_get_type ())
+#define GEDIT_TYPE_SETTINGS		(gedit_settings_get_type ())
+#define GEDIT_SETTINGS(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SETTINGS, GeditSettings))
+#define GEDIT_SETTINGS_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SETTINGS, GeditSettings const))
+#define GEDIT_SETTINGS_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_SETTINGS, GeditSettingsClass))
+#define GEDIT_IS_SETTINGS(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_SETTINGS))
+#define GEDIT_IS_SETTINGS_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SETTINGS))
+#define GEDIT_SETTINGS_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SETTINGS, GeditSettingsClass))
 
-G_DECLARE_FINAL_TYPE (GeditSettings, gedit_settings, GEDIT, SETTINGS, GObject)
+typedef struct _GeditSettings		GeditSettings;
+typedef struct _GeditSettingsClass	GeditSettingsClass;
+typedef struct _GeditSettingsPrivate	GeditSettingsPrivate;
 
-GeditSettings		*gedit_settings_new				(void);
+struct _GeditSettings
+{
+	GObject parent;
+
+	GeditSettingsPrivate *priv;
+};
+
+struct _GeditSettingsClass
+{
+	GObjectClass parent_class;
+};
+
+GType			 gedit_settings_get_type			(void) G_GNUC_CONST;
+
+GObject			*gedit_settings_new				(void);
 
 GeditLockdownMask	 gedit_settings_get_lockdown			(GeditSettings *gs);
 
 gchar			*gedit_settings_get_system_font			(GeditSettings *gs);
-
-GSList			*gedit_settings_get_candidate_encodings		(gboolean      *default_candidates);
 
 /* Utility functions */
 GSList			*gedit_settings_get_list			(GSettings     *settings,
@@ -57,9 +78,9 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_CREATE_BACKUP_COPY		"create-backup-copy"
 #define GEDIT_SETTINGS_AUTO_SAVE			"auto-save"
 #define GEDIT_SETTINGS_AUTO_SAVE_INTERVAL		"auto-save-interval"
+#define GEDIT_SETTINGS_UNDO_ACTIONS_LIMIT		"undo-actions-limit"
 #define GEDIT_SETTINGS_MAX_UNDO_ACTIONS			"max-undo-actions"
 #define GEDIT_SETTINGS_WRAP_MODE			"wrap-mode"
-#define GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE		"wrap-last-split-mode"
 #define GEDIT_SETTINGS_TABS_SIZE			"tabs-size"
 #define GEDIT_SETTINGS_INSERT_SPACES			"insert-spaces"
 #define GEDIT_SETTINGS_AUTO_INDENT			"auto-indent"
@@ -74,8 +95,6 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_SEARCH_HIGHLIGHTING		"search-highlighting"
 #define GEDIT_SETTINGS_TOOLBAR_VISIBLE			"toolbar-visible"
 #define GEDIT_SETTINGS_TOOLBAR_BUTTONS_STYLE		"toolbar-buttons-style"
-#define GEDIT_SETTINGS_DISPLAY_OVERVIEW_MAP		"display-overview-map"
-#define GEDIT_SETTINGS_BACKGROUND_PATTERN		"background-pattern"
 #define GEDIT_SETTINGS_STATUSBAR_VISIBLE		"statusbar-visible"
 #define GEDIT_SETTINGS_SIDE_PANEL_VISIBLE		"side-panel-visible"
 #define GEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE		"bottom-panel-visible"
@@ -87,18 +106,14 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO		"print-font-body-pango"
 #define GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO		"print-font-header-pango"
 #define GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO		"print-font-numbers-pango"
-#define GEDIT_SETTINGS_PRINT_MARGIN_LEFT		"margin-left"
-#define GEDIT_SETTINGS_PRINT_MARGIN_TOP			"margin-top"
-#define GEDIT_SETTINGS_PRINT_MARGIN_RIGHT		"margin-right"
-#define GEDIT_SETTINGS_PRINT_MARGIN_BOTTOM		"margin-bottom"
-#define GEDIT_SETTINGS_CANDIDATE_ENCODINGS		"candidate-encodings"
+#define GEDIT_SETTINGS_ENCODING_AUTO_DETECTED		"auto-detected"
+#define GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU		"shown-in-menu"
 #define GEDIT_SETTINGS_ACTIVE_PLUGINS			"active-plugins"
-#define GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE		"ensure-trailing-newline"
 
 /* window state keys */
 #define GEDIT_SETTINGS_WINDOW_STATE			"state"
 #define GEDIT_SETTINGS_WINDOW_SIZE			"size"
-#define GEDIT_SETTINGS_SHOW_TABS_MODE			"show-tabs-mode"
+#define GEDIT_SETTINGS_SHOW_TABS_MODE			"notebook-show-tabs-mode"
 #define GEDIT_SETTINGS_SIDE_PANEL_SIZE			"side-panel-size"
 #define GEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE		"side-panel-active-page"
 #define GEDIT_SETTINGS_BOTTOM_PANEL_SIZE		"bottom-panel-size"
@@ -107,6 +122,6 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 
 G_END_DECLS
 
-#endif /* GEDIT_SETTINGS_H */
+#endif /* __GEDIT_SETTINGS_H__ */
 
 /* ex:set ts=8 noet: */

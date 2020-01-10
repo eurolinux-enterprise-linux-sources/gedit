@@ -15,7 +15,8 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, see <http://www.gnu.org/licenses/>.
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
@@ -23,28 +24,17 @@
 # Bits from gedit Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
-import gi
-gi.require_version('Gedit', '3.0')
-gi.require_version('Peas', '1.0')
-gi.require_version('PeasGtk', '1.0')
-gi.require_version('Gtk', '3.0')
-
 from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
+
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
 
-try:
-    import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
-    _ = gettext.gettext
-except:
-    _ = lambda s: s
+PYTHON_ICON = 'gnome-mime-text-x-python'
 
 class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"
 
-    window = GObject.Property(type=Gedit.Window)
+    window = GObject.property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -56,13 +46,15 @@ class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Confi
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)
         bottom = self.window.get_bottom_panel()
-        self._console.show_all()
-        bottom.add_titled(self._console, "GeditPythonConsolePanel", _('Python Console'))
+        image = Gtk.Image()
+        image.set_from_icon_name(PYTHON_ICON, Gtk.IconSize.MENU)
+        bottom.add_item(self._console, "GeditPythonConsolePanel",
+                        _('Python Console'), image)
 
     def do_deactivate(self):
         self._console.stop()
         bottom = self.window.get_bottom_panel()
-        bottom.remove(self._console)
+        bottom.remove_item(self._console)
 
     def do_update_state(self):
         pass

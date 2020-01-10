@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-undo-recent-action" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-undo-recent-action" xml:lang="gl">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Reverter un cambio recente nun dos seus ficheiros.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -18,11 +16,6 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -34,21 +27,26 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Desfacer unha acción recente</title>
 
-  <p>Se comete un erro usando o <app>gedit</app>, pode desfacelo premendo <keyseq><key>Ctrl</key><key>Z</key></keyseq>.</p>
-    
+  <p>If you make a mistake while using <app>gedit</app>, you can undo it by
+  pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking
+  <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Undo</gui></guiseq>. Doing so will cause
+  <app>gedit</app> to undo one set of similar actions.</p>
+  
+  <note>
+    <p>Undoing a "set of similar actions" means, for example, that
+    <app>gedit</app> will remove an entire word rather than removing each
+    character in the word one at a time. This makes <app>gedit</app>'s
+    <em>undo</em> feature more efficient.</p>
+  </note>
+  
   <note style="important">
-    <p>Non pode desfacer un cambio despois de pechar un ficheiro no <app>gedit</app>.</p>
+    <p>Non podes desfacer un cambio despois de gardares.</p>
   </note>
 </page>

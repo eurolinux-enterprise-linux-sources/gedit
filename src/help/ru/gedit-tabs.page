@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs" xml:lang="ru">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs" xml:lang="ru">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Создание и удаление вкладок в окне gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Даниэль Нил (Daniel Neel)</name>
@@ -20,28 +17,18 @@
       <name>Синдху С (Sindhu S)</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Радина Матик (Radina Matic)</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Шобха Тиаджи (Shobha Tyagi)</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2018.</mal:years>
+      <mal:years>2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Ivan Komaritsyn</mal:name>
-      <mal:email>vantu5z@mail.ru</mal:email>
-      <mal:years>2017.</mal:years>
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -50,7 +37,7 @@
 
   <section id="gedit-adding-tabs">
     <title>Добавление вкладок</title>
-    <p>Чтобы добавить новую вкладку, создайте новый файл нажав <keyseq><key>Ctrl</key> <key>T</key></keyseq>. Вкладка будет добавлена справа от остальных вкладок.</p>
+    <p>Чтобы добавить новую вкладку, создайте новый файл, нажав <keyseq><key>Ctrl</key> <key>N</key></keyseq>. Вкладка будет добавлена справа от остальных вкладок.</p>
   </section>
 
   <section id="gedit-removing-tabs">

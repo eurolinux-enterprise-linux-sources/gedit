@@ -5,7 +5,6 @@
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2005 Paolo Maggi
- * Copyright (C) 2014 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,50 +17,56 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
+#include <string.h> /* For strlen and strcmp */
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include "gedit-debug.h"
-#include "gedit-document.h"
-#include "gedit-document-private.h"
-#include "gedit-tab.h"
-#include "gedit-tab-private.h"
+#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
-#include "gedit-notebook.h"
 #include "gedit-statusbar.h"
+#include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-close-confirmation-dialog.h"
 
-#define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
-#define GEDIT_IS_CLOSING_ALL "gedit-is-closing-all"
-#define GEDIT_NOTEBOOK_TO_CLOSE "gedit-notebook-to-close"
-#define GEDIT_IS_QUITTING "gedit-is-quitting"
-#define GEDIT_IS_QUITTING_ALL "gedit-is-quitting-all"
+
+/* Defined constants */
+#define GEDIT_OPEN_DIALOG_KEY 		"gedit-open-dialog-key"
+#define GEDIT_TAB_TO_SAVE_AS  		"gedit-tab-to-save-as"
+#define GEDIT_LIST_OF_TABS_TO_SAVE_AS   "gedit-list-of-tabs-to-save-as"
+#define GEDIT_IS_CLOSING_ALL            "gedit-is-closing-all"
+#define GEDIT_IS_QUITTING 	        "gedit-is-quitting"
+#define GEDIT_IS_CLOSING_TAB		"gedit-is-closing-tab"
+#define GEDIT_IS_QUITTING_ALL		"gedit-is-quitting-all"
 
 static void tab_state_changed_while_saving (GeditTab    *tab,
 					    GParamSpec  *pspec,
 					    GeditWindow *window);
 
 void
-_gedit_cmd_file_new (GSimpleAction *action,
-                     GVariant      *parameter,
-                     gpointer       user_data)
+_gedit_cmd_file_new (GtkAction   *action,
+		     GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-
 	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_window_create_tab (window, TRUE);
@@ -71,39 +76,44 @@ static GeditTab *
 get_tab_from_file (GList *docs,
 		   GFile *file)
 {
-	GList *l;
+	GeditTab *tab = NULL;
 
-	for (l = docs; l != NULL; l = l->next)
+	while (docs != NULL)
 	{
-		GeditDocument *doc;
-		GtkSourceFile *source_file;
-		GFile *location;
+		GeditDocument *d;
+		GFile *l;
 
-		doc = l->data;
-		source_file = gedit_document_get_file (doc);
-		location = gtk_source_file_get_location (source_file);
+		d = GEDIT_DOCUMENT (docs->data);
 
-		if (location != NULL && g_file_equal (location, file))
+		l = gedit_document_get_location (d);
+		if (l != NULL)
 		{
-			return gedit_tab_get_from_document (doc);
+			if (g_file_equal (l, file))
+			{
+				tab = gedit_tab_get_from_document (d);
+				g_object_unref (l);
+				break;
+			}
+
+			g_object_unref (l);
 		}
+
+		docs = g_list_next (docs);
 	}
 
-	return NULL;
+	return tab;
 }
 
 static gboolean
 is_duplicated_file (GSList *files,
 		    GFile  *file)
 {
-	GSList *l;
-
-	for (l = files; l != NULL; l = l->next)
+	while (files != NULL)
 	{
-		if (g_file_equal (l->data, file))
-		{
+		if (g_file_equal (files->data, file))
 			return TRUE;
-		}
+
+		files = g_slist_next (files);
 	}
 
 	return FALSE;
@@ -111,18 +121,18 @@ is_duplicated_file (GSList *files,
 
 /* File loading */
 static GSList *
-load_file_list (GeditWindow             *window,
-		const GSList            *files,
-		const GtkSourceEncoding *encoding,
-		gint                     line_pos,
-		gint                     column_pos,
-		gboolean                 create)
+load_file_list (GeditWindow         *window,
+		const GSList        *files,
+		const GeditEncoding *encoding,
+		gint                 line_pos,
+		gint                 column_pos,
+		gboolean             create)
 {
+	GeditTab *tab;
+	GSList *loaded_files = NULL; /* Number of files to load */
+	gboolean jump_to = TRUE; /* Whether to jump to the new tab */
 	GList *win_docs;
 	GSList *files_to_load = NULL;
-	GSList *loaded_files = NULL;
-	GeditTab *tab;
-	gboolean jump_to = TRUE; /* Whether to jump to the new tab */
 	const GSList *l;
 	gint num_loaded_files = 0;
 
@@ -130,25 +140,17 @@ load_file_list (GeditWindow             *window,
 
 	win_docs = gedit_window_get_documents (window);
 
-	/* Remove the files corresponding to documents already opened in
-	 * "window" and remove duplicates from the "files" list.
-	 */
+	/* Remove the uris corresponding to documents already open
+	 * in "window" and remove duplicates from "uris" list */
 	for (l = files; l != NULL; l = l->next)
 	{
-		GFile *file = l->data;
-
-		if (is_duplicated_file (files_to_load, file))
+		if (is_duplicated_file (files_to_load, l->data))
 		{
 			continue;
 		}
 
-		tab = get_tab_from_file (win_docs, file);
-
-		if (tab == NULL)
-		{
-			files_to_load = g_slist_prepend (files_to_load, file);
-		}
-		else
+		tab = get_tab_from_file (win_docs, l->data);
+		if (tab != NULL)
 		{
 			if (l == files)
 			{
@@ -179,6 +181,11 @@ load_file_list (GeditWindow             *window,
 			loaded_files = g_slist_prepend (loaded_files,
 			                                gedit_tab_get_document (tab));
 		}
+		else
+		{
+			files_to_load = g_slist_prepend (files_to_load,
+							 l->data);
+		}
 	}
 
 	g_list_free (win_docs);
@@ -199,7 +206,7 @@ load_file_list (GeditWindow             *window,
 		doc = gedit_tab_get_document (tab);
 
 		if (gedit_document_is_untouched (doc) &&
-		    gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
+		    (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL))
 		{
 			_gedit_tab_load (tab,
 					 l->data,
@@ -222,7 +229,7 @@ load_file_list (GeditWindow             *window,
 
 	while (l != NULL)
 	{
-		g_return_val_if_fail (l->data != NULL, NULL);
+		g_return_val_if_fail (l->data != NULL, 0);
 
 		tab = gedit_window_create_tab_from_location (window,
 							     l->data,
@@ -258,7 +265,7 @@ load_file_list (GeditWindow             *window,
 
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
-					       _("Loading file “%s”\342\200\246"),
+					       _("Loading file '%s'\342\200\246"),
 					       uri_for_display);
 
 		g_free (uri_for_display);
@@ -267,12 +274,13 @@ load_file_list (GeditWindow             *window,
 	{
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
-					       ngettext ("Loading %d file\342\200\246",
-							 "Loading %d files\342\200\246",
-							 num_loaded_files),
+					       ngettext("Loading %d file\342\200\246",
+							"Loading %d files\342\200\246",
+							num_loaded_files),
 					       num_loaded_files);
 	}
 
+	/* Free uris_to_load. Note that l points to the first element of uris_to_load */
 	g_slist_free (files_to_load);
 
 	return loaded_files;
@@ -281,19 +289,19 @@ load_file_list (GeditWindow             *window,
 /**
  * gedit_commands_load_location:
  * @window: a #GeditWindow
- * @location: a #GFile to load
- * @encoding: (allow-none): the #GtkSourceEncoding of @location
- * @line_pos: the line position to place the cursor
- * @column_pos: the line column to place the cursor
+ * @location: a #GFile to be loaded
+ * @encoding: (allow-none): the #GeditEncoding of @location
+ * @line_pos: the line position to place the cursor when @location is loaded
+ * @column_pos: the line column to place the cursor when @location is loaded
  *
- * Loads @location. Ignores non-existing locations.
+ * Loads @location. Ignores non-existing locations
  */
 void
-gedit_commands_load_location (GeditWindow             *window,
-			      GFile                   *location,
-			      const GtkSourceEncoding *encoding,
-			      gint                     line_pos,
-			      gint                     column_pos)
+gedit_commands_load_location (GeditWindow         *window,
+			      GFile               *location,
+			      const GeditEncoding *encoding,
+			      gint                 line_pos,
+			      gint                 column_pos)
 {
 	GSList *locations = NULL;
 	gchar *uri;
@@ -318,25 +326,24 @@ gedit_commands_load_location (GeditWindow             *window,
 /**
  * gedit_commands_load_locations:
  * @window: a #GeditWindow
- * @locations: (element-type Gio.File): the locations to load
- * @encoding: (allow-none): the #GtkSourceEncoding
- * @line_pos: the line position to place the cursor
- * @column_pos: the line column to place the cursor
+ * @locations: (element-type Gio.File): the locations to be loaded
+ * @encoding: (allow-none): the #GeditEncoding of @location
+ * @line_pos: the line position to place the cursor when @location is loaded
+ * @column_pos: the line column to place the cursor when @location is loaded
  *
- * Loads @locations. Ignore non-existing locations.
+ * Loads @locations. Ignore non-existing locations
  *
- * Returns: (element-type Gedit.Document) (transfer container): the locations
- * that were loaded.
+ * Returns: (element-type Gedit.Document) (transfer container): the locations that were loaded
  */
 GSList *
-gedit_commands_load_locations (GeditWindow             *window,
-			       const GSList            *locations,
-			       const GtkSourceEncoding *encoding,
-			       gint                     line_pos,
-			       gint                     column_pos)
+gedit_commands_load_locations (GeditWindow         *window,
+			       const GSList        *locations,
+			       const GeditEncoding *encoding,
+			       gint                 line_pos,
+			       gint                 column_pos)
 {
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-	g_return_val_if_fail (locations != NULL && locations->data != NULL, NULL);
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
+	g_return_val_if_fail ((locations != NULL) && (locations->data != NULL), 0);
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -345,15 +352,15 @@ gedit_commands_load_locations (GeditWindow             *window,
 
 /*
  * From the command line we can specify a line position for the
- * first doc. Beside specifying a non-existing file creates a
+ * first doc. Beside specifying a not existing uri creates a
  * titled document.
  */
 GSList *
-_gedit_cmd_load_files_from_prompt (GeditWindow             *window,
-				   GSList                  *files,
-				   const GtkSourceEncoding *encoding,
-				   gint                     line_pos,
-				   gint                     column_pos)
+_gedit_cmd_load_files_from_prompt (GeditWindow         *window,
+				   GSList              *files,
+				   const GeditEncoding *encoding,
+				   gint                 line_pos,
+				   gint                 column_pos)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -377,35 +384,27 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
                          GeditWindow            *window)
 {
 	GSList *files;
-	const GtkSourceEncoding *encoding;
+	const GeditEncoding *encoding;
 	GSList *loaded;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
-		gedit_file_chooser_dialog_destroy (dialog);
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+
 		return;
 	}
 
-	files = gedit_file_chooser_dialog_get_files (dialog);
+	files = gtk_file_chooser_get_files (GTK_FILE_CHOOSER (dialog));
 	g_return_if_fail (files != NULL);
 
 	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
 
-	gedit_file_chooser_dialog_destroy (dialog);
-
-	if (window == NULL)
-	{
-		window = gedit_app_create_window (GEDIT_APP (g_application_get_default ()),
-		                                  NULL);
-
-		gtk_widget_show (GTK_WIDGET (window));
-		gtk_window_present (GTK_WINDOW (window));
-	}
+	gtk_widget_destroy (GTK_WIDGET (dialog));
 
 	/* Remember the folder we navigated to */
-	_gedit_window_set_default_location (window, files->data);
+	 _gedit_window_set_default_location (window, files->data);
 
 	loaded = gedit_commands_load_locations (window,
 	                                        files,
@@ -418,90 +417,72 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 }
 
 void
-_gedit_cmd_file_open (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+_gedit_cmd_file_open (GtkAction   *action,
+		      GeditWindow *window)
 {
-	GeditWindow *window = NULL;
-	GeditFileChooserDialog *open_dialog;
-
-	if (GEDIT_IS_WINDOW (user_data))
-	{
-		window = user_data;
-	}
+	GtkWidget *open_dialog;
+	gpointer data;
+	GeditDocument *doc;
+	GFile *default_path = NULL;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	if (window != NULL)
+	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
+
+	if (data != NULL)
 	{
-		gpointer data;
+		g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (data));
 
-		data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
+		gtk_window_present (GTK_WINDOW (data));
 
-		if (data != NULL)
-		{
-			g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (data));
-
-			gtk_window_present (GTK_WINDOW (data));
-
-			return;
-		}
-
-		/* FIXME: this should be in GeditWindow. */
-		gtk_widget_hide (GTK_WIDGET (window->priv->open_document_popover));
-		gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_open_document_popover));
+		return;
 	}
 
-	/* Translators: "Open" is the title of the file chooser window. */
-	open_dialog = gedit_file_chooser_dialog_create (C_("window title", "Open"),
-							window != NULL ? GTK_WINDOW (window) : NULL,
-							GEDIT_FILE_CHOOSER_OPEN |
-							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-							GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
-							NULL,
-							_("_Cancel"), GTK_RESPONSE_CANCEL,
-							_("_Open"), GTK_RESPONSE_OK);
+	/* Translators: "Open Files" is the title of the file chooser window */
+	open_dialog = gedit_file_chooser_dialog_new (_("Open Files"),
+						     GTK_WINDOW (window),
+						     GTK_FILE_CHOOSER_ACTION_OPEN,
+						     NULL,
+						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						     GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+						     NULL);
 
-	if (window != NULL)
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_OPEN_DIALOG_KEY,
+			   open_dialog);
+
+	g_object_weak_ref (G_OBJECT (open_dialog),
+			   (GWeakNotify) open_dialog_destroyed,
+			   window);
+
+	/* Set the curret folder uri */
+	doc = gedit_window_get_active_document (window);
+	if (doc != NULL)
 	{
-		GeditDocument *doc;
-		GFile *default_path = NULL;
+		GFile *file;
 
-		/* The file chooser dialog for opening files is not modal, so
-		 * ensure that at most one file chooser is opened.
-		 */
-		g_object_set_data (G_OBJECT (window),
-				   GEDIT_OPEN_DIALOG_KEY,
-				   open_dialog);
+		file = gedit_document_get_location (doc);
 
-		g_object_weak_ref (G_OBJECT (open_dialog),
-				   (GWeakNotify) open_dialog_destroyed,
-				   window);
-
-		/* Set the current folder */
-		doc = gedit_window_get_active_document (window);
-
-		if (doc != NULL)
+		if (file != NULL)
 		{
-			GtkSourceFile *file = gedit_document_get_file (doc);
-			GFile *location = gtk_source_file_get_location (file);
-
-			if (location != NULL)
-			{
-				default_path = g_file_get_parent (location);
-			}
+			default_path = g_file_get_parent (file);
+			g_object_unref (file);
 		}
+	}
 
-		if (default_path == NULL)
-		{
-			default_path = _gedit_window_get_default_location (window);
-		}
+	if (default_path == NULL)
+		default_path = _gedit_window_get_default_location (window);
 
-		if (default_path != NULL)
-		{
-			gedit_file_chooser_dialog_set_current_folder (open_dialog, default_path);
-			g_object_unref (default_path);
-		}
+	if (default_path != NULL)
+	{
+		gchar *uri;
+
+		uri = g_file_get_uri (default_path);
+		gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (open_dialog),
+							 uri);
+
+		g_free (uri);
+		g_object_unref (default_path);
 	}
 
 	g_signal_connect (open_dialog,
@@ -509,25 +490,39 @@ _gedit_cmd_file_open (GSimpleAction *action,
 			  G_CALLBACK (open_dialog_response_cb),
 			  window);
 
-	gedit_file_chooser_dialog_show (open_dialog);
-}
-
-void
-_gedit_cmd_file_reopen_closed_tab (GSimpleAction *action,
-				   GVariant      *parameter,
-				   gpointer       user_data)
-{
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GFile *file;
-
-	file = _gedit_window_pop_last_closed_doc (window);
-	if (file != NULL)
-	{
-		gedit_commands_load_location (window, file, NULL, 0, 0);
-	}
+	gtk_widget_show (open_dialog);
 }
 
 /* File saving */
+
+static gboolean
+is_read_only (GFile *location)
+{
+	gboolean ret = TRUE; /* default to read only */
+	GFileInfo *info;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	info = g_file_query_info (location,
+				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+				  G_FILE_QUERY_INFO_NONE,
+				  NULL,
+				  NULL);
+
+	if (info != NULL)
+	{
+		if (g_file_info_has_attribute (info,
+					       G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+		{
+			ret = !g_file_info_get_attribute_boolean (info,
+								  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+		}
+
+		g_object_unref (info);
+	}
+
+	return ret;
+}
 
 /* FIXME: modify this dialog to be similar to the one provided by gtk+ for
  * already existing files - Paolo (Oct. 11, 2005) */
@@ -555,7 +550,7 @@ replace_read_only_file (GtkWindow *parent,
 					 GTK_DIALOG_DESTROY_WITH_PARENT,
 					 GTK_MESSAGE_QUESTION,
 					 GTK_BUTTONS_NONE,
-					 _("The file “%s” is read-only."),
+					 _("The file \"%s\" is read-only."),
 				         name_for_display);
 	g_free (name_for_display);
 
@@ -563,10 +558,14 @@ replace_read_only_file (GtkWindow *parent,
 						  _("Do you want to try to replace it "
 						    "with the one you are saving?"));
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-			        _("_Cancel"), GTK_RESPONSE_CANCEL,
-				_("_Replace"), GTK_RESPONSE_YES,
-				NULL);
+	gtk_dialog_add_button (GTK_DIALOG (dialog),
+			       GTK_STOCK_CANCEL,
+			       GTK_RESPONSE_CANCEL);
+
+	gedit_dialog_add_button (GTK_DIALOG (dialog),
+				 _("_Replace"),
+			  	 GTK_STOCK_SAVE_AS,
+			  	 GTK_RESPONSE_YES);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
 					 GTK_RESPONSE_CANCEL);
@@ -577,7 +576,7 @@ replace_read_only_file (GtkWindow *parent,
 
 	gtk_widget_destroy (dialog);
 
-	return ret == GTK_RESPONSE_YES;
+	return (ret == GTK_RESPONSE_YES);
 }
 
 static gboolean
@@ -590,6 +589,7 @@ change_compression (GtkWindow *parent,
 	gchar *parse_name;
 	gchar *name_for_display;
 	const gchar *primary_message;
+	const gchar *secondary_message;
 	const gchar *button_label;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -606,10 +606,16 @@ change_compression (GtkWindow *parent,
 	if (compressed)
 	{
 		primary_message = _("Save the file using compression?");
+		secondary_message = _("The file \"%s\" was previously saved as plain "
+		                      "text and will now be saved using compression.");
+		button_label = _("_Save Using Compression");
 	}
 	else
 	{
 		primary_message = _("Save the file as plain text?");
+		secondary_message = _("The file \"%s\" was previously saved "
+		                      "using compression and will now be saved as plain text.");
+		button_label = _("_Save As Plain Text");
 	}
 
 	dialog = gtk_message_dialog_new (parent,
@@ -619,30 +625,20 @@ change_compression (GtkWindow *parent,
 					 "%s",
 					 primary_message);
 
-	if (compressed)
-	{
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  _("The file “%s” was previously saved as plain "
-							    "text and will now be saved using compression."),
-							  name_for_display);
-
-		button_label = _("_Save Using Compression");
-	}
-	else
-	{
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  _("The file “%s” was previously saved "
-							    "using compression and will now be saved as plain text."),
-							  name_for_display);
-		button_label = _("_Save As Plain Text");
-	}
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+						  secondary_message,
+						  name_for_display);
 
 	g_free (name_for_display);
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-			        _("_Cancel"), GTK_RESPONSE_CANCEL,
-				button_label, GTK_RESPONSE_YES,
-				NULL);
+	gtk_dialog_add_button (GTK_DIALOG (dialog),
+			       GTK_STOCK_CANCEL,
+			       GTK_RESPONSE_CANCEL);
+
+	gedit_dialog_add_button (GTK_DIALOG (dialog),
+				 button_label,
+			  	 GTK_STOCK_SAVE_AS,
+			  	 GTK_RESPONSE_YES);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
 					 GTK_RESPONSE_CANCEL);
@@ -653,15 +649,15 @@ change_compression (GtkWindow *parent,
 
 	gtk_widget_destroy (dialog);
 
-	return ret == GTK_RESPONSE_YES;
+	return (ret == GTK_RESPONSE_YES);
 }
 
-static GtkSourceCompressionType
+static GeditDocumentCompressionType
 get_compression_type_from_file (GFile *file)
 {
 	gchar *name;
 	gchar *content_type;
-	GtkSourceCompressionType type;
+	GeditDocumentCompressionType type;
 
 	name = g_file_get_basename (file);
 	content_type = g_content_type_guess (name, NULL, 0, NULL);
@@ -675,141 +671,151 @@ get_compression_type_from_file (GFile *file)
 }
 
 static void
-tab_save_as_ready_cb (GeditTab     *tab,
-		      GAsyncResult *result,
-		      GTask        *task)
-{
-	gboolean success = _gedit_tab_save_finish (tab, result);
-	g_task_return_boolean (task, success);
-	g_object_unref (task);
-}
-
-static void
 save_dialog_response_cb (GeditFileChooserDialog *dialog,
-			 gint                    response_id,
-			 GTask                  *task)
+                         gint                    response_id,
+                         GeditWindow            *window)
 {
 	GeditTab *tab;
-	GeditWindow *window;
-	GeditDocument *doc;
-	GtkSourceFile *file;
-	GFile *location;
-	gchar *parse_name;
-	GtkSourceNewlineType newline_type;
-	GtkSourceCompressionType compression_type;
-	GtkSourceCompressionType current_compression_type;
-	const GtkSourceEncoding *encoding;
+	gpointer data;
+	GSList *tabs_to_save_as;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	tab = g_task_get_source_object (task);
-	window = g_task_get_task_data (task);
+	tab = GEDIT_TAB (g_object_get_data (G_OBJECT (dialog),
+					    GEDIT_TAB_TO_SAVE_AS));
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
-		gedit_file_chooser_dialog_destroy (dialog);
-		g_task_return_boolean (task, FALSE);
-		g_object_unref (task);
-		return;
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+
+		goto save_next_tab;
 	}
 
-	doc = gedit_tab_get_document (tab);
-	file = gedit_document_get_file (doc);
-
-	location = gedit_file_chooser_dialog_get_file (dialog);
-	g_return_if_fail (location != NULL);
-
-	compression_type = get_compression_type_from_file (location);
-	current_compression_type = gtk_source_file_get_compression_type (file);
-
-	if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
-	    (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE))
+	if (tab != NULL)
 	{
-		GtkWindow *dialog_window = gedit_file_chooser_dialog_get_window (dialog);
+		GFile *file;
+		GeditDocument *doc;
+		gchar *parse_name;
+		GeditDocumentNewlineType newline_type;
+		GeditDocumentCompressionType compression_type;
+		GeditDocumentCompressionType current_compression_type;
+		const GeditEncoding *encoding;
 
-		if (!change_compression (dialog_window,
-					 location,
-					 compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
+		doc = gedit_tab_get_document (tab);
+
+		file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+		g_return_if_fail (file != NULL);
+
+		compression_type = get_compression_type_from_file (file);
+		current_compression_type = gedit_document_get_compression_type (doc);
+
+		if ((compression_type == GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE) !=
+		    (current_compression_type == GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE))
 		{
-			gedit_file_chooser_dialog_destroy (dialog);
-			g_object_unref (location);
+			if (!change_compression (GTK_WINDOW (dialog),
+			                         file,
+			                         compression_type != GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE))
+			{
+				gtk_widget_destroy (GTK_WIDGET (dialog));
+				g_object_unref (file);
 
-			g_task_return_boolean (task, FALSE);
-			g_object_unref (task);
-			return;
+				goto save_next_tab;
+			}
 		}
+
+		encoding = gedit_file_chooser_dialog_get_encoding (dialog);
+		newline_type = gedit_file_chooser_dialog_get_newline_type (dialog);
+
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+
+		doc = gedit_tab_get_document (tab);
+		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+		parse_name = g_file_get_parse_name (file);
+
+		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+					        window->priv->generic_message_cid,
+					       _("Saving file '%s'\342\200\246"),
+					       parse_name);
+
+		g_free (parse_name);
+
+		/* let's remember the dir we navigated too,
+		 * even if the saving fails... */
+		 _gedit_window_set_default_location (window, file);
+
+		_gedit_tab_save_as (tab, file, encoding, newline_type, compression_type);
+
+		g_object_unref (file);
 	}
 
-	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
-	newline_type = gedit_file_chooser_dialog_get_newline_type (dialog);
+save_next_tab:
 
-	gedit_file_chooser_dialog_destroy (dialog);
+	data = g_object_get_data (G_OBJECT (window),
+				  GEDIT_LIST_OF_TABS_TO_SAVE_AS);
+	if (data == NULL)
+		return;
 
-	parse_name = g_file_get_parse_name (location);
+	/* Save As the next tab of the list (we are Saving All files) */
+	tabs_to_save_as = (GSList *)data;
+	g_return_if_fail (tab == GEDIT_TAB (tabs_to_save_as->data));
 
-	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-				       window->priv->generic_message_cid,
-				       _("Saving file “%s”\342\200\246"),
-				       parse_name);
+	/* Remove the first item of the list */
+	tabs_to_save_as = g_slist_delete_link (tabs_to_save_as,
+					       tabs_to_save_as);
 
-	g_free (parse_name);
+	g_object_set_data (G_OBJECT (window),
+			   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
+			   tabs_to_save_as);
 
-	/* Let's remember the dir we navigated to, even if the saving fails... */
-	_gedit_window_set_default_location (window, location);
+	if (tabs_to_save_as != NULL)
+	{
+		tab = GEDIT_TAB (tabs_to_save_as->data);
 
-	_gedit_tab_save_as_async (tab,
-				  location,
-				  encoding,
-				  newline_type,
-				  compression_type,
-				  g_task_get_cancellable (task),
-				  (GAsyncReadyCallback) tab_save_as_ready_cb,
-				  task);
+		if (GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (tab),
+							    GEDIT_IS_CLOSING_TAB)) == TRUE)
+		{
+			g_object_set_data (G_OBJECT (tab),
+					   GEDIT_IS_CLOSING_TAB,
+					   NULL);
 
-	g_object_unref (location);
+			/* Trace tab state changes */
+			g_signal_connect (tab,
+					  "notify::state",
+					  G_CALLBACK (tab_state_changed_while_saving),
+					  window);
+		}
+
+		gedit_window_set_active_tab (window, tab);
+		_gedit_cmd_file_save_as_tab (tab, window);
+	}
 }
 
 static GtkFileChooserConfirmation
-confirm_overwrite_callback (GeditFileChooserDialog *dialog,
-			    gpointer                data)
+confirm_overwrite_callback (GtkFileChooser *dialog,
+			    gpointer        data)
 {
-	GtkFileChooserConfirmation res;
+	gchar *uri;
 	GFile *file;
-	GFileInfo *info;
+	GtkFileChooserConfirmation res;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	/* fall back to the default confirmation dialog */
-	res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
+	uri = gtk_file_chooser_get_uri (dialog);
+	file = g_file_new_for_uri (uri);
+	g_free (uri);
 
-	file = gedit_file_chooser_dialog_get_file (dialog);
-
-	info = g_file_query_info (file,
-				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-				  G_FILE_QUERY_INFO_NONE,
-				  NULL,
-				  NULL);
-
-	if (info != NULL)
+	if (is_read_only (file))
 	{
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE) &&
-		    !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-		{
-			GtkWindow *win;
-
-			win = gedit_file_chooser_dialog_get_window (dialog);
-
-			if (replace_read_only_file (win, file))
-			{
-				res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
-			}
-			else
-			{
-				res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
-			}
-		}
-
-		g_object_unref (info);
+		if (replace_read_only_file (GTK_WINDOW (dialog), file))
+			res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+		else
+			res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+	}
+	else
+	{
+		/* fall back to the default confirmation dialog */
+		res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
 	}
 
 	g_object_unref (file);
@@ -817,70 +823,56 @@ confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 	return res;
 }
 
-/* Call save_as_tab_finish() in @callback. */
-static void
-save_as_tab_async (GeditTab            *tab,
-		   GeditWindow         *window,
-		   GCancellable        *cancellable,
-		   GAsyncReadyCallback  callback,
-		   gpointer             user_data)
+void
+_gedit_cmd_file_save_as_tab (GeditTab    *tab,
+                             GeditWindow *window)
 {
-	GTask *task;
-	GeditFileChooserDialog *save_dialog;
-	GtkWindowGroup *window_group;
-	GtkWindow *dialog_window;
+	GtkWidget *save_dialog;
+	GtkWindowGroup *wg;
 	GeditDocument *doc;
-	GtkSourceFile *file;
-	GFile *location;
-	const GtkSourceEncoding *encoding;
-	GtkSourceNewlineType newline_type;
+	GFile *file;
+	const GeditEncoding *encoding;
+	GeditDocumentNewlineType newline_type;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	task = g_task_new (tab, cancellable, callback, user_data);
-	g_task_set_task_data (task, g_object_ref (window), g_object_unref);
+	save_dialog = gedit_file_chooser_dialog_new (_("Save As"),
+						     GTK_WINDOW (window),
+						     GTK_FILE_CHOOSER_ACTION_SAVE,
+						     NULL,
+						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						     GTK_STOCK_SAVE, GTK_RESPONSE_OK,
+						     NULL);
 
-	/* Translators: "Save As" is the title of the file chooser window. */
-	save_dialog = gedit_file_chooser_dialog_create (C_("window title", "Save As"),
-							GTK_WINDOW (window),
-							GEDIT_FILE_CHOOSER_SAVE |
-							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-							GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
-							GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
-							NULL,
-							_("_Cancel"), GTK_RESPONSE_CANCEL,
-							_("_Save"), GTK_RESPONSE_OK);
-
-	gedit_file_chooser_dialog_set_do_overwrite_confirmation (save_dialog, TRUE);
-
+	gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (save_dialog),
+							TRUE);
 	g_signal_connect (save_dialog,
 			  "confirm-overwrite",
 			  G_CALLBACK (confirm_overwrite_callback),
 			  NULL);
 
-	window_group = gedit_window_get_group (window);
+	wg = gedit_window_get_group (window);
 
-	dialog_window = gedit_file_chooser_dialog_get_window (save_dialog);
-
-	if (dialog_window != NULL)
-	{
-		gtk_window_group_add_window (window_group, dialog_window);
-	}
+	gtk_window_group_add_window (wg,
+				     GTK_WINDOW (save_dialog));
 
 	/* Save As dialog is modal to its main window */
-	gedit_file_chooser_dialog_set_modal (save_dialog, TRUE);
+	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
 
 	/* Set the suggested file name */
 	doc = gedit_tab_get_document (tab);
-	file = gedit_document_get_file (doc);
-	location = gtk_source_file_get_location (file);
+	file = gedit_document_get_location (doc);
 
-	if (location != NULL)
+	if (file != NULL)
 	{
-		gedit_file_chooser_dialog_set_file (save_dialog, location);
+		gtk_file_chooser_set_file (GTK_FILE_CHOOSER (save_dialog),
+					   file,
+					   NULL);
+
+		g_object_unref (file);
 	}
 	else
 	{
@@ -892,27 +884,27 @@ save_as_tab_async (GeditTab            *tab,
 
 		if (default_path != NULL)
 		{
-			gedit_file_chooser_dialog_set_current_folder (save_dialog,
-								      default_path);
+			gchar *uri;
 
+			uri = g_file_get_uri (default_path);
+			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (save_dialog),
+								 uri);
+
+			g_free (uri);
 			g_object_unref (default_path);
 		}
 
-		gedit_file_chooser_dialog_set_current_name (save_dialog,
-							    docname);
+		gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (save_dialog),
+						   docname);
 
 		g_free (docname);
 	}
 
-	/* Set suggested encoding and newline type. */
-	encoding = gtk_source_file_get_encoding (file);
+	/* Set suggested encoding */
+	encoding = gedit_document_get_encoding (doc);
+	g_return_if_fail (encoding != NULL);
 
-	if (encoding == NULL)
-	{
-		encoding = gtk_source_encoding_get_utf8 ();
-	}
-
-	newline_type = gtk_source_file_get_newline_type (file);
+	newline_type = gedit_document_get_newline_type (doc);
 
 	gedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
 						encoding);
@@ -920,399 +912,148 @@ save_as_tab_async (GeditTab            *tab,
 	gedit_file_chooser_dialog_set_newline_type (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
 	                                            newline_type);
 
+	g_object_set_data (G_OBJECT (save_dialog),
+			   GEDIT_TAB_TO_SAVE_AS,
+			   tab);
+
 	g_signal_connect (save_dialog,
 			  "response",
 			  G_CALLBACK (save_dialog_response_cb),
-			  task);
+			  window);
 
-	gedit_file_chooser_dialog_show (save_dialog);
+	gtk_widget_show (save_dialog);
 }
 
-static gboolean
-save_as_tab_finish (GeditTab     *tab,
-		    GAsyncResult *result)
-{
-	g_return_val_if_fail (g_task_is_valid (result, tab), FALSE);
-
-	return g_task_propagate_boolean (G_TASK (result), NULL);
-}
-
-static void
-save_as_tab_ready_cb (GeditTab     *tab,
-		      GAsyncResult *result,
-		      GTask        *task)
-{
-	gboolean success = save_as_tab_finish (tab, result);
-
-	g_task_return_boolean (task, success);
-	g_object_unref (task);
-}
-
-static void
-tab_save_ready_cb (GeditTab     *tab,
-		   GAsyncResult *result,
-		   GTask        *task)
-{
-	gboolean success = _gedit_tab_save_finish (tab, result);
-
-	g_task_return_boolean (task, success);
-	g_object_unref (task);
-}
-
-/**
- * gedit_commands_save_document_async:
- * @document: the #GeditDocument to save.
- * @window: a #GeditWindow.
- * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
- * @callback: (scope async): a #GAsyncReadyCallback to call when the operation
- *   is finished.
- * @user_data: (closure): the data to pass to the @callback function.
- *
- * Asynchronously save the @document. @document must belong to @window. The
- * source object of the async task is @document (which will be the first
- * parameter of the #GAsyncReadyCallback).
- *
- * When the operation is finished, @callback will be called. You can then call
- * gedit_commands_save_document_finish() to get the result of the operation.
- *
- * Since: 3.14
- */
 void
-gedit_commands_save_document_async (GeditDocument       *document,
-				    GeditWindow         *window,
-				    GCancellable        *cancellable,
-				    GAsyncReadyCallback  callback,
-				    gpointer             user_data)
+_gedit_cmd_file_save_tab (GeditTab    *tab,
+                          GeditWindow *window)
 {
-	GTask *task;
-	GeditTab *tab;
-	GtkSourceFile *file;
+	GeditDocument *doc;
 	gchar *uri_for_display;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
 
-	task = g_task_new (document, cancellable, callback, user_data);
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	tab = gedit_tab_get_from_document (document);
-	file = gedit_document_get_file (document);
-
-	if (gedit_document_is_untitled (document) ||
-	    gtk_source_file_is_readonly (file))
+	if (gedit_document_is_untitled (doc) ||
+	    gedit_document_get_readonly (doc))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
 
-		save_as_tab_async (tab,
-				   window,
-				   cancellable,
-				   (GAsyncReadyCallback) save_as_tab_ready_cb,
-				   task);
+		_gedit_cmd_file_save_as_tab (tab, window);
+
 		return;
 	}
 
-	uri_for_display = gedit_document_get_uri_for_display (document);
+	uri_for_display = gedit_document_get_uri_for_display (doc);
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-				       window->priv->generic_message_cid,
-				       _("Saving file “%s”\342\200\246"),
+				        window->priv->generic_message_cid,
+				       _("Saving file '%s'\342\200\246"),
 				       uri_for_display);
 
 	g_free (uri_for_display);
 
-	_gedit_tab_save_async (tab,
-			       cancellable,
-			       (GAsyncReadyCallback) tab_save_ready_cb,
-			       task);
-}
-
-/**
- * gedit_commands_save_document_finish:
- * @document: a #GeditDocument.
- * @result: a #GAsyncResult.
- *
- * Finishes an asynchronous document saving operation started with
- * gedit_commands_save_document_async().
- *
- * Note that there is no error parameter because the errors are already handled
- * by gedit.
- *
- * Returns: %TRUE if the document has been correctly saved, %FALSE otherwise.
- * Since: 3.14
- */
-gboolean
-gedit_commands_save_document_finish (GeditDocument *document,
-				     GAsyncResult  *result)
-{
-	g_return_val_if_fail (g_task_is_valid (result, document), FALSE);
-
-	return g_task_propagate_boolean (G_TASK (result), NULL);
-}
-
-static void
-save_tab_ready_cb (GeditDocument *doc,
-		   GAsyncResult  *result,
-		   gpointer       user_data)
-{
-	gedit_commands_save_document_finish (doc, result);
-}
-
-/* Save tab asynchronously, but without results. */
-static void
-save_tab (GeditTab    *tab,
-	  GeditWindow *window)
-{
-	GeditDocument *doc = gedit_tab_get_document (tab);
-
-	gedit_commands_save_document_async (doc,
-					    window,
-					    NULL,
-					    (GAsyncReadyCallback) save_tab_ready_cb,
-					    NULL);
+	_gedit_tab_save (tab);
 }
 
 void
-_gedit_cmd_file_save (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+_gedit_cmd_file_save (GtkAction   *action,
+                      GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	tab = gedit_window_get_active_tab (window);
-	if (tab != NULL)
-	{
-		save_tab (tab, window);
-	}
-}
+	if (tab == NULL)
+		return;
 
-static void
-_gedit_cmd_file_save_as_cb (GeditTab     *tab,
-			    GAsyncResult *result,
-			    gpointer      user_data)
-{
-	save_as_tab_finish (tab, result);
+	_gedit_cmd_file_save_tab (tab, window);
 }
 
 void
-_gedit_cmd_file_save_as (GSimpleAction *action,
-                         GVariant      *parameter,
-                         gpointer       user_data)
+_gedit_cmd_file_save_as (GtkAction   *action,
+                         GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	tab = gedit_window_get_active_tab (window);
-	if (tab != NULL)
-	{
-		save_as_tab_async (tab,
-				   window,
-				   NULL,
-				   (GAsyncReadyCallback) _gedit_cmd_file_save_as_cb,
-				   NULL);
-	}
-}
+	if (tab == NULL)
+		return;
 
-static void
-quit_if_needed (GeditWindow *window)
-{
-	gboolean is_quitting;
-	gboolean is_quitting_all;
-
-	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-							      GEDIT_IS_QUITTING));
-
-	is_quitting_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-							          GEDIT_IS_QUITTING_ALL));
-
-	if (is_quitting)
-	{
-		gtk_widget_destroy (GTK_WIDGET (window));
-	}
-
-	if (is_quitting_all)
-	{
-		GtkApplication *app;
-
-		app = GTK_APPLICATION (g_application_get_default ());
-
-		if (gtk_application_get_windows (app) == NULL)
-		{
-			g_application_quit (G_APPLICATION (app));
-		}
-	}
+	_gedit_cmd_file_save_as_tab (tab, window);
 }
 
 static gboolean
-really_close_tab (GeditTab *tab)
+document_needs_saving (GeditDocument *doc)
 {
-	GtkWidget *toplevel;
-	GeditWindow *window;
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+		return TRUE;
 
-	gedit_debug (DEBUG_COMMANDS);
-
-	g_return_val_if_fail (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_CLOSING,
-			      FALSE);
-
-	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
-	g_return_val_if_fail (GEDIT_IS_WINDOW (toplevel), FALSE);
-
-	window = GEDIT_WINDOW (toplevel);
-
-	gedit_window_close_tab (window, tab);
-
-	if (gedit_window_get_active_tab (window) == NULL)
-	{
-		quit_if_needed (window);
-	}
+	/* we check if it was deleted only for local files
+	 * since for remote files it may hang */
+	if (gedit_document_is_local (doc) && gedit_document_get_deleted (doc))
+		return TRUE;
 
 	return FALSE;
-}
-
-static void
-close_tab (GeditTab *tab)
-{
-	GeditDocument *doc;
-
-	doc = gedit_tab_get_document (tab);
-	g_return_if_fail (doc != NULL);
-
-	/* If the user has modified again the document, do not close the tab. */
-	if (_gedit_document_needs_saving (doc))
-	{
-		return;
-	}
-
-	/* Close the document only if it has been succesfully saved.
-	 * Tab state is set to CLOSING (it is a state without exiting
-	 * transitions) and the tab is closed in an idle handler.
-	 */
-	_gedit_tab_mark_for_closing (tab);
-
-	g_idle_add_full (G_PRIORITY_HIGH_IDLE,
-			 (GSourceFunc) really_close_tab,
-			 tab,
-			 NULL);
-}
-
-typedef struct _SaveAsData SaveAsData;
-
-struct _SaveAsData
-{
-	/* Reffed */
-	GeditWindow *window;
-
-	/* List of reffed GeditTab's */
-	GSList *tabs_to_save_as;
-
-	guint close_tabs : 1;
-};
-
-static void save_as_documents_list (SaveAsData *data);
-
-static void
-save_as_documents_list_cb (GeditTab     *tab,
-			   GAsyncResult *result,
-			   SaveAsData   *data)
-{
-	gboolean saved = save_as_tab_finish (tab, result);
-
-	if (saved && data->close_tabs)
-	{
-		close_tab (tab);
-	}
-
-	g_return_if_fail (tab == GEDIT_TAB (data->tabs_to_save_as->data));
-	g_object_unref (data->tabs_to_save_as->data);
-	data->tabs_to_save_as = g_slist_delete_link (data->tabs_to_save_as,
-						     data->tabs_to_save_as);
-
-	if (data->tabs_to_save_as != NULL)
-	{
-		save_as_documents_list (data);
-	}
-	else
-	{
-		g_object_unref (data->window);
-		g_slice_free (SaveAsData, data);
-	}
-}
-
-static void
-save_as_documents_list (SaveAsData *data)
-{
-	GeditTab *next_tab = GEDIT_TAB (data->tabs_to_save_as->data);
-
-	gedit_window_set_active_tab (data->window, next_tab);
-
-	save_as_tab_async (next_tab,
-			   data->window,
-			   NULL,
-			   (GAsyncReadyCallback) save_as_documents_list_cb,
-			   data);
 }
 
 /*
  * The docs in the list must belong to the same GeditWindow.
  */
-static void
-save_documents_list (GeditWindow *window,
-		     GList       *docs)
+void
+_gedit_cmd_file_save_documents_list (GeditWindow *window,
+				     GList       *docs)
 {
-	SaveAsData *data = NULL;
 	GList *l;
+	GSList *tabs_to_save_as = NULL;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail ((gedit_window_get_state (window) & GEDIT_WINDOW_STATE_PRINTING) == 0);
+	g_return_if_fail (!(gedit_window_get_state (window) &
+			    GEDIT_WINDOW_STATE_PRINTING));
 
-	for (l = docs; l != NULL; l = l->next)
+	l = docs;
+	while (l != NULL)
 	{
 		GeditDocument *doc;
-		GeditTab *tab;
+		GeditTab *t;
 		GeditTabState state;
 
 		g_return_if_fail (GEDIT_IS_DOCUMENT (l->data));
-		doc = l->data;
 
-		tab = gedit_tab_get_from_document (doc);
-		state = gedit_tab_get_state (tab);
+		doc = GEDIT_DOCUMENT (l->data);
+		t = gedit_tab_get_from_document (doc);
+		state = gedit_tab_get_state (t);
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
+		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 
-		if (state == GEDIT_TAB_STATE_NORMAL ||
-		    state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+		if ((state == GEDIT_TAB_STATE_NORMAL) ||
+		    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
+		    (state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE))
 		{
-			if (_gedit_document_needs_saving (doc))
+			/* FIXME: manage the case of local readonly files owned by the
+			   user is running gedit - Paolo (Dec. 8, 2005) */
+			if (gedit_document_is_untitled (doc) ||
+			    gedit_document_get_readonly (doc))
 			{
-				GtkSourceFile *file = gedit_document_get_file (doc);
-
-				/* FIXME: manage the case of local readonly files owned by the
-				   user is running gedit - Paolo (Dec. 8, 2005) */
-				if (gedit_document_is_untitled (doc) ||
-				    gtk_source_file_is_readonly (file))
-				{
-					if (data == NULL)
-					{
-						data = g_slice_new (SaveAsData);
-						data->window = g_object_ref (window);
-						data->tabs_to_save_as = NULL;
-						data->close_tabs = FALSE;
-					}
-
-					data->tabs_to_save_as = g_slist_prepend (data->tabs_to_save_as,
-										 g_object_ref (tab));
-				}
-				else
-				{
-					save_tab (tab, window);
-				}
+				if (document_needs_saving (doc))
+			     	{
+				     	tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
+									   t);
+			     	}
+			}
+			else
+			{
+				_gedit_cmd_file_save_tab (t, window);
 			}
 		}
 		else
@@ -1322,7 +1063,7 @@ save_documents_list (GeditWindow *window,
 			   - GEDIT_TAB_STATE_REVERTING: we do not save since the user wants
 			     to return back to the version of the file she previously saved
 			   - GEDIT_TAB_STATE_SAVING: well, we are already saving (no need to save again)
-			   - GEDIT_TAB_STATE_PRINTING: there is not a
+			   - GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
 			     real reason for not saving in this case, we do not save to avoid to run
 			     two operations using the message area at the same time (may be we can remove
 			     this limitation in the future). Note that SaveAll, ClosAll
@@ -1347,23 +1088,30 @@ save_documents_list (GeditWindow *window,
 					     state);
 			g_free (uri_for_display);
 		}
+
+		l = g_list_next (l);
 	}
 
-	if (data != NULL)
+	if (tabs_to_save_as != NULL)
 	{
-		data->tabs_to_save_as = g_slist_reverse (data->tabs_to_save_as);
-		save_as_documents_list (data);
+		GeditTab *tab;
+
+		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
+
+		g_return_if_fail (g_object_get_data (G_OBJECT (window),
+						     GEDIT_LIST_OF_TABS_TO_SAVE_AS) == NULL);
+
+		g_object_set_data (G_OBJECT (window),
+				   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
+				   tabs_to_save_as);
+
+		tab = GEDIT_TAB (tabs_to_save_as->data);
+
+		gedit_window_set_active_tab (window, tab);
+		_gedit_cmd_file_save_as_tab (tab, window);
 	}
 }
 
-/**
- * gedit_commands_save_all_documents:
- * @window: a #GeditWindow.
- *
- * Asynchronously save all documents belonging to @window. The result of the
- * operation is not available, so it's difficult to know whether all the
- * documents are correctly saved.
- */
 void
 gedit_commands_save_all_documents (GeditWindow *window)
 {
@@ -1375,27 +1123,18 @@ gedit_commands_save_all_documents (GeditWindow *window)
 
 	docs = gedit_window_get_documents (window);
 
-	save_documents_list (window, docs);
+	_gedit_cmd_file_save_documents_list (window, docs);
 
 	g_list_free (docs);
 }
 
 void
-_gedit_cmd_file_save_all (GSimpleAction *action,
-                          GVariant      *parameter,
-                          gpointer       user_data)
+_gedit_cmd_file_save_all (GtkAction   *action,
+			  GeditWindow *window)
 {
-	gedit_commands_save_all_documents (GEDIT_WINDOW (user_data));
+	gedit_commands_save_all_documents (window);
 }
 
-/**
- * gedit_commands_save_document:
- * @window: a #GeditWindow.
- * @document: the #GeditDocument to save.
- *
- * Asynchronously save @document. @document must belong to @window. If you need
- * the result of the operation, use gedit_commands_save_document_async().
- */
 void
 gedit_commands_save_document (GeditWindow   *window,
                               GeditDocument *document)
@@ -1408,7 +1147,7 @@ gedit_commands_save_document (GeditWindow   *window,
 	gedit_debug (DEBUG_COMMANDS);
 
 	tab = gedit_tab_get_from_document (document);
-	save_tab (tab, window);
+	_gedit_cmd_file_save_tab (tab, window);
 }
 
 /* File revert */
@@ -1425,8 +1164,8 @@ do_revert (GeditWindow *window,
 	docname = gedit_document_get_short_name_for_display (doc);
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-				       window->priv->generic_message_cid,
-				       _("Reverting the document “%s”\342\200\246"),
+				        window->priv->generic_message_cid,
+				       _("Reverting the document '%s'\342\200\246"),
 				       docname);
 
 	g_free (docname);
@@ -1448,9 +1187,7 @@ revert_dialog_response_cb (GtkDialog   *dialog,
 	   not very nice - Paolo (Oct 11, 2005) */
 	tab = gedit_window_get_active_tab (window);
 	if (tab == NULL)
-	{
 		return;
-	}
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
@@ -1473,7 +1210,7 @@ revert_dialog (GeditWindow   *window,
 	gedit_debug (DEBUG_COMMANDS);
 
 	docname = gedit_document_get_short_name_for_display (doc);
-	primary_msg = g_strdup_printf (_("Revert unsaved changes to document “%s”?"),
+	primary_msg = g_strdup_printf (_("Revert unsaved changes to document '%s'?"),
 	                               docname);
 	g_free (docname);
 
@@ -1564,10 +1301,14 @@ revert_dialog (GeditWindow   *window,
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-			        _("_Cancel"), GTK_RESPONSE_CANCEL,
-				_("_Revert"), GTK_RESPONSE_OK,
-				NULL);
+	gtk_dialog_add_button (GTK_DIALOG (dialog),
+			       GTK_STOCK_CANCEL,
+			       GTK_RESPONSE_CANCEL);
+
+	gedit_dialog_add_button (GTK_DIALOG (dialog),
+				 _("_Revert"),
+				 GTK_STOCK_REVERT_TO_SAVED,
+				 GTK_RESPONSE_OK);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
 					 GTK_RESPONSE_CANCEL);
@@ -1576,25 +1317,23 @@ revert_dialog (GeditWindow   *window,
 }
 
 void
-_gedit_cmd_file_revert (GSimpleAction *action,
-                        GVariant      *parameter,
-                        gpointer       user_data)
+_gedit_cmd_file_revert (GtkAction   *action,
+		        GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditTab *tab;
-	GeditDocument *doc;
-	GtkWidget *dialog;
-	GtkWindowGroup *window_group;
+	GeditTab       *tab;
+	GeditDocument  *doc;
+	GtkWidget      *dialog;
+	GtkWindowGroup *wg;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	tab = gedit_window_get_active_tab (window);
 	g_return_if_fail (tab != NULL);
 
-	/* If we are already displaying a notification reverting will drop local
-	 * modifications or if the document has not been modified, do not bug
-	 * the user further.
-	 */
+	/* If we are already displaying a notification
+	 * reverting will drop local modifications or
+	 * if the document has not been modified, do
+	 * not bug the user further */
 	if (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
 	    _gedit_tab_get_can_close (tab))
 	{
@@ -1608,9 +1347,9 @@ _gedit_cmd_file_revert (GSimpleAction *action,
 
 	dialog = revert_dialog (window, doc);
 
-	window_group = gedit_window_get_group (window);
+	wg = gedit_window_get_group (window);
 
-	gtk_window_group_add_window (window_group, GTK_WINDOW (dialog));
+	gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
 
 	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
@@ -1622,27 +1361,77 @@ _gedit_cmd_file_revert (GSimpleAction *action,
 	gtk_widget_show (dialog);
 }
 
+/* Close tab */
+static gboolean
+really_close_tab (GeditTab *tab)
+{
+	GtkWidget *toplevel;
+	GeditWindow *window;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	g_return_val_if_fail (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_CLOSING,
+			      FALSE);
+
+	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
+	g_return_val_if_fail (GEDIT_IS_WINDOW (toplevel), FALSE);
+
+	window = GEDIT_WINDOW (toplevel);
+
+	gedit_window_close_tab (window, tab);
+
+	if (gedit_window_get_active_tab (window) == NULL)
+	{
+		gboolean is_quitting;
+
+		is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
+								      GEDIT_IS_QUITTING));
+
+		if (is_quitting)
+			gtk_widget_destroy (GTK_WIDGET (window));
+	}
+
+	return FALSE;
+}
+
 static void
 tab_state_changed_while_saving (GeditTab    *tab,
 				GParamSpec  *pspec,
 				GeditWindow *window)
 {
-	GeditTabState state;
+	GeditTabState ts;
 
-	state = gedit_tab_get_state (tab);
+	ts = gedit_tab_get_state (tab);
 
-	gedit_debug_message (DEBUG_COMMANDS, "State while saving: %d\n", state);
+	gedit_debug_message (DEBUG_COMMANDS, "State while saving: %d\n", ts);
 
-	/* When the state becomes NORMAL, it means the saving operation is
-	 * finished.
-	 */
-	if (state == GEDIT_TAB_STATE_NORMAL)
+	/* When the state become NORMAL, it means the saving operation is
+	   finished */
+	if (ts == GEDIT_TAB_STATE_NORMAL)
 	{
+		GeditDocument *doc;
+
 		g_signal_handlers_disconnect_by_func (tab,
 						      G_CALLBACK (tab_state_changed_while_saving),
 					      	      window);
 
-		close_tab (tab);
+		doc = gedit_tab_get_document (tab);
+		g_return_if_fail (doc != NULL);
+
+		/* If the saving operation failed or was interrupted, then the
+		   document is still "modified" -> do not close the tab */
+		if (document_needs_saving (doc))
+			return;
+
+		/* Close the document only if it has been succesfully saved.
+		   Tab state is set to CLOSING (it is a state without exiting
+		   transitions) and the tab is closed in a idle handler */
+		_gedit_tab_mark_for_closing (tab);
+
+		g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+				 (GSourceFunc)really_close_tab,
+				 tab,
+				 NULL);
 	}
 }
 
@@ -1658,42 +1447,61 @@ save_and_close (GeditTab    *tab,
 			  G_CALLBACK (tab_state_changed_while_saving),
 			  window);
 
-	save_tab (tab, window);
+	_gedit_cmd_file_save_tab (tab, window);
 }
 
 static void
-save_and_close_documents (GList         *docs,
-                          GeditWindow   *window,
-                          GeditNotebook *notebook)
+save_as_and_close (GeditTab    *tab,
+		   GeditWindow *window)
+{
+	gedit_debug (DEBUG_COMMANDS);
+
+	g_object_set_data (G_OBJECT (tab),
+			   GEDIT_IS_CLOSING_TAB,
+			   NULL);
+
+	/* Trace tab state changes */
+	g_signal_connect (tab,
+			  "notify::state",
+			  G_CALLBACK (tab_state_changed_while_saving),
+			  window);
+
+	gedit_window_set_active_tab (window, tab);
+	_gedit_cmd_file_save_as_tab (tab, window);
+}
+
+static void
+save_and_close_all_documents (const GList  *docs,
+			      GeditWindow  *window)
 {
 	GList *tabs;
 	GList *l;
 	GSList *sl;
-	SaveAsData *data = NULL;
-	GSList *tabs_to_save_and_close = NULL;
-	GList *tabs_to_close = NULL;
+	GSList *tabs_to_save_as;
+	GSList *tabs_to_save_and_close;
+	GList *tabs_to_close;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail ((gedit_window_get_state (window) & GEDIT_WINDOW_STATE_PRINTING) == 0);
+	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_PRINTING));
 
-	if (notebook != NULL)
-	{
-		tabs = gtk_container_get_children (GTK_CONTAINER (notebook));
-	}
-	else
-	{
-		tabs = _gedit_window_get_all_tabs (window);
-	}
+	tabs = _gedit_window_get_all_tabs (window);
 
-	for (l = tabs; l != NULL; l = l->next)
+	tabs_to_save_as = NULL;
+	tabs_to_save_and_close = NULL;
+	tabs_to_close = NULL;
+
+	l = tabs;
+	while (l != NULL)
 	{
-		GeditTab *tab = GEDIT_TAB (l->data);
+		GeditTab *t;
 		GeditTabState state;
 		GeditDocument *doc;
 
-		state = gedit_tab_get_state (tab);
-		doc = gedit_tab_get_document (tab);
+		t = GEDIT_TAB (l->data);
+
+		state = gedit_tab_get_state (t);
+		doc = gedit_tab_get_document (t);
 
 		/* If the state is: ([*] invalid states)
 		   - GEDIT_TAB_STATE_NORMAL: close (and if needed save)
@@ -1704,7 +1512,7 @@ save_and_close_documents (GList         *docs,
 		     the original file has been deleted)
 		   - [*] GEDIT_TAB_STATE_SAVING: invalid, ClosAll
 		     and Quit are unsensitive if the window state is SAVING.
-		   - [*] GEDIT_TAB_STATE_PRINTING: there is not a
+		   - [*] GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
 		     real reason for not closing in this case, we do not save to avoid to run
 		     two operations using the message area at the same time (may be we can remove
 		     this limitation in the future). Note that ClosAll
@@ -1720,50 +1528,49 @@ save_and_close_documents (GList         *docs,
 		*/
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
+		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_SAVING);
 
-		if (state != GEDIT_TAB_STATE_SAVING_ERROR &&
-		    state != GEDIT_TAB_STATE_GENERIC_ERROR &&
-		    state != GEDIT_TAB_STATE_REVERTING_ERROR)
+		if ((state != GEDIT_TAB_STATE_SAVING_ERROR) &&
+		    (state != GEDIT_TAB_STATE_GENERIC_ERROR) &&
+		    (state != GEDIT_TAB_STATE_REVERTING_ERROR))
 		{
-			if (g_list_index (docs, doc) >= 0 &&
-			    state != GEDIT_TAB_STATE_LOADING &&
-			    state != GEDIT_TAB_STATE_LOADING_ERROR &&
-			    state != GEDIT_TAB_STATE_REVERTING) /* FIXME: is this the right behavior with REVERTING ?*/
+			if ((g_list_index ((GList *)docs, doc) >= 0) &&
+			    (state != GEDIT_TAB_STATE_LOADING) &&
+			    (state != GEDIT_TAB_STATE_LOADING_ERROR) &&
+			    (state != GEDIT_TAB_STATE_REVERTING)) /* CHECK: is this the right behavior with REVERTING ?*/
 			{
-				GtkSourceFile *file = gedit_document_get_file (doc);
-
 				/* The document must be saved before closing */
-				g_return_if_fail (_gedit_document_needs_saving (doc));
+				g_return_if_fail (document_needs_saving (doc));
 
 				/* FIXME: manage the case of local readonly files owned by the
-				 * user is running gedit - Paolo (Dec. 8, 2005) */
+				   user is running gedit - Paolo (Dec. 8, 2005) */
 				if (gedit_document_is_untitled (doc) ||
-				    gtk_source_file_is_readonly (file))
+				    gedit_document_get_readonly (doc))
 				{
-					if (data == NULL)
-					{
-						data = g_slice_new (SaveAsData);
-						data->window = g_object_ref (window);
-						data->tabs_to_save_as = NULL;
-						data->close_tabs = TRUE;
-					}
+					g_object_set_data (G_OBJECT (t),
+							   GEDIT_IS_CLOSING_TAB,
+							   GBOOLEAN_TO_POINTER (TRUE));
 
-					data->tabs_to_save_as = g_slist_prepend (data->tabs_to_save_as,
-										 g_object_ref (tab));
+					tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
+									   t);
 				}
 				else
 				{
-					tabs_to_save_and_close = g_slist_prepend (tabs_to_save_and_close, tab);
+					tabs_to_save_and_close = g_slist_prepend (tabs_to_save_and_close,
+										  t);
 				}
 			}
 			else
 			{
-				/* The document can be closed without saving */
-				tabs_to_close = g_list_prepend (tabs_to_close, tab);
+				/* The document must be closed without saving */
+				tabs_to_close = g_list_prepend (tabs_to_close,
+								t);
 			}
 		}
+
+		l = g_list_next (l);
 	}
 
 	g_list_free (tabs);
@@ -1773,24 +1580,38 @@ save_and_close_documents (GList         *docs,
 	g_list_free (tabs_to_close);
 
 	/* Save and close all the files in tabs_to_save_and_close */
-	for (sl = tabs_to_save_and_close; sl != NULL; sl = sl->next)
+	sl = tabs_to_save_and_close;
+	while (sl != NULL)
 	{
-		save_and_close (GEDIT_TAB (sl->data), window);
+		save_and_close (GEDIT_TAB (sl->data),
+				window);
+		sl = g_slist_next (sl);
 	}
-
 	g_slist_free (tabs_to_save_and_close);
 
-	/* Save As and close all the files in data->tabs_to_save_as. */
-	if (data != NULL)
+	/* Save As and close all the files in tabs_to_save_as  */
+	if (tabs_to_save_as != NULL)
 	{
-		data->tabs_to_save_as = g_slist_reverse (data->tabs_to_save_as);
-		save_as_documents_list (data);
+		GeditTab *tab;
+
+		tabs_to_save_as = g_slist_reverse (tabs_to_save_as );
+
+		g_return_if_fail (g_object_get_data (G_OBJECT (window),
+						     GEDIT_LIST_OF_TABS_TO_SAVE_AS) == NULL);
+
+		g_object_set_data (G_OBJECT (window),
+				   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
+				   tabs_to_save_as);
+
+		tab = GEDIT_TAB (tabs_to_save_as->data);
+
+		save_as_and_close (tab, window);
 	}
 }
 
 static void
-save_and_close_document (const GList *docs,
-			 GeditWindow *window)
+save_and_close_document (const GList  *docs,
+			 GeditWindow  *window)
 {
 	GeditTab *tab;
 
@@ -1807,12 +1628,20 @@ save_and_close_document (const GList *docs,
 static void
 close_all_tabs (GeditWindow *window)
 {
+	gboolean is_quitting;
+
 	gedit_debug (DEBUG_COMMANDS);
 
 	/* There is no document to save -> close all tabs */
 	gedit_window_close_all_tabs (window);
 
-	quit_if_needed (window);
+	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
+							      GEDIT_IS_QUITTING));
+
+	if (is_quitting)
+		gtk_widget_destroy (GTK_WIDGET (window));
+
+	return;
 }
 
 static void
@@ -1831,28 +1660,23 @@ close_document (GeditWindow   *window,
 
 static void
 close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
-                                            gint                          response_id,
-                                            GeditWindow                  *window)
+					    gint                          response_id,
+					    GeditWindow                  *window)
 {
 	GList *selected_documents;
 	gboolean is_closing_all;
-	GeditNotebook *notebook_to_close;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	is_closing_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-	                                                         GEDIT_IS_CLOSING_ALL));
-
-	notebook_to_close = g_object_get_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE);
+					    			 GEDIT_IS_CLOSING_ALL));
 
 	gtk_widget_hide (GTK_WIDGET (dlg));
 
 	switch (response_id)
 	{
-		/* Save and Close */
-		case GTK_RESPONSE_YES:
+		case GTK_RESPONSE_YES: /* Save and Close */
 			selected_documents = gedit_close_confirmation_dialog_get_selected_documents (dlg);
-
 			if (selected_documents == NULL)
 			{
 				if (is_closing_all)
@@ -1863,11 +1687,8 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 					gtk_widget_destroy (GTK_WIDGET (dlg));
 
 					close_all_tabs (window);
+
 					return;
-				}
-				else if (notebook_to_close)
-				{
-					gedit_notebook_remove_all_tabs (notebook_to_close);
 				}
 				else
 				{
@@ -1876,23 +1697,23 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 			}
 			else
 			{
-				if (is_closing_all || notebook_to_close)
+				if (is_closing_all)
 				{
-					GeditNotebook *notebook = is_closing_all ? NULL : notebook_to_close;
-
-					save_and_close_documents (selected_documents, window, notebook);
+					save_and_close_all_documents (selected_documents,
+								      window);
 				}
 				else
 				{
-					save_and_close_document (selected_documents, window);
+					save_and_close_document (selected_documents,
+								 window);
 				}
 			}
 
 			g_list_free (selected_documents);
+
 			break;
 
-		/* Close without Saving */
-		case GTK_RESPONSE_NO:
+		case GTK_RESPONSE_NO: /* Close without Saving */
 			if (is_closing_all)
 			{
 				/* We call gtk_widget_destroy before close_all_tabs
@@ -1900,11 +1721,8 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 				gtk_widget_destroy (GTK_WIDGET (dlg));
 
 				close_all_tabs (window);
+
 				return;
-			}
-			else if (notebook_to_close)
-			{
-				gedit_notebook_remove_all_tabs (notebook_to_close);
 			}
 			else
 			{
@@ -1913,25 +1731,26 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 				unsaved_documents = gedit_close_confirmation_dialog_get_unsaved_documents (dlg);
 				g_return_if_fail (unsaved_documents->next == NULL);
 
-				close_document (window, GEDIT_DOCUMENT (unsaved_documents->data));
+				close_document (window,
+						GEDIT_DOCUMENT (unsaved_documents->data));
 			}
 
 			break;
 
-		/* Do not close */
-		default:
+		default: /* Do not close */
+
 			/* Reset is_quitting flag */
 			g_object_set_data (G_OBJECT (window),
-			                   GEDIT_IS_QUITTING,
-			                   GBOOLEAN_TO_POINTER (FALSE));
+					   GEDIT_IS_QUITTING,
+					   GBOOLEAN_TO_POINTER (FALSE));
 
+#ifdef OS_OSX
 			g_object_set_data (G_OBJECT (window),
 			                   GEDIT_IS_QUITTING_ALL,
-			                   GBOOLEAN_TO_POINTER (FALSE));
+			                   GINT_TO_POINTER (FALSE));
+#endif
 			break;
 	}
-
-	g_object_set_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE, NULL);
 
 	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
@@ -1965,7 +1784,7 @@ tab_can_close (GeditTab  *tab,
 	return TRUE;
 }
 
-/* FIXME: we probably need this one public for plugins...
+/* CHECK: we probably need this one public for plugins...
  * maybe even a _list variant. Or maybe it's better make
  * gedit_window_close_tab always run the confirm dialog?
  * we should not allow closing a tab without resetting the
@@ -1989,20 +1808,17 @@ _gedit_cmd_file_close_tab (GeditTab    *tab,
 
 	g_object_set_data (G_OBJECT (window),
 	                   GEDIT_IS_QUITTING_ALL,
-	                   GBOOLEAN_TO_POINTER (FALSE));
+	                   GINT_TO_POINTER (FALSE));
+
 
 	if (tab_can_close (tab, GTK_WINDOW (window)))
-	{
 		gedit_window_close_tab (window, tab);
-	}
 }
 
 void
-_gedit_cmd_file_close (GSimpleAction *action,
-                       GVariant      *parameter,
-                       gpointer       user_data)
+_gedit_cmd_file_close (GtkAction   *action,
+		       GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *active_tab;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -2011,108 +1827,23 @@ _gedit_cmd_file_close (GSimpleAction *action,
 
 	if (active_tab == NULL)
 	{
+#ifdef OS_OSX
+		/* Close the window on OS X */
 		gtk_widget_destroy (GTK_WIDGET (window));
+#endif
 		return;
 	}
 
 	_gedit_cmd_file_close_tab (active_tab, window);
 }
 
-static void
-file_close_dialog (GeditWindow *window,
-                   GList       *unsaved_docs)
-{
-	GtkWidget *dlg;
-
-	if (unsaved_docs->next == NULL)
-	{
-		/* There is only one unsaved document */
-		GeditTab *tab;
-		GeditDocument *doc;
-
-		doc = GEDIT_DOCUMENT (unsaved_docs->data);
-
-		tab = gedit_tab_get_from_document (doc);
-		g_return_if_fail (tab != NULL);
-
-		gedit_window_set_active_tab (window, tab);
-
-		dlg = gedit_close_confirmation_dialog_new_single (GTK_WINDOW (window), doc);
-	}
-	else
-	{
-		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window), unsaved_docs);
-	}
-
-	g_signal_connect (dlg,
-	                  "response",
-	                  G_CALLBACK (close_confirmation_dialog_response_handler),
-	                  window);
-
-	gtk_widget_show (dlg);
-}
-
-static GList *
-notebook_get_unsaved_documents (GeditNotebook *notebook)
-{
-	GList *children;
-	GList *unsaved_docs = NULL;
-	GList *l;
-
-	children = gtk_container_get_children (GTK_CONTAINER (notebook));
-
-	for (l = children; l != NULL; l = g_list_next (l))
-	{
-		GeditTab *tab = GEDIT_TAB (l->data);
-
-		if (!_gedit_tab_get_can_close (tab))
-		{
-			GeditDocument *doc;
-
-			doc = gedit_tab_get_document (tab);
-			unsaved_docs = g_list_prepend (unsaved_docs, doc);
-		}
-	}
-
-	g_list_free (children);
-
-	return g_list_reverse (unsaved_docs);
-}
-
-/* Close a notebook */
-void
-_gedit_cmd_file_close_notebook (GeditWindow   *window,
-                                GeditNotebook *notebook)
-{
-	GList *unsaved_docs;
-
-	g_object_set_data (G_OBJECT (window), GEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER (FALSE));
-	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER (FALSE));
-	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER (FALSE));
-
-	g_object_set_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE, notebook);
-
-	unsaved_docs = notebook_get_unsaved_documents (notebook);
-
-	if (unsaved_docs == NULL)
-	{
-		/* There is no document to save -> close the notebook */
-		gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (notebook));
-	}
-	else
-	{
-		file_close_dialog (window, unsaved_docs);
-
-		g_list_free (unsaved_docs);
-	}
-}
-
 /* Close all tabs */
 static void
 file_close_all (GeditWindow *window,
-                gboolean     is_quitting)
+		gboolean     is_quitting)
 {
-	GList *unsaved_docs;
+	GList     *unsaved_docs;
+	GtkWidget *dlg;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -2130,32 +1861,59 @@ file_close_all (GeditWindow *window,
 
 	unsaved_docs = gedit_window_get_unsaved_documents (window);
 
-	if (unsaved_docs != NULL)
-	{
-		file_close_dialog (window, unsaved_docs);
-
-		g_list_free (unsaved_docs);
-	}
-	else
+	if (unsaved_docs == NULL)
 	{
 		/* There is no document to save -> close all tabs */
 		gedit_window_close_all_tabs (window);
-		quit_if_needed (window);
+
+		if (is_quitting)
+			gtk_widget_destroy (GTK_WIDGET (window));
+
+		return;
 	}
+
+	if (unsaved_docs->next == NULL)
+	{
+		/* There is only one unsaved document */
+		GeditTab      *tab;
+		GeditDocument *doc;
+
+		doc = GEDIT_DOCUMENT (unsaved_docs->data);
+
+		tab = gedit_tab_get_from_document (doc);
+		g_return_if_fail (tab != NULL);
+
+		gedit_window_set_active_tab (window, tab);
+
+		dlg = gedit_close_confirmation_dialog_new_single (
+						GTK_WINDOW (window),
+						doc);
+	}
+	else
+	{
+		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window),
+							   unsaved_docs);
+	}
+
+	g_list_free (unsaved_docs);
+
+	g_signal_connect (dlg,
+			  "response",
+			  G_CALLBACK (close_confirmation_dialog_response_handler),
+			  window);
+
+	gtk_widget_show (dlg);
 }
 
 void
-_gedit_cmd_file_close_all (GSimpleAction *action,
-                           GVariant      *parameter,
-                           gpointer       user_data)
+_gedit_cmd_file_close_all (GtkAction   *action,
+			   GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-
 	gedit_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(gedit_window_get_state (window) &
-			    (GEDIT_WINDOW_STATE_SAVING |
-			     GEDIT_WINDOW_STATE_PRINTING)));
+	                    (GEDIT_WINDOW_STATE_SAVING |
+	                    GEDIT_WINDOW_STATE_PRINTING)));
 
 	file_close_all (window, FALSE);
 }
@@ -2165,28 +1923,23 @@ static void
 quit_all (void)
 {
 	GList *windows;
-	GList *l;
-	GApplication *app;
+	GList *item;
+	GeditApp *app;
 
-	app = g_application_get_default ();
-	windows = gedit_app_get_main_windows (GEDIT_APP (app));
+	app = GEDIT_APP (g_application_get_default ());
+	windows = g_list_copy (gtk_application_get_windows (GTK_APPLICATION (app)));
 
-	if (windows == NULL)
+	for (item = windows; item; item = g_list_next (item))
 	{
-		g_application_quit (app);
-		return;
-	}
-
-	for (l = windows; l != NULL; l = g_list_next (l))
-	{
-		GeditWindow *window = l->data;
+		GeditWindow *window = GEDIT_WINDOW (item->data);
 
 		g_object_set_data (G_OBJECT (window),
 		                   GEDIT_IS_QUITTING_ALL,
-		                   GBOOLEAN_TO_POINTER (TRUE));
+		                   GINT_TO_POINTER (TRUE));
 
 		if (!(gedit_window_get_state (window) &
-		      (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)))
+		                    (GEDIT_WINDOW_STATE_SAVING |
+		                     GEDIT_WINDOW_STATE_PRINTING)))
 		{
 			file_close_all (window, TRUE);
 		}
@@ -2196,12 +1949,9 @@ quit_all (void)
 }
 
 void
-_gedit_cmd_file_quit (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+_gedit_cmd_file_quit (GtkAction   *action,
+                      GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-
 	gedit_debug (DEBUG_COMMANDS);
 
 	if (window == NULL)

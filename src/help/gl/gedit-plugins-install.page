@@ -5,13 +5,13 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Como instalar engadidos de terceiros.</desc>
+    <desc>Como instalar engadidos de terceiras partes</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -22,19 +22,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Engadidos adicionais de gedit</title>
 
-  <p>Instalar engadidos de terceiros proporciónalle funcionalidades adicionais que non están incluídas de maneira predeterminada no <app>gedit</app> nin nos engadidos adicionais que forman parte do paquete <app>gedit-plugins</app>. Unha lista de engadidos de terceiros é <link href="https://wiki.gnome.org/Apps/Gedit">mantida aquí</link>.</p>
+  <p>Instalar engadidos de terceiros dálle unha funcionalidade que non está incluída de maneira predeterminada en <app>gedit</app> nin nos engadidos adicionais que forman parte do paquete <app>gedit-plugins</app>. <link href="http://live.gnome.org/Gedit/Plugins#third_party">Aquí</link> mantense unha lista de engadidos de terceiras partes.</p>
   
   <p>Instalar un engadido de terceiras partes implica descargar o engadido, copiar os ficheiros do engadido no cartafol correcto e activalo.</p>
   
@@ -42,7 +36,10 @@
     <item><p>Xeralmente pode descargar o engadido da súa páxina web, pero pode precisar un programa de control de versións como <app>git</app>, <app>bazaar</app> ou <app>subversion</app> para copiar o repositorio de software dun engadido desde Internet. Consulte a documentación do engadido para obter máis información.</p></item>
     <item><p>Copie o engadido no cartafol <file>/home/<var>nome_de_usuario</var>/.local/share/gedit/plugisn</file>.</p>
     <p>Por suposto, substitúa a palabra <var>nome_de_usuario</var> co seu nome de usuario.</p></item>
-    <item><p>Despois de mover o engadido ao cartafol correcto, aparecerá no menú «Preferencias». Seleccione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferencias</gui><gui>Engadidos</gui><gui>[Nome do engadido]</gui></guiseq> para activalo.</p></item>
+    <item><p>After you have placed the plugin files into the correct directory, 
+    the plugin will appear in the Preferences menu. Select <guiseq><gui>Edit
+    </gui><gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+    <gui>[Name of Plugin]</gui></guiseq> to enable the plugin.</p></item>
     <item><p>Prema <gui>Pechar</gui>.</p></item>
   </steps>
   

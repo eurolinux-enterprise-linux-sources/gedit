@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-color-picker" xml:lang="gl">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/> 
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Seleccionar unha cor dun diálogo e insertar a súa representación hexadecimal</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Fran Dieguez</mal:name>
+      <mal:email>frandieguez@gnome.org</mal:email>
+      <mal:years>2011-2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Leandro Regueiro</mal:name>
+      <mal:email>leandro.regueiro@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Selector de cor</title>
+
+  <p>O engadido <app>selector de cor</app> axudaralle a insertar o código de caracteres que representa un cor determinado. Isto pode simplificar o elixir e usar a cor correcto nos seus programas.</p>
+  
+  <p>To enable the color picker plugin, select <guiseq>
+  <gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Color Picker</gui></guiseq>.</p>
+  
+  <p>Para abrir e usar o selector de cor:</p>
+  <steps>
+      <item><p>Sitúe o cursor no punto do documento no que quere insertar o código de cor.</p></item>
+      <item><p>Seleccione <guiseq><gui>Ferramentas</gui><gui>Seleccionar cor...</gui></guiseq>. aparecerá o diálogo de selección de cor.</p></item>
+      <item><p>Prema no cor desexado desde a xanela do selector de cor.</p>
+      </item>
+      <item><p>O código de cor axeitado insertarase onde tivera o seu cursor.</p></item>
+      <item><p>Para pechar o <app>selector de cor</app>, prema <gui>Pechar</gui>.</p></item>
+  </steps>
+  
+  <!--TODO: Update this section for the "Custom" values -->
+  <note style="tip"><p>Pode facer axustes máis precisos na cor modificando os valores de Ton, Saturación, Valor, Vermello, Verde ou Azul.</p>
+  <p>Ademais, pode gardar cores premendo co botón dereito en calquera das caixas coloreadas no selector de cor, e seleccionándoo <gui>Gardar cor aquí</gui>. Isto fará máis doado insertar cores usados habitualmente máis tarde.</p>
+  </note>     
+</page>

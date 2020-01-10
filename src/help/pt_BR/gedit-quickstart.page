@@ -5,11 +5,10 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>Uma breve introdução ao gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -60,15 +59,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -77,7 +70,7 @@
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Uma vez que o <app>gedit</app> seja executado, você já pode começar a digitar. Para salvar seu texto, basta clicar no ícone <gui>Salvar</gui> na barra de ferramentas do <app>gedit</app>.</p>
+  <p>Uma vez que o <app>gedit</app> inicie, você já pode começar a digitar. Para salvar seu texto, basta clicar em <gui>Salvar</gui>.</p>
 
   <p>Para aprender sobre recursos adicionas do <app>gedit</app> e receber assistência realizando tarefas adicionais, explore <link xref="index">as outras partes</link> da ajuda do <app>gedit</app>.</p>
 

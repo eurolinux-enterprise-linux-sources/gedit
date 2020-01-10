@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs" xml:lang="oc">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs" xml:lang="oc">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Create or close tabs in the gedit window.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -20,16 +17,6 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
@@ -42,7 +29,7 @@
   <section id="gedit-adding-tabs">
     <title>Adding tabs</title>
     <p>To add a new tab, create a new file with <keyseq><key>Ctrl</key>
-    <key>T</key></keyseq>. The tab will be added to the right side of any other
+    <key>N</key></keyseq>. The tab will be added to the right side of any other
     tabs.</p>
   </section>
 

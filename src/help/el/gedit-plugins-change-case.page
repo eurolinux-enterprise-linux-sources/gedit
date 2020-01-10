@@ -11,38 +11,32 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Αλλαγή του επιλεγμένου κειμένου σε κεφαλαία-πεζά.</desc>
+  <desc>Αλλαγή του επιλεγμένου κειμένου σε κεφαλαία-πεζά</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μάριος Ζηντίλης</mal:name>
+      <mal:name> Μάριος Ζηντίλης</mal:name>
       <mal:email>m.zindilis@dmajor.org</mal:email>
       <mal:years>2009</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Βασίλης Τσιβίκης</mal:name>
+      <mal:name> Βασίλης Τσιβίκης</mal:name>
       <mal:email>vasitsiv@hotmail.gr</mal:email>
       <mal:years>2011</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Θάνος Τρυφωνίδης</mal:name>
+      <mal:name> Θάνος Τρυφωνίδης</mal:name>
       <mal:email>tomtryf@gmail.com</mal:email>
-      <mal:years>2012, 2014</mal:years>
+      <mal:years>2012</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Δημήτρης Σπίγγος</mal:name>
+      <mal:name> Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014, 2015</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μαρία Μαυρίδου</mal:name>
-      <mal:email>mavridou@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -50,7 +44,7 @@
 
   <p>Το πρόσθετο αυτό σας βοηθάει να αλλάξετε τα κεφαλαία-πεζά σε επιλεγμένα μέρη του κειμένου. Μπορείτε να το χρησιμοποιήσετε για να αλλάξετε το κείμενο σε όλα πεζά, όλα κεφαλαία, ή να αντιστρέψετε τα πεζά-κεφαλαία, ή να εφαρμόσετε κεφαλαία-πεζά στον τίτλο. Για να ενεργοποιήσετε αυτό το πρόσθετο, επιλέξτε <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Προτιμήσεις</gui> <gui>Πρόσθετα</gui><gui>Αλλαγή κεφαλαίων-πεζών</gui></guiseq>.</p>
 
-  <p>Αφού ενεργοποιηθεί το πρόσθετο <em>Αλλαγή κεφαλαίων-πεζών</em>, μπορείτε να το χρησιμοποιήσετε ολοκληρώνοντας τα παρακάτω βήματα:</p>
+  <p>Αφού ενεργοποιηθεί το πρόσθετο <em>Διάκριση κεφαλαίων-πεζών</em>, μπορείτε να το χρησιμοποιήσετε ολοκληρώνοντας τα παρακάτω βήματα:</p>
 
   <steps>
     <item><p>Επιλέξτε τις γραμμές κειμένου που θέλετε να αλλάξετε.</p></item>
@@ -67,7 +61,7 @@
   </note>
 
   <note>
-    <p>Αν δεν έχετε επισημάνει κανένα κείμενο, η λειτουργία <em>Αλλαγή κεφαλαίων-πεζών</em> δεν θα λειτουργήσει. Πρέπει να επιλέξετε ένα κομμάτι του κειμένου πριν χρησιμοποιήσετε την λειτουργία <em>Αλλαγή κεφαλαίων-πεζών</em>.</p>
+    <p>Αν δεν έχετε επισημάνει κανένα κείμενο, η λειτουργία <em>Διάκριση κεφαλαίων-πεζών</em> δεν θα λειτουργήσει. Πρέπει να επιλέξετε ένα κομμάτι του κειμένου πριν χρησιμοποιήσετε την λειτουργία <em>Διάκριση κεφαλαίων-πεζών</em>.</p>
   </note>
 
 </page>

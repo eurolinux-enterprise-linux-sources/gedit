@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-commander" xml:lang="es">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/> 
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Usar una interfaz de línea de comandos para edición avanzada</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Mustieles</mal:name>
+      <mal:email>daniel.mustieles@gmail.com</mal:email>
+      <mal:years>2011-2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jorge González</mal:name>
+      <mal:email>jorgegonz@svn.gnome.org</mal:email>
+      <mal:years>2006-2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>María Majadas</mal:name>
+      <mal:email>maria.majadas@hispalinux.es</mal:email>
+      <mal:years>2005</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Comando</title>
+
+
+  <p>El complemento <app>Comando</app> es para usuarios avanzados de <app>gedit</app> que permite realizar acciones de línea de comandos sobre el archivo actual. Para activar el complemento «Comando», seleccione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferencias</gui> <gui>Complementos</gui><gui>Comando</gui></guiseq>.</p>
+
+  <p>Una vez que haya instalado el complemento, actívelo pulsando <keyseq><key> Ctrl</key><key>.</key></keyseq>.</p>
+  
+  <note style="tip"><p>La última tecla de la combinación de teclas indicada es un punto («.»).</p></note>
+
+    <table frame="all" rules="all">
+      <thead>
+        <tr>
+          <td><p>Para hacer esto</p></td>  <td><p>Pulsar esto</p></td>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Ver una descripción de los comandos disponibles</p></td> <td><p>Tab + Tab</p></td>  
+        </tr>
+        <tr>
+          <td><p>Buscar una palabra en el archivo actual</p></td>  <td><p>/ <em>foo</em></p>
+          <p>Esto buscará la palabra <em>foo</em>.</p></td>
+        </tr>
+        <tr>
+          <td><p>Reemplazar una palabra en el archivo actual</p></td>  <td><p>// foo bar</p>
+          <p>Esto reemplazará <em>foo</em> por <em>bar</em>.</p></td>
+        </tr>
+        <tr>
+          <td><p>Mover el cursos a un determinado número de línea en su archivo</p></td>  
+          <td><p>go [número de línea] <em>o</em> simplemente <em>g</em> [número de línea]</p>
+          </td>
+        </tr>
+        <tr>
+          <td><p>Conmutar el indicador de marcador para la línea actual</p></td>  
+          <td><p>bookmark <em>o</em> simplemente <em>b</em></p></td>  
+        </tr>
+      </tbody>
+    </table>
+  
+  <note style="tip"><p>Algunos comandos, como <app>bookmark</app>, necesitan que se insale y active el complemento adecuado. Si no tiene el complemento instalado y activado, obtendrá un mensaje de error.</p></note>
+
+</page>

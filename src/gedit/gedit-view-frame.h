@@ -15,35 +15,58 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with gedit. If not, see <http://www.gnu.org/licenses/>.
+ * along with gedit; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
+ * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_VIEW_FRAME_H
-#define GEDIT_VIEW_FRAME_H
+#ifndef __GEDIT_VIEW_FRAME_H__
+#define __GEDIT_VIEW_FRAME_H__
 
 #include <gtk/gtk.h>
 #include "gedit-document.h"
 #include "gedit-view.h"
-#include "gedit-view-centering.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW_FRAME (gedit_view_frame_get_type ())
-G_DECLARE_FINAL_TYPE (GeditViewFrame, gedit_view_frame, GEDIT, VIEW_FRAME, GtkOverlay)
+#define GEDIT_TYPE_VIEW_FRAME			(gedit_view_frame_get_type ())
+#define GEDIT_VIEW_FRAME(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_VIEW_FRAME, GeditViewFrame))
+#define GEDIT_VIEW_FRAME_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_VIEW_FRAME, GeditViewFrame const))
+#define GEDIT_VIEW_FRAME_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_VIEW_FRAME, GeditViewFrameClass))
+#define GEDIT_IS_VIEW_FRAME(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_VIEW_FRAME))
+#define GEDIT_IS_VIEW_FRAME_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_VIEW_FRAME))
+#define GEDIT_VIEW_FRAME_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_VIEW_FRAME, GeditViewFrameClass))
 
-GeditViewFrame	*gedit_view_frame_new			(void);
+typedef struct _GeditViewFrame			GeditViewFrame;
+typedef struct _GeditViewFramePrivate		GeditViewFramePrivate;
+typedef struct _GeditViewFrameClass		GeditViewFrameClass;
 
-GeditViewCentering
-		*gedit_view_frame_get_view_centering	(GeditViewFrame *frame);
+struct _GeditViewFrame
+{
+	GtkBox parent;
 
-GeditView	*gedit_view_frame_get_view		(GeditViewFrame *frame);
+	GeditViewFramePrivate *priv;
+};
 
-void		 gedit_view_frame_popup_search		(GeditViewFrame *frame);
+struct _GeditViewFrameClass
+{
+	GtkBoxClass parent_class;
+};
 
-void		 gedit_view_frame_popup_goto_line	(GeditViewFrame *frame);
+GType		 gedit_view_frame_get_type	(void) G_GNUC_CONST;
 
-void		 gedit_view_frame_clear_search		(GeditViewFrame *frame);
+GeditViewFrame	*gedit_view_frame_new		(void);
+
+GeditDocument	*gedit_view_frame_get_document	(GeditViewFrame *frame);
+
+GeditView	*gedit_view_frame_get_view	(GeditViewFrame *frame);
+
+void		 gedit_view_frame_popup_search	(GeditViewFrame *frame);
+
+void		 gedit_view_frame_popup_goto_line (GeditViewFrame *frame);
+
+void		 gedit_view_frame_clear_search	(GeditViewFrame *frame);
 
 G_END_DECLS
 
-#endif /* GEDIT_VIEW_FRAME_H */
+#endif /* __GEDIT_VIEW_FRAME_H__ */

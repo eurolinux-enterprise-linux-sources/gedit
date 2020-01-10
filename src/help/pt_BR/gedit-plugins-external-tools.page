@@ -12,10 +12,10 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Execute scripts em seus arquivos atuais e interaja com outros aplicativos.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Execute scripts em seus arquivos atuais e interaja com outros aplicativos</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -60,15 +60,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 

@@ -5,49 +5,58 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>How to install third-party plugins.</desc>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
+    <desc>How to install third-party plugins</desc>
   </info>
 
-  <title>Додаткові плагіни «gedit»</title>
+  <title>Additional gedit plugins</title>
 
-  <p>Встановлення сторонніх плагінів надає додаткової функціональності, яка недоступна в стандартних плагінах «<app>gedit</app>», або навіть в додаткових плагінах, які є частиною пакунку «<app>gedit-plugins</app>». Онлайн-список сторонніх плагінів <link href="https://wiki.gnome.org/Apps/Gedit">міститься тут</link>.</p>
+  <p>Installing third-party plugins gives you extra functionality that isn't 
+  available in default <app>gedit</app> plugins, or even the extra plugins that 
+  are part of the <app>gedit-plugins</app> package. An online list of 
+  third-party plugins is 
+  <link href="http://live.gnome.org/Gedit/Plugins#third_party">kept here</link>.
+  </p>
   
-  <p>Під встановленням стороннього плагіну мається на увазі завантаження плагіну, розміщення його в правильному каталозі та активування плагіну.</p>
+  <p>Installing a third-party plugin involves downloading the plugin, placing 
+  the plugin files in the right directory, and activating the plugin.</p>
   
   <steps>
-    <item><p>Зазвичай, можна просто завантажити плагін з інтернет-сторінки плагіну, однак може знадобитися програма для контролю версії, така як «<app>git</app>», «<app>bazaar</app>» або «<app>subversion</app>», щоб скопіювати з інтернету репозиторій програмного забезпечення плагіну. Дивіться документацію плагіну для отримання інформації про плагін.</p></item>
-    <item><p>Помістіть файли плагіну в каталог «<file>/home/<var>ім'я_користувача</var>/.local/share/gedit/plugins</file>».</p>
-    <p>Звичайно ж, замініть «<var>ім'я_користувача</var>» на своє власне ім'я.</p></item>
-    <item><p>Після розміщення файлів плагіну у відповідному каталозі, плагін з'явиться в меню «Параметри». Виберіть <guiseq><gui>«Редагувати»</gui><gui style="menuitem">«Параметри»</gui><gui>«Плагіни»</gui> <gui>[Назва плагіну]</gui></guiseq>, щоб увімкнути плагін.</p></item>
-    <item><p>Клацніть на «<gui>Закрити</gui>».</p></item>
+    <item><p>You can usually download a plugin from the plugin's website, but 
+    may need to use a revision-control program like <app>git</app>, <app>
+    bazaar</app>, or <app>subversion</app> to copy a plugin's software 
+    repository from the internet. Refer to the plugin's documentation for 
+    information on getting the plugin.</p></item>
+    <item><p>Place the plugin files into the 
+    <file>/home/<var>username</var>/.local/share/gedit/plugins</file> directory.
+    </p>
+    <p>Of course, replace the word <var>username</var> with your own username.
+    </p></item>
+    <item><p>After you have placed the plugin files into the correct directory, 
+    the plugin will appear in the Preferences menu. Select <guiseq><gui>Edit
+    </gui><gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+    <gui>[Name of Plugin]</gui></guiseq> to enable the plugin.</p></item>
+    <item><p>Click <gui>Close</gui>.</p></item>
   </steps>
   
-  <p>Після увімкнення плагіну, він має стати доступним для користування.</p>
+  <p>After you have enabled the plugin, it should be available for you to use.
+  </p>
   
   <note style="tip">
-    <p>Каталог «<file>.local</file>» є прихованим за замовчуванням. Щоб відобразити його та інші приховані файли, виберіть <guiseq><gui>«Вигляд»</gui><gui>«Показувати приховані файли»</gui></guiseq> або натисніть <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+    <p>The <file>.local</file> directory is hidden by default. To view it and 
+    other hidden files, select <guiseq><gui>View</gui><gui>Show Hidden 
+    Files</gui></guiseq>, or press <keyseq><key>Ctrl</key><key>H</key></keyseq>.
+    </p>
   </note>
 
   <note style="tip">
-    <p>Якщо каталог «<file>.local/share/gedit/plugins/</file>» відсутній у Вашій системі, його потрібно створити.</p>
+    <p>If the directory <file>.local/share/gedit/plugins/</file> is not 
+    present on your system, you will need to create it.</p>
   </note>
   
 </page>

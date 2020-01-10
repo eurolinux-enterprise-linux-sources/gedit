@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Change the case of selected text.</desc>
+  <desc>Spremenite velikost izbranega besedila</desc>
 </info>
 
 <title>Spremeni velikost črk</title>

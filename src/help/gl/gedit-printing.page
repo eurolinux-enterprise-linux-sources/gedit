@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Imprimir os ficheiros creados co gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
@@ -24,78 +23,94 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
-  <title>Imprimir documentos</title>
+  <title>Printing documents</title>
 
     <note style="important">
       <p>Imprimir con <app>gedit</app> require que teña conectada e configurada unha impresora. Se non o fixo, consulte a <link href="ghelp:gnome-help?printing">documentación sobre a impresión en GNOME</link>.</p>
     </note>
   
-  <p><app>gedit</app> permítelle imprimir nun ficheiro e en papel.</p>
+  <p><app>gedit</app> allows you to print both to a file and to paper.</p>
 
   <section id="print-preview">
-    <title>Vista previa de impresión</title>
+    <title>Print Preview</title>
 
-  <p>Antes de imprimir un documento, pode previsualizar como se verá impreso usando a <gui>Vista previa de impresión</gui>. Para previsualizar o documento:</p>
+  <p>Prior to printing your document, you can preview how the printed document
+  will look by using <gui>Print Preview</gui>. To preview the document:</p>
 
   <steps>
     <item>
-      <p>Seleccione <guiseq><gui style="menu">Ficheiros</gui> <gui style="menuitem">Previsualización da impresión</gui></guiseq>. Alternativamente, pode premer <keyseq><key>Maiús</key><key>Ctrl</key> <key>P</key></keyseq>.</p>
+      <p>Select <guiseq><gui style="menu">File</gui>
+      <gui style="menuitem">Print Preview</gui></guiseq>. Alternatively, you
+      can press <keyseq><key>Shift</key><key>Ctrl</key>
+      <key>P</key></keyseq>.</p>
     </item>
   </steps>
 
-  <p>Unha previsualización do seu documento abrirase na mesma lapela que o ficheiro. Pode navegar pola previsualización cos botóns de navegación e as ferramentas da barra de ferramentas na banda superior da lapela de previsualización do documento. Para pechar e volver ao documento prema  <gui style="button">Pechar a previsualización</gui></p>
+  <p>A preview of your document will open in the same tab as the file. You can
+  browse this preview with help of navigation buttons and tools in the toolbar
+  at the top of the document preview tab. To close and return to the document
+  click <gui style="button">Close Preview</gui>.</p>
 
   </section>
 
   <section id="printing-to-paper">
-    <title>Imprimir en papel</title>
+    <title>Printing To Paper</title>
 
-  <p>Pode imprimir os seus documentos en papel usando unha impresora local ou remota. Para imprimir nun ficheiro:</p>
+  <p>You can print your documents to paper using a local or remote printer. To
+  print a file:</p>
 
   <steps>
     <item>
-      <p>Seleccione <guiseq><gui style="menu">Ficheiro</gui> <gui style="menuitem">Imprimir</gui> <gui style="tab">Xeral</gui></guiseq>.</p>
+      <p>Select <guiseq><gui style="menu">File</gui>
+      <gui style="menuitem">Print</gui>
+      <gui style="tab">General</gui></guiseq>.</p>
     </item>
     <item>
-      <p>Seleccione a impresora que queira desde a lista de impresoras dispoñíbeis.</p>
+      <p>Select the desired printer from the list of printers available.</p>
     </item>
     <item>
-      <p>Pode previsualizar o ficheiro usando <gui style="button">Vista previa de impresión</gui> e en canto estea satisfeito coas preferencias prema <gui style="button">Imprimir</gui> para enviar o ficheiro á impresora.</p>
+      <p>You can preview the file using <gui style="button">Print Preview</gui>
+      and once you are satisfied with the settings, click
+      <gui style="button">Print</gui> to send the file to printer.</p>
     </item>
   </steps>
 
-  <p>Adicionalmente desde a lapela <gui style="tab">Configuración da páxina</gui>: pode seleccionar as opcións <gui style="group">Disposición</gui> e <gui style="group">Papel</gui>. Como estas opcións están dispoñíbeis en programas do <app>GNOME</app>, consulte a axuda <link href="help:gnome-help/printing#paper">Opcións de disposición e de papel</link>.</p>
+  <p>Additionally, from <gui style="tab">Page Setup</gui> tab: you can choose
+  <gui style="group">Layout</gui> and <gui style="group">Paper</gui> options. As
+  these settings are available throughout <app>GNOME</app> programs, please
+  consult
+  <link href="help:gnome-help/printing#paper">Layout and Paper options</link>
+  help.</p>
 
   </section>
 
   <section id="printing-order-select">
-    <title>Imprimir varias copias e especificar rangos</title>
+    <title>Print Multiple Copies And Between Specified Ranges</title>
 
-    <p>Pode configurar as opcións <gui style="group">Rangos</gui> e <gui style="group">Copias</gui> para axudarlle:</p>
+    <p>You can set <gui style="group">Range</gui> and
+    <gui style="group">Copies</gui> options to help you:</p>
 
   </section>
 
   <section id="printing-to-file">
-    <title>Imprimir nun ficheiro</title>
+    <title>Printing To File</title>
 
-  <p>Tamén pode usar <app>gedit</app> para imprimir nun ficheiro. Para imprimir o seu documento nun ficheiro dun formato diferente:</p>
+  <p>You can also use <app>gedit</app> to print to a file. To print your
+  document to file of a different format:</p>
 
   <steps>
     <item>
-      <p>Seleccione <guiseq><gui style="menu">Ficheiro</gui> <gui style="menuitem">Imprimir</gui> <gui style="menuitem">Imprimir nun ficheiro</gui></guiseq>.</p>
+      <p>Select <guiseq><gui style="menu">File</gui>
+      <gui style="menuitem">Print</gui>
+      <gui style="menuitem">Print to File</gui></guiseq>.</p>
     </item>
     <item>
-      <p>A impresión está activada para os seguintes formatos dos que pode escoller:</p>
+      <p>Printing is enabled for the following file formats, you may select
+      from:</p>
       <list>
         <item>
           <p>Formato de documento portable (.pdf)</p>
@@ -109,7 +124,8 @@
         </list>
     </item>
     <item>
-      <p>Para imprimir un documento nun ficheiro prema <gui style="button">Imprimir</gui>.</p>
+      <p>To print the document to file, click
+      <gui style="button">Print</gui>.</p>
     </item>
   </steps>
 

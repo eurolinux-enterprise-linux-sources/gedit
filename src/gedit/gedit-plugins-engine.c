@@ -16,32 +16,43 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-plugins-engine.h"
-
 #include <string.h>
+
 #include <glib/gi18n.h>
 #include <girepository.h>
+
+#include "gedit-plugins-engine.h"
 #include "gedit-debug.h"
+#include "gedit-app.h"
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
+#include "gedit-utils.h"
 
-struct _GeditPluginsEngine
+G_DEFINE_TYPE(GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
+
+struct _GeditPluginsEnginePrivate
 {
-	PeasEngine parent_instance;
-
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE (GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
-
-static GeditPluginsEngine *default_engine = NULL;
+GeditPluginsEngine *default_engine = NULL;
 
 static void
 gedit_plugins_engine_init (GeditPluginsEngine *engine)
@@ -51,9 +62,13 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 
 	gedit_debug (DEBUG_PLUGINS);
 
+	engine->priv = G_TYPE_INSTANCE_GET_PRIVATE (engine,
+	                                            GEDIT_TYPE_PLUGINS_ENGINE,
+	                                            GeditPluginsEnginePrivate);
+
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
-	engine->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
+	engine->priv->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
 
 	/* Require gedit's typelib. */
 	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),
@@ -95,7 +110,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 	                             gedit_dirs_get_gedit_plugins_dir (),
 	                             gedit_dirs_get_gedit_plugins_data_dir ());
 
-	g_settings_bind (engine->plugin_settings,
+	g_settings_bind (engine->priv->plugin_settings,
 	                 GEDIT_SETTINGS_ACTIVE_PLUGINS,
 	                 engine,
 	                 "loaded-plugins",
@@ -107,7 +122,7 @@ gedit_plugins_engine_dispose (GObject *object)
 {
 	GeditPluginsEngine *engine = GEDIT_PLUGINS_ENGINE (object);
 
-	g_clear_object (&engine->plugin_settings);
+	g_clear_object (&engine->priv->plugin_settings);
 
 	G_OBJECT_CLASS (gedit_plugins_engine_parent_class)->dispose (object);
 }
@@ -118,6 +133,8 @@ gedit_plugins_engine_class_init (GeditPluginsEngineClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_plugins_engine_dispose;
+
+	g_type_class_add_private (klass, sizeof (GeditPluginsEnginePrivate));
 }
 
 GeditPluginsEngine *

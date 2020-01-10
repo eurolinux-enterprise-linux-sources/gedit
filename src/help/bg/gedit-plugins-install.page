@@ -5,13 +5,13 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Даниел Нийл</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>How to install third-party plugins.</desc>
+    <desc>Как се инсталират приставки от трети страни</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>
@@ -34,12 +34,7 @@
 
   <title>Допълнителни приставки за gedit</title>
 
-  <p>Installing third-party plugins gives you extra functionality that isn't 
-  available in default <app>gedit</app> plugins, or even the extra plugins that 
-  are part of the <app>gedit-plugins</app> package. An online list of 
-  third-party plugins is 
-  <link href="https://wiki.gnome.org/Apps/Gedit">kept here</link>.
-  </p>
+  <p>Инсталирането на приставки от трети страни ви дава допълнителна функционалност, която не е включена в стандартните приставки на <app>gedit</app> както и в допълнителните приставки от пакета <app>gedit-plugins</app>. Списък с приставките можете да намерите <link href="http://live.gnome.org/Gedit/Plugins#third_party">тук</link></p>
   
   <p>Инсталирането на приставка от трета страна включва изтегляне, поставяне на файловете ѝ в правилната папка и активиране.</p>
   

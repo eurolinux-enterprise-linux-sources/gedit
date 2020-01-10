@@ -15,12 +15,14 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
 
-#ifndef GEDIT_DIRS_H
-#define GEDIT_DIRS_H
+#ifndef __GEDIT_DIRS_H__
+#define __GEDIT_DIRS_H__
 
 #include <glib.h>
 
@@ -40,6 +42,8 @@ const gchar	*gedit_dirs_get_user_styles_dir		(void);
 
 const gchar	*gedit_dirs_get_user_plugins_dir	(void);
 
+const gchar	*gedit_dirs_get_gedit_data_dir		(void);
+
 const gchar	*gedit_dirs_get_gedit_locale_dir	(void);
 
 const gchar	*gedit_dirs_get_gedit_lib_dir		(void);
@@ -48,8 +52,10 @@ const gchar	*gedit_dirs_get_gedit_plugins_dir	(void);
 
 const gchar	*gedit_dirs_get_gedit_plugins_data_dir	(void);
 
+gchar		*gedit_dirs_get_ui_file			(const gchar *file);
+
 G_END_DECLS
 
-#endif /* GEDIT_DIRS_H */
+#endif /* __GEDIT_DIRS_H__ */
 
 /* ex:set ts=8 noet: */

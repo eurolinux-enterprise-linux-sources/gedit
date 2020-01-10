@@ -2,7 +2,7 @@
  * gedit-documents-panel.c
  * This file is part of gedit
  *
- * Copyright (C) 2014 - Sébastien Lafargue <slafargue@gnome.org>
+ * Copyright (C) 2005 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,17 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -23,516 +33,339 @@
 #endif
 
 #include "gedit-documents-panel.h"
-
-#include <glib/gi18n.h>
-
 #include "gedit-debug.h"
-#include "gedit-document.h"
+#include "gedit-utils.h"
 #include "gedit-multi-notebook.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
-#include "gedit-tab.h"
-#include "gedit-tab-private.h"
-#include "gedit-utils.h"
-#include "gedit-commands-private.h"
+#include "gedit-cell-renderer-button.h"
 
-typedef struct _GeditDocumentsGenericRow GeditDocumentsGenericRow;
-typedef struct _GeditDocumentsGenericRow GeditDocumentsGroupRow;
-typedef struct _GeditDocumentsGenericRow GeditDocumentsDocumentRow;
+#include <glib/gi18n.h>
 
-struct _GeditDocumentsGenericRow
+#define GEDIT_DOCUMENTS_PANEL_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
+						  GEDIT_TYPE_DOCUMENTS_PANEL,            \
+						  GeditDocumentsPanelPrivate))
+
+struct _GeditDocumentsPanelPrivate
 {
-	GtkListBoxRow        parent_instance;
-
-	GeditDocumentsPanel *panel;
-	GtkWidget           *ref;
-
-	GtkWidget           *box;
-	GtkWidget           *label;
-	GtkWidget           *close_button;
-
-	/* Not used in GeditDocumentsGroupRow */
-	GtkWidget           *image;
-	GtkWidget           *status_label;
-};
-
-#define GEDIT_TYPE_DOCUMENTS_GROUP_ROW            (gedit_documents_group_row_get_type ())
-#define GEDIT_DOCUMENTS_GROUP_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_DOCUMENTS_GROUP_ROW, GeditDocumentsGroupRow))
-#define GEDIT_DOCUMENTS_GROUP_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW, GeditDocumentsGroupRowClass))
-#define GEDIT_IS_DOCUMENTS_GROUP_ROW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_DOCUMENTS_GROUP_ROW))
-#define GEDIT_IS_DOCUMENTS_GROUP_ROW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW))
-#define GEDIT_DOCUMENTS_GROUP_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  GEDIT_TYPE_DOCUMENTS_GROUP_ROW, GeditDocumentsGroupRowClass))
-
-typedef struct _GeditDocumentsGroupRowClass GeditDocumentsGroupRowClass;
-
-struct _GeditDocumentsGroupRowClass
-{
-	GtkListBoxRowClass parent_class;
-};
-
-GType gedit_documents_group_row_get_type (void) G_GNUC_CONST;
-
-G_DEFINE_TYPE (GeditDocumentsGroupRow, gedit_documents_group_row, GTK_TYPE_LIST_BOX_ROW)
-
-#define GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW            (gedit_documents_document_row_get_type ())
-#define GEDIT_DOCUMENTS_DOCUMENT_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, GeditDocumentsDocumentRow))
-#define GEDIT_DOCUMENTS_DOCUMENT_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, GeditDocumentsDocumentRowClass))
-#define GEDIT_IS_DOCUMENTS_DOCUMENT_ROW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW))
-#define GEDIT_IS_DOCUMENTS_DOCUMENT_ROW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW))
-#define GEDIT_DOCUMENTS_DOCUMENT_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, GeditDocumentsDocumentRowClass))
-
-typedef struct _GeditDocumentsDocumentRowClass GeditDocumentsDocumentRowClass;
-
-struct _GeditDocumentsDocumentRowClass
-{
-	GtkListBoxRowClass parent_class;
-};
-
-GType gedit_documents_document_row_get_type (void) G_GNUC_CONST;
-
-G_DEFINE_TYPE (GeditDocumentsDocumentRow, gedit_documents_document_row, GTK_TYPE_LIST_BOX_ROW)
-
-static GtkWidget *gedit_documents_document_row_new (GeditDocumentsPanel *panel,
-                                                    GeditTab            *tab);
-static GtkWidget *gedit_documents_group_row_new    (GeditDocumentsPanel *panel,
-                                                    GeditNotebook       *notebook);
-
-struct _GeditDocumentsPanel
-{
-	GtkBox              parent_instance;
-
 	GeditWindow        *window;
 	GeditMultiNotebook *mnb;
-	GtkWidget          *listbox;
+
+	GtkWidget          *treeview;
+	GtkTreeModel       *model;
 
 	guint               selection_changed_handler_id;
-	guint               tab_switched_handler_id;
-	gboolean            is_in_tab_switched;
+	guint               refresh_idle_id;
 
-	/* Flag to workaround first GroupRow selection at start ( we don't want to show it ) */
-	gboolean            first_selection;
-	GtkWidget          *current_selection;
-
-	GtkAdjustment      *adjustment;
-
-	guint               nb_row_notebook;
-	guint               nb_row_tab;
-
-	GtkTargetList      *source_targets;
-	GtkWidget          *dnd_window;
-	GtkWidget          *row_placeholder;
-	guint               row_placeholder_index;
-	guint               row_destination_index;
-	GtkWidget          *drag_document_row;
-	gint                row_source_row_offset;
-	gint                document_row_height;
-	gint                drag_document_row_x;
-	gint                drag_document_row_y;
-	gint                drag_root_x;
-	gint                drag_root_y;
-	gboolean            is_on_drag;
+	guint               adding_tab : 1;
+	guint               is_reodering : 1;
+	guint               setting_active_notebook : 1;
 };
+
+G_DEFINE_TYPE(GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
 
 enum
 {
 	PROP_0,
-	PROP_WINDOW,
-	LAST_PROP
+	PROP_WINDOW
 };
 
-static GParamSpec *properties[LAST_PROP];
-
-G_DEFINE_TYPE (GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
-
-static const GtkTargetEntry panel_targets [] = {
-	{"GEDIT_DOCUMENTS_DOCUMENT_ROW", GTK_TARGET_SAME_APP, 0},
+enum
+{
+	PIXBUF_COLUMN = 0,
+	NAME_COLUMN,
+	NOTEBOOK_COLUMN,
+	TAB_COLUMN,
+	N_COLUMNS
 };
 
-#define MAX_DOC_NAME_LENGTH 60
+#define MAX_DOC_NAME_LENGTH	60
+#define NB_NAME_DATA_KEY	"DocumentsPanelNotebookNameKey"
+#define TAB_NB_DATA_KEY		"DocumentsPanelTabNotebookKey"
 
-#define ROW_OUTSIDE_LISTBOX -1
 
-static guint
-get_nb_visible_rows (GeditDocumentsPanel *panel)
+static gchar *
+notebook_get_name (GeditMultiNotebook *mnb,
+		   GeditNotebook      *notebook)
 {
-	guint nb = 0;
-
-	if (panel->nb_row_notebook > 1)
-	{
-		nb += panel->nb_row_notebook;
-	}
-
-	nb += panel->nb_row_tab;
-
-	return nb;
-}
-
-static guint
-get_row_visible_index (GeditDocumentsPanel *panel,
-                       GtkWidget           *searched_row)
-{
-	GList *children;
-	GList *l;
-	guint nb_notebook_row = 0;
-	guint nb_tab_row = 0;
-
-	children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-
-	for (l = children; l != NULL; l = g_list_next (l))
-	{
-		GtkWidget *row = l->data;
-
-		if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-		{
-			nb_notebook_row += 1;
-		}
-		else
-		{
-			nb_tab_row += 1;
-		}
-
-		if (row == searched_row)
-		{
-			break;
-		}
-	}
-
-	g_list_free (children);
-
-	if (panel->nb_row_notebook == 1)
-	{
-		nb_notebook_row = 0;
-	}
-
-	return nb_tab_row + nb_notebook_row - 1;
-}
-
-/* We do not grab focus on the row, so scroll it into view manually */
-static void
-make_row_visible (GeditDocumentsPanel *panel,
-                  GtkWidget           *row)
-{
-	gdouble adjustment_value;
-	gdouble adjustment_lower;
-	gdouble adjustment_upper;
-	gdouble adjustment_page_size;
-	gdouble nb_visible_rows;
-	gdouble row_visible_index;
-	gdouble row_size;
-	gdouble row_position;
-	gdouble offset;
-	gdouble new_adjustment_value;
-
-	adjustment_value = gtk_adjustment_get_value (panel->adjustment);
-	adjustment_lower = gtk_adjustment_get_lower (panel->adjustment);
-	adjustment_upper = gtk_adjustment_get_upper (panel->adjustment);
-	adjustment_page_size = gtk_adjustment_get_page_size (panel->adjustment);
-
-	nb_visible_rows = get_nb_visible_rows (panel);
-	row_visible_index = get_row_visible_index (panel, GTK_WIDGET (row));
-
-	row_size = (adjustment_upper - adjustment_lower) / nb_visible_rows;
-	row_position =  row_size * row_visible_index;
-
-	if (row_position < adjustment_value)
-	{
-		new_adjustment_value = row_position;
-	}
-	else if ((row_position + row_size) > (adjustment_value + adjustment_page_size))
-	{
-		offset = (row_position + row_size) - (adjustment_value + adjustment_page_size);
-		new_adjustment_value = adjustment_value + offset;
-	}
-	else
-	{
-		new_adjustment_value = adjustment_value;
-	}
-
-	gtk_adjustment_set_value (panel->adjustment, new_adjustment_value);
-}
-
-/* This function is a GCompareFunc to use with g_list_find_custom */
-static gint
-listbox_search_function (gconstpointer row,
-                         gconstpointer item)
-{
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-	gpointer *searched_item = (gpointer *)generic_row->ref;
-
-	return searched_item == item ? 0 : -1;
-}
-
-static GtkListBoxRow *
-get_row_from_widget (GeditDocumentsPanel *panel,
-                     GtkWidget           *widget)
-{
-	GList *children;
-	GList *item;
-	GtkListBoxRow *row;
-
-	children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-
-	item = g_list_find_custom (children, widget, listbox_search_function);
-	row = item ? item->data : NULL;
-
-	g_list_free (children);
-
-	return row;
-}
-
-static void
-row_select (GeditDocumentsPanel *panel,
-            GtkListBox          *listbox,
-            GtkListBoxRow       *row)
-{
-	GtkListBoxRow *selected_row = gtk_list_box_get_selected_row (listbox);
-
-	if (row != selected_row)
-	{
-		g_signal_handler_block (listbox, panel->selection_changed_handler_id);
-		gtk_list_box_select_row (listbox, row);
-		g_signal_handler_unblock (listbox, panel->selection_changed_handler_id);
-	}
-
-	panel->current_selection = GTK_WIDGET (row);
-	make_row_visible (panel, GTK_WIDGET (row));
-}
-
-static void
-insert_row (GeditDocumentsPanel *panel,
-            GtkListBox          *listbox,
-            GtkWidget           *row,
-            gint                 position)
-{
-	g_signal_handler_block (listbox, panel->selection_changed_handler_id);
-	gtk_list_box_insert (listbox, row, position);
-	g_signal_handler_unblock (listbox, panel->selection_changed_handler_id);
-}
-
-static void
-select_active_tab (GeditDocumentsPanel *panel)
-{
-	GeditNotebook *notebook;
-	gboolean have_tabs;
-	GeditTab *tab;
-
-	notebook = gedit_multi_notebook_get_active_notebook (panel->mnb);
-	have_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 0;
-	tab = gedit_multi_notebook_get_active_tab (panel->mnb);
-
-	if (notebook != NULL && tab != NULL && have_tabs)
-	{
-		GtkListBoxRow *row = get_row_from_widget (panel, GTK_WIDGET (tab));
-
-		if (row)
-		{
-			row_select (panel, GTK_LIST_BOX (panel->listbox), row);
-		}
-	}
-}
-
-static GtkListBoxRow *
-get_first_notebook_found (GeditDocumentsPanel *panel)
-{
-	GList *children;
-	GList *l;
-	GtkListBoxRow *row = NULL;
-
-	children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-
-	for (l = children; l != NULL; l = g_list_next (l))
-	{
-		if (GEDIT_IS_DOCUMENTS_GROUP_ROW (l->data))
-		{
-			row = l->data;
-			break;
-		}
-	}
-
-	g_list_free (children);
-
-	return row;
-}
-
-static void
-multi_notebook_tab_switched (GeditMultiNotebook  *mnb,
-                             GeditNotebook       *old_notebook,
-                             GeditTab            *old_tab,
-                             GeditNotebook       *new_notebook,
-                             GeditTab            *new_tab,
-                             GeditDocumentsPanel *panel)
-{
-	gedit_debug (DEBUG_PANEL);
-
-	if (!_gedit_window_is_removing_tabs (panel->window) &&
-	    panel->is_in_tab_switched == FALSE)
-	{
-		GtkListBoxRow *row;
-
-		panel->is_in_tab_switched = TRUE;
-
-		row = get_row_from_widget (panel, GTK_WIDGET (new_tab));
-
-		if (row)
-		{
-			row_select (panel, GTK_LIST_BOX (panel->listbox), row);
-		}
-
-		panel->is_in_tab_switched = FALSE;
-	}
-}
-
-static void
-group_row_set_notebook_name (GtkWidget *row)
-{
-	GeditNotebook *notebook;
-	GeditMultiNotebook *mnb;
 	guint num;
-	gchar *name;
-	GeditDocumentsGroupRow *group_row = GEDIT_DOCUMENTS_GROUP_ROW (row);
 
-	notebook = GEDIT_NOTEBOOK (group_row->ref);
-
-	mnb = group_row->panel->mnb;
 	num = gedit_multi_notebook_get_notebook_num (mnb, notebook);
 
-	name = g_strdup_printf (_("Tab Group %i"), num + 1);
-
-	gtk_label_set_text (GTK_LABEL (group_row->label), name);
-
-	g_free (name);
-}
-
-static void
-group_row_update_names (GeditDocumentsPanel *panel,
-                        GtkWidget           *listbox)
-{
-	GList *children;
-	GList *l;
-	GtkWidget *row;
-
-	children = gtk_container_get_children (GTK_CONTAINER (listbox));
-
-	for (l = children; l != NULL; l = g_list_next (l))
-	{
-		row = l->data;
-
-		if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-		{
-			group_row_set_notebook_name (row);
-		}
-	}
-
-	g_list_free (children);
-}
-
-static void
-group_row_refresh_visibility (GeditDocumentsPanel *panel)
-{
-	gboolean notebook_is_unique;
-	GtkWidget *first_group_row;
-
-	notebook_is_unique = gedit_multi_notebook_get_n_notebooks (panel->mnb) <= 1;
-	first_group_row = GTK_WIDGET (get_first_notebook_found (panel));
-
-	gtk_widget_set_no_show_all (first_group_row, notebook_is_unique);
-	gtk_widget_set_visible (first_group_row, !notebook_is_unique);
+	return g_markup_printf_escaped ("Tab Group %i", num + 1);
 }
 
 static gchar *
-doc_get_name (GeditDocument *doc)
+tab_get_name (GeditTab *tab)
 {
+	GeditDocument *doc;
 	gchar *name;
 	gchar *docname;
+	gchar *tab_name;
+
+	gedit_debug (DEBUG_PANEL);
+
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
+
+	doc = gedit_tab_get_document (tab);
 
 	name = gedit_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
 	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
 
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	{
+		if (gedit_document_get_readonly (doc))
+		{
+			tab_name = g_markup_printf_escaped ("<i>%s</i> [<i>%s</i>]",
+							    docname,
+							    _("Read-Only"));
+		}
+		else
+		{
+			tab_name = g_markup_printf_escaped ("<i>%s</i>",
+							    docname);
+		}
+	}
+	else
+	{
+		if (gedit_document_get_readonly (doc))
+		{
+			tab_name = g_markup_printf_escaped ("%s [<i>%s</i>]",
+							    docname,
+							    _("Read-Only"));
+		}
+		else
+		{
+			tab_name = g_markup_escape_text (docname, -1);
+		}
+	}
+
+	g_free (docname);
 	g_free (name);
 
-	return docname;
+	return tab_name;
+}
+
+static gboolean
+get_iter_from_tab (GeditDocumentsPanel *panel,
+		   GeditNotebook       *notebook,
+		   GeditTab            *tab,
+		   GtkTreeIter         *tab_iter)
+{
+	GtkTreeIter parent;
+	gboolean success;
+	gboolean search_notebook;
+
+	/* Note: we cannot use the functions of the MultiNotebook
+	 *       because in cases where the notebook or tab has been
+	 *       removed already we will fail to get an iter.
+	 */
+
+	gedit_debug (DEBUG_PANEL);
+
+	g_assert (notebook != NULL);
+	/* tab may be NULL if just the notebook is specified */
+	g_assert (tab_iter != NULL);
+
+	search_notebook = (gedit_multi_notebook_get_n_notebooks (panel->priv->mnb) > 1);
+
+	if (!gtk_tree_model_get_iter_first (panel->priv->model, &parent))
+		return FALSE;
+
+	success = FALSE;
+	do
+	{
+		GtkTreeIter iter;
+
+		if (search_notebook)
+		{
+			GeditNotebook *current_notebook;
+
+			gtk_tree_model_get (panel->priv->model,
+					    &parent,
+					    NOTEBOOK_COLUMN, &current_notebook,
+					    -1);
+
+			if (current_notebook != NULL)
+			{
+				gboolean is_cur;
+				is_cur = (current_notebook == notebook);
+
+				g_object_unref (current_notebook);
+
+				if (is_cur)
+				{
+					/* notebook found */
+					search_notebook = FALSE;
+					gtk_tree_model_iter_children (panel->priv->model, &iter, &parent);
+				}
+			}
+		}
+		else
+		{
+			iter = parent;
+		}
+
+		if (!search_notebook)
+		{
+			if (tab == NULL)
+			{
+				success = TRUE;
+				break;
+			}
+
+			g_assert (gtk_tree_store_iter_is_valid (GTK_TREE_STORE (panel->priv->model),
+								&iter));
+
+			do
+			{
+				GeditTab *current_tab;
+
+				gtk_tree_model_get (panel->priv->model,
+						    &iter,
+						    TAB_COLUMN, &current_tab,
+						    -1);
+
+				if (current_tab != NULL)
+				{
+					gboolean is_cur;
+
+					is_cur = (current_tab == tab);
+					g_object_unref (current_tab);
+
+					if (is_cur)
+					{
+						*tab_iter = iter;
+						success = TRUE;
+
+						/* break 2; */
+						goto out;
+					}
+				}
+			} while (gtk_tree_model_iter_next (panel->priv->model, &iter));
+
+			/* We already found the notebook and the tab was not found */
+			g_assert (!success);
+		}
+	} while (gtk_tree_model_iter_next (panel->priv->model, &parent));
+
+out:
+
+	return success;
 }
 
 static void
-document_row_sync_tab_name_and_icon (GeditTab   *tab,
-                                     GParamSpec *pspec,
-                                     GtkWidget  *row)
+select_iter (GeditDocumentsPanel *panel,
+	     GtkTreeIter         *iter)
 {
-	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
-	GeditDocument *doc;
-	GtkSourceFile *file;
-	gchar *name;
-	GdkPixbuf *pixbuf;
+	GtkTreeView *treeview = GTK_TREE_VIEW (panel->priv->treeview);
+	GtkTreeSelection *selection;
+	GtkTreePath *path;
 
-	doc = gedit_tab_get_document (tab);
-	name = doc_get_name (doc);
+	selection = gtk_tree_view_get_selection (treeview);
 
-	if (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	gtk_tree_selection_select_iter (selection, iter);
+
+	path = gtk_tree_model_get_path (panel->priv->model, iter);
+	gtk_tree_view_scroll_to_cell (treeview,
+				      path, NULL,
+				      FALSE,
+				      0, 0);
+	gtk_tree_path_free (path);
+}
+
+static void
+select_active_tab (GeditDocumentsPanel *panel)
+{
+	GeditNotebook *notebook;
+	GeditTab *tab;
+	gboolean have_tabs;
+
+	notebook = gedit_multi_notebook_get_active_notebook (panel->priv->mnb);
+	have_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 0;
+	tab = gedit_multi_notebook_get_active_tab (panel->priv->mnb);
+
+	if (notebook != NULL && tab != NULL && have_tabs)
 	{
-		gtk_label_set_text (GTK_LABEL (document_row->label), name);
+		GtkTreeIter iter;
+
+		if (get_iter_from_tab (panel, notebook, tab, &iter))
+			select_iter (panel, &iter);
 	}
-	else
+}
+
+static void
+multi_notebook_tab_switched (GeditMultiNotebook  *mnb,
+			     GeditNotebook       *old_notebook,
+			     GeditTab            *old_tab,
+			     GeditNotebook       *new_notebook,
+			     GeditTab            *new_tab,
+			     GeditDocumentsPanel *panel)
+{
+	gedit_debug (DEBUG_PANEL);
+
+	if (!panel->priv->setting_active_notebook &&
+	    !_gedit_window_is_removing_tabs (panel->priv->window))
 	{
-		gchar *markup;
+		GtkTreeIter iter;
 
-		markup = g_markup_printf_escaped ("<b>%s</b>", name);
-		gtk_label_set_markup (GTK_LABEL (document_row->label), markup);
-
-		g_free (markup);
-	}
-
-	g_free (name);
-
-	file = gedit_document_get_file (doc);
-
-	/* The status has as separate label to prevent ellipsizing */
-	if (!gtk_source_file_is_readonly (file))
-	{
-		gtk_widget_hide (GTK_WIDGET (document_row->status_label));
-	}
-	else
-	{
-		gchar *status;
-
-		status = g_strdup_printf ("[%s]", _("Read-Only"));
-
-		gtk_label_set_text (GTK_LABEL (document_row->status_label), status);
-		gtk_widget_show (GTK_WIDGET (document_row->status_label));
-
-		g_free (status);
-	}
-
-	/* Update header of the row */
-	pixbuf = _gedit_tab_get_icon (tab);
-
-	if (pixbuf)
-	{
-		gtk_image_set_from_pixbuf (GTK_IMAGE (document_row->image), pixbuf);
-	}
-	else
-	{
-		gtk_image_clear (GTK_IMAGE (document_row->image));
+		if (get_iter_from_tab (panel, new_notebook, new_tab, &iter) &&
+		    gtk_tree_store_iter_is_valid (GTK_TREE_STORE (panel->priv->model), &iter))
+		{
+			select_iter (panel, &iter);
+		}
 	}
 }
 
 static void
 refresh_notebook (GeditDocumentsPanel *panel,
-                  GeditNotebook       *notebook)
+		  GeditNotebook       *notebook,
+		  GtkTreeIter         *parent)
 {
 	GList *tabs;
 	GList *l;
+	GtkTreeStore *tree_store;
+	GeditTab *active_tab;
+
+	gedit_debug (DEBUG_PANEL);
+
+	tree_store = GTK_TREE_STORE (panel->priv->model);
+
+	active_tab = gedit_window_get_active_tab (panel->priv->window);
 
 	tabs = gtk_container_get_children (GTK_CONTAINER (notebook));
 
 	for (l = tabs; l != NULL; l = g_list_next (l))
 	{
-		GtkWidget *row;
+		GdkPixbuf *pixbuf;
+		gchar *name;
+		GtkTreeIter iter;
 
-		row = gedit_documents_document_row_new (panel, GEDIT_TAB (l->data));
-		insert_row (panel, GTK_LIST_BOX (panel->listbox), row, -1);
-		panel->nb_row_tab += 1;
+		name = tab_get_name (GEDIT_TAB (l->data));
+		pixbuf = _gedit_tab_get_icon (GEDIT_TAB (l->data));
+
+		/* Add a new row to the model */
+		gtk_tree_store_append (tree_store, &iter, parent);
+		gtk_tree_store_set (tree_store,
+				    &iter,
+				    PIXBUF_COLUMN, pixbuf,
+				    NAME_COLUMN, name,
+				    NOTEBOOK_COLUMN, notebook,
+				    TAB_COLUMN, l->data,
+				    -1);
+
+		g_free (name);
+		if (pixbuf != NULL)
+		{
+			g_object_unref (pixbuf);
+		}
+
+		if (l->data == active_tab)
+		{
+			select_iter (panel, &iter);
+		}
 	}
 
 	g_list_free (tabs);
@@ -540,176 +373,175 @@ refresh_notebook (GeditDocumentsPanel *panel,
 
 static void
 refresh_notebook_foreach (GeditNotebook       *notebook,
-                          GeditDocumentsPanel *panel)
+			  GeditDocumentsPanel *panel)
 {
-	GtkWidget *row;
+	gboolean add_notebook;
 
-	row = gedit_documents_group_row_new (panel, notebook);
-	insert_row (panel, GTK_LIST_BOX (panel->listbox), row, -1);
-	panel->nb_row_notebook += 1;
+	/* If we have only one notebook we don't want to show the notebook
+	   header */
+	add_notebook = (gedit_multi_notebook_get_n_notebooks (panel->priv->mnb) > 1);
 
-	group_row_refresh_visibility (panel);
-	refresh_notebook (panel, notebook);
+	if (add_notebook)
+	{
+		GtkTreeIter iter;
+		gchar *name;
+
+		name = notebook_get_name (panel->priv->mnb, notebook);
+
+		gtk_tree_store_append (GTK_TREE_STORE (panel->priv->model),
+				       &iter, NULL);
+
+		gtk_tree_store_set (GTK_TREE_STORE (panel->priv->model),
+				    &iter,
+				    PIXBUF_COLUMN, NULL,
+				    NAME_COLUMN, name,
+				    NOTEBOOK_COLUMN, notebook,
+				    TAB_COLUMN, NULL,
+				    -1);
+
+		refresh_notebook (panel, notebook, &iter);
+
+		g_free (name);
+	}
+	else
+	{
+		refresh_notebook (panel, notebook, NULL);
+	}
+}
+
+static gboolean
+refresh_list_idle (GeditDocumentsPanel *panel)
+{
+	GtkTreeSelection *selection;
+
+	gedit_debug (DEBUG_PANEL);
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (panel->priv->treeview));
+	g_signal_handler_block (selection, panel->priv->selection_changed_handler_id);
+
+	gtk_tree_store_clear (GTK_TREE_STORE (panel->priv->model));
+
+	panel->priv->adding_tab = TRUE;
+	gedit_multi_notebook_foreach_notebook (panel->priv->mnb,
+					       (GtkCallback)refresh_notebook_foreach,
+					       panel);
+	panel->priv->adding_tab = FALSE;
+
+	gtk_tree_view_expand_all (GTK_TREE_VIEW (panel->priv->treeview));
+
+	select_active_tab (panel);
+
+	panel->priv->refresh_idle_id = 0;
+
+	g_signal_handler_unblock (selection, panel->priv->selection_changed_handler_id);
+
+	return FALSE;
 }
 
 static void
 refresh_list (GeditDocumentsPanel *panel)
 {
-	GList *children;
-	GList *l;
-
-	/* Clear the listbox */
-	children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-
-	for (l = children; l != NULL; l = g_list_next (l))
+	/* refresh in an idle so that when adding/removing many tabs
+	 * the model is repopulated just once */
+	if (panel->priv->refresh_idle_id == 0)
 	{
-		GeditDocumentsGenericRow *row = l->data;
-
-		if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
-		{
-			GeditTab *tab = GEDIT_TAB (row->ref);
-			g_signal_handlers_disconnect_matched (tab,
-			                                      G_SIGNAL_MATCH_FUNC,
-			                                      0,
-			                                      0,
-			                                      NULL,
-			                                      G_CALLBACK (document_row_sync_tab_name_and_icon),
-			                                      NULL);
-		}
-
-		gtk_widget_destroy (GTK_WIDGET (row));
+		panel->priv->refresh_idle_id = gdk_threads_add_idle ((GSourceFunc) refresh_list_idle,
+		                                                     panel);
 	}
+}
 
-	g_list_free (children);
+static void
+document_changed (GtkTextBuffer       *buffer,
+		  GeditDocumentsPanel *panel)
+{
+	gedit_debug (DEBUG_PANEL);
 
-	gedit_multi_notebook_foreach_notebook (panel->mnb,
-	                                       (GtkCallback)refresh_notebook_foreach,
-	                                       panel);
 	select_active_tab (panel);
+
+	g_signal_handlers_disconnect_by_func (buffer,
+					      G_CALLBACK (document_changed),
+					      panel);
+}
+
+static void
+sync_name_and_icon (GeditTab            *tab,
+		    GParamSpec          *pspec,
+		    GeditDocumentsPanel *panel)
+{
+	GtkTreeIter iter;
+
+	gedit_debug (DEBUG_PANEL);
+
+	if (get_iter_from_tab (panel,
+			       gedit_multi_notebook_get_active_notebook (panel->priv->mnb),
+			       tab,
+			       &iter))
+	{
+		gchar *name;
+		GdkPixbuf *pixbuf;
+
+		name = tab_get_name (tab);
+		pixbuf = _gedit_tab_get_icon (tab);
+
+		gtk_tree_store_set (GTK_TREE_STORE (panel->priv->model),
+				    &iter,
+				    PIXBUF_COLUMN, pixbuf,
+				    NAME_COLUMN, name,
+				    -1);
+
+		g_free (name);
+		if (pixbuf != NULL)
+		{
+			g_object_unref (pixbuf);
+		}
+	}
 }
 
 static void
 multi_notebook_tab_removed (GeditMultiNotebook  *mnb,
-                            GeditNotebook       *notebook,
-                            GeditTab            *tab,
-                            GeditDocumentsPanel *panel)
+			    GeditNotebook       *notebook,
+			    GeditTab            *tab,
+			    GeditDocumentsPanel *panel)
 {
-	GtkListBoxRow *row;
-
 	gedit_debug (DEBUG_PANEL);
 
-	row = get_row_from_widget (panel, GTK_WIDGET (tab));
+	g_signal_handlers_disconnect_by_func (gedit_tab_get_document (tab),
+					      G_CALLBACK (document_changed),
+					      panel);
 
-	/* Disconnect before destroy it so document_row_sync_tab_name_and_icon()
-	 * don't get invalid data */
-	g_signal_handlers_disconnect_by_func (GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref,
-	                                      G_CALLBACK (document_row_sync_tab_name_and_icon),
-	                                      row);
+	g_signal_handlers_disconnect_by_func (tab,
+					      G_CALLBACK (sync_name_and_icon),
+					      panel);
 
-	gtk_widget_destroy (GTK_WIDGET (row));
-	panel->nb_row_tab -= 1;
-}
-
-static gint
-get_dest_position_for_tab (GeditDocumentsPanel *panel,
-                           GeditNotebook       *notebook,
-                           GeditTab            *tab)
-{
-	gint page_num;
-	GList *children;
-	GList *item;
-	gint res = -1;
-
-	/* Get tab's position in notebook and notebook's position in GtkListBox
-	 * then return future tab's position in GtkListBox */
-
-	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (tab));
-
-	children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-	item = g_list_find_custom (children, notebook, listbox_search_function);
-
-	if (item)
-	{
-		res = 1 + page_num + g_list_position (children, item);
-	}
-
-	g_list_free (children);
-
-	return res;
+	refresh_list (panel);
 }
 
 static void
 multi_notebook_tab_added (GeditMultiNotebook  *mnb,
-                          GeditNotebook       *notebook,
-                          GeditTab            *tab,
-                          GeditDocumentsPanel *panel)
+			  GeditNotebook       *notebook,
+			  GeditTab            *tab,
+			  GeditDocumentsPanel *panel)
 {
-	gint position;
-	GtkWidget *row;
-
 	gedit_debug (DEBUG_PANEL);
 
-	position = get_dest_position_for_tab (panel, notebook, tab);
+	g_signal_connect (tab,
+			 "notify::name",
+			  G_CALLBACK (sync_name_and_icon),
+			  panel);
+	g_signal_connect (tab,
+			 "notify::state",
+			  G_CALLBACK (sync_name_and_icon),
+			  panel);
 
-	if (position == -1)
-	{
-		panel->nb_row_tab = 0;
-		panel->nb_row_notebook = 0;
-
-		refresh_list (panel);
-	}
-	else
-	{
-		/* Add a new tab's row to the listbox */
-		row = gedit_documents_document_row_new (panel, tab);
-		insert_row (panel, GTK_LIST_BOX (panel->listbox), row, position);
-
-		panel->nb_row_tab += 1;
-
-		if (tab == gedit_multi_notebook_get_active_tab (mnb))
-		{
-			row_select (panel, GTK_LIST_BOX (panel->listbox), GTK_LIST_BOX_ROW (row));
-		}
-	}
+	refresh_list (panel);
 }
 
 static void
 multi_notebook_notebook_removed (GeditMultiNotebook  *mnb,
-                                 GeditNotebook       *notebook,
-                                 GeditDocumentsPanel *panel)
+				 GeditNotebook       *notebook,
+				 GeditDocumentsPanel *panel)
 {
-	GtkListBoxRow *row;
-
-	gedit_debug (DEBUG_PANEL);
-
-	row = get_row_from_widget (panel, GTK_WIDGET (notebook));
-	gtk_container_remove (GTK_CONTAINER (panel->listbox), GTK_WIDGET (row));
-
-	panel->nb_row_notebook -= 1;
-
-	group_row_refresh_visibility (panel);
-	group_row_update_names (panel, panel->listbox);
-}
-
-static void
-row_move (GeditDocumentsPanel *panel,
-          GeditNotebook       *notebook,
-          GtkWidget           *tab,
-          GtkWidget           *row)
-{
-	gint position;
-
-	g_object_ref (row);
-
-	gtk_container_remove (GTK_CONTAINER (panel->listbox), GTK_WIDGET (row));
-	position = get_dest_position_for_tab (panel, notebook, GEDIT_TAB (tab));
-
-	g_signal_handler_block (panel->listbox, panel->selection_changed_handler_id);
-
-	gtk_list_box_insert (GTK_LIST_BOX (panel->listbox), row, position);
-	g_object_unref (row);
-
-	g_signal_handler_unblock (GTK_LIST_BOX (panel->listbox), panel->selection_changed_handler_id);
+	refresh_list (panel);
 }
 
 static void
@@ -719,101 +551,102 @@ multi_notebook_tabs_reordered (GeditMultiNotebook  *mnb,
                                gint                 page_num,
                                GeditDocumentsPanel *panel)
 {
-	GtkListBoxRow *row;
-
 	gedit_debug (DEBUG_PANEL);
 
-	row = get_row_from_widget (panel, GTK_WIDGET (page));
+	if (panel->priv->is_reodering)
+		return;
 
-	row_move (panel, notebook, page, GTK_WIDGET (row));
-
-	row_select (panel, GTK_LIST_BOX (panel->listbox), GTK_LIST_BOX_ROW (row));
+	refresh_list (panel);
 }
 
 static void
 set_window (GeditDocumentsPanel *panel,
-            GeditWindow         *window)
+	    GeditWindow         *window)
 {
-	panel->window = g_object_ref (window);
-	panel->mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window));
+	gedit_debug (DEBUG_PANEL);
 
-	g_signal_connect (panel->mnb,
-	                  "notebook-removed",
-	                  G_CALLBACK (multi_notebook_notebook_removed),
-	                  panel);
-	g_signal_connect (panel->mnb,
-	                  "tab-added",
-	                  G_CALLBACK (multi_notebook_tab_added),
-	                  panel);
-	g_signal_connect (panel->mnb,
-	                  "tab-removed",
-	                  G_CALLBACK (multi_notebook_tab_removed),
-	                  panel);
-	g_signal_connect (panel->mnb,
-	                  "page-reordered",
-	                  G_CALLBACK (multi_notebook_tabs_reordered),
-	                  panel);
+	g_return_if_fail (panel->priv->window == NULL);
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
-	panel->tab_switched_handler_id = g_signal_connect (panel->mnb,
-                                                           "switch-tab",
-                                                           G_CALLBACK (multi_notebook_tab_switched),
-                                                           panel);
+	panel->priv->window = g_object_ref (window);
+	panel->priv->mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window));
 
-	panel->first_selection = TRUE;
+	g_signal_connect (panel->priv->mnb,
+			  "notebook-removed",
+			  G_CALLBACK (multi_notebook_notebook_removed),
+			  panel);
+	g_signal_connect (panel->priv->mnb,
+			  "tab-added",
+			  G_CALLBACK (multi_notebook_tab_added),
+			  panel);
+	g_signal_connect (panel->priv->mnb,
+			  "tab-removed",
+			  G_CALLBACK (multi_notebook_tab_removed),
+			  panel);
+	g_signal_connect (panel->priv->mnb,
+			  "page-reordered",
+			  G_CALLBACK (multi_notebook_tabs_reordered),
+			  panel);
+	g_signal_connect (panel->priv->mnb,
+			  "switch-tab",
+			  G_CALLBACK (multi_notebook_tab_switched),
+			  panel);
 
 	refresh_list (panel);
-	group_row_refresh_visibility (panel);
 }
 
 static void
-listbox_selection_changed (GtkListBox          *listbox,
-                           GtkListBoxRow       *row,
-                           GeditDocumentsPanel *panel)
+treeview_selection_changed (GtkTreeSelection    *selection,
+			    GeditDocumentsPanel *panel)
 {
-	if (row == NULL)
+	GtkTreeIter iter;
+
+	gedit_debug (DEBUG_PANEL);
+
+	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
 	{
-		/* No selection on document panel */
-		return;
+		GeditNotebook *notebook;
+		GeditTab *tab;
+
+		gtk_tree_model_get (panel->priv->model,
+				    &iter,
+				    NOTEBOOK_COLUMN, &notebook,
+				    TAB_COLUMN, &tab,
+				    -1);
+
+		if (tab != NULL)
+		{
+			gedit_multi_notebook_set_active_tab (panel->priv->mnb,
+							     tab);
+			if (notebook != NULL)
+				g_object_unref (notebook);
+			g_object_unref (tab);
+		}
+		else if (notebook != NULL)
+		{
+			panel->priv->setting_active_notebook = TRUE;
+			gtk_widget_grab_focus (GTK_WIDGET (notebook));
+			panel->priv->setting_active_notebook = FALSE;
+
+			tab = gedit_multi_notebook_get_active_tab (panel->priv->mnb);
+			if (tab != NULL)
+			{
+				g_signal_connect (gedit_tab_get_document (tab),
+						  "changed",
+						  G_CALLBACK (document_changed),
+						  panel);
+			}
+
+			g_object_unref (notebook);
+		}
 	}
-
-	/* When the window is shown, the first notebook row is selected
-	 * and therefore also shown - we don't want this */
-
-	if (panel->first_selection)
-	{
-		panel->first_selection = FALSE;
-		group_row_refresh_visibility (panel);
-	}
-
-	g_signal_handler_block (panel->mnb, panel->tab_switched_handler_id);
-
-	if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
-	{
-		gedit_multi_notebook_set_active_tab (panel->mnb,
-		                                     GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref));
-
-		panel->current_selection = GTK_WIDGET (row);
-	}
-	else if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row) && panel->current_selection)
-	{
-		row_select (panel,
-		            GTK_LIST_BOX (panel->listbox),
-		            GTK_LIST_BOX_ROW (panel->current_selection));
-
-	}
-	else
-	{
-		g_assert_not_reached ();
-	}
-
-	g_signal_handler_unblock (panel->mnb, panel->tab_switched_handler_id);
 }
 
 static void
 gedit_documents_panel_set_property (GObject      *object,
-                                    guint         prop_id,
-                                    const GValue *value,
-                                    GParamSpec   *pspec)
+				    guint         prop_id,
+				    const GValue *value,
+				    GParamSpec   *pspec)
 {
 	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
@@ -831,16 +664,16 @@ gedit_documents_panel_set_property (GObject      *object,
 
 static void
 gedit_documents_panel_get_property (GObject    *object,
-                                    guint       prop_id,
-                                    GValue     *value,
-                                    GParamSpec *pspec)
+				    guint       prop_id,
+				    GValue     *value,
+				    GParamSpec *pspec)
 {
 	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
 	switch (prop_id)
 	{
 		case PROP_WINDOW:
-			g_value_set_object (value, panel->window);
+			g_value_set_object (value, panel->priv->window);
 			break;
 
 		default:
@@ -852,23 +685,11 @@ gedit_documents_panel_get_property (GObject    *object,
 static void
 gedit_documents_panel_finalize (GObject *object)
 {
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
+	/* GeditDocumentsPanel *tab = GEDIT_DOCUMENTS_PANEL (object); */
 
-	g_signal_handlers_disconnect_by_func (panel->mnb,
-	                                      G_CALLBACK (multi_notebook_notebook_removed),
-	                                      panel);
-	g_signal_handlers_disconnect_by_func (panel->mnb,
-	                                      G_CALLBACK (multi_notebook_tab_added),
-	                                      panel);
-	g_signal_handlers_disconnect_by_func (panel->mnb,
-	                                      G_CALLBACK (multi_notebook_tab_removed),
-	                                      panel);
-	g_signal_handlers_disconnect_by_func (panel->mnb,
-	                                      G_CALLBACK (multi_notebook_tabs_reordered),
-	                                      panel);
-	g_signal_handlers_disconnect_by_func (panel->mnb,
-	                                      G_CALLBACK (multi_notebook_tab_switched),
-	                                      panel);
+	/* TODO disconnect signal with window */
+
+	gedit_debug (DEBUG_PANEL);
 
 	G_OBJECT_CLASS (gedit_documents_panel_parent_class)->finalize (object);
 }
@@ -878,509 +699,408 @@ gedit_documents_panel_dispose (GObject *object)
 {
 	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (object);
 
-	g_clear_object (&panel->window);
+	gedit_debug (DEBUG_PANEL);
 
-	if (panel->source_targets)
+	if (panel->priv->refresh_idle_id != 0)
 	{
-		gtk_target_list_unref (panel->source_targets);
-		panel->source_targets = NULL;
+		g_source_remove (panel->priv->refresh_idle_id);
+		panel->priv->refresh_idle_id = 0;
 	}
+
+	g_clear_object (&panel->priv->window);
 
 	G_OBJECT_CLASS (gedit_documents_panel_parent_class)->dispose (object);
-}
-
-static GtkWidget *
-create_placeholder_row (gint height)
-{
-	GtkStyleContext *context;
-
-	GtkWidget *placeholder_row = gtk_list_box_row_new ();
-
-	context = gtk_widget_get_style_context (placeholder_row);
-	gtk_style_context_add_class (context, "gedit-document-panel-placeholder-row");
-
-	gtk_widget_set_size_request (placeholder_row, -1, height);
-
-	return placeholder_row;
-}
-
-static void
-panel_on_drag_begin (GtkWidget      *widget,
-                     GdkDragContext *context)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-	GtkWidget *drag_document_row;
-	GtkAllocation allocation;
-	const gchar *name;
-	GtkWidget *label;
-	gint width, height;
-	GtkWidget *image_box;
-	GtkWidget *box;
-	GtkStyleContext *style_context;
-
-	drag_document_row = panel->drag_document_row;
-	gtk_widget_get_allocation (drag_document_row, &allocation);
-	gtk_widget_hide (drag_document_row);
-
-	panel->document_row_height = allocation.height;
-
-	name = gtk_label_get_label (GTK_LABEL (GEDIT_DOCUMENTS_DOCUMENT_ROW (drag_document_row)->label));
-
-	label = gtk_label_new (NULL);
-	gtk_label_set_markup (GTK_LABEL (label), name);
-	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
-	gtk_widget_set_halign (label, GTK_ALIGN_START);
-	gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
-
-	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &width, &height);
-	image_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_widget_set_size_request (image_box, width, height);
-
-	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-
-	gtk_box_pack_start (GTK_BOX (box), image_box, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
-
-	panel->dnd_window = gtk_window_new (GTK_WINDOW_POPUP);
-	gtk_widget_set_size_request (panel->dnd_window, allocation.width, allocation.height);
-	gtk_window_set_screen (GTK_WINDOW (panel->dnd_window),
-	                       gtk_widget_get_screen (drag_document_row));
-
-	style_context = gtk_widget_get_style_context (panel->dnd_window);
-	gtk_style_context_add_class (style_context, "gedit-document-panel-dragged-row");
-
-	gtk_container_add (GTK_CONTAINER (panel->dnd_window), box);
-	gtk_widget_show_all (panel->dnd_window);
-	gtk_widget_set_opacity (panel->dnd_window, 0.8);
-
-	gtk_drag_set_icon_widget (context,
-	                          panel->dnd_window,
-	                          panel->drag_document_row_x,
-	                          panel->drag_document_row_y);
-}
-
-static gboolean
-panel_on_drag_motion (GtkWidget      *widget,
-                      GdkDragContext *context,
-                      gint            x,
-                      gint            y,
-                      guint           time)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-	GeditDocumentsGenericRow *generic_row;
-	GtkWidget *source_panel;
-	gint dest_x, dest_y;
-	gint row_placeholder_index;
-	gint row_index;
-
-	GdkAtom target = gtk_drag_dest_find_target (widget, context, NULL);
-
-	if (target != gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
-	{
-		gdk_drag_status (context, 0, time);
-		return FALSE;
-	}
-
-	gtk_widget_translate_coordinates (widget, panel->listbox,
-	                                  x, y,
-	                                  &dest_x, &dest_y);
-
-	generic_row = (GeditDocumentsGenericRow *)gtk_list_box_get_row_at_y (GTK_LIST_BOX (panel->listbox), dest_y);
-	source_panel = gtk_drag_get_source_widget (context);
-
-	if (!panel->row_placeholder)
-	{
-		if (!generic_row)
-		{
-			/* We don't have a row height to use, so use the source one */
-			panel->document_row_height = GEDIT_DOCUMENTS_PANEL (source_panel)->document_row_height;
-		}
-		else
-		{
-			GtkAllocation allocation;
-
-			gtk_widget_get_allocation (GTK_WIDGET (generic_row), &allocation);
-			panel->document_row_height = allocation.height;
-		}
-
-		panel->row_placeholder = create_placeholder_row (panel->document_row_height);
-		gtk_widget_show (panel->row_placeholder);
-		g_object_ref_sink (panel->row_placeholder);
-	}
-	else if (GTK_WIDGET (generic_row) == panel->row_placeholder)
-	{
-		/* cursor on placeholder */
-		gdk_drag_status (context, GDK_ACTION_MOVE, time);
-
-		return TRUE;
-	}
-
-	if (!generic_row)
-	{
-		/* cursor on empty space => put the placeholder at end of list */
-		GList *children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-
-		row_placeholder_index = g_list_length (children);
-		g_list_free (children);
-	}
-	else
-	{
-		row_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (generic_row));
-
-		gtk_widget_translate_coordinates (widget, GTK_WIDGET (generic_row),
-		                                  x, y,
-		                                  &dest_x, &dest_y);
-
-		if (dest_y <= panel->document_row_height / 2 && row_index > 0)
-		{
-			row_placeholder_index = row_index;
-		}
-		else
-		{
-			row_placeholder_index = row_index + 1;
-		}
-	}
-
-	if (source_panel == widget)
-	{
-		/* Adjustment because of hidden source row */
-		gint source_row_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (panel->drag_document_row));
-		panel->row_source_row_offset = source_row_index <  row_placeholder_index ? -1 : 0;
-	}
-
-	if (panel->row_placeholder_index != row_placeholder_index)
-	{
-		if (panel->row_placeholder_index != ROW_OUTSIDE_LISTBOX)
-		{
-			gtk_container_remove (GTK_CONTAINER (panel->listbox),
-			                      panel->row_placeholder);
-
-			if (panel->row_placeholder_index < row_placeholder_index)
-			{
-				/* Ajustment because of existing placeholder row */
-				row_placeholder_index -= 1;
-			}
-		}
-
-		panel->row_destination_index = panel->row_placeholder_index = row_placeholder_index;
-
-		gtk_list_box_insert (GTK_LIST_BOX (panel->listbox),
-		                     panel->row_placeholder,
-		                     panel->row_placeholder_index);
-	}
-
-	gdk_drag_status (context, GDK_ACTION_MOVE, time);
-
-	return TRUE;
-}
-
-static void
-panel_on_drag_leave (GtkWidget      *widget,
-                     GdkDragContext *context,
-                     guint           time)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-
-	if (panel->row_placeholder_index != ROW_OUTSIDE_LISTBOX)
-	{
-		gtk_container_remove (GTK_CONTAINER (panel->listbox), panel->row_placeholder);
-		panel->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
-	}
-}
-
-static gboolean
-panel_on_drag_drop (GtkWidget        *widget,
-                    GdkDragContext   *context,
-                    gint              x,
-                    gint              y,
-                    guint             time)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-
-	GdkAtom target = gtk_drag_dest_find_target (widget, context, NULL);
-	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
-
-	if (GEDIT_IS_DOCUMENTS_PANEL (source_widget))
-	{
-		gtk_widget_show (GEDIT_DOCUMENTS_PANEL (source_widget)->drag_document_row);
-	}
-
-	if (target == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
-	{
-		gtk_drag_get_data (widget, context, target, time);
-		return TRUE;
-	}
-
-	panel->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
-	return FALSE;
-}
-
-static void
-panel_on_drag_data_get (GtkWidget        *widget,
-                        GdkDragContext   *context,
-                        GtkSelectionData *data,
-                        guint             info,
-                        guint             time)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-	GdkAtom target = gtk_selection_data_get_target (data);
-	GdkAtom result;
-
-	if (target == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
-	{
-		gtk_selection_data_set (data,
-		                        target,
-		                        8,
-		                        (void*)&panel->drag_document_row,
-		                        sizeof (gpointer));
-		return;
-	}
-
-	result = gtk_drag_dest_find_target (widget, context, panel->source_targets);
-
-	if (result != GDK_NONE)
-	{
-		GeditTab *tab;
-		GeditDocument *doc;
-		gchar *full_name;
-
-		tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (panel->drag_document_row)->ref);
-		doc = gedit_tab_get_document (tab);
-
-		if (!gedit_document_is_untitled (doc))
-		{
-			GtkSourceFile *file = gedit_document_get_file (doc);
-			GFile *location = gtk_source_file_get_location (file);
-			full_name = g_file_get_parse_name (location);
-
-			gtk_selection_data_set (data,
-			                        target,
-			                        8,
-			                        (guchar *)full_name,
-			                        strlen (full_name));
-			g_free (full_name);
-		}
-	}
-
-	gtk_widget_show (panel->drag_document_row);
-}
-
-static GeditNotebook *
-get_notebook_and_position_from_document_row (GeditDocumentsPanel *panel,
-                                             gint                 row_index,
-                                             gint                *position)
-{
-	GList *l;
-	gint index = 0;
-	GeditDocumentsGroupRow *row;
-
-	GList *children = gtk_container_get_children (GTK_CONTAINER (panel->listbox));
-	gint nb_elements = g_list_length (children);
-
-	if (nb_elements == 1)
-	{
-		row = children->data;
-	}
-	else
-	{
-		l = g_list_nth (children, row_index - 1);
-
-		while (TRUE)
-		{
-			row = l->data;
-
-			if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-			{
-				break;
-			}
-
-			l = g_list_previous (l);
-			index += 1;
-		}
-	}
-
-	g_list_free (children);
-
-	*position = index;
-	return GEDIT_NOTEBOOK (row->ref);
-}
-
-static void
-panel_on_drag_data_received (GtkWidget        *widget,
-                             GdkDragContext   *context,
-                             gint              x,
-                             gint              y,
-                             GtkSelectionData *data,
-                             guint             info,
-                             guint             time)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-	GeditDocumentsPanel *source_panel = NULL;
-
-	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
-
-	if (GEDIT_IS_DOCUMENTS_PANEL (source_widget))
-	{
-		source_panel = GEDIT_DOCUMENTS_PANEL (source_widget);
-	}
-
-	GtkWidget **source_row = (void*) gtk_selection_data_get_data (data);
-
-	if (source_panel &&
-	    gtk_selection_data_get_target (data) == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
-	{
-		gint source_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (*source_row));
-
-		/* And finally, we can move the row */
-		if (source_panel != panel ||
-		    (panel->row_destination_index != source_index &&
-		     panel->row_destination_index != source_index + 1))
-		{
-			GeditNotebook *old_notebook, *new_notebook;
-			gint position;
-
-			GeditTab *tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (*source_row)->ref);
-
-			old_notebook = gedit_multi_notebook_get_notebook_for_tab (source_panel->mnb, tab);
-			new_notebook = get_notebook_and_position_from_document_row (panel,
-			                                                            panel->row_destination_index,
-			                                                            &position);
-			if (old_notebook == new_notebook)
-			{
-				gtk_widget_show (*source_row);
-
-				gtk_notebook_reorder_child (GTK_NOTEBOOK (new_notebook),
-				                            GTK_WIDGET (tab),
-				                            position + panel->row_source_row_offset);
-			}
-			else
-			{
-				gedit_notebook_move_tab (old_notebook, new_notebook, tab, position);
-			}
-
-			if (tab != gedit_multi_notebook_get_active_tab (panel->mnb))
-			{
-				g_signal_handler_block (panel->mnb, panel->tab_switched_handler_id);
-				gedit_multi_notebook_set_active_tab (panel->mnb, tab);
-				g_signal_handler_unblock (panel->mnb, panel->tab_switched_handler_id);
-			}
-		}
-
-		gtk_drag_finish (context, TRUE, FALSE, time);
-	}
-	else
-	{
-		gtk_drag_finish (context, FALSE, FALSE, time);
-	}
-
-	panel->row_destination_index = panel->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
-
-	if (panel->row_placeholder)
-	{
-		gtk_widget_destroy (panel->row_placeholder);
-		panel->row_placeholder = NULL;
-	}
-}
-
-static void
-panel_on_drag_end (GtkWidget      *widget,
-                   GdkDragContext *context)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-
-	panel->drag_document_row = NULL;
-	panel->is_on_drag = FALSE;
-
-	gtk_widget_destroy (panel->dnd_window);
-	panel->dnd_window = NULL;
-}
-
-static gboolean
-panel_on_drag_failed (GtkWidget      *widget,
-                      GdkDragContext *context,
-                      GtkDragResult   result)
-{
-	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
-
-	if (GEDIT_IS_DOCUMENTS_PANEL (source_widget))
-	{
-		gtk_widget_show (GEDIT_DOCUMENTS_PANEL (source_widget)->drag_document_row);
-	}
-
-	return FALSE;
-}
-
-static gboolean
-panel_on_motion_notify (GtkWidget      *widget,
-                        GdkEventMotion *event)
-{
-	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-
-	if (panel->drag_document_row == NULL || panel->is_on_drag)
-	{
-		return FALSE;
-	}
-
-	if (!(event->state & GDK_BUTTON1_MASK))
-	{
-		panel->drag_document_row = NULL;
-
-		return FALSE;
-	}
-
-	if (gtk_drag_check_threshold (widget,
-	                              panel->drag_root_x, panel->drag_root_y,
-	                              event->x_root, event->y_root))
-	{
-		panel->is_on_drag = TRUE;
-
-		gtk_drag_begin_with_coordinates (widget, panel->source_targets, GDK_ACTION_MOVE,
-		                                 GDK_BUTTON_PRIMARY, (GdkEvent*)event,
-		                                 -1, -1);
-	}
-
-	return FALSE;
 }
 
 static void
 gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_documents_panel_finalize;
 	object_class->dispose = gedit_documents_panel_dispose;
 	object_class->get_property = gedit_documents_panel_get_property;
 	object_class->set_property = gedit_documents_panel_set_property;
 
-	widget_class->motion_notify_event = panel_on_motion_notify;
+	g_object_class_install_property (object_class,
+					 PROP_WINDOW,
+					 g_param_spec_object ("window",
+							      "Window",
+							      "The GeditWindow this GeditDocumentsPanel is associated with",
+							      GEDIT_TYPE_WINDOW,
+							      G_PARAM_READWRITE |
+							      G_PARAM_CONSTRUCT_ONLY |
+							      G_PARAM_STATIC_STRINGS));
 
-	widget_class->drag_begin = panel_on_drag_begin;
-	widget_class->drag_end = panel_on_drag_end;
-	widget_class->drag_failed = panel_on_drag_failed;
-	widget_class->drag_motion = panel_on_drag_motion;
-	widget_class->drag_leave = panel_on_drag_leave;
-	widget_class->drag_drop = panel_on_drag_drop;
-	widget_class->drag_data_get = panel_on_drag_data_get;
-	widget_class->drag_data_received = panel_on_drag_data_received;
+	g_type_class_add_private (object_class, sizeof (GeditDocumentsPanelPrivate));
+}
 
-	properties[PROP_WINDOW] =
-		g_param_spec_object ("window",
-		                     "Window",
-		                     "The GeditWindow this GeditDocumentsPanel is associated with",
-		                     GEDIT_TYPE_WINDOW,
-		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+static GtkTreePath *
+get_current_path (GeditDocumentsPanel *panel)
+{
+	gint notebook_num;
+	gint page_num;
+	GtkWidget *notebook;
 
-	g_object_class_install_properties (object_class, LAST_PROP, properties);
+	gedit_debug (DEBUG_PANEL);
+
+	notebook = _gedit_window_get_notebook (panel->priv->window);
+
+	notebook_num = gedit_multi_notebook_get_notebook_num (panel->priv->mnb,
+							      GEDIT_NOTEBOOK (notebook));
+	page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook));
+
+	return gtk_tree_path_new_from_indices (notebook_num, page_num, -1);
+}
+
+static void
+menu_position (GtkMenu             *menu,
+	       gint                *x,
+	       gint                *y,
+	       gboolean            *push_in,
+	       GeditDocumentsPanel *panel)
+{
+	GtkTreePath *path;
+	GdkRectangle rect;
+	gint wy;
+	GtkRequisition requisition;
+	GtkWidget *w;
+	GtkAllocation allocation;
+
+	gedit_debug (DEBUG_PANEL);
+
+	w = panel->priv->treeview;
+
+	path = get_current_path (panel);
+	gtk_tree_view_get_cell_area (GTK_TREE_VIEW (w),
+				     path,
+				     NULL,
+				     &rect);
+	gtk_tree_path_free (path);
+
+	wy = rect.y;
+
+	gdk_window_get_origin (gtk_widget_get_window (w), x, y);
+	gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition, NULL);
+	gtk_widget_get_allocation (w, &allocation);
+
+	if (gtk_widget_get_direction (w) == GTK_TEXT_DIR_RTL)
+	{
+		*x += allocation.x + allocation.width - requisition.width - 10;
+	}
+	else
+	{
+		*x += allocation.x + 10;
+	}
+
+	wy = MAX (*y + 5, *y + wy + 5);
+	wy = MIN (wy, *y + allocation.height - requisition.height - 5);
+
+	*y = wy;
+
+	*push_in = TRUE;
+}
+
+static gboolean
+show_tab_popup_menu (GeditDocumentsPanel *panel,
+		     GeditTab            *tab,
+		     GdkEventButton      *event)
+{
+	GtkWidget *menu;
+
+	gedit_debug (DEBUG_PANEL);
+
+	menu = gedit_notebook_popup_menu_new (panel->priv->window, tab);
+
+	if (event != NULL)
+	{
+		gtk_menu_popup (GTK_MENU (menu),
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				event->button,
+				event->time);
+	}
+	else
+	{
+		gtk_menu_popup (GTK_MENU (menu),
+				NULL,
+				NULL,
+				(GtkMenuPositionFunc)menu_position,
+				panel,
+				0,
+				gtk_get_current_event_time ());
+
+		gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+	}
+
+	return TRUE;
+}
+
+static gboolean
+panel_button_press_event (GtkTreeView         *treeview,
+			  GdkEventButton      *event,
+			  GeditDocumentsPanel *panel)
+{
+	gboolean ret = FALSE;
+
+	gedit_debug (DEBUG_PANEL);
+
+	if ((event->type == GDK_BUTTON_PRESS) &&
+	    (gdk_event_triggers_context_menu ((GdkEvent *) event)) &&
+	    (event->window == gtk_tree_view_get_bin_window (treeview)))
+	{
+		GtkTreePath *path = NULL;
+
+		/* Change the cursor position */
+		if (gtk_tree_view_get_path_at_pos (treeview,
+						   event->x,
+						   event->y,
+						   &path,
+						   NULL,
+						   NULL,
+						   NULL))
+		{
+			GtkTreeIter iter;
+			gchar *path_string;
+
+			path_string = gtk_tree_path_to_string (path);
+
+			if (gtk_tree_model_get_iter_from_string (panel->priv->model,
+								 &iter,
+								 path_string))
+			{
+				GeditTab *tab;
+
+				gtk_tree_model_get (panel->priv->model,
+						    &iter,
+						    TAB_COLUMN, &tab,
+						    -1);
+
+				if (tab != NULL)
+				{
+					gtk_tree_view_set_cursor (treeview,
+								  path,
+								  NULL,
+								  FALSE);
+
+					/* A row exists at the mouse position */
+					ret = show_tab_popup_menu (panel, tab, event);
+
+					g_object_unref (tab);
+				}
+			}
+
+			g_free (path_string);
+			gtk_tree_path_free (path);
+		}
+	}
+
+	return ret;
+}
+
+static gchar *
+notebook_get_tooltip (GeditMultiNotebook *mnb,
+		      GeditNotebook      *notebook)
+{
+	gchar *tooltip;
+	gchar *notebook_name;
+	gint num_pages;
+
+
+	notebook_name = notebook_get_name (mnb, notebook);
+	num_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
+
+	tooltip = g_markup_printf_escaped ("<b>Name:</b> %s\n\n"
+					   "<b>Number of Tabs:</b> %i",
+					   notebook_name,
+					   num_pages);
+
+	g_free (notebook_name);
+
+	return tooltip;
+}
+
+static gboolean
+treeview_query_tooltip (GtkWidget           *widget,
+			gint                 x,
+			gint                 y,
+			gboolean             keyboard_tip,
+			GtkTooltip          *tooltip,
+			GeditDocumentsPanel *panel)
+{
+	GtkTreeIter iter;
+	GtkTreeView *tree_view = GTK_TREE_VIEW (widget);
+	GtkTreeModel *model = gtk_tree_view_get_model (tree_view);
+	GtkTreePath *path = NULL;
+	GeditNotebook *notebook;
+	GeditTab *tab;
+	gchar *tip;
+
+	gedit_debug (DEBUG_PANEL);
+
+	if (keyboard_tip)
+	{
+		gtk_tree_view_get_cursor (tree_view, &path, NULL);
+
+		if (path == NULL)
+		{
+			return FALSE;
+		}
+	}
+	else
+	{
+		gint bin_x, bin_y;
+
+		gtk_tree_view_convert_widget_to_bin_window_coords (tree_view,
+								   x, y,
+								   &bin_x, &bin_y);
+
+		if (!gtk_tree_view_get_path_at_pos (tree_view,
+						    bin_x, bin_y,
+						    &path,
+						    NULL, NULL, NULL))
+		{
+			return FALSE;
+		}
+	}
+
+	gtk_tree_model_get_iter (model, &iter, path);
+	gtk_tree_model_get (model,
+			    &iter,
+			    NOTEBOOK_COLUMN, &notebook,
+			    TAB_COLUMN, &tab,
+			    -1);
+
+	if (tab != NULL)
+	{
+		tip = _gedit_tab_get_tooltip (tab);
+		g_object_unref (tab);
+	}
+	else
+	{
+		tip = notebook_get_tooltip (panel->priv->mnb, notebook);
+	}
+
+	gtk_tooltip_set_markup (tooltip, tip);
+
+	g_object_unref (notebook);
+	g_free (tip);
+	gtk_tree_path_free (path);
+
+	return TRUE;
+}
+
+/* TODO
+static void
+treeview_row_inserted (GtkTreeModel        *tree_model,
+		       GtkTreePath         *path,
+		       GtkTreeIter         *iter,
+		       GeditDocumentsPanel *panel)
+{
+	GeditTab *tab;
+	gint *indeces;
+	gchar *path_string;
+	GeditNotebook *notebook;
+
+	gedit_debug (DEBUG_PANEL);
+
+	if (panel->priv->adding_tab)
+		return;
+
+	panel->priv->is_reodering = TRUE;
+
+	path_string = gtk_tree_path_to_string (path);
+
+	gedit_debug_message (DEBUG_PANEL, "New Path: %s", path_string);
+
+	g_message ("%s", path_string);
+
+	gtk_tree_model_get (panel->priv->model,
+			    iter,
+			    NOTEBOOK_COLUMN, &notebook,
+			    TAB_COLUMN, &tab,
+			    -1);
+
+	panel->priv->is_reodering = FALSE;
+
+	g_free (path_string);
+}
+*/
+
+static void
+close_button_clicked (GtkCellRenderer     *cell,
+                      const gchar         *path,
+                      GeditDocumentsPanel *panel)
+{
+	GtkTreeIter iter;
+	GeditTab *tab;
+	GeditNotebook *notebook;
+
+	if (!gtk_tree_model_get_iter_from_string (panel->priv->model,
+	                                          &iter, path))
+	{
+	        return;
+	}
+
+	gtk_tree_model_get (panel->priv->model,
+		            &iter,
+		            NOTEBOOK_COLUMN, &notebook,
+		            TAB_COLUMN, &tab,
+		            -1);
+
+	if (tab == NULL)
+	{
+		gedit_notebook_remove_all_tabs (notebook);
+	}
+	else
+	{
+		gtk_container_remove (GTK_CONTAINER (notebook),
+		                      GTK_WIDGET (tab));
+		g_object_unref (tab);
+	}
+
+	g_object_unref (notebook);
+}
+
+static void
+pixbuf_data_func (GtkTreeViewColumn   *column,
+		  GtkCellRenderer     *cell,
+		  GtkTreeModel        *model,
+		  GtkTreeIter         *iter,
+		  GeditDocumentsPanel *panel)
+{
+	GeditTab *tab;
+
+	gtk_tree_model_get (model,
+			    iter,
+			    TAB_COLUMN, &tab,
+			    -1);
+
+	gtk_cell_renderer_set_visible (cell, tab != NULL);
+
+	if (tab != NULL)
+	{
+		g_object_unref (tab);
+	}
 }
 
 static void
 gedit_documents_panel_init (GeditDocumentsPanel *panel)
 {
 	GtkWidget *sw;
-	GtkStyleContext *context;
+	GtkTreeViewColumn *column;
+	GtkCellRenderer *cell;
+	GtkTreeSelection *selection;
+	GIcon *icon;
 
 	gedit_debug (DEBUG_PANEL);
+
+	panel->priv = GEDIT_DOCUMENTS_PANEL_GET_PRIVATE (panel);
+
+	panel->priv->adding_tab = FALSE;
+	panel->priv->is_reodering = FALSE;
 
 	gtk_orientable_set_orientation (GTK_ORIENTABLE (panel),
 	                                GTK_ORIENTATION_VERTICAL);
@@ -1389,357 +1109,99 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 	sw = gtk_scrolled_window_new (NULL, NULL);
 
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-	                                GTK_POLICY_AUTOMATIC,
-	                                GTK_POLICY_AUTOMATIC);
+					GTK_POLICY_AUTOMATIC,
+					GTK_POLICY_AUTOMATIC);
 	gtk_widget_show (sw);
 	gtk_box_pack_start (GTK_BOX (panel), sw, TRUE, TRUE, 0);
 
-	/* Create the listbox */
-	panel->listbox = gtk_list_box_new ();
+	/* Create the empty model */
+	panel->priv->model = GTK_TREE_MODEL (gtk_tree_store_new (N_COLUMNS,
+								 GDK_TYPE_PIXBUF,
+								 G_TYPE_STRING,
+								 G_TYPE_OBJECT,
+								 G_TYPE_OBJECT));
 
-	gtk_container_add (GTK_CONTAINER (sw), panel->listbox);
+	/* Create the treeview */
+	panel->priv->treeview = gtk_tree_view_new_with_model (panel->priv->model);
+	g_object_unref (G_OBJECT (panel->priv->model));
+	gtk_container_add (GTK_CONTAINER (sw), panel->priv->treeview);
+	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (panel->priv->treeview), FALSE);
+	gtk_tree_view_set_reorderable (GTK_TREE_VIEW (panel->priv->treeview), FALSE); /* TODO */
+	gtk_tree_view_set_show_expanders (GTK_TREE_VIEW (panel->priv->treeview), FALSE);
+	gtk_tree_view_set_level_indentation (GTK_TREE_VIEW (panel->priv->treeview), 18);
 
-	panel->adjustment = gtk_list_box_get_adjustment (GTK_LIST_BOX (panel->listbox));
+	/* Disable search because each time the selection is changed, the
+	   active tab is changed which focuses the view, and thus would remove
+	   the search entry, rendering it useless */
+	gtk_tree_view_set_enable_search (GTK_TREE_VIEW (panel->priv->treeview), FALSE);
 
 	/* Disable focus so it doesn't steal focus each time from the view */
-	gtk_widget_set_can_focus (panel->listbox, FALSE);
+	gtk_widget_set_can_focus (panel->priv->treeview, FALSE);
 
-	/* Css style */
-	context = gtk_widget_get_style_context (panel->listbox);
-	gtk_style_context_add_class (context, "gedit-document-panel");
+	gtk_widget_set_has_tooltip (panel->priv->treeview, TRUE);
 
-	panel->selection_changed_handler_id = g_signal_connect (panel->listbox,
-	                                                        "row-selected",
-	                                                        G_CALLBACK (listbox_selection_changed),
-	                                                        panel);
-	panel->is_in_tab_switched = FALSE;
-	panel->current_selection = NULL;
-	panel->nb_row_notebook = 0;
-	panel->nb_row_tab = 0;
+	gtk_widget_show (panel->priv->treeview);
 
-	/* Drag and drop support */
-	panel->source_targets = gtk_target_list_new (panel_targets, G_N_ELEMENTS (panel_targets));
-	gtk_target_list_add_text_targets (panel->source_targets, 0);
+	column = gtk_tree_view_column_new ();
+	gtk_tree_view_column_set_title (column, _("Documents"));
 
-	gtk_drag_dest_set (GTK_WIDGET (panel), 0,
-	                   panel_targets, G_N_ELEMENTS (panel_targets),
-	                   GDK_ACTION_MOVE);
+	cell = gtk_cell_renderer_pixbuf_new ();
+	gtk_tree_view_column_pack_start (column, cell, FALSE);
+	gtk_tree_view_column_add_attribute (column, cell, "pixbuf", PIXBUF_COLUMN);
+	gtk_tree_view_column_set_cell_data_func (column, cell,
+						 (GtkTreeCellDataFunc)pixbuf_data_func,
+						 panel, NULL);
 
-	gtk_drag_dest_set_track_motion (GTK_WIDGET (panel), TRUE);
+	cell = gtk_cell_renderer_text_new ();
+	gtk_tree_view_column_pack_start (column, cell, TRUE);
+	gtk_tree_view_column_add_attribute (column, cell, "markup", NAME_COLUMN);
+	gtk_tree_view_append_column (GTK_TREE_VIEW (panel->priv->treeview),
+				     column);
 
-	panel->drag_document_row = NULL;
-	panel->row_placeholder = NULL;
-	panel->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
-	panel->row_destination_index = ROW_OUTSIDE_LISTBOX;
-	panel->row_source_row_offset = 0;
-	panel->is_on_drag = FALSE;
+	cell = gedit_cell_renderer_button_new ();
+
+	icon = g_themed_icon_new_with_default_fallbacks ("window-close-symbolic");
+	g_object_set (cell, "gicon", icon, NULL);
+	g_object_unref (icon);
+	gtk_tree_view_column_pack_end (column, cell, FALSE);
+	g_signal_connect (cell,
+	                  "clicked",
+	                  G_CALLBACK (close_button_clicked),
+	                  panel);
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (panel->priv->treeview));
+	gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
+	panel->priv->selection_changed_handler_id = g_signal_connect (selection,
+								      "changed",
+								       G_CALLBACK (treeview_selection_changed),
+								       panel);
+
+	g_signal_connect (panel->priv->treeview,
+			  "button-press-event",
+			  G_CALLBACK (panel_button_press_event),
+			  panel);
+	g_signal_connect (panel->priv->treeview,
+			  "query-tooltip",
+			  G_CALLBACK (treeview_query_tooltip),
+			  panel);
+
+	/*
+	g_signal_connect (panel->priv->model,
+			  "row-inserted",
+			  G_CALLBACK (treeview_row_inserted),
+			  panel);*/
 }
 
 GtkWidget *
 gedit_documents_panel_new (GeditWindow *window)
 {
+	gedit_debug (DEBUG_PANEL);
+
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return g_object_new (GEDIT_TYPE_DOCUMENTS_PANEL,
-	                     "window", window,
-	                     NULL);
-}
-
-static void
-row_on_close_button_clicked (GtkWidget *close_button,
-                             GtkWidget *row)
-{
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-	GeditWindow *window = generic_row->panel->window;
-	GtkWidget *ref;
-
-	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-	{
-		ref = GEDIT_DOCUMENTS_GROUP_ROW (row)->ref;
-		_gedit_cmd_file_close_notebook (window, GEDIT_NOTEBOOK (ref));
-	}
-	else if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
-	{
-		ref = GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref;
-		_gedit_cmd_file_close_tab (GEDIT_TAB (ref), window);
-	}
-	else
-	{
-		g_assert_not_reached ();
-	}
-}
-
-static gboolean
-row_on_button_pressed (GtkWidget      *row_event_box,
-                       GdkEventButton *event,
-                       GtkWidget      *row)
-{
-	if (gdk_event_get_event_type ((GdkEvent *)event) == GDK_BUTTON_PRESS &&
-	    GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
-	{
-		GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
-		GeditDocumentsPanel *panel = document_row->panel;
-
-		if (event->button == GDK_BUTTON_PRIMARY)
-		{
-			/* memorize row and clicked position for possible drag'n drop */
-			panel->drag_document_row = row;
-			panel->drag_document_row_x = (gint)event->x;
-			panel->drag_document_row_y = (gint)event->y;
-
-			panel->drag_root_x = event->x_root;
-			panel->drag_root_y = event->y_root;
-
-			return FALSE;
-		}
-
-		panel->drag_document_row = NULL;
-
-		if (gdk_event_triggers_context_menu ((GdkEvent *)event))
-		{
-			GeditWindow *window = panel->window;
-			GeditTab *tab = GEDIT_TAB (document_row->ref);
-			GtkWidget *menu = gedit_notebook_popup_menu_new (window, tab);
-
-			g_signal_connect (menu,
-					  "selection-done",
-					  G_CALLBACK (gtk_widget_destroy),
-					  NULL);
-
-			gtk_menu_popup_for_device (GTK_MENU (menu),
-			                           gdk_event_get_device ((GdkEvent *)event),
-			                           NULL, NULL,
-			                           NULL, NULL, NULL,
-			                           event->button,
-			                           event->time);
-
-			return TRUE;
-		}
-	}
-
-	return FALSE;
-}
-
-static void
-document_row_create_header (GtkWidget *row)
-{
-	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
-	GtkWidget *image_box;
-	gint width, height;
-
-	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &width, &height);
-
-	image_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_widget_set_size_request (image_box, width, height);
-
-	document_row->image = gtk_image_new ();
-
-	gtk_container_add (GTK_CONTAINER (image_box), document_row->image);
-
-	gtk_box_pack_start (GTK_BOX (document_row->box),
-	                    image_box, FALSE, FALSE, 0);
-
-	/* Set the header on front of all other widget in the row */
-	gtk_box_reorder_child (GTK_BOX (document_row->box),
-	                       image_box, 0);
-
-	gtk_widget_show_all (image_box);
-}
-
-static GtkWidget *
-row_create (GtkWidget *row)
-{
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-	GtkWidget *event_box;
-	GtkStyleContext *context;
-	GtkWidget *image;
-	GIcon *icon;
-
-	gedit_debug (DEBUG_PANEL);
-
-	event_box = gtk_event_box_new ();
-	generic_row->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-
-	gtk_container_add (GTK_CONTAINER (event_box), generic_row->box);
-
-	generic_row->label = gtk_label_new (NULL);
-	gtk_label_set_ellipsize (GTK_LABEL (generic_row->label), PANGO_ELLIPSIZE_END);
-	gtk_widget_set_halign (generic_row->label, GTK_ALIGN_START);
-	gtk_widget_set_valign (generic_row->label, GTK_ALIGN_CENTER);
-
-	generic_row->status_label = gtk_label_new (NULL);
-	gtk_widget_set_halign (generic_row->status_label, GTK_ALIGN_END);
-	gtk_widget_set_valign (generic_row->status_label, GTK_ALIGN_CENTER);
-
-	generic_row->close_button = GTK_WIDGET (g_object_new (GTK_TYPE_BUTTON,
-	                                                      "relief", GTK_RELIEF_NONE,
-	                                                      "focus-on-click", FALSE,
-	                                                      NULL));
-
-	context = gtk_widget_get_style_context (generic_row->close_button);
-	gtk_style_context_add_class (context, "flat");
-	gtk_style_context_add_class (context, "small-button");
-
-	icon = g_themed_icon_new_with_default_fallbacks ("window-close-symbolic");
-	image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
-	gtk_widget_show (image);
-	g_object_unref (icon);
-
-	gtk_container_add (GTK_CONTAINER (generic_row->close_button), image);
-
-	gtk_box_pack_start (GTK_BOX (generic_row->box),
-	                    generic_row->label, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (generic_row->box),
-	                    generic_row->status_label, FALSE, FALSE, 0);
-
-	gtk_box_pack_end (GTK_BOX (generic_row->box),
-	                  generic_row->close_button, FALSE, FALSE, 0);
-
-	g_signal_connect (event_box,
-	                  "button-press-event",
-	                  G_CALLBACK (row_on_button_pressed),
-	                  row);
-	g_signal_connect (generic_row->close_button,
-	                  "clicked",
-	                  G_CALLBACK (row_on_close_button_clicked),
-	                  row);
-
-	gtk_widget_set_no_show_all (generic_row->status_label, TRUE);
-	gtk_widget_show_all (event_box);
-
-	return event_box;
-}
-
-static gboolean
-document_row_query_tooltip (GtkWidget   *row,
-                            gint         x,
-                            gint         y,
-                            gboolean     keyboard_tip,
-                            GtkTooltip  *tooltip)
-{
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-	gchar *markup;
-
-	if (!GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
-	{
-		return FALSE;
-	}
-
-	markup = _gedit_tab_get_tooltip (GEDIT_TAB (generic_row->ref));
-	gtk_tooltip_set_markup (tooltip, markup);
-
-	g_free (markup);
-
-	return TRUE;
-}
-
-/* Gedit Document Row */
-static void
-gedit_documents_document_row_class_init (GeditDocumentsDocumentRowClass *klass)
-{
-}
-
-static void
-gedit_documents_document_row_init (GeditDocumentsDocumentRow *row)
-{
-	GtkWidget *row_widget;
-	GtkStyleContext *context;
-
-	gedit_debug (DEBUG_PANEL);
-
-	row_widget = row_create (GTK_WIDGET (row));
-	gtk_container_add (GTK_CONTAINER (row), row_widget);
-
-	document_row_create_header (GTK_WIDGET (row));
-
-	gtk_widget_set_has_tooltip (GTK_WIDGET (row), TRUE);
-
-	/* Css style */
-	context = gtk_widget_get_style_context (GTK_WIDGET (row));
-	gtk_style_context_add_class (context, "gedit-document-panel-document-row");
-
-	gtk_widget_show_all (GTK_WIDGET (row));
-
-	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
-}
-
-/* Gedit Group Row */
-static void
-gedit_documents_group_row_class_init (GeditDocumentsGroupRowClass *klass)
-{
-}
-
-static void
-gedit_documents_group_row_init (GeditDocumentsGroupRow *row)
-{
-	GtkWidget *row_widget;
-	GtkStyleContext *context;
-
-	gedit_debug (DEBUG_PANEL);
-
-	row_widget = row_create (GTK_WIDGET (row));
-	gtk_container_add (GTK_CONTAINER (row), row_widget);
-
-	/* Css style */
-	context = gtk_widget_get_style_context (GTK_WIDGET (row));
-	gtk_style_context_add_class (context, "gedit-document-panel-group-row");
-
-	gtk_widget_show_all (GTK_WIDGET (row));
-
-	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
-}
-
-static GtkWidget *
-gedit_documents_document_row_new (GeditDocumentsPanel *panel,
-                                  GeditTab *tab)
-{
-	GeditDocumentsDocumentRow *row;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel), NULL);
-	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
-
-	gedit_debug (DEBUG_PANEL);
-
-	row = g_object_new (GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, NULL);
-	row->ref = GTK_WIDGET (tab);
-	row->panel = panel;
-
-	g_signal_connect (row->ref,
-	                  "notify::name",
-	                  G_CALLBACK (document_row_sync_tab_name_and_icon),
-	                  row);
-	g_signal_connect (row->ref,
-	                  "notify::state",
-	                  G_CALLBACK (document_row_sync_tab_name_and_icon),
-	                  row);
-	g_signal_connect (row,
-	                  "query-tooltip",
-	                  G_CALLBACK (document_row_query_tooltip),
-	                  NULL);
-
-	document_row_sync_tab_name_and_icon (GEDIT_TAB (row->ref), NULL, GTK_WIDGET (row));
-
-	return GTK_WIDGET (row);
-}
-
-static GtkWidget *
-gedit_documents_group_row_new (GeditDocumentsPanel *panel,
-                               GeditNotebook       *notebook)
-{
-	GeditDocumentsGroupRow *row;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel), NULL);
-	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (notebook), NULL);
-
-	gedit_debug (DEBUG_PANEL);
-
-	row = g_object_new (GEDIT_TYPE_DOCUMENTS_GROUP_ROW, NULL);
-	row->ref = GTK_WIDGET (notebook);
-	row->panel = panel;
-
-	group_row_set_notebook_name (GTK_WIDGET (row));
-
-	return GTK_WIDGET (row);
+			     "window", window,
+			     NULL);
 }
 
 /* ex:set ts=8 noet: */

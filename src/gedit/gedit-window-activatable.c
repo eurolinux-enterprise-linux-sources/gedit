@@ -15,7 +15,8 @@
  *  GNU Library General Public License for more details.
  *
  *  You should have received a copy of the GNU Library General Public License
- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -23,9 +24,6 @@
 #endif
 
 #include "gedit-window-activatable.h"
-
-#include <string.h>
-
 #include "gedit-window.h"
 
 /**
@@ -39,23 +37,30 @@
 
 G_DEFINE_INTERFACE(GeditWindowActivatable, gedit_window_activatable, G_TYPE_OBJECT)
 
-static void
+void
 gedit_window_activatable_default_init (GeditWindowActivatableInterface *iface)
 {
-	/**
-	 * GeditWindowActivatable:window:
-	 *
-	 * The window property contains the gedit window for this
-	 * #GeditWindowActivatable instance.
-	 */
-	g_object_interface_install_property (iface,
-	                                     g_param_spec_object ("window",
-	                                                          "Window",
-	                                                          "The gedit window",
-	                                                          GEDIT_TYPE_WINDOW,
-	                                                          G_PARAM_READWRITE |
-	                                                          G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
+	static gboolean initialized = FALSE;
+
+	if (!initialized)
+	{
+		/**
+		 * GeditWindowActivatable:window:
+		 *
+		 * The window property contains the gedit window for this
+		 * #GeditWindowActivatable instance.
+		 */
+		g_object_interface_install_property (iface,
+		                                     g_param_spec_object ("window",
+		                                                          "Window",
+		                                                          "The gedit window",
+		                                                          GEDIT_TYPE_WINDOW,
+		                                                          G_PARAM_READWRITE |
+		                                                          G_PARAM_CONSTRUCT_ONLY |
+		                                                          G_PARAM_STATIC_STRINGS));
+
+		initialized = TRUE;
+	}
 }
 
 /**
@@ -119,4 +124,3 @@ gedit_window_activatable_update_state (GeditWindowActivatable *activatable)
 	}
 }
 
-/* ex:set ts=8 noet: */

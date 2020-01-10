@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="fi">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="fi">
 
   <info>
     <title type="link">gedit Tekstimuokkain</title>
     <title type="text">gedit Tekstimuokkain</title>
 
-    <desc>Home page of the gedit help guide.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
 
    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
@@ -38,10 +37,7 @@
     </mal:credit>
   </info>
   
-  <title>
-    <media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/>
-    gedit Text Editor
-  </title>
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png"> </media> gedit Tekstimuokkain</title>
   <p>Tervetuloa <app>gedit</app>-ohjeen pariin.  Pikainen katsaus <app>geditin</app> perusominaisuuksiin sekä hyödyllisiin pikanäppäimiin löytyy <link xref="gedit-quickstart">geditin pikaoppaasta</link> ja <link xref="gedit-shortcut-keys">pikanäppäinlistasta</link>.</p>
 
   <p>Ohjeen muut aiheet ovat ryhmitelty alla oleviin osioihin. Nautinnollisia hetkiä <app>geditin</app> parissa!</p>

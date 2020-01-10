@@ -14,7 +14,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
  */
 
@@ -30,22 +31,22 @@
 #include <pango/pango-break.h>
 #include <gmodule.h>
 
-#include <gedit/gedit-app.h>
 #include <gedit/gedit-window.h>
+#include <gedit/gedit-window-activatable.h>
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
-#include <gedit/gedit-menu-extension.h>
-#include <gedit/gedit-app-activatable.h>
-#include <gedit/gedit-window-activatable.h>
+
+#define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_2"
 
 struct _GeditDocinfoPluginPrivate
 {
 	GeditWindow *window;
 
-	GSimpleAction *action;
+	GtkActionGroup *action_group;
+	guint ui_id;
 
 	GtkWidget *dialog;
-	GtkWidget *header_bar;
+	GtkWidget *file_name_label;
 	GtkWidget *lines_label;
 	GtkWidget *words_label;
 	GtkWidget *chars_label;
@@ -63,30 +64,22 @@ struct _GeditDocinfoPluginPrivate
 	GtkWidget *selected_chars_label;
 	GtkWidget *selected_chars_ns_label;
 	GtkWidget *selected_bytes_label;
-
-	GeditApp  *app;
-	GeditMenuExtension *menu_ext;
 };
 
 enum
 {
 	PROP_0,
-	PROP_WINDOW,
-	PROP_APP
+	PROP_WINDOW
 };
 
-static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditDocinfoPlugin,
 				gedit_docinfo_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
-							       gedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init)
-				G_ADD_PRIVATE_DYNAMIC (GeditDocinfoPlugin))
+							       gedit_window_activatable_iface_init))
 
 static void
 calculate_info (GeditDocument *doc,
@@ -154,8 +147,8 @@ update_document_info (GeditDocinfoPlugin *plugin,
 	gint white_chars = 0;
 	gint lines = 0;
 	gint bytes = 0;
-	gchar *doc_name;
 	gchar *tmp_str;
+	gchar *doc_name;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -183,8 +176,10 @@ update_document_info (GeditDocinfoPlugin *plugin,
 	gedit_debug_message (DEBUG_PLUGINS, "Bytes: %d", bytes);
 
 	doc_name = gedit_document_get_short_name_for_display (doc);
-	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (priv->header_bar), doc_name);
+	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", doc_name);
+	gtk_label_set_markup (GTK_LABEL (priv->file_name_label), tmp_str);
 	g_free (doc_name);
+	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", lines);
 	gtk_label_set_text (GTK_LABEL (priv->document_lines_label), tmp_str);
@@ -337,7 +332,7 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder, "/org/gnome/gedit/plugins/docinfo/ui/gedit-docinfo-plugin.ui", NULL);
 	priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
-	priv->header_bar = GTK_WIDGET (gtk_builder_get_object (builder, "header_bar"));
+	priv->file_name_label = GTK_WIDGET (gtk_builder_get_object (builder, "file_name_label"));
 	priv->words_label = GTK_WIDGET (gtk_builder_get_object (builder, "words_label"));
 	priv->bytes_label = GTK_WIDGET (gtk_builder_get_object (builder, "bytes_label"));
 	priv->lines_label = GTK_WIDGET (gtk_builder_get_object (builder, "lines_label"));
@@ -377,6 +372,7 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 	 * prevent loosing the selection in the document when
 	 * creating the dialog.
 	 */
+	gtk_widget_set_can_focus (priv->file_name_label, FALSE);
 	gtk_widget_set_can_focus (priv->words_label, FALSE);
 	gtk_widget_set_can_focus (priv->bytes_label, FALSE);
 	gtk_widget_set_can_focus (priv->lines_label, FALSE);
@@ -397,9 +393,8 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 }
 
 static void
-docinfo_cb (GAction            *action,
-            GVariant           *parameter,
-            GeditDocinfoPlugin *plugin)
+docinfo_cb (GtkAction          *action,
+	    GeditDocinfoPlugin *plugin)
 {
 	GeditDocinfoPluginPrivate *priv;
 	GeditDocument *doc;
@@ -425,12 +420,24 @@ docinfo_cb (GAction            *action,
 	update_selection_info (plugin, doc);
 }
 
+static const GtkActionEntry action_entries[] =
+{
+	{ "DocumentStatistics",
+	  NULL,
+	  N_("_Document Statistics"),
+	  NULL,
+	  N_("Get statistical information on the current document"),
+	  G_CALLBACK (docinfo_cb) }
+};
+
 static void
 gedit_docinfo_plugin_init (GeditDocinfoPlugin *plugin)
 {
 	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin initializing");
 
-	plugin->priv = gedit_docinfo_plugin_get_instance_private (plugin);
+	plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
+						    GEDIT_TYPE_DOCINFO_PLUGIN,
+						    GeditDocinfoPluginPrivate);
 }
 
 static void
@@ -440,10 +447,8 @@ gedit_docinfo_plugin_dispose (GObject *object)
 
 	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin dispose");
 
-	g_clear_object (&plugin->priv->action);
+	g_clear_object (&plugin->priv->action_group);
 	g_clear_object (&plugin->priv->window);
-	g_clear_object (&plugin->priv->menu_ext);
-	g_clear_object (&plugin->priv->app);
 
 	G_OBJECT_CLASS (gedit_docinfo_plugin_parent_class)->dispose (object);
 }
@@ -470,9 +475,7 @@ gedit_docinfo_plugin_set_property (GObject      *object,
 		case PROP_WINDOW:
 			plugin->priv->window = GEDIT_WINDOW (g_value_dup_object (value));
 			break;
-		case PROP_APP:
-			plugin->priv->app = GEDIT_APP (g_value_dup_object (value));
-			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -492,9 +495,7 @@ gedit_docinfo_plugin_get_property (GObject    *object,
 		case PROP_WINDOW:
 			g_value_set_object (value, plugin->priv->window);
 			break;
-		case PROP_APP:
-			g_value_set_object (value, plugin->priv->app);
-			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -513,7 +514,8 @@ update_ui (GeditDocinfoPlugin *plugin)
 
 	view = gedit_window_get_active_view (priv->window);
 
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (priv->action), view != NULL);
+	gtk_action_group_set_sensitive (priv->action_group,
+					(view != NULL));
 
 	if (priv->dialog != NULL)
 	{
@@ -524,65 +526,58 @@ update_ui (GeditDocinfoPlugin *plugin)
 }
 
 static void
-gedit_docinfo_plugin_app_activate (GeditAppActivatable *activatable)
+gedit_docinfo_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditDocinfoPluginPrivate *priv;
-	GMenuItem *item;
+	GtkUIManager *manager;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_DOCINFO_PLUGIN (activatable)->priv;
 
-	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "tools-section");
-	item = g_menu_item_new (_("_Document Statistics"), "win.docinfo");
-	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
-	g_object_unref (item);
-}
+	manager = gedit_window_get_ui_manager (priv->window);
 
-static void
-gedit_docinfo_plugin_app_deactivate (GeditAppActivatable *activatable)
-{
-	GeditDocinfoPluginPrivate *priv;
+	priv->action_group = gtk_action_group_new ("GeditDocinfoPluginActions");
+	gtk_action_group_set_translation_domain (priv->action_group,
+						 GETTEXT_PACKAGE);
+	gtk_action_group_add_actions (priv->action_group,
+				      action_entries,
+				      G_N_ELEMENTS (action_entries),
+				      activatable);
 
-	gedit_debug (DEBUG_PLUGINS);
+	gtk_ui_manager_insert_action_group (manager, priv->action_group, -1);
 
-	priv = GEDIT_DOCINFO_PLUGIN (activatable)->priv;
+	priv->ui_id = gtk_ui_manager_new_merge_id (manager);
 
-	g_clear_object (&priv->menu_ext);
-}
-
-static void
-gedit_docinfo_plugin_window_activate (GeditWindowActivatable *activatable)
-{
-	GeditDocinfoPluginPrivate *priv;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	priv = GEDIT_DOCINFO_PLUGIN (activatable)->priv;
-
-	priv->action = g_simple_action_new ("docinfo", NULL);
-	g_signal_connect (priv->action, "activate",
-	                  G_CALLBACK (docinfo_cb), activatable);
-	g_action_map_add_action (G_ACTION_MAP (priv->window),
-	                         G_ACTION (priv->action));
+	gtk_ui_manager_add_ui (manager,
+			       priv->ui_id,
+			       MENU_PATH,
+			       "DocumentStatistics",
+			       "DocumentStatistics",
+			       GTK_UI_MANAGER_MENUITEM,
+			       FALSE);
 
 	update_ui (GEDIT_DOCINFO_PLUGIN (activatable));
 }
 
 static void
-gedit_docinfo_plugin_window_deactivate (GeditWindowActivatable *activatable)
+gedit_docinfo_plugin_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditDocinfoPluginPrivate *priv;
+	GtkUIManager *manager;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_DOCINFO_PLUGIN (activatable)->priv;
 
-	g_action_map_remove_action (G_ACTION_MAP (priv->window), "docinfo");
+	manager = gedit_window_get_ui_manager (priv->window);
+
+	gtk_ui_manager_remove_ui (manager, priv->ui_id);
+	gtk_ui_manager_remove_action_group (manager, priv->action_group);
 }
 
 static void
-gedit_docinfo_plugin_window_update_state (GeditWindowActivatable *activatable)
+gedit_docinfo_plugin_update_state (GeditWindowActivatable *activatable)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -600,22 +595,16 @@ gedit_docinfo_plugin_class_init (GeditDocinfoPluginClass *klass)
 	object_class->get_property = gedit_docinfo_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
-	g_object_class_override_property (object_class, PROP_APP, "app");
-}
 
-static void
-gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface)
-{
-	iface->activate = gedit_docinfo_plugin_app_activate;
-	iface->deactivate = gedit_docinfo_plugin_app_deactivate;
+	g_type_class_add_private (klass, sizeof (GeditDocinfoPluginPrivate));
 }
 
 static void
 gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
 {
-	iface->activate = gedit_docinfo_plugin_window_activate;
-	iface->deactivate = gedit_docinfo_plugin_window_deactivate;
-	iface->update_state = gedit_docinfo_plugin_window_update_state;
+	iface->activate = gedit_docinfo_plugin_activate;
+	iface->deactivate = gedit_docinfo_plugin_deactivate;
+	iface->update_state = gedit_docinfo_plugin_update_state;
 }
 
 static void
@@ -629,9 +618,6 @@ peas_register_types (PeasObjectModule *module)
 {
 	gedit_docinfo_plugin_register_type (G_TYPE_MODULE (module));
 
-	peas_object_module_register_extension_type (module,
-						    GEDIT_TYPE_APP_ACTIVATABLE,
-						    GEDIT_TYPE_DOCINFO_PLUGIN);
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_WINDOW_ACTIVATABLE,
 						    GEDIT_TYPE_DOCINFO_PLUGIN);

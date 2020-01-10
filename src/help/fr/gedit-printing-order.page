@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="fr">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="fr">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Configurer les pages pour qu’elles s’impriment dans un certain ordre.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -59,27 +58,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
@@ -88,32 +69,40 @@
   <section id="printing-reverse">
     <title>Inversion</title>
 
-    <p>Normalement, les imprimantes impriment en premier la première page et en dernier la dernière page et elles se retrouvent donc dans l’ordre inverse quand vous les prenez. Pour inverser cet ordre :</p>
+    <p>Printers usually print the first page first, and the last page last, so
+    the pages end up in reverse order when you pick them up. To reverse the
+    order:</p>
 
     <steps>
       <item>
-        <p>Choisissez <guiseq><gui style="menu">Fichier</gui><gui style="menuitem">Imprimer</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">File</gui>
+        <gui style="menuitem">Print</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Dans l’onglet <gui style="tab">Général</gui> de la fenêtre Imprimer, dans la colonne <gui style="group">Copies</gui>, cochez la case <gui style="checkbox">Inverser</gui>.</p>
+        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
+        <gui style="group">Copies</gui>, check
+        <gui style="checkbox">Reverse</gui>.</p>
       </item>
     </steps>
 
-    <p>La dernière page sera alors imprimée en premier, et ainsi de suite.</p>
+    <p>The last page will be printed first, and so on.</p>
 </section>
 
   <section id="printing-collate">
     <title>Rassemblement</title>
     
-    <p>Si vous imprimez plusieurs copies du document, les épreuves vont être groupées par défaut par leur numéro de page (toutes les copies de la première page ensemble, puis toutes les copies de la deuxième, etc). La fonction Rassembler va faire sortir chaque copie du document avec toutes ses pages regroupées dans le bon ordre.</p>
+    <p>Si vous imprimer plusieurs copies du document, les épreuves vont être groupées par défaut par leur numéro de page (toutes les copies de la première page ensemble, puis toutes les copies de la deuxième, etc). La fonction Rassembler va faire en sorte que chaque copie du document sorte avec toutes ses pages regroupées dans le bon ordre.</p>
 
     <p>Pour rassembler :</p>
     <steps>
       <item>
-        <p>Cliquez sur <guiseq><gui style="menu">Fichier</gui><gui style="menuitem">Imprimer</gui></guiseq>.</p>
+        <p>Click <guiseq><gui style="menu">File</gui>
+        <gui style="menuitem">Print</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Dans l’onglet <gui style="tab">Général</gui> de la fenêtre Imprimer, dans la colonne <gui style="group">Copies</gui>, cochez la case <gui style="checkbox">Rassembler</gui>.</p>
+        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
+        <gui style="group">Copies</gui> check
+        <gui style="checkbox">Collate</gui>.</p>
       </item>
     </steps>
 

@@ -3,13 +3,11 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/> 
-    <desc>Revisar los errores ortográficos de sus archivos.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
-
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Baptiste Mille-Mathias</name>
@@ -22,11 +20,12 @@
     
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
     
+    <desc>Activar y usar la característica de comprobación de ortografía</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -108,13 +107,10 @@
   <section id="define-spell-check-language">
     <title>Definir el idioma que usar para la comprobación de la ortografía</title>
     <p>De manera predeterminada, <app>gedit</app> usará su idioma actual para comprobar la ortografía del documento. Si necesita usar otro idioma, elija <guiseq><gui style="menu">Herramientas</gui><gui style="menuitem">Establecer idioma…</gui></guiseq>, y elija el idioma que quiere usar.</p>
+    
+  <note>
+    <p>La lista de los idiomas disponible variará dependiendo de la configuración de su sistema.</p>
+  </note>
   </section>
 
-  <section id="dict">
-    <title>Diccionarios</title>
-
-    <p><app>gedit</app> usa <link href="http://www.abisource.com/projects/enchant/">Enchant</link>, una pequeña utilidad del sistema para comprobar la ortografía. Enchant puede usar varios diccionarios diferentes para comprobar la ortografía. Dos posibles «backend» de diccionario son <em>Hunspell</em> y <em>Aspell</em>.</p>
-
-    <p>Si el idioma que quiere usar no está disponible en <app>gedit</app>, use el instalador o el gestor de paquetes de su equipo para instalar el «backend» del diccionario que quiere.</p>
-  </section>
 </page>

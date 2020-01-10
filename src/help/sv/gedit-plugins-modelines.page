@@ -10,36 +10,29 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Stöd för lägesrader med Emacs-, Kate- och Vim-stil för gedit.</desc>
+  <desc>Emacs, Kate and Vim-style modelines support for gedit</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
-  </info>
+<title>Modelines</title>
 
-<title>Lägesrader</title>
+  <p>The <app>Modelines</app> plugin allows <app>gedit</app> to analyze the
+  lines of text at the start and end of a file, and then apply a set of
+  document preferences to the file. The <app>Modelines</app> plugin supports a
+  subset of the options used by the <app>Emacs</app>, <app>Kate</app> and
+  <app>Vim</app> text editors.</p>
 
-  <p>Insticksmodulen <app>Lägesrader</app> låter <app>gedit</app> analysera raderna i början och slutet på en fil, och sedan tillämpa en uppsättning dokumentinställningar för filen. Insticksmodulen <app>Lägesrader</app> stöder en delmängd av alternativen som används av textredigerarna <app>Emacs</app>, <app>Kate</app> och <app>Vim</app>.</p>
-
-  <p>För att aktivera insticksmodulen <app>Lägesrader</app>, välj <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Inställningar</gui><gui>Insticksmoduler</gui><gui>Lägesrader</gui></guiseq>.</p>
+  <p>To enable the <app>Modelines</app> plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>.</p>
 
 <section id="modelines-general">
-  <title>Allmänna lägesradsalternativ</title>
-  <p>Följande alternativ kan ställas in med lägesrader i <app>gedit</app>:</p>
+  <title>General Modeline Options</title>
+  <p>The following options can be set using <app>gedit</app> modelines:</p>
   <list>
     <item><p>Tabulatorbredd</p></item>
     <item><p>Indenteringsbredd</p></item>
-    <item><p>Infoga blanksteg istället för tabulatortecken</p></item>
+    <item><p>Inserting spaces instead of tabs</p></item>
     <item><p>Textradbrytning</p></item>
     <item><p>Högermarginalbredd</p></item>
   </list>
@@ -52,20 +45,26 @@
 <section id="modelines-emacs">
   <title>Lägesrader för Emacs</title>
 
-  <p>De två första raderna i ett dokument söks igenom efter lägesrader för <app>Emacs</app>, och <app>gedit</app> stöder följande lägesradsflaggor för <app>Emacs</app>:</p>
+  <p>The first two lines of a document are scanned for <app>Emacs</app>
+  modelines, and <app>gedit</app> supports the following <app>Emacs</app>
+  modeline options:</p>
   <list>
     <item><p>Tab-width</p></item>
     <item><p>Indent-offset</p></item>
     <item><p>Indent-tabs-mode</p></item>
     <item><p>Text auto-wrap</p></item>
   </list>
-  <p>För mer information om lägesrader för <app>Emacs</app>, se <link href="http://www.gnu.org/software/emacs/manual/emacs.html">handboken för GNU Emacs</link>.</p>
+  <p>For more information on <app>Emacs</app> modelines, visit the
+  <link href="http://www.gnu.org/software/emacs/manual/emacs.html">GNU Emacs
+  Manual</link>.</p>
 </section>
 
 <section id="modelines-kate">
   <title>Lägesrader för Kate</title>
 
-  <p>De tio första och sista raderna i ett dokument söks igenom efter lägesrader för <app>Kate</app>, och <app>gedit</app> stöder följande lägesradsflaggor för <app>Kate</app>:</p>
+  <p>The first and last ten lines a document are scanned for <app>Kate</app>
+  modelines, and <app>gedit</app> supports the following <app>Kate</app>
+  modeline options:</p>
 
   <list>
     <item><p>tab-width</p></item>
@@ -75,12 +74,15 @@
     <item><p>word-wrap-column</p></item>
   </list>
 
-  <p>För mer information om lägesrader för <app>Kate</app>, besök <link href="http://kate-editor.org/">webbplatsen för Kate</link>.</p>
+  <p>For more information about <app>Kate</app> modelines, visit the
+  <link href="http://kate-editor.org/">Kate website</link>.</p>
 </section>
 
 <section id="modelines-vim">
   <title>Lägesrader för Vim</title>
-  <p>De tre första och sista raderna i ett dokument söks igenom efter lägesrader för <app>Vim</app>, och <app>gedit</app> stöder följande lägesradsflaggor för <app>Vim</app>:</p>
+  <p>The first and last three lines a document are scanned for <app>Vim</app>
+  modelines, and <app>gedit</app> supports the following <app>Vim</app>
+  modeline options:</p>
 
   <list>
     <item><p>et (expandtab)</p></item>
@@ -90,6 +92,7 @@
     <item><p>textwidth</p></item>
   </list>
 
-  <p>För mer information om lägesrader för <app>Vim</app>, besök <link href="http://www.vim.org/">webbplatsen för Vim</link>.</p>
+  <p>For more information on <app>Vim</app> modelines, visit the
+  <link href="http://www.vim.org/">Vim website</link>.</p>
 </section>
 </page>

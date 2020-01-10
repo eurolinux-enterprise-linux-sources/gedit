@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs-moving" xml:lang="es">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs-moving" xml:lang="es">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
-    <link type="seealso" xref="gedit-tabs"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Cambiar la posición de una pestaña en en la ventana de gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -19,17 +16,12 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -84,6 +76,8 @@
         <p>Suelte el botón del ratón.</p>
       </item>
     </steps>
+
+    <p>o, mientras la pestaña se mueve seleccione <guiseq><gui>Documentos</gui><gui>Mover a la ventana nueva</gui></guiseq></p>
 
     <note style="tip">
       <p>Para mover una pestaña a una ventana nueva cuando <app>gedit</app> está maximizado, arrastre la pestaña a la barra superior de la pantalla.</p>

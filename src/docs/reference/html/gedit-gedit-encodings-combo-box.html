@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GeditEncodingsComboBox</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="gedit Reference Manual">
+<link rel="up" href="ch01.html" title="gedit">
+<link rel="prev" href="gedit-gedit-document.html" title="GeditDocument">
+<link rel="next" href="gedit-gedit-file-chooser-dialog.html" title="GeditFileChooserDialog">
+<meta name="generator" content="GTK-Doc V1.19.1 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gedit-gedit-document.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gedit Reference Manual</th>
+<td><a accesskey="n" href="gedit-gedit-file-chooser-dialog.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gedit-gedit-encodings-combo-box.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gedit-gedit-encodings-combo-box.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gedit-gedit-encodings-combo-box.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#gedit-gedit-encodings-combo-box.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#gedit-gedit-encodings-combo-box.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gedit-gedit-encodings-combo-box"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gedit-gedit-encodings-combo-box.top_of_page"></a>GeditEncodingsComboBox</span></h2>
+<p>GeditEncodingsComboBox</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gedit-gedit-encodings-combo-box.synopsis"></a><h2>Synopsis</h2>
+<a name="GeditEncodingsComboBox"></a><pre class="synopsis">                    <a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBoxPrivate" title="GeditEncodingsComboBoxPrivate">GeditEncodingsComboBoxPrivate</a>;
+struct              <a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBox-struct" title="struct GeditEncodingsComboBox">GeditEncodingsComboBox</a>;
+<span class="returnvalue">GtkWidget</span> *         <a class="link" href="gedit-gedit-encodings-combo-box.html#gedit-encodings-combo-box-new" title="gedit_encodings_combo_box_new ()">gedit_encodings_combo_box_new</a>       (<em class="parameter"><code><span class="type">gboolean</span> save_mode</code></em>);
+const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="returnvalue">GeditEncoding</span></a> * <a class="link" href="gedit-gedit-encodings-combo-box.html#gedit-encodings-combo-box-get-selected-encoding" title="gedit_encodings_combo_box_get_selected_encoding ()">gedit_encodings_combo_box_get_selected_encoding</a>
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBox"><span class="type">GeditEncodingsComboBox</span></a> *menu</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-encodings-combo-box.html#gedit-encodings-combo-box-set-selected-encoding" title="gedit_encodings_combo_box_set_selected_encoding ()">gedit_encodings_combo_box_set_selected_encoding</a>
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBox"><span class="type">GeditEncodingsComboBox</span></a> *menu</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="type">GeditEncoding</span></a> *encoding</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-encodings-combo-box.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkWidget
+               +----GtkContainer
+                     +----GtkBin
+                           +----GtkComboBox
+                                 +----GeditEncodingsComboBox
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-encodings-combo-box.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GeditEncodingsComboBox implements
+ AtkImplementorIface,  GtkBuildable,  GtkCellLayout and  GtkCellEditable.</p>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-encodings-combo-box.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBox--save-mode" title='The "save-mode" property'>save-mode</a>"                <span class="type">gboolean</span>              : Read / Write / Construct
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-encodings-combo-box.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-encodings-combo-box.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GeditEncodingsComboBoxPrivate"></a><h3>GeditEncodingsComboBoxPrivate</h3>
+<pre class="programlisting">typedef struct _GeditEncodingsComboBoxPrivate GeditEncodingsComboBoxPrivate;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GeditEncodingsComboBox-struct"></a><h3>struct GeditEncodingsComboBox</h3>
+<pre class="programlisting">struct GeditEncodingsComboBox;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-encodings-combo-box-new"></a><h3>gedit_encodings_combo_box_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">GtkWidget</span> *         gedit_encodings_combo_box_new       (<em class="parameter"><code><span class="type">gboolean</span> save_mode</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-encodings-combo-box-get-selected-encoding"></a><h3>gedit_encodings_combo_box_get_selected_encoding ()</h3>
+<pre class="programlisting">const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="returnvalue">GeditEncoding</span></a> * gedit_encodings_combo_box_get_selected_encoding
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBox"><span class="type">GeditEncodingsComboBox</span></a> *menu</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-encodings-combo-box-set-selected-encoding"></a><h3>gedit_encodings_combo_box_set_selected_encoding ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_encodings_combo_box_set_selected_encoding
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-encodings-combo-box.html#GeditEncodingsComboBox"><span class="type">GeditEncodingsComboBox</span></a> *menu</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="type">GeditEncoding</span></a> *encoding</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>encoding</code></em> :</span></p></td>
+<td>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-encodings-combo-box.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GeditEncodingsComboBox--save-mode"></a><h3>The <code class="literal">"save-mode"</code> property</h3>
+<pre class="programlisting">  "save-mode"                <span class="type">gboolean</span>              : Read / Write / Construct</pre>
+<p>Save Mode.</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19.1</div>
+</body>
+</html>

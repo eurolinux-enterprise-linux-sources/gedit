@@ -5,41 +5,16 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>一个简单的 gedit 介绍。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
   <title>开始使用 gedit</title>
@@ -47,7 +22,7 @@
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>打开 <app>gedit</app> 文本编辑器之后，您就可以马上开始书写了.要保存文件，请点击<app>gedit</app> 工具栏上的<gui>保存</gui>按钮。</p>
+  <p>一旦打开了 <app>gedit</app> 文本编辑器，您就可以开始书写内容，要保存文件，请点击<gui>保存</gui>按钮。</p>
 
   <p>要学习 <app>gedit</app> 的额外特性，进行别的任务，请访问 <app>gedit</app> 帮助的 <link xref="index">其他部分</link>。</p>
 

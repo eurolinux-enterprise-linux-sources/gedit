@@ -3,32 +3,21 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
-    <desc>Gå ut ur filen som du använder.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Stäng en fil</title>
+  <title>Close a file</title>
 
-  <p>För att stänga en fil i <app>gedit</app>, välj <gui style="menuitem">Stäng</gui>. Alternativt kan du klicka på det lilla ”X” som dyker upp på högersidan av filens flik, eller trycka <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
-  <p>Endera av dessa åtgärder kommer att stänga en fil i <app>gedit</app>. Om din fil innehåller ändringar som inte har sparats kommer <app>gedit</app> att fråga dig om du vill spara ändringarna innan filen stängs.</p>
+  <p>To close a file in <app>gedit</app>, select <guiseq><gui>File</gui>
+  <gui>Close</gui></guiseq>. Alternately, you can click the small "X" that 
+  appears on the right-side of the file's tab, or press <keyseq><key>Ctrl</key>
+  <key>W</key></keyseq>.</p>
+  <p>Any one of these actions will close a file in <app>gedit</app>. If your 
+  file contains changes that have not been saved, <app>gedit</app> will prompt 
+  you to save those changes before closing the file.</p>
 
 </page>

@@ -13,10 +13,11 @@
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU General Public License
-#  along with this program; if not, see <http://www.gnu.org/licenses/>.
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place, Suite 330,
+#  Boston, MA 02111-1307, USA.
 
 from gi.repository import Gio, Gtk
-
 
 class VirtualDirectory(object):
     def __init__(self, name):
@@ -46,7 +47,6 @@ class VirtualDirectory(object):
         except Exception as e:
             pass
 
-
 class RecentDocumentsDirectory(VirtualDirectory):
     def __init__(self, maxitems=200):
         VirtualDirectory.__init__(self, 'recent')
@@ -69,7 +69,6 @@ class RecentDocumentsDirectory(VirtualDirectory):
 
                 if added >= self._maxitems:
                     break
-
 
 class CurrentDocumentsDirectory(VirtualDirectory):
     def __init__(self, window):

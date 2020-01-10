@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-save-file" xml:lang="pt-BR">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-save-file" xml:lang="pt-BR">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Salve seu arquivo para trabalhar nele posteriormente.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-13" status="review"/>
-    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
@@ -65,20 +58,14 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Salvando um arquivo</title>
 
-  <p>Para salvar um arquivo no <app>gedit</app>, clique no botão <gui style="button">Salvar</gui> no lado direito da barra de ferramentas ou apenas pressione <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se você estiver salvando um novo arquivo, um diálogo aparecerá e você poderá selecionar um nome para o arquivo, assim como o diretório onde gostaria em que o arquivo fosse salvo.</p>
+  <p>Para salvar um arquivo no <app>gedit</app>, clique no ícone de disco rígido com a palavra <gui style="button">Salvar</gui> próximo a ele. Você também pode selecionar <guiseq><gui style="menu">Arquivo</gui><gui style="menuitem">Salvar</gui></guiseq>, ou basta pressionar <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se você estiver salvando um novo arquivo, o diálogo de <gui>Salvar arquivo</gui> aparecerá e você poderá selecionar o nome para o arquivo, assim como o diretório onde gostaria em que o arquivo fosse salvo.</p>
 
 </page>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-commander" xml:lang="el">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/> 
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Χρήση διεπαφής τερματικού για προχωρημένη επεξεργασία</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Μάριος Ζηντίλης</mal:name>
+      <mal:email>m.zindilis@dmajor.org</mal:email>
+      <mal:years>2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Βασίλης Τσιβίκης</mal:name>
+      <mal:email>vasitsiv@hotmail.gr</mal:email>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Θάνος Τρυφωνίδης</mal:name>
+      <mal:email>tomtryf@gmail.com</mal:email>
+      <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Δημήτρης Σπίγγος</mal:name>
+      <mal:email>dmtrs32@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Commander</title>
+
+
+  <p>Το πρόσθετο <app>Commander</app> είναι ένα πρόσθετο για προχωρημένους χρήστες του <app>gedit</app> που επιτρέπει την εκτέλεση ενεργειών γραμμής εντολών στο τρέχον αρχείο. Για να ενεργοποιήσετε το πρόσθετο, επιλέξτε <guiseq> <gui style="menu">gedit</gui><gui style="menuitem">Προτιμήσεις</gui> <gui>Πρόσθετα</gui><gui>Commander</gui></guiseq>.</p>
+
+  <p>Αφού ενεργοποιήσατε το πρόσθετο, χρησιμοποιήστε το πατώντας <keyseq><key> Ctrl</key><key>.</key></keyseq>.</p>
+  
+  <note style="tip"><p>Το τελευταίο πλήκτρο στον παραπάνω συνδυασμό πλήκτρων είναι μια τελεία.</p></note>
+
+    <table frame="all" rules="all">
+      <thead>
+        <tr>
+          <td><p>Για να κάνετε αυτό</p></td>  <td><p>Πατήστε αυτό</p></td>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Δείτε μια επισκόπηση των διαθέσιμων εντολών</p></td> <td><p>Tab + Tab</p></td>  
+        </tr>
+        <tr>
+          <td><p>Εύρεση μιας λέξης μέσα στο τρέχον έγγραφο</p></td>  <td><p>/ <em>foo </em></p>
+          <p>Αυτό θα βρει τη λέξη <em>foo</em>.</p></td>
+        </tr>
+        <tr>
+          <td><p>Αντικατάσταση μιας λέξης στο τρέχον αρχείο</p></td>  <td><p>// foo bar</p>
+          <p>Αυτό θα αντικαταστήσει το <em>foo</em> με το <em>bar</em>.</p></td>
+        </tr>
+        <tr>
+          <td><p>Μετακινήστε το δρομέα σε ένα συγκεκριμένο αριθμό γραμμής στο αρχείο σας</p></td>  
+          <td><p>go [αριθμός γραμμής] <em>ή</em> απλά <em>g</em> [αριθμός γραμμής]</p>
+          </td>
+        </tr>
+        <tr>
+          <td><p>Εναλλαγή της ένδειξης σελιδοδείκτη για την τρέχουσα θέση γραμμής</p></td>  
+          <td><p>bookmark <em>ή</em> απλά <em>b</em></p></td>  
+        </tr>
+      </tbody>
+    </table>
+  
+  <note style="tip"><p>Μερικές εντολές, όπως η <app>bookmark</app> απαιτούν το κατάλληλο πρόσθετο να είναι εγκατεστημένο και ενεργοποιημένο. Αν δεν έχετε το πρόσθετο, θα δείτε ένα μήνυμα λάθους.</p></note>
+
+</page>

@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Печать файлов созданных в gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Синдху С (Sindhu S)</name>
@@ -18,28 +17,28 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2018.</mal:years>
+      <mal:years>2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Ivan Komaritsyn</mal:name>
-      <mal:email>vantu5z@mail.ru</mal:email>
-      <mal:years>2017.</mal:years>
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Печать документов</title>
 
     <note style="important">
-      <p>Для печати с помощью <app>gedit</app> требуется подключённый и настроенный принтер. Если это не сделано, обратитесь к руководству <link href="help:gnome-help/printing">Печать в среде GNOME</link>.</p>
+      <p>Для печати с помощью <app>gedit</app> требуется подключенный и настроенный принтер. Если это не сделано, обратитесь к руководству <link href="help:gnome-help/printing">Печать в среде GNOME</link>.</p>
     </note>
   
   <p><app>gedit</app> позволяет выводить документ на печать на бумаге, а также печатать в файл.</p>
 
   <section id="print-preview">
-    <title>Предварительный просмотр печати</title>
+    <title>Предпросмотр печати</title>
 
-  <p>Перед печатью документа, с помощью функции <gui>Просмотр печати</gui>, можно увидеть, как будет выглядеть распечатанный документ. Для предварительного просмотра документа:</p>
+  <p>Перед печатью документа, с помощью функции <gui>Просмотр печати</gui>, можно увидеть, как будет выглядеть распечатанный документ.</p>
 
   <steps>
     <item>
@@ -47,14 +46,18 @@
     </item>
   </steps>
 
-  <p>Предварительный просмотр документа откроется в той же вкладке, что и файл. По предварительному просмотру можно перемещаться с помощью кнопок навигации и панели инструментов в верхней части вкладки предварительного просмотра документа. Чтобы закрыть предварительный просмотр и вернуться к документу, нажмите кнопку <gui style="button">Закрыть просмотр печати</gui>.</p>
+  <p>A preview of your document will open in the same tab as the file. You can
+  browse this preview with help of navigation buttons and tools in the toolbar
+  at the top of the document preview tab. To close and return to the document
+  click <gui style="button">Close Preview</gui>.</p>
 
   </section>
 
   <section id="printing-to-paper">
     <title>Печать на бумаге</title>
 
-  <p>Можно печатать документы на бумаге на локальном или удалённом принтере. Чтобы распечатать файл:</p>
+  <p>You can print your documents to paper using a local or remote printer. To
+  print a file:</p>
 
   <steps>
     <item>
@@ -64,25 +67,34 @@
       <p>Выберите нужный принтер из списка доступных принтеров.</p>
     </item>
     <item>
-      <p>Можно просмотреть файл, нажав кнопку <gui style="button">Просмотр печати</gui>. Если параметры печати соответствуют вашим ожиданиям, нажмите кнопку <gui style="button">Печать</gui>, чтобы отправить файл на принтер.</p>
+      <p>You can preview the file using <gui style="button">Print Preview</gui>
+      and once you are satisfied with the settings, click
+      <gui style="button">Print</gui> to send the file to printer.</p>
     </item>
   </steps>
 
-  <p>Дополнительно, на вкладке <gui style="tab">Параметры страницы</gui>, можно выбрать параметры <gui style="group">Размещения</gui> и <gui style="group">Бумаги</gui>. Так как данные настройки доступны во всех приложениях GNOME, обратитесь к руководству <link href="help:gnome-help/printing#paper">Параметры размещения и бумаги</link>.</p>
+  <p>Additionally, from <gui style="tab">Page Setup</gui> tab: you can choose
+  <gui style="group">Layout</gui> and <gui style="group">Paper</gui> options. As
+  these settings are available throughout <app>GNOME</app> programs, please
+  consult
+  <link href="help:gnome-help/printing#paper">Layout and Paper options</link>
+  help.</p>
 
   </section>
 
   <section id="printing-order-select">
-    <title>Печать нескольких копий и указанного диапазона страниц</title>
+    <title>Print Multiple Copies And Between Specified Ranges</title>
 
-    <p>Можно указать <gui style="group">Диапазон</gui> и количество <gui style="group">Копий</gui>:</p>
+    <p>You can set <gui style="group">Range</gui> and
+    <gui style="group">Copies</gui> options to help you:</p>
 
   </section>
 
   <section id="printing-to-file">
     <title>Печать в файл</title>
 
-  <p>Также можно использовать <app>gedit</app> для печати документа в файл. Чтобы распечатать документ в файл:</p>
+  <p>You can also use <app>gedit</app> to print to a file. To print your
+  document to file of a different format:</p>
 
   <steps>
     <item>

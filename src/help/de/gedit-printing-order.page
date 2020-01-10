@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="de">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="de">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Legen Sie eine bestimmte Druckreihenfolge der Seiten fest.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -30,14 +29,8 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
@@ -46,18 +39,18 @@
   <section id="printing-reverse">
     <title>Rückwärts</title>
 
-    <p>Drucker geben üblicherweise die erste Seite zuerst aus, und die letzte Seite zuletzt. Auf diese Weise gelangen die Seiten in umgekehrter Reihenfolge in den sich ergebenden Papierstapel. So kehren Sie die Reihenfolge um:</p>
+    <p>Drucker geben üblicherweise die erste Seite auch zuerst aus, und die letzte Seite zuletzt. Auf diese Weise gelangen die Seiten in umgekehrter Reihenfolge in den sich ergebenden Papierstapel. So kehren Sie die Reihenfolge um:</p>
 
     <steps>
       <item>
         <p>Wählen Sie <guiseq><gui style="menu">Datei</gui><gui style="menuitem">Drucken</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Aktivieren Sie im Reiter <gui style="tab">Allgemein</gui> des Druckfensters unter <em>Kopien</em> das Ankreuzfeld <gui style="checkbox">Rückwärts</gui>.</p>
+        <p>Aktivieren Sie im Reiter <gui style="tab">Allgemein</gui> des Druckfensters unter <gui style="group">Kopien</gui> das Ankreuzfeld <gui style="checkbox">Rückwärts</gui>.</p>
       </item>
     </steps>
 
-    <p>Die letzte Seite wird zuerst gedruckt, und so weiter.</p>
+    <p>Die letzte Seite wird zuerst gedruckt usw.</p>
 </section>
 
   <section id="printing-collate">

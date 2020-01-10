@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GeditProgressInfoBar</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="gedit Reference Manual">
+<link rel="up" href="ch01.html" title="gedit">
+<link rel="prev" href="gedit-GeditPrintJob.html" title="GeditPrintJob">
+<link rel="next" href="gedit-gedit-statusbar.html" title="GeditStatusbar">
+<meta name="generator" content="GTK-Doc V1.19.1 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gedit-GeditPrintJob.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gedit Reference Manual</th>
+<td><a accesskey="n" href="gedit-gedit-statusbar.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gedit-gedit-progress-info-bar.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gedit-gedit-progress-info-bar.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gedit-gedit-progress-info-bar.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#gedit-gedit-progress-info-bar.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#gedit-gedit-progress-info-bar.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gedit-gedit-progress-info-bar"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gedit-gedit-progress-info-bar.top_of_page"></a>GeditProgressInfoBar</span></h2>
+<p>GeditProgressInfoBar</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gedit-gedit-progress-info-bar.synopsis"></a><h2>Synopsis</h2>
+<a name="GeditProgressInfoBar"></a><pre class="synopsis">                    <a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBarPrivate" title="GeditProgressInfoBarPrivate">GeditProgressInfoBarPrivate</a>;
+struct              <a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar-struct" title="struct GeditProgressInfoBar">GeditProgressInfoBar</a>;
+<span class="returnvalue">GtkWidget</span> *         <a class="link" href="gedit-gedit-progress-info-bar.html#gedit-progress-info-bar-new" title="gedit_progress_info_bar_new ()">gedit_progress_info_bar_new</a>         (<em class="parameter"><code>const <span class="type">gchar</span> *stock_id</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *markup</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> has_cancel</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-progress-info-bar.html#gedit-progress-info-bar-set-stock-image" title="gedit_progress_info_bar_set_stock_image ()">gedit_progress_info_bar_set_stock_image</a>
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *stock_id</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-progress-info-bar.html#gedit-progress-info-bar-set-markup" title="gedit_progress_info_bar_set_markup ()">gedit_progress_info_bar_set_markup</a>  (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *markup</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-progress-info-bar.html#gedit-progress-info-bar-set-text" title="gedit_progress_info_bar_set_text ()">gedit_progress_info_bar_set_text</a>    (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *text</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-progress-info-bar.html#gedit-progress-info-bar-set-fraction" title="gedit_progress_info_bar_set_fraction ()">gedit_progress_info_bar_set_fraction</a>
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code><span class="type">gdouble</span> fraction</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-progress-info-bar.html#gedit-progress-info-bar-pulse" title="gedit_progress_info_bar_pulse ()">gedit_progress_info_bar_pulse</a>       (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-progress-info-bar.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkWidget
+               +----GtkContainer
+                     +----GtkBox
+                           +----GtkInfoBar
+                                 +----GeditProgressInfoBar
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-progress-info-bar.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GeditProgressInfoBar implements
+ AtkImplementorIface,  GtkBuildable and  GtkOrientable.</p>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-progress-info-bar.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar--has-cancel-button" title='The "has-cancel-button" property'>has-cancel-button</a>"        <span class="type">gboolean</span>              : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-progress-info-bar.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-progress-info-bar.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GeditProgressInfoBarPrivate"></a><h3>GeditProgressInfoBarPrivate</h3>
+<pre class="programlisting">typedef struct _GeditProgressInfoBarPrivate GeditProgressInfoBarPrivate;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GeditProgressInfoBar-struct"></a><h3>struct GeditProgressInfoBar</h3>
+<pre class="programlisting">struct GeditProgressInfoBar;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-progress-info-bar-new"></a><h3>gedit_progress_info_bar_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">GtkWidget</span> *         gedit_progress_info_bar_new         (<em class="parameter"><code>const <span class="type">gchar</span> *stock_id</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *markup</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> has_cancel</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-progress-info-bar-set-stock-image"></a><h3>gedit_progress_info_bar_set_stock_image ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_progress_info_bar_set_stock_image
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *stock_id</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-progress-info-bar-set-markup"></a><h3>gedit_progress_info_bar_set_markup ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_progress_info_bar_set_markup  (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *markup</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-progress-info-bar-set-text"></a><h3>gedit_progress_info_bar_set_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_progress_info_bar_set_text    (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *text</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-progress-info-bar-set-fraction"></a><h3>gedit_progress_info_bar_set_fraction ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_progress_info_bar_set_fraction
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>,
+                                                         <em class="parameter"><code><span class="type">gdouble</span> fraction</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-progress-info-bar-pulse"></a><h3>gedit_progress_info_bar_pulse ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_progress_info_bar_pulse       (<em class="parameter"><code><a class="link" href="gedit-gedit-progress-info-bar.html#GeditProgressInfoBar"><span class="type">GeditProgressInfoBar</span></a> *bar</code></em>);</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-progress-info-bar.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GeditProgressInfoBar--has-cancel-button"></a><h3>The <code class="literal">"has-cancel-button"</code> property</h3>
+<pre class="programlisting">  "has-cancel-button"        <span class="type">gboolean</span>              : Write / Construct Only</pre>
+<p>If the message bar has a cancel button.</p>
+<p>Default value: TRUE</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19.1</div>
+</body>
+</html>

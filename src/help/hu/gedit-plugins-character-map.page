@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-character-map" xml:lang="hu">
+  <info>
+    <revision version="0.2" date="2013-02-24" status="review"/>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <credit type="author">
+      <name>Paul Weaver</name>
+      <email>ch3pjw@bath.ac.uk</email>
+    </credit>
+
+    <desc>Különleges karakterek beillesztése egy kattintással</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kelemen Gábor</mal:name>
+      <mal:email>kelemeng at gnome dot hu</mal:email>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Őry Máté</mal:name>
+      <mal:email>orymate at gmail dot com</mal:email>
+      <mal:years>2007, 2008.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Karaktertábla</title>
+
+  <comment>
+    <cite date="2013-02-24" href="mailto:ch3pjw@bath.ac.uk">Paul Weaver</cite>
+    <p>This assumes the reader knows how to use gedit in general. By the end of
+    this page, the reader will be able to use the character map plugin to
+    insert characters into their documents.</p>
+  </comment>
+
+  <p>A <app>Karaktertábla</app> bővítmény olyan karakterek beszúrását teszi lehetővé, amelyek beírása nem egyszerű a billentyűzet használatával. A bővítmény engedélyezéséhez válassza a <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Beállítások</gui><gui>Bővítmények</gui> <gui>Karaktertábla</gui></guiseq> lehetőséget.</p>
+  
+  <section id="using-character-map">
+    <title>Karaktertábla használata</title>
+
+    <p>A bővítmény engedélyezése után a karakterek beszúrására használja az oldalpanel (<guiseq><gui>Nézet</gui> <gui>Oldalpanel</gui></guiseq>) <em>Karaktertábla</em> lapját.</p>
+  
+  <steps>
+    <item><p>Vigye a kurzort a dokumentumban oda, ahova a speciális karaktert be szeretné szúrni.</p></item>
+    <item><p>Az oldalpanel megnyitásához válassza a <guiseq><gui>Nézet</gui> <gui>Oldalpanel</gui></guiseq> menüpontot, vagy nyomja meg az <key>F9</key> billentyűt.</p></item>
+    <item><p>Válassza az oldalpanel <em>Karaktertábla</em> lapját.</p></item>
+    <item><p>Szükség esetén a <em>Karaktertábla</em> lap tetején válassza ki a karakterkészletet, amelyhez a karakter tartozik (például arab).</p></item>
+    <item><p>Kattintson duplán a kívánt karakterre a beszúrásához.</p></item>
+  </steps>
+  
+    <note style="tip"><p>A normál szerkesztés folytatásához a dokumentum szerkesztőmezőjére kell kattintania.</p></note>
+  </section>
+
+</page>

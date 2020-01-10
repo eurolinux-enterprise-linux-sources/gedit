@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Джим Къмпбел</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Insert the current date/time at the cursor position.</desc>
+  <desc>Вмъкване на текущата дата/време на позицията на курсора</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>

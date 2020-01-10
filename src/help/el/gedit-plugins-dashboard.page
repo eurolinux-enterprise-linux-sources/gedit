@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-dashboard" xml:lang="el">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>  
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Εμφάνιση των πρόσφατα και περισσότερο χρησιμοποιημένων αρχείων στην εκκίνηση</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Μάριος Ζηντίλης</mal:name>
+      <mal:email>m.zindilis@dmajor.org</mal:email>
+      <mal:years>2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Βασίλης Τσιβίκης</mal:name>
+      <mal:email>vasitsiv@hotmail.gr</mal:email>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Θάνος Τρυφωνίδης</mal:name>
+      <mal:email>tomtryf@gmail.com</mal:email>
+      <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name> Δημήτρης Σπίγγος</mal:name>
+      <mal:email>dmtrs32@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Πίνακας</title>
+
+  <p>Το πρόσθετο <app>Πίνακας-Dashboard</app> παρέχει γρήγορη πρόσβαση στα πιο πρόσφατα και περισσότερο χρησιμοποιημένα αρχεία. Για να ενεργοποιήσετε τον <app>Πίνακα</app>, επιλέξτε <guiseq> <gui style="menu">gedit</gui><gui style="menuitem">Προτιμήσεις</gui> <gui>Πρόσθετα</gui><gui>Πίνακας</gui></guiseq>. Θα χρειαστεί να επανεκκινήσετε το <app>gedit</app> για να ενεργοποιηθεί το πρόσθετο <app>Πίνακας</app>.</p>
+  
+  <p>Επίσης ο <app>Πίνακας</app> περιλαμβάνει παράθυρο <gui>Αναζήτησης</gui>, που σας επιτρέπει να αναζητήσετε αρχεία που μπορεί να μην εμφανίζονται στη λίστα των αρχείων.</p>
+  
+  <section id="gedit-recently-used">
+    <title>Πρόσφατα χρησιμοποιημένα αρχεία</title>
+    <p>Αρχικά ο πίνακας θα εμφανίσει μια συντόμευση για ένα <gui>κενό έγγραφο</gui> και επτά από τα περισσότερο χρησιμοποιημένα αρχεία. Πατήστε στο <gui>κενό έγγραφο</gui> για να δημιουργήσετε ένα νέο αρχείο. Πατήστε σε οποιοδήποτε από τα άλλα αρχεία για να το ανοίξετε.</p>
+  </section>
+  
+  <section id="gedit-most-used">
+    <title>Πρόσφατα χρησιμοποιημένα αρχεία</title>
+    <p>Παρομοίως, ο πίνακας εμφανίζει μια συντόμευση για ένα <gui>κενό έγγραφο </gui> και των επτά περισσότερο χρησιμοποιημένων αρχείων. Πατήστε στο <gui> κενό έγγραφο</gui> για να δημιουργήσετε ένα νέο αρχείο. Πατήστε σε οποιοδήποτε από τα άλλα αρχεία για να το ανοίξετε.</p>
+
+  <note style="tip"><p>Αφού ενεργοποιηθεί, ο <app>Πίνακας</app> θα εμφανιστεί όταν ανοίξετε το <app>gedit</app>. Μπορείτε επίσης να ανοίξετε τον <app>Πίνακα</app> πατώντας στο <guiseq><gui>Αρχείο</gui><gui>Νέο</gui> </guiseq>, ή πατώντας <keyseq><key>Ctrl</key><key>N</key></keyseq>.</p>
+  </note>
+  
+  </section>
+
+</page>

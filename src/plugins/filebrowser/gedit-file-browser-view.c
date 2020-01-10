@@ -15,7 +15,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include <string.h>
@@ -27,7 +28,12 @@
 #include "gedit-file-browser-store.h"
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-view.h"
+#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
+
+#define GEDIT_FILE_BROWSER_VIEW_GET_PRIVATE(object)( \
+		G_TYPE_INSTANCE_GET_PRIVATE((object), \
+		GEDIT_TYPE_FILE_BROWSER_VIEW, GeditFileBrowserViewPrivate))
 
 struct _GeditFileBrowserViewPrivate
 {
@@ -36,9 +42,6 @@ struct _GeditFileBrowserViewPrivate
 	GtkCellRenderer *text_renderer;
 
 	GtkTreeModel *model;
-
-	/* Used when renaming */
-	gchar *orig_markup;
 	GtkTreeRowReference *editable;
 
 	/* Click policy */
@@ -82,11 +85,7 @@ static const GtkTargetEntry drag_source_targets[] = {
 	{ "text/uri-list", 0, 0 }
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserView,
-				gedit_file_browser_view,
-				GTK_TYPE_TREE_VIEW,
-				0,
-				G_ADD_PRIVATE_DYNAMIC (GeditFileBrowserView))
+G_DEFINE_DYNAMIC_TYPE (GeditFileBrowserView, gedit_file_browser_view, GTK_TYPE_TREE_VIEW)
 
 static void on_cell_edited 		(GtkCellRendererText    *cell,
 				 	 gchar                  *path,
@@ -300,20 +299,16 @@ static void
 set_click_policy_property (GeditFileBrowserView            *obj,
 			   GeditFileBrowserViewClickPolicy  click_policy)
 {
-	GdkDisplay *display;
 	GtkTreeIter iter;
+	GdkDisplay *display;
 	GdkWindow *win;
-
-	display = gtk_widget_get_display (GTK_WIDGET (obj));
 
 	obj->priv->click_policy = click_policy;
 
 	if (click_policy == GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE)
 	{
 		if (obj->priv->hand_cursor == NULL)
-		{
-			obj->priv->hand_cursor = gdk_cursor_new_from_name (display, "pointer");
-		}
+			obj->priv->hand_cursor = gdk_cursor_new (GDK_HAND2);
 	}
 	else if (click_policy == GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE)
 	{
@@ -335,10 +330,10 @@ set_click_policy_property (GeditFileBrowserView            *obj,
 			win = gtk_widget_get_window (GTK_WIDGET (obj));
 			gdk_window_set_cursor (win, NULL);
 
+			display = gtk_widget_get_display (GTK_WIDGET (obj));
+
 			if (display != NULL)
-			{
 				gdk_display_flush (display);
-			}
 		}
 
 		if (obj->priv->hand_cursor)
@@ -583,16 +578,21 @@ button_press_event (GtkWidget      *widget,
 
 		if (event->type == GDK_2BUTTON_PRESS)
 		{
-			/* Do not chain up. The row-activated signal is normally
-			 * already sent, which will activate the selected item
-			 * and open the file.
-			 */
+			/* Chain up, must be before activating the selected
+			   items because this will cause the view to grab focus */
+			widget_parent->button_press_event (widget, event);
+
+			if (view->priv->double_click_path[1] &&
+			    gtk_tree_path_compare (view->priv->double_click_path[0], view->priv->double_click_path[1]) == 0)
+			{
+				activate_selected_items (view);
+			}
 		}
 		else
 		{
 			/* We're going to filter out some situations where
 			 * we can't let the default code run because all
-			 * but one row would be deselected. We don't
+			 * but one row would be would be deselected. We don't
 			 * want that; we want the right click menu or single
 			 * click to apply to everything that's currently selected. */
 			selected = gtk_tree_selection_path_is_selected (selection, path);
@@ -939,30 +939,37 @@ gedit_file_browser_view_class_init (GeditFileBrowserViewClass *klass)
 	    g_signal_new ("error",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, error),
-			  NULL, NULL, NULL,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
+					   error), NULL, NULL,
+			  gedit_file_browser_marshal_VOID__UINT_STRING,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	signals[FILE_ACTIVATED] =
 	    g_signal_new ("file-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, file_activated),
-			  NULL, NULL, NULL,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
+					   file_activated), NULL, NULL,
+			  g_cclosure_marshal_VOID__BOXED,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	signals[DIRECTORY_ACTIVATED] =
 	    g_signal_new ("directory-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, directory_activated),
-			  NULL, NULL, NULL,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
+					   directory_activated), NULL, NULL,
+			  g_cclosure_marshal_VOID__BOXED,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	signals[BOOKMARK_ACTIVATED] =
 	    g_signal_new ("bookmark-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, bookmark_activated),
-			  NULL, NULL, NULL,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
+					   bookmark_activated), NULL, NULL,
+			  g_cclosure_marshal_VOID__BOXED,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+
+	g_type_class_add_private (object_class,
+				  sizeof (GeditFileBrowserViewPrivate));
 }
 
 static void
@@ -994,12 +1001,8 @@ cell_data_cb (GtkTreeViewColumn    *tree_column,
 	    obj->priv->editable != NULL &&
 	    gtk_tree_row_reference_valid (obj->priv->editable))
 	{
-		GtkTreePath *edpath;
-
-		edpath = gtk_tree_row_reference_get_path (obj->priv->editable);
+		GtkTreePath *edpath = gtk_tree_row_reference_get_path (obj->priv->editable);
 		editable = edpath && gtk_tree_path_compare (path, edpath) == 0;
-
-		gtk_tree_path_free (edpath);
 	}
 
 	gtk_tree_path_free (path);
@@ -1009,7 +1012,7 @@ cell_data_cb (GtkTreeViewColumn    *tree_column,
 static void
 gedit_file_browser_view_init (GeditFileBrowserView *obj)
 {
-	obj->priv = gedit_file_browser_view_get_instance_private (obj);
+	obj->priv = GEDIT_FILE_BROWSER_VIEW_GET_PRIVATE (obj);
 
 	obj->priv->column = gtk_tree_view_column_new ();
 
@@ -1027,8 +1030,8 @@ gedit_file_browser_view_init (GeditFileBrowserView *obj)
 					 obj->priv->text_renderer, TRUE);
 	gtk_tree_view_column_add_attribute (obj->priv->column,
 					    obj->priv->text_renderer,
-					    "markup",
-					    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP);
+					    "text",
+					    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME);
 
 	g_signal_connect (obj->priv->text_renderer, "edited",
 			  G_CALLBACK (on_cell_edited), obj);
@@ -1135,10 +1138,7 @@ void
 gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 				      GtkTreeIter          *iter)
 {
-	gchar *name;
-	gchar *markup;
 	guint flags;
-	GValue name_escaped = G_VALUE_INIT;
 	GtkTreeRowReference *rowref;
 	GtkTreePath *path;
 
@@ -1148,25 +1148,11 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 	g_return_if_fail (iter != NULL);
 
 	gtk_tree_model_get (tree_view->priv->model, iter,
-	                    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
-	                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &markup,
-	                    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-	                    -1);
+			    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+			    -1);
 
 	if (!(FILE_IS_DIR (flags) || !FILE_IS_DUMMY (flags)))
-	{
-		g_free (name);
-		g_free (markup);
 		return;
-	}
-
-	/* Restore the markup to the original
-	 * name, a plugin might have changed the markup.
-	 */
-	g_value_init (&name_escaped, G_TYPE_STRING);
-	g_value_take_string (&name_escaped, g_markup_escape_text (name, -1));
-	gedit_file_browser_store_set_value (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model), iter,
-	                                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &name_escaped);
 
 	path = gtk_tree_model_get_path (tree_view->priv->model, iter);
 	rowref = gtk_tree_row_reference_new (tree_view->priv->model, path);
@@ -1179,24 +1165,16 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 					      path);
 
 	gtk_tree_path_free (path);
-
-	tree_view->priv->orig_markup = markup;
 	tree_view->priv->editable = rowref;
 
-	/* grab focus on the text cell which is editable */
-	gtk_tree_view_column_focus_cell (tree_view->priv->column,
-					 tree_view->priv->text_renderer);
-
-	path = gtk_tree_row_reference_get_path (tree_view->priv->editable),
-	gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view), path,
+	gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view),
+				  gtk_tree_row_reference_get_path (tree_view->priv->editable),
 				  tree_view->priv->column, TRUE);
-	gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view),
-				      path, tree_view->priv->column,
-				      FALSE, 0.0, 0.0);
 
-	gtk_tree_path_free (path);
-	g_value_unset (&name_escaped);
-	g_free (name);
+	gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view),
+				      gtk_tree_row_reference_get_path (tree_view->priv->editable),
+				      tree_view->priv->column,
+				      FALSE, 0.0, 0.0);
 }
 
 void
@@ -1230,8 +1208,13 @@ on_cell_edited (GtkCellRendererText  *cell,
 	GtkTreePath *treepath;
 	GtkTreeIter iter;
 	gboolean ret;
-	GValue orig_markup = G_VALUE_INIT;
 	GError *error = NULL;
+
+	gtk_tree_row_reference_free (tree_view->priv->editable);
+	tree_view->priv->editable = NULL;
+
+	if (new_text == NULL || *new_text == '\0')
+		return;
 
 	treepath = gtk_tree_path_new_from_string (path);
 	ret = gtk_tree_model_get_iter (GTK_TREE_MODEL (tree_view->priv->model), &iter, treepath);
@@ -1239,14 +1222,7 @@ on_cell_edited (GtkCellRendererText  *cell,
 
 	if (ret)
 	{
-		/* Restore the original markup */
-		g_value_init (&orig_markup, G_TYPE_STRING);
-		g_value_set_string (&orig_markup, tree_view->priv->orig_markup);
-		gedit_file_browser_store_set_value (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model), &iter,
-		                                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &orig_markup);
-
-		if (new_text != NULL && *new_text != '\0' &&
-		    gedit_file_browser_store_rename (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model),
+		if (gedit_file_browser_store_rename (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model),
 		    &iter, new_text, &error))
 		{
 			treepath = gtk_tree_model_get_path (GTK_TREE_MODEL (tree_view->priv->model), &iter);
@@ -1261,15 +1237,7 @@ on_cell_edited (GtkCellRendererText  *cell,
 				       error->code, error->message);
 			g_error_free (error);
 		}
-
-		g_value_unset (&orig_markup);
 	}
-
-	g_free (tree_view->priv->orig_markup);
-	tree_view->priv->orig_markup = NULL;
-	
-	gtk_tree_row_reference_free (tree_view->priv->editable);
-	tree_view->priv->editable = NULL;
 }
 
 static void
@@ -1364,4 +1332,4 @@ _gedit_file_browser_view_register_type (GTypeModule *type_module)
 	gedit_file_browser_view_register_type (type_module);
 }
 
-/* ex:set ts=8 noet: */
+/* ex:ts=8:noet: */

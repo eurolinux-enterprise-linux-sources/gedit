@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="lv">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="lv">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Iestatīt lappuses, lai drukātu noteiktā secībā.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -22,18 +21,23 @@
   <section id="printing-reverse">
     <title>Otrādi</title>
 
-    <p>Printeri parasti drukā pirmo lapu kā pirmo un pēdējo kā pēdējo, tātad lapas iznāk pretējā secībā, kādas tu tās esi izvēlējies. Lai apgrieztu secību:</p>
+    <p>Printers usually print the first page first, and the last page last, so
+    the pages end up in reverse order when you pick them up. To reverse the
+    order:</p>
 
     <steps>
       <item>
-        <p>Izvēlieties <guiseq><gui style="menu">Datne</gui> <gui style="menuitem">Drukāt</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">File</gui>
+        <gui style="menuitem">Print</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Drukas loga cilnes <gui style="tab">Vispārīgi</gui> sadaļā <gui style="group">Kopijas</gui> atzīmējiet <gui style="checkbox">Apgriezti</gui>.</p>
+        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
+        <gui style="group">Copies</gui>, check
+        <gui style="checkbox">Reverse</gui>.</p>
       </item>
     </steps>
 
-    <p>Pēdējā lapa tiks drukāta kā pirmā un tā tālāk.</p>
+    <p>The last page will be printed first, and so on.</p>
 </section>
 
   <section id="printing-collate">
@@ -44,10 +48,13 @@
     <p>Lai saliktu pa lappusēm:</p>
     <steps>
       <item>
-        <p>Spiediet <guiseq><gui style="menu">Datne</gui><gui style="menuitem">Drukāt</gui></guiseq></p>
+        <p>Click <guiseq><gui style="menu">File</gui>
+        <gui style="menuitem">Print</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Drukas loga cilnes <gui style="tab">Vispārīgi</gui> sadaļā <gui style="group">Kopijas</gui> atzīmējiet <gui style="checkbox">Salikt pa lappusēm</gui>.</p>
+        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
+        <gui style="group">Copies</gui> check
+        <gui style="checkbox">Collate</gui>.</p>
       </item>
     </steps>
 

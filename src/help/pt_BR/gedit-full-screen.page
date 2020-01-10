@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="gedit-full-screen" xml:lang="pt-BR">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="gedit-full-screen" xml:lang="pt-BR">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Configure o gedit para usar a tela inteira.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.12" date="2014-02-17" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -60,15 +52,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -78,7 +64,7 @@
 
   <section id="turn-on-full-screen">
     <title>Ativando o modo de tela cheia</title>
-    <p>Para ativar o modo de tela cheia, pressione<key>F11</key>. As barras de menu, título e abas do <app>gedit</app> serão ocultadas e será apenas apresentado a você o texto de seu arquivo atual.</p>
+    <p>Para ativar o modo de tela cheia, selecione <guiseq><gui>Ver</gui> <gui>Tela cheia</gui></guiseq> ou pressione<key>F11</key>. As barras de menu, título e abas do <app>gedit</app> serão ocultadas e será apenas apresentado a você o texto de seu arquivo atual.</p>
     <p>Se você precisa executar uma ação no menu do <app>gedit</app> ao trabalhar no modo de tela cheia, mova o ponteiro do mouse para o topo da tela. A barra de menu do <app>gedit</app> voltará a aparecer, e você pode selecionar a ação desejada.</p>
 
     <note>
@@ -90,7 +76,7 @@
   <section id="turn-off-full-screen">
     <title>Desativando o modo de tela cheia</title>
     <p>Para desabilitar o modo tela cheia e voltar para a janela padrão do <app>gedit</app>, pressione <key>F11</key>.</p>
-    <p>Você também pode mover o cursor do seu mouse para o topo da tela e esperar aparecer a <gui>barra de menu</gui>. Quando a <gui>barra de menu</gui> aparecer, selecione o botão <gui>Sair de tela cheia</gui>.</p>
+    <p>Você também pode mover o cursor do seu mouse para o topo da tela e esperar aparecer a <gui>barra de menu</gui>. Quando ela aparecer, selecione <gui>Sair de tela cheia</gui>.</p>
   </section>
 
 </page>

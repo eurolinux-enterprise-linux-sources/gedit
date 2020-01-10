@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-dashboard" xml:lang="ru">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>  
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Джим Кэмпбелл (Jim Campbell)</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Отображение недавно использованных и наиболее часто используемых файлов при запуске</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stas Solovey</mal:name>
+      <mal:email>whats_up@tut.by</mal:email>
+      <mal:years>2011, 2012, 2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Информационная панель</title>
+
+  <p>Модуль <app>Информационная панель</app> предоставляет быстрый доступ к недавно использованным и наиболее часто используемым файлам. Чтобы включить модуль, выберите <guiseq> <gui style="menu">gedit</gui><gui style="menuitem">Параметры</gui> <gui>Модули</gui><gui>Информационная панель</gui></guiseq>. После включения модуля <app>Информационная панель</app> нужно перезапустить <app>gedit</app>.</p>
+  
+  <p><app>Информационная панель</app> также содержит окно <gui>поиска</gui>, что позволяет искать файлы, которые не отображены в списке файлов.</p>
+  
+  <section id="gedit-recently-used">
+    <title>Недавно использованные файлы</title>
+    <p>Информационная панель обычно отображает значок <gui>нового документа</gui> и семь недавно использованных файлов. Нажмите на значок <gui>нового документа</gui>, чтобы создать новый документ. Нажмите на любой из других файлов, чтобы открыть этот файл.</p>
+  </section>
+  
+  <section id="gedit-most-used">
+    <title>Наиболее часто используемые файлы</title>
+    <p>Также информационная панель отображает значок <gui>нового документа</gui> и семь наиболее часто используемых файлов. Нажмите на значок <gui>нового документа</gui>, чтобы создать новый документ. Нажмите на любой из других файлов, чтобы открыть этот файл.</p>
+
+  <note style="tip"><p>После включения, информационная панель по умолчанию будет отображаться при запуске <app>gedit</app>. Также можно открыть панель, выбрав <guiseq><gui>Файл</gui><gui>Создать</gui> </guiseq>, или нажав <keyseq><key>Ctrl</key><key>N</key></keyseq>.</p>
+  </note>
+  
+  </section>
+
+</page>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-tag-list" xml:lang="pt-BR">
+
+<info>
+  <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
+  <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+  <revision pkgversion="3.8" date="2013-03-22" status="review"/>
+  <credit type="author">
+    <name>Daniel Neel</name>
+    <email>dneelyep@gmail.com</email>
+  </credit>
+  <credit type="author">
+    <name>Jim Campbell</name>
+    <email>jwcampbell@gmail.com</email>
+  </credit>
+  <credit type="editor">
+    <name>Sindhu S</name>
+    <email>sindhus@live.in</email>
+  </credit>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  <desc>Insere automaticamente marcas, textos e caracteres especiais em um documento</desc>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
+      <mal:email>wagnerluis1982@gmail.com</mal:email>
+      <mal:years>2007</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Pedro Vaz de Mello de Medeiros</mal:name>
+      <mal:email>pedrovmm@gmail.com</mal:email>
+      <mal:years>2007</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Leonardo Ferreira Fontenelle</mal:name>
+      <mal:email>leonardof@gnome.org</mal:email>
+      <mal:years>2007, 2008</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Vladimir Melo</mal:name>
+      <mal:email>vmelo@gnome.org</mal:email>
+      <mal:years>2008</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Fabricio Godoy</mal:name>
+      <mal:email>skarllot@gmail.com</mal:email>
+      <mal:years>2008</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Krix Apolinário</mal:name>
+      <mal:email>krixapolinario@gmail.com</mal:email>
+      <mal:years>2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>José Carlos Menezes</mal:name>
+      <mal:email>jcmenezes.91@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Lista de marcas</title>
+
+  <p>O plug-in <app>Lista de marcas</app> permite inserir marcas e caracteres especiais de uma lista no painel lateral. Por padrão, o plug-in pode inserir marcas e caracteres especiais para <app>HTML</app>, <app>XHTML</app>, <app>XSLT</app>, <app>XUL</app> e <app>LaTeX</app>.</p>
+
+  <section id="enable-tag-list-plugin">
+    <title>Habilitando o plug-in de Lista de marcas</title>
+
+    <p>Para habilitar o plug-in de <app>Lista de marcas</app>:</p>
+
+    <steps>
+      <item>
+        <p>Selecione <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Preferências</gui> <gui style="tab">Plug-ins</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Selecione <gui style="menuitem">Lista de marcas</gui> para habilitar o plug-in.</p>
+      </item>
+      <item>
+        <p>Abra o painel lateral selecionando <guiseq><gui style="menu">Ver</gui><gui style="menuitem">Painel lateral</gui></guiseq> ou pressionando <key>F9</key>.</p>
+      </item>
+    </steps>
+
+    <p>O painel lateral mostra, inicialmente, uma lista de documentos abertos, então para visualizar e usar a <app>Lista de marcas</app>, você precisará clicar na aba que mostra o ícone "mais" no canto inferior do painel lateral. O ícone será similar a este:</p>
+
+    <p>
+    <media type="image" mime="image/png" src="figures/gedit-side-pane3.png"/>
+    </p>
+  </section>
+
+  <section id="inserting-tags">
+    <title>Inserindo marcas e caracteres especiais</title>
+
+    <p>A <app>Lista de marcas</app> usa um menu suspenso para permitir que você escolha entre os diferentes tipos de marcas. Por exemplo, uma opção de marca é <gui>HTML - Marcas</gui>.</p>
+
+    <p>Para começar a inserir marcas, complete o seguintes:</p>
+
+    <steps>
+      <item>
+        <p>Mova o cursor para onde você deseja inserir a marca ou caractere especial.</p>
+      </item>
+      <item>
+        <p>Selecione o tipo de marca desejado do menu suspenso no topo do painel lateral.</p>
+      </item>
+      <item>
+        <p>Role pela lista para localizar pela marca ou caractere desejado.</p>
+      </item>
+      <item>
+        <p>Clique duas vezes na marca na lista de marcas.</p>
+      </item>
+    </steps>
+
+    <p>A marca ou caractere especial que você escolheu será exibido no seu documento.</p>
+  </section>
+
+  <section id="tag-list-tips">
+    <title>Dicas da lista de marcas</title>
+    <note style="tip">
+      <p>Você também pode inserir uma marca pressionando <key>Enter</key> ou <keyseq><key>Shift</key><key>Enter</key></keyseq>.</p>
+      <p>Ao pressionar a tecla <key>Enter</key>, será inserida a marca na posição do cursor, e, então, retornado o foco para o documento. Pressionando <keyseq><key>Shift</key><key>Enter</key></keyseq> irá inserir a marca na posição do cursor, mas manterá o foco na <app>Lista de marcas</app>.</p>
+    </note>
+
+    <note style="tip">
+      <p>Você pode ter uma visualização do texto que será inserido para cada marca e caractere especial clicando na palavra <gui>Visualizar</gui> no canto inferior do painel lateral.</p>
+    </note>
+  </section>
+</page>

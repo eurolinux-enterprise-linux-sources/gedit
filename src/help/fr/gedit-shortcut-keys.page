@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="fr">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:ui="http://projectmallard.org/experimental/ui/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="fr">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Utiliser les raccourcis clavier pour travailler plus rapidement.</desc>
-    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
-    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -25,19 +22,8 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
-    <credit type="author copyright">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -83,110 +69,87 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Raccourcis clavier</title>
 
-  <p>Les <gui>raccourcis clavier</gui> permettent d’effectuer des tâches courantes plus rapidement qu’avec la souris et les menus. Les tableaux suivants énumèrent tous les raccourcis clavier de <app>gedit</app>.</p>
+  <p>Les <gui>raccourcis clavier</gui> permettent d'effectuer des tâches courantes plus rapidement qu'avec la souris et les menus. Les tableaux suivants énumèrent tous les raccourcis clavier de <app>gedit</app>.</p>
 
-    <table rules="rows" frame="top bottom" ui:expanded="true">
+<!--  
+Please skip this list for now. I'm not sure if it is needed.
+  <list>
+    <title>Types of shortcut keys</title>
+    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
+    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
+    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
+    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
+    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
+    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
+    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
+  </list>
+-->
+
+    <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Raccourcis clavier en relation avec les onglets</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Basculer sur l’onglet suivant vers la gauche</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>Page haut</key></keyseq></p></td>
+          <td><p>Basculer sur l'onglet suivant vers la gauche</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
+          <key>PageUp</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Basculer sur l’onglet suivant vers la droite</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>Page bas</key></keyseq></p></td>
+          <td><p>Basculer sur l'onglet suivant vers la droite</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
+          <key>PageDown</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Fermer l’onglet</p></td>
+          <td><p>Fermer l'onglet</p></td>
           <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Enregistrer tous les onglets</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>L</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>L</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Fermer tous les onglets</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>W</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Ré-ouvrir le dernier onglet fermé</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>T</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>W</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Activer le <var>n</var>ième onglet</p></td>
-          <td><p><keyseq><key>Alt</key><key><var>n</var></key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Nouveau groupe d’onglets</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Groupe d’onglets précédent</p></td>
-          <td><p><keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>Page haut</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Groupe d’onglets suivant</p></td>
-          <td><p><keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>Page bas</key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key>
+	  <var>n</var></key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Raccourcis clavier pour la manipulation des fichiers</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Créer un nouveau document dans une nouvelle fenêtre</p></td>
+          <td><p>Créer un nouveau document</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Créer un nouveau document dans un nouvel onglet</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Ouvrir un document</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
-        </tr>
-        <tr>
-           <td><p>Ouvrir la boîte de dialogue <gui>Ouverture rapide</gui></p></td>
-           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Enregistrer le document actuel</p></td>
@@ -194,15 +157,17 @@
         </tr>
         <tr>
           <td><p>Enregistrer le document actuel sous un nouveau nom</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>S</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>S</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Imprimer le document actuel</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>P</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl </key><key>P</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Aperçu avant impression</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>P</key></keyseq></p></td>
+          <td><p>Afficher un aperçu avant impression</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>P</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Fermer le document actuel</p></td>
@@ -215,38 +180,38 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Raccourcis pour la modification des documents</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Aller au début de la ligne actuelle</p></td>
-          <td><p><key>Origine</key></p></td>
+          <td><p>Move to the beginning of the current line</p></td>
+          <td><p><key>Home</key></p></td>
         </tr>
         <tr>
-          <td><p>Aller à la fin de la ligne actuelle</p></td>
-          <td><p><key>Fin</key></p></td>
+          <td><p>Move to the end of the current line</p></td>
+          <td><p><key>End</key></p></td>
         </tr>
         <tr>
-          <td><p>Aller au début du document</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Origine</key></keyseq></p></td>
+          <td><p>Move to the beginning of the document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Aller à la fin du document</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Fin</key></keyseq></p></td>
+          <td><p>Move to the end of the document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer le mot sélectionné d’un mot à droite</p></td>
-          <td><p><keyseq><key>Alt</key><key>Flèche droite</key></keyseq></p></td>
+          <td><p>Move the selected word right one word</p></td>
+          <td><p><keyseq><key>Alt</key><key>Right Arrow</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer le mot sélectionné d’un mot à gauche</p></td>
-          <td><p><keyseq><key>Alt</key><key>Flèche gauche</key></keyseq></p></td>
+          <td><p>Move the selected word left one word</p></td>
+          <td><p><keyseq><key>Alt</key><key>Left Arrow</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Annuler la dernière action</p></td>
@@ -254,7 +219,8 @@
         </tr>
         <tr>
           <td><p>Rétablir la dernière action annulée</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>Z</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>Z</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Couper le texte ou la zone sélectionné et le placer dans le presse-papiers</p></td>
@@ -277,42 +243,22 @@
           <td><p><keyseq><key>Ctrl</key><key>D</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer la ligne sélectionnée d’une ligne vers le haut</p></td>
-          <td><p><keyseq><key>Alt</key><key>Flèche haut</key></keyseq></p></td>
+          <td><p>Déplacer la ligne sélectionnée d'une ligne vers le haut</p></td>
+          <td><p><keyseq><key>Alt</key><key>Up Arrow</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer la ligne sélectionnée d’une ligne vers le bas</p></td>
-          <td><p><keyseq><key>Alt</key><key>Flèche bas</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Ajouter une tabulation</p></td>
-          <td><p><keyseq><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Supprimer une tabulation</p></td>
-          <td><p><keyseq><key>Maj</key><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Mettre le texte sélectionné en majuscules</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Mettre le texte sélectionné en minuscules</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Modifier la casse du texte sélectionné</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
+          <td><p>Déplacer la ligne sélectionnée d'une ligne vers le bas</p></td>
+          <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Raccourcis pour l’affichage et le masquage des panneaux</title>
+    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <title>Raccourcis pour l'affichage et le masquage des panneaux</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>
@@ -321,18 +267,19 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Ouvrir le menu Fichier</p></td>
-          <td><p><key>F10</key></p></td>  
+          <td><p>Afficher ou masquer le panneau inférieur</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Raccourcis pour la recherche</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>
@@ -345,8 +292,8 @@
           <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Rechercher l’occurrence précédente du texte</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>G</key></keyseq></p></td>
+          <td><p>Rechercher l'occurrence précédente du texte</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Rechercher et remplacer</p></td>
@@ -354,7 +301,8 @@
         </tr>
         <tr>
           <td><p>Supprimer la coloration</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>K</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>K</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Se rendre à une ligne</p></td>
@@ -363,18 +311,18 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Raccourcis pour les outils</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Vérifier l’orthographe</p></td>
-          <td><p><keyseq><key>Maj</key><key>F7</key></keyseq></p></td>
+          <td><p>Vérifier l'orthographe</p></td>
+          <td><p><keyseq><key>Shift</key><key>F7</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Enlever les espaces de fin (avec le greffon)</p></td>
@@ -386,17 +334,18 @@
         </tr>
         <tr>
           <td><p>Afficher le contenu du répertoire (avec le greffon)</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>D</key></keyseq>.</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>D</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Raccourcis pour l’aide utilisateur</title>
+    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <title>Raccourcis pour l'aide utilisateur</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Raccourci clavier</p></td>
+          <td><p>Pour faire ceci</p></td>
+          <td><p>Faites cela</p></td>
         </tr>
       </thead>
       <tbody>

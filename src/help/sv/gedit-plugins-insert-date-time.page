@@ -11,27 +11,25 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Infoga aktuellt datum och tid vid markörpositionen.</desc>
+  <desc>Insert the current date/time at the cursor position</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
-  </info>
+<title>Insert date/time</title>
 
-<title>Infoga datum/tid</title>
+  <p>As this name of this plugin suggests, the <gui>Insert Date/Time</gui>
+  plugin allows you to insert the date and/or time at the current cursor
+  position. To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Insert Date/Time</gui></guiseq>. To use the plugin, press <guiseq>
+  <gui style="menu">Edit</gui><gui>Insert Date and Time</gui></guiseq>.</p>
 
-  <p>Som namnet antyder så låter insticksmodulen <gui>Infoga datum/tid</gui> dig infoga aktuellt datum och/eller tid vid aktuell markörposition. För att aktivera denna insticksmodul, välj <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Inställningar</gui><gui>Insticksmoduler</gui> <gui>Infoga datum/tid</gui></guiseq>. För att använda insticksmodulen, tryck <guiseq> <gui style="menu">Redigera</gui><gui>Infoga datum och tid</gui></guiseq>.</p>
-
-  <p>Som standard kommer insticksmodulen <gui>Infoga datum/tid</gui> att be dig att välja ditt föredragna format för datum/tid varje gång du använder insticksmodulen. Du kan dock välja ditt eget standardformat för datum och tid genom att välja <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Inställningar</gui> <gui>Insticksmoduler</gui><gui>Infoga datum/tid</gui><gui>Konfigurera</gui></guiseq>.</p>
+  <p>By default, the <gui>Insert Date/Time</gui> plugin will prompt you to
+  choose your preferred date/time format each time that you use the plugin.
+  However, you can choose your own default date and time format by selecting
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></guiseq>.
+  </p>
 
 </page>

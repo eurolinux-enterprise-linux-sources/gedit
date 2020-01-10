@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs" xml:lang="gl">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Crear ou pechar lapelas na xanela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -20,16 +17,6 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -41,13 +28,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -56,12 +37,16 @@
 
   <section id="gedit-adding-tabs">
     <title>Engadir lapelas</title>
-    <p>Para engadir unha lapela nova, cree un ficheiro con <keyseq><key>Ctrl</key><key>T</key></keyseq>. A lapela engadirase á dereita das outras.</p>
+    <p>To add a new tab, create a new file with <keyseq><key>Ctrl</key>
+    <key>N</key></keyseq>. The tab will be added to the right side of any other
+    tabs.</p>
   </section>
 
   <section id="gedit-removing-tabs">
     <title>Eliminar lapelas</title>
-    <p>Para eliminar unha lapela prema  <gui style="button">×</gui> na parte dereita da lapela. Para eliminar todas as lapelas abertas, prema <keyseq><key>Ctrl</key><key>Maiús</key><key>W</key></keyseq>.</p>
+    <p>To remove a tab, click the <gui style="button">×</gui> on the tab's
+    right side. To remove all open tabs, press <keyseq><key>Ctrl</key>
+    <key>Shift</key><key>W</key></keyseq>.</p>
   </section>
 
 </page>

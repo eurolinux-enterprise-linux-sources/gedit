@@ -4,12 +4,10 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <desc>Jak v souboru najít část textu.</desc>
-    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -19,79 +17,77 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email>tyagishobha@gmail.com</email>
-    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Hledání textu</title>
+  <title>Search for text</title>
   
-    <p>Nástroj hledání vám pomůže najít konkrétní úsek textu v rámci textu vašeho souboru.</p>
+    <p>The Find tool can help you find specific sequences of text within in your
+    file.</p>
 
     <steps>
-      <title>Vyhledání textu</title>
+      <title>Finding text</title>
       <item>
-        <p>Otevřete <gui>okno hledání</gui> kliknutím na <guiseq><gui style="button">Tlačítko s nabídkou</gui> <gui style="menuitem">Hledat…</gui></guiseq> nebo zmáčkněte <keyseq><key>Ctrl</key><key>F</key></keyseq>. Kurzor se přemístí na začátek pole v <gui>okně hledání</gui>.</p>
+        <p>Open the <gui>search window</gui> by clicking 
+        <guiseq><gui style="menu">Search</gui>
+        <gui style="menuitem">Find</gui> </guiseq> or
+        pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move
+        your cursor to the start of the <gui>search window</gui>.</p>
       </item>
       <item>
-        <p>Napište do <gui>okna hledání</gui> text, který si přejete najít.</p>
+        <p>Type the text you wish to search for in the
+        <gui>search window</gui>.</p>
       </item>
       <item>
-        <p><app>gedit</app> bude průběžně během psaní zvýrazňovat části textu, které odpovídají tomu zadanému.</p>
+        <p>As you type, <app>gedit</app> will begin highlighting the portions of
+        text that match what you have entered.</p>
       </item>
     </steps>
     
-    <p>Pro pohyb ve výsledcích hledání použijte něco z následujícího:</p>
+    <p>To scroll through the search results, do any of the following:</p>
     <list>
       <item>
-        <p>Klikněte na tlačítka <gui style="button">nahoru</gui> nebo <gui style="button">dolů</gui> v podobě šipek vedle <gui>vyhledávacího pole</gui>.</p>
+        <p>Click on the <gui style="button">up</gui> or
+        <gui style="button">down</gui> facing arrows next to the
+        <gui>search window</gui>.</p>
       </item>
       <item>
-        <p>Zmáčkněte na klávesnici klávesu <key>↑</key> nebo <key>↓</key>.</p>
+        <p>Press the <key>up arrow</key> or <key>down arrow</key> keys on your
+        keyboard.</p>
       </item>
       <item>
-        <p>Zmáčkněte <keyseq><key>Ctrl</key> <key>G</key></keyseq> nebo <keyseq><key>Ctrl</key> <key>Shift</key> <key>G</key></keyseq>.</p>
+        <p>Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or
+        <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
+      </item>
+      <item>
+        <p>Press the <key>Ctrl</key> and use your mouse or touchpad's
+        <key>scroll</key> feature to move up or down through the text.</p>
       </item>
     </list>
 
-  <p><gui>Okno hledání</gui> můžete zavřít zmáčknutím <key>Esc</key> nebo <key>Enter</key>. Zmáčknutí <key>Esc</key> vrátí kurzor na místo, kde byl před započetím hledání. Zmáčknutí <key>Enter</key> vrátí kurzor na místo nalezeného výsledku.</p>
+  <p>To close the <gui>search window</gui>, press either <key>Esc</key> or
+  <key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it
+  was before you began your search. Pressing <key>Enter</key> will return the
+  cursor to the current position in the search results.</p>
 
-  <list>
-    <title>Rady k vyhledávání</title>
-    <item>
-      <p>Pokud část textu zvýrazníte myší a zmáčknete <keyseq><key>Ctrl</key> <key>F</key></keyseq>, zvýrazněný text se objeví předepsaný v okně hledání.</p>
-    </item>
-    <item>
-      <p>Kliknutím na ikonu <gui style="button">lupy</gui> v okně hledání nebo kliknutím pravým tlačítkem kdekoliv v okně hledání se dostanete k dalším volbám. Vybrat si můžete z jedné nebo více následujících voleb hledání:</p>
-      <list>
-        <item>
-          <p>Vyberte <gui>Rozlišovat velikost písmen</gui>, aby se při hledání bral ohled na velikost písmen.</p>
-        </item>
-        <item>
-          <p>Vyberte <gui>Hledat pouze celá slova</gui>, aby se hledala je úplná slova.</p>
-        </item>
-        <item>
-          <p>Vyberte <gui>Přecházet přes okraj</gui>, aby se v hledání pokračovalo znovu od začátku dokumentu, až se narazí na jeho konec.</p>
-        </item>
-      </list>
-    </item>
-    <item>
-      <p>Text, který jste vyhledali, zůstane zvýrazněný, i po dokončení hledání. Pokud budete chtít zvýraznění odstranit, klikněte na <gui style="menuitem">Zrušit zvýrazňování</gui> nebo zmáčkněte <keyseq><key>Ctrl</key> <key>Shift</key> <key>K</key></keyseq>.</p>
-    </item>
-  </list>
+    <list>
+      <title>Search tips</title>
+      <item>
+        <p>If you highlight a portion of text with your mouse, and then press
+      <keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted
+      will appear in the search window.</p>
+      </item>
+      <item>
+        <p>For advanced search options, you can click on the
+        <gui style="button">Magnifying Glass</gui> icon in the search window,
+        or you can right-click on any portion of the search window.</p>
+      </item>
+      <item>
+        <p>The text that you've searched for will remain highlighted by gedit,
+        even after you have completed your search. To remove the highlight,
+        click <guiseq><gui>Search</gui><gui>Clear Highlight</gui></guiseq>, or
+        press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      </item>
+    </list>
 
 </page>

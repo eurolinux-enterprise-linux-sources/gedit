@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets" xml:lang="es">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets-guide" xml:lang="es">
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Usar recortes para insertar rápidamente fragmentos de texto usados frecuentemente.</desc>
+    <desc>Use recortes para insertar rápidamente fragmentos de texto usados frecuentemente</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

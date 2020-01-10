@@ -2,18 +2,16 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="lv">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Izmatot pielāgotu fontu tekstam gedit lietotnē.</desc>
+    <link type="seealso" xref="gedit-plugins-text-size"/>
+
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
       <years>2011 2012 2013</years>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
-</info>
+  </info>
 
   <title>Nomainīt noklusēto fontu</title>
 
@@ -21,10 +19,15 @@
   
   <steps>
     <title>Lai nomainītu noklusēto fontu <app>gedit</app>:</title>
-      <item><p>Izvēlieties <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Iestatījumi</gui> <gui>Fonts un krāsas</gui></guiseq>.</p></item>
+      <item><p>Select <guiseq><gui style="menu">gedit</gui>
+      <gui style="menuitem">Preferences</gui>
+      <gui>Font &amp; Colors</gui></guiseq>.</p></item>
       <item><p>Izņemiet ķeksīti līdzās teikumam "Lietot sistēmas fiksētā platuma fontu".</p></item>
-      <item><p>Spiediet uz pašreizējā fonta nosaukuma. <app>gedit</app> atvērs fontu izvēlētāja logu, kas jums ļaus redzēt vairāk fontu un izvēlēties jums vēlamo.</p></item>
-      <item><p>Kad esat izvēlējies jaunu fontu, izmantojiet <gui>slīdni</gui> zem fontu saraksta, lai iestatītu noklusējuma fonta izmēru.</p></item>
+      <item><p>Click on the current font name. <app>gedit</app> will open
+      a font-chooser window, allowing you to see available fonts and choose the
+      one that you prefer.</p></item>
+      <item><p>After you have chosen a new font, use the <gui>slider</gui>
+      under the list of fonts to set the default font size.</p></item>
       <item><p>Spiediet pogu <gui>Izvēlēties</gui>, un pēc tam <gui>Aizvērt</gui>.</p>
       </item>
   </steps>

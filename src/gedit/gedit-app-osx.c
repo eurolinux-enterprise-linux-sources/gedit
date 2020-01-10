@@ -21,182 +21,21 @@
  */
 
 #include "gedit-app-osx.h"
-
+#include <gedit/gedit-dirs.h>
+#include <gedit/gedit-debug.h>
 #include <gdk/gdkquartz.h>
+#include <gtkosxapplication.h>
 #include <string.h>
 #include <glib/gi18n.h>
 
-#include "gedit-app-private.h"
-#include "gedit-dirs.h"
-#include "gedit-debug.h"
 #include "gedit-commands.h"
-#include "gedit-commands-private.h"
-#include "gedit-recent.h"
-
-static GeditWindow *
-ensure_window (GeditAppOSX *app,
-               gboolean     with_empty_document)
-{
-	GList *windows;
-	GeditWindow *ret = NULL;
-
-	windows = gtk_application_get_windows (GTK_APPLICATION (app));
-
-	while (windows)
-	{
-		GtkWindow *window;
-		GdkWindow *win;
-		NSWindow *nswin;
-
-		window = windows->data;
-		windows = g_list_next (windows);
-
-		if (!gtk_widget_get_realized (GTK_WIDGET (window)))
-		{
-			continue;
-		}
-
-		if (!GEDIT_IS_WINDOW (window))
-		{
-			continue;
-		}
-
-		win = gtk_widget_get_window (GTK_WIDGET (window));
-		nswin = gdk_quartz_window_get_nswindow (win);
-
-		if ([nswin isOnActiveSpace])
-		{
-			ret = GEDIT_WINDOW (window);
-			break;
-		}
-	}
-
-	if (!ret)
-	{
-		ret = gedit_app_create_window (GEDIT_APP (app), NULL);
-		gtk_widget_show (GTK_WIDGET (ret));
-	}
-
-	if (with_empty_document && gedit_window_get_active_document (ret) == NULL)
-	{
-		gedit_window_create_tab (ret, TRUE);
-	}
-
-	gtk_window_present (GTK_WINDOW (ret));
-	return ret;
-}
-
-@interface GeditAppOSXDelegate : NSObject
-{
-	GeditAppOSX *app;
-	id<NSApplicationDelegate> orig;
-}
-
-- (id)initWithApp:(GeditAppOSX *)theApp;
-- (void)release;
-
-- (id)forwardingTargetForSelector:(SEL)aSelector;
-- (BOOL)respondsToSelector:(SEL)aSelector;
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag;
-- (void)applicationWillBecomeActive:(NSNotification *)aNotification;
-- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames;
-
-@end
-
-@implementation GeditAppOSXDelegate
-- (id)initWithApp:(GeditAppOSX *)theApp
-{
-	[super init];
-	app = theApp;
-
-	orig = [NSApp delegate];
-	[NSApp setDelegate:self];
-
-	return self;
-}
-
-- (void)release
-{
-	[NSApp setDelegate:orig];
-	[super release];
-}
-
-- (id)forwardingTargetForSelector:(SEL)aSelector
-{
-	return orig;
-}
-
-- (BOOL)respondsToSelector:(SEL)aSelector
-{
-    return [super respondsToSelector:aSelector] || [orig respondsToSelector:aSelector];
-}
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
-{
-	ensure_window (app, TRUE);
-	return NO;
-}
-
-- (void)applicationWillBecomeActive:(NSNotification *)aNotification
-{
-	ensure_window (app, TRUE);
-}
-
-- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
-{
-	ensure_window (app, FALSE);
-	[orig application:sender openFiles:filenames];
-}
-
-@end
-
-struct _GeditAppOSX
-{
-	GeditApp parent_instance;
-
-	GeditMenuExtension *recent_files_menu;
-	gulong recent_manager_changed_id;
-
-	GeditAppOSXDelegate *app_delegate;
-
-	GList *recent_actions;
-	GeditRecentConfiguration recent_config;
-};
+#include <AvailabilityMacros.h>
 
 G_DEFINE_TYPE (GeditAppOSX, gedit_app_osx, GEDIT_TYPE_APP)
 
 static void
-remove_recent_actions (GeditAppOSX *app)
-{
-	while (app->recent_actions)
-	{
-		gchar *action_name = app->recent_actions->data;
-
-		g_action_map_remove_action (G_ACTION_MAP (app), action_name);
-		g_free (action_name);
-
-		app->recent_actions = g_list_delete_link (app->recent_actions,
-		                                          app->recent_actions);
-	}
-}
-
-static void
 gedit_app_osx_finalize (GObject *object)
 {
-	GeditAppOSX *app = GEDIT_APP_OSX (object);
-
-	g_object_unref (app->recent_files_menu);
-
-	remove_recent_actions (app);
-
-	g_signal_handler_disconnect (app->recent_config.manager,
-	                             app->recent_manager_changed_id);
-
-	gedit_recent_configuration_destroy (&app->recent_config);
-
-	[app->app_delegate release];
-
 	G_OBJECT_CLASS (gedit_app_osx_parent_class)->finalize (object);
 }
 
@@ -263,23 +102,36 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 
 		if (gedit_document_is_untitled (document))
 		{
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 			[native setRepresentedURL:nil];
+#else
+			[native setRepresentedFilename:@""];
+#endif
 		}
 		else
 		{
-			GtkSourceFile *file;
 			GFile *location;
 			gchar *uri;
 
-			file = gedit_document_get_file (document);
-			location = gtk_source_file_get_location (file);
+			location = gedit_document_get_location (document);
 
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 			uri = g_file_get_uri (location);
+			g_object_unref (location);
 
 			NSURL *nsurl = [NSURL URLWithString:[NSString stringWithUTF8String:uri]];
 
 			[native setRepresentedURL:nsurl];
 			g_free (uri);
+#else
+			if (g_file_has_uri_scheme (location, "file"))
+			{
+				uri = g_file_get_path (location);
+				[native setRepresentedFilename:[NSString stringWithUTF8String:uri]];
+
+				g_free (uri);
+			}
+#endif
 		}
 
 		ismodified = !gedit_document_is_untouched (document);
@@ -287,212 +139,155 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 	}
 	else
 	{
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 		[native setRepresentedURL:nil];
+#else
+		[native setRepresentedFilename:@""];
+#endif
 		[native setDocumentEdited:false];
 	}
 
 	GEDIT_APP_CLASS (gedit_app_osx_parent_class)->set_window_title (app, window, title);
 }
 
-typedef struct
-{
-	GeditAppOSX   *app;
-	GtkRecentInfo *info;
-} RecentFileInfo;
-
 static void
-recent_file_info_free (gpointer  data,
-                       GClosure *closure)
+gedit_app_osx_quit_impl (GeditApp *app)
 {
-	RecentFileInfo *info = data;
+	GtkOSXApplication *osxapp;
 
-	g_object_unref (info->app);
-	gtk_recent_info_unref (info->info);
+	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
+	gtk_osxapplication_cleanup (osxapp);
 
-	g_slice_free (RecentFileInfo, data);
+	GEDIT_APP_CLASS (gedit_app_osx_parent_class)->quit (app);
 }
 
 static void
-recent_file_activated (GAction        *action,
-                       GVariant       *parameter,
-                       RecentFileInfo *info)
+load_accels (void)
 {
-	GeditWindow *window;
-	const gchar *uri;
-	GFile *file;
+	gchar *filename;
 
-	uri = gtk_recent_info_get_uri (info->info);
-	file = g_file_new_for_uri (uri);
+	filename = g_build_filename (gedit_dirs_get_gedit_data_dir (),
+	                             "osx.accels",
+	                             NULL);
 
-	window = ensure_window (info->app, FALSE);
-
-	gedit_commands_load_location (GEDIT_WINDOW (window), file, NULL, 0, 0);
-	g_object_unref (file);
-}
-
-static void
-recent_files_menu_populate (GeditAppOSX *app)
-{
-	GList *items;
-	gint i = 0;
-
-	gedit_menu_extension_remove_items (app->recent_files_menu);
-	remove_recent_actions (app);
-
-	items = gedit_recent_get_items (&app->recent_config);
-
-	while (items)
+	if (filename != NULL)
 	{
-		GtkRecentInfo *info = items->data;
-		GMenuItem *mitem;
-		const gchar *name;
-		gchar *acname;
-		gchar *acfullname;
-		GSimpleAction *action;
-		RecentFileInfo *finfo;
+		gedit_debug_message (DEBUG_APP, "Loading accels from %s\n", filename);
 
-		name = gtk_recent_info_get_display_name (info);
-
-		acname = g_strdup_printf ("recent-file-action-%d", ++i);
-		action = g_simple_action_new (acname, NULL);
-
-		finfo = g_slice_new (RecentFileInfo);
-		finfo->app = g_object_ref (app);
-		finfo->info = gtk_recent_info_ref (info);
-
-		g_signal_connect_data (action,
-		                       "activate",
-		                       G_CALLBACK (recent_file_activated),
-		                       finfo,
-		                       recent_file_info_free,
-		                       0);
-
-		g_action_map_add_action (G_ACTION_MAP (app), G_ACTION (action));
-		g_object_unref (action);
-
-		acfullname = g_strdup_printf ("app.%s", acname);
-
-		app->recent_actions = g_list_prepend (app->recent_actions, acname);
-
-		mitem = g_menu_item_new (name, acfullname);
-		gedit_menu_extension_append_menu_item (app->recent_files_menu, mitem);
-
-		g_free (acfullname);
-
-		g_object_unref (mitem);
-		gtk_recent_info_unref (info);
-
-		items = g_list_delete_link (items, items);
+		gtk_accel_map_load (filename);
+		g_free (filename);
 	}
 }
 
 static void
-recent_manager_changed (GtkRecentManager *manager,
-                        GeditAppOSX      *app)
+load_keybindings (void)
 {
-	recent_files_menu_populate (app);
-}
+	gchar *filename;
 
-static void
-open_activated (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       userdata)
-{
-	_gedit_cmd_file_open (NULL, NULL, NULL);
-}
+	filename = g_build_filename (gedit_dirs_get_gedit_data_dir (),
+	                             "osx.css",
+	                             NULL);
 
-static GActionEntry app_entries[] = {
-	{ "open", open_activated, NULL, NULL, NULL }
-};
-
-static void
-update_open_sensitivity (GeditAppOSX *app)
-{
-	GAction *action;
-	gboolean has_windows;
-
-	has_windows = (gtk_application_get_windows (GTK_APPLICATION (app)) != NULL);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (app), "open");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !has_windows);
-}
-
-static void
-gedit_app_osx_startup (GApplication *application)
-{
-	const gchar *replace_accels[] = {
-		"<Primary><Alt>F",
-		NULL
-	};
-
-	const gchar *open_accels[] = {
-		"<Primary>O",
-		NULL
-	};
-
-	const gchar *fullscreen_accels[] = {
-		"<Primary><Control>F",
-		NULL
-	};
-
-	GeditAppOSX *app = GEDIT_APP_OSX (application);
-
-	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
-
-	app->app_delegate = [[[GeditAppOSXDelegate alloc] initWithApp:app] retain];
-
-	g_action_map_add_action_entries (G_ACTION_MAP (application),
-	                                 app_entries,
-	                                 G_N_ELEMENTS (app_entries),
-	                                 application);
-
-	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
-	                                       "win.replace",
-	                                       replace_accels);
-
-	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
-	                                       "app.open",
-	                                       open_accels);
-
-	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
-	                                       "win.fullscreen",
-	                                       fullscreen_accels);
-
-	gedit_recent_configuration_init_default (&app->recent_config);
-
-	app->recent_files_menu = _gedit_app_extend_menu (GEDIT_APP (application),
-	                                                 "recent-files-section");
-
-	app->recent_manager_changed_id = g_signal_connect (app->recent_config.manager,
-	                                                   "changed",
-	                                                   G_CALLBACK (recent_manager_changed),
-	                                                   app);
-
-	recent_files_menu_populate (app);
-
-	g_application_hold (application);
-	update_open_sensitivity (app);
-}
-
-static void
-set_window_allow_fullscreen (GeditWindow *window)
-{
-	GdkWindow *wnd;
-	NSWindow *native;
-
-	wnd = gtk_widget_get_window (GTK_WIDGET (window));
-
-	if (wnd != NULL)
+	if (filename != NULL)
 	{
-		native = gdk_quartz_window_get_nswindow (wnd);
-		[native setCollectionBehavior: [native collectionBehavior] | NSWindowCollectionBehaviorFullScreenPrimary];
+		GtkCssProvider *provider;
+		GError *error = NULL;
+
+		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
+
+		provider = gtk_css_provider_new ();
+
+		if (!gtk_css_provider_load_from_path (provider,
+		                                      filename,
+		                                      &error))
+		{
+			g_warning ("Failed to load osx keybindings from `%s':\n%s",
+			           filename,
+			           error->message);
+
+			g_error_free (error);
+		}
+		else
+		{
+			gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+			                                           GTK_STYLE_PROVIDER (provider),
+			                                           GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
+		}
+
+		g_object_unref (provider);
+		g_free (filename);
 	}
 }
 
 static void
-on_window_realized (GtkWidget *widget)
+gedit_app_osx_constructed (GObject *object)
 {
-	set_window_allow_fullscreen (GEDIT_WINDOW (widget));
+	/* First load the osx specific accel overrides */
+	load_accels ();
+	load_keybindings ();
+
+	if (G_OBJECT_CLASS (gedit_app_osx_parent_class)->constructed)
+	{
+		/* Then chain up to load the user specific accels */
+		G_OBJECT_CLASS (gedit_app_osx_parent_class)->constructed (object);
+	}
+}
+
+static GtkMenuItem *
+ui_manager_menu_item (GtkUIManager *uimanager,
+                      const gchar  *path)
+{
+	return GTK_MENU_ITEM (gtk_ui_manager_get_widget (uimanager, path));
+}
+
+static void
+setup_mac_menu (GeditWindow *window)
+{
+	GtkAction *action;
+	GtkOSXApplication *osxapp;
+	GtkUIManager *manager;
+	GtkWidget *menu;
+
+	manager = gedit_window_get_ui_manager (window);
+
+	/* Hide the menu bar */
+	menu = gtk_ui_manager_get_widget (manager, "/MenuBar");
+	gtk_widget_hide (menu);
+
+	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
+
+	action = gtk_ui_manager_get_action (manager, "/ui/MenuBar/HelpMenu/HelpAboutMenu");
+	gtk_action_set_label (action, _("About gedit"));
+
+	gtk_widget_hide (GTK_WIDGET (ui_manager_menu_item (manager,
+	                             "/ui/MenuBar/FileMenu/FileQuitMenu")));
+
+	gtk_osxapplication_set_menu_bar (osxapp,
+	                                 GTK_MENU_SHELL (menu));
+
+	gtk_osxapplication_set_help_menu (osxapp,
+	                                  ui_manager_menu_item (manager,
+	                                                        "/ui/MenuBar/HelpMenu"));
+
+	gtk_osxapplication_set_window_menu (osxapp, NULL);
+
+	gtk_osxapplication_insert_app_menu_item (osxapp,
+	                                         GTK_WIDGET (ui_manager_menu_item (manager,
+	                                                                           "/ui/MenuBar/HelpMenu/HelpAboutMenu")),
+	                                         0);
+
+	gtk_osxapplication_insert_app_menu_item (osxapp,
+	                                         g_object_ref (gtk_separator_menu_item_new ()),
+	                                         1);
+
+	gtk_osxapplication_insert_app_menu_item (osxapp,
+	                                         GTK_WIDGET (ui_manager_menu_item (manager,
+	                                                                           "/ui/MenuBar/EditMenu/EditPreferencesMenu")),
+	                                         2);
+
+	/* We remove the accel group of the uimanager from the window */
+	gtk_window_remove_accel_group (GTK_WINDOW (window),
+	                               gtk_ui_manager_get_accel_group (manager));
 }
 
 static GeditWindow *
@@ -502,16 +297,7 @@ gedit_app_osx_create_window_impl (GeditApp *app)
 
 	window = GEDIT_APP_CLASS (gedit_app_osx_parent_class)->create_window (app);
 
-	gtk_window_set_titlebar (GTK_WINDOW (window), NULL);
-
-	if (gtk_widget_get_realized (GTK_WIDGET (window)))
-	{
-		set_window_allow_fullscreen (window);
-	}
-	else
-	{
-		g_signal_connect (window, "realize", G_CALLBACK (on_window_realized), NULL);
-	}
+	setup_mac_menu (window);
 
 	return window;
 }
@@ -524,42 +310,27 @@ gedit_app_osx_process_window_event_impl (GeditApp    *app,
 	NSEvent *nsevent;
 
 	/* For OS X we will propagate the event to NSApp, which handles some OS X
-	* specific keybindings and the accelerators for the menu
-	*/
+	 * specific keybindings and the accelerators for the menu
+	 */
 	nsevent = gdk_quartz_event_get_nsevent (event);
 	[NSApp sendEvent:nsevent];
 
 	/* It does not really matter what we return here since it's the last thing
-	* in the chain. Also we can't get from sendEvent whether the event was
-	* actually handled by NSApp anyway
-	*/
+	 * in the chain. Also we can't get from sendEvent whether the event was
+	 * actually handled by NSApp anyway
+	 */
 	return TRUE;
 }
 
 static void
-gedit_app_osx_constructed (GObject *object)
+gedit_app_osx_ready_impl (GeditApp *app)
 {
-	/* FIXME: should we do this on all platforms? */
-	g_object_set (object, "register-session", TRUE, NULL);
-	G_OBJECT_CLASS (gedit_app_osx_parent_class)->constructed (object);
-}
+	GtkOSXApplication *osxapp;
 
-static void
-gedit_app_osx_window_added (GtkApplication *application,
-                            GtkWindow      *window)
-{
-	GTK_APPLICATION_CLASS (gedit_app_osx_parent_class)->window_added (application, window);
+	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
+	gtk_osxapplication_ready (osxapp);
 
-	update_open_sensitivity (GEDIT_APP_OSX (application));
-}
-
-static void
-gedit_app_osx_window_removed (GtkApplication *application,
-                              GtkWindow      *window)
-{
-	GTK_APPLICATION_CLASS (gedit_app_osx_parent_class)->window_removed (application, window);
-
-	update_open_sensitivity (GEDIT_APP_OSX (application));
+	GEDIT_APP_CLASS (gedit_app_osx_parent_class)->ready (app);
 }
 
 static void
@@ -567,32 +338,108 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
-	GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
-	GtkApplicationClass *gtkapplication_class = GTK_APPLICATION_CLASS (klass);
 
 	object_class->finalize = gedit_app_osx_finalize;
 	object_class->constructed = gedit_app_osx_constructed;
 
-	application_class->startup = gedit_app_osx_startup;
-
-	gtkapplication_class->window_added = gedit_app_osx_window_added;
-	gtkapplication_class->window_removed = gedit_app_osx_window_removed;
-
 	app_class->show_help = gedit_app_osx_show_help_impl;
 	app_class->set_window_title = gedit_app_osx_set_window_title_impl;
+	app_class->quit = gedit_app_osx_quit_impl;
 	app_class->create_window = gedit_app_osx_create_window_impl;
 	app_class->process_window_event = gedit_app_osx_process_window_event_impl;
+	app_class->ready = gedit_app_osx_ready_impl;
+}
+
+static void
+on_osx_will_terminate (GtkOSXApplication *osxapp,
+                       GeditAppOSX       *app)
+{
+	g_application_quit (G_APPLICATION (app));
+}
+
+static gboolean
+on_osx_block_termination (GtkOSXApplication *osxapp,
+                          GeditAppOSX       *app)
+{
+	GtkUIManager *manager;
+	GtkAction *action;
+	GeditWindow *window;
+
+	window = gtk_appliction_get_active_window (GTK_APPLICATION (app));
+
+	// Synthesize quit-all
+	manager = gedit_window_get_ui_manager (window);
+
+	action = gtk_ui_manager_get_action (manager,
+	                                    "/ui/MenuBar/FileMenu/FileQuitMenu");
+
+	_gedit_cmd_file_quit (action, window);
+	return TRUE;
+}
+
+static gboolean
+on_osx_open_files (GtkOSXApplication  *osxapp,
+                   gchar const       **paths,
+                   GeditAppOSX        *app)
+{
+	GSList *locations = NULL;
+
+	while (paths && *paths)
+	{
+		locations = g_slist_prepend (locations,
+		                             g_file_new_for_path (*paths));
+		++paths;
+	}
+
+	locations = g_slist_reverse (locations);
+
+	if (locations != NULL)
+	{
+		GSList *files;
+		GeditWindow *window;
+
+		window = gtk_application_get_active_window (GTK_APPLICATION (app));
+
+		files = gedit_commands_load_locations (window,
+		                                       locations,
+		                                       NULL,
+		                                       0,
+		                                       0);
+
+		g_slist_free_full (locations, g_object_unref);
+	}
+
+	return TRUE;
 }
 
 static void
 gedit_app_osx_init (GeditAppOSX *app)
 {
-	/* This is required so that Cocoa is not going to parse the
-	   command line arguments by itself and generate OpenFile events.
-	   We already parse the command line ourselves, so this is needed
-	   to prevent opening files twice, etc. */
-	[[NSUserDefaults standardUserDefaults] setObject:@"NO"
-	                                       forKey:@"NSTreatUnknownArgumentsAsOpen"];
+	GtkOSXApplication *osxapp;
+
+	/* This is a singleton */
+	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
+
+	/* manually set name and icon */
+	g_set_application_name ("gedit");
+	gtk_window_set_default_icon_name ("accessories-text-editor");
+
+	g_signal_connect (osxapp,
+	                  "NSApplicationWillTerminate",
+	                  G_CALLBACK (on_osx_will_terminate),
+	                  app);
+
+	g_signal_connect (osxapp,
+	                  "NSApplicationBlockTermination",
+	                  G_CALLBACK (on_osx_block_termination),
+	                  app);
+
+	g_signal_connect (osxapp,
+	                  "NSApplicationOpenFiles",
+	                  G_CALLBACK (on_osx_open_files),
+	                  app);
+
+	gtk_osxapplication_set_use_quartz_accelerators (osxapp, FALSE);
 }
 
 /* ex:set ts=8 noet: */

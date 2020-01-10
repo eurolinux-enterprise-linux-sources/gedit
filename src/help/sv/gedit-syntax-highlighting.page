@@ -3,38 +3,33 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Färgmarkera din text för att göra den lättare att läsa.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Slå på syntaxmarkering</title>
+  <title>Turn on syntax highlighting</title>
 
   <section id="gedit-syntax-highlighting-section">
     <title>Syntaxmarkering</title>
-    <p><app>gedit</app> tillhandahåller syntaxfärgning för ett stort antal märk- och programmeringsspråk samt vetenskapliga språk. Om <app>gedit</app> känner igen den syntax som används då du öppnar en fil kommer det automatiskt att färgmarkera texten.</p>
+    <p><app>gedit</app> provides syntax highlighting for a wide range of markup,
+    programming, and scientific languages. If <app>gedit</app> recognizes the
+    syntax being used when you open a file, it will automatically highlight the
+    text.</p>
 
-    <p>Om din syntax eller språk inte färgmarkeras vid start kan du välja lämplig syntax eller språk genom att klicka på <guiseq><gui style="menu">Visa</gui> <gui style="menuitem">Färgmarkeringsläge</gui></guiseq> och sedan välja önskad syntax. Alternativt kan du välja syntaxnamnet från en lista längst ner i <app>gedit</app>-fönstret.</p>
+    <p>If your syntax or language is not highlighted upon startup, you can
+    select the appropriate syntax or language by clicking
+    <guiseq><gui style="menu">View</gui>
+    <gui style="menuitem">Highlight Mode</gui></guiseq>,
+    and then choosing the desired syntax. Alternately, you can select the syntax
+    name from a list at the bottom of the <app>gedit</app> window.</p>
   </section>
 
 </page>

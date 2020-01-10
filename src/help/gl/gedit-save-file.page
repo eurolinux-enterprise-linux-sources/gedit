@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-save-file" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-save-file" xml:lang="gl">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Garde o seu ficheiro para traballar nel máis tarde.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-13" status="review"/>
-    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
@@ -31,18 +24,16 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Gardar un ficheiro</title>
 
-  <p>Para gardar un ficheiro co <app>gedit</app>, prema no botón <gui style="button">Gardar</gui> na parte dereita da barra de ferramentas ou prema <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se está gardando un ficheiro novo, aparecerá unha caixa de diálogo e poderá seleccionar un nome para o ficheiro así como o cartafol no que quere gardalo.</p>
+  <p>To save a file in <app>gedit</app>, click on the disk-drive icon with the
+  word <gui style="button">Save</gui> next to it.  You may also select
+  <guiseq><gui style="menu">File</gui>
+  <gui style="menuitem">Save</gui></guiseq>, or just press
+  <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se está gardando un ficheiro novo, aparecerá o diálogo <gui>Gardar ficheiro</gui> e poderá seleccionar un nome para o ficheiro, así como o cartafol no que quere gardar o ficheiro.</p>
 
 </page>

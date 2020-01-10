@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Highlight your text to make it easier to read.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -19,7 +18,7 @@
   <title>Omogoči poudarjanje skladnje</title>
 
   <section id="gedit-syntax-highlighting-section">
-    <title>Syntax highlighting</title>
+    <title>Poudarjanje skladnje</title>
     <p><app>gedit</app> zagotavlja poudarjanje skladnje za širok obseg označevalnih, programskih in znanstvenih jezikov. V primeru da <app>gedit</app> prepozna uporabljeno skladnjo, jo bo samodejno poudaril.</p>
 
     <p>If your syntax or language is not highlighted upon startup, you can

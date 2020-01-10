@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets" xml:lang="de">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets-guide" xml:lang="de">
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Schnipsel zum schnellen Einfügen oft genutzter Textteile verwenden.</desc>
+    <desc>Schnipsel zum schnellen Einfügen oft genutzter Textteile verwenden</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jan Arne Petersen</mal:name>
@@ -29,14 +29,8 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
@@ -47,7 +41,7 @@
   <section id="enable-snippets">
     <title>Das Schnipsel-Plugin aktivieren</title>
 
-    <p>So aktivieren Sie das <gui>Schnipsel</gui>-Plugin:</p>
+    <p>So aktivieren Sie das <app>Schnipsel</app>-Plugin:</p>
 
     <steps>
       <item>
@@ -67,7 +61,7 @@
       <item>
         <p>Wählen Sie <guiseq><gui style="menu">Werkzeuge</gui><gui style="menuitem">Schnipsel verwalten</gui></guiseq>.</p>
         <note style="important">
-          <p>Stellen Sie sicher, dass die Syntax richtig festgelegt ist. Die Statuszeile am unteren Rand des <app>gedit</app>-Fensters zeigt die aktuelle Spracheinstellung an, welche <app>gedit</app> ermöglicht, die richtigen Schnipsel einzufügen. <app>Gedit</app> erkennt normalerweise die Sprache oder Syntax der verwendeten Datei automatisch, aber gelegentlich werden Sie sie selbst festlegen müssen.</p>
+          <p>Stellen Sie sicher, dass die Syntax entsprechend festgelegt ist. Die Statuszeile am unteren Rand des <app>gedit</app>-Fensters zeigt die aktuelle Spracheinstellung an, welche <app>gedit</app> ermöglicht, die richtigen Schnipsel einzufügen. <app>Gedit</app> erkennt normalerweise die Sprache oder Syntax der verwendeten Datei automatisch, aber gelegentlich werden Sie sie selbst festlegen müssen.</p>
           <figure>
             <desc>In diesem Beispiel ist die Sprache auf HTML gesetzt.</desc>
             <media type="image" mime="image/png" src="figures/gedit-html-snippet.png"/>
@@ -75,7 +69,7 @@
         </note>
       </item>
       <item>
-        <p>Durchsuchen Sie die Schnipsel, die für Ihre Sprache oder Syntax verfügbar sind.</p>
+        <p>Durchsuchen SIe die Schnipsel, die für Ihre Sprache oder Syntax verfügbar sind.</p>
       </item>
     </steps>
   </section>
@@ -87,16 +81,16 @@
 
     <steps>
       <item>
-        <p>Tippen Sie den gewünschten Schnipselname an beliebiger Stelle in Ihrem aktuellen Dokument.</p>
+        <p>Geben Sie den Namen des gewünschten Schnipsel irgendwo in Ihrem aktuellen Dokument ein.</p>
       </item>
       <item>
-        <p>Drücken Sie die <key>Tabulatortaste</key>, um Schnipsel einzufügen, die mit dem Eingabebegriff verknüpft sind.</p>
+        <p>Drücke Sie <key>Tabulator</key>, um den zugehörige Schnipsel einzufügen.</p>
       </item>
     </steps>
   </section>
 
     <section id="example-insert-snippet">
-    <title>Beispiel für den Einsatz von Schnipseln</title>
+    <title>Beispiel für die Verwendung von Schnipseln</title>
 
     <p>Wenn Sie die Syntax beispielsweise auf <em>HTML</em> gesetzt haben, geben Sie <code>head</code> ein und drücken Sie die <key>Tabulatortaste</key>. Daraufhin sollte automatisch Folgendes erscheinen:</p>
 
@@ -131,13 +125,18 @@
         <p>Geben Sie einen Namen für den neuen Schnipsel ein. Der Schnipselname ist beliebig.</p>
       </item>
       <item>
-        <p>Sie müssen im Abschnitt <gui style="group">Aktivierung</gui> einen Begriff für den Textbereich <gui style="input">Tabulatorauslösung:</gui> eingeben. Verwenden Sie dann diesen Begriff, um Ihren Schnipsel einzufügen.</p>
+        <p>Under the <gui style="group">Activation</gui> section, you must
+        input a term for the <gui style="input">Tab trigger:</gui> textarea.
+        You will be using this term to insert your snippet.</p>
         <note style="tip">
           <p>If you wish to insert a snippet with a keyboard shortcut, then click your mouse pointer on <gui style="input">Shortcut key:</gui> textarea and press the desired combination of keys. Once you have pressed and released the keys, the keyboard shortcut will be set.</p>
         </note>
       </item>
       <item>
-        <p>Geben Sie den für den Schnipsel gewünschten Text im Textbereich unter <gui style="input">Bearbeiten:</gui> ein. Verwenden Sie <code>${n}</code>, um Variaben zu definieren, wobei <em>n</em> durch eine Zahl ersetzt wird, welche die numerische Reihenfolge der enthaltenen Variablen darstellt.</p>
+        <p>Under the textarea for <gui style="input">Edit:</gui>, input the
+        desired text for the snippet. You may use <code>${n}</code> to indicate
+        variables, where <em>n</em> is replaced with a number that
+        represents the numerical order of variables included.</p>
       </item>
     </steps>
 
@@ -146,14 +145,14 @@
   <section id="example-add-snippet">
     <title>Beispiel für einen neuen Schnipsel</title>
 
-    <p>1</p>
+    <p>Angenommen Sie haben einen Schnipsel mit dem Begriff <var>Grüße</var> in <gui style="input">Tab trigger: ???</gui> erstellt. Das Texteingabefeld <gui style="input">Bearbeiten:</gui> enthält:</p>
 
     <code>
       &lt;greetings&gt;Hello ${1:wonderful}${2:amazing} world!
       &lt;/greetings&gt;
     </code>
 
-    <p>1</p>
+    <p>Fügen Sie diesen Schnipsel ein, indem Sie <var>Grüße</var> im Dokument eingeben und die <key>Tabulatortaste</key> drücken. Daraufhin wird der folgende Schnipsel eingefügt:</p>
 
     <code>
       &lt;greetings&gt;Hello wonderfulamazing world!&lt;/greetings&gt;

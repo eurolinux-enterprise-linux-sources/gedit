@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="zh-HK">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:ui="http://projectmallard.org/experimental/ui/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="zh-HK">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
-    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
-    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -25,19 +22,8 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
-    <credit type="author copyright">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
@@ -47,12 +33,26 @@
   the mouse and menus. The following tables list all of <app>gedit's</app>
   shortcut keys.</p>
 
-    <table rules="rows" frame="top bottom" ui:expanded="true">
+<!--  
+Please skip this list for now. I'm not sure if it is needed.
+  <list>
+    <title>Types of shortcut keys</title>
+    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
+    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
+    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
+    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
+    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
+    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
+    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
+  </list>
+-->
+
+    <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Tab-related Shortcut keys</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
@@ -77,56 +77,33 @@
         </tr>
         <tr>
           <td><p>Close all tabs</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Reopen the most recently closed tab</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>W</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Jump to <var>n</var>th tab</p></td>
           <td><p><keyseq><key>Alt</key><key>
-          <var>n</var></key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>New tab group</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Previous tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Next tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
+	  <var>n</var></key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Shortcut keys for working with files</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document in a new window</p></td>
+          <td><p>Create a new document</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Create a new document in a new tab</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Open a document</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
-        </tr>
-        <tr>
-           <td><p>Open the <gui>Quick Open</gui> window</p></td>
-           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Save the current document</p></td>
@@ -157,12 +134,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Shortcut keys for editing files</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
@@ -228,55 +205,36 @@
           <td><p>Move the selected line down one line</p></td>
           <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
         </tr>
-        <tr>
-          <td><p>Add a tab stop</p></td>
-          <td><p><keyseq><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Remove a tab stop</p></td>
-          <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Convert the selected text to upper case</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Convert the selected text to lower case</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Toggle case of the selected text</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
-        </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Shortcut keys for showing and hiding panes</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Show / hide the side panel</p></td>
+          <td><p>Show / hide the side pane</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Open the file menu</p></td>
-          <td><p><key>F10</key></p></td>  
+          <td><p>Show / hide the bottom pane.</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Shortcut keys for searching</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
@@ -308,12 +266,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Shortcut keys for tools</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
@@ -337,12 +295,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Shortcut keys for user help</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>

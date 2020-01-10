@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="fr">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="fr">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Utiliser le panneau latéral de gedit comme explorateur de fichiers.</desc>
     <revision pkgversion="3.8" date="2013-03-13" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -54,52 +52,41 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Affichage et ouverture de fichiers à partir du panneau latéral</title>
-  <p>La façon la plus courante de basculer entre les fichiers dans <app>gedit</app> est d’utiliser les onglets en haut de la fenêtre <app>gedit</app>. Dans certain cas néanmoins, particulièrement lorsque vous travaillez avec un grand nombre de fichiers ouverts, il est possible que vous trouviez plus facile d’utiliser le panneau latéral.</p> 
+  <p>La façon la plus courante de basculer entre les fichiers dans <app>gedit</app> est d'utiliser les onglets en haut de la fenêtre <app>gedit</app>. Dans certain cas néanmoins, particulièrement lorsque vous travaillez avec un grand nombre de fichiers ouverts, il est possible que vous trouviez plus facile d'utiliser le <app>panneau latéral</app>.</p> 
 
-  <p>Pour activer le panneau latéral, choisissez <guiseq><gui>Affichage</gui> <gui>Panneau latéral</gui></guiseq> ou appuyez simplement sur la touche <key>F9</key>.</p>
+  <p>Pour activer le <app>panneau latéral</app>, choisissez <guiseq><gui>Affichage</gui><gui>Panneau latéral</gui></guiseq> ou appuyez simplement sur la touche <key>F9</key>.</p>
 
   <note style="note">
-    <p>Vous pouvez afficher ou masquer le panneau latéral en appuyant sur <key>F9</key> quand vous voulez.</p>
+    <p>Vous pouvez afficher ou masquer le <app>panneau latéral</app> en appuyant sur <key>F9</key> quand vous voulez.</p>
   </note>
 
-<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
     <title>Ouverture de fichiers à partir du panneau latéral</title>
-    <p>Pour ouvrir des fichiers à partir du panneau latéral, commencez par ouvrir le panneau latéral en choisissant <guiseq><gui>Affichage</gui><gui>Panneau latéral</gui></guiseq> (ou appuyez sur <key>F9</key>), puis cliquez sur <gui>Navigateur de fichiers</gui> dans le menu déroulant en haut du panneau.</p>
+    <p>Pour ouvrir des fichiers à partir du <app>panneau latéral</app>, commencez par ouvrir le <app>panneau latéral</app> en choisissant <guiseq><gui>Affichage</gui><gui>Panneau latéral</gui></guiseq>, puis cliquez sur l'icône <gui>navigateur de fichiers</gui> en bas du panneau.</p>
 
-    <p>Cela active le mode <em>explorateur de fichiers</em> du panneau latéral. Vous pouvez maintenant utiliser les boutons de navigation en haut du panneau pour localiser et ouvrir les fichiers que vous voulez.</p>
+    <p>
+      <media type="image" mime="image/png" src="figures/gedit-side-pane1.png"/>
+    </p>
+
+    <p>Cela active le mode <em>navigateur de fichiers</em> du <app>panneau latéral</app>. Vous pouvez maintenant utiliser les boutons de navigation en haut du panneau pour localiser et ouvrir les fichiers que vous voulez.</p>
   </section>
 
   <section id="sidepane-switch">
     <title>Utilisation du panneau latéral pour basculer entre les fichiers ouverts</title>
-    <p>Une fois que vous avez ouvert plusieurs fichiers, vous pouvez utiliser le panneau latéral pour basculer entre les fichiers ouverts. Pour activer la partie explorateur de fichiers du panneau latéral, cliquez sur l’icône <gui>Documents</gui> dans le menu déroulant en haut du panneau.</p>
+    <p>Une fois que vous avez ouvert plusieurs fichiers, vous pouvez utiliser le panneau latéral pour basculer entre les fichiers ouverts. Pour activer la partie navigateur de documents du <app>panneau latéral</app>, cliquez sur l'icône <gui>Documents</gui> en bas du <gui>Panneau latéral</gui>.</p>
+    
+    <p>
+      <media type="image" mime="image/png" src="figures/gedit-side-pane2.png"/>
+    </p>
 
-    <p>Un clic sur n’importe quel nom de fichier dans le panneau latéral ouvre ce fichier pour l’édition.</p>
+    <p>Un clic sur n'importe quel nom de fichier dans le <gui>Panneau latéral</gui> ouvre ce fichier pour l'édition.</p>
   </section>
  
  </page>

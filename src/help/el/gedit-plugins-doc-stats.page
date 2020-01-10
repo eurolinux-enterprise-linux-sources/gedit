@@ -10,38 +10,32 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Προβολή στατιστικών εγγράφου.</desc>
+  <desc>Προβολή στατιστικών εγγράφου</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μάριος Ζηντίλης</mal:name>
+      <mal:name> Μάριος Ζηντίλης</mal:name>
       <mal:email>m.zindilis@dmajor.org</mal:email>
       <mal:years>2009</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Βασίλης Τσιβίκης</mal:name>
+      <mal:name> Βασίλης Τσιβίκης</mal:name>
       <mal:email>vasitsiv@hotmail.gr</mal:email>
       <mal:years>2011</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Θάνος Τρυφωνίδης</mal:name>
+      <mal:name> Θάνος Τρυφωνίδης</mal:name>
       <mal:email>tomtryf@gmail.com</mal:email>
-      <mal:years>2012, 2014</mal:years>
+      <mal:years>2012</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Δημήτρης Σπίγγος</mal:name>
+      <mal:name> Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014, 2015</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μαρία Μαυρίδου</mal:name>
-      <mal:email>mavridou@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -52,7 +46,7 @@
 <section id="using-doc-stats">
   <title>Χρήση στατιστικών εγγράφου</title>
 
-  <p>Αφού ενεργοποιηθεί το πρόσθετο, χρησιμοποιήστε το επιλέγοντας <guiseq><gui>Εργαλεία</gui> <gui>Στατιστικά εγγράφου</gui></guiseq>. Ένα παράθυρο θα εμφανίσει τις στατιστικές πληροφορίες του εγγράφου σας, συμπεριλαμβανομένου του αριθμού των λέξεων, γραμμών, χαρακτήρων, χαρακτήρων χωρίς κενά και του μεγέθους του αρχείου σας σε bytes.</p>
+  <p>Αφού ενεργοποιηθεί το πρόσθετο, χρησιμοποιήστε το επιλέγοντας <guiseq><gui>Εργαλεία</gui> <gui>Στατιστικά εγγράφου</gui></guiseq>. Ένα παράθυρο θα εμφανίσει τις στατιστικές πληροφορίες του εγγράφου σας, συμπεριλαμβανομένου του αριθμού των λέξεων, γραμμών, χαρακτήρων, χαρακτήρων χωρίς κενά και του μεγέθους του αρχείου σας σε ψηφιολέξεις.</p>
 
   <p>Μπορείτε επίσης να χρησιμοποιήσετε το <em>Στατιστικά εγγράφου</em> για να σας εμφανίσει πληροφορίες για ένα τμήμα του εγγράφου σας. Για να το κάνετε αυτό, χρησιμοποιήστε τον δείκτη του ποντικιού για να επιλέξετε το μέρος του κειμένου που θέλετε να εξετάσετε και έπειτα επιλέξτε <guiseq><gui>Εργαλεία</gui><gui>Στατιστικά εγγράφου</gui></guiseq>. Το <app>Gedit</app> θα εμφανίσει πληροφορίες για ολόκληρο το έγγραφο, όπως και για το τμήμα του κειμένου που επισημάνατε.</p>
 </section>

@@ -10,19 +10,26 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Skatīt dokumenta statistiku.</desc>
+  <desc>Skatīt dokumenta statistiku</desc>
 </info>
 
 <title>Dokumenta statistika</title>
 
-  <p>Spraudnis <em>Dokumenta statistika</em> parāda dažādu statistikas informāciju par pašreizējo dokumentu. Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Iestatījumi</gui><gui>Spraudņi</gui><gui>Dokumenta statistika</gui></guiseq>.</p>
+  <p>The <em>Document Statistics</em> plugin shows you various statistics about
+  your current document. To enable this plugin, select 
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Document Statistics</gui></guiseq>.</p>
 
 <section id="using-doc-stats">
   <title>Dokumenta statistikas lietošana</title>
 
-  <p>Kad spraudnis ir ieslēgts, lietojiet to, izvēloties <guiseq><gui>Rīki</gui><gui>Dokumenta statistika</gui></guiseq>. Dokumenta statistikas informācija, tai skaitā vārdu, rindu, rakstzīmju (ar un bez atstarpēm) skaits un datnes izmērs baitos, tiks parādīta atsevišķā logā.</p>
+  <p>Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui>
+  <gui>Document Statistics</gui></guiseq>. A window will display the
+  statistical information of your document, including the number of words,
+  lines, characters, non-space characters, and the size of your file in
+  bytes.</p>
 
   <p><em>Dokumenta statistiku</em> var izmantot arī, lai skatītu informāciju tikai par dokumenta daļu. Lai veiktu šo darbību, iezīmējiet izpētāmo teksta daļu ar peles radītāju, un tad izvēlieties <guiseq><gui>Rīki</gui><gui>Dokumenta statistika</gui></guiseq>. <app>Gedit</app> parādīs informāciju gan par visu jūsu dokumentu, gan par iezīmētoteksta daļu.</p>
 </section>

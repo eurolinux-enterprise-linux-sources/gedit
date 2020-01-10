@@ -5,11 +5,10 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>Una breve introducción a gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -20,7 +19,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -41,7 +40,7 @@
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Una vez que lance <app>gedit</app> podrá comenzar a escribir de inmediato. Para guardar su texto, simplemente pulse el icono <gui>Guardar</gui> en la barra de herramientas de <app>gedit</app>.</p>
+  <p>Una vez que lance <app>gedit</app> podrá comenzar a escribir de inmediato. Para guardar su texto, simplemente pulse <gui>Guardar</gui>.</p>
 
   <p>Para aprender más acerca de las características de <app>gedit</app> y para obtener ayuda para realizar tareas adicionales, explore <link xref="index">las otras partes</link> de la ayuda de <app>gedit</app>.</p>
 

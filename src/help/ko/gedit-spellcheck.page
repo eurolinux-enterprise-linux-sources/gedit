@@ -3,13 +3,11 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/> 
-    <desc>Check your files for spelling errors.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
-
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Baptiste Mille-Mathias</name>
@@ -22,6 +20,7 @@
     
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
     
+    <desc>Enable and use spell-checking feature</desc>
   </info>
   
   <title>Spell-check your document</title>
@@ -115,19 +114,11 @@
     check your document. If you need to use another language, choose
     <guiseq><gui style="menu">Tools</gui><gui style="menuitem">Set
     Language…</gui></guiseq>, then choose the language you want to use.</p>
+    
+  <note>
+    <p>The list of available languages will vary, depending on the configuration
+    of your system.</p>
+  </note>
   </section>
 
-  <section id="dict">
-    <title>Dictionaries</title>
-
-    <p><app>gedit</app> uses
-    <link href="http://www.abisource.com/projects/enchant/">Enchant</link>,
-    a small system utility, for spell checking. Enchant can use
-    several different dictionaries to check your spelling. Two such
-    dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>.</p>
-
-    <p>If the language you want to use is not available in <app>gedit</app>,
-    use your computer's software installer or package manager to install the
-    dictionary back-end that you want.</p>
-  </section>
 </page>

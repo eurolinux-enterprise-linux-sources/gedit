@@ -3,7 +3,7 @@
  * gedit-file-browser-message-set-root.h
  * This file is part of gedit
  *
- * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2011 - Jesse van den Kieboom
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_H
-#define GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_H
+#ifndef __GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_H__
+#define __GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_H__
 
 #include <gedit/gedit-message.h>
 
@@ -66,4 +66,4 @@ GType gedit_file_browser_message_set_root_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_H */
+#endif /* __GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_H__ */

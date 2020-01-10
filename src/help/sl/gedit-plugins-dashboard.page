@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-dashboard" xml:lang="sl">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>  
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Ob zagonu prikaže nedavno uporabljene in najboj pogosto uporabljene datoteke.</desc>
+  </info>
+
+  <title>Pregledna plošča</title>
+
+  <p>The <app>Dashboard</app> plugin provides quick access to your most 
+  recently-used files and most-frequently used files. To 
+  activate the <app>Dashboard</app> plugin, select <guiseq>
+  <gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Dashboard</gui></guiseq>. You will need to restart
+  <app>gedit</app> to activate the <app>Dashboard</app> plugin.</p>
+  
+  <p><app>Pregledna plošča</app> vključuje tudi okno <gui>Iskanje</gui>, ki vam omogoča iskanje datotek, ki se morda ne pojavijo na seznamu datotek.</p>
+  
+  <section id="gedit-recently-used">
+    <title>Nedavno uporabljene datoteke</title>
+    <p>Pregledna plošča bo na začetku prikazala bližnjico za <gui>prazen dokument</gui> in sedem najbolj nedavno uporabljenih datotek. Kliknite na <gui>prazen dokument</gui> za ustvarjanje nove datoteke. Kliknite na katerokoli drugo datoteko za odprtje te datoteke.</p>
+  </section>
+  
+  <section id="gedit-most-used">
+    <title>Najbolj pogosto uporabljane datoteke</title>
+    <p>Podobno pregledna plošča prikazuje bližnjico za <gui>prazen dokument</gui> in sedem vaših najbolj nedavno uporabljenih datotek. Kliknite na <gui>prazen dokument</gui> za ustvarjanje nove datoteke. Kliknite na katerokoli od drugih datotek za odprtje te datoteke.</p>
+
+  <note style="tip"><p>Ko bo omogočena, bo <app>pregledna plošča</app> ob odprtju <app>gedita</app> privzeto prikazana. <app>Pregledno ploščo</app> lahko odprete s klikom na <guiseq><gui>Datoteka</gui><gui>Nova</gui> </guiseq> ali s pritiskom na <keyseq><key>Ctrl</key><key>N</key></keyseq>.</p>
+  </note>
+  
+  </section>
+
+</page>

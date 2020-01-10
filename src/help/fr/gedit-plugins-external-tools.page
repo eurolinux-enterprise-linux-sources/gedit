@@ -12,10 +12,10 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Lancer des scripts sur les fichiers courants et interagir avec des applications externes.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Lancer des scripts sur les fichiers courants et interagir avec des applications externes</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -60,33 +60,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
 <title>Outils externes</title>
 
-  <p>Le greffon <em>Outils externes</em> peut vous aider à simplifier des tâches répétitives. Plus particulièrement, il étend <app>gedit</app> en vous aidant à lancer des scripts sur vos fichiers de travail et en permettant à <app>gedit</app> d’interagir avec d’autres programmes sur votre ordinateur. Pour activer le greffon <app>Outils externes</app> choisissez <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Préférences</gui><gui>Greffons</gui> <gui>Outils externes</gui></guiseq>.</p>
+  <p>Le greffon <em>Outils externes</em> peut vous aider à simplifier des tâches répétitives. Plus particulièrement, il étend <app>gedit</app> en vous aidant à lancer des scripts sur vos fichiers de travail et en permettant à <app>gedit</app> d'interagir avec d'autres programmes sur votre ordinateur. Pour activer le greffon <app>Outils externes</app> choisissez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui> <gui>Outils externes</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
     <title>Configuration du greffon Outils externes</title>
@@ -94,7 +76,7 @@
   <p>Une fois que le greffon est activé, vous devez le configurer en fonction de vos besoins. Les options de configuration sont disponibles en choisissant <guiseq><gui>Outils</gui><gui>Gérer les outils externes</gui></guiseq>.</p>
   
   <note style="caution">
-    <p>Ce greffon est destiné aux utilisateurs avancés et nécessite des connaissances sur la manière d’écrire des scripts pour être utilisé de manière efficace. Utilisez ce greffon avec prudence car des erreurs avec vos scripts peuvent affecter involontairement votre travail.</p>
+    <p>Ce greffon est destiné aux utilisateurs avancés et nécessite des connaissances sur la manière d'écrire des scripts afin d'être utilisé de manière efficace. Utilisez ce greffon avec prudence car des erreurs avec vos scripts peuvent affecter involontairement votre travail.</p>
   </note>
   </section>
 

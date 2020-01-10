@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Afficher les statistiques du document.</desc>
+  <desc>Afficher les statistiques du document</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -57,40 +57,22 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
 <title>Statistiques du document</title>
 
-  <p>Le greffon <em>Statistiques du document</em> affiche un grand nombre de statistiques concernant votre document. Pour activer ce greffon, choisissez <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Préférences</gui> <gui>Greffons</gui><gui>Statistiques du document</gui></guiseq>.</p>
+  <p>Le greffon <em>Statistiques du document</em> affiche un grand nombre de statistiques concernant votre document. Pour activer ce greffon, choisissez <guiseq><gui>gedit</gui> <gui>Préférences</gui><gui>Greffons</gui> <gui>Statistiques du document</gui></guiseq>.</p>
 
 <section id="using-doc-stats">
-  <title>Utilisation des statistiques du document</title>
+  <title>Utilisation de Statistiques du document</title>
 
-  <p>Une fois que le greffon est activé, utilisez-le en sélectionnant <guiseq><gui>Outils</gui><gui>Statistiques du document</gui></guiseq>. Une fenêtre affiche alors des informations statistiques sur votre document, dont le nombre de mots, lignes, caractères, caractères sans les espaces et la taille de votre fichier en octets.</p>
+  <p>Une fois que le greffon est activé, utilisez-le en sélectionnant <guiseq><gui>Outils</gui> <gui>Statistiques du document</gui></guiseq>. Une fenêtre affiche alors des informations statistiques sur votre document, dont le nombre de mots, lignes, caractères, caractères sans les espaces et la taille de votre fichier en octets.</p>
 
-  <p>Vous pouvez aussi utiliser <em>Statistiques du document</em> pour afficher des informations sur une partie du document. Pour cela, sélectionnez à l’aide de la souris la partie de texte que vous voulez analyser, puis choisissez <guiseq><gui>Outils</gui><gui>Statistiques du document</gui></guiseq>. <app>Gedit</app> affiche des informations sur le document complet et sur la partie de texte sélectionnée.</p>
+  <p>Vous pouvez aussi utiliser <em>Statistiques du document</em> pour afficher des informations sur une partie du document. Pour cela, sélectionnez à l'aide de la souris la partie de texte que vous voulez analyser, puis choisissez <guiseq><gui>Outils</gui><gui>Statistiques du document</gui></guiseq>. <app>Gedit</app> affiche des informations sur le document complet et sur la partie de texte sélectionnée.</p>
 </section>
 
 </page>

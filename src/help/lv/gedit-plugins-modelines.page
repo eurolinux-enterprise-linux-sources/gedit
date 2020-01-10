@@ -10,16 +10,17 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Emacs, Kate un Vim-stila modeline atbalsts gedit redaktoram.</desc>
+  <desc>Emacs, Kate un Vim tipa režīma rindiņu atbalsts</desc>
 </info>
 
 <title>Režīma rindiņas</title>
 
   <p>Spraudnis <app>Režīma rindiņas</app> ļauj <app>gedit</app> analizēt teksta rindas datnes sākumā un beigās, un tad pielietot datnei atbilstošus dokumenta iestatījumus. Tas atbalsta daļu no iespējām, ko izmanto <app>Emacs</app>, <app>Kate</app> un <app>Vim</app> teksta redaktori.</p>
 
-  <p>Lai ieslēgtu spraudni <app>Režīma rindiņas</app>, izvēlieties <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Iestatījumi</gui><gui>Spraudņi</gui><gui>Režīma rindiņas</gui></guiseq>.</p>
+  <p>To enable the <app>Modelines</app> plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>.</p>
 
 <section id="modelines-general">
   <title>Vispārējie režīma rindiņu iestatījumi</title>

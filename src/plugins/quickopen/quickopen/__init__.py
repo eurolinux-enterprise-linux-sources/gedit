@@ -13,48 +13,31 @@
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU General Public License
-#  along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-import os
-
-import gi
-gi.require_version('Gedit', '3.0')
-gi.require_version('Gtk', '3.0')
-from gi.repository import GObject, Gio, GLib, Gtk, Gedit
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place, Suite 330,
+#  Boston, MA 02111-1307, USA.
 
 from .popup import Popup
+import os
+from gi.repository import GObject, Gio, Gtk, Gedit
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 
-try:
-    import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
-    _ = gettext.gettext
-except:
-    _ = lambda s: s
-
-class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
-    app = GObject.Property(type=Gedit.App)
-
-    def __init__(self):
-        GObject.Object.__init__(self)
-
-    def do_activate(self):
-        self.app.add_accelerator("<Primary><Alt>O", "win.quickopen", None)
-
-        self.menu_ext = self.extend_menu("file-section")
-        item = Gio.MenuItem.new(_("Quick Open…"), "win.quickopen")
-        self.menu_ext.prepend_menu_item(item)
-
-    def do_deactivate(self):
-        self.app.remove_accelerator("win.quickopen", None)
-
+ui_str = """<ui>
+  <menubar name="MenuBar">
+    <menu name="FileMenu" action="File">
+      <placeholder name="FileOps_2">
+        <menuitem name="QuickOpen" action="QuickOpen"/>
+      </placeholder>
+    </menu>
+  </menubar>
+</ui>
+"""
 
 class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "QuickOpenPlugin"
 
-    window = GObject.Property(type=Gedit.Window)
+    window = GObject.property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -62,19 +45,36 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
     def do_activate(self):
         self._popup_size = (450, 300)
         self._popup = None
-
-        action = Gio.SimpleAction(name="quickopen")
-        action.connect('activate', self.on_quick_open_activate)
-        self.window.add_action(action)
+        self._install_menu()
 
     def do_deactivate(self):
-        self.window.remove_action("quickopen")
+        self._uninstall_menu()
 
     def get_popup_size(self):
         return self._popup_size
 
     def set_popup_size(self, size):
         self._popup_size = size
+
+    def _uninstall_menu(self):
+        manager = self.window.get_ui_manager()
+
+        manager.remove_ui(self._ui_id)
+        manager.remove_action_group(self._action_group)
+
+        manager.ensure_update()
+
+    def _install_menu(self):
+        manager = self.window.get_ui_manager()
+        self._action_group = Gtk.ActionGroup(name="GeditQuickOpenPluginActions")
+        self._action_group.add_actions([
+            ("QuickOpen", Gtk.STOCK_OPEN, _("Quick open"),
+             '<Primary><Alt>o', _("Quickly open documents"),
+             self.on_quick_open_activate)
+        ])
+
+        manager.insert_action_group(self._action_group)
+        self._ui_id = manager.add_ui_from_string(ui_str)
 
     def _create_popup(self):
         paths = []
@@ -85,8 +85,8 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         doc = self.window.get_active_document()
 
         # Current document directory
-        if doc and doc.get_file().is_local():
-            gfile = doc.get_file().get_location()
+        if doc and doc.is_local():
+            gfile = doc.get_location()
             paths.append(gfile.get_parent())
 
         # File browser root directory
@@ -133,7 +133,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
 
         paths = []
 
-        for line in open(filename, 'r', encoding='utf-8'):
+        for line in open(filename, 'r'):
             uri = line.strip().split(" ")[0]
             f = Gio.file_new_for_uri(uri)
 
@@ -160,13 +160,12 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         desktopdir = None
 
         if os.path.isfile(config):
-            for line in open(config, 'r', encoding='utf-8'):
+            for line in open(config, 'r'):
                 line = line.strip()
 
                 if line.startswith('XDG_DESKTOP_DIR'):
                     parts = line.split('=', 1)
-                    desktopdir = parts[1].strip('"').strip("'")
-                    desktopdir = os.path.expandvars(desktopdir)
+                    desktopdir = os.path.expandvars(parts[1].strip('"').strip("'"))
                     break
 
         if not desktopdir:
@@ -175,7 +174,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         return desktopdir
 
     # Callbacks
-    def on_quick_open_activate(self, action, parameter, user_data=None):
+    def on_quick_open_activate(self, action, user_data=None):
         if not self._popup:
             self._create_popup()
 

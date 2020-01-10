@@ -5,18 +5,18 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Cómo instalar complementos de terceras partes.</desc>
+    <desc>Cómo instalar complementos de terceras partes</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -34,7 +34,7 @@
 
   <title>Complementos adicionales de gedit</title>
 
-  <p>Instalar complementos de terceras partes le da una funcionalidad que no está incluida de manera predeterminada en los complementos de <app>gedit</app> ni en los complementos adicionales que forman parte del paquete <app>gedit-plugins</app>. <link href="https://wiki.gnome.org/Apps/Gedit/">Aquí</link> se mantiene una lista de complementos de terceras partes.</p>
+  <p>Instalar complementos de terceras partes le da una funcionalidad que no está incluida de manera predeterminada en <app>gedit</app> ni en los complentos adicionales que forman parte del paquete <app>gedit-plugins</app>. <link href="http://live.gnome.org/Gedit/Plugins#third_party">Aquí</link> se mantiene una lista de complementos de terceras partes.</p>
   
   <p>Instalar un complemento de terceras partes implica descargar el complemento, copiar los archivos del complemento en la carpeta correcta y activarlo.</p>
   

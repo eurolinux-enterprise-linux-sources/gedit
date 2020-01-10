@@ -17,21 +17,51 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
+
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <fcntl.h>
+#include <string.h>
+
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gio/gio.h>
 
 #include "gedit-utils.h"
 
-#include <string.h>
-#include <glib/gi18n.h>
+#include "gedit-document.h"
+#include "gedit-debug.h"
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #endif
 
-#include "gedit-debug.h"
+#ifdef G_OS_UNIX
+#include <unistd.h>
+#include <sys/stat.h>
+#endif
 
 static void
 widget_get_origin (GtkWidget *widget,
@@ -130,6 +160,60 @@ gedit_utils_menu_position_under_tree_view (GtkMenu  *menu,
 }
 
 /**
+ * gedit_gtk_button_new_with_stock_icon:
+ * @label:
+ * @stock_id:
+ *
+ * Returns: (transfer full):
+ */
+GtkWidget *
+gedit_gtk_button_new_with_stock_icon (const gchar *label,
+				      const gchar *stock_id)
+{
+	GtkWidget *button;
+
+	button = gtk_button_new_with_mnemonic (label);
+	gtk_button_set_image (GTK_BUTTON (button),
+			      gtk_image_new_from_stock (stock_id,
+							GTK_ICON_SIZE_BUTTON));
+
+	return button;
+}
+
+/**
+ * gedit_dialog_add_button:
+ * @dialog:
+ * @text:
+ * @stock_id:
+ * @response_id:
+ *
+ * Returns: (transfer none):
+ */
+GtkWidget *
+gedit_dialog_add_button (GtkDialog   *dialog,
+			 const gchar *text,
+			 const gchar *stock_id,
+			 gint         response_id)
+{
+	GtkWidget *button;
+
+	g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
+	g_return_val_if_fail (text != NULL, NULL);
+	g_return_val_if_fail (stock_id != NULL, NULL);
+
+	button = gedit_gtk_button_new_with_stock_icon (text, stock_id);
+	g_return_val_if_fail (button != NULL, NULL);
+
+	gtk_widget_set_can_default (button, TRUE);
+
+	gtk_widget_show (button);
+
+	gtk_dialog_add_action_widget (dialog, button, response_id);
+
+	return button;
+}
+
+/**
  * gedit_utils_set_atk_name_description:
  * @widget: The Gtk widget for which name/description to be set
  * @name: Atk name string
@@ -191,6 +275,136 @@ gedit_utils_set_atk_relation (GtkWidget       *obj1,
 	g_object_unref (G_OBJECT (relation));
 }
 
+gchar *
+gedit_utils_escape_search_text (const gchar* text)
+{
+	GString *str;
+	gint length;
+	const gchar *p;
+ 	const gchar *end;
+
+	if (text == NULL)
+		return NULL;
+
+	gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
+
+    	length = strlen (text);
+
+	/* no escape when typing.
+	 * The short circuit works only for ascii, but we only
+	 * care about not escaping a single '\' */
+	if (length == 1)
+		return g_strdup (text);
+
+	str = g_string_new ("");
+
+	p = text;
+  	end = text + length;
+
+  	while (p != end)
+    	{
+      		const gchar *next;
+      		next = g_utf8_next_char (p);
+
+		switch (*p)
+        	{
+       			case '\n':
+          			g_string_append (str, "\\n");
+          			break;
+			case '\r':
+          			g_string_append (str, "\\r");
+          			break;
+			case '\t':
+          			g_string_append (str, "\\t");
+          			break;
+			case '\\':
+          			g_string_append (str, "\\\\");
+          			break;
+        		default:
+          			g_string_append_len (str, p, next - p);
+          			break;
+        	}
+
+      		p = next;
+    	}
+
+	return g_string_free (str, FALSE);
+}
+
+gchar *
+gedit_utils_unescape_search_text (const gchar *text)
+{
+	GString *str;
+	gint length;
+	gboolean drop_prev = FALSE;
+	const gchar *cur;
+	const gchar *end;
+	const gchar *prev;
+
+	if (text == NULL)
+		return NULL;
+
+	length = strlen (text);
+
+	str = g_string_new ("");
+
+	cur = text;
+	end = text + length;
+	prev = NULL;
+
+	while (cur != end)
+	{
+		const gchar *next;
+		next = g_utf8_next_char (cur);
+
+		if (prev && (*prev == '\\'))
+		{
+			switch (*cur)
+			{
+				case 'n':
+					str = g_string_append (str, "\n");
+					break;
+				case 'r':
+					str = g_string_append (str, "\r");
+					break;
+				case 't':
+					str = g_string_append (str, "\t");
+					break;
+				case '\\':
+					str = g_string_append (str, "\\");
+					drop_prev = TRUE;
+					break;
+				default:
+					str = g_string_append (str, "\\");
+					str = g_string_append_len (str, cur, next - cur);
+					break;
+			}
+		}
+		else if (*cur != '\\')
+		{
+			str = g_string_append_len (str, cur, next - cur);
+		}
+		else if ((next == end) && (*cur == '\\'))
+		{
+			str = g_string_append (str, "\\");
+		}
+
+		if (!drop_prev)
+		{
+			prev = cur;
+		}
+		else
+		{
+			prev = NULL;
+			drop_prev = FALSE;
+		}
+
+		cur = next;
+	}
+
+	return g_string_free (str, FALSE);
+}
+
 void
 gedit_warning (GtkWindow *parent, const gchar *format, ...)
 {
@@ -232,15 +446,8 @@ gedit_warning (GtkWindow *parent, const gchar *format, ...)
 	gtk_widget_show (dialog);
 }
 
-/**
- * gedit_utils_escape_underscores:
- * @text: some text.
- * @length: the length.
- *
+/*
  * Doubles underscore to avoid spurious menu accels.
- *
- * Returns: the text escaped.
- * Deprecated: 3.18
  */
 gchar *
 gedit_utils_escape_underscores (const gchar *text,
@@ -400,8 +607,13 @@ gedit_utils_make_valid_utf8 (const char *name)
 	return g_string_free (string, FALSE);
 }
 
-static gchar *
-uri_get_dirname (const gchar *uri)
+/**
+ * gedit_utils_uri_get_dirname:
+ *
+ * Note: this function replace home dir with ~
+ */
+gchar *
+gedit_utils_uri_get_dirname (const gchar *uri)
 {
 	gchar *res;
 	gchar *str;
@@ -424,21 +636,6 @@ uri_get_dirname (const gchar *uri)
 	g_free (str);
 
 	return res;
-}
-
-/**
- * gedit_utils_uri_get_dirname:
- * @uri: the URI.
- *
- * Note: this function replace home dir with ~.
- *
- * Returns: the directory name.
- * Deprecated: 3.18
- */
-gchar *
-gedit_utils_uri_get_dirname (const gchar *uri)
-{
-	return uri_get_dirname (uri);
 }
 
 /**
@@ -484,11 +681,11 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 
 		if (path == NULL)
 		{
-			dirname = uri_get_dirname (uri);
+			dirname = gedit_utils_uri_get_dirname (uri);
 		}
 		else
 		{
-			dirname = uri_get_dirname (path);
+			dirname = gedit_utils_uri_get_dirname (path);
 		}
 
 		if (dirname == NULL || strcmp (dirname, ".") == 0)
@@ -507,7 +704,7 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 	else
 	{
 		/* fallback for local files or uris without mounts */
-		res = uri_get_dirname (uri);
+		res = gedit_utils_uri_get_dirname (uri);
 	}
 
 	g_free (uri);
@@ -537,7 +734,7 @@ gedit_utils_replace_home_dir_with_tilde (const gchar *uri)
 	{
 		g_free (home);
 
-		return g_strdup ("~/");
+		return g_strdup ("~");
 	}
 
 	tmp = home;
@@ -619,15 +816,12 @@ gedit_utils_get_current_workspace (GdkScreen *screen)
 
 /**
  * gedit_utils_get_window_workspace:
- * @gtkwindow: a #GtkWindow.
  *
- * Get the workspace the window is on.
+ * Get the workspace the window is on
  *
  * This function gets the workspace that the #GtkWindow is visible on,
  * it returns GEDIT_ALL_WORKSPACES if the window is sticky, or if
- * the window manager doesn't support this function.
- *
- * Returns: the workspace the window is on.
+ * the window manager doesn support this function
  */
 guint
 gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
@@ -819,8 +1013,6 @@ gedit_utils_is_valid_location (GFile *location)
 	return is_valid;
 }
 
-static GtkWidget *handle_builder_error (const gchar *message, ...) G_GNUC_PRINTF (1, 2);
-
 static GtkWidget *
 handle_builder_error (const gchar *message, ...)
 {
@@ -846,10 +1038,7 @@ handle_builder_error (const gchar *message, ...)
 	g_free (msg_plain);
 	g_free (msg);
 
-	gtk_widget_set_margin_start (label, 6);
-	gtk_widget_set_margin_end (label, 6);
-	gtk_widget_set_margin_top (label, 6);
-	gtk_widget_set_margin_bottom (label, 6);
+	gtk_misc_set_padding (GTK_MISC (label), 5, 5);
 
 	return label;
 }
@@ -918,7 +1107,7 @@ get_ui_objects_with_translation_domain (const gchar  *filename,
 
 		if (!*gobj)
 		{
-			*error_widget = handle_builder_error (_("Unable to find the object “%s” inside file %s."),
+			*error_widget = handle_builder_error (_("Unable to find the object '%s' inside file %s."),
 							      name,
 							      filename_markup),
 			ret = FALSE;
@@ -962,7 +1151,6 @@ get_ui_objects_with_translation_domain (const gchar  *filename,
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
- * Deprecated: 3.18
  */
 gboolean
 gedit_utils_get_ui_objects (const gchar  *filename,
@@ -1002,7 +1190,6 @@ gedit_utils_get_ui_objects (const gchar  *filename,
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
- * Deprecated: 3.18
  */
 gboolean
 gedit_utils_get_ui_objects_with_translation_domain (const gchar  *filename,
@@ -1027,8 +1214,8 @@ gedit_utils_get_ui_objects_with_translation_domain (const gchar  *filename,
 	return ret;
 }
 
-static gchar *
-make_canonical_uri_from_shell_arg (const gchar *str)
+gchar *
+gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 {
 	GFile *gfile;
 	gchar *uri;
@@ -1064,19 +1251,6 @@ make_canonical_uri_from_shell_arg (const gchar *str)
 
 	g_object_unref (gfile);
 	return NULL;
-}
-
-/**
- * gedit_utils_make_canonical_uri_from_shell_arg:
- * @str: shell arg.
- *
- * Returns: canonical URI, or %NULL if @str is not a valid URI and/or filename.
- * Deprecated: 3.18
- */
-gchar *
-gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
-{
-	return make_canonical_uri_from_shell_arg (str);
 }
 
 /**
@@ -1192,7 +1366,7 @@ gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 	{
 		gchar *uri;
 
-		uri = make_canonical_uri_from_shell_arg (uris[i]);
+		uri = gedit_utils_make_canonical_uri_from_shell_arg (uris[i]);
 
 		/* Silently ignore malformed URI/filename */
 		if (uri != NULL)
@@ -1202,11 +1376,9 @@ gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 	if (*uri_list == NULL)
 	{
 		g_free(uri_list);
-		g_strfreev (uris);
 		return NULL;
 	}
 
-	g_strfreev (uris);
 	return uri_list;
 }
 
@@ -1369,105 +1541,20 @@ gedit_utils_decode_uri (const gchar  *uri,
 	return TRUE;
 }
 
-GtkSourceCompressionType
+GeditDocumentCompressionType
 gedit_utils_get_compression_type_from_content_type (const gchar *content_type)
 {
 	if (content_type == NULL)
 	{
-		return GTK_SOURCE_COMPRESSION_TYPE_NONE;
+		return GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE;
 	}
 
 	if (g_content_type_is_a (content_type, "application/x-gzip"))
 	{
-		return GTK_SOURCE_COMPRESSION_TYPE_GZIP;
+		return GEDIT_DOCUMENT_COMPRESSION_TYPE_GZIP;
 	}
 
-	return GTK_SOURCE_COMPRESSION_TYPE_NONE;
-}
-
-/* Copied from nautilus */
-static gchar *
-get_direct_save_filename (GdkDragContext *context)
-{
-	guchar *prop_text;
-	gint prop_len;
-
-	if (!gdk_property_get (gdk_drag_context_get_source_window  (context), gdk_atom_intern ("XdndDirectSave0", FALSE),
-			       gdk_atom_intern ("text/plain", FALSE), 0, 1024, FALSE, NULL, NULL,
-			       &prop_len, &prop_text) && prop_text != NULL) {
-		return NULL;
-	}
-
-	/* Zero-terminate the string */
-	prop_text = g_realloc (prop_text, prop_len + 1);
-	prop_text[prop_len] = '\0';
-
-	/* Verify that the file name provided by the source is valid */
-	if (*prop_text == '\0' ||
-	    strchr ((const gchar *) prop_text, G_DIR_SEPARATOR) != NULL) {
-		gedit_debug_message (DEBUG_UTILS, "Invalid filename provided by XDS drag site");
-		g_free (prop_text);
-		return NULL;
-	}
-
-	return (gchar *)prop_text;
-}
-
-gchar *
-gedit_utils_set_direct_save_filename (GdkDragContext *context)
-{
-	gchar *uri;
-	gchar *filename;
-
-	uri = NULL;
-	filename = get_direct_save_filename (context);
-
-	if (filename != NULL)
-	{
-		gchar *tempdir;
-		gchar *path;
-
-		tempdir = g_dir_make_tmp ("gedit-drop-XXXXXX", NULL);
-		if (tempdir == NULL)
-		{
-			tempdir = g_strdup (g_get_tmp_dir ());
-		}
-
-		path = g_build_filename (tempdir,
-					filename,
-					NULL);
-
-		uri = g_filename_to_uri (path, NULL, NULL);
-
-		/* Change the property */
-		gdk_property_change (gdk_drag_context_get_source_window (context),
-				     gdk_atom_intern ("XdndDirectSave0", FALSE),
-				     gdk_atom_intern ("text/plain", FALSE), 8,
-				     GDK_PROP_MODE_REPLACE, (const guchar *) uri,
-				     strlen (uri));
-
-		g_free (tempdir);
-		g_free (path);
-		g_free (filename);
-	}
-
-	return uri;
-}
-
-const gchar *
-gedit_utils_newline_type_to_string (GtkSourceNewlineType newline_type)
-{
-	switch (newline_type)
-	{
-	case GTK_SOURCE_NEWLINE_TYPE_LF:
-		return _("Unix/Linux");
-	case GTK_SOURCE_NEWLINE_TYPE_CR:
-		return _("Mac OS Classic");
-	case GTK_SOURCE_NEWLINE_TYPE_CR_LF:
-		return _("Windows");
-	}
-
-	return NULL;
+	return GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE;
 }
 
 /* ex:set ts=8 noet: */

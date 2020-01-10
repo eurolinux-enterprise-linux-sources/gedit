@@ -16,14 +16,22 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2001-2003. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
-
-#include "gedit-preferences-dialog.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -31,18 +39,16 @@
 
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
+#include <libpeas-gtk/peas-gtk-plugin-manager.h>
 #include <gtksourceview/gtksource.h>
-#include <libpeas-gtk/peas-gtk.h>
 
+#include "gedit-preferences-dialog.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
 #include "gedit-document.h"
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
-#include "gedit-file-chooser-dialog.h"
-#include "gedit-app.h"
-#include "gedit-app-private.h"
 
 /*
  * gedit-preferences dialog is a singleton since we don't
@@ -55,11 +61,6 @@
 
 static GtkWidget *preferences_dialog = NULL;
 
-#define GEDIT_SCHEME_ROW_ID_KEY "gedit-scheme-row-id"
-
-#define GEDIT_TYPE_PREFERENCES_DIALOG (gedit_preferences_dialog_get_type())
-
-G_DECLARE_FINAL_TYPE (GeditPreferencesDialog, gedit_preferences_dialog, GEDIT, PREFERENCES_DIALOG, GtkWindow)
 
 enum
 {
@@ -69,20 +70,14 @@ enum
 	NUM_COLUMNS
 };
 
-enum
+
+#define GEDIT_PREFERENCES_DIALOG_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
+						     GEDIT_TYPE_PREFERENCES_DIALOG, \
+						     GeditPreferencesDialogPrivate))
+
+struct _GeditPreferencesDialogPrivate
 {
-	CLOSE,
-	LAST_SIGNAL
-};
-
-static guint signals[LAST_SIGNAL];
-
-struct _GeditPreferencesDialog
-{
-	GtkWindow	parent_instance;
-
 	GSettings	*editor;
-	GSettings	*uisettings; /* unfortunately our settings are split for historical reasons */
 
 	GtkWidget	*notebook;
 
@@ -92,18 +87,21 @@ struct _GeditPreferencesDialog
 	GtkWidget	*font_grid;
 
 	/* Style Scheme */
-	GtkWidget	*schemes_list;
+	GtkListStore	*schemes_treeview_model;
+	GtkWidget	*schemes_treeview;
+	GtkTreeViewColumn *schemes_column;
+	GtkCellRenderer *schemes_renderer;
 	GtkWidget	*install_scheme_button;
 	GtkWidget	*uninstall_scheme_button;
 	GtkWidget	*schemes_scrolled_window;
 	GtkWidget	*schemes_toolbar;
 
-	GeditFileChooserDialog *
-			 install_scheme_file_schooser;
+	GtkWidget	*install_scheme_file_schooser;
 
 	/* Tabs */
 	GtkWidget	*tabs_width_spinbutton;
 	GtkWidget	*insert_spaces_checkbutton;
+	GtkWidget	*tabs_width_hbox;
 
 	/* Auto indentation */
 	GtkWidget	*auto_indent_checkbutton;
@@ -116,147 +114,141 @@ struct _GeditPreferencesDialog
 	GtkWidget	*backup_copy_checkbutton;
 	GtkWidget	*auto_save_checkbutton;
 	GtkWidget	*auto_save_spinbutton;
+	GtkWidget	*autosave_hbox;
 
 	GtkWidget	*display_line_numbers_checkbutton;
-	GtkWidget	*display_statusbar_checkbutton;
-	GtkWidget	*display_overview_map_checkbutton;
-	GtkWidget	*display_grid_checkbutton;
 
 	/* Right margin */
 	GtkWidget	*right_margin_checkbutton;
-	GtkWidget       *right_margin_position_grid;
 	GtkWidget	*right_margin_position_spinbutton;
 
 	/* Highlighting */
 	GtkWidget	*highlight_current_line_checkbutton;
 	GtkWidget	*bracket_matching_checkbutton;
 
-	/* Plugin manager */
-	GtkWidget	*plugin_manager;
+	/* Plugins manager */
+	GtkWidget	*plugin_manager_place_holder;
 };
 
-G_DEFINE_TYPE (GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_WINDOW)
+
+G_DEFINE_TYPE(GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_DIALOG)
+
 
 static void
 gedit_preferences_dialog_dispose (GObject *object)
 {
 	GeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG (object);
 
-	g_clear_object (&dlg->editor);
-	g_clear_object (&dlg->uisettings);
+	g_clear_object (&dlg->priv->editor);
 
 	G_OBJECT_CLASS (gedit_preferences_dialog_parent_class)->dispose (object);
-}
-
-static void
-gedit_preferences_dialog_close (GeditPreferencesDialog *dialog)
-{
-	gtk_window_close (GTK_WINDOW (dialog));
 }
 
 static void
 gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkBindingSet *binding_set;
-
-	/* Otherwise libpeas-gtk might not be linked */
-	g_type_ensure (PEAS_GTK_TYPE_PLUGIN_MANAGER);
 
 	object_class->dispose = gedit_preferences_dialog_dispose;
 
-	signals[CLOSE] =
-		g_signal_new_class_handler ("close",
-		                            G_TYPE_FROM_CLASS (klass),
-		                            G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		                            G_CALLBACK (gedit_preferences_dialog_close),
-		                            NULL, NULL, NULL,
-		                            G_TYPE_NONE,
-		                            0);
+	g_type_class_add_private (object_class, sizeof (GeditPreferencesDialogPrivate));
+}
 
-	binding_set = gtk_binding_set_by_class (klass);
-	gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
+static void
+dialog_response_handler (GtkDialog *dlg,
+			 gint       res_id)
+{
+	gedit_debug (DEBUG_PREFS);
 
-	/* Bind class to template */
-	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-preferences-dialog.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, notebook);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_line_numbers_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_statusbar_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_grid_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_overview_map_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_grid);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_spinbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, highlight_current_line_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, bracket_matching_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, wrap_text_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, split_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, tabs_width_spinbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, insert_spaces_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, auto_indent_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, backup_copy_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, auto_save_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, auto_save_spinbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, default_font_checkbutton);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, font_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, font_grid);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_list);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_scrolled_window);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, install_scheme_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, uninstall_scheme_button);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_toolbar);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, plugin_manager);
+	switch (res_id)
+	{
+		case GTK_RESPONSE_HELP:
+			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
+			                     GTK_WINDOW (dlg),
+			                     NULL,
+			                     "index#configure-gedit");
+
+			g_signal_stop_emission_by_name (dlg, "response");
+
+			break;
+
+		default:
+			gtk_widget_destroy (GTK_WIDGET(dlg));
+	}
+}
+
+static void
+on_auto_save_changed (GSettings              *settings,
+		      const gchar            *key,
+		      GeditPreferencesDialog *dlg)
+{
+	gboolean value;
+
+	gedit_debug (DEBUG_PREFS);
+
+	value = g_settings_get_boolean (settings, key);
+
+	gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton, value);
 }
 
 static void
 setup_editor_page (GeditPreferencesDialog *dlg)
 {
+	gboolean auto_save;
+
 	gedit_debug (DEBUG_PREFS);
 
+	/* Get values */
+	auto_save = g_settings_get_boolean (dlg->priv->editor,
+					    GEDIT_SETTINGS_AUTO_SAVE);
+
+	/* Set widget sensitivity */
+	gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton,
+				  auto_save);
+
 	/* Connect signal */
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_TABS_SIZE,
-			 dlg->tabs_width_spinbutton,
+			 dlg->priv->tabs_width_spinbutton,
 			 "value",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_INSERT_SPACES,
-			 dlg->insert_spaces_checkbutton,
+			 dlg->priv->insert_spaces_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_INDENT,
-			 dlg->auto_indent_checkbutton,
+			 dlg->priv->auto_indent_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_CREATE_BACKUP_COPY,
-			 dlg->backup_copy_checkbutton,
+			 dlg->priv->backup_copy_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_BRACKET_MATCHING,
-			 dlg->bracket_matching_checkbutton,
+			 dlg->priv->bracket_matching_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
-			 dlg->auto_save_spinbutton,
+			 dlg->priv->auto_save_spinbutton,
 			 "value",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_signal_connect (dlg->priv->editor,
+			  "changed::auto-save",
+			  G_CALLBACK (on_auto_save_changed),
+			  dlg);
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_SAVE,
-			 dlg->auto_save_spinbutton,
-			 "sensitive",
-			 G_SETTINGS_BIND_GET);
-	g_settings_bind (dlg->editor,
-			 GEDIT_SETTINGS_AUTO_SAVE,
-			 dlg->auto_save_checkbutton,
+			 dlg->priv->auto_save_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 }
+
+static gboolean split_button_state = TRUE;
 
 static void
 wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
@@ -264,231 +256,227 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 {
 	GtkWrapMode mode;
 
-	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->wrap_text_checkbutton)))
+	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton)))
 	{
 		mode = GTK_WRAP_NONE;
 
-		gtk_widget_set_sensitive (dlg->split_checkbutton,
+		gtk_widget_set_sensitive (dlg->priv->split_checkbutton,
 					  FALSE);
 		gtk_toggle_button_set_inconsistent (
-			GTK_TOGGLE_BUTTON (dlg->split_checkbutton), TRUE);
+			GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
 	}
 	else
 	{
-		gtk_widget_set_sensitive (dlg->split_checkbutton,
+		gtk_widget_set_sensitive (dlg->priv->split_checkbutton,
 					  TRUE);
 
 		gtk_toggle_button_set_inconsistent (
-			GTK_TOGGLE_BUTTON (dlg->split_checkbutton), FALSE);
+			GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
 
 
-		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->split_checkbutton)))
+		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton)))
 		{
-			g_settings_set_enum (dlg->editor,
-			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
-			                     GTK_WRAP_WORD);
+			split_button_state = TRUE;
 
 			mode = GTK_WRAP_WORD;
 		}
 		else
 		{
-			g_settings_set_enum (dlg->editor,
-			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
-			                     GTK_WRAP_CHAR);
+			split_button_state = FALSE;
 
 			mode = GTK_WRAP_CHAR;
 		}
 	}
 
-	g_settings_set_enum (dlg->editor,
+	g_settings_set_enum (dlg->priv->editor,
 			     GEDIT_SETTINGS_WRAP_MODE,
 			     mode);
 }
 
 static void
-grid_checkbutton_toggled (GtkToggleButton        *button,
-                          GeditPreferencesDialog *dlg)
+right_margin_checkbutton_toggled (GtkToggleButton        *button,
+				  GeditPreferencesDialog *dlg)
 {
-	GtkSourceBackgroundPatternType background_type;
+	gboolean active;
 
-	background_type = gtk_toggle_button_get_active (button) ?
-	                  GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID :
-		          GTK_SOURCE_BACKGROUND_PATTERN_TYPE_NONE;
-	g_settings_set_enum (dlg->editor,
-	                     GEDIT_SETTINGS_BACKGROUND_PATTERN,
-	                     background_type);
+	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton));
+
+	active = gtk_toggle_button_get_active (button);
+
+	g_settings_set_boolean (dlg->priv->editor, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
+				active);
+
+	gtk_widget_set_sensitive (dlg->priv->right_margin_position_spinbutton,
+				  active);
 }
 
 static void
 setup_view_page (GeditPreferencesDialog *dlg)
 {
 	GtkWrapMode wrap_mode;
-	GtkWrapMode last_split_mode;
-	GtkSourceBackgroundPatternType background_pattern;
 	gboolean display_right_margin;
 	guint right_margin_position;
 
 	gedit_debug (DEBUG_PREFS);
 
 	/* Get values */
-	display_right_margin = g_settings_get_boolean (dlg->editor,
+	display_right_margin = g_settings_get_boolean (dlg->priv->editor,
 						       GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
-	g_settings_get (dlg->editor, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
+	g_settings_get (dlg->priv->editor, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
 			"u", &right_margin_position);
-	background_pattern = g_settings_get_enum (dlg->editor,
-	                                          GEDIT_SETTINGS_BACKGROUND_PATTERN);
-
-	wrap_mode = g_settings_get_enum (dlg->editor,
-					 GEDIT_SETTINGS_WRAP_MODE);
 
 	/* Set initial state */
+	wrap_mode = g_settings_get_enum (dlg->priv->editor,
+					 GEDIT_SETTINGS_WRAP_MODE);
+
 	switch (wrap_mode)
 	{
 		case GTK_WRAP_WORD:
 			gtk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->wrap_text_checkbutton), TRUE);
+				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
 			gtk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->split_checkbutton), TRUE);
-
-			g_settings_set_enum (dlg->editor,
-			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
-			                     GTK_WRAP_WORD);
+				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
 			break;
 		case GTK_WRAP_CHAR:
 			gtk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->wrap_text_checkbutton), TRUE);
+				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
 			gtk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->split_checkbutton), FALSE);
-
-			g_settings_set_enum (dlg->editor,
-			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
-			                     GTK_WRAP_CHAR);
+				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
 			break;
 		default:
 			gtk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->wrap_text_checkbutton), FALSE);
-
-			last_split_mode = g_settings_get_enum (dlg->editor,
-			                                       GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
-			gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->split_checkbutton),
-			                              last_split_mode == GTK_WRAP_WORD);
-
+				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), FALSE);
+			gtk_toggle_button_set_active (
+				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), split_button_state);
 			gtk_toggle_button_set_inconsistent (
-				GTK_TOGGLE_BUTTON (dlg->split_checkbutton), TRUE);
+				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
+
 	}
 
 	gtk_toggle_button_set_active (
-		GTK_TOGGLE_BUTTON (dlg->right_margin_checkbutton),
+		GTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton),
 		display_right_margin);
-	gtk_toggle_button_set_active (
-		GTK_TOGGLE_BUTTON (dlg->display_grid_checkbutton),
-		background_pattern == GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID);
 
 	/* Set widgets sensitivity */
-	gtk_widget_set_sensitive (dlg->split_checkbutton,
+	gtk_widget_set_sensitive (dlg->priv->split_checkbutton,
 				  (wrap_mode != GTK_WRAP_NONE));
-
-	g_settings_bind (dlg->editor,
+	gtk_widget_set_sensitive (dlg->priv->right_margin_position_spinbutton,
+				  display_right_margin);
+	/* Connect signals */
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
-			 dlg->display_line_numbers_checkbutton,
+			 dlg->priv->display_line_numbers_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE,
-			 dlg->highlight_current_line_checkbutton,
+			 dlg->priv->highlight_current_line_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->uisettings,
-	                 GEDIT_SETTINGS_STATUSBAR_VISIBLE,
-	                 dlg->display_statusbar_checkbutton,
-	                 "active",
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
-			 GEDIT_SETTINGS_DISPLAY_OVERVIEW_MAP,
-			 dlg->display_overview_map_checkbutton,
-			 "active",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
-	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
-	                 dlg->right_margin_checkbutton,
-	                 "active",
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
-	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
-	                 dlg->right_margin_position_grid,
-	                 "sensitive",
-	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
-			 dlg->right_margin_position_spinbutton,
+			 dlg->priv->right_margin_position_spinbutton,
 			 "value",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
-			 dlg->auto_save_spinbutton,
+			 dlg->priv->auto_save_spinbutton,
 			 "value",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_signal_connect (dlg->wrap_text_checkbutton,
+	g_signal_connect (dlg->priv->wrap_text_checkbutton,
 			  "toggled",
 			  G_CALLBACK (wrap_mode_checkbutton_toggled),
 			  dlg);
-	g_signal_connect (dlg->split_checkbutton,
+	g_signal_connect (dlg->priv->split_checkbutton,
 			  "toggled",
 			  G_CALLBACK (wrap_mode_checkbutton_toggled),
 			  dlg);
-	g_signal_connect (dlg->display_grid_checkbutton,
+	g_signal_connect (dlg->priv->right_margin_checkbutton,
 			  "toggled",
-			  G_CALLBACK (grid_checkbutton_toggled),
+			  G_CALLBACK (right_margin_checkbutton_toggled),
 			  dlg);
+}
+
+static void
+on_use_default_font_changed (GSettings              *settings,
+			     const gchar            *key,
+			     GeditPreferencesDialog *dlg)
+{
+	gboolean value;
+
+	gedit_debug (DEBUG_PREFS);
+
+	value = g_settings_get_boolean (settings, key);
+
+	gtk_widget_set_sensitive (dlg->priv->font_grid, !value);
 }
 
 static void
 setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 {
-	GeditSettings *settings;
+	GObject *settings;
+	gboolean use_default_font;
 	gchar *system_font = NULL;
 	gchar *label;
 
 	gedit_debug (DEBUG_PREFS);
 
-	gtk_widget_set_tooltip_text (dlg->font_button,
+	gtk_widget_set_tooltip_text (dlg->priv->font_button,
 			 _("Click on this button to select the font to be used by the editor"));
+
+	gedit_utils_set_atk_relation (dlg->priv->font_button,
+				      dlg->priv->default_font_checkbutton,
+				      ATK_RELATION_CONTROLLED_BY);
+	gedit_utils_set_atk_relation (dlg->priv->default_font_checkbutton,
+				      dlg->priv->font_button,
+				      ATK_RELATION_CONTROLLER_FOR);
 
 	/* Get values */
 	settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
-	system_font = gedit_settings_get_system_font (settings);
+	system_font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
+	use_default_font = g_settings_get_boolean (dlg->priv->editor,
+						   GEDIT_SETTINGS_USE_DEFAULT_FONT);
 
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				system_font);
-	gtk_button_set_label (GTK_BUTTON (dlg->default_font_checkbutton),
+	gtk_button_set_label (GTK_BUTTON (dlg->priv->default_font_checkbutton),
 			      label);
 	g_free (system_font);
 	g_free (label);
 
-	/* Bind settings */
-	g_settings_bind (dlg->editor,
+	/* read current config and setup initial state */
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton),
+				      use_default_font);
+
+	/* Set initial widget sensitivity */
+	gtk_widget_set_sensitive (dlg->priv->font_grid, !use_default_font);
+
+	/* Connect signals */
+	g_signal_connect (dlg->priv->editor,
+			  "changed::use-default-font",
+			  G_CALLBACK (on_use_default_font_changed),
+			  dlg);
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_USE_DEFAULT_FONT,
-			 dlg->default_font_checkbutton,
+			 dlg->priv->default_font_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_settings_bind (dlg->editor,
-			 GEDIT_SETTINGS_USE_DEFAULT_FONT,
-			 dlg->font_grid,
-			 "sensitive",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET | G_SETTINGS_BIND_INVERT_BOOLEAN);
-	g_settings_bind (dlg->editor,
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_EDITOR_FONT,
-			 dlg->font_button,
+			 dlg->priv->font_button,
 			 "font-name",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 }
 
-static void
-set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
-                                               GtkSourceStyleScheme   *scheme)
+static gboolean
+is_gedit_user_style_scheme (const gchar *scheme_id)
 {
-	gboolean editable = FALSE;
+	GtkSourceStyleSchemeManager *manager;
+	GtkSourceStyleScheme *scheme;
+	gboolean res = FALSE;
 
+	manager = gtk_source_style_scheme_manager_get_default ();
+	scheme = gtk_source_style_scheme_manager_get_scheme (manager, scheme_id);
 	if (scheme != NULL)
 	{
 		const gchar *filename;
@@ -496,53 +484,142 @@ set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
 		filename = gtk_source_style_scheme_get_filename (scheme);
 		if (filename != NULL)
 		{
-			editable = g_str_has_prefix (filename, gedit_dirs_get_user_styles_dir ());
+			res = g_str_has_prefix (filename, gedit_dirs_get_user_styles_dir ());
 		}
 	}
 
-	gtk_widget_set_sensitive (dlg->uninstall_scheme_button,
-	                          editable);
+	return res;
 }
 
 static void
-style_scheme_changed (GtkSourceStyleSchemeChooser *chooser,
-                      GParamSpec                  *pspec,
-                      GeditPreferencesDialog      *dlg)
+set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
+					       const gchar            *scheme_id)
 {
-	GtkSourceStyleScheme *scheme;
-	const gchar *id;
+	gboolean editable;
 
-	scheme = gtk_source_style_scheme_chooser_get_style_scheme (chooser);
-	id = gtk_source_style_scheme_get_id (scheme);
+	editable = ((scheme_id != NULL) && is_gedit_user_style_scheme (scheme_id));
 
-	g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME, id);
-	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
+	gtk_widget_set_sensitive (dlg->priv->uninstall_scheme_button,
+				  editable);
 }
 
-static GtkSourceStyleScheme *
-get_default_color_scheme (GeditPreferencesDialog *dlg)
+static void
+style_scheme_changed (GtkWidget              *treeview,
+		      GeditPreferencesDialog *dlg)
+{
+	GtkTreePath *path;
+
+	gtk_tree_view_get_cursor (GTK_TREE_VIEW (dlg->priv->schemes_treeview), &path, NULL);
+	if (path != NULL)
+	{
+		GtkTreeIter iter;
+		gchar *id;
+
+		gtk_tree_model_get_iter (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
+					 &iter, path);
+		gtk_tree_path_free (path);
+		gtk_tree_model_get (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
+				    &iter, ID_COLUMN, &id, -1);
+
+		g_settings_set_string (dlg->priv->editor, GEDIT_SETTINGS_SCHEME, id);
+
+		set_buttons_sensisitivity_according_to_scheme (dlg, id);
+
+		g_free (id);
+	}
+}
+
+static const gchar *
+ensure_color_scheme_id (GeditPreferencesDialog *dlg,
+			const gchar            *id)
 {
 	GtkSourceStyleSchemeManager *manager;
 	GtkSourceStyleScheme *scheme = NULL;
-	gchar *pref_id;
 
 	manager = gtk_source_style_scheme_manager_get_default ();
+	if (id == NULL)
+	{
+		gchar *pref_id;
 
-	pref_id = g_settings_get_string (dlg->editor,
-	                                 GEDIT_SETTINGS_SCHEME);
+		pref_id = g_settings_get_string (dlg->priv->editor,
+						 GEDIT_SETTINGS_SCHEME);
 
-	scheme = gtk_source_style_scheme_manager_get_scheme (manager,
-	                                                     pref_id);
-	g_free (pref_id);
+		scheme = gtk_source_style_scheme_manager_get_scheme (manager,
+								     pref_id);
+		g_free (pref_id);
+	}
+	else
+	{
+		scheme = gtk_source_style_scheme_manager_get_scheme (manager,
+								     id);
+	}
 
 	if (scheme == NULL)
 	{
 		/* Fall-back to classic style scheme */
 		scheme = gtk_source_style_scheme_manager_get_scheme (manager,
-		                                                     "classic");
+								     "classic");
 	}
 
-	return scheme;
+	if (scheme == NULL)
+	{
+		/* Cannot determine default style scheme -> broken GtkSourceView installation */
+		return NULL;
+	}
+
+	return 	gtk_source_style_scheme_get_id (scheme);
+}
+
+static const gchar *
+populate_color_scheme_list (GeditPreferencesDialog *dlg, const gchar *def_id)
+{
+	GtkSourceStyleSchemeManager *manager;
+	const gchar * const *ids;
+	gint i;
+
+	gtk_list_store_clear (dlg->priv->schemes_treeview_model);
+
+	def_id = ensure_color_scheme_id (dlg, def_id);
+	if (def_id == NULL)
+	{
+		g_warning ("Cannot build the list of available color schemes.\n"
+		           "Please check your GtkSourceView installation.");
+		return NULL;
+	}
+
+	manager = gtk_source_style_scheme_manager_get_default ();
+	ids = gtk_source_style_scheme_manager_get_scheme_ids (manager);
+	for (i = 0; ids[i] != NULL; i++)
+	{
+		GtkSourceStyleScheme *scheme;
+		const gchar *name;
+		const gchar *description;
+		GtkTreeIter iter;
+
+		scheme = gtk_source_style_scheme_manager_get_scheme (manager, ids[i]);
+
+		name = gtk_source_style_scheme_get_name (scheme);
+		description = gtk_source_style_scheme_get_description (scheme);
+
+		gtk_list_store_append (dlg->priv->schemes_treeview_model, &iter);
+		gtk_list_store_set (dlg->priv->schemes_treeview_model,
+				    &iter,
+				    ID_COLUMN, ids[i],
+				    NAME_COLUMN, name,
+				    DESC_COLUMN, description,
+				    -1);
+
+		g_return_val_if_fail (def_id != NULL, NULL);
+		if (strcmp (ids[i], def_id) == 0)
+		{
+			GtkTreeSelection *selection;
+
+			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
+			gtk_tree_selection_select_iter (selection, &iter);
+		}
+	}
+
+	return def_id;
 }
 
 /*
@@ -598,7 +675,7 @@ file_copy (const gchar  *name,
 		g_set_error (error,
 			     G_FILE_ERROR,
 			     g_file_error_from_errno (save_errno),
-			     _("Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"),
+			     _("Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"),
 			     display_filename,
 			     g_strerror (save_errno));
 
@@ -614,10 +691,7 @@ file_copy (const gchar  *name,
 		return FALSE;
 
 	if (!g_file_set_contents (dest_name, contents, length, error))
-	{
-		g_free (contents);
 		return FALSE;
-	}
 
 	g_free (contents);
 
@@ -639,7 +713,7 @@ file_copy (const gchar  *name,
  *
  * Return value: the id of the installed scheme, %NULL otherwise.
  */
-static GtkSourceStyleScheme *
+static const gchar *
 install_style_scheme (const gchar *fname)
 {
 	GtkSourceStyleSchemeManager *manager;
@@ -648,7 +722,7 @@ install_style_scheme (const gchar *fname)
 	const gchar *styles_dir;
 	GError *error = NULL;
 	gboolean copied = FALSE;
-	const gchar * const *ids;
+	const gchar* const *ids;
 
 	g_return_val_if_fail (fname != NULL, NULL);
 
@@ -669,12 +743,9 @@ install_style_scheme (const gchar *fname)
 		if (!file_copy (fname, new_file_name, &error))
 		{
 			g_free (new_file_name);
-			g_free (dirname);
 
 			g_message ("Cannot install style scheme:\n%s",
 				   error->message);
-
-			g_error_free (error);
 
 			return NULL;
 		}
@@ -708,7 +779,7 @@ install_style_scheme (const gchar *fname)
 			/* The style scheme has been correctly installed */
 			g_free (new_file_name);
 
-			return scheme;
+			return gtk_source_style_scheme_get_id (scheme);
 		}
 		++ids;
 	}
@@ -725,7 +796,7 @@ install_style_scheme (const gchar *fname)
 /**
  * uninstall_style_scheme:
  * @manager: a #GtkSourceStyleSchemeManager
- * @scheme: a #GtkSourceStyleScheme
+ * @id: the id of the style scheme to be uninstalled
  *
  * Uninstall a user scheme.
  *
@@ -735,14 +806,19 @@ install_style_scheme (const gchar *fname)
  * Return value: %TRUE on success, %FALSE otherwise.
  */
 static gboolean
-uninstall_style_scheme (GtkSourceStyleScheme *scheme)
+uninstall_style_scheme (const gchar *id)
 {
 	GtkSourceStyleSchemeManager *manager;
+	GtkSourceStyleScheme *scheme;
 	const gchar *filename;
 
-	g_return_val_if_fail (GTK_SOURCE_IS_STYLE_SCHEME (scheme), FALSE);
+	g_return_val_if_fail (id != NULL, FALSE);
 
 	manager = gtk_source_style_scheme_manager_get_default ();
+
+	scheme = gtk_source_style_scheme_manager_get_scheme (manager, id);
+	if (scheme == NULL)
+		return FALSE;
 
 	filename = gtk_source_style_scheme_get_filename (scheme);
 	if (filename == NULL)
@@ -758,146 +834,273 @@ uninstall_style_scheme (GtkSourceStyleScheme *scheme)
 }
 
 static void
-add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
+add_scheme_chooser_response_cb (GtkDialog              *chooser,
 				gint                    res_id,
 				GeditPreferencesDialog *dlg)
 {
-	GFile *file;
-	gchar *filename;
-	GtkSourceStyleScheme *scheme;
+	gchar* filename;
+	const gchar *scheme_id;
 
 	if (res_id != GTK_RESPONSE_ACCEPT)
 	{
-		gedit_file_chooser_dialog_hide (chooser);
+		gtk_widget_hide (GTK_WIDGET (chooser));
 		return;
 	}
 
-	file = gedit_file_chooser_dialog_get_file (chooser);
-
-	if (file == NULL)
-	{
-		return;
-	}
-
-	filename = g_file_get_path (file);
-	g_object_unref (file);
-
+	filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
 	if (filename == NULL)
-	{
 		return;
-	}
 
-	gedit_file_chooser_dialog_hide (chooser);
+	gtk_widget_hide (GTK_WIDGET (chooser));
 
-	scheme = install_style_scheme (filename);
+	scheme_id = install_style_scheme (filename);
 	g_free (filename);
 
-	if (scheme == NULL)
+	if (scheme_id == NULL)
 	{
 		gedit_warning (GTK_WINDOW (dlg),
-		               _("The selected color scheme cannot be installed."));
+			       _("The selected color scheme cannot be installed."));
 
 		return;
 	}
 
-	g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME,
-	                       gtk_source_style_scheme_get_id (scheme));
+	g_settings_set_string (dlg->priv->editor, GEDIT_SETTINGS_SCHEME,
+			       scheme_id);
 
-	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
+	scheme_id = populate_color_scheme_list (dlg, scheme_id);
+
+	set_buttons_sensisitivity_according_to_scheme (dlg, scheme_id);
 }
 
 static void
 install_scheme_clicked (GtkButton              *button,
 			GeditPreferencesDialog *dlg)
 {
-	GeditFileChooserDialog *chooser;
+	GtkWidget      *chooser;
+	GtkFileFilter  *filter;
 
-	if (dlg->install_scheme_file_schooser != NULL)
+	if (dlg->priv->install_scheme_file_schooser != NULL)
 	{
-		gedit_file_chooser_dialog_show (dlg->install_scheme_file_schooser);
+		gtk_window_present (GTK_WINDOW (dlg->priv->install_scheme_file_schooser));
+		gtk_widget_grab_focus (dlg->priv->install_scheme_file_schooser);
 		return;
 	}
 
-	chooser = gedit_file_chooser_dialog_create (_("Add Scheme"),
-						    GTK_WINDOW (dlg),
-						    GEDIT_FILE_CHOOSER_OPEN,
-						    NULL,
-						    _("_Cancel"), GTK_RESPONSE_CANCEL,
-						    _("A_dd Scheme"), GTK_RESPONSE_ACCEPT);
+	chooser = gtk_file_chooser_dialog_new (_("Add Scheme"),
+					       GTK_WINDOW (dlg),
+					       GTK_FILE_CHOOSER_ACTION_OPEN,
+					       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					       NULL);
+
+	gedit_dialog_add_button (GTK_DIALOG (chooser),
+				 _("A_dd Scheme"),
+				 GTK_STOCK_ADD,
+				 GTK_RESPONSE_ACCEPT);
+
+	gtk_window_set_destroy_with_parent (GTK_WINDOW (chooser), TRUE);
 
 	/* Filters */
-	gedit_file_chooser_dialog_add_pattern_filter (chooser,
-	                                              _("Color Scheme Files"),
-	                                              "*.xml");
+	filter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (filter, _("Color Scheme Files"));
+	gtk_file_filter_add_pattern (filter, "*.xml");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
 
-	gedit_file_chooser_dialog_add_pattern_filter (chooser,
-	                                              _("All Files"),
-	                                              "*");
+	gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
+
+	filter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (filter, _("All Files"));
+	gtk_file_filter_add_pattern (filter, "*");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+
+	gtk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT);
 
 	g_signal_connect (chooser,
 			  "response",
 			  G_CALLBACK (add_scheme_chooser_response_cb),
 			  dlg);
 
-	dlg->install_scheme_file_schooser = chooser;
+	dlg->priv->install_scheme_file_schooser = chooser;
 
 	g_object_add_weak_pointer (G_OBJECT (chooser),
-				   (gpointer) &dlg->install_scheme_file_schooser);
+				   (gpointer) &dlg->priv->install_scheme_file_schooser);
 
-	gedit_file_chooser_dialog_show (chooser);
+	gtk_widget_show (chooser);
 }
 
 static void
 uninstall_scheme_clicked (GtkButton              *button,
 			  GeditPreferencesDialog *dlg)
 {
-	GtkSourceStyleScheme *scheme;
+	GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
 
-	scheme = gtk_source_style_scheme_chooser_get_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list));
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
+	model = GTK_TREE_MODEL (dlg->priv->schemes_treeview_model);
 
-	if (!uninstall_style_scheme (scheme))
+	if (gtk_tree_selection_get_selected (selection,
+					     &model,
+					     &iter))
 	{
-		gedit_warning (GTK_WINDOW (dlg),
-		               _("Could not remove color scheme “%s”."),
-		               gtk_source_style_scheme_get_name (scheme));
+		gchar *id;
+		gchar *name;
+
+		gtk_tree_model_get (model, &iter,
+				    ID_COLUMN, &id,
+				    NAME_COLUMN, &name,
+				    -1);
+
+		if (!uninstall_style_scheme (id))
+		{
+			gedit_warning (GTK_WINDOW (dlg),
+				       _("Could not remove color scheme \"%s\"."),
+				       name);
+		}
+		else
+		{
+			const gchar *real_new_id;
+			gchar *new_id = NULL;
+			GtkTreePath *path;
+			GtkTreeIter new_iter;
+			gboolean new_iter_set = FALSE;
+
+			/* If the removed style scheme is the last of the list,
+			 * set as new default style scheme the previous one,
+			 * otherwise set the next one.
+			 * To make this possible, we need to get the id of the
+			 * new default style scheme before re-populating the list.
+			 * Fall back to "classic" if it is not possible to get
+			 * the id
+			 */
+			path = gtk_tree_model_get_path (model, &iter);
+
+			/* Try to move to the next path */
+			gtk_tree_path_next (path);
+			if (!gtk_tree_model_get_iter (model, &new_iter, path))
+			{
+				/* It seems the removed style scheme was the
+				 * last of the list. Try to move to the
+				 * previous one */
+				gtk_tree_path_free (path);
+
+				path = gtk_tree_model_get_path (model, &iter);
+
+				gtk_tree_path_prev (path);
+				if (gtk_tree_model_get_iter (model, &new_iter, path))
+					new_iter_set = TRUE;
+			}
+			else
+			{
+				new_iter_set = TRUE;
+			}
+
+			gtk_tree_path_free (path);
+
+			if (new_iter_set)
+				gtk_tree_model_get (model, &new_iter,
+						    ID_COLUMN, &new_id,
+						    -1);
+
+			real_new_id = populate_color_scheme_list (dlg, new_id);
+			g_free (new_id);
+
+			set_buttons_sensisitivity_according_to_scheme (dlg, real_new_id);
+
+			if (real_new_id != NULL)
+			{
+				g_settings_set_string (dlg->priv->editor,
+						       GEDIT_SETTINGS_SCHEME,
+						       real_new_id);
+			}
+		}
+
+		g_free (id);
+		g_free (name);
 	}
+}
+
+static void
+scheme_description_cell_data_func (GtkTreeViewColumn *column,
+				   GtkCellRenderer   *renderer,
+				   GtkTreeModel      *model,
+				   GtkTreeIter       *iter,
+				   gpointer           data)
+{
+	gchar *name;
+	gchar *desc;
+	gchar *text;
+
+	gtk_tree_model_get (model, iter,
+			    NAME_COLUMN, &name,
+			    DESC_COLUMN, &desc,
+			    -1);
+
+	if (desc != NULL)
+	{
+		text = g_markup_printf_escaped ("<b>%s</b> - %s",
+						name,
+						desc);
+	}
+	else
+	{
+		text = g_markup_printf_escaped ("<b>%s</b>",
+						name);
+	}
+
+	g_free (name);
+	g_free (desc);
+
+	g_object_set (G_OBJECT (renderer),
+		      "markup",
+		      text,
+		      NULL);
+
+	g_free (text);
 }
 
 static void
 setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 {
+	GeditPreferencesDialogPrivate *priv = dlg->priv;
+	GtkTreeSelection *selection;
 	GtkStyleContext *context;
-	GtkSourceStyleScheme *scheme;
+	const gchar *def_id;
 
 	gedit_debug (DEBUG_PREFS);
 
-	scheme = get_default_color_scheme (dlg);
+	gtk_tree_view_column_set_cell_data_func (priv->schemes_column,
+						 priv->schemes_renderer,
+						 scheme_description_cell_data_func,
+						 dlg,
+						 NULL);
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
+	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+
+	def_id = populate_color_scheme_list (dlg, NULL);
 
 	/* junction between the scrolled window and the toolbar */
-	context = gtk_widget_get_style_context (dlg->schemes_scrolled_window);
+	context = gtk_widget_get_style_context (dlg->priv->schemes_scrolled_window);
 	gtk_style_context_set_junction_sides (context, GTK_JUNCTION_BOTTOM);
-	context = gtk_widget_get_style_context (dlg->schemes_toolbar);
+	context = gtk_widget_get_style_context (dlg->priv->schemes_toolbar);
 	gtk_style_context_set_junction_sides (context, GTK_JUNCTION_TOP);
 
 	/* Connect signals */
-	g_signal_connect (dlg->schemes_list,
-	                  "notify::style-scheme",
-	                  G_CALLBACK (style_scheme_changed),
-	                  dlg);
-	g_signal_connect (dlg->install_scheme_button,
+	g_signal_connect (dlg->priv->schemes_treeview,
+			  "cursor-changed",
+			  G_CALLBACK (style_scheme_changed),
+			  dlg);
+	g_signal_connect (dlg->priv->install_scheme_button,
 			  "clicked",
 			  G_CALLBACK (install_scheme_clicked),
 			  dlg);
-	g_signal_connect (dlg->uninstall_scheme_button,
+	g_signal_connect (dlg->priv->uninstall_scheme_button,
 			  "clicked",
 			  G_CALLBACK (uninstall_scheme_clicked),
 			  dlg);
 
-	gtk_source_style_scheme_chooser_set_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list),
-	                                                  scheme);
-
 	/* Set initial widget sensitivity */
-	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
+	set_buttons_sensisitivity_according_to_scheme (dlg, def_id);
 }
 
 static void
@@ -910,18 +1113,103 @@ setup_font_colors_page (GeditPreferencesDialog *dlg)
 static void
 setup_plugins_page (GeditPreferencesDialog *dlg)
 {
-	gtk_widget_show_all (dlg->plugin_manager);
+	GtkWidget *page_content;
+
+	gedit_debug (DEBUG_PREFS);
+
+	page_content = peas_gtk_plugin_manager_new (NULL);
+	gtk_widget_set_vexpand (GTK_WIDGET (page_content), TRUE);
+	gtk_widget_set_hexpand (GTK_WIDGET (page_content), TRUE);
+	g_return_if_fail (page_content != NULL);
+
+	gtk_container_add (GTK_CONTAINER (dlg->priv->plugin_manager_place_holder),
+	                   page_content);
+
+	gtk_widget_show_all (page_content);
 }
 
 static void
 gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 {
+	GtkBuilder *builder;
+	gchar *root_objects[] = {
+		"notebook",
+		"adjustment1",
+		"adjustment2",
+		"adjustment3",
+		"schemes_treeview_model",
+		NULL
+	};
+
 	gedit_debug (DEBUG_PREFS);
 
-	dlg->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
-	dlg->uisettings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	dlg->priv = GEDIT_PREFERENCES_DIALOG_GET_PRIVATE (dlg);
 
-	gtk_widget_init_template (GTK_WIDGET (dlg));
+	dlg->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
+
+	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
+				GTK_STOCK_CLOSE,
+				GTK_RESPONSE_CLOSE,
+				GTK_STOCK_HELP,
+				GTK_RESPONSE_HELP,
+				NULL);
+
+	gtk_window_set_title (GTK_WINDOW (dlg), _("gedit Preferences"));
+	gtk_window_set_resizable (GTK_WINDOW (dlg), TRUE);
+	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+
+	/* HIG defaults */
+	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))), 2); /* 2 * 5 + 2 = 12 */
+	gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_action_area (GTK_DIALOG (dlg))), 5);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dlg))), 6);
+
+	g_signal_connect (dlg,
+			  "response",
+			  G_CALLBACK (dialog_response_handler),
+			  NULL);
+
+	builder = gtk_builder_new ();
+	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/ui/gedit-preferences-dialog.ui",
+	                                       root_objects, NULL);
+	dlg->priv->notebook = GTK_WIDGET (gtk_builder_get_object (builder, "notebook"));
+	g_object_ref (dlg->priv->notebook);
+	dlg->priv->display_line_numbers_checkbutton =
+		GTK_WIDGET (gtk_builder_get_object (builder, "display_line_numbers_checkbutton"));
+	dlg->priv->right_margin_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "right_margin_checkbutton"));
+	dlg->priv->right_margin_position_spinbutton =
+		GTK_WIDGET (gtk_builder_get_object (builder, "right_margin_position_spinbutton"));
+	dlg->priv->highlight_current_line_checkbutton =
+		GTK_WIDGET (gtk_builder_get_object (builder, "highlight_current_line_checkbutton"));
+	dlg->priv->bracket_matching_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "bracket_matching_checkbutton"));
+	dlg->priv->wrap_text_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_text_checkbutton"));
+	dlg->priv->split_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "split_checkbutton"));
+	dlg->priv->tabs_width_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "tabs_width_spinbutton"));
+	dlg->priv->tabs_width_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "tabs_width_hbox"));
+	dlg->priv->insert_spaces_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "insert_spaces_checkbutton"));
+	dlg->priv->auto_indent_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_indent_checkbutton"));
+	dlg->priv->autosave_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "autosave_hbox"));
+	dlg->priv->backup_copy_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "backup_copy_checkbutton"));
+	dlg->priv->auto_save_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_save_checkbutton"));
+	dlg->priv->auto_save_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_save_spinbutton"));
+	dlg->priv->default_font_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "default_font_checkbutton"));
+	dlg->priv->font_button = GTK_WIDGET (gtk_builder_get_object (builder, "font_button"));
+	dlg->priv->font_grid = GTK_WIDGET (gtk_builder_get_object (builder, "font_grid"));
+	dlg->priv->schemes_treeview_model = GTK_LIST_STORE (gtk_builder_get_object (builder, "schemes_treeview_model"));
+	dlg->priv->schemes_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "schemes_treeview"));
+	dlg->priv->schemes_column = GTK_TREE_VIEW_COLUMN (gtk_builder_get_object (builder, "schemes_column"));
+	dlg->priv->schemes_renderer = GTK_CELL_RENDERER (gtk_builder_get_object (builder, "schemes_renderer"));
+	dlg->priv->schemes_scrolled_window = GTK_WIDGET (gtk_builder_get_object (builder, "schemes-scrolled-window"));
+	dlg->priv->install_scheme_button = GTK_WIDGET (gtk_builder_get_object (builder, "install_scheme_button"));
+	dlg->priv->uninstall_scheme_button = GTK_WIDGET (gtk_builder_get_object (builder, "uninstall_scheme_button"));
+	dlg->priv->schemes_toolbar = GTK_WIDGET (gtk_builder_get_object (builder, "schemes-toolbar"));
+	dlg->priv->plugin_manager_place_holder = GTK_WIDGET (gtk_builder_get_object (builder, "plugin_manager_place_holder"));
+	g_object_unref (builder);
+
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+			    dlg->priv->notebook, TRUE, TRUE, 0);
+	g_object_unref (dlg->priv->notebook);
+	gtk_container_set_border_width (GTK_CONTAINER (dlg->priv->notebook), 5);
 
 	setup_editor_page (dlg);
 	setup_view_page (dlg);
@@ -934,11 +1222,11 @@ gedit_show_preferences_dialog (GeditWindow *parent)
 {
 	gedit_debug (DEBUG_PREFS);
 
+	g_return_if_fail (GEDIT_IS_WINDOW (parent));
+
 	if (preferences_dialog == NULL)
 	{
-		preferences_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PREFERENCES_DIALOG,
-							       "application", g_application_get_default (),
-							       NULL));
+		preferences_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PREFERENCES_DIALOG, NULL));
 		g_signal_connect (preferences_dialog,
 				  "destroy",
 				  G_CALLBACK (gtk_widget_destroyed),

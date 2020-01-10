@@ -1,29 +1,20 @@
-externaltools_gschema = \
-	plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml
+# External Tools plugin
+SUBDIRS = tools data scripts
+plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
 
-externaltools_plugin_in = plugins/externaltools/externaltools.plugin.desktop.in
+plugin_in_files = externaltools.plugin.desktop.in
+%.plugin: %.plugin.desktop.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-if !OS_WIN32
-if ENABLE_PYTHON
+plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
 
-include plugins/externaltools/tools/Makefile.am
-include plugins/externaltools/data/Makefile.am
+gsettings_SCHEMAS = org.gnome.gedit.plugins.externaltools.gschema.xml
 
-EXTRA_DIST += plugins/externaltools/scripts/gedit-tool-merge.pl
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
-plugin_in_files += $(externaltools_plugin_in)
-plugin_gsettings_SCHEMAS += $(externaltools_gschema)
+EXTRA_DIST = $(plugin_in_files) org.gnome.gedit.plugins.externaltools.gschema.xml.in.in
 
-else
+CLEANFILES = $(plugin_DATA) $(gsettings_SCHEMAS)
+DISTCLEANFILES = $(plugin_DATA) $(gsettings_SCHEMAS)
 
-dist_plugin_in_files += $(externaltools_plugin_in)
-dist_plugin_gsettings_SCHEMAS += $(externaltools_schema)
-
-endif
-
-else
-
-dist_plugin_in_files += $(externaltools_plugin_in)
-dist_plugin_gsettings_SCHEMAS += $(externaltools_schema)
-
-endif
+-include $(top_srcdir)/git.mk

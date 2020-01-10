@@ -16,18 +16,28 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#include "gedit-metadata-manager.h"
+/*
+ * Modified by the gedit Team, 2003-2007. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ */
+
+#include <time.h>
+#include <stdlib.h>
 #include <libxml/xmlreader.h>
+#include "gedit-metadata-manager.h"
 #include "gedit-debug.h"
 
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
 */
 
-#define MAX_ITEMS 50
+#define MAX_ITEMS	50
 
 typedef struct _GeditMetadataManager GeditMetadataManager;
 
@@ -35,16 +45,15 @@ typedef struct _Item Item;
 
 struct _Item
 {
-	/* Time of last access in seconds since January 1, 1970 UTC. */
-	gint64	 	 atime;
+	time_t	 	 atime; /* time of last access */
 
 	GHashTable	*values;
 };
 
 struct _GeditMetadataManager
 {
-	/* It is true if the file has been read. */
-	gboolean	 values_loaded;
+	gboolean	 values_loaded; /* It is true if the file
+					   has been read */
 
 	guint 		 timeout_id;
 
@@ -54,6 +63,7 @@ struct _GeditMetadataManager
 };
 
 static gboolean gedit_metadata_manager_save (gpointer data);
+
 
 static GeditMetadataManager *gedit_metadata_manager = NULL;
 
@@ -92,7 +102,7 @@ gedit_metadata_manager_arm_timeout (void)
 
 /**
  * gedit_metadata_manager_init:
- * @metadata_filename: the filename where the metadata is stored.
+ * @metadata_filename: the filename where the metadata is.
  *
  * This function initializes the metadata manager.
  * See also gedit_metadata_manager_shutdown().
@@ -103,9 +113,7 @@ gedit_metadata_manager_init (const gchar *metadata_filename)
 	gedit_debug (DEBUG_METADATA);
 
 	if (gedit_metadata_manager != NULL)
-	{
 		return;
-	}
 
 	gedit_metadata_manager = g_new0 (GeditMetadataManager, 1);
 
@@ -118,6 +126,8 @@ gedit_metadata_manager_init (const gchar *metadata_filename)
 				       item_free);
 
 	gedit_metadata_manager->metadata_filename = g_strdup (metadata_filename);
+
+	return;
 }
 
 /**
@@ -178,7 +188,7 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 
 	item = g_new0 (Item, 1);
 
-	item->atime = g_ascii_strtoll ((char *)atime, NULL, 0);
+	item->atime = g_ascii_strtoull ((char *)atime, NULL, 0);
 
 	item->values = g_hash_table_new_full (g_str_hash,
 					      g_str_equal,
@@ -221,7 +231,6 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 	xmlFree (atime);
 }
 
-/* Returns FALSE in case of error. */
 static gboolean
 load_values (void)
 {
@@ -237,15 +246,11 @@ load_values (void)
 
 	xmlKeepBlanksDefault (0);
 
-	if (gedit_metadata_manager->metadata_filename == NULL)
+	/* FIXME: file locking - Paolo */
+	if ((gedit_metadata_manager->metadata_filename == NULL) ||
+	    (!g_file_test (gedit_metadata_manager->metadata_filename, G_FILE_TEST_EXISTS)))
 	{
 		return FALSE;
-	}
-
-	/* TODO: avoid races */
-	if (!g_file_test (gedit_metadata_manager->metadata_filename, G_FILE_TEST_EXISTS))
-	{
-		return TRUE;
 	}
 
 	doc = xmlParseFile (gedit_metadata_manager->metadata_filename);
@@ -262,7 +267,7 @@ load_values (void)
 		           g_path_get_basename (gedit_metadata_manager->metadata_filename));
 		xmlFreeDoc (doc);
 
-		return TRUE;
+		return FALSE;
 	}
 
 	if (xmlStrcmp (cur->name, (const xmlChar *) "metadata"))
@@ -332,7 +337,7 @@ gedit_metadata_manager_get (GFile       *location,
 	if (item == NULL)
 		return NULL;
 
-	item->atime = g_get_real_time () / 1000;
+	item->atime = time (NULL);
 
 	if (item->values == NULL)
 		return NULL;
@@ -370,15 +375,12 @@ gedit_metadata_manager_set (GFile       *location,
 
 	if (!gedit_metadata_manager->values_loaded)
 	{
-		gboolean ok;
+		gboolean res;
 
-		ok = load_values ();
+		res = load_values ();
 
-		if (!ok)
-		{
-			g_free (uri);
+		if (!res)
 			return;
-		}
 	}
 
 	item = (Item *)g_hash_table_lookup (gedit_metadata_manager->items,
@@ -413,7 +415,7 @@ gedit_metadata_manager_set (GFile       *location,
 				     key);
 	}
 
-	item->atime = g_get_real_time () / 1000;
+	item->atime = time (NULL);
 
 	g_free (uri);
 
@@ -475,7 +477,7 @@ save_item (const gchar *key, const gpointer *data, xmlNodePtr parent)
 	gedit_debug_message (DEBUG_METADATA, "uri: %s", key);
 #endif
 
-	atime = g_strdup_printf ("%" G_GINT64_FORMAT, item->atime);
+	atime = g_strdup_printf ("%ld", item->atime);
 	xmlSetProp (xml_node, (const xmlChar *)"atime", (const xmlChar *)atime);
 
 #ifdef GEDIT_METADATA_VERBOSE_DEBUG

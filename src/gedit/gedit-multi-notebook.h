@@ -21,8 +21,8 @@
  */
 
 
-#ifndef GEDIT_MULTI_NOTEBOOK_H
-#define GEDIT_MULTI_NOTEBOOK_H
+#ifndef __GEDIT_MULTI_NOTEBOOK_H__
+#define __GEDIT_MULTI_NOTEBOOK_H__
 
 #include <gtk/gtk.h>
 
@@ -45,14 +45,14 @@ typedef struct _GeditMultiNotebookPrivate	GeditMultiNotebookPrivate;
 
 struct _GeditMultiNotebook
 {
-	GtkGrid parent;
+	GtkBox parent;
 
 	GeditMultiNotebookPrivate *priv;
 };
 
 struct _GeditMultiNotebookClass
 {
-	GtkGridClass parent_class;
+	GtkBoxClass parent_class;
 
 	/* Signals */
 	void	(* notebook_added)		(GeditMultiNotebook *mnb,
@@ -95,9 +95,6 @@ gint			 gedit_multi_notebook_get_n_notebooks		(GeditMultiNotebook *mnb);
 GeditNotebook		*gedit_multi_notebook_get_nth_notebook		(GeditMultiNotebook *mnb,
 									 gint                notebook_num);
 
-GeditNotebook		*gedit_multi_notebook_get_notebook_for_tab	(GeditMultiNotebook *mnb,
-									 GeditTab           *tab);
-
 gint			 gedit_multi_notebook_get_notebook_num		(GeditMultiNotebook *mnb,
 									 GeditNotebook      *notebook);
 
@@ -122,9 +119,6 @@ void			 gedit_multi_notebook_close_all_tabs		(GeditMultiNotebook *mnb);
 
 void			 gedit_multi_notebook_add_new_notebook		(GeditMultiNotebook *mnb);
 
-void			 gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
-									 GeditTab           *tab);
-
 void			 gedit_multi_notebook_remove_active_notebook	(GeditMultiNotebook *mnb);
 
 void			 gedit_multi_notebook_previous_notebook		(GeditMultiNotebook *mnb);
@@ -138,11 +132,6 @@ void			 gedit_multi_notebook_foreach_tab		(GeditMultiNotebook *mnb,
 									 GtkCallback         callback,
 									 gpointer            callback_data);
 
-void			_gedit_multi_notebook_set_show_tabs		(GeditMultiNotebook *mnb,
-									 gboolean            show);
-
 G_END_DECLS
 
-#endif /* GEDIT_MULTI_NOTEBOOK_H */
-
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_MULTI_NOTEBOOK_H__ */

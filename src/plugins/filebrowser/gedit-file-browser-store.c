@@ -15,7 +15,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -28,9 +29,14 @@
 #include <gedit/gedit-utils.h>
 
 #include "gedit-file-browser-store.h"
+#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 #include "gedit-file-browser-error.h"
 #include "gedit-file-browser-utils.h"
+
+#define GEDIT_FILE_BROWSER_STORE_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), \
+						     GEDIT_TYPE_FILE_BROWSER_STORE, \
+						     GeditFileBrowserStorePrivate))
 
 #define NODE_IS_DIR(node)		(FILE_IS_DIR((node)->flags))
 #define NODE_IS_HIDDEN(node)		(FILE_IS_HIDDEN((node)->flags))
@@ -86,7 +92,6 @@ struct _FileBrowserNode
 	GFile *file;
 	guint flags;
 	gchar *name;
-	gchar *markup;
 
 	GdkPixbuf *icon;
 	GdkPixbuf *emblem;
@@ -100,6 +105,7 @@ struct _FileBrowserNodeDir
 {
 	FileBrowserNode node;
 	GSList *children;
+	GHashTable *hidden_file_hash;
 
 	GCancellable *cancellable;
 	GFileMonitor *monitor;
@@ -115,9 +121,6 @@ struct _GeditFileBrowserStorePrivate
 	GeditFileBrowserStoreFilterMode filter_mode;
 	GeditFileBrowserStoreFilterFunc filter_func;
 	gpointer filter_user_data;
-
-	gchar **binary_patterns;
-	GPtrArray *binary_pattern_specs;
 
 	SortFunc sort_func;
 
@@ -193,12 +196,9 @@ static void model_check_dummy                               (GeditFileBrowserSto
 static void next_files_async 				    (GFileEnumerator        *enumerator,
 							     AsyncNode              *async);
 
-static void delete_files                                    (AsyncData              *data);
-
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserStore, gedit_file_browser_store,
 				G_TYPE_OBJECT,
 				0,
-				G_ADD_PRIVATE_DYNAMIC (GeditFileBrowserStore)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_MODEL,
 							       gedit_file_browser_store_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_DRAG_SOURCE,
@@ -210,8 +210,7 @@ enum {
 
 	PROP_ROOT,
 	PROP_VIRTUAL_ROOT,
-	PROP_FILTER_MODE,
-	PROP_BINARY_PATTERNS
+	PROP_FILTER_MODE
 };
 
 /* Signals */
@@ -225,7 +224,6 @@ enum
 	BEGIN_REFRESH,
 	END_REFRESH,
 	UNLOAD,
-	BEFORE_ROW_DELETED,
 	NUM_SIGNALS
 };
 
@@ -250,12 +248,6 @@ gedit_file_browser_store_finalize (GObject *object)
 
 	/* Free all the nodes */
 	file_browser_node_free (obj, obj->priv->root);
-
-	if (obj->priv->binary_patterns != NULL)
-	{
-		g_strfreev (obj->priv->binary_patterns);
-		g_ptr_array_unref (obj->priv->binary_pattern_specs);
-	}
 
 	/* Cancel any asynchronous operations */
 	for (item = obj->priv->async_handles; item; item = item->next)
@@ -305,9 +297,6 @@ gedit_file_browser_store_get_property (GObject    *object,
 		case PROP_FILTER_MODE:
 			g_value_set_flags (value, obj->priv->filter_mode);
 			break;
-		case PROP_BINARY_PATTERNS:
-			g_value_set_boxed (value, obj->priv->binary_patterns);
-			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -324,16 +313,9 @@ gedit_file_browser_store_set_property (GObject      *object,
 
 	switch (prop_id)
 	{
-		case PROP_ROOT:
-			gedit_file_browser_store_set_root (obj, G_FILE (g_value_get_object (value)));
-			break;
 		case PROP_FILTER_MODE:
 			gedit_file_browser_store_set_filter_mode (obj,
 			                                          g_value_get_flags (value));
-			break;
-		case PROP_BINARY_PATTERNS:
-			gedit_file_browser_store_set_binary_patterns (obj,
-			                                              g_value_get_boxed (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -356,7 +338,7 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 					 		      "Root",
 					 		      "The root location",
 					 		      G_TYPE_FILE,
-					 		      G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+					 		      G_PARAM_READABLE));
 
 	g_object_class_install_property (object_class, PROP_VIRTUAL_ROOT,
 					 g_param_spec_object ("virtual-root",
@@ -367,81 +349,80 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 
 	g_object_class_install_property (object_class, PROP_FILTER_MODE,
 					 g_param_spec_flags ("filter-mode",
-					 		     "Filter Mode",
-					 		     "The filter mode",
-					 		     GEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
-					 		     gedit_file_browser_store_filter_mode_get_default (),
-					 		     G_PARAM_READWRITE));
-
-	g_object_class_install_property (object_class, PROP_BINARY_PATTERNS,
-					 g_param_spec_boxed ("binary-patterns",
-					 		     "Binary Patterns",
-					 		     "The binary patterns",
-					 		     G_TYPE_STRV,
-					 		     G_PARAM_READWRITE));
+					 		      "Filter Mode",
+					 		      "The filter mode",
+					 		      GEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
+					 		      gedit_file_browser_store_filter_mode_get_default (),
+					 		      G_PARAM_READWRITE));
 
 	model_signals[BEGIN_LOADING] =
 	    g_signal_new ("begin-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, begin_loading),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+					   begin_loading), NULL, NULL,
+			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
+			  GTK_TYPE_TREE_ITER);
 	model_signals[END_LOADING] =
 	    g_signal_new ("end-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, end_loading),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+					   end_loading), NULL, NULL,
+			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
+			  GTK_TYPE_TREE_ITER);
 	model_signals[ERROR] =
 	    g_signal_new ("error", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, error),
-			  NULL, NULL, NULL,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+					   error), NULL, NULL,
+			  gedit_file_browser_marshal_VOID__UINT_STRING,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	model_signals[NO_TRASH] =
 	    g_signal_new ("no-trash", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, no_trash),
-			  g_signal_accumulator_true_handled, NULL, NULL,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+					   no_trash), g_signal_accumulator_true_handled, NULL,
+			  gedit_file_browser_marshal_BOOL__POINTER,
 			  G_TYPE_BOOLEAN, 1, G_TYPE_POINTER);
 	model_signals[RENAME] =
 	    g_signal_new ("rename",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, rename),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 2, G_TYPE_FILE, G_TYPE_FILE);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+					   rename), NULL, NULL,
+			  gedit_file_browser_marshal_VOID__OBJECT_OBJECT,
+			  G_TYPE_NONE, 2,
+			  G_TYPE_FILE,
+			  G_TYPE_FILE);
 	model_signals[BEGIN_REFRESH] =
 	    g_signal_new ("begin-refresh",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, begin_refresh),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 0);
+	    		  G_OBJECT_CLASS_TYPE (object_class),
+	    		  G_SIGNAL_RUN_LAST,
+	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+	    		  		   begin_refresh), NULL, NULL,
+	    		  g_cclosure_marshal_VOID__VOID,
+	    		  G_TYPE_NONE, 0);
 	model_signals[END_REFRESH] =
 	    g_signal_new ("end-refresh",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, end_refresh),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 0);
+	    		  G_OBJECT_CLASS_TYPE (object_class),
+	    		  G_SIGNAL_RUN_LAST,
+	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+	    		  		   end_refresh), NULL, NULL,
+	    		  g_cclosure_marshal_VOID__VOID,
+	    		  G_TYPE_NONE, 0);
 	model_signals[UNLOAD] =
 	    g_signal_new ("unload",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, unload),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 1, G_TYPE_FILE);
-	model_signals[BEFORE_ROW_DELETED] =
-	    g_signal_new ("before-row-deleted",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, before_row_deleted),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE);
+	    		  G_OBJECT_CLASS_TYPE (object_class),
+	    		  G_SIGNAL_RUN_LAST,
+	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+	    		  		   unload), NULL, NULL,
+	    		  g_cclosure_marshal_VOID__OBJECT,
+	    		  G_TYPE_NONE, 1,
+	    		  G_TYPE_FILE);
+
+	g_type_class_add_private (object_class,
+				  sizeof (GeditFileBrowserStorePrivate));
 }
 
 static void
@@ -478,13 +459,12 @@ gedit_file_browser_store_drag_source_init (GtkTreeDragSourceIface *iface)
 static void
 gedit_file_browser_store_init (GeditFileBrowserStore *obj)
 {
-	obj->priv = gedit_file_browser_store_get_instance_private (obj);
+	obj->priv = GEDIT_FILE_BROWSER_STORE_GET_PRIVATE (obj);
 
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION] = G_TYPE_FILE;
-	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP] = G_TYPE_STRING;
+	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_NAME] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS] = G_TYPE_UINT;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_ICON] = GDK_TYPE_PIXBUF;
-	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_NAME] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] = GDK_TYPE_PIXBUF;
 
 	/* Default filter mode is hiding the hidden files */
@@ -600,12 +580,15 @@ gedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
 
 		for (item = FILE_BROWSER_NODE_DIR (node)->children; item; item = item->next)
 		{
-			FileBrowserNode *child = (FileBrowserNode *) (item->data);
+			FileBrowserNode *child;
+
+			child = (FileBrowserNode *) (item->data);
 
 			if (model_node_inserted (model, child))
 			{
 				if (num == indices[i])
 				{
+					node = child;
 					break;
 				}
 
@@ -614,9 +597,7 @@ gedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
 		}
 
 		if (item == NULL)
-		{
 			return FALSE;
-		}
 
 		node = (FileBrowserNode *) (item->data);
 	}
@@ -714,17 +695,14 @@ gedit_file_browser_store_get_value (GtkTreeModel *tree_model,
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION:
 			set_gvalue_from_node (value, node);
 			break;
-		case GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP:
-			g_value_set_string (value, node->markup);
+		case GEDIT_FILE_BROWSER_STORE_COLUMN_NAME:
+			g_value_set_string (value, node->name);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS:
 			g_value_set_uint (value, node->flags);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_ICON:
 			g_value_set_object (value, node->icon);
-			break;
-		case GEDIT_FILE_BROWSER_STORE_COLUMN_NAME:
-			g_value_set_string (value, node->name);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM:
 			g_value_set_object (value, node->emblem);
@@ -1048,45 +1026,13 @@ model_node_update_visibility (GeditFileBrowserStore *model,
 	    NODE_IS_HIDDEN (node))
 	{
 		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
-		return;
 	}
-
-	if (FILTER_BINARY (model->priv->filter_mode) && !NODE_IS_DIR (node))
+	else if (FILTER_BINARY (model->priv->filter_mode) &&
+		 (!NODE_IS_TEXT (node) && !NODE_IS_DIR (node)))
 	{
-		if (!NODE_IS_TEXT (node))
-		{
-			node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
-			return;
-		}
-		else if (model->priv->binary_patterns != NULL)
-		{
-			gint i;
-			gssize name_length;
-			gchar *name_reversed;
-
-			name_length = strlen (node->name);
-			name_reversed = g_utf8_strreverse (node->name, name_length);
-
-			for (i = 0; i < model->priv->binary_pattern_specs->len; ++i)
-			{
-				GPatternSpec *spec;
-
-				spec = g_ptr_array_index (model->priv->binary_pattern_specs, i);
-
-				if (g_pattern_match (spec, name_length,
-				                     node->name, name_reversed))
-				{
-					node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
-					g_free (name_reversed);
-					return;
-				}
-			}
-
-			g_free (name_reversed);
-		}
+		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
 	}
-
-	if (model->priv->filter_func)
+	else if (model->priv->filter_func)
 	{
 		iter.user_data = node;
 
@@ -1256,33 +1202,13 @@ row_inserted (GeditFileBrowserStore  *model,
 
 static void
 row_deleted (GeditFileBrowserStore *model,
-             FileBrowserNode       *node,
-             const GtkTreePath     *path)
+	     const GtkTreePath     *path)
 {
-	gboolean hidden;
-	GtkTreePath *copy;
+	GtkTreePath *copy = gtk_tree_path_copy (path);
 
-	/* We should always be called when the row is still inserted */
-	g_return_if_fail (node->inserted == TRUE);
-
-	hidden = FILE_IS_HIDDEN (node->flags);
-	node->flags &= ~GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
-
-	/* Create temporary copies of the path as the signals may alter it */
-
-	copy = gtk_tree_path_copy (path);
-	g_signal_emit (model, model_signals[BEFORE_ROW_DELETED], 0, copy);
-	gtk_tree_path_free (copy);
-
-	node->inserted = FALSE;
-
-	if (hidden)
-	{
-		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
-	}
-
-	copy = gtk_tree_path_copy (path);
-	gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), copy);
+	/* Delete a copy of the actual path here because the row-deleted
+	   signal may alter the path */
+	gtk_tree_model_row_deleted (GTK_TREE_MODEL(model), copy);
 	gtk_tree_path_free (copy);
 }
 
@@ -1344,7 +1270,8 @@ model_refilter_node (GeditFileBrowserStore  *model,
 		{
 			if (old_visible)
 			{
-				row_deleted (model, node, *path);
+				node->inserted = FALSE;
+				row_deleted (model, *path);
 			}
 			else
 			{
@@ -1375,17 +1302,11 @@ static void
 file_browser_node_set_name (FileBrowserNode *node)
 {
 	g_free (node->name);
-	g_free (node->markup);
 
 	if (node->file)
 		node->name = gedit_file_browser_utils_file_basename (node->file);
 	else
 		node->name = NULL;
-
-	if (node->name)
-		node->markup = g_markup_escape_text (node->name, -1);
-	else
-		node->markup = NULL;
 }
 
 static void
@@ -1477,6 +1398,9 @@ file_browser_node_free (GeditFileBrowserStore *model,
 			g_file_monitor_cancel (dir->monitor);
 			g_object_unref (dir->monitor);
 		}
+
+		if (dir->hidden_file_hash)
+			g_hash_table_destroy (dir->hidden_file_hash);
 	}
 
 	if (node->file)
@@ -1492,7 +1416,6 @@ file_browser_node_free (GeditFileBrowserStore *model,
 		g_object_unref (node->emblem);
 
 	g_free (node->name);
-	g_free (node->markup);
 
 	if (NODE_IS_DIR (node))
 		g_slice_free (FileBrowserNodeDir, (FileBrowserNodeDir *)node);
@@ -1592,7 +1515,8 @@ model_remove_node (GeditFileBrowserStore *model,
 	   not the virtual root) */
 	if (model_node_visibility (model, node) && node != model->priv->virtual_root)
 	{
-		row_deleted (model, node, path);
+		node->inserted = FALSE;
+		row_deleted (model, path);
 	}
 
 	if (free_path)
@@ -1660,7 +1584,9 @@ model_clear (GeditFileBrowserStore *model,
 			    model_node_visibility (model, dummy))
 			{
 				path = gtk_tree_path_new_first ();
-				row_deleted (model, dummy, path);
+
+				dummy->inserted = FALSE;
+				row_deleted (model, path);
 				gtk_tree_path_free (path);
 			}
 		}
@@ -1792,7 +1718,6 @@ model_create_dummy_node (GeditFileBrowserStore *model,
 
 	dummy = file_browser_node_new (NULL, parent);
 	dummy->name = g_strdup (_("(Empty)"));
-	dummy->markup = g_markup_escape_text (dummy->name, -1);
 
 	dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY;
 	dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
@@ -1881,7 +1806,8 @@ model_check_dummy (GeditFileBrowserStore *model,
 			path = gedit_file_browser_store_get_path_real (model, dummy);
 			dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
-			row_deleted (model, dummy, path);
+			dummy->inserted = FALSE;
+			row_deleted (model, path);
 			gtk_tree_path_free (path);
 		}
 	}
@@ -2082,7 +2008,9 @@ file_browser_node_set_from_info (GeditFileBrowserStore *model,
 				 GFileInfo             *info,
 				 gboolean               isadded)
 {
+	FileBrowserNodeDir *dir;
 	gchar const *content;
+	gchar const *name;
 	gboolean free_info = FALSE;
 	GtkTreePath *path;
 	gchar *uri;
@@ -2112,7 +2040,15 @@ file_browser_node_set_from_info (GeditFileBrowserStore *model,
 		free_info = TRUE;
 	}
 
+	dir = FILE_BROWSER_NODE_DIR (node->parent);
+	name = g_file_info_get_name (info);
+
 	if (g_file_info_get_is_hidden (info) || g_file_info_get_is_backup (info))
+	{
+		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+	}
+	else if (dir != NULL && dir->hidden_file_hash != NULL &&
+		 g_hash_table_lookup (dir->hidden_file_hash, name) != NULL)
 	{
 		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 	}
@@ -2313,6 +2249,79 @@ model_add_node_from_dir (GeditFileBrowserStore *model,
 	return node;
 }
 
+/* Read is sync, but we only do it for local files */
+static void
+parse_dot_hidden_file (FileBrowserNode *directory)
+{
+	gsize file_size;
+	char *file_contents;
+	GFile *child;
+	GFileInfo *info;
+	GFileType type;
+	int i;
+	FileBrowserNodeDir *dir = FILE_BROWSER_NODE_DIR (directory);
+
+	/* FIXME: We only support .hidden on file: uri's for the moment.
+	 * Need to figure out if we should do this async or sync to extend
+	 * it to all types of uris.
+	 */
+	if (directory->file == NULL || !g_file_is_native (directory->file))
+		return;
+
+	child = g_file_get_child (directory->file, ".hidden");
+	info = g_file_query_info (child, G_FILE_ATTRIBUTE_STANDARD_TYPE, G_FILE_QUERY_INFO_NONE, NULL, NULL);
+
+	type = info ? g_file_info_get_file_type (info) : G_FILE_TYPE_UNKNOWN;
+
+	if (info)
+		g_object_unref (info);
+
+	if (type != G_FILE_TYPE_REGULAR)
+	{
+		g_object_unref (child);
+		return;
+	}
+
+	if (!g_file_load_contents (child, NULL, &file_contents, &file_size, NULL, NULL))
+	{
+		g_object_unref (child);
+		return;
+	}
+
+	g_object_unref (child);
+
+	if (dir->hidden_file_hash == NULL)
+	{
+		dir->hidden_file_hash =
+			g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+	}
+
+	/* Now parse the data */
+	i = 0;
+	while (i < file_size)
+	{
+		int start;
+
+		start = i;
+		while (i < file_size && file_contents[i] != '\n')
+			i++;
+
+		if (i > start)
+		{
+			char *hidden_filename;
+
+			hidden_filename = g_strndup (file_contents + start, i - start);
+			g_hash_table_insert (dir->hidden_file_hash,
+					     hidden_filename, hidden_filename);
+		}
+
+		i++;
+
+	}
+
+	g_free (file_contents);
+}
+
 static void
 on_directory_monitor_event (GFileMonitor      *monitor,
 			    GFile             *file,
@@ -2497,6 +2506,9 @@ model_load_directory (GeditFileBrowserStore *model,
 
 	node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_LOADED;
 	model_begin_loading (model, node);
+
+	/* Read the '.hidden' file first (if any) */
+	parse_dot_hidden_file (node);
 
 	dir->cancellable = g_cancellable_new ();
 
@@ -2954,9 +2966,13 @@ model_mount_root (GeditFileBrowserStore *model,
 GeditFileBrowserStore *
 gedit_file_browser_store_new (GFile *root)
 {
-	return GEDIT_FILE_BROWSER_STORE (g_object_new (GEDIT_TYPE_FILE_BROWSER_STORE,
-	                                               "root", root,
-	                                               NULL));
+	GeditFileBrowserStore *obj =
+	    GEDIT_FILE_BROWSER_STORE (g_object_new
+				      (GEDIT_TYPE_FILE_BROWSER_STORE,
+				       NULL));
+
+	gedit_file_browser_store_set_root (obj, root);
+	return obj;
 }
 
 void
@@ -2970,46 +2986,27 @@ gedit_file_browser_store_set_value (GeditFileBrowserStore *tree_model,
 	GtkTreePath *path;
 
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (tree_model));
+	g_return_if_fail (column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM);
+	g_return_if_fail (G_VALUE_HOLDS_OBJECT (value));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
 
+	data = g_value_get_object (value);
+
+	if (data)
+		g_return_if_fail (GDK_IS_PIXBUF (data));
+
 	node = (FileBrowserNode *) (iter->user_data);
 
-	if (column == GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP)
-	{
-		g_return_if_fail (G_VALUE_HOLDS_STRING (value));
+	if (node->emblem)
+		g_object_unref (node->emblem);
 
-		data = g_value_dup_string (value);
-
-		if (!data)
-			data = g_strdup (node->name);
-
-		g_free (node->markup);
-		node->markup = data;
-	}
-	else if (column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM)
-	{
-		g_return_if_fail (G_VALUE_HOLDS_OBJECT (value));
-
-		data = g_value_get_object (value);
-
-		g_return_if_fail (GDK_IS_PIXBUF (data) || data == NULL);
-
-		if (node->emblem)
-			g_object_unref (node->emblem);
-
-		if (data)
-			node->emblem = g_object_ref (GDK_PIXBUF (data));
-		else
-			node->emblem = NULL;
-
-		model_recomposite_icon (tree_model, iter);
-	}
+	if (data)
+		node->emblem = g_object_ref (GDK_PIXBUF (data));
 	else
-	{
-		g_return_if_fail (column == GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP ||
-		                  column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM);
-	}
+		node->emblem = NULL;
+
+	model_recomposite_icon (tree_model, iter);
 
 	if (model_node_visibility (tree_model, node))
 	{
@@ -3345,53 +3342,6 @@ gedit_file_browser_store_set_filter_func (GeditFileBrowserStore           *model
 	model_refilter (model);
 }
 
-const gchar * const *
-gedit_file_browser_store_get_binary_patterns (GeditFileBrowserStore *model)
-{
-	return (const gchar * const *) model->priv->binary_patterns;
-}
-
-void
-gedit_file_browser_store_set_binary_patterns (GeditFileBrowserStore  *model,
-					      const gchar           **binary_patterns)
-{
-	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model));
-
-	if (model->priv->binary_patterns != NULL)
-	{
-		g_strfreev (model->priv->binary_patterns);
-		g_ptr_array_unref (model->priv->binary_pattern_specs);
-	}
-
-	model->priv->binary_patterns = g_strdupv ((gchar **) binary_patterns);
-
-	if (binary_patterns == NULL)
-	{
-		model->priv->binary_pattern_specs = NULL;
-	}
-	else
-	{
-		gint i;
-		gssize n_patterns;
-
-		n_patterns = g_strv_length ((gchar **) binary_patterns);
-
-		model->priv->binary_pattern_specs = g_ptr_array_sized_new (n_patterns);
-		g_ptr_array_set_free_func (model->priv->binary_pattern_specs,
-			                   (GDestroyNotify) g_pattern_spec_free);
-
-		for (i = 0; binary_patterns[i] != NULL; ++i)
-		{
-			g_ptr_array_add (model->priv->binary_pattern_specs,
-				         g_pattern_spec_new (binary_patterns[i]));
-		}
-	}
-
-	model_refilter (model);
-
-	g_object_notify (G_OBJECT (model), "binary-patterns");
-}
-
 void
 gedit_file_browser_store_refilter (GeditFileBrowserStore *model)
 {
@@ -3569,101 +3519,84 @@ emit_no_trash (AsyncData *data)
 	return ret;
 }
 
-static void
-delete_file_finished (GFile        *file,
-		      GAsyncResult *res,
-		      AsyncData    *data)
+typedef struct {
+	GeditFileBrowserStore *model;
+	GFile *file;
+} IdleDelete;
+
+static gboolean
+file_deleted (IdleDelete *data)
 {
+	FileBrowserNode *node;
+	node = model_find_node (data->model, NULL, data->file);
+
+	if (node != NULL)
+		model_remove_node (data->model, node, NULL, TRUE);
+
+	return FALSE;
+}
+
+static gboolean
+delete_files (GIOSchedulerJob *job,
+	      GCancellable    *cancellable,
+	      AsyncData       *data)
+{
+	GFile *file;
 	GError *error = NULL;
-	gboolean ok;
+	gboolean ret;
+	gint code;
+	IdleDelete delete;
+
+	/* Check if our job is done */
+	if (!data->iter)
+		return FALSE;
+
+	/* Move a file to the trash */
+	file = G_FILE (data->iter->data);
 
 	if (data->trash)
-	{
-		ok = g_file_trash_finish (file, res, &error);
-	}
+		ret = g_file_trash (file, cancellable, &error);
 	else
+		ret = g_file_delete (file, cancellable, &error);
+
+	if (ret)
 	{
-		ok = g_file_delete_finish (file, res, &error);
+		delete.model = data->model;
+		delete.file = file;
+
+		/* Remove the file from the model in the main loop */
+		g_io_scheduler_job_send_to_mainloop (job, (GSourceFunc)file_deleted, &delete, NULL);
 	}
-
-	if (ok)
+	else if (!ret && error)
 	{
-		/* Remove the file from the model */
-		FileBrowserNode *node = model_find_node (data->model, NULL, file);
-
-		if (node != NULL)
-		{
-			model_remove_node (data->model, node, NULL, TRUE);
-		}
-
-		/* Process the next file */
-		data->iter = data->iter->next;
-	}
-	else if (!ok && error != NULL)
-	{
-		gint code = error->code;
+		code = error->code;
 		g_error_free (error);
 
 		if (data->trash && code == G_IO_ERROR_NOT_SUPPORTED)
 		{
-			/* Trash is not supported on this system. Ask the user
-			 * if he wants to delete completely the files instead.
-			 */
-			if (emit_no_trash (data))
+			/* Trash is not supported on this system ... */
+			if (g_io_scheduler_job_send_to_mainloop (job, (GSourceFunc)emit_no_trash, data, NULL))
 			{
 				/* Changes this into a delete job */
 				data->trash = FALSE;
 				data->iter = data->files;
+
+				return TRUE;
 			}
-			else
-			{
-				/* End the job */
-				async_data_free (data);
-				return;
-			}
+
+			/* End the job */
+			return FALSE;
 		}
 		else if (code == G_IO_ERROR_CANCELLED)
 		{
-			/* Job has been cancelled, end the job */
-			async_data_free (data);
-			return;
+			/* Job has been cancelled, just let the job end */
+			return FALSE;
 		}
 	}
 
-	/* Continue the job */
-	delete_files (data);
-}
-
-static void
-delete_files (AsyncData *data)
-{
-	GFile *file;
-
-	/* Check if our job is done */
-	if (data->iter == NULL)
-	{
-		async_data_free (data);
-		return;
-	}
-
-	file = G_FILE (data->iter->data);
-
-	if (data->trash)
-	{
-		g_file_trash_async (file,
-				    G_PRIORITY_DEFAULT,
-				    data->cancellable,
-				    (GAsyncReadyCallback)delete_file_finished,
-				    data);
-	}
-	else
-	{
-		g_file_delete_async (file,
-				     G_PRIORITY_DEFAULT,
-				     data->cancellable,
-				     (GAsyncReadyCallback)delete_file_finished,
-				     data);
-	}
+	/* Process the next item */
+	data->iter = data->iter->next;
+	return TRUE;
 }
 
 GeditFileBrowserStoreResult
@@ -3717,7 +3650,11 @@ gedit_file_browser_store_delete_all (GeditFileBrowserStore *model,
 
 	model->priv->async_handles = g_slist_prepend (model->priv->async_handles, data);
 
-	delete_files (data);
+	g_io_scheduler_push_job ((GIOSchedulerJobFunc)delete_files,
+				 data,
+				 (GDestroyNotify)async_data_free,
+				 G_PRIORITY_DEFAULT,
+				 data->cancellable);
 	g_list_free (rows);
 
 	return GEDIT_FILE_BROWSER_STORE_RESULT_OK;
@@ -3769,7 +3706,7 @@ gedit_file_browser_store_new_file (GeditFileBrowserStore *model,
 
 	parent_node = FILE_BROWSER_NODE_DIR (parent->user_data);
 	/* Translators: This is the default name of new files created by the file browser pane. */
-	file = unique_new_name (((FileBrowserNode *) parent_node)->file, _("Untitled File"));
+	file = unique_new_name (((FileBrowserNode *) parent_node)->file, _("file"));
 
 	stream = g_file_create (file, G_FILE_CREATE_NONE, NULL, &error);
 
@@ -3828,7 +3765,7 @@ gedit_file_browser_store_new_directory (GeditFileBrowserStore *model,
 
 	parent_node = FILE_BROWSER_NODE_DIR (parent->user_data);
 	/* Translators: This is the default name of new directories created by the file browser pane. */
-	file = unique_new_name (((FileBrowserNode *) parent_node)->file, _("Untitled Folder"));
+	file = unique_new_name (((FileBrowserNode *) parent_node)->file, _("directory"));
 
 	if (!g_file_make_directory (file, NULL, &error))
 	{
@@ -3869,4 +3806,4 @@ _gedit_file_browser_store_register_type (GTypeModule *type_module)
 	gedit_file_browser_store_register_type (type_module);
 }
 
-/* ex:set ts=8 noet: */
+/* ex:ts=8:noet: */

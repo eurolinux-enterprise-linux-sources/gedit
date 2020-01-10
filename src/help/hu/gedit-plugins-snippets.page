@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets" xml:lang="hu">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets-guide" xml:lang="hu">
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Töredékek használata gyakran használt szövegdarabok gyakori beszúrására.</desc>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Hammer Attila</mal:name>
-      <mal:email>hammera at pickup dot hu</mal:email>
-      <mal:years>2014.</mal:years>
-    </mal:credit>
+    <desc>Töredékek használata gyakran használt szövegdarabok gyakori beszúrására</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

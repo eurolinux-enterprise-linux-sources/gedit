@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files" xml:lang="sv">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files" xml:lang="sv">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="second"/>
@@ -7,44 +7,33 @@
     <link type="seealso" xref="gedit-close-file"/>
     <link type="seealso" xref="gedit-open-recent"/>
     <link type="seealso" xref="gedit-quickstart"/>
-    <desc>Öppna filer för att börja arbeta med dem.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
-
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Öppna en fil eller en uppsättning filer</title>
+  <title>Open a file or set of files</title>
 
-  <p>För att öppna en fil i <app>gedit</app>, klicka på knappen <gui>Öppna</gui> eller tryck <keyseq><key>Ctrl</key><key>O</key></keyseq>.</p>
-  <p>Detta kommer att få dialogrutan <gui>Öppna</gui> att visas. Använd musen eller tangentbordet för att markera filen som du vill öppna och klicka sedan <gui>Öppna</gui>. Filen som du har markerat kommer att öppnas i en ny flik.</p>
-  <p>För att stänga dialogrutan <gui>Öppna</gui> utan att öppna en fil, klicka på <gui>Avbryt</gui>.</p>
+  <p>To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or
+  press <keyseq><key>Ctrl</key><key>O</key></keyseq>.</p>
+  <p>This will cause the <gui>Open Files</gui> dialog to appear. Use your mouse
+  or keyboard to select the file that you wish to open, and then click
+  <gui>Open</gui>. The file that you've selected will open in a new tab.</p>
+  <p>To close the <gui>Open Files</gui> dialog without opening a file, click
+  <gui>Cancel</gui>.</p>
 
-  <note style="tip"><p>Du kan använda tangenterna <key>Ctrl</key> och <key>Skift</key> för att öppna mer än en fil samtidigt. Om du håller ner <key>Ctrl</key>-tangenten medan du markerar flera filer så kommer att klicka på <gui>Öppna</gui> att öppna var och en av filerna som du har markerat.</p>
+  <note style="tip"><p>You can use the <key>Ctrl</key> and <key>Shift</key>
+  keys to open more than one file at a time. If you hold down the
+  <key>Ctrl</key> key while you select multiple files, clicking <gui>Open</gui>
+  will open each of the files that you have selected.</p>
 
   <!-- Insert Image Here -->
 
-  <p>Att hålla ner <key>Skift</key> medan du markerar flera filer kommer öppna den första filen som du markerar, den sista filen som du markerar, och alla filer däremellan.</p></note>
+  <p>Holding down the <key>Shift</key> while you select multiple files will
+  open the first file that you select, the last file that you select, and all
+  of the files in between.</p></note>
 
   <!-- Insert Image Here -->
 

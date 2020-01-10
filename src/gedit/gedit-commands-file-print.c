@@ -17,33 +17,59 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
+#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-tab.h"
-#include "gedit-tab-private.h"
 #include "gedit-debug.h"
 
 void
-_gedit_cmd_file_print (GSimpleAction *action,
-                       GVariant      *parameter,
-                       gpointer       user_data)
+_gedit_cmd_file_print_preview (GtkAction   *action,
+			       GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)
+		return;
 
-	if (tab != NULL)
-	{
-		_gedit_tab_print (tab);
-	}
+	_gedit_tab_print_preview (tab);
+}
+
+void
+_gedit_cmd_file_print (GtkAction   *action,
+		       GeditWindow *window)
+{
+	GeditTab *tab;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	tab = gedit_window_get_active_tab (window);
+	if (tab == NULL)
+		return;
+
+	_gedit_tab_print (tab);
 }
 
 /* ex:set ts=8 noet: */

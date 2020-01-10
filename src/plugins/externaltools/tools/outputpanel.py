@@ -27,14 +27,6 @@ from . import linkparsing
 from . import filelookup
 from gi.repository import GLib, Gio, Gdk, Gtk, Pango, Gedit
 
-try:
-    import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
-    _ = gettext.gettext
-except:
-    _ = lambda s: s
-
 class UniqueById:
     __shared_state = WeakKeyDictionary()
 
@@ -49,14 +41,13 @@ class UniqueById:
     def states(self):
         return self.__class__.__shared_state
 
-
 class OutputPanel(UniqueById):
     def __init__(self, datadir, window):
         if UniqueById.__init__(self, window):
             return
 
         callbacks = {
-            'on_stop_clicked': self.on_stop_clicked,
+            'on_stop_clicked' : self.on_stop_clicked,
             'on_view_visibility_notify_event': self.on_view_visibility_notify_event,
             'on_view_motion_notify_event': self.on_view_motion_notify_event
         }
@@ -101,7 +92,7 @@ class OutputPanel(UniqueById):
         self.links = []
 
         self.link_parser = linkparsing.LinkParser()
-        self.file_lookup = filelookup.FileLookup(window)
+        self.file_lookup = filelookup.FileLookup()
 
     def get_profile_settings(self):
         #FIXME return either the gnome-terminal settings or the gedit one
@@ -141,9 +132,9 @@ class OutputPanel(UniqueById):
 
     def visible(self):
         panel = self.window.get_bottom_panel()
-        return panel.props.visible and panel.props.visible_child == self.panel
+        return panel.props.visible and panel.item_is_active(self.panel)
 
-    def write(self, text, tag=None):
+    def write(self, text, tag = None):
         buffer = self['view'].get_buffer()
 
         end_iter = buffer.get_end_iter()
@@ -157,10 +148,11 @@ class OutputPanel(UniqueById):
         # find all links and apply the appropriate tag for them
         links = self.link_parser.parse(text)
         for lnk in links:
+            
             insert_iter = buffer.get_iter_at_mark(insert)
             lnk.start = insert_iter.get_offset() + lnk.start
             lnk.end = insert_iter.get_offset() + lnk.end
-
+            
             start_iter = buffer.get_iter_at_offset(lnk.start)
             end_iter = buffer.get_iter_at_offset(lnk.end)
 
@@ -180,10 +172,10 @@ class OutputPanel(UniqueById):
 
     def show(self):
         panel = self.window.get_bottom_panel()
-        panel.props.visible_child = self.panel
         panel.show()
+        panel.activate_item(self.panel)
 
-    def update_cursor_style(self, view, x, y):
+    def update_cursor_style(self, view, x, y):  
         if self.get_link_at_location(view, x, y) is not None:
             cursor = self.link_cursor
         else:
@@ -215,10 +207,9 @@ class OutputPanel(UniqueById):
         """
 
         # get the offset within the buffer from the x,y coordinates
-        buff_x, buff_y = view.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
-        (over_text, iter_at_xy) = view.get_iter_at_location(buff_x, buff_y)
-        if not over_text:
-            return None
+        buff_x, buff_y = view.window_to_buffer_coords(Gtk.TextWindowType.TEXT, 
+                                                      x, y)
+        iter_at_xy = view.get_iter_at_location(buff_x, buff_y)
         offset = iter_at_xy.get_offset()
 
         # find the first link that contains the offset

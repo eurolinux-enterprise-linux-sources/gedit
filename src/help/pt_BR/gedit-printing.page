@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Imprima os arquivos que você criou com o gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
@@ -58,22 +57,16 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Imprimindo documentos</title>
 
     <note style="important">
-      <p>A impressão com o <app>gedit</app> requer que você tenha conectado e configurado sua impressora. Se não tiver feito isso, favor consultar <link href="help:gnome-help/printing">Ajuda em impressão para o GNOME</link>.</p>
+      <p>A imprimessão com o <app>gedit</app> requer que você tenha conectado e configurado sua impressora. Se não tiver feito isso, favor consultar <link href="help:gnome-help/printing">Ajuda em impressão para o GNOME</link>.</p>
     </note>
   
   <p>O <app>gedit</app> permite que você imprima tanto para um arquivo quando para um papel.</p>

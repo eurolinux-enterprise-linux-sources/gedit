@@ -3,16 +3,12 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
-    <desc>Quitter le fichier actuellement utilisé.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
+  
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
       <mal:email>vuntz@gnome.org</mal:email>
@@ -56,33 +52,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Fermeture d’un fichier</title>
+  <title>Fermeture d'un fichier</title>
 
-  <p>Pour fermer un fichier dans <app>gedit</app>, choisissez <gui style="menuitem">Fermer</gui>. Vous pouvez aussi cliquer sur le petit « X » qui apparaît sur le bord droit de l’onglet du fichier, ou appuyer sur <keyseq><key>Ctrl</key><key>W</key></keyseq>.</p>
-  <p>N’importe laquelle de ces actions ferme un fichier dans <app>gedit</app>. Si votre fichier contient des modifications qui n’ont pas été enregistrées, <app>gedit</app> vous demande si vous souhaitez enregistrer ces modifications avant de fermer le fichier.</p>
+  <p>Pour fermer un fichier dans <app>gedit</app>, choisissez <guiseq><gui>Fichier</gui> <gui>Fermer</gui></guiseq>. Vous pouvez aussi cliquer sur le petit « X » qui apparaît sur le bord droit de l'onglet du fichier, ou appuyez sur <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
+  <p>N'importe laquelle de ces actions ferme un fichier dans <app>gedit</app>. Si votre fichier contient des modifications qui n'ont pas été enregistrées, <app>gedit</app> vous demande si vous souhaitez enregistrer ces modifications avant de fermer le fichier.</p>
 
 </page>

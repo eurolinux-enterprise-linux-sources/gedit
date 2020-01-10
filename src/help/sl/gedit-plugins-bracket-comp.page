@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-bracket-comp" xml:lang="sl">
+
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+    <desc>Samodejno dodaj zaklepaje</desc>
+  </info>
+
+  <title>Dopolnjevanje oklepajev</title>
+
+  <p>Vstavek <app>Dopolnjevanje oklepajev</app> bo samodejno dokončal zaprte oklepaje za okrogle, oglate in zavite oklepaje.</p>
+
+  <p>To enable the plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Bracket Completion</gui></guiseq>.</p>
+
+  <note><p>Ta vstavek ne vstavki končnih oznak HTML ali XML.</p></note>
+
+</page>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-character-map" xml:lang="ru">
+  <info>
+    <revision version="0.2" date="2013-02-24" status="review"/>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+
+    <credit type="author">
+      <name>Джим Кэмпбелл (Jim Campbell)</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <credit type="author">
+      <name>Пол Вивер (Paul Weaver)</name>
+      <email>ch3pjw@bath.ac.uk</email>
+    </credit>
+
+    <desc>Вставка специальных символов простым нажатием на них</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stas Solovey</mal:name>
+      <mal:email>whats_up@tut.by</mal:email>
+      <mal:years>2011, 2012, 2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Таблица символов</title>
+
+  <comment>
+    <cite date="2013-02-24" href="mailto:ch3pjw@bath.ac.uk">Paul Weaver</cite>
+    <p>This assumes the reader knows how to use gedit in general. By the end of
+    this page, the reader will be able to use the character map plugin to
+    insert characters into their documents.</p>
+  </comment>
+
+  <p>Модуль <app>Таблица символов</app> позволяет вводить символы в документе, которые невозможно набрать с помощью клавиатуры. Чтобы включить модуль, выберите <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Параметры</gui><gui>Модули</gui> <gui>Таблица символов</gui></guiseq>.</p>
+  
+  <section id="using-character-map">
+    <title>Использование таблицы символов</title>
+
+    <p>После включения модуля, можно добавлять символы из вкладки <em>Таблица символов</em> в боковой панели (<guiseq><gui>Вид</gui> <gui>Боковая панель</gui></guiseq>)</p>
+  
+  <steps>
+    <item><p>Поместите курсор в том месте документа, где нужно ввести специальный символ.</p></item>
+    <item><p>Откройте боковую панель, выбрав <guiseq><gui>Вид</gui> <gui>Боковая панель</gui></guiseq>, или нажмите клавишу <key>F9</key>.</p></item>
+    <item><p>Перейдите на вкладку <em>Таблица символов</em> в боковой панели.</p></item>
+    <item><p>При необходимости выберите из списка, в верхней части вкладки <em>Таблица символов</em>, набор символов, к которому принадлежит нужный символ (например, Арабский).</p></item>
+    <item><p>Дважды нажмите на нужный символ, чтобы вставить его.</p></item>
+  </steps>
+  
+    <note style="tip"><p>Для продолжения редактирования в обычном режиме, нужно нажать на режим редактирования документа.</p></note>
+  </section>
+
+</page>

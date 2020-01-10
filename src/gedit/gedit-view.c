@@ -17,28 +17,55 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#include "gedit-view.h"
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <string.h>
+#include <stdlib.h>
+
+#include <gdk/gdkkeysyms.h>
 #include <libpeas/peas-extension-set.h>
+
 #include <glib/gi18n.h>
 
+#include "gedit-view.h"
 #include "gedit-view-activatable.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-debug.h"
+#include "gedit-marshal.h"
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 #include "gedit-app.h"
-#include "gedit-app-private.h"
+#include "gedit-notebook.h"
 
 #define GEDIT_VIEW_SCROLL_MARGIN 0.02
+
+#define GEDIT_VIEW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_VIEW, GeditViewPrivate))
+
+typedef enum
+{
+	GOTO_LINE,
+	SEARCH
+} SearchMode;
 
 enum
 {
 	TARGET_URI_LIST = 100,
-	TARGET_XDNDDIRECTSAVE
+	TARGET_TAB
 };
 
 struct _GeditViewPrivate
@@ -46,41 +73,92 @@ struct _GeditViewPrivate
 	GSettings *editor_settings;
 	GtkTextBuffer *current_buffer;
 	PeasExtensionSet *extensions;
-	gchar *direct_save_uri;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE(GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
 
+/* Signals */
 enum
 {
 	DROP_URIS,
 	LAST_SIGNAL
 };
 
-static guint view_signals[LAST_SIGNAL] = { 0 };
+static guint view_signals [LAST_SIGNAL] = { 0 };
 
 static void
-file_read_only_notify_handler (GtkSourceFile *file,
-			       GParamSpec    *pspec,
-			       GeditView     *view)
+document_read_only_notify_handler (GeditDocument *document,
+			           GParamSpec    *pspec,
+				   GeditView     *view)
 {
 	gedit_debug (DEBUG_VIEW);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !gtk_source_file_is_readonly (file));
+				    !gedit_document_get_readonly (document));
+}
+
+static void
+search_highlight_updated_cb (GeditDocument *doc,
+                             GtkTextIter   *start,
+                             GtkTextIter   *end,
+                             GeditView     *view)
+{
+	GdkRectangle visible_rect;
+	GdkRectangle updated_rect;
+	GdkRectangle redraw_rect;
+	gint y;
+	gint height;
+	GtkTextView *text_view;
+
+	text_view = GTK_TEXT_VIEW (view);
+
+	g_return_if_fail (gedit_document_get_enable_search_highlighting (
+				GEDIT_DOCUMENT (gtk_text_view_get_buffer (text_view))));
+
+	/* get visible area */
+	gtk_text_view_get_visible_rect (text_view, &visible_rect);
+
+	/* get updated rectangle */
+	gtk_text_view_get_line_yrange (text_view, start, &y, &height);
+	updated_rect.y = y;
+	gtk_text_view_get_line_yrange (text_view, end, &y, &height);
+	updated_rect.height = y + height - updated_rect.y;
+	updated_rect.x = visible_rect.x;
+	updated_rect.width = visible_rect.width;
+
+	/* intersect both rectangles to see whether we need to queue a redraw */
+	if (gdk_rectangle_intersect (&updated_rect, &visible_rect, &redraw_rect))
+	{
+		GdkRectangle widget_rect;
+
+		gtk_text_view_buffer_to_window_coords (text_view,
+		                                       GTK_TEXT_WINDOW_WIDGET,
+		                                       redraw_rect.x,
+		                                       redraw_rect.y,
+		                                       &widget_rect.x,
+		                                       &widget_rect.y);
+
+		widget_rect.width = redraw_rect.width;
+		widget_rect.height = redraw_rect.height;
+
+		gtk_widget_queue_draw_area (GTK_WIDGET (text_view),
+		                            widget_rect.x,
+		                            widget_rect.y,
+		                            widget_rect.width,
+		                            widget_rect.height);
+	}
 }
 
 static void
 current_buffer_removed (GeditView *view)
 {
-	if (view->priv->current_buffer != NULL)
+	if (view->priv->current_buffer)
 	{
-		GtkSourceFile *file;
-
-		file = gedit_document_get_file (GEDIT_DOCUMENT (view->priv->current_buffer));
-
-		g_signal_handlers_disconnect_by_func (file,
-						      file_read_only_notify_handler,
+		g_signal_handlers_disconnect_by_func (view->priv->current_buffer,
+						      document_read_only_notify_handler,
+						      view);
+		g_signal_handlers_disconnect_by_func (view->priv->current_buffer,
+						      search_highlight_updated_cb,
 						      view);
 
 		g_object_unref (view->priv->current_buffer);
@@ -90,56 +168,53 @@ current_buffer_removed (GeditView *view)
 
 static void
 on_notify_buffer_cb (GeditView  *view,
-		     GParamSpec *pspec,
+		     GParamSpec *arg1,
 		     gpointer    userdata)
 {
 	GtkTextBuffer *buffer;
-	GtkSourceFile *file;
 
 	current_buffer_removed (view);
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	if (!GEDIT_IS_DOCUMENT (buffer))
-	{
+	if (buffer == NULL || !GEDIT_IS_DOCUMENT (buffer))
 		return;
-	}
-
-	file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
 
 	view->priv->current_buffer = g_object_ref (buffer);
-	g_signal_connect_object (file,
-				 "notify::read-only",
-				 G_CALLBACK (file_read_only_notify_handler),
-				 view,
-				 0);
+	g_signal_connect (buffer,
+			  "notify::read-only",
+			  G_CALLBACK (document_read_only_notify_handler),
+			  view);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !gtk_source_file_is_readonly (file));
+				    !gedit_document_get_readonly (GEDIT_DOCUMENT (buffer)));
+
+	g_signal_connect (buffer,
+			  "search_highlight_updated",
+			  G_CALLBACK (search_highlight_updated_cb),
+			  view);
 }
 
 static void
 gedit_view_init (GeditView *view)
 {
-	GtkTargetList *target_list;
-	GtkStyleContext *context;
+	GtkTargetList *tl;
 
 	gedit_debug (DEBUG_VIEW);
 
-	view->priv = gedit_view_get_instance_private (view);
+	view->priv = GEDIT_VIEW_GET_PRIVATE (view);
 
 	view->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 
 	/* Drag and drop support */
-	view->priv->direct_save_uri = NULL;
-	target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
+	tl = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
 
-	if (target_list != NULL)
+	if (tl != NULL)
 	{
-		gtk_target_list_add (target_list,
-		                     gdk_atom_intern ("XdndDirectSave0", FALSE),
-		                     0,
-		                     TARGET_XDNDDIRECTSAVE);
-		gtk_target_list_add_uri_targets (target_list, TARGET_URI_LIST);
+		gtk_target_list_add_uri_targets (tl, TARGET_URI_LIST);
+		gtk_target_list_add (tl,
+		                     gdk_atom_intern_static_string ("GTK_NOTEBOOK_TAB"),
+		                     GTK_TARGET_SAME_APP,
+		                     TARGET_TAB);
 	}
 
 	view->priv->extensions =
@@ -153,9 +228,20 @@ gedit_view_init (GeditView *view)
 			  "notify::buffer",
 			  G_CALLBACK (on_notify_buffer_cb),
 			  NULL);
+}
 
-	context = gtk_widget_get_style_context (GTK_WIDGET (view));
-	gtk_style_context_add_class (context, "gedit-view");
+static void
+gedit_view_destroy (GtkWidget *widget)
+{
+	GeditView *view = GEDIT_VIEW (widget);
+
+	/* Disconnect notify buffer because the destroy of the textview will
+	   set the buffer to NULL, and we call get_buffer in the notify which
+	   would reinstate a GtkTextBuffer which we don't want */
+	current_buffer_removed (view);
+	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
+
+	GTK_WIDGET_CLASS (gedit_view_parent_class)->destroy (widget);
 }
 
 static void
@@ -166,17 +252,17 @@ gedit_view_dispose (GObject *object)
 	g_clear_object (&view->priv->extensions);
 	g_clear_object (&view->priv->editor_settings);
 
+	G_OBJECT_CLASS (gedit_view_parent_class)->dispose (object);
+}
+
+static void
+gedit_view_finalize (GObject *object)
+{
+	GeditView *view = GEDIT_VIEW (object);
+
 	current_buffer_removed (view);
 
-	/* Disconnect notify buffer because the destroy of the textview will set
-	 * the buffer to NULL, and we call get_buffer in the notify which would
-	 * reinstate a buffer which we don't want.
-	 * There is no problem calling g_signal_handlers_disconnect_by_func()
-	 * several times (if dispose() is called several times).
-	 */
-	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
-
-	G_OBJECT_CLASS (gedit_view_parent_class)->dispose (object);
+	G_OBJECT_CLASS (gedit_view_parent_class)->finalize (object);
 }
 
 static void
@@ -189,14 +275,15 @@ gedit_view_constructed (GObject *object)
 	view = GEDIT_VIEW (object);
 	priv = view->priv;
 
+	/* Get setting values */
 	use_default_font = g_settings_get_boolean (view->priv->editor_settings,
 	                                           GEDIT_SETTINGS_USE_DEFAULT_FONT);
 
-	if (use_default_font)
-	{
-		gedit_view_set_font (view, TRUE, NULL);
-	}
-	else
+	/*
+	 *  Set tab, fonts, wrap mode, colors, etc. according
+	 *  to preferences
+	 */
+	if (!use_default_font)
 	{
 		gchar *editor_font;
 
@@ -206,6 +293,10 @@ gedit_view_constructed (GObject *object)
 		gedit_view_set_font (view, FALSE, editor_font);
 
 		g_free (editor_font);
+	}
+	else
+	{
+		gedit_view_set_font (view, TRUE, NULL);
 	}
 
 	g_settings_bind (priv->editor_settings,
@@ -239,12 +330,6 @@ gedit_view_constructed (GObject *object)
 	                 G_SETTINGS_BIND_GET);
 
 	g_settings_bind (priv->editor_settings,
-	                 GEDIT_SETTINGS_BACKGROUND_PATTERN,
-	                 view,
-	                 "background-pattern",
-	                 G_SETTINGS_BIND_GET);
-
-	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
 	                 view,
 	                 "right-margin-position",
@@ -268,20 +353,56 @@ gedit_view_constructed (GObject *object)
 	                 "smart-home-end",
 	                 G_SETTINGS_BIND_GET);
 
-	gtk_source_view_set_indent_on_tab (GTK_SOURCE_VIEW (view), TRUE);
+	g_object_set (G_OBJECT (view),
+	              "indent_on_tab", TRUE,
+	              NULL);
 
 	G_OBJECT_CLASS (gedit_view_parent_class)->constructed (object);
 }
 
-static gboolean
-gedit_view_focus_out (GtkWidget     *widget,
-		      GdkEventFocus *event)
+static gint
+gedit_view_focus_out (GtkWidget *widget, GdkEventFocus *event)
 {
 	gtk_widget_queue_draw (widget);
 
 	GTK_WIDGET_CLASS (gedit_view_parent_class)->focus_out_event (widget, event);
 
-	return GDK_EVENT_PROPAGATE;
+	return FALSE;
+}
+
+static gboolean
+gedit_view_draw (GtkWidget *widget,
+                 cairo_t   *cr)
+{
+	GtkTextView *text_view;
+	GeditDocument *doc;
+	GdkWindow *window;
+
+	text_view = GTK_TEXT_VIEW (widget);
+
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (text_view));
+	window = gtk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT);
+
+	if (gtk_cairo_should_draw_window (cr, window) &&
+	    gedit_document_get_enable_search_highlighting (doc))
+	{
+		GdkRectangle visible_rect;
+		GtkTextIter iter1, iter2;
+
+		gtk_text_view_get_visible_rect (text_view, &visible_rect);
+		gtk_text_view_get_line_at_y (text_view, &iter1,
+					     visible_rect.y, NULL);
+		gtk_text_view_get_line_at_y (text_view, &iter2,
+					     visible_rect.y
+					     + visible_rect.height, NULL);
+		gtk_text_iter_forward_line (&iter2);
+
+		_gedit_document_search_region (doc,
+					       &iter1,
+					       &iter2);
+	}
+
+	return GTK_WIDGET_CLASS (gedit_view_parent_class)->draw (widget, cr);
 }
 
 static GdkAtom
@@ -289,13 +410,13 @@ drag_get_uri_target (GtkWidget      *widget,
 		     GdkDragContext *context)
 {
 	GdkAtom target;
-	GtkTargetList *target_list;
+	GtkTargetList *tl;
 
-	target_list = gtk_target_list_new (NULL, 0);
-	gtk_target_list_add_uri_targets (target_list, 0);
+	tl = gtk_target_list_new (NULL, 0);
+	gtk_target_list_add_uri_targets (tl, 0);
 
-	target = gtk_drag_dest_find_target (widget, context, target_list);
-	gtk_target_list_unref (target_list);
+	target = gtk_drag_dest_find_target (widget, context, tl);
+	gtk_target_list_unref (tl);
 
 	return target;
 }
@@ -307,16 +428,12 @@ gedit_view_drag_motion (GtkWidget      *widget,
 			gint            y,
 			guint           timestamp)
 {
-	gboolean drop_zone;
+	gboolean result;
 
 	/* Chain up to allow textview to scroll and position dnd mark, note
 	 * that this needs to be checked if gtksourceview or gtktextview
-	 * changes drag_motion behaviour.
-	 */
-	drop_zone = GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_motion (widget,
-									     context,
-									     x, y,
-									     timestamp);
+	 * changes drag_motion behaviour */
+	result = GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
 
 	/* If this is a URL, deal with it here */
 	if (drag_get_uri_target (widget, context) != GDK_NONE)
@@ -324,10 +441,26 @@ gedit_view_drag_motion (GtkWidget      *widget,
 		gdk_drag_status (context,
 				 gdk_drag_context_get_suggested_action (context),
 				 timestamp);
-		drop_zone = TRUE;
+		result = TRUE;
 	}
 
-	return drop_zone;
+	return result;
+}
+
+static GtkWidget *
+get_notebook_from_view (GtkWidget *view)
+{
+	GtkWidget *widget;
+
+	widget = view;
+
+	do
+	{
+		widget = gtk_widget_get_parent (widget);
+	}
+	while (!GEDIT_IS_NOTEBOOK (widget));
+
+	return widget;
 }
 
 static void
@@ -340,72 +473,58 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 			       guint             timestamp)
 {
 	/* If this is an URL emit DROP_URIS, otherwise chain up the signal */
-	switch (info)
+	if (info == TARGET_URI_LIST)
 	{
-		case TARGET_URI_LIST:
+		gchar **uri_list;
+
+		uri_list = gedit_utils_drop_get_uris (selection_data);
+
+		if (uri_list != NULL)
 		{
-			gchar **uri_list;
-
-			uri_list = gedit_utils_drop_get_uris (selection_data);
-
-			if (uri_list != NULL)
-			{
-				g_signal_emit (widget, view_signals[DROP_URIS], 0, uri_list);
-				g_strfreev (uri_list);
-
-				gtk_drag_finish (context, TRUE, FALSE, timestamp);
-			}
-
-			break;
-
-		}
-		case TARGET_XDNDDIRECTSAVE:
-		{
-			GeditView *view;
-
-			view = GEDIT_VIEW (widget);
-
-			/* Indicate that we don't provide "F" fallback */
-			if (gtk_selection_data_get_format (selection_data) == 8 &&
-			    gtk_selection_data_get_length (selection_data) == 1 &&
-			    gtk_selection_data_get_data (selection_data)[0] == 'F')
-			{
-				gdk_property_change (gdk_drag_context_get_source_window (context),
-						     gdk_atom_intern ("XdndDirectSave0", FALSE),
-						     gdk_atom_intern ("text/plain", FALSE), 8,
-						     GDK_PROP_MODE_REPLACE, (const guchar *) "", 0);
-			}
-			else if (gtk_selection_data_get_format (selection_data) == 8 &&
-				 gtk_selection_data_get_length (selection_data) == 1 &&
-				 gtk_selection_data_get_data (selection_data)[0] == 'S' &&
-				 view->priv->direct_save_uri != NULL)
-			{
-				gchar **uris;
-
-				uris = g_new (gchar *, 2);
-				uris[0] = view->priv->direct_save_uri;
-				uris[1] = NULL;
-				g_signal_emit (widget, view_signals[DROP_URIS], 0, uris);
-				g_free (uris);
-			}
-
-			g_free (view->priv->direct_save_uri);
-			view->priv->direct_save_uri = NULL;
+			g_signal_emit (widget, view_signals[DROP_URIS], 0, uri_list);
+			g_strfreev (uri_list);
 
 			gtk_drag_finish (context, TRUE, FALSE, timestamp);
+		}
+	}
+	else if (info == TARGET_TAB)
+	{
+		GtkWidget *notebook;
+		GtkWidget *new_notebook;
+		GtkWidget *page;
 
-			break;
-		}
-		default:
+		notebook = gtk_drag_get_source_widget (context);
+
+		if (!GTK_IS_WIDGET (notebook))
 		{
-			GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_data_received (widget,
-											context,
-											x, y,
-											selection_data,
-											info,
-											timestamp);
-			break;
+			return;
 		}
+
+		page = *(GtkWidget **) gtk_selection_data_get_data (selection_data);
+		g_return_if_fail (page != NULL);
+
+		/* We need to iterate and get the notebook of the target view
+		   because we can have several notebooks per window */
+		new_notebook = get_notebook_from_view (widget);
+
+		if (notebook != new_notebook)
+		{
+			gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
+				                 GEDIT_NOTEBOOK (new_notebook),
+				                 GEDIT_TAB (page),
+				                 0);
+		}
+
+		gtk_drag_finish (context, TRUE, TRUE, timestamp);
+	}
+	else
+	{
+		GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_data_received (widget,
+										context,
+										x, y,
+										selection_data,
+										info,
+										timestamp);
 	}
 }
 
@@ -416,49 +535,31 @@ gedit_view_drag_drop (GtkWidget      *widget,
 		      gint            y,
 		      guint           timestamp)
 {
-	gboolean drop_zone;
+	gboolean result;
 	GdkAtom target;
-	guint info;
-	gboolean found;
-	GtkTargetList *target_list;
 
-	target_list = gtk_drag_dest_get_target_list (widget);
-	target = gtk_drag_dest_find_target (widget, context, target_list);
-	found = gtk_target_list_find (target_list, target, &info);
+	/* If this is a URL, just get the drag data */
+	target = drag_get_uri_target (widget, context);
 
-	if (found && (info == TARGET_URI_LIST || info == TARGET_XDNDDIRECTSAVE))
+	if (target != GDK_NONE)
 	{
-		if (info == TARGET_XDNDDIRECTSAVE)
-		{
-			gchar *uri;
-			uri = gedit_utils_set_direct_save_filename (context);
-
-			if (uri != NULL)
-			{
-				GeditView *view = GEDIT_VIEW (widget);
-				g_free (view->priv->direct_save_uri);
-				view->priv->direct_save_uri = uri;
-			}
-		}
-
 		gtk_drag_get_data (widget, context, target, timestamp);
-		drop_zone = TRUE;
+		result = TRUE;
 	}
 	else
 	{
 		/* Chain up */
-		drop_zone = GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_drop (widget,
-										   context,
-										   x, y,
-										   timestamp);
+		result = GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_drop (widget,
+										context,
+										x, y,
+										timestamp);
 	}
 
-	return drop_zone;
+	return result;
 }
 
-static void
-show_line_numbers_menu (GeditView      *view,
-			GdkEventButton *event)
+static GtkWidget *
+create_line_numbers_menu (GtkWidget *view)
 {
 	GtkWidget *menu;
 	GtkWidget *item;
@@ -469,7 +570,7 @@ show_line_numbers_menu (GeditView      *view,
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
 					gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW (view)));
 
-	g_settings_bind (view->priv->editor_settings,
+	g_settings_bind (GEDIT_VIEW (view)->priv->editor_settings,
 			 GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
 			 item,
 			 "active",
@@ -477,12 +578,19 @@ show_line_numbers_menu (GeditView      *view,
 
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-	g_signal_connect (menu,
-			  "selection-done",
-			  G_CALLBACK (gtk_widget_destroy),
-			  NULL);
-
 	gtk_widget_show_all (menu);
+
+	return menu;
+}
+
+static void
+show_line_numbers_menu (GtkWidget      *view,
+			GdkEventButton *event)
+{
+	GtkWidget *menu;
+
+	menu = create_line_numbers_menu (view);
+
 	gtk_menu_popup (GTK_MENU (menu),
 			NULL,
 			NULL,
@@ -493,17 +601,16 @@ show_line_numbers_menu (GeditView      *view,
 }
 
 static gboolean
-gedit_view_button_press_event (GtkWidget      *widget,
-			       GdkEventButton *event)
+gedit_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
 {
 	if ((event->type == GDK_BUTTON_PRESS) &&
 	    (event->button == GDK_BUTTON_SECONDARY) &&
 	    (event->window == gtk_text_view_get_window (GTK_TEXT_VIEW (widget),
 						        GTK_TEXT_WINDOW_LEFT)))
 	{
-		show_line_numbers_menu (GEDIT_VIEW (widget), event);
+		show_line_numbers_menu (widget, event);
 
-		return GDK_EVENT_STOP;
+		return TRUE;
 	}
 
 	return GTK_WIDGET_CLASS (gedit_view_parent_class)->button_press_event (widget, event);
@@ -538,7 +645,6 @@ gedit_view_realize (GtkWidget *widget)
 	                  "extension-added",
 	                  G_CALLBACK (extension_added),
 	                  view);
-
 	g_signal_connect (view->priv->extensions,
 	                  "extension-removed",
 	                  G_CALLBACK (extension_removed),
@@ -546,8 +652,7 @@ gedit_view_realize (GtkWidget *widget)
 
 	/* We only activate the extensions when the view is realized,
 	 * because most plugins will expect this behaviour, and we won't
-	 * change the buffer later anyway.
-	 */
+	 * change the buffer later anyway. */
 	peas_extension_set_foreach (view->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_added,
 	                            view);
@@ -562,9 +667,8 @@ gedit_view_unrealize (GtkWidget *widget)
 	g_signal_handlers_disconnect_by_func (view->priv->extensions, extension_removed, view);
 
 	/* We need to deactivate the extension on unrealize because it is not
-	 * mandatory that a view has been realized when we dispose it, leading
-	 * to deactivating the plugin without being activated.
-	 */
+	   mandatory that a view has been realized when we dispose it, leading
+	   to deactivating the plugin without being activated */
 	peas_extension_set_foreach (view->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_removed,
 	                            view);
@@ -584,16 +688,16 @@ delete_line (GtkTextView *text_view,
 
 	gtk_text_view_reset_im_context (text_view);
 
-	/* If there is a selection delete the selected lines and ignore count. */
+	/* If there is a selection delete the selected lines and
+	 * ignore count */
 	if (gtk_text_buffer_get_selection_bounds (buffer, &start, &end))
 	{
 		gtk_text_iter_order (&start, &end);
 
 		if (gtk_text_iter_starts_line (&end))
 		{
-			/* Do not delete the line with the cursor if the cursor
-			 * is at the beginning of the line.
-			 */
+			/* Do no delete the line with the cursor if the cursor
+			 * is at the beginning of the line */
 			count = 0;
 		}
 		else
@@ -610,36 +714,27 @@ delete_line (GtkTextView *text_view,
 
 		if (gtk_text_iter_is_end (&end))
 		{
-			if (gtk_text_iter_backward_line (&start) &&
-			    !gtk_text_iter_ends_line (&start))
-			{
+			if (gtk_text_iter_backward_line (&start) && !gtk_text_iter_ends_line (&start))
 				gtk_text_iter_forward_to_line_end (&start);
-			}
 		}
 	}
 	else if (count < 0)
 	{
 		if (!gtk_text_iter_ends_line (&end))
-		{
 			gtk_text_iter_forward_to_line_end (&end);
-		}
 
 		while (count < 0)
 		{
 			if (!gtk_text_iter_backward_line (&start))
-			{
 				break;
-			}
 
-			count++;
+			++count;
 		}
 
 		if (count == 0)
 		{
 			if (!gtk_text_iter_ends_line (&start))
-			{
 				gtk_text_iter_forward_to_line_end (&start);
-			}
 		}
 		else
 		{
@@ -678,39 +773,38 @@ gedit_view_delete_from_cursor (GtkTextView   *text_view,
 			       gint           count)
 {
 	/* We override the standard handler for delete_from_cursor since
-	 * the GTK_DELETE_PARAGRAPHS case is not implemented as we like (i.e. it
-	 * does not remove the carriage return in the previous line).
+	   the GTK_DELETE_PARAGRAPHS case is not implemented as we like (i.e. it
+	   does not remove the carriage return in the previous line)
 	 */
 	switch (type)
 	{
 		case GTK_DELETE_PARAGRAPHS:
 			delete_line (text_view, count);
 			break;
-
 		default:
 			GTK_TEXT_VIEW_CLASS (gedit_view_parent_class)->delete_from_cursor(text_view, type, count);
 			break;
 	}
 }
 
-static GtkTextBuffer *
-gedit_view_create_buffer (GtkTextView *text_view)
-{
-	return GTK_TEXT_BUFFER (gedit_document_new ());
-}
-
 static void
 gedit_view_class_init (GeditViewClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	GObjectClass     *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass   *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkTextViewClass *text_view_class = GTK_TEXT_VIEW_CLASS (klass);
-	GtkBindingSet *binding_set;
+	GtkBindingSet    *binding_set;
 
 	object_class->dispose = gedit_view_dispose;
+	object_class->finalize = gedit_view_finalize;
 	object_class->constructed = gedit_view_constructed;
 
-	/* Override the gtk_text_view_drag_motion and drag_drop
+	widget_class->destroy = gedit_view_destroy;
+	widget_class->focus_out_event = gedit_view_focus_out;
+	widget_class->draw = gedit_view_draw;
+
+	/*
+	 * Override the gtk_text_view_drag_motion and drag_drop
 	 * functions to get URIs
 	 *
 	 * If the mime type is text/uri-list, then we will accept
@@ -719,45 +813,38 @@ gedit_view_class_init (GeditViewClass *klass)
 	 *
 	 * If the drag context has any other mime type, then pass the
 	 * information onto the GtkTextView's standard handlers.
+	 * (widget_class->function_name).
 	 *
 	 * See bug #89881 for details
 	 */
 	widget_class->drag_motion = gedit_view_drag_motion;
 	widget_class->drag_data_received = gedit_view_drag_data_received;
 	widget_class->drag_drop = gedit_view_drag_drop;
-
-	widget_class->focus_out_event = gedit_view_focus_out;
 	widget_class->button_press_event = gedit_view_button_press_event;
 	widget_class->realize = gedit_view_realize;
 	widget_class->unrealize = gedit_view_unrealize;
 
 	text_view_class->delete_from_cursor = gedit_view_delete_from_cursor;
-	text_view_class->create_buffer = gedit_view_create_buffer;
 
-	/**
-	 * GeditView::drop-uris:
-	 * @view: a #GeditView.
-	 * @uri_list: a %NULL-terminated list of URIs.
-	 *
-	 * The #GeditView::drop-uris signal allows plugins to intercept the
-	 * default drag-and-drop behaviour of 'text/uri-list'. #GeditView
-	 * handles drag-and-drop in the default handlers of
-	 * #GtkWidget::drag-drop, #GtkWidget::drag-motion and
-	 * #GtkWidget::drag-data-received. The view emits the
-	 * #GeditView::drop-uris signal from #GtkWidget::drag-data-received if
-	 * valid URIs have been dropped.  Plugins should connect to
-	 * #GtkWidget::drag-motion, #GtkWidget::drag-drop and
-	 * #GtkWidget::drag-data-received to change this default behaviour. They
-	 * should NOT use this signal because this will not prevent gedit from
-	 * loading the URI.
+	/* A new signal DROP_URIS has been added to allow plugins to intercept
+	 * the default dnd behaviour of 'text/uri-list'. GeditView now handles
+	 * dnd in the default handlers of drag_drop, drag_motion and
+	 * drag_data_received. The view emits drop_uris from drag_data_received
+	 * if valid uris have been dropped. Plugins should connect to
+	 * drag_motion, drag_drop and drag_data_received to change this
+	 * default behaviour. They should _NOT_ use this signal because this
+	 * will not prevent gedit from loading the uri
 	 */
 	view_signals[DROP_URIS] =
-		g_signal_new ("drop-uris",
+		g_signal_new ("drop_uris",
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		              G_STRUCT_OFFSET (GeditViewClass, drop_uris),
-		              NULL, NULL, NULL,
+		              NULL, NULL,
+		              g_cclosure_marshal_VOID__BOXED,
 		              G_TYPE_NONE, 1, G_TYPE_STRV);
+
+	g_type_class_add_private (klass, sizeof (GeditViewPrivate));
 
 	binding_set = gtk_binding_set_by_class (klass);
 
@@ -767,24 +854,6 @@ gedit_view_class_init (GeditViewClass *klass)
 	                              "delete_from_cursor", 2,
 	                              G_TYPE_ENUM, GTK_DELETE_PARAGRAPHS,
 	                              G_TYPE_INT, 1);
-
-	gtk_binding_entry_add_signal (binding_set,
-	                              GDK_KEY_u,
-	                              GDK_CONTROL_MASK,
-	                              "change_case", 1,
-	                              G_TYPE_ENUM, GTK_SOURCE_CHANGE_CASE_UPPER);
-
-	gtk_binding_entry_add_signal (binding_set,
-	                              GDK_KEY_l,
-	                              GDK_CONTROL_MASK,
-	                              "change_case", 1,
-	                              G_TYPE_ENUM, GTK_SOURCE_CHANGE_CASE_LOWER);
-
-	gtk_binding_entry_add_signal (binding_set,
-	                              GDK_KEY_asciitilde,
-	                              GDK_CONTROL_MASK,
-	                              "change_case", 1,
-	                              G_TYPE_ENUM, GTK_SOURCE_CHANGE_CASE_TOGGLE);
 }
 
 /**
@@ -794,8 +863,8 @@ gedit_view_class_init (GeditViewClass *klass)
  * Creates a new #GeditView object displaying the @doc document.
  * @doc cannot be %NULL.
  *
- * Returns: a new #GeditView.
- */
+ * Return value: a new #GeditView
+ **/
 GtkWidget *
 gedit_view_new (GeditDocument *doc)
 {
@@ -815,13 +884,16 @@ gedit_view_cut_clipboard (GeditView *view)
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
 
 	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
 	                                      GDK_SELECTION_CLIPBOARD);
 
+	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_cut_clipboard (buffer,
 	                               clipboard,
-				       gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+	                               !gedit_document_get_readonly (
+	                               		GEDIT_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),
@@ -842,6 +914,7 @@ gedit_view_copy_clipboard (GeditView *view)
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
 
 	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
 	                                      GDK_SELECTION_CLIPBOARD);
@@ -862,14 +935,17 @@ gedit_view_paste_clipboard (GeditView *view)
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
 
 	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
 	                                      GDK_SELECTION_CLIPBOARD);
 
+	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_paste_clipboard (buffer,
 	                                 clipboard,
 	                                 NULL,
-					 gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+	                                 !gedit_document_get_readonly (
+	                                 	GEDIT_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),
@@ -885,7 +961,7 @@ gedit_view_paste_clipboard (GeditView *view)
  *
  * Deletes the text currently selected in the #GtkTextBuffer associated
  * to the view and scroll to the cursor position.
- */
+ **/
 void
 gedit_view_delete_selection (GeditView *view)
 {
@@ -896,10 +972,13 @@ gedit_view_delete_selection (GeditView *view)
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
 
+	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_delete_selection (buffer,
 	                                  TRUE,
-					  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+	                                  !gedit_document_get_readonly (
+	                                  	GEDIT_DOCUMENT (buffer)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),
@@ -913,20 +992,20 @@ gedit_view_delete_selection (GeditView *view)
  * gedit_view_select_all:
  * @view: a #GeditView
  *
- * Selects all the text.
- */
+ * Selects all the text displayed in the @view.
+ **/
 void
 gedit_view_select_all (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-	GtkTextIter start;
-	GtkTextIter end;
+	GtkTextBuffer *buffer ;
+	GtkTextIter start, end;
 
 	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
 
 	gtk_text_buffer_get_bounds (buffer, &start, &end);
 	gtk_text_buffer_select_range (buffer, &start, &end);
@@ -937,17 +1016,18 @@ gedit_view_select_all (GeditView *view)
  * @view: a #GeditView
  *
  * Scrolls the @view to the cursor position.
- */
+ **/
 void
 gedit_view_scroll_to_cursor (GeditView *view)
 {
-	GtkTextBuffer *buffer;
+	GtkTextBuffer* buffer;
 
 	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	g_return_if_fail (buffer != NULL);
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),
@@ -957,18 +1037,19 @@ gedit_view_scroll_to_cursor (GeditView *view)
 	                              0.0);
 }
 
+/* FIXME this is an issue for introspection */
 /**
  * gedit_view_set_font:
  * @view: a #GeditView
- * @default_font: whether to reset to the default font
+ * @def: whether to reset the default font
  * @font_name: the name of the font to use
  *
- * If @default_font is #TRUE, resets the font of the @view to the default font.
- * Otherwise sets it to @font_name.
- */
+ * If @def is #TRUE, resets the font of the @view to the default font
+ * otherwise sets it to @font_name.
+ **/
 void
 gedit_view_set_font (GeditView   *view,
-		     gboolean     default_font,
+		     gboolean     def,
 		     const gchar *font_name)
 {
 	PangoFontDescription *font_desc;
@@ -977,13 +1058,13 @@ gedit_view_set_font (GeditView   *view,
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
-	if (default_font)
+	if (def)
 	{
-		GeditSettings *settings;
+		GObject *settings;
 		gchar *font;
 
 		settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
-		font = gedit_settings_get_system_font (settings);
+		font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
 
 		font_desc = pango_font_description_from_string (font);
 		g_free (font);

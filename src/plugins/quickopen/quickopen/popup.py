@@ -13,38 +13,29 @@
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU General Public License
-#  along with this program; if not, see <http://www.gnu.org/licenses/>.
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place, Suite 330,
+#  Boston, MA 02111-1307, USA.
 
 import os
 import platform
 import functools
 import fnmatch
-
-from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Gedit
+from gi.repository import Gio, GObject, Pango, Gtk, Gdk, Gedit
 import xml.sax.saxutils
 from .virtualdirs import VirtualDirectory
-
-try:
-    import gettext
-    gettext.bindtextdomain('gedit')
-    gettext.textdomain('gedit')
-    _ = gettext.gettext
-except:
-    _ = lambda s: s
 
 class Popup(Gtk.Dialog):
     __gtype_name__ = "QuickOpenPopup"
 
     def __init__(self, window, paths, handler):
         Gtk.Dialog.__init__(self,
-                            title=_('Quick Open'),
-                            transient_for=window,
-                            modal=True,
-                            destroy_with_parent=True)
+                    title=_('Quick Open'),
+                    parent=window,
+                    flags=Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+                    buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL))
 
-        self.add_button(_("_Cancel"), Gtk.ResponseType.CANCEL)
-        self._open_button = self.add_button(_("_Open"),
-                                            Gtk.ResponseType.ACCEPT)
+        self._open_button = self.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT)
 
         self._handler = handler
         self._build_ui()
@@ -59,10 +50,7 @@ class Popup(Gtk.Dialog):
         self._busy_cursor = Gdk.Cursor(Gdk.CursorType.WATCH)
 
         accel_group = Gtk.AccelGroup()
-        accel_group.connect(Gdk.KEY_l,
-                            Gdk.ModifierType.CONTROL_MASK,
-                            0,
-                            self.on_focus_entry)
+        accel_group.connect(Gdk.KEY_l, Gdk.ModifierType.CONTROL_MASK, 0, self.on_focus_entry)
 
         self.add_accel_group(accel_group)
 
@@ -87,7 +75,7 @@ class Popup(Gtk.Dialog):
         action_area.set_spacing(6)
 
         self._entry = Gtk.SearchEntry()
-        self._entry.set_placeholder_text(_('Type to search…'))
+        self._entry.set_placeholder_text(_('Type to search...'))
 
         self._entry.connect('changed', self.on_changed)
         self._entry.connect('key-press-event', self.on_key_press_event)
@@ -99,10 +87,7 @@ class Popup(Gtk.Dialog):
         tv = Gtk.TreeView()
         tv.set_headers_visible(False)
 
-        self._store = Gtk.ListStore(Gio.Icon,
-                                    str,
-                                    GObject.Object,
-                                    Gio.FileType)
+        self._store = Gtk.ListStore(Gio.Icon, str, GObject.Object, Gio.FileType)
         tv.set_model(self._store)
 
         self._treeview = tv
@@ -154,6 +139,13 @@ class Popup(Gtk.Dialog):
             cell.set_property('cell-background-set', False)
             cell.set_property('style-set', False)
 
+    def _icon_from_stock(self, stock):
+        theme = Gtk.icon_theme_get_default()
+        size = Gtk.icon_size_lookup(Gtk.IconSize.MENU)
+        pixbuf = theme.load_icon(stock, size[0], Gtk.IconLookupFlags.USE_BUILTIN)
+
+        return pixbuf
+
     def _is_text(self, entry):
         content_type = entry.get_content_type()
 
@@ -178,10 +170,8 @@ class Popup(Gtk.Dialog):
         entries = []
 
         try:
-            ret = gfile.enumerate_children("standard::*",
-                                           Gio.FileQueryInfoFlags.NONE,
-                                           None)
-        except GLib.Error as e:
+            ret = gfile.enumerate_children("standard::*", Gio.FileQueryInfoFlags.NONE, None)
+        except GObject.Error as e:
             pass
 
         if isinstance(ret, Gio.FileEnumerator):
@@ -263,7 +253,7 @@ class Popup(Gtk.Dialog):
                     else:
                         found.append(entry)
                 elif entry[2] == Gio.FileType.REGULAR and \
-                        (not lpart or len(parts) == 1):
+                     (not lpart or len(parts) == 1):
                     found.append(entry)
 
         found.sort(key=functools.cmp_to_key(lambda a, b: self._compare_entries(a[1].lower(), b[1].lower(), lpart)))
@@ -295,6 +285,7 @@ class Popup(Gtk.Dialog):
                 last = m + len(find)
 
         return out + xml.sax.saxutils.escape(s[last:])
+
 
     def make_markup(self, parts, path):
         out = []
@@ -362,10 +353,7 @@ class Popup(Gtk.Dialog):
         for d in self._dirs:
             if isinstance(d, VirtualDirectory):
                 for entry in d.enumerate_children("standard::*", 0, None):
-                    self._append_to_store((entry[1].get_icon(),
-                                          xml.sax.saxutils.escape(entry[1].get_name()),
-                                          entry[0],
-                                          entry[1].get_file_type()))
+                    self._append_to_store((entry[1].get_icon(), xml.sax.saxutils.escape(entry[1].get_name()), entry[0], entry[1].get_file_type()))
 
     def _set_busy(self, busy):
         if busy:
@@ -397,22 +385,18 @@ class Popup(Gtk.Dialog):
             for d in self._dirs:
                 for entry in self.do_search_dir(parts, d):
                     pathparts = self._make_parts(d, entry[0], parts)
-                    self._append_to_store((entry[3],
-                                          self.make_markup(parts, pathparts),
-                                          entry[0],
-                                          entry[2]))
+                    self._append_to_store((entry[3], self.make_markup(parts, pathparts), entry[0], entry[2]))
 
         piter = self._store.get_iter_first()
         if piter:
-            path = self._store.get_path(piter)
-            self._treeview.get_selection().select_path(path)
+            self._treeview.get_selection().select_path(self._store.get_path(piter))
 
         self._set_busy(False)
 
-    # FIXME: override doesn't work anymore for some reason, if we override
+    #FIXME: override doesn't work anymore for some reason, if we override
     # the widget is not realized
     def on_show(self, data=None):
-        # Gtk.Window.do_show(self)
+        #Gtk.Window.do_show(self)
 
         self._entry.grab_focus()
         self._entry.set_text("")
@@ -527,15 +511,13 @@ class Popup(Gtk.Dialog):
                 return True
 
         if rows and ret:
-            # We destroy the popup in an idle callback to work around a crash that happens with
-            # GTK_IM_MODULE=xim.  See https://bugzilla.gnome.org/show_bug.cgi?id=737711 .
-            GLib.idle_add(self.destroy)
+            self.destroy()
 
         if not rows:
             gfile = self._direct_file()
 
             if gfile and self._handler(gfile):
-                GLib.idle_add(self.destroy)
+                self.destroy()
             else:
                 ret = False
         else:
@@ -608,7 +590,7 @@ class Popup(Gtk.Dialog):
             else:
                 fname = xml.sax.saxutils.escape(gfile.get_uri())
 
-        self._open_button.set_sensitive(fname is not None)
+        self._open_button.set_sensitive(fname != None)
         self._info_label.set_markup(fname or '')
 
     def on_focus_entry(self, group, accel, keyval, modifier):

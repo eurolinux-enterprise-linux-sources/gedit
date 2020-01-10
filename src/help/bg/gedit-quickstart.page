@@ -5,11 +5,10 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>A brief introduction to gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -41,9 +40,7 @@
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Once <app>gedit</app> launches, you can start writing right away. To save
-  your text, just click the <gui>Save</gui> icon in the <app>gedit</app>
-  toolbar.</p>
+  <p>Щом <app>gedit</app> се стартира, можете да започнете да пишете веднага. За да запазите вашия документ просто натиснете <gui>Запазване</gui>.</p>
 
   <p>За да научите повече относно допълнителните функции на <app>gedit</app> и да започнете да извършвате по-сложни задачи, разгледайте <link xref="index">другата информация</link> за <app>gedit</app>.</p>
 

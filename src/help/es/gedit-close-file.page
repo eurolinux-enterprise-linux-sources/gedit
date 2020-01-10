@@ -3,20 +3,16 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
-    <desc>Cerrar el archivo que está usando.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
+  
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -34,7 +30,7 @@
 
   <title>Cerrar un archivo</title>
 
-  <p>Para cerrar un archivo en <app>gedit</app>, seleccione <gui style="menuitem">Cerrar</gui>. Alternativamente, puede pulsar la «X» que aparece en la parte derecha de la pestaña del archivo.o pulsar <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
+  <p>Para cerrar un archivo en <app>gedit</app>, seleccione <guiseq><gui>Archivo</gui><gui>Cerrar</gui></guiseq>. Alternativamente, puede pulsar la «X» que aparece en la parte derecha de la pestaña del archivo.o pulsar <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
   <p>Cualquiera de estas acciones cerrará un archivo en <app>gedit</app>. Si su archivo contiene cambios que no se han guardado, <app>gedit</app> le preguntará si quiere guardarlos antes de cerrar el archivo.</p>
 
 </page>

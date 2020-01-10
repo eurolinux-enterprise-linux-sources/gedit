@@ -15,7 +15,15 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  */
 
 /* This file is a modified version of the epiphany file ephy-notebook.h
@@ -31,10 +39,15 @@
 #define GEDIT_NOTEBOOK_H
 
 #include <gedit/gedit-tab.h>
+
+#include <glib.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
+/*
+ * Type checking and casting macros
+ */
 #define GEDIT_TYPE_NOTEBOOK		(gedit_notebook_get_type ())
 #define GEDIT_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_NOTEBOOK, GeditNotebook))
 #define GEDIT_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_NOTEBOOK, GeditNotebookClass))
@@ -42,18 +55,19 @@ G_BEGIN_DECLS
 #define GEDIT_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_NOTEBOOK))
 #define GEDIT_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_NOTEBOOK, GeditNotebookClass))
 
-typedef struct _GeditNotebook		GeditNotebook;
-typedef struct _GeditNotebookClass	GeditNotebookClass;
-typedef struct _GeditNotebookPrivate	GeditNotebookPrivate;
-
-/* This is now used in multi-notebook but we keep the same enum for
- * backward compatibility since it is used in the gsettings schema */
-typedef enum
-{
+typedef enum {
 	GEDIT_NOTEBOOK_SHOW_TABS_NEVER,
 	GEDIT_NOTEBOOK_SHOW_TABS_AUTO,
 	GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS
 } GeditNotebookShowTabsModeType;
+
+/* Private structure type */
+typedef struct _GeditNotebookPrivate	GeditNotebookPrivate;
+
+/*
+ * Main object structure
+ */
+typedef struct _GeditNotebook		GeditNotebook;
 
 struct _GeditNotebook
 {
@@ -62,6 +76,11 @@ struct _GeditNotebook
 	/*< private >*/
 	GeditNotebookPrivate *priv;
 };
+
+/*
+ * Class definition
+ */
+typedef struct _GeditNotebookClass	GeditNotebookClass;
 
 struct _GeditNotebookClass
 {
@@ -73,10 +92,11 @@ struct _GeditNotebookClass
 	void	(* show_popup_menu)	(GeditNotebook *notebook,
 					 GdkEvent      *event,
 					 GeditTab      *tab);
-	gboolean(* change_to_page)      (GeditNotebook *notebook,
-	                                 gint           page_num);
 };
 
+/*
+ * Public methods
+ */
 GType		gedit_notebook_get_type		(void) G_GNUC_CONST;
 
 GtkWidget      *gedit_notebook_new		(void);
@@ -92,6 +112,13 @@ void		gedit_notebook_move_tab		(GeditNotebook *src,
 						 gint           dest_position);
 
 void		gedit_notebook_remove_all_tabs 	(GeditNotebook *nb);
+
+void		gedit_notebook_set_close_buttons_sensitive
+						(GeditNotebook *nb,
+						 gboolean       sensitive);
+
+gboolean	gedit_notebook_get_close_buttons_sensitive
+						(GeditNotebook *nb);
 
 G_END_DECLS
 

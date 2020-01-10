@@ -3,37 +3,11 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>访问存储在其他计算机上的文件。</desc>
-    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
   <title>打开位于服务器上的文件</title>
@@ -45,21 +19,21 @@
   <p>了解这些信息后，您可以在 <app>gedit</app> 中，按下列步骤打开服务器上的文件：</p>
 
     <steps>
-      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
-      <item><p>Click <gui>Other Documents…</gui>.</p></item>
-      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
-      <gui>Open</gui> dialog.</p></item>
+      <item><p>点菜单 <guiseq><gui>文件</gui><gui>打开</gui></guiseq> 命令，显示 <gui>打开文件</gui> 对话框。</p></item>
+      <item><p>在<gui>打开</gui>对话框的左上角，点击<gui>铅笔</gui>图标。</p></item>
       <item><p>输入服务器的 IP 地址或 URL。</p></item>
       <item><p>查找并选择您想打开的文件。</p></item>
-      <item><p>Use the Character Encoding drop-down list to select the
-      appropriate character coding.</p></item>
+      <item><p>在字符编码下拉列表中，选择合适的字符编码。</p></item>
       <item><p>点 <gui>打开</gui>。</p></item>
     </steps>
 
   <p>有效的 URI 包括 http:、ftp:、file: 和所有 <app>gvfs</app> 支持的格式。</p>
 
   <note>
-    <p>某些类型的 URI 会以只读方式打开，当您更改后必须另存到其他位置。例如， HTTP 只允许读取文件，从 FTP 上打开的文件一般也是只读，因为并不是所有 FTP 服务器能够远程保存文件。</p>
+    <p>Files from some types of URI are opened as read-only, and any changes
+    you make must be saved to a different location. For example, HTTP only
+    allows files to be read. Files opened from FTP are read-only because not
+    all FTP servers may correctly work with saving remote files.</p>
   </note>
 
 </page>

@@ -3,45 +3,17 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
-    <desc>退出你正在使用的文件。</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
   <title>关闭文件</title>
 
-  <p>To close a file in <app>gedit</app>, select 
-  <gui style="menuitem">Close</gui>. Alternately, you can click the small "X" that 
+  <p>To close a file in <app>gedit</app>, select <guiseq><gui>File</gui>
+  <gui>Close</gui></guiseq>. Alternately, you can click the small "X" that 
   appears on the right-side of the file's tab, or press <keyseq><key>Ctrl</key>
   <key>W</key></keyseq>.</p>
   <p>上述的任何一个操作都会关闭文件，如果您的文件中发生了变化而没有保存，<app>gedit</app> 会在关闭前提示您保存更改。</p>

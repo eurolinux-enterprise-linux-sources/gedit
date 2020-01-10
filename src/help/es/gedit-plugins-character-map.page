@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-character-map" xml:lang="es">
+  <info>
+    <revision version="0.2" date="2013-02-24" status="review"/>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <credit type="author">
+      <name>Paul Weaver</name>
+      <email>ch3pjw@bath.ac.uk</email>
+    </credit>
+
+    <desc>Insertar caracteres especiales simplemente pulsando sobre ellos</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Mustieles</mal:name>
+      <mal:email>daniel.mustieles@gmail.com</mal:email>
+      <mal:years>2011-2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jorge González</mal:name>
+      <mal:email>jorgegonz@svn.gnome.org</mal:email>
+      <mal:years>2006-2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>María Majadas</mal:name>
+      <mal:email>maria.majadas@hispalinux.es</mal:email>
+      <mal:years>2005</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Mapa de caracteres</title>
+
+  <comment>
+    <cite date="2013-02-24" href="mailto:ch3pjw@bath.ac.uk">Paul Weaver</cite>
+    <p>This assumes the reader knows how to use gedit in general. By the end of
+    this page, the reader will be able to use the character map plugin to
+    insert characters into their documents.</p>
+  </comment>
+
+  <p>El complemento <app>Mapa de caracteres</app> le permite insertar en su documento caracteres que es posible que sean fáciles de escribir usando su teclado. Para activar este complemento, seleccione <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Preferencias</gui><gui>Complementos</gui> <gui>Mapa de caracteres</gui></guiseq>.</p>
+  
+  <section id="using-character-map">
+    <title>Usar el mapa de caracteres</title>
+
+    <p>Una vez que el complemento esté activado, puede añadir caracteres desde la pestaña <em>Mapa de caracteres</em> en el panel lateral (<guiseq><gui>Ver</gui><gui>Panel lateral</gui></guiseq>).</p>
+  
+  <steps>
+    <item><p>Sitúe el cursor en el punto del documento en el que quiere insertar el carácter especial.</p></item>
+    <item><p>Abra el panel lateral seleccionando <guiseq><gui>Ver</gui><gui>Panel lateral</gui></guiseq>, o pulsando <key>F9</key>.</p></item>
+    <item><p>Seleccione la pestaña <em>Mapa de caracteres</em> en el panel lateral.</p></item>
+    <item><p>Si es necesario, elija el conjunto de caracteres al que pertenece su carácter de la lista de la parte superior de la pestaña <em>Mapa de caracteres</em> (ej, Árabe).</p></item>
+    <item><p>Pulse dos veces en el carácter que quiere para insertarlo.</p></item>
+  </steps>
+  
+    <note style="tip"><p>Debe pulsar en la vista de edición de su documento para continuar editándolo normalmente.</p></note>
+  </section>
+
+</page>

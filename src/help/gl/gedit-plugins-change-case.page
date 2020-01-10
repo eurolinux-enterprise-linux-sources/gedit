@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Cambiar a capitalización do texto seleccionado</desc>
+  <desc>Cambiar a capitalización do texto seleccioado</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -24,25 +24,23 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
 <title>Cambiar capitalización</title>
 
-  <p>Este engadido axudaralle a cambiar a capitalización dos fragmentos seleccionados. Pode usalo para cambiar todo o texto a minúsculas, a maiúsculas, para inverter a capitalización ou para aplicar títulos. Para activar este engadido, seleccione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferenzas</gui> <gui>Engadidos</gui><gui>Cambiar capitalización</gui></guiseq>.</p>
+  <p>This plugin helps you to change the case of selected portions of text. You
+  can use it to change text to be all lower case, all upper case, to invert the
+  case, or apply title case. To enable this plugin, select
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Change Case</gui></guiseq>.</p>
 
   <p>Cando o engadido <em>Cambiar capitalización</em> estea activado, pode usalo completando os seguintes pasos:</p>
 
   <steps>
     <item><p>Realce o fragmento de texto que quere cambiar.</p></item>
-    <item><p>Seleccionar <guiseq><gui style="menu">gedit</gui><gui>Cambiar capitalización</gui></guiseq></p>
+    <item><p>Select <guiseq><gui style="menu">gedit</gui><gui>Change Case</gui></guiseq></p>
     </item>
     <item><p>Escolla a opción de formateo de texto que desexe.</p></item> 
   </steps>
@@ -55,7 +53,9 @@
   </note>
 
   <note>
-    <p>Se non realzou ningún texto, a característica <em>Cambiar capitalización</em> estará en gris. Debe seleccionar unha parte do texto antes de poder uar a característica <em>Cambiar capitalización</em>.</p>
+    <p>If you have not highlighted any text, the <em>Change Case</em> feature
+    will be grayed-out. You need to select a portion of text before you use the
+    <em>Change Case</em> feature.</p>
   </note>
 
 </page>

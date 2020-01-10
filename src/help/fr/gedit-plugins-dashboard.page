@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-dashboard" xml:lang="fr">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>  
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Afficher les fichiers les plus récemment utilisés et les plus fréquemment utilisés au démarrage</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Vincent Untz</mal:name>
+      <mal:email>vuntz@gnome.org</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jonathan Ernst</mal:name>
+      <mal:email>jonathan@ernstfamily.ch</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Philippe Lefevre</mal:name>
+      <mal:email>ph.l@libertysurf.fr</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christophe Bliard</mal:name>
+      <mal:email>christophe.bliard@trux.info</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Claude Paroz</mal:name>
+      <mal:email>claude@2xlibre.net</mal:email>
+      <mal:years>2007-2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Bruno Brouard</mal:name>
+      <mal:email>annoa.b@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Luc Pionchon</mal:name>
+      <mal:email>pionchon.luc@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
+      <mal:email>alexandre.franke@gmail.com</mal:email>
+      <mal:years>2013.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Tableau de bord</title>
+
+  <p>Le greffon <app>Tableau de bord</app> permet un accès rapide aux fichiers les plus récemment utilisés et aux fichiers les plus fréquemment utilisés. Pour activer le greffon <app>Tableau de bord</app>, sélectionnez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui><gui>Tableau de bord</gui></guiseq>. Vous devez redémarrer <app>gedit</app> pour activer le greffon <app>Tableau de bord</app>.</p>
+  
+  <p>Le <app>Tableau de bord</app> inclut également une fenêtre <gui>Rechercher</gui> qui vous permet de rechercher des fichiers qui pourraient ne pas apparaître dans les listes de fichiers.</p>
+  
+  <section id="gedit-recently-used">
+    <title>Fichiers récemment ouverts</title>
+    <p>Le tableau de bord affiche initialement un raccourci vers un <gui>document vide</gui> et vers vos sept derniers fichiers utilisés. Cliquez sur le <gui>document vide</gui> pour créer un nouveau fichier. Cliquez sur un des autres fichiers pour l'ouvrir.</p>
+  </section>
+  
+  <section id="gedit-most-used">
+    <title>Fichiers les plus fréquemment utilisés</title>
+    <p>De la même manière, le tableau de bord affiche un raccourci vers un <gui>document vide</gui> et vers vos sept fichiers les plus fréquemment utilisés. Cliquez sur le <gui>document vide</gui> pour créer un nouveau fichier. Cliquez sur un des autres fichiers pour l'ouvrir.</p>
+
+  <note style="tip"><p>Une fois activé, le <app>tableau de bord</app> est affiché par défaut lorsque vous ouvrez <app>gedit</app>. Vous pouvez aussi ouvrir le <app>tableau de bord</app> en cliquant sur <guiseq><gui>Fichier</gui><gui>Nouveau</gui></guiseq> ou en appuyant sur <keyseq><key>Ctrl</key><key>N</key></keyseq>.</p>
+  </note>
+  
+  </section>
+
+</page>

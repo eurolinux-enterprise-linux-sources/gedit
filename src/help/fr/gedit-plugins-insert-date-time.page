@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Insérer la date et l’heure actuelle à la position du curseur.</desc>
+  <desc>Insérer la date et l'heure à la position du curseur</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -58,34 +58,16 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
-    </mal:credit>
   </info>
 
-<title>Insertion de la date et de l’heure</title>
+<title>Insertion de la date/heure</title>
 
-  <p>Comme son nom l’indique, le greffon <gui>Insérer la date et l’heure</gui> vous permet d’insérer la date et/ou l’heure à l’emplacement actuel du curseur. Pour activer ce greffon, choisissez <guiseq><gui style="menuitem">gedit</gui><gui style="menuitem">Préférences</gui><gui>Greffons</gui> <gui>Insérer la date et l’heure</gui></guiseq>. Pour utiliser le greffon, cliquez sur <guiseq><gui style="menuitem">Édition</gui><gui>Insérer la date et l’heure</gui></guiseq>.</p>
+  <p>Comme son nom l'indique, le greffon <gui>Insérer la date et l'heure</gui> vous permet d'insérer la date et/ou l'heure à l'emplacement actuel du curseur. Pour activer ce greffon, choisissez <guiseq><gui>gedit</gui> <gui>Préférences</gui><gui>Greffons</gui><gui>Insérer la date et l'heure</gui></guiseq>. Pour utiliser le greffon, cliquez sur <guiseq><gui>Édition</gui><gui>Insérer la date et l'heure</gui></guiseq>.</p>
 
-  <p>Par défaut, le greffon <gui>Insérer la date et l’heure</gui> vous demande de choisir votre format de date/heure préféré à chaque fois que vous utilisez le greffon. Cependant vous pouvez choisir votre propre format de date et d’heure par défaut en sélectionnant <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Préférences</gui> <gui>Greffons</gui><gui>Insérer la date et l’heure</gui><gui>Configurer le greffon</gui></guiseq>.</p>
+  <p>Par défaut, le greffon <gui>Insérer la date et l'heure</gui> vous demande de choisir votre format de date/heure préféré à chaque fois que vous utilisez le greffon. Cependant vous pouvez choisir votre propre format de date et d'heure par défaut en sélectionnant <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui> <gui>Insérer la date et l'heure</gui><gui>Configurer le greffon</gui></guiseq>.</p>
 
 </page>

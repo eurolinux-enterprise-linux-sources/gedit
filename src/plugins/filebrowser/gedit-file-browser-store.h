@@ -15,11 +15,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_FILE_BROWSER_STORE_H
-#define GEDIT_FILE_BROWSER_STORE_H
+#ifndef __GEDIT_FILE_BROWSER_STORE_H__
+#define __GEDIT_FILE_BROWSER_STORE_H__
 
 #include <gtk/gtk.h>
 
@@ -35,12 +36,9 @@ G_BEGIN_DECLS
 typedef enum
 {
 	GEDIT_FILE_BROWSER_STORE_COLUMN_ICON = 0,
-	GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP,
+	GEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
 	GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
 	GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS,
-
-	/* Columns not in common with GeditFileBookmarksStore */
-	GEDIT_FILE_BROWSER_STORE_COLUMN_NAME,
 	GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
 	GEDIT_FILE_BROWSER_STORE_COLUMN_NUM
 } GeditFileBrowserStoreColumn;
@@ -98,24 +96,22 @@ struct _GeditFileBrowserStoreClass {
 	GObjectClass parent_class;
 
 	/* Signals */
-	void (* begin_loading)      (GeditFileBrowserStore *model,
-	                             GtkTreeIter           *iter);
-	void (* end_loading)        (GeditFileBrowserStore *model,
-	                             GtkTreeIter           *iter);
-	void (* error)              (GeditFileBrowserStore *model,
-	                             guint                  code,
-	                             gchar                 *message);
-	gboolean (* no_trash)       (GeditFileBrowserStore *model,
-	                             GList                 *files);
-	void (* rename)             (GeditFileBrowserStore *model,
-	                             GFile                 *oldfile,
-	                             GFile                 *newfile);
-	void (* begin_refresh)      (GeditFileBrowserStore *model);
-	void (* end_refresh)        (GeditFileBrowserStore *model);
-	void (* unload)             (GeditFileBrowserStore *model,
-	                             GFile                 *location);
-	void (* before_row_deleted) (GeditFileBrowserStore *model,
-	                             GtkTreePath           *path);
+	void (* begin_loading)	(GeditFileBrowserStore *model,
+				 GtkTreeIter           *iter);
+	void (* end_loading)	(GeditFileBrowserStore *model,
+				 GtkTreeIter           *iter);
+	void (* error)		(GeditFileBrowserStore *model,
+				 guint                  code,
+				 gchar                 *message);
+	gboolean (* no_trash)	(GeditFileBrowserStore *model,
+				 GList                 *files);
+	void (* rename)		(GeditFileBrowserStore *model,
+				 GFile                 *oldfile,
+				 GFile                *newfile);
+	void (* begin_refresh)	(GeditFileBrowserStore *model);
+	void (* end_refresh)	(GeditFileBrowserStore *model);
+	void (* unload)		(GeditFileBrowserStore *model,
+				 GFile                *location);
 };
 
 GType		 gedit_file_browser_store_get_type		(void) G_GNUC_CONST;
@@ -156,7 +152,7 @@ void		 gedit_file_browser_store_set_value		(GeditFileBrowserStore            *tr
 								 gint                              column,
 								 GValue                           *value);
 
-void		 _gedit_file_browser_store_iter_expanded	(GeditFileBrowserStore            *model,
+void		 _gedit_file_browser_store_iter_expanded		(GeditFileBrowserStore            *model,
 								 GtkTreeIter                      *iter);
 void		 _gedit_file_browser_store_iter_collapsed	(GeditFileBrowserStore            *model,
 								 GtkTreeIter                      *iter);
@@ -168,12 +164,6 @@ void		 gedit_file_browser_store_set_filter_mode	(GeditFileBrowserStore          
 void		 gedit_file_browser_store_set_filter_func	(GeditFileBrowserStore            *model,
 								 GeditFileBrowserStoreFilterFunc   func,
 								 gpointer                          user_data);
-
-const gchar * const *
-                 gedit_file_browser_store_get_binary_patterns	(GeditFileBrowserStore            *model);
-void		 gedit_file_browser_store_set_binary_patterns	(GeditFileBrowserStore            *model,
-								 const gchar                     **binary_patterns);
-
 void		 gedit_file_browser_store_refilter		(GeditFileBrowserStore            *model);
 GeditFileBrowserStoreFilterMode
 gedit_file_browser_store_filter_mode_get_default		(void);
@@ -206,5 +196,5 @@ void		 _gedit_file_browser_store_register_type	(GTypeModule                     
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_STORE_H */
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_FILE_BROWSER_STORE_H__ */
+/* ex:ts=8:noet: */

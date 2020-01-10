@@ -12,35 +12,33 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Jak spustit skript vůči aktuálním souborům a jak komunikovat s ostatními aplikacemi.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Run scripts on your current files, and interact with other applications</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
-  </info>
+<title>External tools</title>
 
-<title>Externí nástroje</title>
-
-  <p>Zásuvný modul <em>Externí nástroje</em> vám může pomoci zjednodušit často opakované úkony. Konkrétně rozšiřuje schopnosti editoru <app>gedit</app> o spouštění skriptů vůči souborům, se kterými pracujete, a umožňuje interakci mezi aplikací <app>gedit</app> a dalšími aplikacemi. Zásuvný modul <app>Externí nástroje</app> povolíte pomocí <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Předvolby</gui> <gui>Zásuvné moduly</gui> <gui>Externí nástroje</gui></guiseq>.</p>
+  <p>The <em>External Tools</em> plugin can help simplify repetitive tasks.
+  Specifically, it extends <app>gedit</app> by helping you to run scripts on
+  your working files, and by allowing <app>gedit</app> to interact with other
+  programs on your computer. To enable the <app>External Tools</app> plugin,
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
-    <title>Nastavení zásuvného modulu Externí nástroje</title>
+    <title>Configure the external tools plugin</title>
 
-  <p>Když máte zásuvný modul povolen, musíte jej nastavit, aby vyhovoval vašim potřebám. Nastavení voleb je dostupné přes <guiseq><gui>Nástroje</gui> <gui>Správa externích nástrojů</gui></guiseq>.</p>
+  <p>Once you have enabled the plugin, you will need to configure it to suit
+  your needs. The configuration options are available by selecting
+  <guiseq><gui>Tools</gui><gui>Manage External Tools</gui></guiseq>.</p>
   
   <note style="caution">
-    <p>Tento zásuvný modul je určen spíše pro pokročilé uživatele a aby mohl být naplno využíván, vyžaduje znalosti skriptování. Používejte jej obezřetně, protože chyby ve skriptech mohou vést k nechtěným zásahům do vaší práce.</p>
+    <p>This plugin is for advanced users, and requires knowledge of scripting
+    to be used effectively. Use this plugin with care, as mistakes with your
+    scripts can affect your work in unintended ways.</p>
   </note>
   </section>
 

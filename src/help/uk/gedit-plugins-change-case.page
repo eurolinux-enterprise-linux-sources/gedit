@@ -11,45 +11,43 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Change the case of selected text.</desc>
+  <desc>Change the case of selected text</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Change case</title>
 
-<title>Змінити регістр</title>
+  <p>This plugin helps you to change the case of selected portions of text. You
+  can use it to change text to be all lower case, all upper case, to invert the
+  case, or apply title case. To enable this plugin, select
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Change Case</gui></guiseq>.</p>
 
-  <p>Цей плагін допомагає змінити регістр вибраної частини тексту. Можна змінити, щоб текст був у нижньому або у верхньому регістрі, інвертувати регістр або застосувати регістр заголовку. Щоб увімкнути цей плагін, виберіть <guiseq><gui style="menu">«gedit»</gui><gui style="menuitem">«Параметри»</gui> <gui>«Плагіни»</gui><gui>«Змінити регістр»</gui></guiseq>.</p>
-
-  <p>Як тільки плагін «<em>Змінити регістр</em>» увімкнено, його можна використовувати, виконавши наступні дії:</p>
+  <p>Once the <em>Change Case</em> plugin is enabled, you can use it by
+  completing the following steps:</p>
 
   <steps>
-    <item><p>Виділіть фрагмент тексту, який потрібно змінити.</p></item>
-    <item><p>Виберіть <guiseq><gui style="menu">«gedit»</gui><gui>«Змінити регістр»</gui></guiseq></p>
+    <item><p>Highlight the portion of text that you want to change.</p></item>
+    <item><p>Select <guiseq><gui style="menu">gedit</gui><gui>Change Case</gui></guiseq></p>
     </item>
-    <item><p>Виберіть потрібний варіант форматування тексту.</p></item> 
+    <item><p>Choose your desired text-formatting option.</p></item> 
   </steps>
 
-  <p>Текст буде змінено негайно.</p>
+  <p>The updates to the text formatting will take place immediately.</p>
 
   <note style="tip">
-    <p>Опція «<gui>Інвертувати регістр</gui>» змінює нижній регістр символів на верхній, а верхній регістр символів на верхній.</p>
-    <p>Опція «<gui>Регістр заголовку</gui>» змінює регістр перших літер кожного слова на верхній. Регістр всіх інших літер змінюється на нижній.</p>
+    <p>The <gui>Invert Case</gui> option will convert all lower case letters to
+    upper case, and will convert all upper case letters to lower case.</p>
+    <p>The <gui>Title Case</gui> option will convert the first letter of each
+    word to upper case. All other letters will be converted to lower
+    case.</p>
   </note>
 
   <note>
-    <p>Якщо текст не вибрано, елемент «<em>Змінити регістр</em>» буде недоступним. Потрібно вибрати фрагмент тексту перед використанням елементу «<em>Змінити регістр</em>».</p>
+    <p>If you have not highlighted any text, the <em>Change Case</em> feature
+    will be grayed-out. You need to select a portion of text before you use the
+    <em>Change Case</em> feature.</p>
   </note>
 
 </page>

@@ -10,44 +10,38 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
   <desc>Υποστήριξη του gedit για γραμμές διαμόρφωσης τύπου Emacs, Kate και Vim.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μάριος Ζηντίλης</mal:name>
+      <mal:name> Μάριος Ζηντίλης</mal:name>
       <mal:email>m.zindilis@dmajor.org</mal:email>
       <mal:years>2009</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Βασίλης Τσιβίκης</mal:name>
+      <mal:name> Βασίλης Τσιβίκης</mal:name>
       <mal:email>vasitsiv@hotmail.gr</mal:email>
       <mal:years>2011</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Θάνος Τρυφωνίδης</mal:name>
+      <mal:name> Θάνος Τρυφωνίδης</mal:name>
       <mal:email>tomtryf@gmail.com</mal:email>
-      <mal:years>2012, 2014</mal:years>
+      <mal:years>2012</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Δημήτρης Σπίγγος</mal:name>
+      <mal:name> Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014, 2015</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μαρία Μαυρίδου</mal:name>
-      <mal:email>mavridou@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
 <title>Γραμμές διαμόρφωσης - Modelines</title>
 
-  <p>Το πρόσθετο <app>Γραμμές διαμόρφωσης</app> επιτρέπει το <app>gedit</app> να αναλύσει τις γραμμές κειμένου στην αρχή και το τέλος ενός αρχείου, και μετά να εφαρμόσει μια συλλογή προτιμήσεων εγγράφων στο αρχείο. Το πρόσθετο <app>Γραμμές διαμόρφωσης</app> υποστηρίζει ένα υποσύνολο επιλογών που χρησιμοποιείται από τους επεξεργαστές κειμένου <app>Emacs</app>,<app>Kate</app> και <app>Vim</app>.</p>
+  <p>Το πρόσθετο <app>Γραμμές διαμόρφωσης</app> επιτρέπει το <app>gedit</app> να αναλύσει τις γραμμές κειμένου στην αρχή και το τέλος ενός αρχείου, και μετά να εφαρμόσει μια συλλογή προτιμήσεων εγγράφων στο αρχείο. Το πρόσθετο <app>Γραμμές διαμόρφωσης</app> υποστηρίζει ένα υποσύνολο επιλογών που χρησιμοποιείται από τους <app>Emacs</app>,<app>Kate</app> και <app>Vim</app> επεξεργαστές κειμένου.</p>
 
   <p>Για να ενεργοποιήσετε το πρόσθετο <app>Γραμμές διαμόρφωσης</app>, επιλέξτε <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Προτιμήσεις</gui><gui>Πρόσθετα</gui><gui>Γραμμές διαμόρφωσης</gui></guiseq>.</p>
 
@@ -72,9 +66,9 @@
 
   <p>Η πρώτες δύο γραμμές ενός εγγράφου σαρώνονται για γραμμές διαμόρφωσης <app>Emacs</app> και το <app>gedit</app> υποστηρίζει τις ακόλουθες επιλογές γραμμής διαμόρφωσης <app>Emacs</app>:</p>
   <list>
-    <item><p>Tab-width</p></item>
-    <item><p>Indent-offset</p></item>
-    <item><p>Indent-tabs-mode</p></item>
+    <item><p>Πλάτος-καρτέλας</p></item>
+    <item><p>Offset-εσοχής</p></item>
+    <item><p>Λειτουργία-εσοχής-καρτελών</p></item>
     <item><p>Αυτόματη αναδίπλωση κειμένου</p></item>
   </list>
   <p>Για περισσότερες πληροφορίες για τις γραμμές διαμόρφωσης <app>Emacs</app>, επισκεφτείτε το <link href="http://www.gnu.org/software/emacs/manual/emacs.html">Εγχειρίδιο GNU Emacs</link>.</p>
@@ -93,7 +87,7 @@
     <item><p>word-wrap-column</p></item>
   </list>
 
-  <p>Για περισσότερες πληροφορίες για τις γραμμές διαμόρφωσης<app>Kate</app>, επισκεφτείτε τον <link href="http://kate-editor.org/">ιστότοπο Kate</link>.</p>
+  <p>Για περισσότερες πληροφορίες για τις γραμμές διαμόρφωσης<app>Kate</app>, επισκεφτείτε την <link href="http://kate-editor.org/">Ιστοσελίδα Kate</link>.</p>
 </section>
 
 <section id="modelines-vim">
@@ -104,10 +98,10 @@
     <item><p>et (expandtab)</p></item>
     <item><p>ts (tabstop)</p></item>
     <item><p>sw (shiftwidth)</p></item>
-    <item><p>wrap</p></item>
+    <item><p>αναδίπλωση</p></item>
     <item><p>textwidth</p></item>
   </list>
 
-  <p>Για περισσότερες πληροφορίες για τις γραμμές διαμόρφωσης <app>Vim</app>, επισκεφτείτε τον <link href="http://www.vim.org/">ιστότοπο του Vim</link>.</p>
+  <p>Για περισσότερες πληροφορίες για τις γραμμές διαμόρφωσης <app>Vim</app>, επισκεφτείτε την <link href="http://www.vim.org/">ιστοσελίδα του Vim</link>.</p>
 </section>
 </page>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-dashboard" xml:lang="lv">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>  
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Rādīt nesen un visbiežāk lietotās datnes, uzsākot darbu</desc>
+  </info>
+
+  <title>Datņu panelis</title>
+
+  <p>The <app>Dashboard</app> plugin provides quick access to your most 
+  recently-used files and most-frequently used files. To 
+  activate the <app>Dashboard</app> plugin, select <guiseq>
+  <gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Dashboard</gui></guiseq>. You will need to restart
+  <app>gedit</app> to activate the <app>Dashboard</app> plugin.</p>
+  
+  <p><app>Datņu panelim</app> ir arī <gui>meklēšanas</gui> logs, lai atrastu datnes, kuru nav sarakstā.</p>
+  
+  <section id="gedit-recently-used">
+    <title>Nesen izmantotās datnes</title>
+    <p>Sākotnēji datņu panelis rādīs <gui>tukša dokumenta</gui> īsceļu un septiņus nesen izmantotas datnes. Veiciet klikšķi uz <gui>tukšā dokumenta</gui>, lai izveidotu jaunu datni. Veiciet klikšķi uz jebkuras citas datnes, lai atvērtu atbilstošo datni.</p>
+  </section>
+  
+  <section id="gedit-most-used">
+    <title>Visbiežāk izmantotās datnes</title>
+    <p>Līdzīgi, datņu panelis rāda <gui>tukša dokumenta</gui> īsceļu un septiņus visbiežāk izmantotās datnes. Veiciet klikšķi uz <gui>tukšā dokumenta</gui>, lai izveidotu jaunu datni. Veiciet klikšķi uz jebkuras citas datnes, lai atvērtu atbilstošo datni.</p>
+
+  <note style="tip"><p>Kad spraudnis <app>Datņu panelis</app> ir ieslēgts, panelis parādīsies pēc noklusējuma, atverot <app>gedit</app>. Paneli var atvērt arī, izvēloties <guiseq><gui>Datne</gui><gui>Jauns</gui> </guiseq> vai nospiežot <keyseq><key>Ctrl</key><key>N</key></keyseq>.</p>
+  </note>
+  
+  </section>
+
+</page>

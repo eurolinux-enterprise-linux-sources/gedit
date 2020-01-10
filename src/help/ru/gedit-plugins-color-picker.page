@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-color-picker" xml:lang="ru">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/> 
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Джим Кэмпбелл (Jim Campbell)</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Выбор цвета и вставка его шестнадцатиричного представления.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stas Solovey</mal:name>
+      <mal:email>whats_up@tut.by</mal:email>
+      <mal:years>2011, 2012, 2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Палитра цветов</title>
+
+  <p>Модуль <app>Палитра цветов</app> предоставляет вставку символьных кодов, которые представляют определенный цвет. Это помогает легче выбирать и использовать правильный цвет в программах.</p>
+  
+  <p>Чтобы включить модуль, выберите <guiseq> <gui style="menu">gedit</gui><gui style="menuitem">Параметры</gui> <gui>Модули</gui><gui>Палитра цветов</gui></guiseq>.</p>
+  
+  <p>Чтобы открыть и использовать палитру цветов:</p>
+  <steps>
+      <item><p>В документе поместите курсор в место, где нужно вставить код цвета.</p></item>
+      <item><p>Выберите <guiseq><gui>Сервис</gui><gui>Вставить цвет…</gui></guiseq>. Появится диалоговое окно Выбрать цвет.</p></item>
+      <item><p>Нажмите на нужный цвет в окне выбора цвета.</p>
+      </item>
+      <item><p>Соответствующий код цвета будет вставлен в место, где расположен курсор.</p></item>
+      <item><p>Чтобы закрыть окно <app>выбора цвета</app>, нажмите <gui>Закрыть</gui>.</p></item>
+  </steps>
+  
+  <!--TODO: Update this section for the "Custom" values -->
+  <note style="tip"><p>Можно делать тонкую настройку цвета, регулируя оттенок, насыщенность, значения красного, зеленого и синего цвета.</p>
+  <p>Также можно сохранить цвет, нажав правой кнопкой мыши на любой из цветных квадратов в палитре цветов, и выбрав <gui>Сохранить цвет здесь</gui>. Это позволяет в дальнейшем проще вставлять часто используемые цвета.</p>
+  </note>     
+</page>

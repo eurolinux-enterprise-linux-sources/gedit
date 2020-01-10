@@ -11,15 +11,25 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Ievietot tagadējo datumu/laiku kursora pozīcijā.</desc>
+  <desc>Ievietot tagadējo datumu/laiku kursora pozīcijā</desc>
 </info>
 
 <title>Ievietot datumu/laiku</title>
 
-  <p>Kā norāda šī spraudņa nosaukums, <gui>Ievietot datumu/laiku</gui> ievieto datumu un/vai laiku esošajā kursora pozīcijā. Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Iestatījumi</gui><gui>Spraudņi</gui><gui>Ievietot datumu/laiku</gui></guiseq>. Lai lietotu spraudni, spiediet <guiseq><gui>Rediģēt</gui><gui>Ievietot datumu un laiku</gui></guiseq>.</p>
+  <p>As this name of this plugin suggests, the <gui>Insert Date/Time</gui>
+  plugin allows you to insert the date and/or time at the current cursor
+  position. To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Insert Date/Time</gui></guiseq>. To use the plugin, press <guiseq>
+  <gui style="menu">Edit</gui><gui>Insert Date and Time</gui></guiseq>.</p>
 
-  <p>Bez papildu iestatījumiem spraudnis <gui>Ievietot datumu/laiku</gui> katru reizi prasīs vēlamo datuma/laika formātu. Bet jūs varat norādīt noklusēto datuma un laika formātu, izvēloties <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Iestatījumi</gui><gui>Spraudņi</gui><gui>Ievietot datumu/laiku</gui><gui>Iestatījumi</gui></guiseq>.</p>
+  <p>By default, the <gui>Insert Date/Time</gui> plugin will prompt you to
+  choose your preferred date/time format each time that you use the plugin.
+  However, you can choose your own default date and time format by selecting
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></guiseq>.
+  </p>
 
 </page>

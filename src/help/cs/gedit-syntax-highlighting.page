@@ -3,38 +3,33 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Jak zvýraznit svůj text, aby se lépe četl.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Zapnutí zvýrazňování syntaxe</title>
+  <title>Turn on syntax highlighting</title>
 
   <section id="gedit-syntax-highlighting-section">
     <title>Zvýrazňování syntaxe</title>
-    <p><app>gedit</app> poskytuje zvýrazňování syntaxe pro široké spektrum značkovacích, programovacích a vědeckých jazyků. Pokud <app>gedit</app> při otevíraní souboru rozpozná jeho syntaxi, bude text zvýrazňovat automaticky.</p>
+    <p><app>gedit</app> provides syntax highlighting for a wide range of markup,
+    programming, and scientific languages. If <app>gedit</app> recognizes the
+    syntax being used when you open a file, it will automatically highlight the
+    text.</p>
 
-    <p>V případě, že syntaxe nebo jazyk není po spuštění zvýrazňována, můžete vybrat správnou syntax nebo jazyk kliknutím na <guiseq><gui style="menu">Zobrazit</gui> <gui style="menuitem">Režim zvýrazňování</gui></guiseq> a zvolit požadovanou syntax. Další možností je vybat název syntexe ze seznamu na spodní liště okna <app>gedit</app>.</p>
+    <p>If your syntax or language is not highlighted upon startup, you can
+    select the appropriate syntax or language by clicking
+    <guiseq><gui style="menu">View</gui>
+    <gui style="menuitem">Highlight Mode</gui></guiseq>,
+    and then choosing the desired syntax. Alternately, you can select the syntax
+    name from a list at the bottom of the <app>gedit</app> window.</p>
   </section>
 
 </page>

@@ -2,18 +2,16 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="fi">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use a custom font for your text in gedit.</desc>
+    <link type="seealso" xref="gedit-plugins-text-size"/>
+
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
       <years>2011 2012 2013</years>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
-
+  
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>sampo555</mal:name>
       <mal:email>sampo_75 [at] windowslive [dot] com</mal:email>
@@ -33,16 +31,16 @@
     </mal:credit>
   </info>
 
-  <title>Oletusfontin muuttaminen</title>
+  <title>Oletuskirjasimen muuttaminen</title>
 
-  <p><app>gedit</app> käyttää oletuksena järjestelmän tasalevyistä fonttia, mutta voit muuttaa <app>geditin</app> oletusfontin mieleiseksesi.</p>
+  <p><app>gedit</app> käyttää oletuksena järjestelmän tasalevyistä kirjasinta, mutta voit muuttaa <app>geditin</app> oletuskirjasimen mieleiseksesi.</p>
   
   <steps>
-    <title>Oletusfontin muuttaminen onnistuu <app>geditissä</app> seuraavasti:</title>
+    <title>Oletuskirjasimen muuttaminen onnistuu <app>geditissä</app> seuraavasti:</title>
       <item><p>Select <guiseq><gui style="menu">gedit</gui>
       <gui style="menuitem">Preferences</gui>
       <gui>Font &amp; Colors</gui></guiseq>.</p></item>
-      <item><p>Poista rasti kohdasta ”Käytä järjestelmän tasalevyistä fonttia.”</p></item>
+      <item><p>Poista rasti kohdasta "Käytä järjestelmän tasalevyistä kirjasinta."</p></item>
       <item><p>Click on the current font name. <app>gedit</app> will open
       a font-chooser window, allowing you to see available fonts and choose the
       one that you prefer.</p></item>

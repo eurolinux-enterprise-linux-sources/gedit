@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Colorer le texte en fonction de la syntaxe pour en faciliter la lecture.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -58,27 +57,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
@@ -88,7 +69,12 @@
     <title>Coloration syntaxique</title>
     <p><app>gedit</app> fournit une coloration syntaxique pour un grand nombre de langages de balisage, de programmation et langages scientifiques. Si <app>gedit</app> reconnaît la syntaxe utilisée lorsque vous ouvrez un fichier, il colore automatiquement le texte.</p>
 
-    <p>Si votre syntaxe ou langage n’est pas mis en couleur dès le démarrage, vous pouvez choisir la syntaxe ou le langage approprié en cliquant sur <guiseq><gui style="menu">Affichage</gui><gui style="menuitem">Mode de coloration</gui></guiseq> puis en choisissant la syntaxe désirée. Vous pouvez aussi sélectionner le nom de la syntaxe à partir de la liste déroulante en bas de la fenêtre <app>gedit</app>.</p>
+    <p>If your syntax or language is not highlighted upon startup, you can
+    select the appropriate syntax or language by clicking
+    <guiseq><gui style="menu">View</gui>
+    <gui style="menuitem">Highlight Mode</gui></guiseq>,
+    and then choosing the desired syntax. Alternately, you can select the syntax
+    name from a list at the bottom of the <app>gedit</app> window.</p>
   </section>
 
 </page>

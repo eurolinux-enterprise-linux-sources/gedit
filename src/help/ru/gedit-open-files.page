@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files" xml:lang="ru">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files" xml:lang="ru">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="second"/>
@@ -7,38 +7,30 @@
     <link type="seealso" xref="gedit-close-file"/>
     <link type="seealso" xref="gedit-open-recent"/>
     <link type="seealso" xref="gedit-quickstart"/>
-    <desc>Открытие файлов для начала работы с ними.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
-
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Шобха Тиаджи (Shobha Tyagi)</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2018.</mal:years>
+      <mal:years>2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Ivan Komaritsyn</mal:name>
-      <mal:email>vantu5z@mail.ru</mal:email>
-      <mal:years>2017.</mal:years>
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Открытие файла или набора файлов</title>
 
   <p>Чтобы открыть файл в <app>gedit</app>, нажмите кнопку <gui>Открыть</gui> или нажмите <keyseq><key>Ctrl</key><key>O</key></keyseq>.</p>
-  <p>Появится диалоговое окно <gui>Открыть</gui>. С помощью мыши или клавиатуры выберите нужный файл и нажмите кнопку <gui>Открыть</gui>. Выбранный файл откроется в новой вкладке.</p>
-  <p>Чтобы закрыть диалоговое окно <gui>Открыть</gui> без открытия файла, нажмите кнопку <gui>Отмена</gui>.</p>
+  <p>Появится диалоговое окно <gui>Открыть файлы</gui>. С помощью мыши или клавиатуры выберите нужный файл и нажмите кнопку <gui>Открыть</gui>. Выбранный файл откроется в новой вкладке.</p>
+  <p>Чтобы закрыть диалоговое окно <gui>Открыть файлы</gui>, нажмите кнопку <gui>Отмена</gui>.</p>
 
   <note style="tip"><p>Для открытия нескольких файлов сразу, можно использовать клавиши <key>Ctrl</key> и <key>Shift</key>. Если удерживать клавишу <key>Ctrl</key> при выборе нескольких файлов, то после нажатия кнопки <gui>Открыть</gui> откроются все выбранные файлы.</p>
 

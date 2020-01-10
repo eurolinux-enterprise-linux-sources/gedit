@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-create-new-file" xml:lang="pt-BR">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-create-new-file" xml:lang="pt-BR">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="first"/>
-    <desc>Abra um novo arquivo para edição.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -59,21 +52,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Criando um novo arquivo</title>
 
-  <p>A forma mais fácil de criar um novo arquivo no <app>gedit</app> é clicar no botão <gui>Cria um novo documento</gui> no lado esquerdo da barra de ferramentas ou pressione <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
+  <p>A maneira mais fácil para criar um novo arquivo no <app>gedit</app>, é clicar no ícone que se parece com um pedaço de papel em branco. Se preferir, você também pode selecionar <guiseq><gui>Arquivo</gui><gui>Novo</gui> </guiseq> ou pressione <keyseq><key>Ctrl</key><key>N</key> </keyseq>.</p>
 
   <p>Qualquer uma destas ações irá criar um novo arquivo no <app>gedit</app> janela. Se você tiver outros arquivos abertos no <app>gedit</app>, o novo arquivo que você criar vai aparecer como uma nova guia à direita desses arquivos.</p>
 

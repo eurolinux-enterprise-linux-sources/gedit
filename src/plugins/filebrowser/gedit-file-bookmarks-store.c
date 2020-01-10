@@ -15,7 +15,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include <string.h>
@@ -25,6 +26,10 @@
 
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-utils.h"
+
+#define GEDIT_FILE_BOOKMARKS_STORE_GET_PRIVATE(object)( \
+		G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_FILE_BOOKMARKS_STORE, \
+		GeditFileBookmarksStorePrivate))
 
 struct _GeditFileBookmarksStorePrivate
 {
@@ -50,11 +55,7 @@ static gboolean find_with_flags       (GtkTreeModel            *model,
                                        guint                    flags,
                                        guint                    notflags);
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBookmarksStore,
-				gedit_file_bookmarks_store,
-				GTK_TYPE_TREE_STORE,
-				0,
-				G_ADD_PRIVATE_DYNAMIC (GeditFileBookmarksStore))
+G_DEFINE_DYNAMIC_TYPE (GeditFileBookmarksStore, gedit_file_bookmarks_store, GTK_TYPE_TREE_STORE)
 
 static void
 gedit_file_bookmarks_store_dispose (GObject *object)
@@ -77,11 +78,20 @@ gedit_file_bookmarks_store_dispose (GObject *object)
 }
 
 static void
+gedit_file_bookmarks_store_finalize (GObject *object)
+{
+	G_OBJECT_CLASS (gedit_file_bookmarks_store_parent_class)->finalize (object);
+}
+
+static void
 gedit_file_bookmarks_store_class_init (GeditFileBookmarksStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_file_bookmarks_store_dispose;
+	object_class->finalize = gedit_file_bookmarks_store_finalize;
+
+	g_type_class_add_private (object_class, sizeof (GeditFileBookmarksStorePrivate));
 }
 
 static void
@@ -92,7 +102,7 @@ gedit_file_bookmarks_store_class_finalize (GeditFileBookmarksStoreClass *klass)
 static void
 gedit_file_bookmarks_store_init (GeditFileBookmarksStore *obj)
 {
-	obj->priv = gedit_file_bookmarks_store_get_instance_private (obj);
+	obj->priv = GEDIT_FILE_BOOKMARKS_STORE_GET_PRIVATE (obj);
 }
 
 /* Private */
@@ -202,7 +212,7 @@ init_special_directories (GeditFileBookmarksStore *model)
 	if (path != NULL)
 	{
 		file = g_file_new_for_path (path);
-		add_file (model, file, _("Home"), GEDIT_FILE_BOOKMARKS_STORE_IS_HOME |
+		add_file (model, file, NULL, GEDIT_FILE_BOOKMARKS_STORE_IS_HOME |
 			 GEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
 		g_object_unref (file);
 	}
@@ -939,4 +949,4 @@ _gedit_file_bookmarks_store_register_type (GTypeModule *type_module)
 	gedit_file_bookmarks_store_register_type (type_module);
 }
 
-/* ex:set ts=8 noet: */
+/* ex:ts=8:noet: */

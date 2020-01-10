@@ -3,49 +3,49 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>Kom åt filer som lagras på en annan dator.</desc>
-    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Öppna en fil som finns på en server</title>
+  <title>Open a file that is located on a server</title>
 
-  <p>Före du öppnar en fil på en server inifrån <app>gedit</app> kommer du behöva viss teknisk information om servern. Du kommer till exempel behöva veta IP-adress eller URL för servern, och kan även behöva veta vad för slags server det är (t.ex. HTTP, FTP o.s.v.).</p>
+  <p>Prior to opening a file on a server from within <app>gedit</app>, you need
+  to know some technical information about the server.  For example, you will
+  need to know the IP Address or URL of the server, and may need to know what
+  kind of server it is (e.g., HTTP, FTP, etc.).</p>
 
-  <p>Vidare ålägger några sorters servrar restriktioner på vad du kan gör med filerna på servern. Till exempel kan du kanske öppna en fil från en server, men kan behöva att spara alla ändringar i filen lokalt på din egen dator.</p>
+  <p>Also, some types of servers impose restrictions on what you can do with
+  files stored on the server. For example, you may be able to open a file from
+  a server, but may need to save any changes to the file locally, on your own
+  computer.</p>
 
-  <p>Medveten om dessa varningar kan du utföra följande steg för att öppna en fil från en server med <app>gedit</app>:</p>
+  <p>With these caveats in mind, perform the following steps to open a file
+  from a server using <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Klicka på <gui>Öppna</gui> i namnlisten.</p></item>
-      <item><p>Klicka på <gui>Andra dokument…</gui>.</p></item>
-      <item><p>Tryck <keyseq><key>Ctrl</key><key>L</key></keyseq> i dialogrutan <gui>Öppna</gui>.</p></item>
-      <item><p>Ange IP-adress eller URL för lämplig server.</p></item>
-      <item><p>Hitta och välj filen som du vill öppna.</p></item>
-      <item><p>Använd rullgardinsmenyn Teckenkodning för att välja lämplig teckenkodning.</p></item>
-      <item><p>Klicka på <gui>Öppna</gui>.</p></item>
+      <item><p>Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to
+      display the <gui>Open Files</gui> dialog.</p></item>
+      <item><p>Select the <gui>Pencil</gui> icon near the top of the
+      <gui>Open Files</gui> dialog.</p></item>
+      <item><p>Enter the IP Address or URL of the appropriate
+      server.</p></item>
+      <item><p>Find and select the file that you wish to open.</p></item>
+      <item><p>Use the Character coding drop-down list to select the
+      appropriate character coding.</p></item>
+      <item><p>Click <gui>Open</gui>.</p></item>
     </steps>
 
-  <p>Giltiga typer av URI inkluderar http:, ftp:, file: och alla de metoder som stöds av <app>gvfs</app>.</p>
+  <p>Valid types of URI include http:, ftp:, file:, and all of the methods
+  supported by <app>gvfs</app>.</p>
 
   <note>
-    <p>Filer från vissa typer av URI:er öppnas skrivskyddade, och alla ändringar du gör måste sparas på en annan plats. Till exempel tillåter HTTP endast filer att bli lästa. Filer öppnade från en FTP-server är skrivskyddade på grund av att inte alla FTP-servrar fungerar korrekt när man sparar fjärrfiler.</p>
+    <p>Files from some types of URI are opened as read-only, and any changes
+    you make must be saved to a different location. For example, HTTP only
+    allows files to be read. Files opened from FTP are read-only because not
+    all FTP servers may correctly work with saving remote files.</p>
   </note>
 
 </page>

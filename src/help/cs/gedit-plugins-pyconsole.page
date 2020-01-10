@@ -4,32 +4,26 @@
 <info>
   <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-  <revision pkgversion="3.24" date="2017-09-17" status="review"/>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  <desc>Jak přidat do spodního panelu interaktivní konzolu jazyka Python.</desc>
+  <desc>Add an interactive Python console to the bottom pane</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
-  </info>
+  <title>Python console</title>
 
-  <title>Konzola Python</title>
+  <p>You can add a Python console to the bottom pane, allowing you to test
+  Python scripts without leaving <app>gedit</app>. To enable the Python
+  console, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Python Console</gui></guiseq>.</p>
 
-  <p>Do spodního panelu můžete přidat konzolu jazyka Python, abyste mohli testovat skripty Python, aniž byste museli opustit <app>gedit</app>. Konzolu Pythonu povolite pomocí <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Předvolby</gui> <gui>Zásuvné moduly</gui> <gui>Konzola Python</gui></guiseq>.</p>
+  <p>Once the Python console is enabled, you can open it by selecting
+  <guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press
+  <keyseq><key>Shift</key><key>F9</key></keyseq>.</p>
 
-  <p>Když je konzola Python povolená, můžete ji otevřít přes <guiseq><gui>Zobrazit</gui> <gui>Spodní panel</gui></guiseq>.</p>
-
-  <note style="tip"><p>Pokud máte zároveň povolený zásuvný modul <gui>Vestavěný terminál</gui>, objeví se <gui>Konzola Python</gui> na spodním panelu v podobě karty.</p></note>
+  <note style="tip"><p>If you have also enabled the <gui>Embeded Terminal</gui>
+  plugin, the <gui>Python Console</gui> will appear as a separate tab in the
+  bottom pane.</p></note>
 </page>

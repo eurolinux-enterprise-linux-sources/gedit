@@ -11,45 +11,43 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Jak změnit velikost písmen ve vybraném textu.</desc>
+  <desc>Change the case of selected text</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
-  </info>
+<title>Change case</title>
 
-<title>Změna velikosti písmen</title>
+  <p>This plugin helps you to change the case of selected portions of text. You
+  can use it to change text to be all lower case, all upper case, to invert the
+  case, or apply title case. To enable this plugin, select
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Change Case</gui></guiseq>.</p>
 
-  <p>Tento zásuvný modul vám pomůže měnit velikost písmen ve vybrané části textu. Můžete jej použít ke změně textu na malá písmena, na velká písmena, k přehození malých na velká a velkých na malá nebo k nastavení prvních písmen slov na velká a ostatních na malá. Zásuvný modul povolíte pomocí <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Předvolby</gui> <gui>Zásuvné moduly</gui> <gui>Změnit velikost písmen</gui></guiseq>.</p>
-
-  <p>Až máte zásuvný modul <em>Změnit velikosti písmen</em> povolený, můžete jej používat následujícím postupem:</p>
+  <p>Once the <em>Change Case</em> plugin is enabled, you can use it by
+  completing the following steps:</p>
 
   <steps>
-    <item><p>Zvýrazněte část textu, u které chcete změnu provést.</p></item>
-    <item><p>Vyberte <guiseq><gui style="menu">gedit</gui> <gui>Změnit velikost písmen</gui></guiseq>.</p>
+    <item><p>Highlight the portion of text that you want to change.</p></item>
+    <item><p>Select <guiseq><gui style="menu">gedit</gui><gui>Change Case</gui></guiseq></p>
     </item>
-    <item><p>Zvolte požadovaný způsob formátování textu.</p></item> 
+    <item><p>Choose your desired text-formatting option.</p></item> 
   </steps>
 
-  <p>Změna formátování textu se projeví okamžitě.</p>
+  <p>The updates to the text formatting will take place immediately.</p>
 
   <note style="tip">
-    <p>Volba <gui>Invertovat velikost písmen</gui> převede každé malé písmeno na velké a naopak každé velké písmeno na malé.</p>
-    <p>Volba <gui>Začátky slov velkými písmeny</gui> převede první písmeno v každém slově na velké. Všechna ostatní písmena budou převedena na malá.</p>
+    <p>The <gui>Invert Case</gui> option will convert all lower case letters to
+    upper case, and will convert all upper case letters to lower case.</p>
+    <p>The <gui>Title Case</gui> option will convert the first letter of each
+    word to upper case. All other letters will be converted to lower
+    case.</p>
   </note>
 
   <note>
-    <p>V případě, že nemáte žádný text zvýrazněn, funkce <em>Změnit velikost písmen</em> bude zašedlá. Abyste mohli tuto funkci použít, musíte nejdříve nějaký text vybrat.</p>
+    <p>If you have not highlighted any text, the <em>Change Case</em> feature
+    will be grayed-out. You need to select a portion of text before you use the
+    <em>Change Case</em> feature.</p>
   </note>
 
 </page>

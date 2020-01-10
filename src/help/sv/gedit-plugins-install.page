@@ -5,49 +5,58 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Hur man installerar insticksmoduler från tredje part.</desc>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
+    <desc>How to install third-party plugins</desc>
   </info>
 
-  <title>Ytterligare insticksmoduler för gedit</title>
+  <title>Additional gedit plugins</title>
 
-  <p>Att installera insticksmoduler från tredje part ger dig extra funktionalitet som inte är tillgänglig i standardinsticksmodulerna för <app>gedit</app>, eller ens i de extra insticksmodulerna som paketet <app>gedit-plugins</app> består av. En lista på nätet över tredjepartsinsticksmoduler kan <link href="https://wiki.gnome.org/Apps/Gedit">hittas här</link>.</p>
+  <p>Installing third-party plugins gives you extra functionality that isn't 
+  available in default <app>gedit</app> plugins, or even the extra plugins that 
+  are part of the <app>gedit-plugins</app> package. An online list of 
+  third-party plugins is 
+  <link href="http://live.gnome.org/Gedit/Plugins#third_party">kept here</link>.
+  </p>
   
-  <p>Att installera en insticksmodul från tredje part inkluderar att hämta hem insticksmodulen, placera insticksmodulfilerna i rätt katalog och att aktivera insticksmodulen.</p>
+  <p>Installing a third-party plugin involves downloading the plugin, placing 
+  the plugin files in the right directory, and activating the plugin.</p>
   
   <steps>
-    <item><p>Du kan vanligen hämta en insticksmodul från insticksmodulens webbplats, men kan behöva använda ett versionshanteringsprogram som <app>git</app>, <app> bazaar</app> eller <app>subversion</app> för att kopiera en insticksmoduls programvaruarkiv från internet. Se insticksmodulens dokumentation för information om hur du kan få tag på insticksmodulen.</p></item>
-    <item><p>Placera insticksmodulfilerna i katalogen <file>/home/<var>användarnamn</var>/.local/share/gedit/plugins</file>.</p>
-    <p>Ordet <var>användarnamn</var> ska förstås ersättas med ditt eget användarnamn.</p></item>
-    <item><p>Efter att du har placerat insticksmodulfilerna i rätt katalog kommer insticksmodulen dyka upp i menyn Inställningar. Välj <guiseq><gui>Redigera </gui><gui style="menuitem">Inställningar</gui><gui>Insticksmoduler</gui> <gui>[Namn på insticksmodul]</gui></guiseq> för att aktivera insticksmodulen.</p></item>
-    <item><p>Klicka på <gui>Stäng</gui>.</p></item>
+    <item><p>You can usually download a plugin from the plugin's website, but 
+    may need to use a revision-control program like <app>git</app>, <app>
+    bazaar</app>, or <app>subversion</app> to copy a plugin's software 
+    repository from the internet. Refer to the plugin's documentation for 
+    information on getting the plugin.</p></item>
+    <item><p>Place the plugin files into the 
+    <file>/home/<var>username</var>/.local/share/gedit/plugins</file> directory.
+    </p>
+    <p>Of course, replace the word <var>username</var> with your own username.
+    </p></item>
+    <item><p>After you have placed the plugin files into the correct directory, 
+    the plugin will appear in the Preferences menu. Select <guiseq><gui>Edit
+    </gui><gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+    <gui>[Name of Plugin]</gui></guiseq> to enable the plugin.</p></item>
+    <item><p>Click <gui>Close</gui>.</p></item>
   </steps>
   
-  <p>Efter att du aktiverat insticksmodulen bör den vara tillgänglig för dig att använda.</p>
+  <p>After you have enabled the plugin, it should be available for you to use.
+  </p>
   
   <note style="tip">
-    <p>Katalogen <file>.local</file> är som standard dold. För att visa den och andra dolda filer, välj <guiseq><gui>Visa</gui><gui>Visa dolda filer</gui></guiseq>, eller tryck <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+    <p>The <file>.local</file> directory is hidden by default. To view it and 
+    other hidden files, select <guiseq><gui>View</gui><gui>Show Hidden 
+    Files</gui></guiseq>, or press <keyseq><key>Ctrl</key><key>H</key></keyseq>.
+    </p>
   </note>
 
   <note style="tip">
-    <p>Om katalogen <file>.local/share/gedit/plugins/</file> inte finns på ditt system kommer du behöva skapa den.</p>
+    <p>If the directory <file>.local/share/gedit/plugins/</file> is not 
+    present on your system, you will need to create it.</p>
   </note>
   
 </page>

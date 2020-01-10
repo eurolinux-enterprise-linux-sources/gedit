@@ -15,17 +15,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <glib/gi18n-lib.h>
-#include <gedit/gedit-utils.h>
-
 #include "gedit-file-browser-utils.h"
+#include <gedit/gedit-utils.h>
 
 static GdkPixbuf *
 process_icon_pixbuf (GdkPixbuf   *pixbuf,
@@ -149,10 +144,12 @@ gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
                                               GtkMessageType  type,
                                               gchar const    *message,
 		                              gchar const    *secondary,
+		                              gchar const    *button_stock,
 		                              gchar const    *button_label)
 {
 	GtkWidget *dlg;
 	gint ret;
+	GtkWidget *button;
 
 	dlg = gtk_message_dialog_new (GTK_WINDOW (window),
 				      GTK_DIALOG_MODAL |
@@ -166,17 +163,33 @@ gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
 		    (GTK_MESSAGE_DIALOG (dlg), "%s", secondary);
 	}
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-	                        _("_Cancel"), GTK_RESPONSE_CANCEL,
-	                        button_label, GTK_RESPONSE_OK,
-	                        NULL);
+	/* Add a cancel button */
+	button = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
+	gtk_widget_show (button);
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dlg), GTK_RESPONSE_CANCEL);
+	gtk_widget_set_can_default (button, TRUE);
+	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+	                              button,
+	                              GTK_RESPONSE_CANCEL);
+
+	/* Add custom button */
+	button = gtk_button_new_from_stock (button_stock);
+
+	if (button_label)
+	{
+		gtk_button_set_use_stock (GTK_BUTTON (button), FALSE);
+		gtk_button_set_label (GTK_BUTTON (button), button_label);
+	}
+
+	gtk_widget_show (button);
+	gtk_widget_set_can_default (button, TRUE);
+	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
+                                      button,
+                                      GTK_RESPONSE_OK);
 
 	ret = gtk_dialog_run (GTK_DIALOG (dlg));
 	gtk_widget_destroy (dlg);
 
 	return (ret == GTK_RESPONSE_OK);
 }
-
-/* ex:set ts=8 noet: */
+/* ex:ts=8:noet: */

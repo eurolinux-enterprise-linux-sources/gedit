@@ -3,13 +3,11 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>
@@ -39,14 +37,11 @@
   <p>Като имате това предвид, извършете следните стъпки, за да отворите файл с <app>gedit</app> от сървър:</p>
 
     <steps>
-      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
-      <item><p>Click <gui>Other Documents…</gui>.</p></item>
-      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
-      <gui>Open</gui> dialog.</p></item>
+      <item><p>Изберете <guiseq><gui>Файл</gui><gui>Отваряне</gui></guiseq>, за да се покаже прозорецът <gui>Отваряне на файлове</gui>.</p></item>
+      <item><p>Натиснете иконата с <gui>молив</gui> в горната част на прозореца <gui>Отваряне на файлове</gui>.</p></item>
       <item><p>Въведете IP адреса или уеб адреса на сървъра.</p></item>
       <item><p>Намерете и изберете файла, който искате да отворите.</p></item>
-      <item><p>Use the Character Encoding drop-down list to select the
-      appropriate character coding.</p></item>
+      <item><p>Използвайте падащото меню <guilabel>Кодиране на знаците</guilabel>, за да изберете подходящата кодова таблица.</p></item>
       <item><p>Натиснете <gui>Отваряне</gui>.</p></item>
     </steps>
 

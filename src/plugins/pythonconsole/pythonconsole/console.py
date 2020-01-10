@@ -15,7 +15,8 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, see <http://www.gnu.org/licenses/>.
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
@@ -60,7 +61,7 @@ class PythonConsole(Gtk.ScrolledWindow):
         self._profile_settings.connect("changed", self.on_settings_changed)
 
         self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.set_shadow_type(Gtk.ShadowType.NONE)
+        self.set_shadow_type(Gtk.ShadowType.IN)
         self.view = Gtk.TextView()
         self.reconfigure()
         self.view.set_editable(True)
@@ -225,14 +226,14 @@ class PythonConsole(Gtk.ScrolledWindow):
 
         elif event.keyval == Gdk.KEY_KP_Down or event.keyval == Gdk.KEY_Down:
             # Next entry from history
-            view.stop_emission_by_name("key_press_event")
+            view.emit_stop_by_name("key_press_event")
             self.history_down()
             GLib.idle_add(self.scroll_to_end)
             return True
 
         elif event.keyval == Gdk.KEY_KP_Up or event.keyval == Gdk.KEY_Up:
             # Previous entry from history
-            view.stop_emission_by_name("key_press_event")
+            view.emit_stop_by_name("key_press_event")
             self.history_up()
             GLib.idle_add(self.scroll_to_end)
             return True

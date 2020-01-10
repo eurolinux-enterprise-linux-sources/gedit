@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-undo-recent-action" xml:lang="de">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-undo-recent-action" xml:lang="de">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Eine kürzlich vorgenommene Änderung einer Ihrer Dateien rückgängig machen.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -18,11 +16,6 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -39,22 +32,20 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Eine kürzlich ausgeführte Aktion rückgängig machen</title>
 
-  <p>Um einen Fehler bei der Arbeit in <app>gedit</app> rückgängig zu machen, drücken Sie <keyseq><key>Strg</key><key>Z</key></keyseq>.</p>
-    
+  <p>Falls Ihnen bei der Arbeit mit <app>gedit</app> ein Fehler unterlaufen ist, können Sie ihn durch Drücken der Tastenkombination <keyseq><key>Strg</key><key>Z</key></keyseq> rückgängig machen, oder über <guiseq><gui style="menu">gedit</gui><gui>Rückgängig</gui></guiseq>. Dadurch macht <app>gedit</app> eine Abfolge ähnlicher Aktionen rückgängig.</p>
+  
+  <note>
+    <p>Das Zurücknehmen einer »Abfolge ähnlicher Aktionen« bedeutet beispielsweise, dass <app>gedit</app> ein ganzes Wort sofort anstelle nacheinander jedes einzelnen Zeichens in diesem Wort löscht. Dadurch arbeitet die <em>Rückgängig</em>-Funktion in <app>gedit</app> effizienter.</p>
+  </note>
+  
   <note style="important">
-    <p>Sie können eine Änderung nach dem Speichern einer <app>gedit</app>-Datei nicht rückgängig machen.</p>
+    <p>Sie können eine Änderung nach dem Speichern nicht rückgängig machen.</p>
   </note>
 </page>

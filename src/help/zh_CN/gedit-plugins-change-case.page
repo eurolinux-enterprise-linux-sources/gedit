@@ -11,44 +11,24 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>更改选中文本的大小写。</desc>
+  <desc>更改选中文本的大小写</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Change case</title>
 
-<title>改变大小写</title>
-
-  <p>这个插件帮助您更改选中文本的大小写，您可以将文本全部改为小写字母，全部改为大写字母，大小写翻转，或者让字首大写。要启用此插件，点菜单 <guiseq><gui style="menu">gedit</gui><gui style="menuitem">首选项</gui> <gui>插件</gui><gui>更改大小写</gui></guiseq>。</p>
+  <p>This plugin helps you to change the case of selected portions of text. You
+  can use it to change text to be all lower case, all upper case, to invert the
+  case, or apply title case. To enable this plugin, select
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Change Case</gui></guiseq>.</p>
 
   <p>一旦启用了<em>更改大小写</em>插件，您可以按下列步骤来使用它：</p>
 
   <steps>
     <item><p>选中你想更改的文本内容。</p></item>
-    <item><p>点菜单 <guiseq><gui style="menu">gedit</gui><gui>更改大小写</gui></guiseq></p>
+    <item><p>Select <guiseq><gui style="menu">gedit</gui><gui>Change Case</gui></guiseq></p>
     </item>
     <item><p>选择您想使用的格式选项。</p></item> 
   </steps>

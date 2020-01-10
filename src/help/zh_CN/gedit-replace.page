@@ -4,14 +4,10 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
-    <desc>替换文件中的部分文本。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
-    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -21,127 +17,63 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email>kittykat3756@gmail.com</email>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email>tyagishobha@gmail.com</email>
-    </credit>
-    <credit type="editor">
-      <name>Young Li</name>
-      <email>li.young1618@gmail.com</email>
-    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
   <title>替换文本</title>
 
-  <p>修改文本是比较费时的，为了节省时间，<app>gedit</app> 提供了一个 <app>替换</app> 功能，来帮助您查找并替换文本。</p>
+    <p>修改文本是比较费时的，为了节省时间，<app>gedit</app> 提供了一个 <app>替换</app> 功能，来帮助您查找并替换文本。</p>
 
-  <steps>
-    <title>在 <app>gedit</app> 中替换文本</title>
-    <item>
-      <p>点 <guiseq><gui style="button">菜单按钮</gui><gui style="menuitem">查找和替换...</gui></guiseq> 命令打开 <gui>Replace</gui> 工具，也可以按组合键 <keyseq><key>Ctrl</key><key>H</key></keyseq>。</p>
-    </item>
-    <item>
-      <p>Enter the text that you wish to replace into the <gui>Find</gui>
-      field.</p>
-    </item>
-    <item>
-      <p>Enter the new, replacement text into the <gui>Replace with</gui>
-      field.</p>
-    </item>
-    <item>
-      <p>当您输入要替换的文本后，接着选择合适的替换选项：</p>
-      <list>
-        <item>
-          <p>要替换文档中的下<em>一</em>个匹配项，点 <guibutton>替换</guibutton>。</p>
+    <steps>
+      <title>在 <app>gedit</app> 中替换文本</title>
+      <item>
+        <p>Open the Replace tool by clicking
+        <guiseq><gui style="menu">Search</gui>
+        <gui style="menuitem">Replace</gui></guiseq> or press
+        <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      </item>
+      <item>
+        <p>在“搜索”输入框中，输入您想要替换的文本。</p>
+      </item>
+      <item>
+        <p>在“替换为”输入框中，输入想替换成的文本。</p>
+      </item>
+      <item>
+        <p>输入要替换的文本后，接着选择合适的替换选项：</p>
+        <list>
+          <item>
+            <p>要替换文档中的<em>一个</em>匹配项，点 <guibutton>替换</guibutton>。</p>
+          </item>
+          <item>
+            <p>要替换文档中的<em>所有</em>匹配项，点 <guibutton>替换全部</guibutton>。</p>
         </item>
-        <item>
-          <p>要替换文档中的<em>所有</em>匹配项，点 <guibutton>替换全部</guibutton>。</p>
-        </item>
-      </list>
-    </item>
-  </steps>
+        </list>
+      </item>
+    </steps>
 
-  <note style="warning">
-    <p>使用 <gui>全部替换</gui> 功能要仔细，它会替换文档中的所有项目，并且不会高亮显示被替换的文本。</p>
-  </note>
+    <note style="warning">
+      <p>使用 <gui>全部替换</gui> 功能要仔细，它会替换文档中的所有项目，并且不会高亮显示被替换的文本。</p>
+    </note>
 
-<section id="replace-options">
-  <title>更多选项</title>
-
-  <p>如果需要，您还可以为搜索设置更多选项。</p>
-
-  <terms>
-    <item>
-      <title>区分大小写</title>
-      <p><em>区分大小写</em> 选项可以指定搜索时是否考虑大小写。选中此项搜索时将会区分字母的大小写，如果不选中，则不区分字母大小写。</p>
-    </item>
-    <item>
-      <title>匹配整个单词</title>
-      <p>使用此选项，将会搜索完整的字词，不包括词语的片段，例如，您要搜索“文档”，并且选中此选项，那么单独的“文档”会被搜索到，而“本<em>文档</em>”和“在<em>文档</em>中”都不会被搜索到。</p>
-    </item>
-    <item>
-      <title>反向搜索</title>
-      <p>这个命令会让查找改变方向，如果您想让搜索从后往前进行，那么就可以选中此项。</p>
-    </item>
-    <item>
-      <title>回到文档头部继续搜索</title>
-      <p>选中<app>回到文档头部继续搜索</app>选项，当查找/替换到文档结尾时，会跳到开头重新进行，这将确保查找/替换文档的所有内容。</p>
-    </item>
-  </terms>
-
-</section>
-
-<section id="escape-sequences">
-  <title>使用转义字符</title>
-
-  <p>您可以使用<em>转义字符</em> 搜索换行符、回车符和制表符。</p>
-
-  <terms>
-    <item>
-      <title>\n</title>
-      <p>换行符</p>
-    </item>
-    <item>
-      <title>\r</title>
-      <p>回车</p>
-    </item>
-    <item>
-      <title>\t</title>
-      <p>制表符</p>
-    </item>
-  </terms>
-
-  <p>如果您需要搜索<output>\</output> (反斜杠)或文本中的一个转义字符，您需要用额外的反斜杠来转义反斜杠。例如，要搜索<input>\</input>，您需要在搜索栏或替换栏输入<input>\\</input>。您可以同样的方法搜索其他转义符：要搜索或替换<input>\n</input>，就输入<input>\\n</input>。</p>
-
-</section>
-
+  <section id="replace-options">
+    <title>更多选项</title>
+    <terms>
+      <item>
+        <title>区分大小写</title>
+        <p><em>区分大小写</em> 选项可以指定搜索时是否考虑大小写。选中此项搜索时将会区分字母的大小写，如果不选中，则不区分字母大小写。</p>
+      </item>
+      <item>
+        <title>匹配整个单词</title>
+        <p>使用此选项，将会搜索完整的字词，不包括词语的片段，例如，您要搜索“文档”，并且选中此选项，那么单独的“文档”会被搜索到，而“本<em>文档</em>”和“在<em>文档</em>中”都不会被搜索到。</p>
+      </item>
+      <item>
+        <title>反向搜索</title>
+        <p>这个命令会让查找改变方向，如果您想让搜索从后往前进行，那么就可以选中此项。</p>
+      </item>
+      <item>
+        <title>回绕模式</title>
+        <p>选中<app>回到文档头部继续搜索</app>选项，当查找/替换到文档结尾时，会跳到开头重新进行，这将确保查找/替换文档的所有内容。</p>
+      </item>
+    </terms>
+  </section>
 </page>

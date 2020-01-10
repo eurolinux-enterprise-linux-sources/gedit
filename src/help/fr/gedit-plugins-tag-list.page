@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-tag-list" xml:lang="fr">
+
+<info>
+  <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
+  <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+  <revision pkgversion="3.8" date="2013-03-22" status="review"/>
+  <credit type="author">
+    <name>Daniel Neel</name>
+    <email>dneelyep@gmail.com</email>
+  </credit>
+  <credit type="author">
+    <name>Jim Campbell</name>
+    <email>jwcampbell@gmail.com</email>
+  </credit>
+  <credit type="editor">
+    <name>Sindhu S</name>
+    <email>sindhus@live.in</email>
+  </credit>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  <desc>Insérer automatiquement des balises, des chaînes de caractères ou des caractères spéciaux dans un document</desc>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Vincent Untz</mal:name>
+      <mal:email>vuntz@gnome.org</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jonathan Ernst</mal:name>
+      <mal:email>jonathan@ernstfamily.ch</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Philippe Lefevre</mal:name>
+      <mal:email>ph.l@libertysurf.fr</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christophe Bliard</mal:name>
+      <mal:email>christophe.bliard@trux.info</mal:email>
+      <mal:years>2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Claude Paroz</mal:name>
+      <mal:email>claude@2xlibre.net</mal:email>
+      <mal:years>2007-2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Bruno Brouard</mal:name>
+      <mal:email>annoa.b@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Luc Pionchon</mal:name>
+      <mal:email>pionchon.luc@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
+      <mal:email>alexandre.franke@gmail.com</mal:email>
+      <mal:years>2013.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Liste des balises</title>
+
+  <p>The <app>Tag List</app> plugin allows you to insert common tags and
+  special characters from a list in the side pane. By default, the plugin can
+  insert tags and special characters for <app>HTML</app>, <app>XHTML</app>,
+  <app>XSLT</app>, <app>XUL</app> and <app>LaTeX</app>.</p>
+
+  <section id="enable-tag-list-plugin">
+    <title>Enable Tag List Plugin</title>
+
+    <p>To enable the <app>Tag List</app> plugin:</p>
+
+    <steps>
+      <item>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Select <gui style="menuitem">Tag List</gui> to enable the
+        plugin.</p>
+      </item>
+      <item>
+        <p>Access the tag list by selecting
+        <guiseq><gui style="menu">View</gui>
+        <gui style="menuitem">Side Pane</gui></guiseq>, or by pressing
+        <key>F9</key>.</p>
+      </item>
+    </steps>
+
+    <p>The side pane will initially show a list of open documents, so to view
+    and use the <app>Tag List</app>, you will need to click on the tab showing
+    the "plus" icon at the bottom of the side pane. The icon will look similar
+    to this:</p>
+
+    <p>
+    <media type="image" mime="image/png" src="figures/gedit-side-pane3.png"/>
+    </p>
+  </section>
+
+  <section id="inserting-tags">
+    <title>Insertion de balises et de caractères spéciaux</title>
+
+    <p>La <app>liste des balises</app> vous permet de choisir parmi les différents types de balises à l'aide d'un menu déroulant. Un exemple d'option est <gui>HTML - Balises</gui>.</p>
+
+    <p>Pour commencer l'insertion de balises, faites comme ceci :</p>
+
+    <steps>
+      <item>
+        <p>Déplacez le curseur là où vous voulez insérer la balise ou le caractère spécial.</p>
+      </item>
+      <item>
+        <p>Choisissez le type de balise désiré dans le menu déroulant en haut du panneau latéral.</p>
+      </item>
+      <item>
+        <p>Faites défiler la liste pour trouver la balise ou le caractère qui vous convient.</p>
+      </item>
+      <item>
+        <p>Double-cliquez sur la balise dans la liste.</p>
+      </item>
+    </steps>
+
+    <p>La balise ou le caractère spécial que vous avez choisi apparaît alors dans votre document.</p>
+  </section>
+
+  <section id="tag-list-tips">
+    <title>Astuces pour la liste des balises</title>
+    <note style="tip">
+      <p>Vous pouvez également insérer une balise en appuyant sur <key>Entrée</key> ou <keyseq><key>Maj</key><key>Entrée</key></keyseq>.</p>
+      <p>En appuyant sur <key>Entrée</key>, vous insérez la balise située à l'emplacement du curseur puis retournez ensuite dans le document. En appuyant sur <keyseq><key>Maj</key><key>Entrée</key></keyseq>, vous insérez également la balise mais le focus reste dans la <app>liste des balises</app>.</p>
+    </note>
+
+    <note style="tip">
+      <p>Vous pouvez avoir un aperçu du texte qui sera inséré pour chaque balise et caractère spécial en cliquant sur le mot <gui>Aperçu</gui> en bas du panneau latéral.</p>
+    </note>
+  </section>
+</page>

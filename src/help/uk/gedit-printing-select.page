@@ -3,7 +3,6 @@
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Choose the pages that you want to print.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Phil Bull</name>
@@ -14,32 +13,26 @@
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Only print certain pages</title>
+  <title>Only Printing Certain Pages</title>
 
-  <p>Можна друкувати лише деякі сторінки документу. Наприклад, як ввести номери сторінок «1,3,5-7,9», то буде надруковано лише 1, 3, 5, 6, 7 та 9 сторінки. Щоб роздрукувати вибрані сторінки:</p>
+  <p>You can selectively print only certain pages from the document. For
+  example, if you enter the page numbers "1,3,5-7,9", then only pages 1, 3,
+  5, 6, 7 and 9 will be printed. To print pages of your choice:</p>
 
   <steps>
    <item>
-    <p>Виберіть <guiseq><gui style="menu">«Файл»</gui> <gui style="menuitem">«Друкувати…»</gui></guiseq>.</p>
+    <p>Select <guiseq><gui style="menu">File</gui>
+    <gui style="menuitem">Print…</gui></guiseq>.</p>
    </item>
    <item>
-    <p>У вкладці «<gui style="tab">Загальні</gui>» діалогового вікна «Друкувати», виберіть «<gui style="radiobutton">Сторінки</gui>» з розділу «<gui style="group">Діапазон</gui>».</p></item>
+    <p>In the <gui style="tab">General</gui> tab in the Print dialog choose
+    <gui style="radiobutton">Pages</gui> from the
+    <gui style="group">Range</gui> section.</p></item>
    <item>
-    <p>Введіть номери сторінок, які потрібно роздрукувати, розділяючи їх комами. Використовуйте дефіс, для задання діапазону сторінок.</p>
+    <p>Type the numbers of the pages you want to print from the document,
+    separated by commas. Use a dash to specify a range of pages.</p>
    </item>
   </steps>
 

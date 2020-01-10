@@ -1,8 +1,10 @@
 %global _changelog_trimtime %(date +%s -d "1 year ago")
 
 %if 0%{?fedora} > 12
+%global with_zeitgeist 1
 %global with_python3 1
 %else
+%global with_zeitgeist 0
 %global with_python3 0
 %endif
 
@@ -10,68 +12,70 @@
 %global __python %{__python3}
 %endif
 
-%global glib2_version 2.44
-%global gtk3_version 3.22.0
-%global gtksourceview_version 3.22.0
-%global libpeas_version 1.14.1
-%global gspell_version 0.2.5
-%global pygo_version 3.0.0
+%define glib2_version 2.28.0
+%define pygo_version 2.90
+%define desktop_file_utils_version 0.9
+%define gtksourceview_version 3.0.0
+%define enchant_version 1.2.0
+%define isocodes_version 0.35
+%define libpeas_version 1.7.0
+%define zeitgeist_version 0.9.12
 
+Summary:	Text editor for the GNOME desktop
 Name:		gedit
 Epoch:		2
-Version:	3.28.1
-Release:	1%{?dist}
-Summary:	Text editor for the GNOME desktop
+Version:	3.8.3
+Release:	6%{?dist}
+License:	GPLv2+ and CC-BY-SA
+Group:		Applications/Editors
+#VCS: git:git://git.gnome.org/gedit
+Source0:	http://download.gnome.org/sources/gedit/3.8/gedit-%{version}.tar.xz
 
-License:	GPLv2+ and GFDL
-URL:		https://wiki.gnome.org/Apps/Gedit
-Source0:	https://download.gnome.org/sources/%{name}/3.22/%{name}-%{version}.tar.xz
-Source1:        ja.po
+URL:		http://projects.gnome.org/gedit/
+
+Requires(post):         desktop-file-utils >= %{desktop_file_utils_version}
+Requires(postun):       desktop-file-utils >= %{desktop_file_utils_version}
+
+%ifarch ppc64,x86_64,ia64,s390x
+Patch1: gedit-2.13.90-libdir.patch
+%endif
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1016757
 Patch4: gedit-disable-python3.patch
 
 BuildRequires: gnome-common
-BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
-BuildRequires: pkgconfig(gobject-introspection-1.0)
-BuildRequires: pkgconfig(gsettings-desktop-schemas)
-BuildRequires: pkgconfig(gspell-1) >= %{gspell_version}
-BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
-BuildRequires: pkgconfig(gtksourceview-3.0) >= %{gtksourceview_version}
-BuildRequires: pkgconfig(iso-codes)
-BuildRequires: pkgconfig(libpeas-gtk-1.0) >= %{libpeas_version}
-BuildRequires: pkgconfig(libxml-2.0)
-BuildRequires: pkgconfig(pygobject-3.0) >= %{pygo_version}
-BuildRequires: desktop-file-utils
+BuildRequires: glib2-devel >= %{glib2_version}
+BuildRequires: gtk3-devel
+BuildRequires: libSM-devel
+BuildRequires: desktop-file-utils >= %{desktop_file_utils_version}
+BuildRequires: enchant-devel >= %{enchant_version}
+BuildRequires: iso-codes-devel >= %{isocodes_version}
+BuildRequires: libattr-devel
+BuildRequires: gtksourceview3-devel >= %{gtksourceview_version}
 BuildRequires: gettext
+BuildRequires: pygobject3-devel
+BuildRequires: libpeas-devel >= %{libpeas_version}
+BuildRequires: gsettings-desktop-schemas-devel
 BuildRequires: which
+BuildRequires: autoconf, automake, libtool
 BuildRequires: intltool
+BuildRequires: gobject-introspection-devel
 BuildRequires: yelp-tools
 BuildRequires: itstool
-BuildRequires: vala
 %if %{with_python3}
 BuildRequires: python3-devel
+BuildRequires: python3-gobject >= %{pygo_version}
 %else
 BuildRequires: python-devel
 %endif
-BuildRequires: /usr/bin/appstream-util
 
-Requires: glib2%{?_isa} >= %{glib2_version}
-Requires: gspell%{?_isa} >= %{gspell_version}
-Requires: gtk3%{?_isa} >= %{gtk3_version}
-Requires: gtksourceview3%{?_isa} >= %{gtksourceview_version}
 %if %{with_python3}
-Requires: libpeas-loader-python3%{?_isa}
 Requires: python3-gobject >= %{pygo_version}
-%else
-Requires: libpeas-loader-python%{?_isa}
 %endif
 # the run-command plugin uses zenity
 Requires: zenity
 Requires: gsettings-desktop-schemas
 Requires: gvfs
-
-Obsoletes: gedit-collaboration < 3.6.1-6
 
 %description
 gedit is a small, but powerful text editor designed specifically for
@@ -87,7 +91,9 @@ gedit-plugins package.
 
 %package devel
 Summary: Support for developing plugins for the gedit text editor
-Requires: %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Group: Development/Libraries
+Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: gtksourceview3-devel >= %{gtksourceview_version}
 
 %description devel
 gedit is a small, but powerful text editor for the GNOME desktop.
@@ -96,17 +102,35 @@ to gedit.
 
 Install gedit-devel if you want to write plugins for gedit.
 
+%if %{with_zeitgeist}
+%package zeitgeist
+Summary: Zeitgeist plugin for gedit
+Group: Applications/Editors
+Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: zeitgeist >= %{zeitgeist_version}
+BuildRequires: zeitgeist-devel >= %{zeitgeist_version}
+
+%description zeitgeist
+This packages brings the Zeitgeist dataprovider - a plugin that logs
+access and leave event for documents used with gedit.
+%endif
+
 %prep
 %setup -q
 
-%patch4 -p1 -b .disable-python
+%ifarch ppc64,x86_64,ia64,s390x
+%patch1 -p1 -b .libdir
+%endif
 
-autoreconf -i -f
-intltoolize -f
+%if !%{with_python3}
+%patch4 -p1 -b .disable-python
+%endif
 
 %build
+NOCONFIGURE=1 autoreconf -i -f && \
+    intltoolize -f
+
 %configure \
-	--disable-static \
 	--disable-gtk-doc \
 	--enable-introspection=yes \
 	--enable-python=yes \
@@ -115,27 +139,16 @@ intltoolize -f
 make %{_smp_mflags}
 
 %install
-%make_install
+make install DESTDIR=$RPM_BUILD_ROOT
 
-find $RPM_BUILD_ROOT -name '*.la' -delete
+## clean up all the static libs for plugins (workaround for no -module)
+/bin/rm -f `find $RPM_BUILD_ROOT%{_libdir} -name "*.a"`
+/bin/rm -f `find $RPM_BUILD_ROOT%{_libdir} -name "*.la"`
 
 %find_lang %{name} --with-gnome
 
-# for backward compatibility with user defined file associations
-cat << EOF > $RPM_BUILD_ROOT%{_datadir}/applications/gedit.desktop
-[Desktop Entry]
-Name=gedit
-Exec=gedit %U
-Type=Application
-MimeType=text/plain;
-NoDisplay=true
-X-GNOME-UsesNotifications=false
-X-RHEL-AliasOf=org.gnome.gedit
-EOF
-
 %check
-appstream-util validate-relax --nonet $RPM_BUILD_ROOT/%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
-desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.gedit.desktop
+desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/gedit.desktop
 
 %post
 update-desktop-database >&/dev/null || :
@@ -154,44 +167,44 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >&/dev/null || :
 glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 
 %files -f %{name}.lang
-%doc README AUTHORS
-%license COPYING
+%doc README COPYING AUTHORS
 %{_datadir}/gedit
-%{_datadir}/applications/*.desktop
+%{_datadir}/applications/gedit.desktop
 %{_mandir}/man1/*
 %if %{with_python3}
 %{python3_sitearch}/gi/overrides/Gedit.py*
 %{python3_sitearch}/gi/overrides/__pycache__
-%else
-%{python2_sitearch}/gi/overrides/*
 %endif
 %{_libexecdir}/gedit
 %{_libdir}/gedit/girepository-1.0
 %dir %{_libdir}/gedit
 %dir %{_libdir}/gedit/plugins
-%{_libdir}/gedit/libgedit.so
-%{_libdir}/gedit/plugins/docinfo.plugin
-%{_libdir}/gedit/plugins/libdocinfo.so
-%{_libdir}/gedit/plugins/filebrowser.plugin
-%{_libdir}/gedit/plugins/libfilebrowser.so
-%{_libdir}/gedit/plugins/modelines.plugin
-%{_libdir}/gedit/plugins/libmodelines.so
-%{_libdir}/gedit/plugins/externaltools.plugin
-%{_libdir}/gedit/plugins/externaltools
-%{_libdir}/gedit/plugins/pythonconsole.plugin
-%{_libdir}/gedit/plugins/pythonconsole
-%{_libdir}/gedit/plugins/quickopen.plugin
-%{_libdir}/gedit/plugins/quickopen
-%{_libdir}/gedit/plugins/snippets.plugin
-%{_libdir}/gedit/plugins/snippets
-%{_libdir}/gedit/plugins/sort.plugin
-%{_libdir}/gedit/plugins/libsort.so
-%{_libdir}/gedit/plugins/spell.plugin
-%{_libdir}/gedit/plugins/libspell.so
-%{_libdir}/gedit/plugins/time.plugin
-%{_libdir}/gedit/plugins/libtime.so
+%{_libdir}/gedit/libgedit-private.so
+%{_libdir}/gedit/plugins/*
+%{python2_sitearch}/gi/overrides/Gedit.py*
+#%{_libdir}/gedit/plugins/changecase.plugin
+#%{_libdir}/gedit/plugins/libchangecase.so
+#%{_libdir}/gedit/plugins/docinfo.plugin
+#%{_libdir}/gedit/plugins/libdocinfo.so
+#%{_libdir}/gedit/plugins/filebrowser.plugin
+#%{_libdir}/gedit/plugins/libfilebrowser.so
+#%{_libdir}/gedit/plugins/modelines.plugin
+#%{_libdir}/gedit/plugins/libmodelines.so
+#%{_libdir}/gedit/plugins/externaltools.plugin
+#%{_libdir}/gedit/plugins/externaltools
+#%{_libdir}/gedit/plugins/pythonconsole.plugin
+#%{_libdir}/gedit/plugins/pythonconsole
+#%{_libdir}/gedit/plugins/quickopen.plugin
+#%{_libdir}/gedit/plugins/quickopen
+#%{_libdir}/gedit/plugins/snippets.plugin
+#%{_libdir}/gedit/plugins/snippets
+#%{_libdir}/gedit/plugins/sort.plugin
+#%{_libdir}/gedit/plugins/libsort.so
+#%{_libdir}/gedit/plugins/spell.plugin
+#%{_libdir}/gedit/plugins/libspell.so
+#%{_libdir}/gedit/plugins/time.plugin
+#%{_libdir}/gedit/plugins/libtime.so
 %{_bindir}/*
-%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
 %{_datadir}/GConf/gsettings
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.enums.xml
@@ -202,104 +215,20 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/dbus-1/services/org.gnome.gedit.service
-%{_datadir}/icons/hicolor/*/apps/gedit.png
-%{_datadir}/icons/hicolor/symbolic/apps/gedit-symbolic.svg
+
 
 %files devel
-%{_includedir}/gedit-3.14
+%{_includedir}/gedit-3.0
 %{_libdir}/pkgconfig/gedit.pc
 %{_datadir}/gtk-doc
-%{_datadir}/vala/
+
+%if %{with_zeitgeist}
+%files zeitgeist
+%{_libdir}/gedit/plugins/zeitgeist.plugin
+%{_libdir}/gedit/plugins/libzeitgeistplugin.so
+%endif
 
 %changelog
-* Tue Jun 05 2018 Ray Strode <rstrode@redhat.com> - 2:3.28.1-1
-- Update to 3.28.1
-  Resolves: #1567311
-
-* Tue May 30 2017 Ray Strode <rstrode@redhat.com> - 2:3.22.0-3
-- add improved japanese translation
-  Resolves: #1382638
-
-* Mon Sep 19 2016 Kalev Lember <klember@redhat.com> - 2:3.22.0-1
-- Update to 3.22.0
-- Resolves: #1386863
-
-* Mon Aug 01 2016 Ray Strode <rstrode@redhat.com> - 3.14.3-18
-- Updated version of python3→2 patch from Matej Cepl
-  Resolves: #1360922
-
-* Fri Apr 15 2016 Ray Strode <rstrode@redhat.com> - 3.14.3-17
-- Fix close after save functionality when closing window
-  with unsaved documents
-  Resolves: #1247999
-
-* Fri Apr 15 2016 Mike FABIAN <mfabian@redhat.com> 3.14.3-16
-- Add a shorcut for German for the open button
-  Resolves: #1279299
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-15
-- Add a snipplet for rpm changelogs
-  Resolves: #1301769
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-14
-- Fix desktop files for external tools
-  Resolves: #1301764
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-13
-- Fix spell checker metadata saving
-  Resolves: #1301761
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-12
-- Fix printing margins
-  Resolves: #1301726
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-11
-- Fix desktop actions
-  Resolves: #1301760
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-10
-- Really fix chevrons in schemas
-  Resolves: #1258357
-
-* Wed Sep 23 2015 Ray Strode <rstrode@redhat.com> 3.14.3-9
-- Add X-RHEL-AliasOf=org.gnome.gedit to compat desktop file
-  Related: #1259292
-
-* Mon Sep 21 2015 Ray Strode <rstrode@redhat.com> - 2:3.14.3-8
-- Use ' instead of « in es locale for font parsing
-  Resolves: #1247999
-- Add X-GNOME-UsesNotifications=false to compat desktop file
-  Related: #1259292
-
-* Tue Aug 18 2015 Matthias Clasen <mclasen@redhat.com> - 2:3.14.3-7
-- Fix search in Japanese titles
-  Resolves: #1251840
-
-* Thu Jul 16 2015 Ray Strode <rstrode@redhat.com> - 2:3.14.3-6
-- add type=Application to appease rpmdiff
-  Related: #1238207
-
-* Tue Jul 14 2015 Ray Strode <rstrode@redhat.com> - 2:3.14.3-5
-- use cat instead of echo from previous fix
-  Resolves: #1238207
-
-* Wed Jul 01 2015 Ray Strode <rstrode@redhat.com> - 2:3.14.3-4
-- fix backward compat gedit.desktop to not show up in menus
-  Related: #1174591
-  Resolves: 1238207
-
-* Fri Jun 26 2015 Ray Strode <rstrode@redhat.com> - 2:3.14.3-3
-- add backward compat gedit.desktop to keep user mime assocations working
-  Related: #1174591 1235413
-
-* Thu Jun 25 2015 Ray Strode <rstrode@redhat.com> - 2:3.14.3-2
-- Updated python2 support patch from Matěj Cepl <mcepl@redhat.com>
-  Related: #1174591
-
-* Mon Mar 23 2015 Richard Hughes <rhughes@redhat.com> - 2:3.14.3-1
-- Update to 3.14.3
-- Resolves: #1174591
-
 * Thu Jan 30 2014 Ray Strode <rstrode@redhat.com> - 2:3.8.3-6
 - Update License field to reflect documentation change
   Resolves: #1059847

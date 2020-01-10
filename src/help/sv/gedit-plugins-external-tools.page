@@ -12,35 +12,33 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Kör skript på dina aktuella filer, och interagera med andra program.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Run scripts on your current files, and interact with other applications</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
-  </info>
+<title>External tools</title>
 
-<title>Externa verktyg</title>
-
-  <p>Insticksmodulen <em>Externa verktyg</em> kan hjälpa till att förenkla enformiga uppgifter. Specifikt utökar det <app>gedit</app> genom att hjälpa dig att köra skript på dina arbetsfiler och genom att låta <app>gedit</app> interagera med andra program på din dator. För att aktivera insticksmodulen <app>Externa verktyg</app>, välj <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Inställningar</gui><gui>Insticksmoduler</gui> <gui>Externa verktyg</gui></guiseq>.</p>
+  <p>The <em>External Tools</em> plugin can help simplify repetitive tasks.
+  Specifically, it extends <app>gedit</app> by helping you to run scripts on
+  your working files, and by allowing <app>gedit</app> to interact with other
+  programs on your computer. To enable the <app>External Tools</app> plugin,
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
-    <title>Konfigurera insticksmodulen Externa verktyg</title>
+    <title>Configure the external tools plugin</title>
 
-  <p>Då du har aktiverat insticksmodulen kommer du behöva konfigurera den så att den passar för dina behov. Konfigurationsalternativen är tillgängliga genom att välja <guiseq><gui>Verktyg</gui><gui>Hantera externa verktyg</gui></guiseq>.</p>
+  <p>Once you have enabled the plugin, you will need to configure it to suit
+  your needs. The configuration options are available by selecting
+  <guiseq><gui>Tools</gui><gui>Manage External Tools</gui></guiseq>.</p>
   
   <note style="caution">
-    <p>Denna insticksmodul är för avancerade användare, och kräver kunskap om skript för att kunna användas effektivt. Använd denna insticksmodul med försiktighet eftersom misstag med dina skript kan påverka ditt arbete på sätt som du inte avsett.</p>
+    <p>This plugin is for advanced users, and requires knowledge of scripting
+    to be used effectively. Use this plugin with care, as mistakes with your
+    scripts can affect your work in unintended ways.</p>
   </note>
   </section>
 

@@ -12,9 +12,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Change the case of selected text.</desc>
+  <desc>Change the case of selected text</desc>
 </info>
 
 <title>Change case</title>

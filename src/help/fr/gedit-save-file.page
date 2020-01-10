@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-save-file" xml:lang="fr">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-save-file" xml:lang="fr">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Enregistrer votre document.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-13" status="review"/>
-    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
@@ -65,32 +58,18 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Enregistrement d’un document</title>
+  <title>Enregistrement d'un document</title>
 
-  <p>Pour enregistrer un fichier dans <app>gedit</app>, cliquez sur le bouton <gui style="button">Enregistrer</gui> à droite dans la barre d’outils, ou appuyez sur <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Si vous enregistrez un nouveau fichier, une boîte de dialogue s’affiche et vous pouvez nommer le fichier ainsi que le répertoire dans lequel vous désirez l’enregistrer.</p>
+  <p>To save a file in <app>gedit</app>, click on the disk-drive icon with the
+  word <gui style="button">Save</gui> next to it.  You may also select
+  <guiseq><gui style="menu">File</gui>
+  <gui style="menuitem">Save</gui></guiseq>, or just press
+  <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Si vous enregistrez un nouveau fichier, la boîte de dialogue <gui>Enregistrer sous</gui> apparaît et vous pouvez choisir un nom pour le fichier ainsi que le répertoire dans lequel vous désirez enregistrer le fichier.</p>
 
 </page>

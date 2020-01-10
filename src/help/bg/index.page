@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="bg">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="bg">
 
   <info>
     <title type="link">gedit — Текстов редактор</title>
     <title type="text">gedit — Текстов редактор</title>
 
-    <desc>Home page of the gedit help guide.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
 
    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
@@ -38,10 +37,7 @@
     </mal:credit>
   </info>
   
-  <title>
-    <media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/>
-    gedit Text Editor
-  </title>
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png"/> gedit — Текстов редактор</title>
   <p>Добре дошли в ръководството на <app>gedit</app>. За бързо въвеждане в основните възможности на <app>gedit</app>, както и в някои бързи клавиши, посетете страниците <link xref="gedit-quickstart">Първи стъпки в gedit</link> и <link xref="gedit-shortcut-keys">Бързи клавиши</link>.</p>
 
   <p>Другите теми са групирани в раздели по-долу. Забавлявайте се докато използвате <app>gedit</app>!</p>

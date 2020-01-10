@@ -21,6 +21,7 @@
  */
 
 #include "gedit-message-bus.h"
+#include "gedit-marshal.h"
 
 #include <string.h>
 #include <stdarg.h>
@@ -68,8 +69,10 @@
  *
  * // Register 'method' at '/plugins/example' with one required
  * // string argument 'arg1'
- * gedit_message_bus_register (bus, EXAMPLE_TYPE_METHOD_MESSAGE,
- *                             "/plugins/example", "method");
+ * GeditMessageType *message_type = gedit_message_bus_register ("/plugins/example", "method",
+ *                                                              0,
+ *                                                              "arg1", G_TYPE_STRING,
+ *                                                              NULL);
  * </programlisting>
  * </example>
  * <example>
@@ -112,6 +115,8 @@
  * Since: 2.25.3
  *
  */
+
+#define GEDIT_MESSAGE_BUS_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_MESSAGE_BUS, GeditMessageBusPrivate))
 
 typedef struct
 {
@@ -171,7 +176,7 @@ static guint message_bus_signals[LAST_SIGNAL];
 static void gedit_message_bus_dispatch_real (GeditMessageBus *bus,
                                              GeditMessage    *message);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditMessageBus, gedit_message_bus, G_TYPE_OBJECT)
+G_DEFINE_TYPE(GeditMessageBus, gedit_message_bus, G_TYPE_OBJECT)
 
 static MessageIdentifier *
 message_identifier_new (const gchar *object_path,
@@ -283,7 +288,9 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMessageBusClass, dispatch),
-		              NULL, NULL, NULL,
+		              NULL,
+		              NULL,
+		              g_cclosure_marshal_VOID__OBJECT,
 		              G_TYPE_NONE,
 		              1,
 		              GEDIT_TYPE_MESSAGE);
@@ -291,8 +298,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 	/**
 	 * GeditMessageBus::registered:
 	 * @bus: a #GeditMessageBus
-	 * @object_path: the registered object path.
-	 * @method: the registered method
+	 * @message_type: the registered #GeditMessageType
 	 *
 	 * The "registered" signal is emitted when a message has been registered
 	 * on the bus.
@@ -303,7 +309,9 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMessageBusClass, registered),
-		              NULL, NULL, NULL,
+		              NULL,
+		              NULL,
+		              gedit_marshal_VOID__STRING_STRING,
 		              G_TYPE_NONE,
 		              2,
 		              G_TYPE_STRING,
@@ -312,8 +320,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 	/**
 	 * GeditMessageBus::unregistered:
 	 * @bus: a #GeditMessageBus
-	 * @object_path: the unregistered object path.
-	 * @method: the unregistered method
+	 * @message_type: the unregistered #GeditMessageType
 	 *
 	 * The "unregistered" signal is emitted when a message has been
 	 * unregistered from the bus.
@@ -324,11 +331,15 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMessageBusClass, unregistered),
-		              NULL, NULL, NULL,
+		              NULL,
+		              NULL,
+		              gedit_marshal_VOID__STRING_STRING,
 		              G_TYPE_NONE,
 		              2,
 		              G_TYPE_STRING,
 		              G_TYPE_STRING);
+
+	g_type_class_add_private (object_class, sizeof (GeditMessageBusPrivate));
 }
 
 static Message *
@@ -582,7 +593,7 @@ free_type (gpointer data)
 static void
 gedit_message_bus_init (GeditMessageBus *self)
 {
-	self->priv = gedit_message_bus_get_instance_private (self);
+	self->priv = GEDIT_MESSAGE_BUS_GET_PRIVATE (self);
 
 	self->priv->messages = g_hash_table_new_full (message_identifier_hash,
 	                                              message_identifier_equal,
@@ -879,7 +890,7 @@ foreach_type (MessageIdentifier *identifier,
 
 /**
  * gedit_message_bus_foreach:
- * @bus: the #GeditMessageBus
+ * @bus: the #GeditMessagebus
  * @func: (scope call): the callback function
  * @user_data: the user data to supply to the callback function
  *
@@ -1010,7 +1021,7 @@ gedit_message_bus_block (GeditMessageBus *bus,
  * @user_data: the user_data with which the callback was connected
  *
  * Blocks evoking the callback that matches provided @callback and @user_data.
- * Unblock the callback using gedit_message_bus_unblock_by_func().
+ * Unblock the callback using gedit_message_unblock_by_func().
  *
  */
 void
@@ -1176,13 +1187,13 @@ create_message (GeditMessageBus *bus,
  * @bus: a #GeditMessageBus
  * @object_path: the object path
  * @method: the method
- * @first_property: the first property
  * @...: NULL terminated list of key/value pairs
  *
  * This provides a convenient way to quickly send a message @method at
  * @object_path asynchronously over the bus. The variable argument list
  * specifies key (string) value pairs used to construct the message arguments.
  * To send a message synchronously use gedit_message_bus_send_sync().
+ *
  */
 void
 gedit_message_bus_send (GeditMessageBus *bus,
@@ -1220,7 +1231,6 @@ gedit_message_bus_send (GeditMessageBus *bus,
  * @bus: a #GeditMessageBus
  * @object_path: the object path
  * @method: the method
- * @first_property: the first property
  * @...: (allow-none): %NULL terminated list of key/value pairs
  *
  * This provides a convenient way to quickly send a message @method at

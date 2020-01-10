@@ -3,41 +3,34 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <desc>Jak se dostat k souborům, které byly nedávno změněny.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Opětovné otevření nedávno použitého souboru</title>
+  <title>Reopen a recently-used file</title>
 
-  <p>Standardně poskytuje <app>gedit</app> přístup k posledním pěti nedávno použitým souborům. Zde je postup, jak můžete nedávno použitý soubor otevřít:</p>
+  <p>By default, <app>gedit</app> provides easy access to five of your most
+  recently-used files. Here is how you can open a recently-used file:</p>
   <list type="numbered">
-    <item><p>Klikněte na tlačítko <gui>Otevřít</gui>.</p></item>
-    <item><p><app>gedit</app> zobrazí seznam posledních pěti použitých souborů.</p></item>
-    <item><p>Vyberte požadovaný soubor a ten se otevře v nové kartě.</p></item>
+    <item><p>Click the downward-facing arrow to the right of the <gui>Open</gui>
+    button.</p></item>
+    <item><p><app>gedit</app> will display a list of the five most-recently used
+    files.</p></item>
+    <item><p>Select the desired file, and it will open in a new tab.</p></item>
   </list>
 
-  <note style="advanced"><p>Jestli chcete změnit počet nedávno použitých souborů, které <app>gedit</app> zobrazuje, budete muset použít aplikaci <app>dconf-editor</app>.</p>
+  <note style="advanced"><p>To adjust the number of recently-used files that
+  gedit displays, you will need to use the <app>dconf-editor</app>
+  application.</p>
     <list>
-      <item><p>Spusťte <app>dconf-editor</app> a vyberte <guiseq><gui>org</gui> <gui>gnome</gui> <gui>gedit</gui> <gui>preferences</gui> <gui>ui</gui> <gui>max-recents</gui></guiseq>.</p></item>
-      <item><p>Dvojitě klikněte na číslo vedle <gui>max-recents</gui> a změňte hodnotu na tu požadovanou.</p></item>
+      <item><p>Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui>
+      <gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui>
+      <gui>max-recents</gui></guiseq>.</p></item>
+      <item><p>Double-click on the number next to <gui>max-recents</gui> and
+      change the number to your desired value.</p></item>
     </list>
   </note>
 

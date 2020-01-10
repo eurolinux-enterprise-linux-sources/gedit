@@ -3,45 +3,38 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Use administrative privileges to edit a file.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Редагування файлу з правами адміністратора</title>
+  <title>Edit a file as the root user</title>
 
   <note style="warning">
-    <p>Редагування файлів з правами адміністратора є потенційно небезпечним і може пошкодити Вашу систему. Будьте дуже обережні при редагуванні файлів з правами адміністратора.</p>
+    <p>Editing files as the root user is potentially dangerous, and may break
+    your system in bad ways. Take great care when editing files as the root
+    user.</p>
   </note>
 
-  <p>Для редагування файлів з правами адміністратора, запустіть «<app>gedit</app>» з терміналу, ввівши:</p>
+  <p>To edit files as the root user, launch <app>gedit</app> from the terminal
+  by entering:</p>
   <code>sudo gedit</code>
 
-  <p>Використовуючи команду «<cmd>sudo</cmd>», потрібно правильно ввести свій пароль перед тим, як відкриється «<app>gedit</app>».</p>
+  <p>Using the <cmd>sudo</cmd> command, you will need to successfully enter
+  your password before <app>gedit</app> will open.</p>
 
-  <p>Як альтернатива команді «<cmd>sudo</cmd>», отримати права адміністратора можна ввівши:</p>
+  <p>As an alternative to the <cmd>sudo</cmd> command, you may obtain
+  administrative privileges by entering:</p>
   <code>su -</code>
 
-  <p>Потім запустити «<app>gedit</app>», використовуючи команду «<cmd>gedit</cmd>».</p>
+  <p>You would then launch <app>gedit</app> using the <cmd>gedit</cmd>
+  command.</p>
 
   <note style="tip">
-    <p>Після відкриття «<app>gedit</app>» з правами адміністратора, ці права будуть доступні до закриття програми.</p>
+    <p>Once you have opened <app>gedit</app> with administrative privileges,
+    <app>gedit</app> will keep those privileges until you close it.</p>
   </note>
 
 </page>

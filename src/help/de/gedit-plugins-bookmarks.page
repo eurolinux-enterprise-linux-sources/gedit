@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-bookmarks" xml:lang="de">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Speichern häufig verwendeter Stellen in Lesezeichen</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jan Arne Petersen</mal:name>
+      <mal:email>jap@gnome.org</mal:email>
+      <mal:years>2007</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Mario Blättermann</mal:name>
+      <mal:email>mario.blaettermann@gmail.com</mal:email>
+      <mal:years>2008-2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christian Kirbach</mal:name>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Lesezeichen</title>
+
+  <p>Lesezeichen in gedit ermöglichen Ihnen die Hervorhebung wichtiger Textzeilen innerhalb Ihres Dokuments oder Programms, um diese leichter finden zu können. Sie können auch innerhalb der Lesezeichen hin- und herblättern, wodurch die Navigation im Dokument etwas beschleunigt wird.</p>
+
+  <p>Um das Lesezeichen-Plugin zu aktivieren, wählen Sie <guiseq><gui style="menu">Bearbeiten</gui><gui style="menuitem">Einstellungen</gui><gui>Plugins</gui><gui>Lesezeichen</gui></guiseq>.</p>
+
+  <steps>
+    <title>Lesezeichen werden mit der gleichen Aktion hinzugefügt und entfernt. So fügen Sie Lesezeichen hinzu oder entfernen Sie sie:</title>
+    <item><p>Navigieren Sie zu der Zeile, wo Sie ein Lesezeichen hinzufügen oder eines entfernen wollen.</p></item>
+    <item><p>Drücken Sie <keyseq><key>Strg</key><key>Alt</key><key>B</key></keyseq> oder wählen Sie <guiseq><gui style="menu">Bearbeiten</gui><gui style="menuitem">Lesezeichen ein-/ausschalten</gui></guiseq>.</p></item>
+  </steps>
+  
+  <steps>
+    <title>So bewegen Sie sich zwischen Lesezeichen:</title>
+    <item><p>Drücken Sie <keyseq><key>Strg</key><key>B</key></keyseq>, um zum nächsten Lesezeichen zu springen.</p></item>
+    <item><p>Drücken Sie <keyseq><key>Strg</key><key>Umschalttaste</key><key>B</key></keyseq>, um zum vorigen Lesezeichen zu springen.</p>
+    <note><p>Falls Sie die Maus bevorzugen, wählen Sie <guiseq><gui style="menu">Bearbeiten</gui><gui style="menuitem">Nächstes Lesezeichen</gui></guiseq> oder <guiseq><gui style="menu">Bearbeiten</gui><gui style="menuitem">Zum vorherigen Lesezeichen gehen</gui></guiseq>.</p></note>
+    </item>
+  </steps>
+    
+  
+
+</page>

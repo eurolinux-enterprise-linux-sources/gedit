@@ -1,67 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="lv">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="lv">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Izmantot gedit sānu rūti datņu pārlūku.</desc>
     <revision pkgversion="3.8" date="2013-03-13" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
-  <title>View and open files from the side panel</title>
-  <p>
-    The most common way to switch between files in <app>gedit</app> is by using
-    the tabs at the top of the <app>gedit</app> window. In some cases, though,
-    particularly when you are working with a large number of open files, you
-    may find it easier to use the side panel.
-  </p> 
+  <title>Skatīt un atvērt datnes, izmantojot sānu rūti</title>
+  <p>Parastākais veids, kā pārslēgties starp datnēm <app>gedit</app>, ir ar cilnēm <app>gedit</app> loga augšā. Tomēr dažkārt, it īpaši strādājot ar lielu atvērtu datņu skaitu, var būt ērtāk izmantot <app>sānu rūti</app>.</p> 
 
   <p>
-    To activate the side panel, select <guiseq><gui>View</gui>
-    <gui>Side Panel</gui></guiseq>, or just press the <key>F9</key> key.
+    To activate the <app>side pane</app>, select <guiseq><gui>View</gui>
+    <gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key.
   </p>
 
   <note style="note">
-    <p>
-      You can toggle the side panel open or closed by pressing
-      <key>F9</key> at any time.
-    </p>
+    <p><gui>Sānu rūti</gui> var atvērt vai aizvērt jebkurā brīdī, nospiežot <key>F9</key> taustiņu.</p>
   </note>
 
-<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
-    <title>Opening files from the side panel</title>
+    <title>Datņu atvēršana no sānu rūts</title>
     <p>
-      To open files from the side panel, first open the
-      side panel by selecting <guiseq><gui>View</gui>
-      <gui>Side Panel</gui></guiseq> (or just press
-      <key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown
-      at the top of the panel.
+      To open files from the <app>side pane</app>, first open the
+      <app>side pane</app> by selecting <guiseq><gui>View</gui>
+      <gui>Side Pane</gui></guiseq>, then click on the <gui>file-browser</gui>
+      icon at the bottom of the pane.
     </p>
 
     <p>
-      This will activate the <em>File Browser</em> mode of the
-      side panel. You can then use the navigation buttons at the top
-      of the panel to locate and open your desired files.
+      <media type="image" mime="image/png" src="figures/gedit-side-pane1.png"/>
     </p>
+
+    <p>Tas ieslēgs  <app>sānu rūts</app> <em>datņu pārlūka</em> režīmu. Izmantojot navigācijas pogas rūts augšā, var atrast un atvērt vēlamās datnes.</p>
   </section>
 
   <section id="sidepane-switch">
-    <title>Using the side panel to switch between open files</title>
+    <title>Pārslēgties starp atvērtajām datnēm, izmantojot sānu rūti</title>
+    <p>Kad atvērtas vairākas datnes, starp tām var pārslēgties ar sānu rūti. Lai ieslēgtu <app>sānu rūts</app> datņu pārlūka daļu, veiciet klikšķi uz <gui>datnes</gui> ikonas <gui>sānu rūts</gui> apakšā.</p>
+    
     <p>
-      Once you have several files open, you can use the side panel to switch
-      between open files. To list open files, choose <gui>Documents</gui>
-      from the dropdown at the top of the panel.
+      <media type="image" mime="image/png" src="figures/gedit-side-pane2.png"/>
     </p>
 
-    <p>
-      Clicking on any file name in the side panel will open that file
-      for editing.
-    </p>
+    <p>Klikšķis uz jebkuras datnes nosaukuma <gui>sānu rūtī</gui> atvērs šo datni rediģēšanai.</p>
   </section>
  
  </page>

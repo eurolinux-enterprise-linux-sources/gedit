@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs-moving" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs-moving" xml:lang="gl">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
-    <link type="seealso" xref="gedit-tabs"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Cambiar a posición dunha lapela na xanela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -18,11 +15,6 @@
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -35,13 +27,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -58,7 +44,7 @@
         <p>Prema e manteña o botón do rato na lapela.</p>
       </item>
       <item>
-        <p>Mova a lapela á posición que desexe entre as outras lapelas.</p>
+        <p>Move the tab to the desired position among the other tab.</p>
       </item>
       <item>
         <p>Solte o botón do rato.</p>
@@ -85,6 +71,8 @@
       </item>
     </steps>
 
+    <p>ou, mentres a lapela se move seleccione <guiseq><gui>Documentos</gui><gui>Mover a unha nova xanela</gui></guiseq></p>
+
     <note style="tip">
       <p>Para mover unha lapela a unha xanela nova cando <app>gedit</app> está maximizado, arrastre a lapela á barra superior da pantalla.</p>
     </note>
@@ -100,10 +88,10 @@
         <p>Prema e manteña o botón do rato na lapela.</p>
       </item>
       <item>
-        <p>Arrastre a lapela á nova xanela</p>
+        <p>Drag the tab to the new window.</p>
       </item>
       <item>
-        <p>Posiciónea xunto a outras lapelas, na nova xanela..</p>
+        <p>Place it beside other tabs in the new window.</p>
       </item>
       <item>
         <p>Solte o botón do rato.</p>
@@ -112,10 +100,15 @@
     
 
     <note style="tip">
-      <p>Pode atopar máis doado mover a lapela desde unha xanela a outra arrastrando a lapela á esquina activa de <gui>Actividades</gui> do <gui>GNOME Shell</gui>. Isto mostrará cada unha das xanelas abertas do <app>gedit</app>. Logo pode soltar a lapela na xanela do <app>gedit</app> desexada.</p>
+      <p>You may find it easier to move a tab from one window to another by
+      dragging the tab to the <gui>Activities</gui> hot-corner of
+      <gui>GNOME Shell</gui>. This will reveal each of the open
+      <app>gedit</app> windows. You can then release the tab on the
+      desired <app>gedit</app> window.</p>
     </note>
 
-    <p>Vexa a táboa de <link xref="gedit-shortcut-keys">teclas de atallos relacionados con lapelas</link> para facer máis doado xestionar as lapelas.</p>
+    <p>See the <link xref="gedit-shortcut-keys">tab-related shortcut
+    keys</link> table to make it easier to manage your tabs.</p>
 
   </section>
 

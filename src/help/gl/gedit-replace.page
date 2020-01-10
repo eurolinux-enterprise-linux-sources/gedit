@@ -4,14 +4,10 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
-    <desc>Substituír fragmentos de texto nun ficheiro.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
-    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -20,18 +16,6 @@
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email>kittykat3756@gmail.com</email>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email>tyagishobha@gmail.com</email>
-    </credit>
-    <credit type="editor">
-      <name>Young Li</name>
-      <email>li.young1618@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -44,96 +28,67 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Substituír texto</title>
 
-  <p>Editar texto pode consumir moito tempo. Para aforrar tempo <app>gedit</app> inclúe unha función <app>Substituír</app> que lle axudará a buscar e substituír partes do texto.</p>
+    <p>Editar texto pode consumir moito tempo. Para aforrar tempo <app>gedit</app> inclúe unha función <app>Substituír</app> que lle axudará a buscar e substituír partes do texto.</p>
 
-  <steps>
-    <title>Substituír texto en <app>gedit</app></title>
-    <item>
-      <p>Abra a ferramenta <gui>Substituír</gui> premendo no <guiseq><gui style="button">botón Menú</gui><gui style="menuitem">Buscar e substituír…</gui></guiseq> ou prema <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
-    </item>
-    <item>
-      <p>Escriba o texto que quere substituír no campo <gui>Buscar</gui> .</p>
-    </item>
-    <item>
-      <p>Escriba o texto de substitución no campo <gui>Substituír con</gui>.</p>
-    </item>
-    <item>
-      <p>Cando teña introducido o texto orixinal e o de substitución, pode seleccionar opcións adicionais para a busca. Tamén pode escoller o que desexa substituír:</p>
-      <list>
-        <item>
-          <p>Para substituír <em>só</em> a seguinte coincidencia, prema <gui>Substituír</gui>.</p>
+    <steps>
+      <title>Substituír texto en <app>gedit</app></title>
+      <item>
+        <p>Open the Replace tool by clicking
+        <guiseq><gui style="menu">Search</gui>
+        <gui style="menuitem">Replace</gui></guiseq> or press
+        <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      </item>
+      <item>
+        <p>Escriba o texto que quere substituír no campo «Buscar».</p>
+      </item>
+      <item>
+        <p>Escriba o novo texto de substitución no campo «Substituír con:»</p>
+      </item>
+      <item>
+        <p>Cando teña introducido o texto orixinal e o de substitución, seleccione as opcións de substitución que queira:</p>
+        <list>
+          <item>
+            <p>Para substituír <em>só</em> o seguinte fragmento de texto que coincida, prema <gui>Substituír</gui>.</p>
+          </item>
+          <item>
+            <p>Para substituír <em>tódalas aparicións</em> do texto prema <gui>Substituír todo</gui>.</p>
         </item>
-        <item>
-          <p>Para substituír <em>tódalas aparicións</em> do texto prema <gui>Substituír todo</gui>.</p>
-        </item>
-      </list>
-    </item>
-  </steps>
+        </list>
+      </item>
+    </steps>
 
-  <note style="warning">
-    <p>Use a función <gui>Substituír todo</gui> con coidado. <gui>Substituír todo</gui> execútase en todo o texto do ficheiro e non permite resaltar as partes do texto onde se aplicará a función de substitución.</p>
-  </note>
+    <note style="warning">
+      <p>Use the <gui>Replace All</gui> function with care. <gui>Replace
+      All</gui> works on the entirety of your text file, and does not allow you
+      to highlight portions of text where the replace function will be
+      performed.</p>
+    </note>
 
-<section id="replace-options">
-  <title>Máis opcións</title>
-
-  <p>Se o desexa, pode engadir algúns parámetros adicionais á busca:</p>
-
-  <terms>
-    <item>
-      <title>Coincidir con capitalización</title>
-      <p>A función <em>Diferenciar maiúsculas de minúsculas</em> permítelle especificar se quere que a súa busca sexa sensíbel a maiúsculas/minúsculas. Se se selecciona esta opción, as buscas serán sensíbeis a maiúsculas/minúsculas. Do contrario non o serán.</p>
-    </item>
-    <item>
-      <title>Coincidir só coa palabra completa</title>
-      <p>Use esta opción para buscar unha palabra específica sen incluír partes de outras palabras. Por exemplo, se buscou o termo «por» coa opción seleccionada, atoparase a palabra «por» pero non así as palabras <em>por</em>tal, <em>por</em>que e estu<em>por</em>.</p>
-    </item>
-    <item>
-      <title>Buscar cara atrás</title>
-      <p>Esta orde compórtase de forma idéntica á orde Buscar anterior. Seleccione esta opción se quere pasar a través dos resultados da busca desde o final ao principio.</p>
-    </item>
-    <item>
-      <title>Axustar aproximadamente</title>
-      <p>Coa opción <app>Axustar axeitadamente</app> activada, <app>gedit</app> reiniciará a acción de buscar/substituír na parte superior do ficheiro, despois de chegar ao final. Isto asegúralle que a súa acción de buscar/substituír realízase en todo o ficheiro.</p>
-    </item>
-  </terms>
-
-</section>
-
-<section id="escape-sequences">
-  <title>Uso de secuencias de escape</title>
-
-  <p>Pode usar<em>secuencias de escape</em> para atopar quebras de liña, retornos de carro e tabulacións.</p>
-
-  <terms>
-    <item>
-      <title>\n</title>
-      <p>Nova liña</p>
-    </item>
-    <item>
-      <title>\r</title>
-      <p>Retorno do carro</p>
-    </item>
-    <item>
-      <title>\t</title>
-      <p>Lapela</p>
-    </item>
-  </terms>
-
-  <p>Se realmente quere buscar unha <output>\</output> (barra invertida) ou unha das secuencias de escape no texto, precisa escapar da barra invertida cunha barra invertida adicional. Por exemplo, para buscar unha <input>\</input>, debe introducir<input>\\</input> no campo de busca ou substitución. Pode procurar secuencias de escape do mesmo xeito: para buscar ou substituír <input>\n</input>, use <input>\\n</input>.</p>
-
-</section>
-
+  <section id="replace-options">
+    <title>Máis opcións</title>
+    <terms>
+      <item>
+        <title>Coincidir con capitalización</title>
+        <p>A función <em>Diferenciar maiúsculas de minúsculas</em> permítelle especificar se quere que a súa busca sexa sensíbel a maiúsculas/minúsculas. Se se selecciona esta opción, as buscas serán sensíbeis a maiúsculas/minúsculas. Do contrario non o serán.</p>
+      </item>
+      <item>
+        <title>Coincidir só coa palabra completa</title>
+        <p>Use esta opción para buscar unha palabra específica sen incluír partes de outras palabras. Por exemplo, se buscou o termo «por» coa opción seleccionada, atoparase a palabra «por» pero non así as palabras <em>por</em>tal, <em>por</em>que e estu<em>por</em>.</p>
+      </item>
+      <item>
+        <title>Buscar cara atrás</title>
+        <p>Esta orde compórtase de forma idéntica á orde Buscar anterior. Seleccione esta opción se quere pasar a través dos resultados da busca desde o final ao principio.</p>
+      </item>
+      <item>
+        <title>Axustar aproximadamente</title>
+        <p>Coa opción <app>Axustar axeitadamente</app> activada, <app>gedit</app> reiniciará a acción de buscar/substituír na parte superior do ficheiro, despois de chegar ao final. Isto asegúralle que a súa acción de buscar/substituír realízase en todo o ficheiro.</p>
+      </item>
+    </terms>
+  </section>
 </page>

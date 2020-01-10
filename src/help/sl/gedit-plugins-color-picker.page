@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-color-picker" xml:lang="sl">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/> 
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Izbor barve iz pogovornega okna njena vstavitev v šestnajstiškem zapisu</desc>
+  </info>
+
+  <title>Izbirnik parv</title>
+
+  <p>Vstavek <app>izbirnik barv</app> vam pomaga vstaviti kode znakov, ki predstavljajo določeno barvo. To lahko olajša izbiro in uporabo prave barve v vaših programih.</p>
+  
+  <p>To enable the color picker plugin, select <guiseq>
+  <gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Color Picker</gui></guiseq>.</p>
+  
+  <p>Za odprtje in uporabo izbirnika barv:</p>
+  <steps>
+      <item><p>Postavite kazalec na točko v dokumentu kamor želite vstaviti barvno kodo.</p></item>
+      <item><p>Izberite <guiseq><gui>Orodja</gui><gui>Izberi barvo</gui></guiseq>. Pojavilo se bo pogovorno okno izbirnika barv.</p></item>
+      <item><p>Kliknite na želeno barvo v oknu izbirnika barv.</p>
+      </item>
+      <item><p>Ustrezna barvna koda bo vstavljena na mesto kazalke.</p></item>
+      <item><p>Za zaprtje <app>izbirnika barv</app>,  kliknite <gui>Zapri</gui>.</p></item>
+  </steps>
+  
+  <!--TODO: Update this section for the "Custom" values -->
+  <note style="tip"><p>Natančne prilagoditve barve lahko izvedete s prilagoditvijo vrednosti odtenek, nasičenost, vrednost, rdeča, zelena in modra.</p>
+  <p>Poleg tega lahko barve shranite tudi z desnim klikom na kateregakoli od obarvanih polj v izbirniku barv in izbiro <gui>Shrani barvo tukaj</gui>. To vam bo kasneje olajšalo vstavljanje pogosto uporabljenih barv.</p>
+  </note>     
+</page>

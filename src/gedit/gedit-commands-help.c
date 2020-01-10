@@ -17,56 +17,34 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
-
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-app.h"
 #include "gedit-dirs.h"
 
 void
-_gedit_cmd_help_keyboard_shortcuts (GeditWindow *window)
-{
-	static GtkWidget *shortcuts_window;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	if (shortcuts_window == NULL)
-	{
-		GtkBuilder *builder;
-
-		builder = gtk_builder_new_from_resource ("/org/gnome/gedit/ui/gedit-shortcuts.ui");
-		shortcuts_window = GTK_WIDGET (gtk_builder_get_object (builder, "shortcuts-gedit"));
-
-		g_signal_connect (shortcuts_window,
-				  "destroy",
-				  G_CALLBACK (gtk_widget_destroyed),
-				  &shortcuts_window);
-
-		g_object_unref (builder);
-	}
-
-	if (GTK_WINDOW (window) != gtk_window_get_transient_for (GTK_WINDOW (shortcuts_window)))
-	{
-		gtk_window_set_transient_for (GTK_WINDOW (shortcuts_window), GTK_WINDOW (window));
-	}
-
-	gtk_widget_show_all (shortcuts_window);
-	gtk_window_present (GTK_WINDOW (shortcuts_window));
-}
-
-void
-_gedit_cmd_help_contents (GeditWindow *window)
+_gedit_cmd_help_contents (GtkAction   *action,
+			  GeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -77,22 +55,19 @@ _gedit_cmd_help_contents (GeditWindow *window)
 }
 
 void
-_gedit_cmd_help_about (GeditWindow *window)
+_gedit_cmd_help_about (GtkAction   *action,
+		       GeditWindow *window)
 {
 	static const gchar * const authors[] = {
-		"Alex Roberts",
-		"Chema Celorio",
-		"Evan Lawrence",
-		"Federico Mena Quintero <federico@novell.com>",
-		"Garrett Regier <garrettregier@gmail.com>",
-		"Ignacio Casal Quinteiro <icq@gnome.org>",
-		"James Willcox <jwillcox@gnome.org>",
-		"Jesse van den Kieboom <jessevdk@gnome.org>",
-		"Paolo Borelli <pborelli@gnome.org>",
 		"Paolo Maggi <paolo@gnome.org>",
-		"S\303\251bastien Lafargue <slafargue@gnome.org>",
-		"S\303\251bastien Wilmet <swilmet@gnome.org>",
-		"Steve Fr\303\251cinaux <steve@istique.net>",
+		"Paolo Borelli <pborelli@katamail.com>",
+		"Steve Fr\303\251cinaux  <steve@istique.net>",
+		"Jesse van den Kieboom  <jessevdk@gnome.org>",
+		"Ignacio Casal Quinteiro <icq@gnome.org>",
+		"Garrett Regier <garrettregier@gmail.com>",
+		"James Willcox <jwillcox@gnome.org>",
+		"Chema Celorio",
+		"Federico Mena Quintero <federico@novell.com>",
 		NULL
 	};
 
@@ -104,22 +79,29 @@ _gedit_cmd_help_about (GeditWindow *window)
 		NULL
 	};
 
-	static const gchar copyright[] = "Copyright \xc2\xa9 1998-2017 - the gedit team";
+	static const gchar copyright[] = \
+		"Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Robert\n"
+		"Copyright \xc2\xa9 2000-2002 Chema Celorio, Paolo Maggi\n"
+		"Copyright \xc2\xa9 2003-2006 Paolo Maggi\n"
+		"Copyright \xc2\xa9 2004-2011 Paolo Borelli, Jesse van den Kieboom\nSteve Fr\303\251cinaux, Ignacio Casal Quinteiro";
 
 	static const gchar comments[] = \
-		N_("gedit is a small and lightweight text editor for the GNOME Desktop");
+		N_("gedit is a small and lightweight text editor for the "
+		   "GNOME Desktop");
 
 	GdkPixbuf *logo;
-	GError *error = NULL;
+	const gchar *data_dir;
+	gchar *logo_file;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	logo = gdk_pixbuf_new_from_resource ("/org/gnome/gedit/pixmaps/gedit-logo.png", &error);
-	if (error != NULL)
-	{
-		g_warning ("Error when loading the gedit logo: %s", error->message);
-		g_clear_error (&error);
-	}
+	data_dir = gedit_dirs_get_gedit_data_dir ();
+	logo_file = g_build_filename (data_dir,
+				      "logo",
+				      "gedit-logo.png",
+				      NULL);
+	logo = gdk_pixbuf_new_from_file (logo_file, NULL);
+	g_free (logo_file);
 
 	gtk_show_about_dialog (GTK_WINDOW (window),
 			       "program-name", "gedit",
@@ -135,7 +117,8 @@ _gedit_cmd_help_about (GeditWindow *window)
 			       "website-label", "www.gedit.org",
 			       NULL);
 
-	g_clear_object (&logo);
+	if (logo)
+		g_object_unref (logo);
 }
 
 /* ex:set ts=8 noet: */

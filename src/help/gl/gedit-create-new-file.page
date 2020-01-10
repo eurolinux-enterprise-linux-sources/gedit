@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-create-new-file" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-create-new-file" xml:lang="gl">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="first"/>
-    <desc>Abrir un ficheiro novo para editalo.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -25,19 +18,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Crear un ficheiro novo</title>
 
-  <p>A forma máis sinxela de crear un novo ficheiro no <app>gedit</app>, é premer no botón <gui>Crear un novo documento</gui> na parte esquerda da barra de ferramentas ou premer <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
+  <p>A forma máis doada de pechar un ficheiro novo en <app>gedit</app> é premer a icona que aparece un anaco de papel en branco. Se o prefire, tamén pode seleccionar <guiseq><gui>Ficheiro</gui><gui>Novo</gui></guiseq>, ou premer <keyseq><key>Ctrl</key><key>N</key></keyseq>.</p>
 
   <p>Calquera destas accións creará un ficheiro novo en <app>gedit</app>. Se ten abertos outros ficheiros en <app>gedit</app>, o ficheiro novo que cree aparecerá como unha lapela nova á dereita destes ficheiros.</p>
 

@@ -26,12 +26,12 @@
 #ifdef LIBGD__VIEW_COMMON
 # include "gd-main-view-generic.h"
 # include "gd-styled-text-renderer.h"
+# include "gd-toggle-pixbuf-renderer.h"
 # include "gd-two-lines-renderer.h"
 #endif
 
 #ifdef LIBGD_MAIN_ICON_VIEW
 # include "gd-main-icon-view.h"
-# include "gd-toggle-pixbuf-renderer.h"
 #endif
 
 #ifdef LIBGD_MAIN_LIST_VIEW
@@ -87,12 +87,12 @@ gd_ensure_types (void)
 #ifdef LIBGD__VIEW_COMMON
   g_type_ensure (GD_TYPE_MAIN_VIEW_GENERIC);
   g_type_ensure (GD_TYPE_STYLED_TEXT_RENDERER);
+  g_type_ensure (GD_TYPE_TOGGLE_PIXBUF_RENDERER);
   g_type_ensure (GD_TYPE_TWO_LINES_RENDERER);
 #endif
 
 #ifdef LIBGD_MAIN_ICON_VIEW
   g_type_ensure (GD_TYPE_MAIN_ICON_VIEW);
-  g_type_ensure (GD_TYPE_TOGGLE_PIXBUF_RENDERER);
 #endif
 
 #ifdef LIBGD_MAIN_LIST_VIEW

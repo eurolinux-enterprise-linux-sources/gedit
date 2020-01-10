@@ -2,30 +2,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>GeditTab: gedit Reference Manual</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<title>GeditTab</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="gedit Reference Manual">
 <link rel="up" href="ch01.html" title="gedit">
-<link rel="prev" href="GeditStatusbar.html" title="GeditStatusbar">
+<link rel="prev" href="gedit-gedit-statusbar.html" title="GeditStatusbar">
 <link rel="next" href="gedit-gedit-view.html" title="GeditView">
-<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.19.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
-<td width="100%" align="left" class="shortcuts">
-<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-tab.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-tab.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-tab.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-tab.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-tab.signals" class="shortcut">Signals</a></span>
-</td>
-<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
-<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
-<td><a accesskey="p" href="GeditStatusbar.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
-<td><a accesskey="n" href="gedit-gedit-view.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
-</tr></table>
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gedit-gedit-statusbar.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gedit Reference Manual</th>
+<td><a accesskey="n" href="gedit-gedit-view.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gedit-gedit-tab.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gedit-gedit-tab.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gedit-gedit-tab.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#gedit-gedit-tab.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#gedit-gedit-tab.properties" class="shortcut">Properties</a>
+                   | 
+                  <a href="#gedit-gedit-tab.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
 <div class="refentry">
 <a name="gedit-gedit-tab"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
@@ -33,573 +41,398 @@
 <h2><span class="refentrytitle"><a name="gedit-gedit-tab.top_of_page"></a>GeditTab</span></h2>
 <p>GeditTab</p>
 </td>
-<td class="gallery_image" valign="top" align="right"></td>
+<td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1">
-<a name="gedit-gedit-tab.functions"></a><h2>Functions</h2>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
-</colgroup>
-<tbody>
-<tr>
-<td class="function_type">
-<a class="link" href="gedit-gedit-view.html#GeditView"><span class="returnvalue">GeditView</span></a> *
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-get-view" title="gedit_tab_get_view ()">gedit_tab_get_view</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<a class="link" href="GeditDocument.html" title="GeditDocument"><span class="returnvalue">GeditDocument</span></a> *
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-get-document" title="gedit_tab_get_document ()">gedit_tab_get_document</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="returnvalue">GeditTab</span></a> *
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-get-from-document" title="gedit_tab_get_from_document ()">gedit_tab_get_from_document</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="returnvalue">GeditTabState</span></a>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-get-state" title="gedit_tab_get_state ()">gedit_tab_get_state</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-get-auto-save-enabled" title="gedit_tab_get_auto_save_enabled ()">gedit_tab_get_auto_save_enabled</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-set-auto-save-enabled" title="gedit_tab_set_auto_save_enabled ()">gedit_tab_set_auto_save_enabled</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-get-auto-save-interval" title="gedit_tab_get_auto_save_interval ()">gedit_tab_get_auto_save_interval</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-set-auto-save-interval" title="gedit_tab_set_auto_save_interval ()">gedit_tab_set_auto_save_interval</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-tab.html#gedit-tab-set-info-bar" title="gedit_tab_set_info_bar ()">gedit_tab_set_info_bar</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-tab.properties"></a><h2>Properties</h2>
-<div class="informaltable"><table class="informaltable" border="0">
-<colgroup>
-<col width="150px" class="properties_type">
-<col width="300px" class="properties_name">
-<col width="200px" class="properties_flags">
-</colgroup>
-<tbody>
-<tr>
-<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
-<td class="property_name"><a class="link" href="gedit-gedit-tab.html#GeditTab--autosave" title="The “autosave” property">autosave</a></td>
-<td class="property_flags">Read / Write</td>
-</tr>
-<tr>
-<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a></td>
-<td class="property_name"><a class="link" href="gedit-gedit-tab.html#GeditTab--autosave-interval" title="The “autosave-interval” property">autosave-interval</a></td>
-<td class="property_flags">Read / Write</td>
-</tr>
-<tr>
-<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
-<td class="property_name"><a class="link" href="gedit-gedit-tab.html#GeditTab--can-close" title="The “can-close” property">can-close</a></td>
-<td class="property_flags">Read</td>
-</tr>
-<tr>
-<td class="property_type">
-<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</td>
-<td class="property_name"><a class="link" href="gedit-gedit-tab.html#GeditTab--name" title="The “name” property">name</a></td>
-<td class="property_flags">Read</td>
-</tr>
-<tr>
-<td class="property_type"><a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a></td>
-<td class="property_name"><a class="link" href="gedit-gedit-tab.html#GeditTab--state" title="The “state” property">state</a></td>
-<td class="property_flags">Read</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-tab.signals"></a><h2>Signals</h2>
-<div class="informaltable"><table class="informaltable" border="0">
-<colgroup>
-<col width="150px" class="signals_return">
-<col width="300px" class="signals_name">
-<col width="200px" class="signals_flags">
-</colgroup>
-<tbody><tr>
-<td class="signal_type"><span class="returnvalue">void</span></td>
-<td class="signal_name"><a class="link" href="gedit-gedit-tab.html#GeditTab-drop-uris" title="The “drop-uris” signal">drop-uris</a></td>
-<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-ACTION:CAPS">Action</a></td>
-</tr></tbody>
-</table></div>
-</div>
-<a name="GeditTab"></a><div class="refsect1">
-<a name="gedit-gedit-tab.other"></a><h2>Types and Values</h2>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="name">
-<col class="description">
-</colgroup>
-<tbody>
-<tr>
-<td class="datatype_keyword">enum</td>
-<td class="function_name"><a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState">GeditTabState</a></td>
-</tr>
-<tr>
-<td class="datatype_keyword"> </td>
-<td class="function_name"><a class="link" href="gedit-gedit-tab.html#GeditTab-struct" title="GeditTab">GeditTab</a></td>
-</tr>
-</tbody>
-</table></div>
+<div class="refsynopsisdiv">
+<a name="gedit-gedit-tab.synopsis"></a><h2>Synopsis</h2>
+<a name="GeditTab"></a><pre class="synopsis">enum                <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState">GeditTabState</a>;
+                    <a class="link" href="gedit-gedit-tab.html#GeditTabPrivate" title="GeditTabPrivate">GeditTabPrivate</a>;
+struct              <a class="link" href="gedit-gedit-tab.html#GeditTab-struct" title="struct GeditTab">GeditTab</a>;
+<a class="link" href="gedit-gedit-view.html#GeditView"><span class="returnvalue">GeditView</span></a> *         <a class="link" href="gedit-gedit-tab.html#gedit-tab-get-view" title="gedit_tab_get_view ()">gedit_tab_get_view</a>                  (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);
+<a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="returnvalue">GeditDocument</span></a> *     <a class="link" href="gedit-gedit-tab.html#gedit-tab-get-document" title="gedit_tab_get_document ()">gedit_tab_get_document</a>              (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);
+<a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="returnvalue">GeditTab</span></a> *          <a class="link" href="gedit-gedit-tab.html#gedit-tab-get-from-document" title="gedit_tab_get_from_document ()">gedit_tab_get_from_document</a>         (<em class="parameter"><code><a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a> *doc</code></em>);
+<a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="returnvalue">GeditTabState</span></a>       <a class="link" href="gedit-gedit-tab.html#gedit-tab-get-state" title="gedit_tab_get_state ()">gedit_tab_get_state</a>                 (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="gedit-gedit-tab.html#gedit-tab-get-auto-save-enabled" title="gedit_tab_get_auto_save_enabled ()">gedit_tab_get_auto_save_enabled</a>     (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-tab.html#gedit-tab-set-auto-save-enabled" title="gedit_tab_set_auto_save_enabled ()">gedit_tab_set_auto_save_enabled</a>     (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> enable</code></em>);
+<span class="returnvalue">gint</span>                <a class="link" href="gedit-gedit-tab.html#gedit-tab-get-auto-save-interval" title="gedit_tab_get_auto_save_interval ()">gedit_tab_get_auto_save_interval</a>    (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-tab.html#gedit-tab-set-auto-save-interval" title="gedit_tab_set_auto_save_interval ()">gedit_tab_set_auto_save_interval</a>    (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> interval</code></em>);
+</pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-tab.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
-    <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
-        <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-struct">GtkWidget</a>
-            <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtk3/GtkContainer.html#GtkContainer-struct">GtkContainer</a>
-                <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtk3/GtkBox.html#GtkBox-struct">GtkBox</a>
-                    <span class="lineart">╰──</span> GeditTab
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkWidget
+               +----GtkContainer
+                     +----GtkBox
+                           +----GeditTab
 </pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-tab.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
 <p>
 GeditTab implements
- AtkImplementorIface,  <a href="/usr/share/gtk-doc/html/gtk3/GtkBuildable.html#GtkBuildable-struct">GtkBuildable</a> and  <a href="/usr/share/gtk-doc/html/gtk3/gtk3-Orientable.html#GtkOrientable-struct">GtkOrientable</a>.</p>
+ AtkImplementorIface,  GtkBuildable and  GtkOrientable.</p>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-tab.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="gedit-gedit-tab.html#GeditTab--autosave" title='The "autosave" property'>autosave</a>"                 <span class="type">gboolean</span>              : Read / Write
+  "<a class="link" href="gedit-gedit-tab.html#GeditTab--autosave-interval" title='The "autosave-interval" property'>autosave-interval</a>"        <span class="type">gint</span>                  : Read / Write
+  "<a class="link" href="gedit-gedit-tab.html#GeditTab--can-close" title='The "can-close" property'>can-close</a>"                <span class="type">gboolean</span>              : Read
+  "<a class="link" href="gedit-gedit-tab.html#GeditTab--name" title='The "name" property'>name</a>"                     <span class="type">gchar</span>*                : Read
+  "<a class="link" href="gedit-gedit-tab.html#GeditTab--state" title='The "state" property'>state</a>"                    <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a>         : Read
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-tab.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="gedit-gedit-tab.html#GeditTab-drop-uris" title='The "drop-uris" signal'>drop-uris</a>"                                      : <code class="literal">Action</code>
+</pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-tab.description"></a><h2>Description</h2>
 </div>
 <div class="refsect1">
-<a name="gedit-gedit-tab.functions_details"></a><h2>Functions</h2>
-<div class="refsect2">
-<a name="gedit-tab-get-view"></a><h3>gedit_tab_get_view ()</h3>
-<pre class="programlisting"><a class="link" href="gedit-gedit-view.html#GeditView"><span class="returnvalue">GeditView</span></a> *
-gedit_tab_get_view (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
-<p>Gets the <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> inside <em class="parameter"><code>tab</code></em>
-.</p>
-<div class="refsect3">
-<a name="gedit-tab-get-view.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-tab-get-view.returns"></a><h4>Returns</h4>
-<p>the <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> inside <em class="parameter"><code>tab</code></em>
-. </p>
-<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-get-document"></a><h3>gedit_tab_get_document ()</h3>
-<pre class="programlisting"><a class="link" href="GeditDocument.html" title="GeditDocument"><span class="returnvalue">GeditDocument</span></a> *
-gedit_tab_get_document (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
-<p>Gets the <a class="link" href="GeditDocument.html" title="GeditDocument"><span class="type">GeditDocument</span></a> associated to <em class="parameter"><code>tab</code></em>
-.</p>
-<div class="refsect3">
-<a name="gedit-tab-get-document.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-tab-get-document.returns"></a><h4>Returns</h4>
-<p>the <a class="link" href="GeditDocument.html" title="GeditDocument"><span class="type">GeditDocument</span></a> associated to <em class="parameter"><code>tab</code></em>
-. </p>
-<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-get-from-document"></a><h3>gedit_tab_get_from_document ()</h3>
-<pre class="programlisting"><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="returnvalue">GeditTab</span></a> *
-gedit_tab_get_from_document (<em class="parameter"><code><a class="link" href="GeditDocument.html" title="GeditDocument"><span class="type">GeditDocument</span></a> *doc</code></em>);</pre>
-<p>Gets the <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> associated with <em class="parameter"><code>doc</code></em>
-.</p>
-<div class="refsect3">
-<a name="gedit-tab-get-from-document.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>doc</p></td>
-<td class="parameter_description"><p>a <a class="link" href="GeditDocument.html" title="GeditDocument"><span class="type">GeditDocument</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-tab-get-from-document.returns"></a><h4>Returns</h4>
-<p>the <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> associated with <em class="parameter"><code>doc</code></em>
-. </p>
-<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-get-state"></a><h3>gedit_tab_get_state ()</h3>
-<pre class="programlisting"><a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="returnvalue">GeditTabState</span></a>
-gedit_tab_get_state (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
-<p>Gets the <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a> of <em class="parameter"><code>tab</code></em>
-.</p>
-<div class="refsect3">
-<a name="gedit-tab-get-state.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-tab-get-state.returns"></a><h4>Returns</h4>
-<p> the <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a> of <em class="parameter"><code>tab</code></em>
-</p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-get-auto-save-enabled"></a><h3>gedit_tab_get_auto_save_enabled ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
-gedit_tab_get_auto_save_enabled (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
-<p>Gets the current state for the autosave feature</p>
-<div class="refsect3">
-<a name="gedit-tab-get-auto-save-enabled.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-tab-get-auto-save-enabled.returns"></a><h4>Returns</h4>
-<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the autosave is enabled, else <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a></p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-set-auto-save-enabled"></a><h3>gedit_tab_set_auto_save_enabled ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_tab_set_auto_save_enabled (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
-                                 <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> enable</code></em>);</pre>
-<p>Enables or disables the autosave feature. It does not install an
-autosave timeout if the document is new or is read-only</p>
-<div class="refsect3">
-<a name="gedit-tab-set-auto-save-enabled.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody>
-<tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>enable</p></td>
-<td class="parameter_description"><p>enable (<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a>) or disable (<a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>) auto save</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-get-auto-save-interval"></a><h3>gedit_tab_get_auto_save_interval ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
-gedit_tab_get_auto_save_interval (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
-<p>Gets the current interval for the autosaves</p>
-<div class="refsect3">
-<a name="gedit-tab-get-auto-save-interval.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-tab-get-auto-save-interval.returns"></a><h4>Returns</h4>
-<p> the value of the autosave</p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-set-auto-save-interval"></a><h3>gedit_tab_set_auto_save_interval ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_tab_set_auto_save_interval (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
-                                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> interval</code></em>);</pre>
-<p>Sets the interval for the autosave feature.</p>
-<div class="refsect3">
-<a name="gedit-tab-set-auto-save-interval.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody>
-<tr>
-<td class="parameter_name"><p>tab</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>interval</p></td>
-<td class="parameter_description"><p>the new interval</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-tab-set-info-bar"></a><h3>gedit_tab_set_info_bar ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_tab_set_info_bar (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
-                        <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-struct"><span class="type">GtkWidget</span></a> *info_bar</code></em>);</pre>
-</div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-tab.other_details"></a><h2>Types and Values</h2>
+<a name="gedit-gedit-tab.details"></a><h2>Details</h2>
 <div class="refsect2">
 <a name="GeditTabState"></a><h3>enum GeditTabState</h3>
-<div class="refsect3">
-<a name="GeditTabState.members"></a><h4>Members</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="300px" class="enum_members_name">
-<col class="enum_members_description">
-<col width="200px" class="enum_members_annotations">
-</colgroup>
+<pre class="programlisting">typedef enum {
+	GEDIT_TAB_STATE_NORMAL = 0,
+	GEDIT_TAB_STATE_LOADING,
+	GEDIT_TAB_STATE_REVERTING,
+	GEDIT_TAB_STATE_SAVING,
+	GEDIT_TAB_STATE_PRINTING,
+	GEDIT_TAB_STATE_PRINT_PREVIEWING,
+	GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
+	GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE,
+	GEDIT_TAB_STATE_LOADING_ERROR,
+	GEDIT_TAB_STATE_REVERTING_ERROR,
+	GEDIT_TAB_STATE_SAVING_ERROR,
+	GEDIT_TAB_STATE_GENERIC_ERROR,
+	GEDIT_TAB_STATE_CLOSING,
+	GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
+	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
+} GeditTabState;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
 <tbody>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-NORMAL:CAPS"></a>GEDIT_TAB_STATE_NORMAL</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-NORMAL:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_NORMAL</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-LOADING:CAPS"></a>GEDIT_TAB_STATE_LOADING</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-LOADING:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_LOADING</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-REVERTING:CAPS"></a>GEDIT_TAB_STATE_REVERTING</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-REVERTING:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_REVERTING</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-SAVING:CAPS"></a>GEDIT_TAB_STATE_SAVING</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-SAVING:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_SAVING</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-PRINTING:CAPS"></a>GEDIT_TAB_STATE_PRINTING</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-PRINTING:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_PRINTING</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-PRINT-PREVIEWING:CAPS"></a>GEDIT_TAB_STATE_PRINT_PREVIEWING</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-PRINT-PREVIEWING:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_PRINT_PREVIEWING</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-SHOWING-PRINT-PREVIEW:CAPS"></a>GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-SHOWING-PRINT-PREVIEW:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-GENERIC-NOT-EDITABLE:CAPS"></a>GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-GENERIC-NOT-EDITABLE:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-LOADING-ERROR:CAPS"></a>GEDIT_TAB_STATE_LOADING_ERROR</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-LOADING-ERROR:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_LOADING_ERROR</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-REVERTING-ERROR:CAPS"></a>GEDIT_TAB_STATE_REVERTING_ERROR</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-REVERTING-ERROR:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_REVERTING_ERROR</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-SAVING-ERROR:CAPS"></a>GEDIT_TAB_STATE_SAVING_ERROR</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-SAVING-ERROR:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_SAVING_ERROR</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-GENERIC-ERROR:CAPS"></a>GEDIT_TAB_STATE_GENERIC_ERROR</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-GENERIC-ERROR:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_GENERIC_ERROR</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-CLOSING:CAPS"></a>GEDIT_TAB_STATE_CLOSING</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-CLOSING:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_CLOSING</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-STATE-EXTERNALLY-MODIFIED-NOTIFICATION:CAPS"></a>GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-STATE-EXTERNALLY-MODIFIED-NOTIFICATION:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-TAB-NUM-OF-STATES:CAPS"></a>GEDIT_TAB_NUM_OF_STATES</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-TAB-NUM-OF-STATES:CAPS"></a><span class="term"><code class="literal">GEDIT_TAB_NUM_OF_STATES</code></span></p></td>
+<td></td>
 </tr>
 </tbody>
 </table></div>
 </div>
+<hr>
+<div class="refsect2">
+<a name="GeditTabPrivate"></a><h3>GeditTabPrivate</h3>
+<pre class="programlisting">typedef struct _GeditTabPrivate GeditTabPrivate;</pre>
 </div>
 <hr>
 <div class="refsect2">
-<a name="GeditTab-struct"></a><h3>GeditTab</h3>
-<pre class="programlisting">typedef struct _GeditTab GeditTab;</pre>
+<a name="GeditTab-struct"></a><h3>struct GeditTab</h3>
+<pre class="programlisting">struct GeditTab;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-get-view"></a><h3>gedit_tab_get_view ()</h3>
+<pre class="programlisting"><a class="link" href="gedit-gedit-view.html#GeditView"><span class="returnvalue">GeditView</span></a> *         gedit_tab_get_view                  (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
+<p>
+Gets the <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> inside <em class="parameter"><code>tab</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> inside <em class="parameter"><code>tab</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-get-document"></a><h3>gedit_tab_get_document ()</h3>
+<pre class="programlisting"><a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="returnvalue">GeditDocument</span></a> *     gedit_tab_get_document              (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
+<p>
+Gets the <a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a> associated to <em class="parameter"><code>tab</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a> associated to <em class="parameter"><code>tab</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-get-from-document"></a><h3>gedit_tab_get_from_document ()</h3>
+<pre class="programlisting"><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="returnvalue">GeditTab</span></a> *          gedit_tab_get_from_document         (<em class="parameter"><code><a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a> *doc</code></em>);</pre>
+<p>
+Gets the <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> associated with <em class="parameter"><code>doc</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>doc</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> associated with <em class="parameter"><code>doc</code></em>. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-get-state"></a><h3>gedit_tab_get_state ()</h3>
+<pre class="programlisting"><a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="returnvalue">GeditTabState</span></a>       gedit_tab_get_state                 (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
+<p>
+Gets the <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a> of <em class="parameter"><code>tab</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a> of <em class="parameter"><code>tab</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-get-auto-save-enabled"></a><h3>gedit_tab_get_auto_save_enabled ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gedit_tab_get_auto_save_enabled     (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
+<p>
+Gets the current state for the autosave feature
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the autosave is enabled, else <code class="literal">FALSE</code>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-set-auto-save-enabled"></a><h3>gedit_tab_set_auto_save_enabled ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_tab_set_auto_save_enabled     (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> enable</code></em>);</pre>
+<p>
+Enables or disables the autosave feature. It does not install an
+autosave timeout if the document is new or is read-only
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>enable</code></em> :</span></p></td>
+<td>enable (<code class="literal">TRUE</code>) or disable (<code class="literal">FALSE</code>) auto save</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-get-auto-save-interval"></a><h3>gedit_tab_get_auto_save_interval ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>                gedit_tab_get_auto_save_interval    (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>);</pre>
+<p>
+Gets the current interval for the autosaves
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the value of the autosave</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-tab-set-auto-save-interval"></a><h3>gedit_tab_set_auto_save_interval ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_tab_set_auto_save_interval    (<em class="parameter"><code><a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *tab</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> interval</code></em>);</pre>
+<p>
+Sets the interval for the autosave feature. It does nothing if the
+interval is the same as the one already present. It removes the old
+interval timeout and adds a new one with the autosave passed as
+argument.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tab</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interval</code></em> :</span></p></td>
+<td>the new interval</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-tab.property-details"></a><h2>Property Details</h2>
 <div class="refsect2">
-<a name="GeditTab--autosave"></a><h3>The <code class="literal">“autosave”</code> property</h3>
-<pre class="programlisting">  “autosave”                 <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<a name="GeditTab--autosave"></a><h3>The <code class="literal">"autosave"</code> property</h3>
+<pre class="programlisting">  "autosave"                 <span class="type">gboolean</span>              : Read / Write</pre>
 <p>Autosave feature.</p>
-<p>Flags: Read / Write</p>
 <p>Default value: TRUE</p>
 </div>
 <hr>
 <div class="refsect2">
-<a name="GeditTab--autosave-interval"></a><h3>The <code class="literal">“autosave-interval”</code> property</h3>
-<pre class="programlisting">  “autosave-interval”        <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a></pre>
+<a name="GeditTab--autosave-interval"></a><h3>The <code class="literal">"autosave-interval"</code> property</h3>
+<pre class="programlisting">  "autosave-interval"        <span class="type">gint</span>                  : Read / Write</pre>
 <p>Time between two autosaves.</p>
-<p>Flags: Read / Write</p>
 <p>Allowed values: &gt;= 0</p>
 <p>Default value: 0</p>
 </div>
 <hr>
 <div class="refsect2">
-<a name="GeditTab--can-close"></a><h3>The <code class="literal">“can-close”</code> property</h3>
-<pre class="programlisting">  “can-close”                <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<a name="GeditTab--can-close"></a><h3>The <code class="literal">"can-close"</code> property</h3>
+<pre class="programlisting">  "can-close"                <span class="type">gboolean</span>              : Read</pre>
 <p>Whether the tab can be closed.</p>
-<p>Flags: Read</p>
 <p>Default value: TRUE</p>
 </div>
 <hr>
 <div class="refsect2">
-<a name="GeditTab--name"></a><h3>The <code class="literal">“name”</code> property</h3>
-<pre class="programlisting">  “name”                     <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *</pre>
+<a name="GeditTab--name"></a><h3>The <code class="literal">"name"</code> property</h3>
+<pre class="programlisting">  "name"                     <span class="type">gchar</span>*                : Read</pre>
 <p>The tab's name.</p>
-<p>Flags: Read</p>
 <p>Default value: NULL</p>
 </div>
 <hr>
 <div class="refsect2">
-<a name="GeditTab--state"></a><h3>The <code class="literal">“state”</code> property</h3>
-<pre class="programlisting">  “state”                    <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a></pre>
+<a name="GeditTab--state"></a><h3>The <code class="literal">"state"</code> property</h3>
+<pre class="programlisting">  "state"                    <a class="link" href="gedit-gedit-tab.html#GeditTabState" title="enum GeditTabState"><span class="type">GeditTabState</span></a>         : Read</pre>
 <p>The tab's state.</p>
-<p>Flags: Read</p>
 <p>Default value: GEDIT_TAB_STATE_NORMAL</p>
 </div>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-tab.signal-details"></a><h2>Signal Details</h2>
 <div class="refsect2">
-<a name="GeditTab-drop-uris"></a><h3>The <code class="literal">“drop-uris”</code> signal</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-user_function (<a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *gedittab,
-               <a href="/usr/share/gtk-doc/html/glib/glib-String-Utility-Functions.html#GStrv"><span class="type">GStrv</span></a>     arg1,
-               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>  user_data)</pre>
-<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-ACTION:CAPS">Action</a></p>
+<a name="GeditTab-drop-uris"></a><h3>The <code class="literal">"drop-uris"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="gedit-gedit-tab.html#GeditTab"><span class="type">GeditTab</span></a> *gedittab,
+                                                        <span class="type">GStrv</span>     arg1,
+                                                        <span class="type">gpointer</span>  user_data)      : <code class="literal">Action</code></pre>
 </div>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.27</div>
+<hr>
+          Generated by GTK-Doc V1.19.1</div>
 </body>
 </html>

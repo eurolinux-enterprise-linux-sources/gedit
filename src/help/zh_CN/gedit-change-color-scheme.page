@@ -1,66 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="gedit-change-color-scheme" xml:lang="zh-CN">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="gedit-change-color-scheme" xml:lang="zh-CN">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>更改 gedit 中文字和背景的颜色。</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.15" date="2015-01-29" status="final"/>
-
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Jana Svarova</name>
-      <email its:translate="no">jana.svarova@gmail.com</email>
-      <years>2015</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
-  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
   <title>更改配色方案</title>
 
   <p><app>gedit</app> 包含多种不同配色方案，允许您更改主文本窗口的外观。</p>
 
+  <p>要更改配色方案，请执行以下步骤：</p>
   <steps>
-    <title>更改配色方案：</title>
-    <item>
-      <p>打开位于顶栏的 <gui style="menu">gedit</gui> 菜单，然后选择<guiseq><gui style="menuitem">首选项</gui><gui>字体和颜色</gui></guiseq>。</p>
-    </item>
-    <item>
-      <p>选择您想使用的配色方案。</p>
-    </item>
+    <item><p>Select <guiseq><gui style="menu">gedit</gui>
+    <gui style="menuitem">Preferences</gui>
+    <gui>Font &amp; Colors</gui></guiseq>.</p></item>
+    <item><p>选择您想使用的配色方案。</p></item>
   </steps>
 
   <p>新的配色方案会立即生效。</p>
@@ -71,10 +30,8 @@
   I should describe it here.  I'm linking to the wiki for now because the wiki
   page includes downloads and screenshots. I'm open to including the help here,
   though. -->
-
     <p>您也可以使用其他人创建的配色方案，或者使用自己的颜色方案。</p>
-
-    <p>关于如何安装自定义配色方案的说明，以及您可以下载并使用的配色方案，可以在 <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit wiki</link> 上找到。</p>
+    <p>关于如何安装自定义配色方案的说明，以及您可以下载并使用的配色方案，可以在 <link href="http://live.gnome.org/GtkSourceView/StyleSchemes">gedit wiki</link> 上找到。</p>
   </section>
 
 </page>

@@ -2,29 +2,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>GeditView: gedit Reference Manual</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<title>GeditView</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="gedit Reference Manual">
 <link rel="up" href="ch01.html" title="gedit">
 <link rel="prev" href="gedit-gedit-tab.html" title="GeditTab">
 <link rel="next" href="GeditViewActivatable.html" title="GeditViewActivatable">
-<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<meta name="generator" content="GTK-Doc V1.19.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
-<td width="100%" align="left" class="shortcuts">
-<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-view.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-view.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-view.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_signals">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-view.signals" class="shortcut">Signals</a></span>
-</td>
-<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
-<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
-<td><a accesskey="p" href="gedit-gedit-tab.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
-<td><a accesskey="n" href="GeditViewActivatable.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
-</tr></table>
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gedit-gedit-tab.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gedit Reference Manual</th>
+<td><a accesskey="n" href="GeditViewActivatable.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gedit-gedit-view.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gedit-gedit-view.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gedit-gedit-view.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#gedit-gedit-view.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#gedit-gedit-view.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
 <div class="refentry">
 <a name="gedit-gedit-view"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
@@ -32,296 +39,53 @@
 <h2><span class="refentrytitle"><a name="gedit-gedit-view.top_of_page"></a>GeditView</span></h2>
 <p>GeditView</p>
 </td>
-<td class="gallery_image" valign="top" align="right"></td>
+<td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1">
-<a name="gedit-gedit-view.functions"></a><h2>Functions</h2>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
-</colgroup>
-<tbody>
-<tr>
-<td class="function_type">
-<a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-struct"><span class="returnvalue">GtkWidget</span></a> *
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-new" title="gedit_view_new ()">gedit_view_new</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-cut-clipboard" title="gedit_view_cut_clipboard ()">gedit_view_cut_clipboard</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-copy-clipboard" title="gedit_view_copy_clipboard ()">gedit_view_copy_clipboard</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-paste-clipboard" title="gedit_view_paste_clipboard ()">gedit_view_paste_clipboard</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-delete-selection" title="gedit_view_delete_selection ()">gedit_view_delete_selection</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-select-all" title="gedit_view_select_all ()">gedit_view_select_all</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-scroll-to-cursor" title="gedit_view_scroll_to_cursor ()">gedit_view_scroll_to_cursor</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-view.html#gedit-view-set-font" title="gedit_view_set_font ()">gedit_view_set_font</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-view.signals"></a><h2>Signals</h2>
-<div class="informaltable"><table class="informaltable" border="0">
-<colgroup>
-<col width="150px" class="signals_return">
-<col width="300px" class="signals_name">
-<col width="200px" class="signals_flags">
-</colgroup>
-<tbody><tr>
-<td class="signal_type"><span class="returnvalue">void</span></td>
-<td class="signal_name"><a class="link" href="gedit-gedit-view.html#GeditView-drop-uris" title="The “drop-uris” signal">drop-uris</a></td>
-<td class="signal_flags"><a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-ACTION:CAPS">Action</a></td>
-</tr></tbody>
-</table></div>
-</div>
-<a name="GeditView"></a><div class="refsect1">
-<a name="gedit-gedit-view.other"></a><h2>Types and Values</h2>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="name">
-<col class="description">
-</colgroup>
-<tbody>
-<tr>
-<td class="datatype_keyword"> </td>
-<td class="function_name"><a class="link" href="gedit-gedit-view.html#GeditViewPrivate" title="GeditViewPrivate">GeditViewPrivate</a></td>
-</tr>
-<tr>
-<td class="datatype_keyword">struct</td>
-<td class="function_name"><a class="link" href="gedit-gedit-view.html#GeditView-struct" title="struct GeditView">GeditView</a></td>
-</tr>
-</tbody>
-</table></div>
+<div class="refsynopsisdiv">
+<a name="gedit-gedit-view.synopsis"></a><h2>Synopsis</h2>
+<a name="GeditView"></a><pre class="synopsis">                    <a class="link" href="gedit-gedit-view.html#GeditViewPrivate" title="GeditViewPrivate">GeditViewPrivate</a>;
+struct              <a class="link" href="gedit-gedit-view.html#GeditView-struct" title="struct GeditView">GeditView</a>;
+<span class="returnvalue">GtkWidget</span> *         <a class="link" href="gedit-gedit-view.html#gedit-view-new" title="gedit_view_new ()">gedit_view_new</a>                      (<em class="parameter"><code><a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a> *doc</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-cut-clipboard" title="gedit_view_cut_clipboard ()">gedit_view_cut_clipboard</a>            (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-copy-clipboard" title="gedit_view_copy_clipboard ()">gedit_view_copy_clipboard</a>           (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-paste-clipboard" title="gedit_view_paste_clipboard ()">gedit_view_paste_clipboard</a>          (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-delete-selection" title="gedit_view_delete_selection ()">gedit_view_delete_selection</a>         (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-select-all" title="gedit_view_select_all ()">gedit_view_select_all</a>               (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-scroll-to-cursor" title="gedit_view_scroll_to_cursor ()">gedit_view_scroll_to_cursor</a>         (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-view.html#gedit-view-set-font" title="gedit_view_set_font ()">gedit_view_set_font</a>                 (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> def</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *font_name</code></em>);
+</pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-view.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
-    <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GInitiallyUnowned">GInitiallyUnowned</a>
-        <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-struct">GtkWidget</a>
-            <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtk3/GtkContainer.html#GtkContainer-struct">GtkContainer</a>
-                <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtk3/GtkTextView.html#GtkTextView-struct">GtkTextView</a>
-                    <span class="lineart">╰──</span> <a href="/usr/share/gtk-doc/html/gtksourceview-3.0/GtkSourceView.html#GtkSourceView-struct">GtkSourceView</a>
-                        <span class="lineart">╰──</span> GeditView
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkWidget
+               +----GtkContainer
+                     +----GtkTextView
+                           +----GtkSourceView
+                                 +----GeditView
 </pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-view.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
 <p>
 GeditView implements
- AtkImplementorIface,  <a href="/usr/share/gtk-doc/html/gtk3/GtkBuildable.html#GtkBuildable-struct">GtkBuildable</a> and  <a href="/usr/share/gtk-doc/html/gtk3/GtkScrollable.html#GtkScrollable-struct">GtkScrollable</a>.</p>
+ AtkImplementorIface,  GtkBuildable and  GtkScrollable.</p>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-view.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="gedit-gedit-view.html#GeditView-drop-uris" title='The "drop-uris" signal'>drop-uris</a>"                                      : <code class="literal">Action</code>
+</pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-view.description"></a><h2>Description</h2>
 </div>
 <div class="refsect1">
-<a name="gedit-gedit-view.functions_details"></a><h2>Functions</h2>
-<div class="refsect2">
-<a name="gedit-view-new"></a><h3>gedit_view_new ()</h3>
-<pre class="programlisting"><a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-struct"><span class="returnvalue">GtkWidget</span></a> *
-gedit_view_new (<em class="parameter"><code><a class="link" href="GeditDocument.html" title="GeditDocument"><span class="type">GeditDocument</span></a> *doc</code></em>);</pre>
-<p>Creates a new <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> object displaying the <em class="parameter"><code>doc</code></em>
- document.
-<em class="parameter"><code>doc</code></em>
- cannot be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
-<div class="refsect3">
-<a name="gedit-view-new.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>doc</p></td>
-<td class="parameter_description"><p>a <a class="link" href="GeditDocument.html" title="GeditDocument"><span class="type">GeditDocument</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-<div class="refsect3">
-<a name="gedit-view-new.returns"></a><h4>Returns</h4>
-<p> a new <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>.</p>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-cut-clipboard"></a><h3>gedit_view_cut_clipboard ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_cut_clipboard (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-copy-clipboard"></a><h3>gedit_view_copy_clipboard ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_copy_clipboard (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-paste-clipboard"></a><h3>gedit_view_paste_clipboard ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_paste_clipboard (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-delete-selection"></a><h3>gedit_view_delete_selection ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_delete_selection (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
-<p>Deletes the text currently selected in the <a href="/usr/share/gtk-doc/html/gtk3/GtkTextBuffer.html#GtkTextBuffer-struct"><span class="type">GtkTextBuffer</span></a> associated
-to the view and scroll to the cursor position.</p>
-<div class="refsect3">
-<a name="gedit-view-delete-selection.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>view</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-select-all"></a><h3>gedit_view_select_all ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_select_all (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
-<p>Selects all the text.</p>
-<div class="refsect3">
-<a name="gedit-view-select-all.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>view</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-scroll-to-cursor"></a><h3>gedit_view_scroll_to_cursor ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_scroll_to_cursor (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
-<p>Scrolls the <em class="parameter"><code>view</code></em>
- to the cursor position.</p>
-<div class="refsect3">
-<a name="gedit-view-scroll-to-cursor.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody><tr>
-<td class="parameter_name"><p>view</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr></tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-view-set-font"></a><h3>gedit_view_set_font ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_view_set_font (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>,
-                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> default_font</code></em>,
-                     <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *font_name</code></em>);</pre>
-<p>If <em class="parameter"><code>default_font</code></em>
- is <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><span class="type">TRUE</span></a>, resets the font of the <em class="parameter"><code>view</code></em>
- to the default font.
-Otherwise sets it to <em class="parameter"><code>font_name</code></em>
-.</p>
-<div class="refsect3">
-<a name="gedit-view-set-font.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody>
-<tr>
-<td class="parameter_name"><p>view</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a></p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>default_font</p></td>
-<td class="parameter_description"><p>whether to reset to the default font</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>font_name</p></td>
-<td class="parameter_description"><p>the name of the font to use</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-</div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-view.other_details"></a><h2>Types and Values</h2>
+<a name="gedit-gedit-view.details"></a><h2>Details</h2>
 <div class="refsect2">
 <a name="GeditViewPrivate"></a><h3>GeditViewPrivate</h3>
 <pre class="programlisting">typedef struct _GeditViewPrivate GeditViewPrivate;</pre>
@@ -331,58 +95,136 @@ Otherwise sets it to <em class="parameter"><code>font_name</code></em>
 <a name="GeditView-struct"></a><h3>struct GeditView</h3>
 <pre class="programlisting">struct GeditView;</pre>
 </div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-view.signal-details"></a><h2>Signal Details</h2>
+<hr>
 <div class="refsect2">
-<a name="GeditView-drop-uris"></a><h3>The <code class="literal">“drop-uris”</code> signal</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-user_function (<a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view,
-               <a href="/usr/share/gtk-doc/html/glib/glib-String-Utility-Functions.html#GStrv"><span class="type">GStrv</span></a>      uri_list,
-               <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>   user_data)</pre>
-<p>The <a class="link" href="gedit-gedit-view.html#GeditView-drop-uris" title="The “drop-uris” signal"><span class="type">“drop-uris”</span></a> signal allows plugins to intercept the
-default drag-and-drop behaviour of 'text/uri-list'. <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>
-handles drag-and-drop in the default handlers of
-<a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-drop"><span class="type">“drag-drop”</span></a>, <a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-motion"><span class="type">“drag-motion”</span></a> and
-<a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-data-received"><span class="type">“drag-data-received”</span></a>. The view emits the
-<a class="link" href="gedit-gedit-view.html#GeditView-drop-uris" title="The “drop-uris” signal"><span class="type">“drop-uris”</span></a> signal from <a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-data-received"><span class="type">“drag-data-received”</span></a> if
-valid URIs have been dropped.  Plugins should connect to
-<a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-motion"><span class="type">“drag-motion”</span></a>, <a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-drop"><span class="type">“drag-drop”</span></a> and
-<a href="/usr/share/gtk-doc/html/gtk3/GtkWidget.html#GtkWidget-drag-data-received"><span class="type">“drag-data-received”</span></a> to change this default behaviour. They
-should NOT use this signal because this will not prevent gedit from
-loading the URI.</p>
-<div class="refsect3">
-<a name="GeditView-drop-uris.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
+<a name="gedit-view-new"></a><h3>gedit_view_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">GtkWidget</span> *         gedit_view_new                      (<em class="parameter"><code><a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a> *doc</code></em>);</pre>
+<p>
+Creates a new <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> object displaying the <em class="parameter"><code>doc</code></em> document.
+<em class="parameter"><code>doc</code></em> cannot be <code class="literal">NULL</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
 <tbody>
 <tr>
-<td class="parameter_name"><p>view</p></td>
-<td class="parameter_description"><p>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>.</p></td>
-<td class="parameter_annotations"> </td>
+<td><p><span class="term"><em class="parameter"><code>doc</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-document.html#GeditDocument"><span class="type">GeditDocument</span></a>
+</td>
 </tr>
 <tr>
-<td class="parameter_name"><p>uri_list</p></td>
-<td class="parameter_description"><p>a <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated list of URIs.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>user_data</p></td>
-<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
-<td class="parameter_annotations"> </td>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
-<p>Flags: <a href="/usr/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-ACTION:CAPS">Action</a></p>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-cut-clipboard"></a><h3>gedit_view_cut_clipboard ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_cut_clipboard            (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-copy-clipboard"></a><h3>gedit_view_copy_clipboard ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_copy_clipboard           (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-paste-clipboard"></a><h3>gedit_view_paste_clipboard ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_paste_clipboard          (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-delete-selection"></a><h3>gedit_view_delete_selection ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_delete_selection         (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
+<p>
+Deletes the text currently selected in the <span class="type">GtkTextBuffer</span> associated
+to the view and scroll to the cursor position.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-select-all"></a><h3>gedit_view_select_all ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_select_all               (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
+<p>
+Selects all the text displayed in the <em class="parameter"><code>view</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-scroll-to-cursor"></a><h3>gedit_view_scroll_to_cursor ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_scroll_to_cursor         (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>);</pre>
+<p>
+Scrolls the <em class="parameter"><code>view</code></em> to the cursor position.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-view-set-font"></a><h3>gedit_view_set_font ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_view_set_font                 (<em class="parameter"><code><a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *view</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> def</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *font_name</code></em>);</pre>
+<p>
+If <em class="parameter"><code>def</code></em> is <span class="type">TRUE</span>, resets the font of the <em class="parameter"><code>view</code></em> to the default font
+otherwise sets it to <em class="parameter"><code>font_name</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td>a <a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>def</code></em> :</span></p></td>
+<td>whether to reset the default font</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>font_name</code></em> :</span></p></td>
+<td>the name of the font to use</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-view.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GeditView-drop-uris"></a><h3>The <code class="literal">"drop-uris"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="gedit-gedit-view.html#GeditView"><span class="type">GeditView</span></a> *geditview,
+                                                        <span class="type">GStrv</span>      arg1,
+                                                        <span class="type">gpointer</span>   user_data)      : <code class="literal">Action</code></pre>
 </div>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.27</div>
+<hr>
+          Generated by GTK-Doc V1.19.1</div>
 </body>
 </html>

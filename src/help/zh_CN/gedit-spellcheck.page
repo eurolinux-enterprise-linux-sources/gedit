@@ -3,13 +3,11 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/> 
-    <desc>检查文件中的拼写错误。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
-
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Baptiste Mille-Mathias</name>
@@ -22,43 +20,24 @@
     
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
     
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
+    <desc>Enable and use spell-checking feature</desc>
   </info>
   
   <title>拼写检查</title>
   <section id="enable-spell-check">
-    <title>启用拼写检查器</title>
-    <p>拼写检查是 <app>gedit</app> 提供的一个按需启用的插件。启用该插件：</p>
+    <title>Enable the spell checker</title>
+    <p>The Spell-check feature is provided as a plugin in <app>gedit</app> which
+    can be enabled as required. To enable the plugin:</p>
 
     <steps>
       <item>
-        <p>点菜单 <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">首选项</gui> <gui style="tab">插件</gui></guiseq>。</p>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
       </item>
       <item>
-        <p>选择 <gui style="menuitem">拼写检查器</gui> 来启用该插件。</p>
+        <p>Select <gui style="menuitem">Spell Checker</gui> to enable the
+        plugin.</p>
       </item>
     </steps>
 
@@ -67,60 +46,79 @@
   <section id="spell-check">
     <title>拼写检查</title>
 
-    <p>检查文档中拼写错误的单词：</p>
+    <p>To check for misspelt words in your document:</p>
 
     <steps>
       <item>
-        <p>选择<guiseq><gui style="menu">工具</gui><gui style="menuitem">检查拼写</gui></guiseq>。</p>
+        <p>Select <guiseq><gui style="menu">Tools</gui>
+        <gui style="menuitem">Check Spelling</gui></guiseq>.</p>
       </item>
     </steps>
 
     <note style="tip">
-      <p>要让 <app>gedit</app> 自动高亮显示您在文档中拼写错误的单词，请选择 <guiseq><gui style="menu">工具</gui><gui style="menuitem">高亮显示拼写错误的单词</gui></guiseq>。</p>
+      <p>To have <app>gedit</app> automatically highlight misspelt words in your
+      document as you type, select <guiseq><gui style="menu">Tools</gui><gui style="menuitem">Highlight Misspelled Words</gui></guiseq>.</p>
     </note>
   </section>
 
   <section id="use-spell-check">
-    <title>拼写检查使用中</title>
+    <title>Using spell-check</title>
 
-    <p>在拼写检查对话框中您可以选择正确的单词替代拼写错误的单词。被拼写检查器检查出拼写错误的单词会在  <gui>拼写错误的单词:</gui> 后边粗体显示。您可以从以下校对方法中选择：</p>
+    <p>You can choose the right substitution for misspelt words using the Check
+    Spelling dialog. The misspelt word being checked by the spell-checker is
+    displayed in bold style next to <gui>Misspelled word:</gui>.
+    You can choose from the following corrective actions:</p>
 
     <list>
       <item>
-        <p><gui style="input">更改为:</gui> 允许您输入一个单词并使用 <gui style="button">检查单词</gui> 来检查拼写是否正确。</p>
+        <p><gui style="input">Change to:</gui> allows you to input a word and
+        use <gui style="button">Check Word</gui> to check the validity of the
+        spelling.</p>
       </item>
       <item>
-        <p><gui style="menu">建议:</gui> 列出可选的替代词。</p>
+        <p><gui style="menu">Suggestions:</gui> lists the available
+        substitutions for the word.</p>
       </item>
       <item>
-        <p><gui style="button">忽略</gui> 允许您忽略对当前单词的 <em>这一个</em> 拼写检查。</p>
+        <p><gui style="button">Ignore</gui> allows you to bypass spell check for
+        <em>a</em> instance of current word.</p>
       </item>
       <item>
-        <p><gui style="button">忽略所有</gui> 允许您忽略当前单词的 <em>所有</em> 拼写检查。</p>
+        <p><gui style="button">Ignore All</gui> allows you to bypass spell check
+        for <em>all</em> instances of the current word.</p>
       </item>
       <item>
-        <p>按下 <gui style="button">更改</gui> 按钮，在 <gui style="menuitem">建议:</gui> 列表中选择的单词将替代掉这个拼写错误或无法识别的单词。</p>
+        <p><gui style="button">Change</gui> substitutes the misspelt or
+        unrecognized word with <em>a</em> chosen substitute from the
+        <gui style="menuitem">Suggestions:</gui> list.</p>
       </item>
       <item>
-        <p>按下 <gui style="button">更改</gui> 按钮，在 <gui style="menuitem">建议:</gui> 列表中选择的单词将替代掉 <em>所有的</em> 这个拼写错误或无法识别的单词。</p>
+        <p><gui style="button">Change all</gui> substitutes <em>all</em>
+        misspelt or unrecognized words with the chosen substitute from the
+        <gui style="menuitem">Suggestions:</gui> list.</p>
       </item>
       <item>
-        <p><gui style="button">添加单词</gui> 允许您将当前单词添加到 <app>gedit</app> 的 <gui>用户词典</gui>。添加自定义单词到 <gui>用户辞典</gui> 会使 <app>gedit</app> 将识别这个单词并且不会将它高亮显示为拼写错误的单词。</p>
+        <p><gui style="button">Add word</gui> allows you to add the current word
+        to the <app>gedit</app> <gui>User dictionary</gui>. Adding custom words
+        to the <gui>User dictionary</gui> will allow <app>gedit</app> to
+        recognize the word in documents and thus will not be highlighted as a
+        misspelt word.</p>
       </item>
     </list>
 
   </section>
 
   <section id="define-spell-check-language">
-    <title>为拼写检查定义语言</title>
-    <p>默认，<app>gedit</app> 会使用当前的语言对文档进行拼写检查。如果需要使用其他语言，请选择 <guiseq><gui style="menu">工具</gui><gui style="menuitem">选择语言…</gui></guiseq>，然后选择您想使用的语言。</p>
+    <title>Define the language to use for spell checking</title>
+    <p>By default, <app>gedit</app> will use your current language to spell
+    check your document. If you need to use another language, choose
+    <guiseq><gui style="menu">Tools</gui><gui style="menuitem">Set
+    Language…</gui></guiseq>, then choose the language you want to use.</p>
+    
+  <note>
+    <p>The list of available languages will vary, depending on the configuration
+    of your system.</p>
+  </note>
   </section>
 
-  <section id="dict">
-    <title>字典</title>
-
-    <p><app>gedit</app> 使用的是 <link href="http://www.abisource.com/projects/enchant/">Enchant</link>, 一个用于拼写检查的系统小工具。 Enchant 可以使用多种不同的词典来检查您的拼写。 其中两个词典后端是 <em>Hunspell</em> 和 <em>Aspell</em>。</p>
-
-    <p>如果您需要使用的语言在 <app>gedit</app> 中不可用，请使用软件安装器或软件包管理器安装您需要的词典后端程序。</p>
-  </section>
 </page>

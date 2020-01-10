@@ -5,13 +5,13 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Como instalar plug-ins de terceiros.</desc>
+    <desc>Como instalar plug-ins de terceiros</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -56,21 +56,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Plug-ins adicionais do gedit</title>
 
-  <p>A instalação de plug-ins de terceiros oferece funcionalidades adicionais que não estão disponíveis nos plug-ins padrões do <app>gedit</app>, nem mesmo nos plug-ins extras que fazem parte do pacote <app>gedit-plugins</app>. Uma lista on-line de plug-ins de terceiros é <link href="https://wiki.gnome.org/Apps/Gedit">mantida aqui</link>.</p>
+  <p>A instalação plug-ins de terceiros oferece funcionalidades extra que não estejam disponível nos plug-ins padrão do <app> gedit </app>, nem mesmo nos plug-ins extras que fazem parte do pacote <app>gedit-plugins</app>. Uma lista online de plug-ins de terceiros é <link href="http://live.gnome.org/Gedit/Plugins#third_party">mantida aqui</link>.</p>
   
   <p>A instalação de um plug-in de terceiro envolve baixar o plug-in, colocar os seus arquivos no diretório correto e ativar o plug-in.</p>
   
@@ -78,7 +72,7 @@
     <item><p>Você geralmente pode fazer o download de um plug-in através da página do plug-in na internet, mas pode precisar usar um programa de controle de versão tal como <app>git</app>, <app>bazaar</app>, ou <app>subversion</app> para copiar da internet o repositório do software do plug-in. Consulte a documentação do plug-in para informações sobre como obter o plug-in.</p></item>
     <item><p>Coloque os arquivos do plug-in no diretório <file>/home/<var>nomedousuario</var>/.local/share/gedit/plugins</file>.</p>
     <p>É claro, troque a palavra <var>nomedousuario</var> pelo seu nome de usuário.</p></item>
-    <item><p>Depois que você tiver colocado os arquivos de plug-ins dentro do diretório correto, o plug-in aparecerá no menu de Preferências. Selecione <guiseq><gui>Editar</gui><gui style="menuitem">Preferências</gui><gui>Plug-ins</gui><gui>[Nome do Plug-in]</gui></guiseq> para habilitar o plug-in.</p></item>
+    <item><p>Depois que você tiver colocado os arquivos de plug-ins dentro do diretório correto, o plug-in aparecerá no menu de Preferências. Selecione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferências</gui><gui>Plug-ins</gui><gui>[Nome do Plug-in]</gui></guiseq> para habilitar o plug-in.</p></item>
     <item><p>Clique em <gui>Fechar</gui>.</p></item>
   </steps>
   

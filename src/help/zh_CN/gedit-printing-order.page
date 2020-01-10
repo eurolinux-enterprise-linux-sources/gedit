@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="zh-CN">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="zh-CN">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>设置页面以特定的顺序打印。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -15,63 +14,50 @@
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
-<title>让副本以正确的顺序打印</title>
+<title>Getting Copies To Print In The Correct Order</title>
 
   <section id="printing-reverse">
-    <title>倒序</title>
+    <title>Reverse</title>
 
-    <p>打印机通常是第一页先打印，最后一页最后打印，所以当您拿起纸张时发现最后一页在最上面。您可以这样调整顺序：</p>
+    <p>Printers usually print the first page first, and the last page last, so
+    the pages end up in reverse order when you pick them up. To reverse the
+    order:</p>
 
     <steps>
       <item>
-        <p>选择 <guiseq><gui style="menu">文件</gui> <gui style="menuitem">打印</gui></guiseq>。</p>
+        <p>Select <guiseq><gui style="menu">File</gui>
+        <gui style="menuitem">Print</gui></guiseq>.</p>
       </item>
       <item>
-        <p>在打印对话框的 <gui style="tab">常规</gui> 标签页的 <gui style="group">副本</gui>选项中，勾选 <gui style="checkbox">逆序</gui>。</p>
+        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
+        <gui style="group">Copies</gui>, check
+        <gui style="checkbox">Reverse</gui>.</p>
       </item>
     </steps>
 
-    <p>最后一页会先打印，第一页最后打印。</p>
+    <p>The last page will be printed first, and so on.</p>
 </section>
 
   <section id="printing-collate">
-    <title>逐份</title>
+    <title>Collate</title>
     
-    <p>当您在打印多份文档时，默认会按页码分组打印（例如，第一页全部打印完，然后才打印第二页）。逐份打印功能实现一份所有页码打印完，再打印下一份。</p>
+    <p>If you are printing more than one copy of the document, the print outs
+    will be grouped by page number by default. (e.g. The copies of page one come
+    out, then the copies of page two, etc.) Collating will make each copy come
+    out with its pages grouped together.</p>
 
-    <p>逐份打印:</p>
+    <p>To Collate:</p>
     <steps>
       <item>
-        <p>点击 <guiseq><gui style="menu">文件</gui> <gui style="menuitem">打印</gui></guiseq>。</p>
+        <p>Click <guiseq><gui style="menu">File</gui>
+        <gui style="menuitem">Print</gui></guiseq>.</p>
       </item>
       <item>
-        <p>在打印对话框的 <gui style="tab">常规</gui> 标签页的 <gui style="group">副本</gui>选项中，勾选 <gui style="checkbox">逐份</gui>。</p>
+        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
+        <gui style="group">Copies</gui> check
+        <gui style="checkbox">Collate</gui>.</p>
       </item>
     </steps>
 

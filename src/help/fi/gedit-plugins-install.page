@@ -5,13 +5,13 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>How to install third-party plugins.</desc>
+    <desc>How to install third-party plugins</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>sampo555</mal:name>
@@ -38,7 +38,7 @@
   available in default <app>gedit</app> plugins, or even the extra plugins that 
   are part of the <app>gedit-plugins</app> package. An online list of 
   third-party plugins is 
-  <link href="https://wiki.gnome.org/Apps/Gedit">kept here</link>.
+  <link href="http://live.gnome.org/Gedit/Plugins#third_party">kept here</link>.
   </p>
   
   <p>Installing a third-party plugin involves downloading the plugin, placing 

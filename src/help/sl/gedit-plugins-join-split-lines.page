@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-join-split-lines" xml:lang="sl">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <revision version="3.8" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Združi več vrstic besedila ali razdeli dolge vrstice</desc>
+  </info>
+
+  <title>Združi/razdeli vrstice</title>
+
+  <p>Vstavek <app>združi/razdeli vrstice</app> lahko krajše vrstice združi v daljšo vrstico ali razdeli dolgo vrstico v več kratkih vrstic.</p>
+  
+  <p>To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Join/Split Lines</gui></guiseq>.</p>
+
+  <steps>
+    <title>Za združitev več vrstic v eno daljšo vrstico:</title>
+    <item><p>Izberite vrstice, ki jih želite združiti. Za preklop med odprtimi zavihki, ko ste v celozaslonskem načinu, pritisnite <keyseq><key>Shift</key><key>Puščica navzgor</key></keyseq> ali <keyseq><key>Shift</key><key>Puščica navzdol</key></keyseq>.</p>
+    </item>
+    <item><p>Pritisnite <keyseq><key>Ctrl</key><key>J</key></keyseq>.</p>
+    <p>Izbrane vrstice bodo združene v eno dolgo vrstico.</p>
+    </item>
+  </steps>
+
+  <steps>
+    <title>Za razdelitev vrstice v več vrstic:</title>
+    <item><p>Izberite vrstico, ki jo želite razdeliti, s postavljanjem svoje kazalke kjerkoli na vrstici.</p></item>
+    <item><p>Pritisnite <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>.</p>
+    <p>Vrstica bo bila razdeljena v več vrstic. Presledki se uporabljajo za določitev kje je varno razdeliti vrstico in dolžina vrstice ne sme presegati 80 znakov.</p></item>
+  </steps>
+
+</page>

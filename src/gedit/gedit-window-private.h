@@ -15,11 +15,21 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_WINDOW_PRIVATE_H
-#define GEDIT_WINDOW_PRIVATE_H
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
+
+#ifndef __GEDIT_WINDOW_PRIVATE_H__
+#define __GEDIT_WINDOW_PRIVATE_H__
 
 #include <libpeas/peas-extension-set.h>
 
@@ -27,7 +37,10 @@
 #include "gedit-message-bus.h"
 #include "gedit-settings.h"
 #include "gedit-multi-notebook.h"
-#include "gedit-open-document-selector.h"
+
+#ifdef OS_OSX
+#include <gtkosxapplication.h>
+#endif
 
 G_BEGIN_DECLS
 
@@ -41,55 +54,53 @@ struct _GeditWindowPrivate
 
 	GeditMultiNotebook *multi_notebook;
 
-	GtkWidget      *side_panel_box;
 	GtkWidget      *side_panel;
-	GtkWidget      *side_stack_switcher;
-	GtkWidget      *side_panel_inline_stack_switcher;
-	GtkWidget      *bottom_panel_box;
 	GtkWidget      *bottom_panel;
 
 	GtkWidget      *hpaned;
 	GtkWidget      *vpaned;
+
+	GtkWidget      *tab_width_combo;
+	GtkWidget      *language_combo;
 
 	GeditMessageBus *message_bus;
 	PeasExtensionSet *extensions;
 
 	/* Widgets for fullscreen mode */
 	GtkWidget      *fullscreen_controls;
-	GtkWidget      *fullscreen_eventbox;
-	GtkWidget      *fullscreen_headerbar;
-	GtkMenuButton  *fullscreen_gear_button;
-
-	GtkWidget       *fullscreen_new_button;
-	GtkWidget       *fullscreen_open_button;
-	GtkWidget       *fullscreen_open_document_popover;
-	GeditOpenDocumentSelector *fullscreen_open_document_selector;
+	guint           fullscreen_animation_timeout_id;
+	gboolean        fullscreen_animation_enter;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
-	GtkWidget      *line_col_button;
-	GtkWidget      *tab_width_button;
-	GtkWidget      *language_button;
-	GtkWidget      *language_button_label;
-	GtkWidget      *language_popover;
 	guint           generic_message_cid;
 	guint           tip_message_cid;
-	guint 	        bracket_match_message_cid;
-	guint 	        tab_width_id;
-	guint 	        language_changed_id;
-	guint           wrap_mode_changed_id;
+	guint 		bracket_match_message_cid;
 
-	/* Headerbars */
-	GtkWidget      *titlebar_paned;
-	GtkWidget      *side_headerbar;
-	GtkWidget      *headerbar;
+	/* signal handler ids */
+	guint 		tab_width_id;
+	guint 		spaces_instead_of_tabs_id;
+	guint 		language_changed_id;
 
-	GtkWidget       *open_document_popover;
-	GtkWidget       *new_button;
-	GtkWidget       *open_button;
-	GeditOpenDocumentSelector *open_document_selector;
+	/* Menus & Toolbars */
+	GtkUIManager   *manager;
+	GtkActionGroup *action_group;
+	GtkActionGroup *always_sensitive_action_group;
+	GtkActionGroup *close_action_group;
+	GtkActionGroup *quit_action_group;
+	GtkActionGroup *panels_action_group;
+	GtkActionGroup *languages_action_group;
+	GtkActionGroup *documents_list_action_group;
+	guint           documents_list_menu_ui_id;
+	GtkWidget      *toolbar;
+	GtkWidget      *menubar;
 
-	GtkMenuButton  *gear_button;
+	/* recent files */
+	GtkActionGroup *recents_action_group;
+	guint           recents_menu_ui_id;
+	gulong          recents_handler_id;
+
+	guint           update_documents_list_menu_id;
 
 	gint            num_tabs_with_error;
 
@@ -110,17 +121,15 @@ struct _GeditWindowPrivate
 
 	GFile          *default_location;
 
-	gchar          *direct_save_uri;
+#ifdef OS_OSX
+	GtkOSXApplicationMenuGroup *mac_menu_group;
+#endif
 
-	GSList         *closed_docs_stack;
-
-	guint           removing_tabs : 1;
-	guint           dispose_has_run : 1;
-
-	guint           in_fullscreen_eventbox : 1;
+	gboolean        removing_tabs : 1;
+	gboolean        dispose_has_run : 1;
 };
 
 G_END_DECLS
 
-#endif  /* GEDIT_WINDOW_PRIVATE_H  */
+#endif  /* __GEDIT_WINDOW_PRIVATE_H__  */
 /* ex:set ts=8 noet: */

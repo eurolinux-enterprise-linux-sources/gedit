@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="hu">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="hu">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>A nyomtatandó oldalak bizonyos sorrendbe rendezése.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -17,15 +16,9 @@
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Hammer Attila</mal:name>
-      <mal:email>hammera at pickup dot hu</mal:email>
-      <mal:years>2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

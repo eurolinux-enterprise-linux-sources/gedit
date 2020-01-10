@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets" xml:lang="bg">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets-guide" xml:lang="bg">
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Use snippets to quickly insert often-used pieces of text.</desc>
+    <desc>Използвайте изрезки за бързо вмъкване на често използвани парчета текст</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>

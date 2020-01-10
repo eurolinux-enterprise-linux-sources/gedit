@@ -12,7 +12,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -47,7 +48,19 @@
 #include "gedit/gedit-app-osx.h"
 #endif
 
+#define GEDIT_CHECK_UPDATE_PLUGIN_GET_PRIVATE(object) \
+				(G_TYPE_INSTANCE_GET_PRIVATE ((object),	\
+				GEDIT_TYPE_CHECK_UPDATE_PLUGIN,		\
+				GeditCheckUpdatePluginPrivate))
+
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
+
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditCheckUpdatePlugin,
+				gedit_check_update_plugin,
+				PEAS_TYPE_EXTENSION_BASE,
+				0,
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
+							       gedit_window_activatable_iface_init))
 
 
 struct _GeditCheckUpdatePluginPrivate
@@ -68,18 +81,10 @@ enum
 	PROP_WINDOW
 };
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditCheckUpdatePlugin,
-				gedit_check_update_plugin,
-				PEAS_TYPE_EXTENSION_BASE,
-				0,
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init)
-				G_ADD_PRIVATE_DYNAMIC (GeditCheckUpdatePlugin))
-
 static void
 gedit_check_update_plugin_init (GeditCheckUpdatePlugin *plugin)
 {
-	plugin->priv = gedit_check_update_plugin_get_instance_private (plugin);
+	plugin->priv = GEDIT_CHECK_UPDATE_PLUGIN_GET_PRIVATE (plugin);
 
 	gedit_debug_message (DEBUG_PLUGINS,
 			     "GeditCheckUpdatePlugin initializing");
@@ -170,10 +175,12 @@ set_contents (GtkWidget *infobar,
 
 static void
 set_message_area_text_and_icon (GtkWidget        *message_area,
+				const gchar      *icon_stock_id,
 				const gchar      *primary_text,
 				const gchar      *secondary_text)
 {
 	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -182,6 +189,11 @@ set_message_area_text_and_icon (GtkWidget        *message_area,
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 	gtk_widget_show (hbox_content);
+
+	image = gtk_image_new_from_stock (icon_stock_id, GTK_ICON_SIZE_DIALOG);
+	gtk_widget_show (image);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_widget_show (vbox);
@@ -275,18 +287,36 @@ create_infobar (GeditWindow *window,
 {
 	GtkWidget *infobar;
 	gchar *message;
+	GtkWidget *button;
 
 	infobar = gtk_info_bar_new ();
 
-	gtk_info_bar_add_buttons (GTK_INFO_BAR (infobar),
-				  _("_Download"), GTK_RESPONSE_YES,
-				  _("_Ignore Version"), GTK_RESPONSE_NO,
-				  NULL);
-	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (infobar), TRUE);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar), GTK_MESSAGE_INFO);
+	button = gedit_gtk_button_new_with_stock_icon (_("_Download"),
+						       GTK_STOCK_SAVE);
+	gtk_widget_show (button);
+
+	gtk_info_bar_add_action_widget (GTK_INFO_BAR (infobar),
+					button,
+					GTK_RESPONSE_YES);
+
+	button = gedit_gtk_button_new_with_stock_icon (_("_Ignore Version"),
+						       GTK_STOCK_DISCARD);
+	gtk_widget_show (button);
+
+	gtk_info_bar_add_action_widget (GTK_INFO_BAR (infobar),
+					button,
+					GTK_RESPONSE_NO);
+
+	gtk_info_bar_add_button (GTK_INFO_BAR (infobar),
+				 GTK_STOCK_CANCEL,
+				 GTK_RESPONSE_CANCEL);
+
+	gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar),
+				       GTK_MESSAGE_INFO);
 
 	message = g_strdup_printf ("%s (%s)", _("There is a new version of gedit"), version);
 	set_message_area_text_and_icon (infobar,
+					"gtk-dialog-info",
 					message,
 					_("You can download the new version of gedit"
 					  " by clicking on the download button or"
@@ -618,6 +648,8 @@ gedit_check_update_plugin_class_init (GeditCheckUpdatePluginClass *klass)
 	object_class->get_property = gedit_check_update_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
+
+	g_type_class_add_private (object_class, sizeof (GeditCheckUpdatePluginPrivate));
 }
 
 static void

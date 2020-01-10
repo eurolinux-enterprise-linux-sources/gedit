@@ -15,11 +15,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_MODELINE_PLUGIN_H
-#define GEDIT_MODELINE_PLUGIN_H
+#ifndef __GEDIT_MODELINE_PLUGIN_H__
+#define __GEDIT_MODELINE_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -56,5 +57,5 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_MODELINE_PLUGIN_H */
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_MODELINE_PLUGIN_H__ */
+/* ex:ts=8:noet: */

@@ -2,26 +2,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>gedit-debug: gedit Reference Manual</title>
-<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<title>gedit-debug</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
 <link rel="home" href="index.html" title="gedit Reference Manual">
 <link rel="up" href="ch01.html" title="gedit">
 <link rel="prev" href="GeditWindowActivatable.html" title="GeditWindowActivatable">
-<link rel="next" href="gedit-gedit-utils.html" title="gedit-utils">
-<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="next" href="gedit-gedit-encodings.html" title="gedit-encodings">
+<meta name="generator" content="GTK-Doc V1.19.1 (XML mode)">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
-<td width="100%" align="left" class="shortcuts">
-<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
-                  <a href="#gedit-gedit-debug.description" class="shortcut">Description</a></span>
-</td>
-<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
-<td><a accesskey="u" href="ch01.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
-<td><a accesskey="p" href="GeditWindowActivatable.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
-<td><a accesskey="n" href="gedit-gedit-utils.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
-</tr></table>
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GeditWindowActivatable.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gedit Reference Manual</th>
+<td><a accesskey="n" href="gedit-gedit-encodings.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gedit-gedit-debug.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gedit-gedit-debug.description" class="shortcut">Description</a>
+</td></tr>
+</table>
 <div class="refentry">
 <a name="gedit-gedit-debug"></a><div class="titlepage"></div>
 <div class="refnamediv"><table width="100%"><tr>
@@ -29,393 +33,160 @@
 <h2><span class="refentrytitle"><a name="gedit-gedit-debug.top_of_page"></a>gedit-debug</span></h2>
 <p>gedit-debug</p>
 </td>
-<td class="gallery_image" valign="top" align="right"></td>
+<td valign="top" align="right"></td>
 </tr></table></div>
-<div class="refsect1">
-<a name="gedit-gedit-debug.functions"></a><h2>Functions</h2>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="functions_return">
-<col class="functions_name">
-</colgroup>
-<tbody>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-debug.html#gedit-debug-init" title="gedit_debug_init ()">gedit_debug_init</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-debug.html#gedit-debug" title="gedit_debug ()">gedit_debug</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-debug.html#gedit-debug-message" title="gedit_debug_message ()">gedit_debug_message</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-<tr>
-<td class="function_type">
-<span class="returnvalue">void</span>
-</td>
-<td class="function_name">
-<a class="link" href="gedit-gedit-debug.html#gedit-debug-plugin-message" title="gedit_debug_plugin_message ()">gedit_debug_plugin_message</a> <span class="c_punctuation">()</span>
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-debug.other"></a><h2>Types and Values</h2>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="name">
-<col class="description">
-</colgroup>
-<tbody>
-<tr>
-<td class="datatype_keyword">enum</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection">GeditDebugSection</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-VIEW:CAPS" title="DEBUG_VIEW">DEBUG_VIEW</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-PREFS:CAPS" title="DEBUG_PREFS">DEBUG_PREFS</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-WINDOW:CAPS" title="DEBUG_WINDOW">DEBUG_WINDOW</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-PANEL:CAPS" title="DEBUG_PANEL">DEBUG_PANEL</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-PLUGINS:CAPS" title="DEBUG_PLUGINS">DEBUG_PLUGINS</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-TAB:CAPS" title="DEBUG_TAB">DEBUG_TAB</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-DOCUMENT:CAPS" title="DEBUG_DOCUMENT">DEBUG_DOCUMENT</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-COMMANDS:CAPS" title="DEBUG_COMMANDS">DEBUG_COMMANDS</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-APP:CAPS" title="DEBUG_APP">DEBUG_APP</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-UTILS:CAPS" title="DEBUG_UTILS">DEBUG_UTILS</a></td>
-</tr>
-<tr>
-<td class="define_keyword">#define</td>
-<td class="function_name"><a class="link" href="gedit-gedit-debug.html#DEBUG-METADATA:CAPS" title="DEBUG_METADATA">DEBUG_METADATA</a></td>
-</tr>
-</tbody>
-</table></div>
+<div class="refsynopsisdiv">
+<a name="gedit-gedit-debug.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">enum                <a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection">GeditDebugSection</a>;
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-VIEW:CAPS" title="DEBUG_VIEW">DEBUG_VIEW</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-SEARCH:CAPS" title="DEBUG_SEARCH">DEBUG_SEARCH</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-PRINT:CAPS" title="DEBUG_PRINT">DEBUG_PRINT</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-PREFS:CAPS" title="DEBUG_PREFS">DEBUG_PREFS</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-PLUGINS:CAPS" title="DEBUG_PLUGINS">DEBUG_PLUGINS</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-TAB:CAPS" title="DEBUG_TAB">DEBUG_TAB</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-DOCUMENT:CAPS" title="DEBUG_DOCUMENT">DEBUG_DOCUMENT</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-COMMANDS:CAPS" title="DEBUG_COMMANDS">DEBUG_COMMANDS</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-APP:CAPS" title="DEBUG_APP">DEBUG_APP</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-SESSION:CAPS" title="DEBUG_SESSION">DEBUG_SESSION</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-UTILS:CAPS" title="DEBUG_UTILS">DEBUG_UTILS</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-METADATA:CAPS" title="DEBUG_METADATA">DEBUG_METADATA</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-WINDOW:CAPS" title="DEBUG_WINDOW">DEBUG_WINDOW</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-LOADER:CAPS" title="DEBUG_LOADER">DEBUG_LOADER</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-SAVER:CAPS" title="DEBUG_SAVER">DEBUG_SAVER</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-PANEL:CAPS" title="DEBUG_PANEL">DEBUG_PANEL</a>
+#define             <a class="link" href="gedit-gedit-debug.html#DEBUG-DBUS:CAPS" title="DEBUG_DBUS">DEBUG_DBUS</a>
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-debug.html#gedit-debug-init" title="gedit_debug_init ()">gedit_debug_init</a>                    (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-debug.html#gedit-debug" title="gedit_debug ()">gedit_debug</a>                         (<em class="parameter"><code><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection"><span class="type">GeditDebugSection</span></a> section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *file</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> line</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *function</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-debug.html#gedit-debug-message" title="gedit_debug_message ()">gedit_debug_message</a>                 (<em class="parameter"><code><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection"><span class="type">GeditDebugSection</span></a> section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *file</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> line</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *function</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *format</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-debug.html#gedit-debug-plugin-message" title="gedit_debug_plugin_message ()">gedit_debug_plugin_message</a>          (<em class="parameter"><code>const <span class="type">gchar</span> *file</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> line</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *function</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *message</code></em>);
+</pre>
 </div>
 <div class="refsect1">
 <a name="gedit-gedit-debug.description"></a><h2>Description</h2>
 </div>
 <div class="refsect1">
-<a name="gedit-gedit-debug.functions_details"></a><h2>Functions</h2>
-<div class="refsect2">
-<a name="gedit-debug-init"></a><h3>gedit_debug_init ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_debug_init (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
-<p>Initializes the debugging subsystem of gedit.</p>
-<p>The function checks for the existence of certain environment variables to
-determine whether to enable output for a debug section. To enable output
-for a specific debug section, set an environment variable of the same name;
-e.g. to enable output for the <a class="link" href="gedit-gedit-debug.html#GEDIT-DEBUG-PLUGINS:CAPS"><code class="literal">GEDIT_DEBUG_PLUGINS</code></a> section, set a</p>
-<code class="code">GEDIT_DEBUG_PLUGINS</code> environment variable. To enable output
-<p>for all debug sections, set the <code class="code">GEDIT_DEBUG</code> environment
-variable.</p>
-<p>This function must be called before any of the other debug functions are
-called. It must only be called once.</p>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-debug"></a><h3>gedit_debug ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_debug (<em class="parameter"><code><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection"><span class="type">GeditDebugSection</span></a> section</code></em>,
-             <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *file</code></em>,
-             <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> line</code></em>,
-             <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *function</code></em>);</pre>
-<p>If <em class="parameter"><code>section</code></em>
- is enabled, then logs the trace information <em class="parameter"><code>file</code></em>
-, <em class="parameter"><code>line</code></em>
-, and
-<em class="parameter"><code>function</code></em>
-.</p>
-<div class="refsect3">
-<a name="gedit-debug.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody>
-<tr>
-<td class="parameter_name"><p>section</p></td>
-<td class="parameter_description"><p>debug section.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>file</p></td>
-<td class="parameter_description"><p>file name.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>line</p></td>
-<td class="parameter_description"><p>line number.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>function</p></td>
-<td class="parameter_description"><p>name of the function that is calling <a class="link" href="gedit-gedit-debug.html#gedit-debug" title="gedit_debug ()"><code class="function">gedit_debug()</code></a>.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-debug-message"></a><h3>gedit_debug_message ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_debug_message (<em class="parameter"><code><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection"><span class="type">GeditDebugSection</span></a> section</code></em>,
-                     <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *file</code></em>,
-                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> line</code></em>,
-                     <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *function</code></em>,
-                     <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *format</code></em>,
-                     <em class="parameter"><code>...</code></em>);</pre>
-<p>If <em class="parameter"><code>section</code></em>
- is enabled, then logs the trace information <em class="parameter"><code>file</code></em>
-, <em class="parameter"><code>line</code></em>
-, and
-<em class="parameter"><code>function</code></em>
- along with the message obtained by formatting <em class="parameter"><code>format</code></em>
- with the
-given format string arguments.</p>
-<div class="refsect3">
-<a name="gedit-debug-message.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody>
-<tr>
-<td class="parameter_name"><p>section</p></td>
-<td class="parameter_description"><p>debug section.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>file</p></td>
-<td class="parameter_description"><p>file name.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>line</p></td>
-<td class="parameter_description"><p>line number.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>function</p></td>
-<td class="parameter_description"><p>name of the function that is calling <a class="link" href="gedit-gedit-debug.html#gedit-debug-message" title="gedit_debug_message ()"><code class="function">gedit_debug_message()</code></a>.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>format</p></td>
-<td class="parameter_description"><p>A <a href="/usr/share/gtk-doc/html/glib/glib-String-Utility-Functions.html#g-vprintf"><code class="function">g_vprintf()</code></a> format string.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>...</p></td>
-<td class="parameter_description"><p>The format string arguments.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-</div>
-<hr>
-<div class="refsect2">
-<a name="gedit-debug-plugin-message"></a><h3>gedit_debug_plugin_message ()</h3>
-<pre class="programlisting"><span class="returnvalue">void</span>
-gedit_debug_plugin_message (<em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *file</code></em>,
-                            <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a> line</code></em>,
-                            <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *function</code></em>,
-                            <em class="parameter"><code>const <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *message</code></em>);</pre>
-<p>If the section <a class="link" href="gedit-gedit-debug.html#GEDIT-DEBUG-PLUGINS:CAPS"><code class="literal">GEDIT_DEBUG_PLUGINS</code></a> is enabled, then logs the trace
-information <em class="parameter"><code>file</code></em>
-, <em class="parameter"><code>line</code></em>
-, and <em class="parameter"><code>function</code></em>
- along with <em class="parameter"><code>message</code></em>
-.</p>
-<p>This function may be overridden by GObject Introspection language bindings
-to be more language-specific.</p>
-<p><span class="emphasis"><em>Python</em></span></p>
-<p>A PyGObject override is provided that has the following signature:</p>
-<div class="informalexample">
-  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
-    <tbody>
-      <tr>
-        <td class="listing_lines" align="right"><pre>1
-2</pre></td>
-        <td class="listing_code"><pre class="programlisting">def <span class="function">debug_plugin_message</span><span class="gtkdoc opt">(</span>format_str<span class="gtkdoc opt">, *</span>format_args<span class="gtkdoc opt">):</span>
-    <span class="gtkdoc ppc">#...</span></pre></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<p>It automatically supplies parameters <em class="parameter"><code>file</code></em>
-, <em class="parameter"><code>line</code></em>
-, and <em class="parameter"><code>function</code></em>
-, and it
-formats <code class="code">format_str</code> with the given format arguments. The syntax
-of the format string is the usual Python string formatting syntax described
-by <a class="ulink" href="http://docs.python.org/library/stdtypes.html#string-formatting" target="_top">5.6.2. String Formatting Operations</a>.</p>
-<div class="refsect3">
-<a name="gedit-debug-plugin-message.parameters"></a><h4>Parameters</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="150px" class="parameters_name">
-<col class="parameters_description">
-<col width="200px" class="parameters_annotations">
-</colgroup>
-<tbody>
-<tr>
-<td class="parameter_name"><p>file</p></td>
-<td class="parameter_description"><p>file name.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>line</p></td>
-<td class="parameter_description"><p>line number.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>function</p></td>
-<td class="parameter_description"><p>name of the function that is calling <a class="link" href="gedit-gedit-debug.html#gedit-debug-plugin-message" title="gedit_debug_plugin_message ()"><code class="function">gedit_debug_plugin_message()</code></a>.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-<tr>
-<td class="parameter_name"><p>message</p></td>
-<td class="parameter_description"><p>a message.</p></td>
-<td class="parameter_annotations"> </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<p class="since">Since: 3.4</p>
-</div>
-</div>
-<div class="refsect1">
-<a name="gedit-gedit-debug.other_details"></a><h2>Types and Values</h2>
+<a name="gedit-gedit-debug.details"></a><h2>Details</h2>
 <div class="refsect2">
 <a name="GeditDebugSection"></a><h3>enum GeditDebugSection</h3>
-<p>Enumeration of debug sections.</p>
-<p>Debugging output for a section is enabled by setting an environment variable
+<pre class="programlisting">typedef enum {
+	GEDIT_NO_DEBUG       = 0,
+	GEDIT_DEBUG_VIEW     = 1 &lt;&lt; 0,
+	GEDIT_DEBUG_SEARCH   = 1 &lt;&lt; 1,
+	GEDIT_DEBUG_PRINT    = 1 &lt;&lt; 2,
+	GEDIT_DEBUG_PREFS    = 1 &lt;&lt; 3,
+	GEDIT_DEBUG_PLUGINS  = 1 &lt;&lt; 4,
+	GEDIT_DEBUG_TAB      = 1 &lt;&lt; 5,
+	GEDIT_DEBUG_DOCUMENT = 1 &lt;&lt; 6,
+	GEDIT_DEBUG_COMMANDS = 1 &lt;&lt; 7,
+	GEDIT_DEBUG_APP      = 1 &lt;&lt; 8,
+	GEDIT_DEBUG_SESSION  = 1 &lt;&lt; 9,
+	GEDIT_DEBUG_UTILS    = 1 &lt;&lt; 10,
+	GEDIT_DEBUG_METADATA = 1 &lt;&lt; 11,
+	GEDIT_DEBUG_WINDOW   = 1 &lt;&lt; 12,
+	GEDIT_DEBUG_LOADER   = 1 &lt;&lt; 13,
+	GEDIT_DEBUG_SAVER    = 1 &lt;&lt; 14,
+	GEDIT_DEBUG_PANEL    = 1 &lt;&lt; 15,
+	GEDIT_DEBUG_DBUS     = 1 &lt;&lt; 16
+} GeditDebugSection;
+</pre>
+<p>
+Enumeration of debug sections.
+</p>
+<p>
+Debugging output for a section is enabled by setting an environment variable
 of the same name. For example, setting the <code class="code">GEDIT_DEBUG_PLUGINS</code>
 environment variable enables all debugging output for the <a class="link" href="gedit-gedit-debug.html#GEDIT-DEBUG-PLUGINS:CAPS"><code class="literal">GEDIT_DEBUG_PLUGINS</code></a>
 section. Setting the special environment variable <code class="code">GEDIT_DEBUG</code>
-enables output for all sections.</p>
-<div class="refsect3">
-<a name="GeditDebugSection.members"></a><h4>Members</h4>
-<div class="informaltable"><table class="informaltable" width="100%" border="0">
-<colgroup>
-<col width="300px" class="enum_members_name">
-<col class="enum_members_description">
-<col width="200px" class="enum_members_annotations">
-</colgroup>
+enables output for all sections.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
 <tbody>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-NO-DEBUG:CAPS"></a>GEDIT_NO_DEBUG</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-NO-DEBUG:CAPS"></a><span class="term"><code class="literal">GEDIT_NO_DEBUG</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-VIEW:CAPS"></a>GEDIT_DEBUG_VIEW</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-VIEW:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_VIEW</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-PREFS:CAPS"></a>GEDIT_DEBUG_PREFS</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-SEARCH:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_SEARCH</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-WINDOW:CAPS"></a>GEDIT_DEBUG_WINDOW</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-PRINT:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_PRINT</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-PANEL:CAPS"></a>GEDIT_DEBUG_PANEL</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-PREFS:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_PREFS</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-PLUGINS:CAPS"></a>GEDIT_DEBUG_PLUGINS</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-PLUGINS:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_PLUGINS</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-TAB:CAPS"></a>GEDIT_DEBUG_TAB</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-TAB:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_TAB</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-DOCUMENT:CAPS"></a>GEDIT_DEBUG_DOCUMENT</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-DOCUMENT:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_DOCUMENT</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-COMMANDS:CAPS"></a>GEDIT_DEBUG_COMMANDS</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-COMMANDS:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_COMMANDS</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-APP:CAPS"></a>GEDIT_DEBUG_APP</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-APP:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_APP</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-UTILS:CAPS"></a>GEDIT_DEBUG_UTILS</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-SESSION:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_SESSION</code></span></p></td>
+<td></td>
 </tr>
 <tr>
-<td class="enum_member_name"><p><a name="GEDIT-DEBUG-METADATA:CAPS"></a>GEDIT_DEBUG_METADATA</p></td>
-<td> </td>
-<td> </td>
+<td><p><a name="GEDIT-DEBUG-UTILS:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_UTILS</code></span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><a name="GEDIT-DEBUG-METADATA:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_METADATA</code></span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><a name="GEDIT-DEBUG-WINDOW:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_WINDOW</code></span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><a name="GEDIT-DEBUG-LOADER:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_LOADER</code></span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><a name="GEDIT-DEBUG-SAVER:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_SAVER</code></span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><a name="GEDIT-DEBUG-PANEL:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_PANEL</code></span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><a name="GEDIT-DEBUG-DBUS:CAPS"></a><span class="term"><code class="literal">GEDIT_DEBUG_DBUS</code></span></p></td>
+<td></td>
 </tr>
 </tbody>
 </table></div>
-</div>
 </div>
 <hr>
 <div class="refsect2">
@@ -425,20 +196,20 @@ enables output for all sections.</p>
 </div>
 <hr>
 <div class="refsect2">
+<a name="DEBUG-SEARCH:CAPS"></a><h3>DEBUG_SEARCH</h3>
+<pre class="programlisting">#define DEBUG_SEARCH GEDIT_DEBUG_SEARCH,  __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DEBUG-PRINT:CAPS"></a><h3>DEBUG_PRINT</h3>
+<pre class="programlisting">#define DEBUG_PRINT GEDIT_DEBUG_PRINT,   __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
 <a name="DEBUG-PREFS:CAPS"></a><h3>DEBUG_PREFS</h3>
 <pre class="programlisting">#define DEBUG_PREFS GEDIT_DEBUG_PREFS,   __FILE__, __LINE__, G_STRFUNC
-</pre>
-</div>
-<hr>
-<div class="refsect2">
-<a name="DEBUG-WINDOW:CAPS"></a><h3>DEBUG_WINDOW</h3>
-<pre class="programlisting">#define DEBUG_WINDOW GEDIT_DEBUG_WINDOW,  __FILE__, __LINE__, G_STRFUNC
-</pre>
-</div>
-<hr>
-<div class="refsect2">
-<a name="DEBUG-PANEL:CAPS"></a><h3>DEBUG_PANEL</h3>
-<pre class="programlisting">#define DEBUG_PANEL GEDIT_DEBUG_PANEL,   __FILE__, __LINE__, G_STRFUNC
 </pre>
 </div>
 <hr>
@@ -473,6 +244,12 @@ enables output for all sections.</p>
 </div>
 <hr>
 <div class="refsect2">
+<a name="DEBUG-SESSION:CAPS"></a><h3>DEBUG_SESSION</h3>
+<pre class="programlisting">#define DEBUG_SESSION GEDIT_DEBUG_SESSION, __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
 <a name="DEBUG-UTILS:CAPS"></a><h3>DEBUG_UTILS</h3>
 <pre class="programlisting">#define DEBUG_UTILS GEDIT_DEBUG_UTILS,   __FILE__, __LINE__, G_STRFUNC
 </pre>
@@ -483,9 +260,204 @@ enables output for all sections.</p>
 <pre class="programlisting">#define DEBUG_METADATA GEDIT_DEBUG_METADATA,__FILE__, __LINE__, G_STRFUNC
 </pre>
 </div>
+<hr>
+<div class="refsect2">
+<a name="DEBUG-WINDOW:CAPS"></a><h3>DEBUG_WINDOW</h3>
+<pre class="programlisting">#define DEBUG_WINDOW GEDIT_DEBUG_WINDOW,  __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DEBUG-LOADER:CAPS"></a><h3>DEBUG_LOADER</h3>
+<pre class="programlisting">#define DEBUG_LOADER GEDIT_DEBUG_LOADER,  __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DEBUG-SAVER:CAPS"></a><h3>DEBUG_SAVER</h3>
+<pre class="programlisting">#define DEBUG_SAVER GEDIT_DEBUG_SAVER,   __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DEBUG-PANEL:CAPS"></a><h3>DEBUG_PANEL</h3>
+<pre class="programlisting">#define DEBUG_PANEL GEDIT_DEBUG_PANEL,   __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DEBUG-DBUS:CAPS"></a><h3>DEBUG_DBUS</h3>
+<pre class="programlisting">#define DEBUG_DBUS GEDIT_DEBUG_DBUS,    __FILE__, __LINE__, G_STRFUNC
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-debug-init"></a><h3>gedit_debug_init ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_debug_init                    (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Initializes the debugging subsystem of Gedit.
+</p>
+<p>
+The function checks for the existence of certain environment variables to
+determine whether to enable output for a debug section. To enable output
+for a specific debug section, set an environment variable of the same name;
+e.g. to enable output for the <a class="link" href="gedit-gedit-debug.html#GEDIT-DEBUG-PLUGINS:CAPS"><code class="literal">GEDIT_DEBUG_PLUGINS</code></a> section, set a
+<code class="code">GEDIT_DEBUG_PLUGINS</code> environment variable. To enable output
+for all debug sections, set the <code class="code">GEDIT_DEBUG</code> environment
+variable.
+</p>
+<p>
+This function must be called before any of the other debug functions are
+called. It must only be called once.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-debug"></a><h3>gedit_debug ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_debug                         (<em class="parameter"><code><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection"><span class="type">GeditDebugSection</span></a> section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *file</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> line</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *function</code></em>);</pre>
+<p>
+If output for debug section <em class="parameter"><code>section</code></em> is enabled, then logs the trace
+information <em class="parameter"><code>file</code></em>, <em class="parameter"><code>line</code></em>, and <em class="parameter"><code>function</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Debug section.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>file</code></em> :</span></p></td>
+<td>Name of the source file containing the call to <a class="link" href="gedit-gedit-debug.html#gedit-debug" title="gedit_debug ()"><code class="function">gedit_debug()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>line</code></em> :</span></p></td>
+<td>Line number within the file named by <em class="parameter"><code>file</code></em> of the call to <a class="link" href="gedit-gedit-debug.html#gedit-debug" title="gedit_debug ()"><code class="function">gedit_debug()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>function</code></em> :</span></p></td>
+<td>Name of the function that is calling <a class="link" href="gedit-gedit-debug.html#gedit-debug" title="gedit_debug ()"><code class="function">gedit_debug()</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-debug-message"></a><h3>gedit_debug_message ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_debug_message                 (<em class="parameter"><code><a class="link" href="gedit-gedit-debug.html#GeditDebugSection" title="enum GeditDebugSection"><span class="type">GeditDebugSection</span></a> section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *file</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> line</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *function</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *format</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+If output for debug section <em class="parameter"><code>section</code></em> is enabled, then logs the trace
+information <em class="parameter"><code>file</code></em>, <em class="parameter"><code>line</code></em>, and <em class="parameter"><code>function</code></em> along with the message obtained by
+formatting <em class="parameter"><code>format</code></em> with the given format string arguments.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Debug section.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>file</code></em> :</span></p></td>
+<td>Name of the source file containing the call to <a class="link" href="gedit-gedit-debug.html#gedit-debug-message" title="gedit_debug_message ()"><code class="function">gedit_debug_message()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>line</code></em> :</span></p></td>
+<td>Line number within the file named by <em class="parameter"><code>file</code></em> of the call to <a class="link" href="gedit-gedit-debug.html#gedit-debug-message" title="gedit_debug_message ()"><code class="function">gedit_debug_message()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>function</code></em> :</span></p></td>
+<td>Name of the function that is calling <a class="link" href="gedit-gedit-debug.html#gedit-debug-message" title="gedit_debug_message ()"><code class="function">gedit_debug_message()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>format</code></em> :</span></p></td>
+<td>A <code class="function">g_vprintf()</code> format string.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>The format string arguments.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-debug-plugin-message"></a><h3>gedit_debug_plugin_message ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_debug_plugin_message          (<em class="parameter"><code>const <span class="type">gchar</span> *file</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> line</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *function</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *message</code></em>);</pre>
+<p>
+If output for debug section <a class="link" href="gedit-gedit-debug.html#GEDIT-DEBUG-PLUGINS:CAPS"><code class="literal">GEDIT_DEBUG_PLUGINS</code></a> is enabled, then logs the trace
+information <em class="parameter"><code>file</code></em>, <em class="parameter"><code>line</code></em>, and <em class="parameter"><code>function</code></em> along with the informational message
+<em class="parameter"><code>message</code></em>.
+</p>
+<p>
+This function may be overridden by GObject Introspection language bindings
+to be more language-specific.
+</p>
+<p>
+<span class="emphasis"><em>Python</em></span>
+</p>
+<p>
+A PyGObject override is provided that has the following signature:
+</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2</pre></td>
+        <td class="listing_code"><pre class="programlisting">def <span class="function">debug_plugin_message</span><span class="gtkdoc opt">(</span>format_str<span class="gtkdoc opt">, *</span>format_args<span class="gtkdoc opt">):</span>
+    <span class="gtkdoc ppc">#...</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+</p>
+<p>
+It automatically supplies parameters <em class="parameter"><code>file</code></em>, <em class="parameter"><code>line</code></em>, and <em class="parameter"><code>function</code></em>, and it
+formats <code class="code">format_str</code> with the given format arguments. The syntax
+of the format string is the usual Python string formatting syntax described
+by <a class="ulink" href="http://docs.python.org/library/stdtypes.html#string-formatting" target="_top">5.6.2. String Formatting Operations</a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>file</code></em> :</span></p></td>
+<td>Name of the source file containing the call to <a class="link" href="gedit-gedit-debug.html#gedit-debug-plugin-message" title="gedit_debug_plugin_message ()"><code class="function">gedit_debug_plugin_message()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>line</code></em> :</span></p></td>
+<td>Line number within the file named by <em class="parameter"><code>file</code></em> of the call to <a class="link" href="gedit-gedit-debug.html#gedit-debug-plugin-message" title="gedit_debug_plugin_message ()"><code class="function">gedit_debug_plugin_message()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>function</code></em> :</span></p></td>
+<td>Name of the function that is calling <a class="link" href="gedit-gedit-debug.html#gedit-debug-plugin-message" title="gedit_debug_plugin_message ()"><code class="function">gedit_debug_plugin_message()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em> :</span></p></td>
+<td>An informational message.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.4</p>
+</div>
 </div>
 </div>
 <div class="footer">
-<hr>Generated by GTK-Doc V1.27</div>
+<hr>
+          Generated by GTK-Doc V1.19.1</div>
 </body>
 </html>

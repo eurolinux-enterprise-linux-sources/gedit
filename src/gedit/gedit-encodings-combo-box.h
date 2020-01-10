@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-encodings-combo-box.h
  * This file is part of gedit
@@ -15,29 +16,63 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_ENCODINGS_COMBO_BOX_H
-#define GEDIT_ENCODINGS_COMBO_BOX_H
+/*
+ * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id: gedit-encodings-option-menu.h 4429 2005-12-12 17:28:04Z pborelli $
+ */
 
-#include <gtksourceview/gtksource.h>
+#ifndef __GEDIT_ENCODINGS_COMBO_BOX_H__
+#define __GEDIT_ENCODINGS_COMBO_BOX_H__
+
+#include <gtk/gtk.h>
+#include <gedit/gedit-encodings.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_ENCODINGS_COMBO_BOX (gedit_encodings_combo_box_get_type ())
+#define GEDIT_TYPE_ENCODINGS_COMBO_BOX             (gedit_encodings_combo_box_get_type ())
+#define GEDIT_ENCODINGS_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_ENCODINGS_COMBO_BOX, GeditEncodingsComboBox))
+#define GEDIT_ENCODINGS_COMBO_BOX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_ENCODINGS_COMBO_BOX, GeditEncodingsComboBoxClass))
+#define GEDIT_IS_ENCODINGS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_ENCODINGS_COMBO_BOX))
+#define GEDIT_IS_ENCODINGS_COMBO_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_ENCODINGS_COMBO_BOX))
+#define GEDIT_ENCODINGS_COMBO_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_ENCODINGS_COMBO_BOX, GeditEncodingsComboBoxClass))
 
-G_DECLARE_FINAL_TYPE (GeditEncodingsComboBox, gedit_encodings_combo_box, GEDIT, ENCODINGS_COMBO_BOX, GtkComboBox)
 
-GtkWidget		*gedit_encodings_combo_box_new 				(gboolean save_mode);
+typedef struct _GeditEncodingsComboBox 	GeditEncodingsComboBox;
+typedef struct _GeditEncodingsComboBoxClass 	GeditEncodingsComboBoxClass;
 
-const GtkSourceEncoding	*gedit_encodings_combo_box_get_selected_encoding	(GeditEncodingsComboBox *menu);
+typedef struct _GeditEncodingsComboBoxPrivate	GeditEncodingsComboBoxPrivate;
 
-void			 gedit_encodings_combo_box_set_selected_encoding	(GeditEncodingsComboBox  *menu,
-										 const GtkSourceEncoding *encoding);
+struct _GeditEncodingsComboBox
+{
+	GtkComboBox			 parent;
+
+	GeditEncodingsComboBoxPrivate	*priv;
+};
+
+struct _GeditEncodingsComboBoxClass
+{
+	GtkComboBoxClass		 parent_class;
+};
+
+GType		     gedit_encodings_combo_box_get_type			(void) G_GNUC_CONST;
+
+/* Constructor */
+GtkWidget 	    *gedit_encodings_combo_box_new 			(gboolean save_mode);
+
+const GeditEncoding *gedit_encodings_combo_box_get_selected_encoding	(GeditEncodingsComboBox *menu);
+void		     gedit_encodings_combo_box_set_selected_encoding	(GeditEncodingsComboBox *menu,
+									 const GeditEncoding    *encoding);
 
 G_END_DECLS
 
-#endif /* GEDIT_ENCODINGS_COMBO_BOX_H */
+#endif /* __GEDIT_ENCODINGS_COMBO_BOX_H__ */
 
 /* ex:set ts=8 noet: */

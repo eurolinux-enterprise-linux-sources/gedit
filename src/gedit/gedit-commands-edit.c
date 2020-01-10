@@ -17,29 +17,35 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
-
 #include <gtk/gtk.h>
 
+#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-debug.h"
 #include "gedit-view.h"
 #include "gedit-preferences-dialog.h"
 
 void
-_gedit_cmd_edit_undo (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+_gedit_cmd_edit_undo (GtkAction   *action,
+		      GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 	GtkSourceBuffer *active_document;
 
@@ -58,11 +64,9 @@ _gedit_cmd_edit_undo (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_redo (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+_gedit_cmd_edit_redo (GtkAction   *action,
+		      GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 	GtkSourceBuffer *active_document;
 
@@ -81,11 +85,9 @@ _gedit_cmd_edit_redo (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_cut (GSimpleAction *action,
-                     GVariant      *parameter,
-                     gpointer       user_data)
+_gedit_cmd_edit_cut (GtkAction   *action,
+		     GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -99,11 +101,9 @@ _gedit_cmd_edit_cut (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_copy (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+_gedit_cmd_edit_copy (GtkAction   *action,
+		      GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -117,11 +117,9 @@ _gedit_cmd_edit_copy (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_paste (GSimpleAction *action,
-                       GVariant      *parameter,
-                       gpointer       user_data)
+_gedit_cmd_edit_paste (GtkAction   *action,
+		       GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -135,11 +133,9 @@ _gedit_cmd_edit_paste (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_delete (GSimpleAction *action,
-                        GVariant      *parameter,
-                        gpointer       user_data)
+_gedit_cmd_edit_delete (GtkAction   *action,
+			GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -153,11 +149,9 @@ _gedit_cmd_edit_delete (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_select_all (GSimpleAction *action,
-                            GVariant      *parameter,
-                            gpointer       user_data)
+_gedit_cmd_edit_select_all (GtkAction   *action,
+			    GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -171,37 +165,12 @@ _gedit_cmd_edit_select_all (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_edit_preferences (GSimpleAction *action,
-                             GVariant      *parameter,
-                             gpointer       user_data)
+_gedit_cmd_edit_preferences (GtkAction   *action,
+			     GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-
 	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_show_preferences_dialog (window);
 }
-
-void
-_gedit_cmd_edit_overwrite_mode (GSimpleAction *action,
-                                GVariant      *state,
-                                gpointer       user_data)
-{
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditView *active_view;
-	gboolean overwrite;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
-
-	overwrite = g_variant_get_boolean (state);
-	g_simple_action_set_state (action, state);
-
-	gtk_text_view_set_overwrite (GTK_TEXT_VIEW (active_view), overwrite);
-	gtk_widget_grab_focus (GTK_WIDGET (active_view));
-}
-
 
 /* ex:set ts=8 noet: */

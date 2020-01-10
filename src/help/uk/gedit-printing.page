@@ -3,93 +3,104 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Print the files that you create with gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Друкування документів</title>
+  <title>Printing documents</title>
 
     <note style="important">
-      <p>Щоб друкувати в «<app>gedit</app>», потрібно під'єднати та налаштувати принтер. Якщо Ви не зробили цього, зверніться до <link href="help:gnome-help/printing">довідки з друкування для GNOME</link>.</p>
+      <p>Printing with <app>gedit</app> requires that you have connected and
+      configured your printer. If you have not done this, please consult the
+      <link href="help:gnome-help/printing">printing help for GNOME</link>.</p>
     </note>
   
-  <p>В «<app>gedit</app>» можна друкувати і у файл і на папір.</p>
+  <p><app>gedit</app> allows you to print both to a file and to paper.</p>
 
   <section id="print-preview">
-    <title>Попередній перегляд</title>
+    <title>Print Preview</title>
 
-  <p>За допомогою «<gui>Попередній перегляд</gui>», перед друкуванням документу, можна попередньо переглянути, який вигляд буде мати роздрукований документ. Щоб попередньо переглянути документ:</p>
+  <p>Prior to printing your document, you can preview how the printed document
+  will look by using <gui>Print Preview</gui>. To preview the document:</p>
 
   <steps>
     <item>
-      <p>Виберіть <guiseq><gui style="menu">«Файл»</gui> <gui style="menuitem">«Попердній перегляд»</gui></guiseq>. Також, можна натиснути <keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>.</p>
+      <p>Select <guiseq><gui style="menu">File</gui>
+      <gui style="menuitem">Print Preview</gui></guiseq>. Alternatively, you
+      can press <keyseq><key>Shift</key><key>Ctrl</key>
+      <key>P</key></keyseq>.</p>
     </item>
   </steps>
 
-  <p>Попередній перегляд документу відкриється в тій самій вкладці, що й файл. Можна переглянути цей попередній вигляд за допомогою навігаційних кнопок та інструментів на панелі інструментів вгорі вкладки попереднього перегляду документу. Щоб закрити попередній перегляд та повернутися до документу клацніть на «<gui style="button">Закрити попередній перегляд</gui>».</p>
+  <p>A preview of your document will open in the same tab as the file. You can
+  browse this preview with help of navigation buttons and tools in the toolbar
+  at the top of the document preview tab. To close and return to the document
+  click <gui style="button">Close Preview</gui>.</p>
 
   </section>
 
   <section id="printing-to-paper">
-    <title>Друкування на папір</title>
+    <title>Printing To Paper</title>
 
-  <p>Можна роздрукувати документи на папір, використовуючи локальний або віддалений принтер. Щоб роздрукувати файл:</p>
+  <p>You can print your documents to paper using a local or remote printer. To
+  print a file:</p>
 
   <steps>
     <item>
-      <p>Виберіть <guiseq><gui style="menu">«Файл»</gui> <gui style="menuitem">«Друкувати»</gui> <gui style="tab">«Загальні»</gui></guiseq>.</p>
+      <p>Select <guiseq><gui style="menu">File</gui>
+      <gui style="menuitem">Print</gui>
+      <gui style="tab">General</gui></guiseq>.</p>
     </item>
     <item>
-      <p>Виберіть потрібний принтер зі списку доступних принтерів.</p>
+      <p>Select the desired printer from the list of printers available.</p>
     </item>
     <item>
-      <p>Можна попередньо переглянути файл, використовуючи «<gui style="button">Попередній перегляд</gui>» і, як тільки налаштування Вас задовольняють, клацніть на «<gui style="button">Друкувати</gui>», щоб відправити файл до принтеру.</p>
+      <p>You can preview the file using <gui style="button">Print Preview</gui>
+      and once you are satisfied with the settings, click
+      <gui style="button">Print</gui> to send the file to printer.</p>
     </item>
   </steps>
 
-  <p>Крім того, у вкладці «<gui style="tab">Параметри сторінки</gui>» можна вибрати параметри «<gui style="group">Розмітки</gui>» та «<gui style="group">Паперу</gui>». Оскільки ці налаштування зустрічаються в програмах <app>GNOME</app>, зверніться до довідки з «<link href="help:gnome-help/printing#paper">Параметри розмітки та паперу</link>».</p>
+  <p>Additionally, from <gui style="tab">Page Setup</gui> tab: you can choose
+  <gui style="group">Layout</gui> and <gui style="group">Paper</gui> options. As
+  these settings are available throughout <app>GNOME</app> programs, please
+  consult
+  <link href="help:gnome-help/printing#paper">Layout and Paper options</link>
+  help.</p>
 
   </section>
 
   <section id="printing-order-select">
-    <title>Друкування декількох екземплярів та між визначеним діапазоном</title>
+    <title>Print Multiple Copies And Between Specified Ranges</title>
 
-    <p>Можна задати параметри «<gui style="group">Діапазону</gui>» та «<gui style="group">Копій</gui>»:</p>
+    <p>You can set <gui style="group">Range</gui> and
+    <gui style="group">Copies</gui> options to help you:</p>
 
   </section>
 
   <section id="printing-to-file">
-    <title>Друкування до файлу</title>
+    <title>Printing To File</title>
 
-  <p>Можна також використовувати «<app>gedit</app>» для друкування до файлу. Щоб друкувати документ до файлу іншого формату:</p>
+  <p>You can also use <app>gedit</app> to print to a file. To print your
+  document to file of a different format:</p>
 
   <steps>
     <item>
-      <p>Виберіть <guiseq><gui style="menu">«Файл»</gui> <gui style="menuitem">«Друкувати»</gui> <gui style="menuitem">«Друкувати до файлу»</gui></guiseq>.</p>
+      <p>Select <guiseq><gui style="menu">File</gui>
+      <gui style="menuitem">Print</gui>
+      <gui style="menuitem">Print to File</gui></guiseq>.</p>
     </item>
     <item>
-      <p>Друкування доступне для наступних форматів файлів на вибір:</p>
+      <p>Printing is enabled for the following file formats, you may select
+      from:</p>
       <list>
         <item>
           <p>Portable Document Format (.pdf)</p>
@@ -103,7 +114,8 @@
         </list>
     </item>
     <item>
-      <p>Щоб надрукувати документ до файлу, клацніть на «<gui style="button">Друкувати</gui>».</p>
+      <p>To print the document to file, click
+      <gui style="button">Print</gui>.</p>
     </item>
   </steps>
 

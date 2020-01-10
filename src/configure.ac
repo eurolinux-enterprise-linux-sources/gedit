@@ -3,27 +3,11 @@ dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.63.2)
 
 m4_define(gedit_major_version, 3)
-m4_define(gedit_minor_version, 28)
-m4_define(gedit_micro_version, 1)
+m4_define(gedit_minor_version, 8)
+m4_define(gedit_micro_version, 3)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
-AC_INIT([gedit],
-        [gedit_version],
-        [https://wiki.gnome.org/Apps/Gedit/ReportingBugs],
-        [gedit],
-        [https://wiki.gnome.org/Apps/Gedit])
-
-GEDIT_API_VERSION=3.14
-AC_SUBST(GEDIT_API_VERSION)
-
-# Dependencies
-GLIB_REQUIRED=2.44
-GTK_REQUIRED=3.22.0
-GTKSOURCEVIEW_REQUIRED=3.22.0
-LIBPEAS_REQUIRED=1.14.1
-LIBXML_REQUIRED=2.5.0
-GSPELL_REQUIRED=0.2.5
-PYGOBJECT_REQUIRED=3.0.0
+AC_INIT([gedit],[gedit_version],[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],[gedit],[http://projects.gnome.org/gedit/])
 
 AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_SRCDIR(gedit/gedit.c)
@@ -36,7 +20,7 @@ AC_SUBST(GEDIT_MINOR_VERSION, gedit_minor_version)
 AC_DEFINE(GEDIT_MICRO_VERSION, gedit_micro_version, [Gedit micro version])
 AC_SUBST(GEDIT_MICRO_VERSION, gedit_micro_version)
 
-AM_INIT_AUTOMAKE([1.11 tar-ustar dist-xz no-dist-gzip -Wno-portability subdir-objects])
+AM_INIT_AUTOMAKE([1.11 tar-ustar dist-xz no-dist-gzip -Wno-portability])
 AM_MAINTAINER_MODE([enable])
 
 AM_SILENT_RULES([yes])
@@ -54,7 +38,16 @@ AC_PROG_OBJC
 LT_PREREQ([2.2.6])
 LT_INIT(disable-static)
 
+GEDIT_API_VERSION=3.0
+AC_SUBST(GEDIT_API_VERSION)
+
 GTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
+
+AC_CHECK_FUNC(sigaction)
+AC_CHECK_LIB(m, floor)
+
+dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
+AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 
 dnl active plugins for gedit.schemas
 ACTIVE_PLUGINS="'docinfo', 'modelines', 'filebrowser', 'spell', 'time'"
@@ -64,17 +57,6 @@ dnl check for win32 platform
 AC_MSG_CHECKING([for Win32 platform])
 case "$host" in
   *-*-mingw*|*-*-cygwin*)
-        archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --output-def -Xlinker $lib.def && $DLLTOOL --dllname $soname --def $lib.def --output-delaylib $lib'
-	# If the export-symbols file already is a .def file (1st line
-	# is EXPORTS), use it as is; otherwise, prepend...
-	archive_expsym_cmds='if test "x`$SED 1q $export_symbols`" = xEXPORTS; then
-	  cp $export_symbols $output_objdir/$soname.def;
-	else
-	  echo EXPORTS > $output_objdir/$soname.def;
-	  cat $export_symbols >> $output_objdir/$soname.def;
-	fi~
-	$CC -shared $output_objdir/$soname.def $libobjs $deplibs $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base;
-	$DLLTOOL --dllname $soname --def $output_objdir/$soname.def --output-delaylib $lib'
     platform_win32=yes
     ;;
   *)
@@ -140,10 +122,17 @@ AM_CONDITIONAL(OS_OSX, test "$os_osx" = "yes")
 
 AM_CONDITIONAL(GDK_WINDOWING_X11, test "$gdk_windowing" = "x11")
 
+if test "$platform_osx" = "yes"; then
+	AC_DEFINE([PLATFORM_OSX],[1],[Defined if platform is Mac OSX])
+fi
+
+AC_SUBST(DEFAULT_FONT)
+AC_SUBST(DEFAULT_PRINT_FONT)
+
 if test "$os_osx" = "yes"; then
 	AC_DEFINE([OS_OSX],[1],[Defined if os is Mac OSX])
 
-	PKG_CHECK_MODULES(GTK_MAC, gtk-mac-integration-gtk3 >= 2.0.8)
+	PKG_CHECK_MODULES(GTK_MAC, gtk-mac-integration)
 
 	AC_SUBST(GTK_MAC_CFLAGS)
 	AC_SUBST(GTK_MAC_LIBS)
@@ -166,7 +155,7 @@ AC_DEFUN([GEDIT_FULLPATH], [
 ])
 
 dnl FULL_LIBEXECDIR is used for X-GNOME-Bugzilla-ExtraInfoScript expansion
-dnl in data/org.gnome.gedit.desktop.in.in
+dnl in data/gedit.desktop.in.in
 GEDIT_FULLPATH(libexecdir, NONE, FULL_LIBEXECDIR)
 AC_SUBST(FULL_LIBEXECDIR)
 
@@ -174,7 +163,7 @@ dnl ================================================================
 dnl Gettext stuff.
 dnl ================================================================
 
-IT_PROG_INTLTOOL([0.50.1])
+IT_PROG_INTLTOOL([0.40.0])
 
 AM_GNU_GETTEXT_VERSION([0.18])
 AM_GNU_GETTEXT([external])
@@ -186,7 +175,7 @@ dnl ================================================================
 dnl Use gvfs metadata or the old xml file store.
 dnl ================================================================
 
-if test "x$os_win32" != "xno" || test "x$os_osx" != "xno"; then
+if test "x$os_win32" != "xno"; then
 	gvfs_metadata_default="no"
 else
 	gvfs_metadata_default="yes"
@@ -197,12 +186,14 @@ AC_ARG_ENABLE([gvfs-metadata],
 	[enable_gvfs_metadata=$enableval],
 	[enable_gvfs_metadata=$gvfs_metadata_default])
 
+AM_CONDITIONAL(ENABLE_GVFS_METADATA, test "x$enable_gvfs_metadata" != "xno")
+
 if test "x$enable_gvfs_metadata" != "xno"; then
 	AC_DEFINE([ENABLE_GVFS_METADATA], [1], [Define to enable using gvfs metadata])
 fi
 
 dnl ================================================================
-dnl checkupdate plugin
+dnl check update plugin
 dnl ================================================================
 
 AC_ARG_ENABLE([updater],
@@ -215,7 +206,7 @@ if test "x$enable_updater" != "xno"; then
 		libsoup-2.4,
 		have_libsoup=yes,
 		have_libsoup=no)
-
+	
 	if test "x$have_libsoup" = "xyes"; then
 		if test "x$os_win32" = "xyes"; then
 			enable_updater=yes
@@ -232,29 +223,77 @@ fi
 AM_CONDITIONAL(ENABLE_UPDATER, test x"$enable_updater" = "xyes")
 
 dnl ================================================================
-dnl spell plugin checks
+dnl spell plugins checks: enchant and iso-codes
 dnl ================================================================
 
+ENCHANT_REQUIRED=1.2.0
+ISO_CODES_REQUIRED=0.35
+	
 AC_ARG_ENABLE([spell],
-              AS_HELP_STRING([--disable-spell],[Disable spell plugin (default: enabled)]),
-              [enable_spell=$enableval],
-              [enable_spell=yes])
+	AS_HELP_STRING([--disable-spell],[Disable spell plugin (default: enabled)]),
+	[enable_enchant=$enableval],
+	[enable_enchant=yes])
 
-if test "x$enable_spell" = "xyes" ; then
+if test "x$enable_enchant" = "xyes" ; then
 
-	PKG_CHECK_MODULES(GSPELL, gspell-1 >= $GSPELL_REQUIRED, \
-	                  have_gspell=yes, have_gspell=no)
+	PKG_CHECK_MODULES(ENCHANT, enchant >= $ENCHANT_REQUIRED, \
+			  have_enchant=yes, have_enchant=no)
 
-	if test "x$have_gspell" = "xno"; then
-		AC_MSG_ERROR([gspell library not found or too old. Use --disable-spell to build without spell plugin.])
+	if test "x$have_enchant" = "xyes"; then
+
+		PKG_CHECK_EXISTS([iso-codes >= $ISO_CODES_REQUIRED],
+				 [have_iso_codes=yes],[have_iso_codes=no])
+
+		if test "x$have_iso_codes" = "xyes"; then
+			AC_MSG_CHECKING([whether iso-codes has iso-639 and iso-3166 domains])
+			if $PKG_CONFIG --variable=domains iso-codes | grep 639 > /dev/null && \
+			   $PKG_CONFIG --variable=domains iso-codes | grep 3166 > /dev/null ; then
+				result=yes
+			else
+				result=no
+				have_iso_codes=no
+			fi
+			AC_MSG_RESULT([$result])
+		fi
+
+		if test "x$have_iso_codes" = "xyes"; then
+			AC_DEFINE_UNQUOTED([ISO_CODES_PREFIX],["`$PKG_CONFIG --variable=prefix iso-codes`"],[ISO codes prefix])
+			AC_DEFINE([HAVE_ISO_CODES],[1],[Define if you have the iso-codes package])
+		else
+			AC_MSG_ERROR([iso-codes is required to build the spell plugin. Use --disable-spell to build without spell plugin.])
+		fi
+	else
+		enable_enchant=no
+		AC_MSG_ERROR([Enchant library not found or too old. Use --disable-spell to build without spell plugin.])
 	fi
 fi
 
-AM_CONDITIONAL(ENABLE_SPELL, test x"$enable_spell" = "xyes")
+AM_CONDITIONAL(ENABLE_ENCHANT, test x"$enable_enchant" = "xyes")
 
 dnl ================================================================
-dnl Check Python support
+dnl libzeitgeit check: for zeitgeist plugin
 dnl ================================================================
+
+LIBZEITGEIST_REQUIRED=0.9.12
+
+AC_ARG_ENABLE([zeitgeist],
+	AS_HELP_STRING([--enable-zeitgeist[=@<:@no/auto/yes@:>@]],[Build with zeitgeist support]),
+	[enable_zeitgeist=$enableval],
+	[enable_zeitgeist="auto"])
+
+if test "x$enable_zeitgeist" = "xauto" ; then
+	PKG_CHECK_EXISTS([zeitgeist-2.0 >= $LIBZEITGEIST_REQUIRED], \
+			  enable_zeitgeist="yes", enable_zeitgeist="no")
+fi
+
+if test "x$enable_zeitgeist" = "xyes" ; then
+	PKG_CHECK_MODULES(ZEITGEIST, \
+			  [zeitgeist-2.0 >= $LIBZEITGEIST_REQUIRED])
+fi
+
+AM_CONDITIONAL(ENABLE_ZEITGEIST, test x"$enable_zeitgeist" = "xyes")
+
+PYGOBJECT_REQUIRED=3.0.0
 
 AC_ARG_ENABLE([python],
               AS_HELP_STRING([--enable-python[=@<:@no/auto/yes@:>@]],[Build with python support]),
@@ -270,7 +309,7 @@ if test "x$enable_python" = "xyes"; then
 	AM_PATH_PYTHON(3.2.3)
 	PKG_CHECK_MODULES(PYTHON, [pygobject-3.0 >= $PYGOBJECT_REQUIRED])
 
-	pyoverridesdir="\$(pyexecdir)/gi/overrides"
+	pyoverridesdir=`$PYTHON -c "import gi; print(gi._overridesdir)"`
 	AC_SUBST(pyoverridesdir)
 fi
 
@@ -283,14 +322,13 @@ dnl ================================================================
 # Dependencies
 
 PKG_CHECK_MODULES(GEDIT, [
-	libxml-2.0 >= $LIBXML_REQUIRED
-	glib-2.0 >= $GLIB_REQUIRED
-	gio-2.0 >= $GLIB_REQUIRED
-	gmodule-2.0
-	gtk+-3.0 >= $GTK_REQUIRED
-	gtksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED
-	libpeas-1.0 >= $LIBPEAS_REQUIRED
-	libpeas-gtk-1.0 >= $LIBPEAS_REQUIRED
+	libxml-2.0 >= 2.5.0
+	glib-2.0 >= 2.28.0
+	gio-2.0 >= 2.35.4
+	gtk+-3.0 >= 3.7.10
+	gtksourceview-3.0 >= 3.2.0
+	libpeas-1.0 >= 1.7.0
+	libpeas-gtk-1.0 >= 1.7.0
 	gsettings-desktop-schemas
 ])
 
@@ -304,75 +342,65 @@ else
 	X11_LIBS=
 fi
 
-GEDIT_CFLAGS="$GEDIT_CFLAGS $X11_CFLAGS"
-GEDIT_LIBS="$GEDIT_LIBS $X11_LIBS"
+if test "$platform_win32" = "no"; then
+	PKG_CHECK_MODULES(UNIX, [
+		gio-unix-2.0 >= 2.25.5
+	])
+else
+	UNIX_CFLAGS=
+	UNIX_LIBS=
+fi
+
+GEDIT_CFLAGS="$GEDIT_CFLAGS $X11_CFLAGS $UNIX_CFLAGS"
+GEDIT_LIBS="$GEDIT_LIBS $X11_LIBS $UNIX_LIBS"
 
 AC_SUBST(GEDIT_CFLAGS)
 AC_SUBST(GEDIT_LIBS)
 
 dnl ================================================================
-dnl Deprecations
+dnl GSettings stuff
 dnl ================================================================
+
+GLIB_GSETTINGS
+
+dnl ================================================================
+dnl Misc
+dnl ================================================================
+AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
+
+GNOME_COMPILE_WARNINGS([maximum])
+
+if test "$USE_MAINTAINER_MODE" = "yes"; then
+	enable_deprecations=yes
+else
+	enable_deprecations=no
+fi
 
 AC_ARG_ENABLE(deprecations,
               [AS_HELP_STRING([--enable-deprecations],
-                              [show error when a deprecated API is used [default=no]])],
+                              [warn about deprecated usages [default=no]])],
               [enable_deprecations=$enableval], [])
 
-AC_MSG_CHECKING([whether to forbid deprecated symbols])
 if test "$enable_deprecations" = "yes"; then
-	AC_MSG_RESULT(yes)
 	DISABLE_DEPRECATED_CFLAGS="\
+-DGSEAL_ENABLE \
 -DG_DISABLE_DEPRECATED \
 -DGDK_DISABLE_DEPRECATED \
 -DGTK_DISABLE_DEPRECATED \
 -DGDK_PIXBUF_DISABLE_DEPRECATED \
+-DGNOME_DISABLE_DEPRECATED \
 -DPEAS_DISABLE_DEPRECATED"
 
 	AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
-else
-	AC_MSG_RESULT(no)
 fi
-
-dnl ================================================================
-dnl User help
-dnl ================================================================
-
-YELP_HELP_INIT
-
-# Hack: since non-recursive make is used, it can be useful to disable the user
-# help since it takes a lot of time to build and install. On the other hand
-# with recursive make it's usually possible to build and install only what we
-# need...
-AC_ARG_ENABLE([user_help],
-	      AS_HELP_STRING([--disable-user-help],[Disable the user help to speed the build (default: enabled)]),
-	      [enable_user_help=$enableval],
-	      [enable_user_help=yes])
-
-AM_CONDITIONAL(ENABLE_USER_HELP, test x"$enable_user_help" = "xyes")
-
-dnl ================================================================
-dnl GObject Introspection
-dnl ================================================================
-
-GOBJECT_INTROSPECTION_CHECK([0.9.3])
-
-if test "$found_introspection" = "yes"; then
-	enable_introspection=yes
-	AC_DEFINE([ENABLE_INTROSPECTION], [1], [Define to enable GObject Introspection])
-else
-	enable_introspection=no
-fi
-
-dnl ================================================================
-dnl Internal lib on win32
-dnl ================================================================
 
 # on win32 plugins must be able to resolve all symbols at link time
 # so we create a lib
 if test "$platform_win32" = yes; then
-	GEDIT_IMPLIB='-L${libdir}/gedit -lgedit'
-	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined"
+	GEDIT_IMPLIB="-lgedit-$GEDIT_API_VERSION"
+	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined -Wl,\$(top_builddir)/gedit/libgedit.a"
 	if test "$os_win32" = yes; then
 		PLUGIN_LIBTOOL_FLAGS="${PLUGIN_LIBTOOL_FLAGS} -mwindows"
 	fi
@@ -383,64 +411,75 @@ fi
 AC_SUBST(GEDIT_IMPLIB)
 AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
 
-dnl ================================================================
-dnl Resource files depending on the OS
-dnl ================================================================
-
-if test "$os_osx" = "yes"; then
-	os_style_css=gedit-style-osx.css
-else
-	os_style_css=
-
-	OS_DEPENDENT_RESOURCE_FILES='<file preprocess="xml-stripblanks">gtk/menus-traditional.ui</file>'
-fi
-
-if test "x$os_style_css" != "x"; then
-	OS_DEPENDENT_RESOURCE_FILES+="<file>css/gedit-style-os.css</file>"
-	AC_CONFIG_LINKS(gedit/resources/css/gedit-style-os.css:gedit/resources/css/$os_style_css)
-fi
-
-AC_SUBST(OS_DEPENDENT_RESOURCE_FILES)
-
-dnl ================================================================
-dnl Misc
-dnl ================================================================
-
-LIBGD_INIT([tagged-entry static])
-
-GLIB_GSETTINGS
-
-# Vala
-VAPIGEN_CHECK([0.25.1])
-
-AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
-AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
-
-GNOME_COMPILE_WARNINGS([maximum])
-
 GEDIT_PLUGINS_DATA_DIR="$datadir/gedit/plugins"
 AC_SUBST(GEDIT_PLUGINS_DATA_DIR)
 
 GEDIT_PLUGINS_LIBS_DIR="$libdir/gedit/plugins"
 AC_SUBST(GEDIT_PLUGINS_LIBS_DIR)
 
+YELP_HELP_INIT
+
+# Introspection
+GOBJECT_INTROSPECTION_CHECK([0.9.3])
+
+if test "$found_introspection" = "yes"; then
+	enable_introspection=yes
+	AC_DEFINE([ENABLE_INTROSPECTION], [1], [Define to enable GObject Introspection])
+else
+	enable_introspection=no
+fi
+
+# libgd
+LIBGD_INIT([
+	revealer
+	static
+])
+
 AC_CONFIG_FILES([
 Makefile
-gedit/resources/gedit.gresource.xml
-data/org.gnome.gedit.desktop.in
+data/gedit.desktop.in
 data/gedit.pc
-data/org.gnome.gedit.gschema.xml
+data/org.gnome.gedit.gschema.xml.in
+data/Makefile
 docs/Makefile
 docs/reference/Makefile
+gedit/Makefile
 help/Makefile
 libgd/Makefile
-plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml
-plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml
-plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml
-plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml
-plugins/time/org.gnome.gedit.plugins.time.gschema.xml
+pixmaps/Makefile
+plugins/Makefile
+plugins/changecase/Makefile
+plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in
+plugins/checkupdate/Makefile
+plugins/externaltools/data/Makefile
+plugins/externaltools/Makefile
+plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in
+plugins/externaltools/scripts/Makefile
+plugins/externaltools/tools/Makefile
+plugins/docinfo/Makefile
+plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in
+plugins/filebrowser/Makefile
+plugins/modelines/Makefile
+plugins/pythonconsole/Makefile
+plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in
+plugins/pythonconsole/pythonconsole/Makefile
+plugins/quickopen/Makefile
+plugins/quickopen/quickopen/Makefile
+plugins/snippets/data/lang/Makefile
+plugins/snippets/data/Makefile
+plugins/snippets/Makefile
+plugins/snippets/snippets/Makefile
+plugins/sort/Makefile
+plugins/spell/Makefile
+plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in
+plugins/time/Makefile
+plugins/zeitgeist/Makefile
 po/Makefile.in
-osx/bundle/data/Info.plist])
+tests/Makefile
+win32/gedit.iss
+win32/Makefile
+osx/Info.plist
+osx/Makefile])
 
 AC_OUTPUT
 
@@ -450,22 +489,22 @@ Configuration:
 
 	Source code location:	${srcdir}
 	Compiler:		${CC}
-	Spell Plugin enabled:	$enable_spell
+	Spell Plugin enabled:	$enable_enchant
 	Gvfs metadata enabled:	$enable_gvfs_metadata
 	Deprecations enabled:	$enable_deprecations
 	GObject Introspection:	$enable_introspection
 	GDK Backend:            $gdk_windowing
+	Zeitgeist support:      $enable_zeitgeist
 	Python support:         $enable_python
-	Vala support:           $enable_vala
 "
 
 if expr ${GEDIT_MINOR_VERSION} % 2 > /dev/null; then
 	stable_version=`expr ${GEDIT_MINOR_VERSION} - 1`
 
 cat << EOF
- *** IMPORTANT ***
+ *** IMPORTANT *** 
 
-This is an unstable version of gedit.
+This is an unstable version of gedit. 
 It is for test purposes only.
 
 Please, DO NOT use it in a production environment.

@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Compatibilidade de gedit para os modos de liñas de Emacs, Kate e Vim.</desc>
+  <desc>Compatibilidade para gedit para os estios dos modos de liñas de Emacs, Kate e Vim.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -23,13 +23,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -37,7 +31,8 @@
 
   <p>O engadido <app>Modos de liña</app> permítelle a <app>gedit</app> analizar as liñas de texto que comezan e rematan un ficheiro e logo aplicar un conxunto de preferencias do documento ao ficheiro. O engadido <app>Modos de liña</app> son compatíbeis con un subconxunto de opcións usados polos editores de texto <app>Emacs</app>, <app>Kate</app> e <app>Vim</app></p>
 
-  <p>Para activar o engadido <app>Modos de liña</app> seleccione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferencias</gui><gui>Engadidos</gui><gui>Modos de liñas</gui></guiseq>.</p>
+  <p>To enable the <app>Modelines</app> plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>.</p>
 
 <section id="modelines-general">
   <title>Opcións xerais dos modos de liña</title>

@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Verwenden Sie Hervorhebung in Ihrem Text, um ihn leichter zu lesen.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -29,24 +28,18 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Syntax-Hervorhebung aktivieren</title>
 
   <section id="gedit-syntax-highlighting-section">
-    <title>Quelltexthervorhebung</title>
+    <title>Hervorhebung</title>
     <p><app>gedit</app> bietet Syntax-Hervorhebung für eine breite Auswahl an Auszeichnungs-, Programmier- und wissenschaftlichen Sprachen. Falls <app>gedit</app> die Syntax beim Öffnen einer Datei erkennt, wird der Text automatisch hervorgehoben.</p>
 
-    <p>Falls die gewünschte Syntax oder Sprache nicht sofort beim Start angezeigt wird, können Sie die entsprechende Syntax oder Sprache auswählen, indem Sie <guiseq><gui style="menu">Ansicht</gui><gui> style="menuitem"Hervorhebungsmodus</gui></guiseq> klicken und dann die gewünschte Syntax auswählen. Alternativ können Sie den Namen der Syntax aus einer Liste in der Fußleiste des <app>gedit</app>-Fensters auswählen.</p>
+    <p>Falls die gewünschte Syntax oder Sprache nicht sofort beim Start angezeigt wird, können Sie die entsprechende Syntax oder Sprache auswählen, indem Sie <guiseq><gui style="menu">Ansicht</gui><gui style="menuitem">Hervorhebungsmodus</gui></guiseq> klicken und dann die gewünschte Syntax auswählen. Alternativ können Sie den Namen der Syntax aus einer Liste in der Fußleiste des <app>gedit</app>-Fensters auswählen.</p>
   </section>
 
 </page>

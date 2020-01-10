@@ -5,49 +5,58 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Jak nainstalovat zásuvné moduly třetích stran.</desc>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
+    <desc>How to install third-party plugins</desc>
   </info>
 
-  <title>Dodatečné zásuvné moduly editoru gedit</title>
+  <title>Additional gedit plugins</title>
 
-  <p>Instalací zásuvných modulů třetích stran získáte další funkcionalitu, kterou neposkytují výchozí zásuvné moduly editoru <app>gedit</app> ani rozšiřující zásuvné moduly z balíčku <app>gedit-plugins</app>. Na <link href="https://wiki.gnome.org/Apps/Gedit/Plugins#third_party">této adrese</link> je udržován on-line seznam zásuvných modulů třetích stran.</p>
+  <p>Installing third-party plugins gives you extra functionality that isn't 
+  available in default <app>gedit</app> plugins, or even the extra plugins that 
+  are part of the <app>gedit-plugins</app> package. An online list of 
+  third-party plugins is 
+  <link href="http://live.gnome.org/Gedit/Plugins#third_party">kept here</link>.
+  </p>
   
-  <p>Instalace zásuvného modulu třetí strany sestává ze stažení zásuvného modulu, jeho umístění do správné složky a jeho aktivace.</p>
+  <p>Installing a third-party plugin involves downloading the plugin, placing 
+  the plugin files in the right directory, and activating the plugin.</p>
   
   <steps>
-    <item><p>Zásuvný modul je obvykle možné stáhnout z jeho webových stránek, v některých případech ale budete potřebovat nějaký program pro správu verzí, jako je <app>git</app>, <app>bazaar</app> nebo <app>subversion</app>, abyste z Internetu stáhli kopii repozitáře. Jak přesně zásuvný modul získat, byste měli nalézt v jeho dokumentaci.</p></item>
-    <item><p>Soubory zásuvného modulu umístěte do složky <file>/home/<var>uživatelské_jméno</var>/.local/share/gedit/plugins</file>.</p>
-    <p>Ve výše uvedené cestě samozřejmě nahraďte <var>uživatelské_jméno</var> svým skutečným uživatelským jménem.</p></item>
-    <item><p>Až máte soubory zásuvného modulu umístěny ve správné složce, objeví se dotyčný zásuvný modul v nabídce v předvolbách. Povolíte jej pomocí <guiseq><gui>Upravit</gui> <gui style="menuitem">Předvolby</gui> <gui>Zásuvné moduly</gui> <gui>[název zásuvného modulu]</gui></guiseq>.</p></item>
-    <item><p>Klikněte na <gui>Zavřít</gui>.</p></item>
+    <item><p>You can usually download a plugin from the plugin's website, but 
+    may need to use a revision-control program like <app>git</app>, <app>
+    bazaar</app>, or <app>subversion</app> to copy a plugin's software 
+    repository from the internet. Refer to the plugin's documentation for 
+    information on getting the plugin.</p></item>
+    <item><p>Place the plugin files into the 
+    <file>/home/<var>username</var>/.local/share/gedit/plugins</file> directory.
+    </p>
+    <p>Of course, replace the word <var>username</var> with your own username.
+    </p></item>
+    <item><p>After you have placed the plugin files into the correct directory, 
+    the plugin will appear in the Preferences menu. Select <guiseq><gui>Edit
+    </gui><gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+    <gui>[Name of Plugin]</gui></guiseq> to enable the plugin.</p></item>
+    <item><p>Click <gui>Close</gui>.</p></item>
   </steps>
   
-  <p>Jakmile máte zásuvný modul povolen, mělo by být možné jej používat.</p>
+  <p>After you have enabled the plugin, it should be available for you to use.
+  </p>
   
   <note style="tip">
-    <p>Složka <file>.local</file> je standardně skrytá. Abyste si ji, nebo i jiné skryté soubory, zobrazili, vyberte <guiseq><gui>Zobrazit</gui> <gui>Zobrazovat skryté soubory</gui></guiseq> nebo zmáčkněte <keyseq><key>Ctrl</key> <key>H</key></keyseq>.</p>
+    <p>The <file>.local</file> directory is hidden by default. To view it and 
+    other hidden files, select <guiseq><gui>View</gui><gui>Show Hidden 
+    Files</gui></guiseq>, or press <keyseq><key>Ctrl</key><key>H</key></keyseq>.
+    </p>
   </note>
 
   <note style="tip">
-    <p>Pokud se složka <file>.local/share/gedit/plugins/</file> ve vašem systému nenachází, bude si ji potřebovat vytvořit.</p>
+    <p>If the directory <file>.local/share/gedit/plugins/</file> is not 
+    present on your system, you will need to create it.</p>
   </note>
   
 </page>

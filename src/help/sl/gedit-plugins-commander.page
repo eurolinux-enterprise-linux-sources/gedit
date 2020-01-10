@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-commander" xml:lang="sl">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/> 
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Uporaba vmesnika ukazne vrstice za napredno urejanje</desc>
+  </info>
+
+  <title>Ukaznik</title>
+
+
+  <p>The <app>Commander</app> plugin is a plugin for advanced <app>gedit</app> 
+  users that allows you to perform command-line actions on the current 
+  file. To enable the commander plugin, select <guiseq>
+  <gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Commander</gui></guiseq>.</p>
+
+  <p>Ko je vstavek omogočen, ga zaženite s pritiskom na <keyseq><key>Ctrl</key><key>.</key></keyseq>.</p>
+  
+  <note style="tip"><p>Zadnja tipka nad kombinacijo tipk je pika.</p></note>
+
+    <table frame="all" rules="all">
+      <thead>
+        <tr>
+          <td><p>Za to opravilo</p></td>  <td><p>Pritisnite to</p></td>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Oglejte si pregled razpoložljivih ukazov</p></td> <td><p>Tab + Tab</p></td>  
+        </tr>
+        <tr>
+          <td><p>Najde besedo v trenutni datoteki</p></td>  <td><p>/ <em>foo </em></p>
+          <p>To bo našlo besedo <em>foo</em>.</p></td>
+        </tr>
+        <tr>
+          <td><p>Zamenja besedo v trenutni datoteki</p></td>  <td><p>// foo bar</p>
+          <p>To bo zamenjalo <em>foo</em> z <em>bar</em>.</p></td>
+        </tr>
+        <tr>
+          <td><p>Premik kazalke na določeno številko vrstice v datoteki</p></td>  
+          <td><p>go [števila vrstice] <em>ali</em> <em>g</em> [številka vrstice]</p>
+          </td>
+        </tr>
+        <tr>
+          <td><p>Preklop kazalnika zaznamkov za trenutno vrstico</p></td>  
+          <td><p>zaznamek <em>ali</em> le <em>b</em></p></td>  
+        </tr>
+      </tbody>
+    </table>
+  
+  <note style="tip"><p>Nekateri ukazi kot je ukaz <app>zaznamek</app> zahtevajo, da je ustrezen vstavek nameščen in omogočen. Če ustreznega vstavka nimate nameščenega in omogočenega, boste prejeli sporočilo o napaki.</p></note>
+
+</page>

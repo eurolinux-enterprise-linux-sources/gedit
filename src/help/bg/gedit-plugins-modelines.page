@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Джим Къмпбел</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Emacs, Kate and Vim-style modelines support for gedit.</desc>
+  <desc>Поддръжка в gedit на линиите за режима на Emacs, Kate и Vim</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>

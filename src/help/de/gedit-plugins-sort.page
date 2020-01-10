@@ -4,21 +4,20 @@
 <info>
   <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision version="3.24" date="2017-09-17" status="review"/>
   <credit type="author">
     <name>Daniel Neel</name>
     <email>dneelyep@gmail.com</email>
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
   <credit type="editor">
     <name>Sindhu S</name>
     <email>sindhus@live.in</email>
   </credit>
   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  <desc>Textzeilen alphabetisch sortieren.</desc>
+  <desc>Textzeilen alphabetisch sortieren</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jan Arne Petersen</mal:name>
@@ -34,14 +33,8 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
@@ -49,10 +42,14 @@
 
   <p>Das Plugin <app>Sortieren</app> sortiert ausgewählte Textzeilen in alphabetischer Reihenfolge.</p>
 
+  <note style="warning">
+    <p>Der Sortiervorgang kann nicht rückgängig gemacht werden. Es empfiehlt sich daher, die Datei vor dem Sortieren zu speichern. Um nach dem Sortiervorgang gegebenenfalls die zuletzt gespeicherte Version der Datei wiederherzustellen, wählen Sie <guiseq><gui>Datei</gui><gui>Zurücksetzen</gui></guiseq>.</p>
+</note>
+
   <section id="enable-sort">
     <title>Das Sortieren-Plugin aktivieren</title>
 
-    <p>So aktivieren Sie das <gui>Sortieren</gui>-Plugin:</p>
+    <p>So aktivieren Sie das <app>Sortieren</app>-Plugin:</p>
 
     <steps>
       <item>
@@ -68,14 +65,14 @@
   <section id="using-sort">
     <title>Das Sortieren-Plugin verwenden</title>
 
-    <p>So verwenden Sie das <gui>Sortieren</gui>-Plugin:</p>
+    <p>So verwenden Sie das <app>Sortieren</app>-Plugin:</p>
 
     <steps>
       <item>
         <p>Ziehen und markieren Sie die gewünschten Textzeilen.</p>
       </item>
       <item>
-        <p>Wählen Sie <guiseq><gui style="menu">Werkzeuge</gui><gui style="menuitem">Sortieren …</gui></guiseq>.</p>
+        <p>Wählen Sie <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Sortieren</gui></guiseq>.</p>
       </item>
       <item>
         <p>Der <gui>Sortierdialog</gui> wird geöffnet, in welchem Sie aus verschiedenen Sortieroptionen wählen können:</p>

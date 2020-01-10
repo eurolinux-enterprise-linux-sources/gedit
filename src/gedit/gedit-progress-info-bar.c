@@ -15,39 +15,58 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#include "gedit-progress-info-bar.h"
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
+
+ /* TODO: add properties */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
+
+#include "gedit-progress-info-bar.h"
 
 enum {
 	PROP_0,
-	PROP_HAS_CANCEL_BUTTON,
-	LAST_PROP
+	PROP_HAS_CANCEL_BUTTON
 };
 
-static GParamSpec *properties[LAST_PROP];
 
-struct _GeditProgressInfoBar
+#define GEDIT_PROGRESS_INFO_BAR_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_PROGRESS_INFO_BAR, GeditProgressInfoBarPrivate))
+
+struct _GeditProgressInfoBarPrivate
 {
-	GtkInfoBar parent_instance;
-
 	GtkWidget *image;
 	GtkWidget *label;
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE (GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE(GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
 
 static void
 gedit_progress_info_bar_set_has_cancel_button (GeditProgressInfoBar *bar,
 					       gboolean              has_button)
 {
 	if (has_button)
-	{
-		gtk_info_bar_add_button (GTK_INFO_BAR (bar), _("_Cancel"), GTK_RESPONSE_CANCEL);
-	}
+		gtk_info_bar_add_button (GTK_INFO_BAR (bar),
+					 GTK_STOCK_CANCEL,
+					 GTK_RESPONSE_CANCEL);
+
+	g_object_notify (G_OBJECT (bar), "has-cancel-button");
 }
 
 static void
@@ -76,65 +95,91 @@ static void
 gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	gobject_class->set_property = gedit_progress_info_bar_set_property;
 
-	properties[PROP_HAS_CANCEL_BUTTON] =
-		 g_param_spec_boolean ("has-cancel-button",
-				       "Has Cancel Button",
-				       "If the message bar has a cancel button",
-				       TRUE,
-				       G_PARAM_WRITABLE |
-				       G_PARAM_CONSTRUCT_ONLY |
-				       G_PARAM_STATIC_STRINGS);
+	g_object_class_install_property (gobject_class,
+					 PROP_HAS_CANCEL_BUTTON,
+					 g_param_spec_boolean ("has-cancel-button",
+							       "Has Cancel Button",
+							       "If the message bar has a cancel button",
+							       TRUE,
+							       G_PARAM_WRITABLE |
+							       G_PARAM_CONSTRUCT_ONLY |
+							       G_PARAM_STATIC_STRINGS));
 
-	g_object_class_install_properties (gobject_class, LAST_PROP, properties);
-
-	/* Bind class to template */
-	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-progress-info-bar.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, image);
-	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, label);
-	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, progress);
+	g_type_class_add_private (gobject_class, sizeof (GeditProgressInfoBarPrivate));
 }
 
 static void
 gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 {
-	gtk_widget_init_template (GTK_WIDGET (bar));
+	GtkWidget *vbox;
+	GtkWidget *hbox;
+	GtkWidget *content;
+
+	bar->priv = GEDIT_PROGRESS_INFO_BAR_GET_PRIVATE (bar);
+
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	gtk_widget_show (vbox);
+
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
+	gtk_widget_show (hbox);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
+
+	bar->priv->image = gtk_image_new_from_icon_name (GTK_STOCK_MISSING_IMAGE,
+							 GTK_ICON_SIZE_SMALL_TOOLBAR);
+	gtk_widget_show (bar->priv->image);
+	gtk_box_pack_start (GTK_BOX (hbox), bar->priv->image, FALSE, FALSE, 4);
+
+	bar->priv->label = gtk_label_new ("");
+	gtk_widget_show (bar->priv->label);
+	gtk_box_pack_start (GTK_BOX (hbox), bar->priv->label, FALSE, TRUE, 0);
+	gtk_label_set_use_markup (GTK_LABEL (bar->priv->label), TRUE);
+	gtk_widget_set_halign (bar->priv->label, GTK_ALIGN_START);
+	gtk_label_set_ellipsize (GTK_LABEL (bar->priv->label),
+				 PANGO_ELLIPSIZE_END);
+
+	bar->priv->progress = gtk_progress_bar_new ();
+	gtk_widget_set_hexpand (bar->priv->progress, TRUE);
+	gtk_widget_show (bar->priv->progress);
+	gtk_box_pack_start (GTK_BOX (vbox), bar->priv->progress, FALSE, TRUE, 0);
+	gtk_widget_set_size_request (bar->priv->progress, -1, 15);
+
+	content = gtk_info_bar_get_content_area (GTK_INFO_BAR (bar));
+	gtk_container_add (GTK_CONTAINER (content), vbox);
 }
 
 GtkWidget *
-gedit_progress_info_bar_new (const gchar *icon_name,
+gedit_progress_info_bar_new (const gchar *stock_id,
 			     const gchar *markup,
 			     gboolean     has_cancel)
 {
 	GeditProgressInfoBar *bar;
 
-	g_return_val_if_fail (icon_name != NULL, NULL);
+	g_return_val_if_fail (stock_id != NULL, NULL);
 	g_return_val_if_fail (markup != NULL, NULL);
 
 	bar = GEDIT_PROGRESS_INFO_BAR (g_object_new (GEDIT_TYPE_PROGRESS_INFO_BAR,
 						     "has-cancel-button", has_cancel,
 						     NULL));
 
-	gedit_progress_info_bar_set_icon_name (bar, icon_name);
+	gedit_progress_info_bar_set_stock_image (bar, stock_id);
 	gedit_progress_info_bar_set_markup (bar, markup);
 
 	return GTK_WIDGET (bar);
 }
 
 void
-gedit_progress_info_bar_set_icon_name (GeditProgressInfoBar *bar,
-				       const gchar          *icon_name)
+gedit_progress_info_bar_set_stock_image (GeditProgressInfoBar *bar,
+					 const gchar          *stock_id)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
-	g_return_if_fail (icon_name != NULL);
+	g_return_if_fail (stock_id != NULL);
 
-	gtk_image_set_from_icon_name (GTK_IMAGE (bar->image),
-				      icon_name,
-				      GTK_ICON_SIZE_SMALL_TOOLBAR);
+	gtk_image_set_from_stock (GTK_IMAGE (bar->priv->image),
+				  stock_id,
+				  GTK_ICON_SIZE_SMALL_TOOLBAR);
 }
 
 void
@@ -144,7 +189,8 @@ gedit_progress_info_bar_set_markup (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (markup != NULL);
 
-	gtk_label_set_markup (GTK_LABEL (bar->label), markup);
+	gtk_label_set_markup (GTK_LABEL (bar->priv->label),
+			      markup);
 }
 
 void
@@ -154,7 +200,8 @@ gedit_progress_info_bar_set_text (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (text != NULL);
 
-	gtk_label_set_text (GTK_LABEL (bar->label), text);
+	gtk_label_set_text (GTK_LABEL (bar->priv->label),
+			    text);
 }
 
 void
@@ -163,7 +210,8 @@ gedit_progress_info_bar_set_fraction (GeditProgressInfoBar *bar,
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 
-	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (bar->progress), fraction);
+	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (bar->priv->progress),
+				       fraction);
 }
 
 void
@@ -171,7 +219,7 @@ gedit_progress_info_bar_pulse (GeditProgressInfoBar *bar)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 
-	gtk_progress_bar_pulse (GTK_PROGRESS_BAR (bar->progress));
+	gtk_progress_bar_pulse (GTK_PROGRESS_BAR (bar->priv->progress));
 }
 
 /* ex:set ts=8 noet: */

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs" xml:lang="pt-BR">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs" xml:lang="pt-BR">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Crie ou feche abas na janela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -20,16 +17,6 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -75,15 +62,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -92,7 +73,7 @@
 
   <section id="gedit-adding-tabs">
     <title>Adicionando abas</title>
-    <p>Para adicionar uma nova aba, crie um novo arquivo com <keyseq><key>Ctrl</key> <key>T</key></keyseq>. A aba será adicionada à direita das outras abas.</p>
+    <p>Para adicionar uma nova aba, crie um novo arquivo com <keyseq><key>Ctrl</key><key>N</key></keyseq>. A aba será adicionada à direita das outras abas.</p>
   </section>
 
   <section id="gedit-removing-tabs">

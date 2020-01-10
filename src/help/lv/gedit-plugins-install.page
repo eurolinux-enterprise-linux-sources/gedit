@@ -5,18 +5,18 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Kā instalēt citus spraudņus.</desc>
+    <desc>Kā instalēt citus spraudņus</desc>
   </info>
 
   <title>Papildu gedit spraudņi</title>
 
-  <p>Instalējot papildu spraudņus, jūs iegūstat funkcionalitāti, kas nav pieejama noklusējuma <app>gedit</app> un <app>gedit-plugins</app> pakas spraudņos. Ir pieejams <link href="https://wiki.gnome.org/Apps/Gedit">tiešsaistes papildu spraudņu saraksts</link>.</p>
+  <p>Instalējot papildu spraudņus, jūs iegūstat funkcionalitāti, kas nav pieejama noklusējuma <app>gedit</app> un <app>gedit-plugins</app> pakas spraudņos. Ir pieejams <link href="http://live.gnome.org/Gedit/Plugins#third_party">tiešsaistes papildu spraudņu saraksts</link>.</p>
   
   <p>Lai veiktu papildu spraudņa instalēšanu, nepieciešams to lejupielādēt, ievietot datnes pareizajā direktorijā un aktivizēt spraudni.</p>
   
@@ -24,7 +24,10 @@
     <item><p>Parasti spraudni var lejupielādēt no tā tīmekļa vietnes, bet var arī gadīties, ka jāizmanto versiju vadības programma, piemēram, <app>git</app>, <app> bazaar</app> vai <app>subversion</app>, lai kopētu spraudņa programmatūras krātuvi no interneta. Skatiet spraudņa dokumentāciju, lai uzzinātu, kā iegūt attiecīgo spraudni.</p></item>
     <item><p>Ievietojiet spraudņa datnes direktorijā <file>/home/<var>lietotājvārds</var>/.local/share/gedit/plugins</file>.</p>
     <p>Protams, aizstājiet vārdu <var>username</var> ar jūsu lietotājvārdu.</p></item>
-    <item><p>After you have placed the plugin files into the correct directory, the plugin will appear in the Preferences menu. Select <guiseq><gui>Edit </gui><gui style="menuitem">Preferences</gui><gui>Plugins</gui><gui>[Name of Plugin]</gui> </guiseq> to enable the plugin.</p></item>
+    <item><p>After you have placed the plugin files into the correct directory, 
+    the plugin will appear in the Preferences menu. Select <guiseq><gui>Edit
+    </gui><gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+    <gui>[Name of Plugin]</gui></guiseq> to enable the plugin.</p></item>
     <item><p>Spiediet pogu <gui>Aizvērt</gui>.</p></item>
   </steps>
   

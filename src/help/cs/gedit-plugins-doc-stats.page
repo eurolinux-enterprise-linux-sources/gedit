@@ -10,33 +10,33 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Jak zobrazit statistiku dokumentu.</desc>
+  <desc>View document statistics</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
-  </info>
+<title>Document statistics</title>
 
-<title>Statistika dokumentu</title>
-
-  <p>Zásuvný modul <em>Statistika dokumentu</em> zobrazuje různé statistiky o aktuálním dokumentu. Tento modul zapnete pomocí <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Předvolby</gui> <gui>Zásuvné moduly</gui> <gui>Statistika dokumentu</gui></guiseq>.</p>
+  <p>The <em>Document Statistics</em> plugin shows you various statistics about
+  your current document. To enable this plugin, select 
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Document Statistics</gui></guiseq>.</p>
 
 <section id="using-doc-stats">
-  <title>Používání statistiky dokumentu</title>
+  <title>Using Document Statistics</title>
 
-  <p>Až máte zásuvný modul povolený, použijte jej pomocí <guiseq><gui>Nástroje</gui> <gui>Statistika dokumentu</gui></guiseq>. V okně se vám zobrazí statistické údaje o vašem dokumentu, včetně počtu slov, řádků, znaků, nebílých znaků a velikosti souboru v bajtech.</p>
+  <p>Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui>
+  <gui>Document Statistics</gui></guiseq>. A window will display the
+  statistical information of your document, including the number of words,
+  lines, characters, non-space characters, and the size of your file in
+  bytes.</p>
 
-  <p><em>Statistiku dokumentu</em> můžete použít i k zobrazení informací o části dokumentu. Stačí pomocí myši vybrat část textu, kterou chcete prozkoumat a použít <guiseq><gui>Nástroje</gui> <gui>Statistika dokumentu</gui></guiseq>. <app>gedit</app> zobrazí údaje jak pro celý dokument, tak pro vybranou část textu.</p>
+  <p>You can also use <em>Document Statistics</em> to show you information about
+  just a portion of your document. To do this, use the mouse pointer to select
+  the portion of text that you want to examine, and then select
+  <guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>.
+  <app>Gedit</app> will display information for both your entire document, and
+  for the portion of text that you highlighted.</p>
 </section>
 
 </page>

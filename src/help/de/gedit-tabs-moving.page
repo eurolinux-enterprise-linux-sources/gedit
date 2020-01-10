@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs-moving" xml:lang="de">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-tabs-moving" xml:lang="de">
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
-    <link type="seealso" xref="gedit-tabs"/>
-    <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Die Position der Reiter im gedit-Fenster ändern.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -18,11 +15,6 @@
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -40,14 +32,8 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
@@ -91,6 +77,8 @@
       </item>
     </steps>
 
+    <p>Oder wählen Sie, während der gewünschte Reiter geöffnet ist, <guiseq><gui>Dokumente</gui><gui>In neues Fenster verschieben</gui></guiseq></p>
+
     <note style="tip">
       <p>Um einen Reiter in ein neues Fenster zu verschieben, wenn <app>gedit</app> im maximierten Zustand ist, ziehen Sie den Reiter auf das obere Panel auf dem Bildschirm.</p>
     </note>
@@ -121,7 +109,8 @@
       <p>Vielleicht finden Sie es einfacher, einen Reiter von einem in ein anderes Fenster zu verschieben, in dem Sie ihn in die linke obere Ecke der <gui>GNOME Shell</gui> ziehen. Dadurch werden alle geöffneten <app>gedit</app>-Fenster angezeigt. Über dem gewünschten <app>gedit</app>-Fenster legen Sie dann den Reiter ab.</p>
     </note>
 
-    <p>Schauen Sie auch die Tabelle der <link xref="gedit-shortcut-keys"> Tastenkombinationen für Reiter</link> an, welche die Verwaltung Ihrer Reiter erleichtern.</p>
+    <p>See the <link xref="gedit-shortcut-keys">tab-related shortcut
+    keys</link> table to make it easier to manage your tabs.</p>
 
   </section>
 

@@ -12,39 +12,21 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>在当前文档上执行脚本，并与其他程序交互。</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+  <desc>Run scripts on your current files, and interact with other applications</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
+</info>
 
 <title>外部工具</title>
 
-  <p><em>外部工具</em>插件可用于简单的重复任务，尤其是，它可以在您编辑的文档上执行脚本，并且允许 <app>gedit</app> 与系统中的其他程序交互作用。要启用<app>外部工具</app>，点菜单 <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">首选项</gui><gui>插件</gui> <gui>外部工具</gui></guiseq>。</p>
+  <p>The <em>External Tools</em> plugin can help simplify repetitive tasks.
+  Specifically, it extends <app>gedit</app> by helping you to run scripts on
+  your working files, and by allowing <app>gedit</app> to interact with other
+  programs on your computer. To enable the <app>External Tools</app> plugin,
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
     <title>配置外部工具插件</title>

@@ -1,19 +1,3 @@
-# Copyright (C) 2011  Jesse van den Kieboom <jesse@icecrew.nl>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
 from gi.repository import GObject
 import inspect
 
@@ -65,10 +49,7 @@ def get_trace_info(num_back_frames=0):
     frame = inspect.currentframe().f_back
     try:
         for i in range(num_back_frames):
-            back_frame = frame.f_back
-            if back_frame == None:
-                break
-            frame = back_frame
+            frame = frame.f_back
 
         filename = frame.f_code.co_filename
 
@@ -92,7 +73,7 @@ orig_debug_plugin_message_func = Gedit.debug_plugin_message
 
 @override(Gedit.debug_plugin_message)
 def debug_plugin_message(format, *format_args):
-    filename, lineno, func_name = get_trace_info(1)
+    filename, lineno, func_name = get_trace_info(2)
     orig_debug_plugin_message_func(filename, lineno, func_name, format % format_args)
 __all__.append(debug_plugin_message)
 

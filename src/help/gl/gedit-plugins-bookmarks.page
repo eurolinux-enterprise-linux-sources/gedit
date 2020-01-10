@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-bookmarks" xml:lang="gl">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Gravar localizacións usadas frecuentemente cos marcadores</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Fran Dieguez</mal:name>
+      <mal:email>frandieguez@gnome.org</mal:email>
+      <mal:years>2011-2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Leandro Regueiro</mal:name>
+      <mal:email>leandro.regueiro@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Marcadores</title>
+
+  <p>Os marcadores de gedit permítenlle realzar liñas de texto importantes no seu documento ou no seu programa, facendo que sexan máis doado de atopar. Pode moverse entre os marcadores, axilizando a navegación polo documento.</p>
+
+  <p>Para activar o engadido de marcadores, seleccione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferencias</gui><gui>Engadidos</gui><gui>Marcadores</gui></guiseq>.</p>
+
+  <steps>
+    <title>Os marcadores engádense e quítanse realizando a mesma acción. Para insertar ou quitar marcadores:</title>
+    <item><p>Navegue até a liña na que quere insertar ou quitar o marcador.</p></item>
+    <item><p>Prema <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, ou prema <guiseq><gui>Editar</gui><gui>Trocar marcador</gui></guiseq>.</p></item>
+  </steps>
+  
+  <steps>
+    <title>Para moverse entre marcadores:</title>
+    <item><p>Prema <keyseq><key>Ctrl</key><key>B</key></keyseq> para moverse ao seguinte marcador.</p></item>
+    <item><p>Prema <keyseq><key>Ctrl</key><key>Maiús</key><key>B</key></keyseq> para moverse ao marcador anterior.</p>
+    <note><p>Se prefire usar o rato, pode premer <guiseq><gui style="menu">gedit</gui><gui>Ir ao seguinte marcador</gui></guiseq> ou <guiseq><gui>Editar</gui><gui>Ir ao marcador anterior</gui></guiseq>.</p></note>
+    </item>
+  </steps>
+    
+  
+
+</page>

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets" xml:lang="ru">
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task 2column" id="gedit-plugins-snippets-guide" xml:lang="ru">
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Синдху С (Sindhu S)</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Использование фрагментов для быстрой вставки часто используемых частей текста.</desc>
+    <desc>Использование фрагментов для быстрой вставки часто используемых частей текста</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2018.</mal:years>
+      <mal:years>2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Ivan Komaritsyn</mal:name>
-      <mal:email>vantu5z@mail.ru</mal:email>
-      <mal:years>2017.</mal:years>
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -39,7 +39,9 @@
 
     <steps>
       <item>
-        <p>Выберите <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Параметры</gui> <gui style="tab">Модули</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
       </item>
       <item>
         <p>Чтобы включить модуль, нажмите на <gui style="menuitem">Фрагменты</gui>.</p>
@@ -63,7 +65,7 @@
         </note>
       </item>
       <item>
-        <p>Просмотрите фрагменты, доступные для текущего языка или синтаксиса.</p>
+        <p>Просмотр фрагментов, доступных для текущего языка или синтаксиса.</p>
       </item>
     </steps>
   </section>
@@ -125,7 +127,10 @@
         </note>
       </item>
       <item>
-        <p>Под надписью <gui style="input">Правка:</gui>, введите нужный текст фрагмента. Можно использовать <code>${n}</code> для обозначения переменных, где <em>n</em> заменяется числом, которое представляет порядковый номер переменной.</p>
+        <p>Under the textarea for <gui style="input">Edit:</gui>, input the
+        desired text for the snippet. You may use <code>${n}</code> to indicate
+        variables, where <em>n</em> is replaced with a number that
+        represents the numerical order of variables included.</p>
       </item>
     </steps>
 
@@ -134,20 +139,27 @@
   <section id="example-add-snippet">
     <title>Пример нового фрагмента</title>
 
-    <p>Например, вы создали фрагмент текста со словом-термином <var>greetings</var> в графе <gui style="input">Переключатель вкладок:</gui>. Текстовое поле под надписью <gui style="input">Правка:</gui> содержит следующее:</p>
+    <p>Consider you have created a snippet with the term <var>greetings</var>
+    in <gui style="input">Tab trigger:</gui>. The
+    <gui style="input">Edit:</gui> textarea contains:</p>
 
     <code>
       &lt;greetings&gt;Hello ${1:wonderful}${2:amazing} world!
       &lt;/greetings&gt;
     </code>
 
-    <p>Можно вставить этот фрагмент, набрав в документе слово <var>greetings</var> и нажав на клавиатуре кнопку <key>Tab</key>. Будет вставлен следующий фрагмент текста:</p>
+    <p>You can insert this snippet by typing <var>greetings</var> in the
+    document and pressing the <key>Tab</key> key. The following text snippet
+    will be inserted:</p>
 
     <code>
       &lt;greetings&gt;Hello wonderfulamazing world!&lt;/greetings&gt;
     </code>
 
-    <p>Слова "wonderful" и "amazing" могут быть оставлены или удалены в зависимости от вашего выбора. Для этого нажмите <key>Tab</key>, чтобы выбрать между словами "wonderful" и "amazing", и нажмите <key>Del</key>, чтобы удалить неподходящий вариант.</p>
+    <p>The words "wonderful" and "amazing" can be retained or deleted depending
+    on your choice of usage. To do so, press <key>Tab</key> to choose between
+    "wonderful" and "amazing" and press <key>Del</key> to delete the least
+    preferred option.</p>
   </section>
 
   <!--TODO: <section id="modifying-snippets">

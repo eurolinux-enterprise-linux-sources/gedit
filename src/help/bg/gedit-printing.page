@@ -3,11 +3,10 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Print the files that you create with gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="es">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="es">
 
   <info>
     <title type="link">Editor de textos gedit</title>
     <title type="text">Editor de textos gedit</title>
 
-    <desc>Página principal de la ayuda de gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
 
    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
@@ -22,7 +21,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -38,7 +37,7 @@
     </mal:credit>
   </info>
   
-  <title><media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/> Editor de textos gedit</title>
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png"> </media>  Editor de textos gedit</title>
   <p>Bienvenido a la guía de ayuda de <app>gedit</app>. Para una rápida introducción tanto en las características básicas de <app>gedit</app> como en los atajos de teclado avanzados, consulte las páginas <link xref="gedit-quickstart">Inicio</link> y <link xref="gedit-shortcut-keys">atajos de teclado</link>.</p>
 
   <p>Otros temas de ayuda están agrupados en secciones más abajo. Disfrute usando <app>gedit</app>.</p>

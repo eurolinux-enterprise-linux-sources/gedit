@@ -11,39 +11,25 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>在光标位置插入当前日期/时间。</desc>
+  <desc>在光标位置插入当前日期/时间</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Insert date/time</title>
 
-<title>插入日期/时间</title>
+  <p>As this name of this plugin suggests, the <gui>Insert Date/Time</gui>
+  plugin allows you to insert the date and/or time at the current cursor
+  position. To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Insert Date/Time</gui></guiseq>. To use the plugin, press <guiseq>
+  <gui style="menu">Edit</gui><gui>Insert Date and Time</gui></guiseq>.</p>
 
-  <p>根据插件名称就可以知道，<gui>插入日期/时间</gui>插件可以在光标处插入日期和/或时间。要启用此插件，点菜单 <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">首选项</gui><gui>插件</gui> <gui>插入日期/时间</gui></guiseq>。要使用此插件，点菜单 <guiseq> <gui style="menu">编辑</gui><gui>插入日期和时间</gui></guiseq>。</p>
-
-  <p>默认情况下，<gui>插入日期/时间</gui>插件会提示您选择一种日期/时间格式。当然，您也可以在 <guiseq><gui style="menu">gedit</gui><gui style="menuitem">首选项</gui> <gui>插件</gui><gui>插入日期/时间</gui><gui>配置</gui></guiseq> 中，选择一个默认日期和时间格式。</p>
+  <p>By default, the <gui>Insert Date/Time</gui> plugin will prompt you to
+  choose your preferred date/time format each time that you use the plugin.
+  However, you can choose your own default date and time format by selecting
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></guiseq>.
+  </p>
 
 </page>

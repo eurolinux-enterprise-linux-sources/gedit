@@ -26,12 +26,15 @@
 #include <gdk/gdkx.h>
 #endif
 
-struct _GeditAppX11
-{
-	GeditApp parent_instance;
-};
+#define GEDIT_APP_X11_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_APP_X11, GeditAppX11Private))
 
 G_DEFINE_TYPE (GeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
+
+static void
+gedit_app_x11_finalize (GObject *object)
+{
+	G_OBJECT_CLASS (gedit_app_x11_parent_class)->finalize (object);
+}
 
 /* This should go in GtkApplication at some point... */
 
@@ -97,8 +100,10 @@ gedit_app_add_platform_data (GApplication    *app,
 static void
 gedit_app_x11_class_init (GeditAppX11Class *klass)
 {
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
+	object_class->finalize = gedit_app_x11_finalize;
 	app_class->add_platform_data = gedit_app_add_platform_data;
 }
 

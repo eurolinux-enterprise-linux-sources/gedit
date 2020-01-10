@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="pt-BR">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="pt-BR">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use o painel lateral do gedit como um navegador de arquivos.</desc>
     <revision pkgversion="3.8" date="2013-03-13" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -54,40 +52,41 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
   <title>Vendo e abrindo arquivos do painel lateral</title>
-  <p>A maneira mais comum para alternar entre arquivos no <app>gedit</app> é usando as abas no topo da janela no <app>gedit</app>. Em alguns casos, entretanto, especialmente quando você está trabalhando com um número grande de arquivos abertos, você pode achar mais fácil usar o <app>painel lateral</app>.</p> 
+  <p>A maneira mais comum para alternar entre arquivos no <app>gedit</app> é usando as abas no topo da janela no <app>gedit</app>. Em alguns casos, entretanto, especialmente quando você está trabalhando com um número grande de arquivos abertos, você pode achar que é mais fácil usar o <app>painel lateral</app>.</p> 
 
-  <p>Para ativar o painel lateral, selecione <guiseq><gui>Ver</gui> <gui>Painel lateral</gui></guiseq>, ou apenas pressione a tecla <key>F9</key>.</p>
+  <p>Para ativar o <app>Painel lateral</app>, selecione <guiseq><gui>Ver</gui> <gui>Painel lateral</gui></guiseq>, ou apenas pressione a tecla <key>F9</key>.</p>
 
   <note style="note">
-    <p>Você pode alternar o painel lateral entre aberto ou fechado pressionando <key>F9</key> a qualquer momento.</p>
+    <p>Você pode alternar o <gui>Painel lateral</gui> entre aberto ou fechado pressionando <key>F9</key> a qualquer momento.</p>
   </note>
 
-<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
     <title>Abrindo arquivos do painel lateral</title>
-    <p>Para abrir arquivos do painel lateral, primeiro abra o painel lateral selecionando <guiseq><gui>Ver</gui> <gui>Painel lateral</gui></guiseq> (ou pressione <key>F9</key>) e então escolha o <gui>Navegador de arquivos</gui> a partir da lista suspensa no topo do painel.</p>
+    <p>Para abrir arquivos do <app>Painel lateral</app>, primeiro abra o <app>Painel lateral</app> selecionando <guiseq><gui>Ver</gui> <gui>Painel lateral</gui></guiseq>, e então clique no ícone de <gui>Navegador de arquivos</gui> na parte inferior do painel.</p>
 
-    <p>Isso irá ativar o modo <em>Navegador de arquivos</em> do painel lateral. Você pode usar os botões de navegação no topo do painel para localizar e abrir seus arquivos desejados.</p>
+    <p>
+      <media type="image" mime="image/png" src="figures/gedit-side-pane1.png"/>
+    </p>
+
+    <p>Isso irá ativar o modo <em>Navegador de arquivos</em> do <app>Painel lateral</app>. Você pode usar os botões de navegação no topo do painel para localizar e abrir seus arquivos desejados.</p>
   </section>
 
   <section id="sidepane-switch">
     <title>Usando o painel lateral para alternar entre arquivos abertos</title>
-    <p>Quando que você tiver vários arquivos abertos, você pode usar o painel lateral para alternar entre os arquivos abertos. Para listar arquivos abertos, escolha <gui>Documentos</gui> a partir da lista suspensa no topo do painel.</p>
+    <p>Quando que você tiver vários arquivos abertos, você pode usar o painel lateral para alternar entre os arquivos abertos. Para ativar a parte navegador de arquivos do <app>Painel lateral</app>, clique no ícone <gui> arquivo</gui> no parte inferior do <gui>Painel lateral</gui>.</p>
+    
+    <p>
+      <media type="image" mime="image/png" src="figures/gedit-side-pane2.png"/>
+    </p>
 
-    <p>Clicar em algum nome de arquivo no painel lateral abrirá este arquivo para edição.</p>
+    <p>Clicar em algum nome de arquivo no<gui>Painel lateral</gui> irá abir este arquivo para edição.</p>
   </section>
  
  </page>

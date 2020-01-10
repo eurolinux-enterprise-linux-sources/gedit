@@ -26,17 +26,11 @@
 #undef DATADIR
 #include <io.h>
 #include <conio.h>
-#ifndef _WIN32_WINNT
 #define _WIN32_WINNT 0x0501
-#endif
 #include <windows.h>
 #define DATADIR SAVE_DATADIR
 #undef SAVE_DATADIR
 
-struct _GeditAppWin32
-{
-	GeditApp parent_instance;
-};
 
 G_DEFINE_TYPE (GeditAppWin32, gedit_app_win32, GEDIT_TYPE_APP)
 
@@ -120,6 +114,10 @@ gedit_app_win32_startup (GApplication *application)
 
 	setup_path ();
 	prep_console ();
+
+	/* manually set name and icon */
+	g_set_application_name("gedit");
+	gtk_window_set_default_icon_name ("accessories-text-editor");
 }
 
 static void

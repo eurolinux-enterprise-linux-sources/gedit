@@ -15,7 +15,15 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  */
 
 #ifndef GEDIT_STATUSBAR_H
@@ -26,9 +34,31 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUSBAR (gedit_statusbar_get_type ())
+#define GEDIT_TYPE_STATUSBAR		(gedit_statusbar_get_type ())
+#define GEDIT_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_STATUSBAR, GeditStatusbar))
+#define GEDIT_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_STATUSBAR, GeditStatusbarClass))
+#define GEDIT_IS_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_STATUSBAR))
+#define GEDIT_IS_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_STATUSBAR))
+#define GEDIT_STATUSBAR_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_STATUSBAR, GeditStatusbarClass))
 
-G_DECLARE_FINAL_TYPE (GeditStatusbar, gedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
+typedef struct _GeditStatusbar		GeditStatusbar;
+typedef struct _GeditStatusbarPrivate	GeditStatusbarPrivate;
+typedef struct _GeditStatusbarClass	GeditStatusbarClass;
+
+struct _GeditStatusbar
+{
+	GtkStatusbar parent;
+
+	/* <private/> */
+	GeditStatusbarPrivate *priv;
+};
+
+struct _GeditStatusbarClass
+{
+	GtkStatusbarClass parent_class;
+};
+
+GType		 gedit_statusbar_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_statusbar_new			(void);
 
@@ -38,6 +68,10 @@ void		 gedit_statusbar_set_window_state	(GeditStatusbar   *statusbar,
 
 void		 gedit_statusbar_set_overwrite		(GeditStatusbar   *statusbar,
 							 gboolean          overwrite);
+
+void		 gedit_statusbar_set_cursor_position	(GeditStatusbar   *statusbar,
+							 gint              line,
+							 gint              col);
 
 void		 gedit_statusbar_clear_overwrite 	(GeditStatusbar   *statusbar);
 

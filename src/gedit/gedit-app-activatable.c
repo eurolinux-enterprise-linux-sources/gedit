@@ -16,7 +16,8 @@
  *  GNU Library General Public License for more details.
  *
  *  You should have received a copy of the GNU Library General Public License
- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -25,7 +26,6 @@
 
 #include "gedit-app-activatable.h"
 #include "gedit-app.h"
-#include "gedit-app-private.h"
 
 /**
  * SECTION:gedit-app-activatable
@@ -38,23 +38,30 @@
 
 G_DEFINE_INTERFACE(GeditAppActivatable, gedit_app_activatable, G_TYPE_OBJECT)
 
-static void
+void
 gedit_app_activatable_default_init (GeditAppActivatableInterface *iface)
 {
-	/**
-	 * GeditAppActivatable:app:
-	 *
-	 * The app property contains the gedit app for this
-	 * #GeditAppActivatable instance.
-	 */
-	g_object_interface_install_property (iface,
-	                                     g_param_spec_object ("app",
-	                                                          "App",
-	                                                          "The gedit app",
-	                                                          GEDIT_TYPE_APP,
-	                                                          G_PARAM_READWRITE |
-	                                                          G_PARAM_CONSTRUCT_ONLY |
-	                                                          G_PARAM_STATIC_STRINGS));
+	static gboolean initialized = FALSE;
+
+	if (!initialized)
+	{
+		/**
+		 * GeditAppActivatable:app:
+		 *
+		 * The app property contains the gedit app for this
+		 * #GeditAppActivatable instance.
+		 */
+		g_object_interface_install_property (iface,
+		                                     g_param_spec_object ("app",
+		                                                          "App",
+		                                                          "The gedit app",
+		                                                          GEDIT_TYPE_APP,
+		                                                          G_PARAM_READWRITE |
+		                                                          G_PARAM_CONSTRUCT_ONLY |
+		                                                          G_PARAM_STATIC_STRINGS));
+
+		initialized = TRUE;
+	}
 }
 
 /**
@@ -99,21 +106,3 @@ gedit_app_activatable_deactivate (GeditAppActivatable *activatable)
 		iface->deactivate (activatable);
 	}
 }
-
-GeditMenuExtension *
-gedit_app_activatable_extend_menu (GeditAppActivatable *activatable,
-				   const gchar *extension_point)
-{
-	GeditApp *app;
-	GeditMenuExtension *ext;
-
-	g_return_val_if_fail (GEDIT_IS_APP_ACTIVATABLE (activatable), NULL);
-
-	g_object_get (G_OBJECT (activatable), "app", &app, NULL);
-	ext = _gedit_app_extend_menu (app, extension_point);
-	g_object_unref (app);
-
-	return ext;
-}
-
-/* ex:set ts=8 noet: */

@@ -2,18 +2,16 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="da">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use a custom font for your text in gedit.</desc>
+    <link type="seealso" xref="gedit-plugins-text-size"/>
+
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
       <years>2011 2012 2013</years>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
-</info>
+  </info>
 
   <title>Change the default font</title>
 

@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Insertar a data e hora actual na posición do cursor.</desc>
+  <desc>Inserta a data e hora actual na posicíon do cursor</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -24,20 +24,24 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
 <title>Inserir data/hora</title>
 
-  <p>Como o seu propio nome indica, o engadido <gui>Inserir data e hora</gui> permítelle inserir a data e/ou hora na posición actual do cursor. Para activar este engadido, seleccione <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferencias</gui><gui>Engadidos</gui><gui>Inserir data e hora</gui></guiseq>. Para usar o engadido, prema <guiseq><gui>Editar</gui><gui>Inserir data e hora</gui></guiseq>.</p>
+  <p>As this name of this plugin suggests, the <gui>Insert Date/Time</gui>
+  plugin allows you to insert the date and/or time at the current cursor
+  position. To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Insert Date/Time</gui></guiseq>. To use the plugin, press <guiseq>
+  <gui style="menu">Edit</gui><gui>Insert Date and Time</gui></guiseq>.</p>
 
-  <p>Por omisión, o engadido <gui>Inserir data e hora</gui> pediralle o seu formato de hora preferido cada vez que use o engadido. Porén, pode seleccionar o formato de data e hora seleccionando <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferencias</gui><gui>Engadidos</gui><gui>Inserir data e hora</gui><gui>Configurar</gui></guiseq>.</p>
+  <p>By default, the <gui>Insert Date/Time</gui> plugin will prompt you to
+  choose your preferred date/time format each time that you use the plugin.
+  However, you can choose your own default date and time format by selecting
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></guiseq>.
+  </p>
 
 </page>

@@ -10,86 +10,90 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Emacs, Kate and Vim-style modelines support for gedit.</desc>
+  <desc>Emacs, Kate and Vim-style modelines support for gedit</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Modelines</title>
 
-<title>Режим рядків</title>
+  <p>The <app>Modelines</app> plugin allows <app>gedit</app> to analyze the
+  lines of text at the start and end of a file, and then apply a set of
+  document preferences to the file. The <app>Modelines</app> plugin supports a
+  subset of the options used by the <app>Emacs</app>, <app>Kate</app> and
+  <app>Vim</app> text editors.</p>
 
-  <p>Плагін «<app>Режим рядків</app>» дає змогу аналізувати текстові рядки на початку та в кінці файлу, та потім застосовувати набір параметрів документу до файлу. Плагін «<app>Режим рядків</app>» підтримує підмножину опцій, що використовуються текстовими редакторами «<app>Emacs</app>», «<app>Kate</app>» та «<app>Vim</app>».</p>
-
-  <p>Щоб увімкнути плагін «<app>Режим рядків</app>», виберіть <guiseq><gui style="menu">«gedit»</gui> <gui style="menuitem">«Параметри»</gui><gui>«Плагіни»</gui><gui>«Режим рядків»</gui></guiseq>.</p>
+  <p>To enable the <app>Modelines</app> plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>.</p>
 
 <section id="modelines-general">
-  <title>Загальні опції «Режиму рядків»</title>
-  <p>Можна вибрати наступні опції, використовуючи режим рядків в «<app>gedit</app>»:</p>
+  <title>General Modeline Options</title>
+  <p>The following options can be set using <app>gedit</app> modelines:</p>
   <list>
     <item><p>Ширина табуляції</p></item>
-    <item><p>Ширина відступу</p></item>
-    <item><p>Вставка пробілів замість табуляції</p></item>
-    <item><p>Перенесення тексту</p></item>
-    <item><p>Ширина правого поля</p></item>
+    <item><p>Indent width</p></item>
+    <item><p>Inserting spaces instead of tabs</p></item>
+    <item><p>Перенос тексту</p></item>
+    <item><p>Пробіли замість табуляцій</p></item>
   </list>
 
   <note>
-    <p>Параметри, встановленні з використанням режиму рядків, мають пріорітет над іншими параметрами, вказаними в діалоговому вікні параметрів.</p>
+    <p>Preferences set using modelines take precedence over the ones specified
+    in the preference dialog.</p>
   </note>
 </section>
 
 <section id="modelines-emacs">
-  <title>Режим рядків «Emacs»</title>
+  <title>«Стиль редагування» Emacs</title>
 
-  <p>Перші два рядки документу зчитуються для режиму рядків «<app>Emacs</app>». «<app>gedit</app>» підтримує наступні опції режиму рядків «<app>Emacs</app>»:</p>
+  <p>The first two lines of a document are scanned for <app>Emacs</app>
+  modelines, and <app>gedit</app> supports the following <app>Emacs</app>
+  modeline options:</p>
   <list>
-    <item><p>Ширина табуляції</p></item>
-    <item><p>Зміщення відступу</p></item>
-    <item><p>Режим відступу-табуляцій</p></item>
-    <item><p>Автоматичне перенесення тексту</p></item>
+    <item><p>Tab-width</p></item>
+    <item><p>Indent-offset</p></item>
+    <item><p>Indent-tabs-mode</p></item>
+    <item><p>Text auto-wrap</p></item>
   </list>
-  <p>Щоб дізнатися більше про режим рядків «<app>Emacs</app>», перегляньте <link href="http://www.gnu.org/software/emacs/manual/emacs.html">довідку з «GNU Emacs»</link>.</p>
+  <p>For more information on <app>Emacs</app> modelines, visit the
+  <link href="http://www.gnu.org/software/emacs/manual/emacs.html">GNU Emacs
+  Manual</link>.</p>
 </section>
 
 <section id="modelines-kate">
-  <title>Режим рядків «Kate»</title>
+  <title>«Стиль редагування» Kate</title>
 
-  <p>Десять перших та десять останніх рядків документу зчитуються для режиму рядків «<app>Kate</app>». «<app>gedit</app>» підтримує наступні опції режиму рядків «<app>Kate</app>»:</p>
+  <p>The first and last ten lines a document are scanned for <app>Kate</app>
+  modelines, and <app>gedit</app> supports the following <app>Kate</app>
+  modeline options:</p>
 
   <list>
-    <item><p>ширина табуляції</p></item>
-    <item><p>ширина відступу</p></item>
-    <item><p>пробіл-відступ</p></item>
-    <item><p>перенесення слів</p></item>
-    <item><p>перенесення слів стовпчиком</p></item>
+    <item><p>tab-width</p></item>
+    <item><p>indent-width</p></item>
+    <item><p>space-indent</p></item>
+    <item><p>word-wrap</p></item>
+    <item><p>word-wrap-column</p></item>
   </list>
 
-  <p>Щоб дізнатися більше про режим рядків «<app>Kate</app>», відвідайте <link href="http://kate-editor.org/">інтернет-сторінку «Kate»</link>.</p>
+  <p>For more information about <app>Kate</app> modelines, visit the
+  <link href="http://kate-editor.org/">Kate website</link>.</p>
 </section>
 
 <section id="modelines-vim">
-  <title>Режим рядків «Vim»</title>
-  <p>Три перших та три останніх рядки документу зчитуються для режиму рядків «<app>Vim</app>». «<app>gedit</app>» підтримує наступні опції режиму рядків «<app>Vim</app>»:</p>
+  <title>«Стиль редагування» Vim</title>
+  <p>The first and last three lines a document are scanned for <app>Vim</app>
+  modelines, and <app>gedit</app> supports the following <app>Vim</app>
+  modeline options:</p>
 
   <list>
-    <item><p>рт (розгортання табуляції)</p></item>
-    <item><p>пт (позиція табуляції)</p></item>
-    <item><p>шз (ширина зсуву)</p></item>
-    <item><p>перенесення</p></item>
-    <item><p>ширина тексту</p></item>
+    <item><p>et (expandtab)</p></item>
+    <item><p>ts (tabstop)</p></item>
+    <item><p>sw (shiftwidth)</p></item>
+    <item><p>wrap</p></item>
+    <item><p>textwidth</p></item>
   </list>
 
-  <p>Щоб дізнатися більше про режим рядків «<app>Vim</app>», відвідайте <link href="http://www.vim.org/">інтернет-сторінку «Vim»</link>.</p>
+  <p>For more information on <app>Vim</app> modelines, visit the
+  <link href="http://www.vim.org/">Vim website</link>.</p>
 </section>
 </page>

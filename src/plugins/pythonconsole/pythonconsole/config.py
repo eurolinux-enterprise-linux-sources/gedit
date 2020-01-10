@@ -15,7 +15,8 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, see <http://www.gnu.org/licenses/>.
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 # Parts from "Interactive Python-GTK Console" (stolen from epiphany's console.py)
 #     Copyright (C), 1998 James Henstridge <james@daa.com.au>
@@ -42,7 +43,7 @@ class PythonConsoleConfigWidget(object):
         self._ui = Gtk.Builder()
 
     def configure_widget(self):
-        self._ui.add_from_file(self._ui_path)
+        self._ui.add_objects_from_file(self._ui_path, ["grid"])
 
         self.set_colorbutton_color(self._ui.get_object('colorbutton-command'),
                                    self._settings.get_string(self.CONSOLE_KEY_COMMAND_COLOR))
@@ -57,11 +58,10 @@ class PythonConsoleConfigWidget(object):
 
     @staticmethod
     def set_colorbutton_color(colorbutton, value):
-        rgba = Gdk.RGBA()
-        parsed = rgba.parse(value)
+        color = Gdk.color_parse(value)
 
-        if parsed:
-            colorbutton.set_rgba(rgba)
+        if color is not None:
+            colorbutton.set_color(color)
 
     def on_colorbutton_command_color_set(self, colorbutton):
         self._settings.set_string(self.CONSOLE_KEY_COMMAND_COLOR,

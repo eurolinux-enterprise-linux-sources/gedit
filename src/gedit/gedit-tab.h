@@ -15,13 +15,24 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_TAB_H
-#define GEDIT_TAB_H
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
-#include <gtksourceview/gtksource.h>
+#ifndef __GEDIT_TAB_H__
+#define __GEDIT_TAB_H__
+
+#include <gtk/gtk.h>
+
 #include <gedit/gedit-view.h>
 #include <gedit/gedit-document.h>
 
@@ -34,9 +45,9 @@ typedef enum
 	GEDIT_TAB_STATE_REVERTING,
 	GEDIT_TAB_STATE_SAVING,
 	GEDIT_TAB_STATE_PRINTING,
-	GEDIT_TAB_STATE_PRINT_PREVIEWING, /* unused, deprecated */
+	GEDIT_TAB_STATE_PRINT_PREVIEWING,
 	GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
-	GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE, /* unused, deprecated */
+	GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE,
 	GEDIT_TAB_STATE_LOADING_ERROR,
 	GEDIT_TAB_STATE_REVERTING_ERROR,
 	GEDIT_TAB_STATE_SAVING_ERROR,
@@ -46,34 +57,128 @@ typedef enum
 	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } GeditTabState;
 
-#define GEDIT_TYPE_TAB (gedit_tab_get_type())
+/*
+ * Type checking and casting macros
+ */
+#define GEDIT_TYPE_TAB              (gedit_tab_get_type())
+#define GEDIT_TAB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_TAB, GeditTab))
+#define GEDIT_TAB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_TAB, GeditTabClass))
+#define GEDIT_IS_TAB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_TAB))
+#define GEDIT_IS_TAB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_TAB))
+#define GEDIT_TAB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_TAB, GeditTabClass))
 
-G_DECLARE_FINAL_TYPE (GeditTab, gedit_tab, GEDIT, TAB, GtkBox)
+/* Private structure type */
+typedef struct _GeditTabPrivate GeditTabPrivate;
 
-GeditView	*gedit_tab_get_view			(GeditTab            *tab);
+/*
+ * Main object structure
+ */
+typedef struct _GeditTab GeditTab;
+
+struct _GeditTab
+{
+	GtkBox vbox;
+
+	/*< private > */
+	GeditTabPrivate *priv;
+};
+
+/*
+ * Class definition
+ */
+typedef struct _GeditTabClass GeditTabClass;
+
+struct _GeditTabClass
+{
+	GtkBoxClass parent_class;
+
+	void (* drop_uris)	(GeditView *view,
+				 gchar    **uri_list);
+};
+
+/*
+ * Public methods
+ */
+GType 		 gedit_tab_get_type 		(void) G_GNUC_CONST;
+
+GeditView	*gedit_tab_get_view		(GeditTab            *tab);
 
 /* This is only an helper function */
-GeditDocument	*gedit_tab_get_document			(GeditTab            *tab);
+GeditDocument	*gedit_tab_get_document		(GeditTab            *tab);
 
-GeditTab	*gedit_tab_get_from_document		(GeditDocument       *doc);
+GeditTab	*gedit_tab_get_from_document	(GeditDocument       *doc);
 
-GeditTabState	 gedit_tab_get_state			(GeditTab            *tab);
+GeditTabState	 gedit_tab_get_state		(GeditTab	     *tab);
 
-gboolean	 gedit_tab_get_auto_save_enabled	(GeditTab            *tab);
+gboolean	 gedit_tab_get_auto_save_enabled
+						(GeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_enabled	(GeditTab            *tab,
-							 gboolean            enable);
+void		 gedit_tab_set_auto_save_enabled
+						(GeditTab            *tab,
+						 gboolean            enable);
 
-gint		 gedit_tab_get_auto_save_interval	(GeditTab            *tab);
+gint		 gedit_tab_get_auto_save_interval
+						(GeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_interval	(GeditTab            *tab,
-							 gint                interval);
+void		 gedit_tab_set_auto_save_interval
+						(GeditTab            *tab,
+						 gint                interval);
 
-void		 gedit_tab_set_info_bar			(GeditTab            *tab,
-							 GtkWidget           *info_bar);
+void		 gedit_tab_set_info_bar		(GeditTab            *tab,
+						 GtkWidget           *info_bar);
+/*
+ * Non exported methods
+ */
+GtkWidget 	*_gedit_tab_new 		(void);
+
+/* Whether create is TRUE, creates a new empty document if location does
+   not refer to an existing location */
+GtkWidget	*_gedit_tab_new_from_location	(GFile               *location,
+						 const GeditEncoding *encoding,
+						 gint                 line_pos,
+						 gint                 column_pos,
+						 gboolean             create);
+
+GtkWidget	*_gedit_tab_new_from_stream	(GInputStream        *stream,
+						 const GeditEncoding *encoding,
+						 gint                 line_pos,
+						 gint                 column_pos);
+
+gchar 		*_gedit_tab_get_name		(GeditTab            *tab);
+gchar 		*_gedit_tab_get_tooltip		(GeditTab            *tab);
+GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab            *tab);
+void		 _gedit_tab_load		(GeditTab            *tab,
+						 GFile               *location,
+						 const GeditEncoding *encoding,
+						 gint                 line_pos,
+						 gint                 column_pos,
+						 gboolean             create);
+
+void		 _gedit_tab_load_stream		(GeditTab            *tab,
+						 GInputStream        *location,
+						 const GeditEncoding *encoding,
+						 gint                 line_pos,
+						 gint                 column_pos);
+
+void		 _gedit_tab_revert		(GeditTab            *tab);
+void		 _gedit_tab_save		(GeditTab            *tab);
+void		 _gedit_tab_save_as		(GeditTab            *tab,
+						 GFile               *location,
+						 const GeditEncoding *encoding,
+						 GeditDocumentNewlineType newline_type,
+						 GeditDocumentCompressionType compression_type);
+
+void		 _gedit_tab_print		(GeditTab            *tab);
+void		 _gedit_tab_print_preview	(GeditTab            *tab);
+
+void		 _gedit_tab_mark_for_closing	(GeditTab	     *tab);
+
+gboolean	 _gedit_tab_get_can_close	(GeditTab	     *tab);
+
+GtkWidget	*_gedit_tab_get_view_frame	(GeditTab            *tab);
 
 G_END_DECLS
 
-#endif  /* GEDIT_TAB_H  */
+#endif  /* __GEDIT_TAB_H__  */
 
 /* ex:set ts=8 noet: */

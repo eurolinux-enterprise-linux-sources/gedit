@@ -4,21 +4,20 @@
 <info>
   <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision version="3.24" date="2017-09-17" status="review"/>
   <credit type="author">
     <name>Daniel Neel</name>
     <email>dneelyep@gmail.com</email>
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
   <credit type="editor">
     <name>Sindhu S</name>
     <email>sindhus@live.in</email>
   </credit>
   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  <desc>Trier des lignes de texte dans l’ordre alphabétique.</desc>
+  <desc>Trier des lignes de texte dans l'ordre alphabétique</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -63,67 +62,56 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
-    </mal:credit>
   </info>
 
-<title>Trier</title>
+<title>Tri</title>
 
-  <p>Le greffon « Trier » trie les lignes sélectionnées dans l’ordre alphabétique.</p>
+  <p>Le greffon « Trier » trie les lignes sélectionnées dans l'ordre alphabétique.</p>
+
+  <note style="warning">
+    <p>Il est impossible d'utiliser la fonction <gui>Annuler</gui> pour corriger une opération <gui>Trier</gui>. Il est donc recommandé d'enregistrer le document immédiatement avant d'en faire usage. En cas d'erreur de tri, choisissez <guiseq><gui>Fichier</gui><gui>Rétablir</gui></guiseq> pour revenir à la dernière version enregistrée.</p>
+</note>
 
   <section id="enable-sort">
-    <title>Activation du greffon Trier</title>
+    <title>Enable Sort Plugin</title>
 
-    <p>Pour activer le greffon <app>Trier</app> :</p>
+    <p>To enable the <app>Sort</app> plugin:</p>
 
     <steps>
       <item>
-        <p>Choisissez <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Préférences</gui><gui style="tab">Greffons</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Choisissez <gui style="menuitem">Trier</gui> pour activer le greffon.</p>
+        <p>Select <gui style="menuitem">Sort</gui> to enable the plugin.</p>
       </item>
     </steps>
 
   </section>
 
   <section id="using-sort">
-    <title>Utilisation du greffon Trier</title>
+    <title>Using Sort Plugin</title>
 
-    <p>Pour utiliser le greffon <gui>Trier</gui> :</p>
+    <p>To use the <gui>Sort</gui> plugin:</p>
 
     <steps>
       <item>
-        <p>Faites glisser le pointeur de la souris pour sélectionner les lignes de texte voulues.</p>
+        <p>Drag and highlight the desired lines of text.</p>
       </item>
       <item>
-        <p>Choisissez <guiseq><gui style="menu">Outils</gui> <gui style="menuitem">Trier</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Sort</gui></guiseq>.</p>
       </item>
       <item>
-        <p>La boîte de dialogue <gui>Trier</gui> s’ouvre afin de vous permettre de choisir parmi différentes options de tri :</p>
+        <p>La boîte de dialogue <gui>Trier</gui> s'ouvre afin de vous permettre de choisir parmi différentes options de tri :</p>
         <list>
           <item>
-            <p><gui>Inverser l’ordre</gui> classe le texte dans l’ordre alphabétique inverse.</p>
+            <p><gui>Inverser l'ordre</gui> classe le texte dans l'ordre alphabétique inverse.</p>
           </item>
           <item>
             <p><gui>Enlever les doublons</gui> supprime les valeurs de la liste en double.</p>
@@ -131,13 +119,13 @@
           <item>
             <p><gui>Ignorer la casse</gui> ne tient pas compte de la casse.</p>
             <note style="tip">
-              <p>Pour que le tri ignore les caractères en début de ligne, indiquez dans le champ de saisie numérique <gui>Commencer à la colonne</gui> le numéro de colonne du premier caractère devant être utilisé pour le tri.</p>
+              <p>Pour que le tri ignore les caractères en début de ligne, indiquez dans la zone de sélection numérique <gui>Commencer à la colonne</gui> le premier caractère devant être utilisé pour le tri.</p>
             </note>
           </item>
         </list>
       </item>
       <item>
-        <p>Pour lancer le tri, cliquez sur le bouton <gui>Trier</gui>.</p>
+        <p>Pour faire le tri, cliquez sur le bouton <gui>Trier</gui>.</p>
       </item>
     </steps>
   </section>

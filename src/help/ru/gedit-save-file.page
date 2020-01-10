@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-save-file" xml:lang="ru">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-save-file" xml:lang="ru">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Сохранение файла, чтобы продолжить работу с ним позже.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-13" status="review"/>
-    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Синдху С (Sindhu S)</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Шобха Тиаджи (Shobha Tyagi)</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
@@ -25,18 +18,18 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2018.</mal:years>
+      <mal:years>2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Ivan Komaritsyn</mal:name>
-      <mal:email>vantu5z@mail.ru</mal:email>
-      <mal:years>2017.</mal:years>
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
   <title>Сохранение файла</title>
 
-  <p>Чтобы сохранить файл в <app>gedit</app>, нажмите на кнопку <gui style="button">Сохранить</gui> справа на панели инструментов, или просто нажмите <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>При сохранении нового файла, появится диалоговое окно, в котором можно выбрать имя файла, а также каталог в который будет сохранён файл.</p>
+  <p>Чтобы сохранить файл в <app>gedit</app>, нажмите на значок диска с надписью <gui style="button">Сохранить</gui> рядом с ним. Также можно выбрать <guiseq><gui style="menu">Файл</gui> <gui style="menuitem">Сохранить</gui></guiseq>, или просто нажать <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>При сохранении нового файла, появится диалоговое окно <gui>Сохранить файл</gui>, в котором можно выбрать имя файла, а также каталог, в который будет сохранён файл.</p>
 
 </page>

@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets language="PHP">
   <snippet id="class">
-    <text><![CDATA[class ${1:ClassName}${2: extends AnotherClass}
+    <text><![CDATA[#doc
+#	classname:	${1:ClassName}
+#	scope:		${2:PUBLIC}
+#
+#/doc
+
+class ${1:ClassName} ${3:extends AnotherClass}
 {
-    function __construct(${3:argument})
-    {
-        $0
-    }
-}]]></text>
+	#	internal variables
+
+	#	Constructor
+	function __construct (${4:argument})
+	{
+		# code...
+		$0
+	}
+	###
+
+}
+###]]></text>
     <description>class ..</description>
     <tag>class</tag>
   </snippet>
@@ -17,22 +30,28 @@
     <tag>$</tag>
   </snippet>
   <snippet id="do">
-    <text><![CDATA[do {
-    $0
+    <text><![CDATA[do
+{
+	# code...
+	$0
 } while (${1:$a <= 10});]]></text>
     <description>do .. while ..</description>
     <tag>do</tag>
   </snippet>
   <snippet id="elseif">
-    <text><![CDATA[elseif (${1:condition}) {
-    $0
+    <text><![CDATA[elseif (${1:condition})
+{
+	# code...
+	$0
 }]]></text>
     <description>elseif ..</description>
     <tag>elseif</tag>
   </snippet>
   <snippet id="else">
-    <text><![CDATA[else {
-    $0
+    <text><![CDATA[else
+{
+	# code...
+	$0
 }]]></text>
     <description>else ..</description>
     <tag>else</tag>
@@ -48,15 +67,19 @@
     <tag>$</tag>
   </snippet>
   <snippet id="foreach">
-    <text><![CDATA[foreach ($${1:variable} as $${2:key} => $${3:value}) {
-    $0
+    <text><![CDATA[foreach ($${1:variable} as $${2:key} => $${3:value})
+{
+	# code...
+	$0:
 }]]></text>
     <description>foreach ..</description>
     <tag>foreach</tag>
   </snippet>
   <snippet id="for">
-    <text><![CDATA[for ($${1:i} = ${2:0}; $${1:i} < $3; $${1:i}++) {
-    $0
+    <text><![CDATA[for ($${1:i} = ${2:0}; $${1:i} < $3; $${1:i}++)
+{
+	# code...
+	$0
 }]]></text>
     <description>for ..</description>
     <tag>for</tag>
@@ -64,7 +87,7 @@
   <snippet id="function">
     <text><![CDATA[${1:public }function ${2:FunctionName}($3)
 {
-    ${0:# code...}
+	${0:# code...}
 }]]></text>
     <description>function ..</description>
     <tag>function</tag>
@@ -85,18 +108,23 @@
     <tag>iff</tag>
   </snippet>
   <snippet id="ifelse">
-    <text><![CDATA[if (${1:condition}) {
-    ${2}
-} else {
-    ${3}
+    <text><![CDATA[if (${1:condition})
+{
+	${2:# code...}
+}
+else
+{
+	${3:# code...}
 }
 $0]]></text>
     <description>if .. else ..</description>
     <tag>ifelse</tag>
   </snippet>
   <snippet id="if">
-    <text><![CDATA[if (${1:condition}) {
-    $0
+    <text><![CDATA[if (${1:condition})
+{
+	# code...
+	$0
 }]]></text>
     <description>if ..</description>
     <tag>if</tag>
@@ -119,7 +147,7 @@ $0]]></text>
   <snippet id="php">
     <text><![CDATA[<?php
 
-    $0
+	$0
 
 ?>]]></text>
     <description>&lt;?php .. ?&gt;</description>
@@ -162,29 +190,33 @@ $0]]></text>
   </snippet>
   <snippet id="case">
     <text><![CDATA[case '${1:variable}':
-    $0
-    break;]]></text>
+	# code...
+	$0
+break;]]></text>
     <description>case ..</description>
     <tag>case</tag>
   </snippet>
   <snippet id="switch">
-    <text><![CDATA[switch (${1:variable}) {
-    case '${2:value}':
-        ${3}
-        break;
+    <text><![CDATA[switch (${1:variable})
+{
+	case '${2:value}':
+		${3:# code...}
+	break;
 
-    $0
+	$0
 
-    default:
-        ${4}
-        break;
+	default:
+		${4:# code...}
+	break;
 }]]></text>
     <description>switch ..</description>
     <tag>switch</tag>
   </snippet>
   <snippet id="while">
-    <text><![CDATA[while (${1:$a <= 10}) {
-    $0
+    <text><![CDATA[while (${1:$a <= 10})
+{
+	# code...
+	$0
 }]]></text>
     <description>while ..</description>
     <tag>while</tag>

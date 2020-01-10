@@ -1,51 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="cs">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files-from-sidepane" xml:lang="cs">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Jak použít postranní panel editoru gedit k procházení souborů.</desc>
     <revision pkgversion="3.8" date="2013-03-13" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Zobrazení a otevření souborů z postranního panelu</title>
-  <p>Nějběžnějším způsobem přepínání mezi soubory je v editoru <app>gedit</app> používání karet v horní části okna. V některých případech, třeba když pracujete s opravdu velkým množstvím souborů, může být jednodušší cestou použití postranního panelu.</p> 
+  <title>View and open files from the side pane</title>
+  <p>
+    The most common way to switch between files in <app>gedit</app> is by using
+    the tabs at the top of the <app>gedit</app> window. In some cases, though,
+    particularly when you are working with a large number of open files, you
+    may find it easier to use the <app>side pane</app>.
+  </p> 
 
-  <p>Postranní panel aktivujete tak, že vyberete <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></guiseq> nebo zmáčknete klávesu <key>F9</key>.</p>
+  <p>
+    To activate the <app>side pane</app>, select <guiseq><gui>View</gui>
+    <gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key.
+  </p>
 
   <note style="note">
-    <p>Jestli má být postranní panel otevřený nebo zavřený, můžete kdykoliv přepnout zmačknutím <key>F9</key>.</p>
+    <p>
+      You can toggle the <gui>side pane</gui> open or closed by pressing
+      <key>F9</key> at any time.
+    </p>
   </note>
 
-<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
-    <title>Otevírání souborů z postranního panelu</title>
-    <p>Abyste mohli z postranního panelu otevřít soubory, nejdříve jej zobrazte pomocí <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></guiseq> (nebo jen zmáčkněte <key>F9</key>) a pak zvolte <gui>Prohlížeč souborů</gui> z rozbalovací nabídky v horní části panelu.</p>
+    <title>Opening files from the side pane</title>
+    <p>
+      To open files from the <app>side pane</app>, first open the
+      <app>side pane</app> by selecting <guiseq><gui>View</gui>
+      <gui>Side Pane</gui></guiseq>, then click on the <gui>file-browser</gui>
+      icon at the bottom of the pane.
+    </p>
 
-    <p>Tím se aktivuje režim <em>prohlížeče souborů</em> v postranním panelu. Můžete využít tlačítka v horní části panelu k vyhledání a otevření požadovaných souborů.</p>
+    <p>
+      <media type="image" mime="image/png" src="figures/gedit-side-pane1.png"/>
+    </p>
+
+    <p>
+      This will activate the <em>file-browser</em> mode of the
+      <app>side pane</app>. You can then use the navigation buttons at the top
+      of the pane to locate and open your desired files.
+    </p>
   </section>
 
   <section id="sidepane-switch">
-    <title>Používejte postranní panel k přepínání mezi soubory</title>
-    <p>Když máte otevřeno několik souborů, můžete použít postranní panel k přepínání mezi nimi. Pro vypsání souborů zvolte <gui>Dokumenty</gui> z rozbalovací nabídky v horní části panelu.</p>
+    <title>Using the side pane to switch between open files</title>
+    <p>
+      Once you have several files open, you can use the side pane to switch
+      between open files. To activate the file browser portion of the
+      <app>side pane</app>, click on the <gui>file</gui> icon at the bottom of
+      the <gui>side pane</gui>.
+    </p>
+    
+    <p>
+      <media type="image" mime="image/png" src="figures/gedit-side-pane2.png"/>
+    </p>
 
-    <p>Kliknutím na libovolný název souboru v postranním panelu dotyčný soubor otevřete pro úpravy.</p>
+    <p>
+      Clicking on any file name in the <gui>side pane</gui> will open that file
+      for editing.
+    </p>
   </section>
  
  </page>

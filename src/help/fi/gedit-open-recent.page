@@ -3,14 +3,11 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <desc>Access files that you have updated recently.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>sampo555</mal:name>
@@ -35,7 +32,7 @@
 
   <p>Oletuksena <app>gedit</app> tarjoaa nopean pääsyn viiteen viimeisimpään tiedostoon. Äskettäin käytetyn tiedoston avaaminen onnistuu seuraavasti:</p>
   <list type="numbered">
-    <item><p>Click the <gui>Open</gui> button.</p></item>
+    <item><p>Napsauta alaspäin osoittavaa nuolta <gui>Avaa</gui>-painikkeen oikealla puolella.</p></item>
     <item><p><app>gedit</app> näyttää viiden tuoreimman tiedoston listan.</p></item>
     <item><p>Valitse haluamasi tiedosto, ja se avautuu uuteen välilehteen</p></item>
   </list>

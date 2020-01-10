@@ -17,11 +17,19 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_VIEW_H
-#define GEDIT_VIEW_H
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ */
+
+#ifndef __GEDIT_VIEW_H__
+#define __GEDIT_VIEW_H__
 
 #include <gtk/gtk.h>
 
@@ -30,6 +38,9 @@
 
 G_BEGIN_DECLS
 
+/*
+ * Type checking and casting macros
+ */
 #define GEDIT_TYPE_VIEW            (gedit_view_get_type ())
 #define GEDIT_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, GeditView))
 #define GEDIT_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, GeditViewClass))
@@ -37,28 +48,40 @@ G_BEGIN_DECLS
 #define GEDIT_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_VIEW))
 #define GEDIT_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, GeditViewClass))
 
-typedef struct _GeditView		GeditView;
-typedef struct _GeditViewClass		GeditViewClass;
+/* Private structure type */
 typedef struct _GeditViewPrivate	GeditViewPrivate;
+
+/*
+ * Main object structure
+ */
+typedef struct _GeditView		GeditView;
 
 struct _GeditView
 {
 	GtkSourceView view;
 
-	/*< private >*/
+	/*< private > */
 	GeditViewPrivate *priv;
 };
+
+/*
+ * Class definition
+ */
+typedef struct _GeditViewClass		GeditViewClass;
 
 struct _GeditViewClass
 {
 	GtkSourceViewClass parent_class;
 
+	/* FIXME: Do we need placeholders ? */
+
 	void	 (* drop_uris)			(GeditView	 *view,
 						 gchar          **uri_list);
-
-	gpointer padding;
 };
 
+/*
+ * Public methods
+ */
 GType		 gedit_view_get_type     	(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_view_new			(GeditDocument   *doc);
@@ -72,11 +95,11 @@ void		 gedit_view_select_all		(GeditView       *view);
 void		 gedit_view_scroll_to_cursor 	(GeditView       *view);
 
 void 		 gedit_view_set_font		(GeditView       *view,
-						 gboolean         default_font,
+						 gboolean         def,
 						 const gchar     *font_name);
 
 G_END_DECLS
 
-#endif /* GEDIT_VIEW_H */
+#endif /* __GEDIT_VIEW_H__ */
 
 /* ex:set ts=8 noet: */

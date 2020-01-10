@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="fr">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="fr">
 
   <info>
     <title type="link">Éditeur de texte gedit</title>
     <title type="text">Éditeur de texte gedit</title>
 
-    <desc>Page d’accueil du manuel d’aide de gedit</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
 
    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
@@ -62,34 +61,16 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
-    </mal:credit>
   </info>
   
-  <title><media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/> Éditeur de texte gedit</title>
-  <p>Bienvenue dans le manuel d’aide de <app>gedit</app>. Pour accéder à une courte introduction à la plupart des fonctionnalités de base de <app>gedit</app>, mais également à certains raccourcis clavier avancés, consultez les pages <link xref="gedit-quickstart">Premiers pas avec gedit</link> et <link xref="gedit-shortcut-keys">Raccourcis clavier</link>.</p>
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png"> </media> Éditeur de texte gedit</title>
+  <p>Bienvenue dans le manuel d'aide de <app>gedit</app>. Pour accéder à une courte introduction à la plupart des fonctionnalités de base de <app>gedit</app>, mais également à certains raccourcis clavier avancés, consultez les pages <link xref="gedit-quickstart">Premiers pas avec gedit</link> et <link xref="gedit-shortcut-keys">Raccourcis clavier</link>.</p>
 
-  <p>Les autres thèmes d’aide sont regroupés dans les sections ci-dessous. Bon travail avec <app>gedit</app> !</p>
+  <p>Les autres thèmes d'aide sont regroupés dans les sections ci-dessous. Bon travail avec <app>gedit</app> !</p>
 
   <section id="gedit-working-with-files">
     <title>Manipulation des fichiers</title>

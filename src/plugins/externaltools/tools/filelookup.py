@@ -18,20 +18,17 @@
 
 import os
 from gi.repository import Gio, Gedit
-from .functions import *
-
 
 class FileLookup:
     """
     This class is responsible for looking up files given a part or the whole
-    path of a real file. The lookup is delegated to providers wich use
-    different methods of trying to find the real file.
+    path of a real file. The lookup is delegated to providers wich use different
+    methods of trying to find the real file.
     """
 
-    def __init__(self, window):
+    def __init__(self):
         self.providers = []
         self.providers.append(AbsoluteFileLookupProvider())
-        self.providers.append(BrowserRootFileLookupProvider(window))
         self.providers.append(CwdFileLookupProvider())
         self.providers.append(OpenDocumentRelPathFileLookupProvider())
         self.providers.append(OpenDocumentFileLookupProvider())
@@ -80,24 +77,6 @@ class AbsoluteFileLookupProvider(FileLookupProvider):
             return None
 
 
-class BrowserRootFileLookupProvider(FileLookupProvider):
-    """
-    This lookup provider tries to find a file specified by the path relative to
-    the file browser root.
-    """
-    def __init__(self, window):
-        self.window = window
-
-    def lookup(self, path):
-        root = file_browser_root(self.window)
-        if root:
-            real_path = os.path.join(root, path)
-            if os.path.isfile(real_path):
-                return Gio.file_new_for_path(real_path)
-
-        return None
-
-
 class CwdFileLookupProvider(FileLookupProvider):
     """
     This lookup provider tries to find a file specified by the path relative to
@@ -131,8 +110,8 @@ class OpenDocumentRelPathFileLookupProvider(FileLookupProvider):
             return None
 
         for doc in Gio.Application.get_default().get_documents():
-            if doc.get_file().is_local():
-                location = doc.get_file().get_location()
+            if doc.is_local():
+                location = doc.get_location()
                 if location:
                     rel_path = location.get_parent().get_path()
                     joined_path = os.path.join(rel_path, path)
@@ -156,8 +135,8 @@ class OpenDocumentFileLookupProvider(FileLookupProvider):
             return None
 
         for doc in Gio.Application.get_default().get_documents():
-            if doc.get_file().is_local():
-                location = doc.get_file().get_location()
+            if doc.is_local():
+                location = doc.get_location()
                 if location and location.get_uri().endswith(path):
                     return location
         return None

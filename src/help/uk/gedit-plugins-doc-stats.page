@@ -10,33 +10,33 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>View document statistics.</desc>
+  <desc>View document statistics</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Document statistics</title>
 
-<title>Статистика документу</title>
-
-  <p>Плагін «<em>Статистика документу</em>» надає різні статистичні дані про поточний документ. Щоб увімкнути цей плагін, виберіть <guiseq><gui style="menu">«gedit»</gui><gui style="menuitem">«Параметри»</gui> <gui>«Плагіни»</gui><gui>«Статистика документу»</gui></guiseq>.</p>
+  <p>The <em>Document Statistics</em> plugin shows you various statistics about
+  your current document. To enable this plugin, select 
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Document Statistics</gui></guiseq>.</p>
 
 <section id="using-doc-stats">
-  <title>Використання «Статистики документу»</title>
+  <title>Using Document Statistics</title>
 
-  <p>Як тільки плагін увімкнено, використовуйте його, вибравши <guiseq><gui>«Інструменти»</gui> ""<gui>«Статистика документу»</gui></guiseq>. У вікні відобразиться інформація про документ, включаючи кількість слів, рядків, символів, символів без пробілів та розмір файлу в байтах.</p>
+  <p>Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui>
+  <gui>Document Statistics</gui></guiseq>. A window will display the
+  statistical information of your document, including the number of words,
+  lines, characters, non-space characters, and the size of your file in
+  bytes.</p>
 
-  <p>Можна також використовувати «<em>Статистику документу</em>» для відображення інформації про фрагмент документу. Щоб зробити це, використовуйте вказівник миші для вибору фрагменту тексту, який потрібно дослідити, виберіть <guiseq><gui>«Інструменти»</gui><gui>«Статистика документу»</gui></guiseq>. Відобразиться інформація і про весь документ, і про фрагмент вибраного тексту.</p>
+  <p>You can also use <em>Document Statistics</em> to show you information about
+  just a portion of your document. To do this, use the mouse pointer to select
+  the portion of text that you want to examine, and then select
+  <guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>.
+  <app>Gedit</app> will display information for both your entire document, and
+  for the portion of text that you highlighted.</p>
 </section>
 
 </page>

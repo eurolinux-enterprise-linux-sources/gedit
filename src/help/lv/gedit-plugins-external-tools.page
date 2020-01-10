@@ -12,15 +12,21 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Apstrādāt atvērtās datnes ar skriptiem un mijiedarboties ar citām lietotnēm.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Apstrādāt atvērtās datnes ar skriptiem un mijiedarboties ar citām lietotnēm</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
 </info>
 
 <title>Ārējie rīki</title>
 
-  <p>Spraudnis <em>Ārējie rīki</em> var palīdzēt vienkāršot bieži veicamos uzdevumus. Tas paplašina <app>gedit</app> funkcionalitāti ar iespējām darbināt skriptus <app>gedit</app> un mijiedarboties ar citām programmām. Lai ieslēgtu spraudni <app>Ārējie rīki</app>, izvēlieties <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Iestatījumi</gui><gui>Spraudņi</gui><gui>Ārējie rīki</gui></guiseq>.</p>
+  <p>The <em>External Tools</em> plugin can help simplify repetitive tasks.
+  Specifically, it extends <app>gedit</app> by helping you to run scripts on
+  your working files, and by allowing <app>gedit</app> to interact with other
+  programs on your computer. To enable the <app>External Tools</app> plugin,
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
     <title>Konfigurēt Ārējo rīku spraudni</title>

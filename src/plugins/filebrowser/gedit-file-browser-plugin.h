@@ -15,11 +15,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_FILE_BROWSER_PLUGIN_H
-#define GEDIT_FILE_BROWSER_PLUGIN_H
+#ifndef __GEDIT_FILE_BROWSER_PLUGIN_H__
+#define __GEDIT_FILE_BROWSER_PLUGIN_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -44,7 +45,7 @@ typedef struct _GeditFileBrowserPluginClass   GeditFileBrowserPluginClass;
 
 struct _GeditFileBrowserPlugin
 {
-	GObject parent_instance;
+	PeasExtensionBase parent_instance;
 
 	/* < private > */
 	GeditFileBrowserPluginPrivate *priv;
@@ -52,7 +53,7 @@ struct _GeditFileBrowserPlugin
 
 struct _GeditFileBrowserPluginClass
 {
-	GObjectClass parent_class;
+	PeasExtensionBaseClass parent_class;
 };
 
 /*
@@ -65,6 +66,6 @@ G_MODULE_EXPORT void	peas_register_types			(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_PLUGIN_H */
+#endif /* __GEDIT_FILE_BROWSER_PLUGIN_H__ */
 
-/* ex:set ts=8 noet: */
+/* ex:ts=8:noet: */

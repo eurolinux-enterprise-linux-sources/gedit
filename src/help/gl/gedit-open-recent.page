@@ -3,14 +3,11 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <desc>Acceda a ficheiros usados recentemente.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -21,13 +18,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -35,7 +26,7 @@
 
   <p>Por omisión, <app>gedit</app> fornece acceso doado a cinco dos ficheiros máis recentes usados. Aquí móstrase como pode abrir un ficheiro usado recentemente.</p>
   <list type="numbered">
-    <item><p>Prema <gui>Abrir</gui>.</p></item>
+    <item><p>Prema a frecha cara abaixo xunto ao botón <gui>Abrir</gui>.</p></item>
     <item><p><app>gedit</app> mostrará unha lista dos cinco ficheiros máis recentes usados.</p></item>
     <item><p>Seleccione o ficheiro que queira e abrirase nunha lapela nova.</p></item>
   </list>

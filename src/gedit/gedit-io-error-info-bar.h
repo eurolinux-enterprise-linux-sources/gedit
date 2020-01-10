@@ -15,28 +15,38 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_IO_ERROR_INFO_BAR_H
-#define GEDIT_IO_ERROR_INFO_BAR_H
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
-#include <gtksourceview/gtksource.h>
+#ifndef __GEDIT_IO_ERROR_INFO_BAR_H__
+#define __GEDIT_IO_ERROR_INFO_BAR_H__
+
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-GtkWidget	*gedit_io_loading_error_info_bar_new			(GFile                   *location,
-									 const GtkSourceEncoding *encoding,
-									 const GError            *error);
+GtkWidget	*gedit_io_loading_error_info_bar_new			(GFile               *location,
+									 const GeditEncoding *encoding,
+									 const GError        *error);
 
 GtkWidget	*gedit_unrecoverable_reverting_error_info_bar_new	(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_conversion_error_while_saving_info_bar_new	(GFile                   *location,
-									 const GtkSourceEncoding *encoding,
-									 const GError            *error);
+GtkWidget	*gedit_conversion_error_while_saving_info_bar_new	(GFile               *location,
+									 const GeditEncoding *encoding,
+									 const GError        *error);
 
-const GtkSourceEncoding
+const GeditEncoding
 		*gedit_conversion_error_info_bar_get_encoding		(GtkWidget           *info_bar);
 
 GtkWidget	*gedit_file_already_open_warning_info_bar_new		(GFile               *location);
@@ -55,10 +65,8 @@ GtkWidget	*gedit_externally_modified_info_bar_new		 	(GFile               *locat
 
 GtkWidget	*gedit_invalid_character_info_bar_new			(GFile               *location);
 
-GtkWidget	*gedit_network_unavailable_info_bar_new			(GFile               *location);
-
 G_END_DECLS
 
-#endif  /* GEDIT_IO_ERROR_INFO_BAR_H  */
+#endif  /* __GEDIT_IO_ERROR_INFO_BAR_H__  */
 
 /* ex:set ts=8 noet: */

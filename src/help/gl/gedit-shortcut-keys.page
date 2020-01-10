@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:ui="http://projectmallard.org/experimental/ui/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="gl">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use atallos do teclado para traballar máis rápido.</desc>
-    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
-    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -25,19 +22,8 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
-    <credit type="author copyright">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -49,13 +35,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -63,22 +43,38 @@
 
   <p>Use as <gui>teclas rápidas</gui> para realizar tarefas comúns máis rapidamente que co rato e os menús. As seguintes táboas listan tódalas teclas rápidas de <app>gedit</app>.</p>
 
-    <table rules="rows" frame="top bottom" ui:expanded="true">
+<!--  
+Please skip this list for now. I'm not sure if it is needed.
+  <list>
+    <title>Types of shortcut keys</title>
+    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
+    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
+    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
+    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
+    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
+    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
+    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
+  </list>
+-->
+
+    <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Atallos de teclado relacionados coas lapelas</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><p>Cambiar á seguinte lapela á esquerda</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>RePáx</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
+          <key>PageUp</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Cambiar á seguinte lapela á dereita</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>AvPáx</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
+          <key>PageDown</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Pechar lapela</p></td>
@@ -86,59 +82,38 @@
         </tr>
         <tr>
           <td><p>Gardar todas as lapelas</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>L</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>L</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Pechar todas as lapelas</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>W</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Reabrir a lapela pechada máis recentemente</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key><key>T</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>W</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Saltar á <var>n</var>a lapela</p></td>
-          <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Grupo de lapelas novo</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Grupo de lapelas anterior</p></td>
-          <td><p><keyseq><key>Maiús</key><key>Ctrl</key> <key>Alt</key><key>Av páx</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Grupo de lapelas seguinte</p></td>
-          <td><p><keyseq><key>Maiús</key><key>Ctrl</key> <key>Alt</key><key>Re páx</key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key>
+	  <var>n</var></key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Atallos de teclado para traballar con ficheiros</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Crear un documento novo nunha xanela nova</p></td>
+          <td><p>Crear un documento novo</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Crear un documento novo nunha lapela nova</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Abrir un documento</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
-        </tr>
-        <tr>
-           <td><p>Abrir a xanela de <gui>Apertura rápida</gui>.</p></td>
-           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Gardar o documento actual</p></td>
@@ -146,7 +121,8 @@
         </tr>
         <tr>
           <td><p>Gardar o documento actual cun nome do ficheiro novo</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>S</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>S</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Imprimir o documento actual</p></td>
@@ -154,7 +130,8 @@
         </tr>
         <tr>
           <td><p>Vista previa de impresión</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>P</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>P</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Pechar o documento actual</p></td>
@@ -167,38 +144,38 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Atallos de teclado para editar ficheiros</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Moverse ao comezo da liña actual</p></td>
-          <td><p><key>Incio</key></p></td>
+          <td><p>Move to the beginning of the current line</p></td>
+          <td><p><key>Home</key></p></td>
         </tr>
         <tr>
-          <td><p>Moverse ao final da liña actual</p></td>
-          <td><p><key>Fin</key></p></td>
+          <td><p>Move to the end of the current line</p></td>
+          <td><p><key>End</key></p></td>
         </tr>
         <tr>
-          <td><p>Moverse ao inicio do documento</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Inicio</key></keyseq></p></td>
+          <td><p>Move to the beginning of the document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Moverse ao fin do documento</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Fin</key></keyseq></p></td>
+          <td><p>Move to the end of the document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Mover a selección de palabra á palabra da dereita</p></td>
-          <td><p><keyseq><key>Alt</key><key>Frecha dereita</key></keyseq></p></td>
+          <td><p>Move the selected word right one word</p></td>
+          <td><p><keyseq><key>Alt</key><key>Right Arrow</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Mover a selección de palabra á palabra da esquerda</p></td>
-          <td><p><keyseq><key>Alt</key><key>Frecha esquerda</key></keyseq></p></td>
+          <td><p>Move the selected word left one word</p></td>
+          <td><p><keyseq><key>Alt</key><key>Left Arrow</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Desfacer a última acción</p></td>
@@ -206,7 +183,8 @@
         </tr>
         <tr>
           <td><p>Refacer a última acción</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>Z</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>Z</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Cortar o texto ou rexión seleccionada e poñelo no portapapeis</p></td>
@@ -230,61 +208,42 @@
         </tr>
         <tr>
           <td><p>Mover a liña seleccionada unha liña arriba</p></td>
-          <td><p><keyseq><key>Alt</key><key>Frecha arriba</key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key>Up Arrow</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Mover a liña seleccionada unha liña abaixo</p></td>
-          <td><p><keyseq><key>Alt</key><key>Frecha abaixo</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Engadir unha parada de tabulación</p></td>
-          <td><p><keyseq><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Eliminar unha parada de tabulación</p></td>
-          <td><p><keyseq><key>Maiús</key><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Converter o texto seleccionado a maiúsculas</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Converter o texto seleccionado a minúsculas</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Cambiar a capitalización do texto seleccionado</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Atallos de teclado para mostrar e ocultar paneis</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Mostrar / ocultar o panel lateral</p></td>
+          <td><p>Mostrar/agochar o panel lateral</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Abrir o menú de ficheiros</p></td>
-          <td><p><key>F10</key></p></td>  
+          <td><p>Mostrar/agochar o panel inferior</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Atallos de teclado para buscas</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>
@@ -298,7 +257,7 @@
         </tr>
         <tr>
           <td><p>Buscar a seguinte instancia anterior da cadea</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key><key>G</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Buscar e substituír</p></td>
@@ -306,27 +265,28 @@
         </tr>
         <tr>
           <td><p>Limpar o resultado</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>K</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>K</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Ir á liña</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>J</key></keyseq>.</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>I</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Atallos de teclado para as ferramentass</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><p>Comprobar ortografía</p></td>
-          <td><p><keyseq><key>Maiús</key><key>F7</key></keyseq></p></td>
+          <td><p><keyseq><key>Shift</key><key>F7</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Eliminar espazos finais (con engadido)</p></td>
@@ -338,17 +298,18 @@
         </tr>
         <tr>
           <td><p>Listado de cartafol (con engadido)</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>D</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>D</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Atallos de teclado para a axuda</title>
       <thead>
         <tr>
-          <td><p>Acción</p></td>
-          <td><p>Atallo de teclado</p></td>
+          <td><p>Para facer isto</p></td>
+          <td><p>Prema isto</p></td>
         </tr>
       </thead>
       <tbody>

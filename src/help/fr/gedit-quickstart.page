@@ -5,11 +5,10 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>Décrire brièvement gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -60,37 +59,19 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Premiers pas avec gedit</title>
-  <p><app>gedit</app> est un éditeur de texte complet pour l’environnement de bureau GNOME. Vous pouvez l’utiliser pour préparer des notes et des documents simples ou vous pouvez utiliser certaines de ses fonctionnalités avancées pour en faire votre propre environnement de développement logiciel.</p>
+  <p><app>gedit</app> est un éditeur de texte complet pour l'environnement de bureau GNOME. Vous pouvez l'utiliser pour préparer des notes et des documents simples ou vous pouvez utiliser certaines de ses fonctionnalités avancées pour en faire votre propre environnement de développement logiciel.</p>
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Une fois que <app>gedit</app> est démarré, vous pouvez commencer à écrire aussitôt. Pour enregistrer votre texte, cliquez simplement sur l’icône <gui>Enregistrer</gui> dans la barre d’outils de <app>gedit</app>.</p>
+  <p>Une fois que <app>gedit</app> est démarré, vous pouvez commencer à écrire aussitôt. Pour enregistrer votre texte, cliquez simplement sur <gui>Enregistrer</gui>.</p>
 
-  <p>Pour apprendre les fonctionnalités supplémentaires de <app>gedit</app> et pour obtenir de l’aide sur la réalisation de tâches supplémentaires, explorez <link xref="index">les autres parties</link> de l’aide <app>gedit</app>.</p>
+  <p>Pour apprendre les fonctionnalités supplémentaires de <app>gedit</app> et pour obtenir de l'aide sur la réalisation de tâches supplémentaires, explorez <link xref="index">les autres parties</link> de l'aide <app>gedit</app>.</p>
 
 </page>

@@ -15,24 +15,38 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 /*
  * Verbose error reporting for file I/O operations (load, save, revert, create)
  */
 
-#include "gedit-io-error-info-bar.h"
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 #include <errno.h>
 #include <string.h>
+
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
-#include "gedit-encodings-combo-box.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
 #include "gedit-document.h"
+#include "gedit-io-error-info-bar.h"
+#include <gedit/gedit-encodings-combo-box.h>
 
 #define MAX_URI_IN_DIALOG_LENGTH 50
 
@@ -80,17 +94,41 @@ set_contents (GtkWidget *area,
 }
 
 static void
-set_info_bar_text (GtkWidget   *info_bar,
-		   const gchar *primary_text,
-		   const gchar *secondary_text)
+info_bar_add_stock_button_with_text (GtkInfoBar  *info_bar,
+				     const gchar *text,
+				     const gchar *stock_id,
+				     gint         response_id)
 {
+	GtkWidget *button;
+	GtkWidget *image;
+
+	button = gtk_info_bar_add_button (info_bar, text, response_id);
+	image = gtk_image_new_from_stock (stock_id, GTK_ICON_SIZE_BUTTON);
+	gtk_button_set_image (GTK_BUTTON (button), image);
+}
+
+static void
+set_info_bar_text_and_icon (GtkWidget   *info_bar,
+			    const gchar *icon_stock_id,
+			    const gchar *primary_text,
+			    const gchar *secondary_text)
+{
+	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
 	GtkWidget *primary_label;
 	GtkWidget *secondary_label;
 
+	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+
+	image = gtk_image_new_from_stock (icon_stock_id, GTK_ICON_SIZE_DIALOG);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
+
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	primary_label = gtk_label_new (primary_markup);
@@ -116,8 +154,8 @@ set_info_bar_text (GtkWidget   *info_bar,
 		gtk_widget_set_halign (secondary_label, GTK_ALIGN_START);
 	}
 
-	gtk_widget_show_all (vbox);
-	set_contents (info_bar, vbox);
+	gtk_widget_show_all (hbox_content);
+	set_contents (info_bar, hbox_content);
 }
 
 static GtkWidget *
@@ -127,20 +165,23 @@ create_io_loading_error_info_bar (const gchar *primary_text,
 {
 	GtkWidget *info_bar;
 
-	info_bar = gtk_info_bar_new ();
+	info_bar = gtk_info_bar_new_with_buttons (
+					GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					NULL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_ERROR);
-	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
 
-	set_info_bar_text (info_bar,
-			   primary_text,
-			   secondary_text);
+	set_info_bar_text_and_icon (info_bar,
+					"gtk-dialog-error",
+					primary_text,
+					secondary_text);
 
 	if (recoverable_error)
 	{
-		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-					 _("_Retry"),
-					 GTK_RESPONSE_OK);
+		info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
+						     _("_Retry"),
+						     GTK_STOCK_REFRESH,
+						     GTK_RESPONSE_OK);
 	}
 
 	return info_bar;
@@ -159,7 +200,7 @@ parse_gio_error (gint          code,
 	{
 		case G_IO_ERROR_NOT_FOUND:
 		case G_IO_ERROR_NOT_DIRECTORY:
-			*error_message = g_strdup_printf (_("Could not find the file “%s”."),
+			*error_message = g_strdup_printf (_("Could not find the file %s."),
 							  uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 					      	       "location correctly and try again."));
@@ -177,16 +218,16 @@ parse_gio_error (gint          code,
 
 				if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 				{
-					scheme_markup = g_markup_escape_text (scheme_string, -1);
+					scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 					/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-					*message_details = g_strdup_printf (_("Unable to handle “%s:” locations."),
+					*message_details = g_strdup_printf (_("gedit cannot handle %s locations."),
 									   scheme_markup);
 					g_free (scheme_markup);
 				}
 				else
 				{
-					*message_details = g_strdup (_("Unable to handle this location."));
+					*message_details = g_strdup (_("gedit cannot handle this location."));
 				}
 
 				g_free (scheme_string);
@@ -194,19 +235,22 @@ parse_gio_error (gint          code,
 			break;
 
 		case G_IO_ERROR_NOT_MOUNTABLE_FILE:
-		case G_IO_ERROR_NOT_MOUNTED:
-			*message_details = g_strdup (_("The location of the file cannot be accessed."));
+			*message_details = g_strdup (_("The location of the file cannot be mounted."));
 			break;
 
+		case G_IO_ERROR_NOT_MOUNTED:
+			*message_details = g_strdup( _("The location of the file cannot be accessed because it is not mounted."));
+
+			break;
 		case G_IO_ERROR_IS_DIRECTORY:
-			*error_message = g_strdup_printf (_("“%s” is a directory."),
+			*error_message = g_strdup_printf (_("%s is a directory."),
 							 uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 						      "location correctly and try again."));
 			break;
 
 		case G_IO_ERROR_INVALID_FILENAME:
-			*error_message = g_strdup_printf (_("“%s” is not a valid location."),
+			*error_message = g_strdup_printf (_("%s is not a valid location."),
 							 uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 						      "location correctly and try again."));
@@ -237,12 +281,12 @@ parse_gio_error (gint          code,
 						host_name = gedit_utils_make_valid_utf8 (hn);
 						g_free (hn);
 
-						host_markup = g_markup_escape_text (host_name, -1);
+						host_markup = g_markup_printf_escaped ("<i>%s</i>", host_name);
 						g_free (host_name);
 
+						/* Translators: %s is a host name */
 						*message_details = g_strdup_printf (
-							/* Translators: %s is a host name */
-							_("Host “%s” could not be found. "
+							_("Host %s could not be found. "
 							"Please check that your proxy settings "
 							"are correct and try again."),
 							host_markup);
@@ -265,12 +309,35 @@ parse_gio_error (gint          code,
 			break;
 
 		case G_IO_ERROR_NOT_REGULAR_FILE:
-			*message_details = g_strdup_printf (_("“%s” is not a regular file."),
+			*message_details = g_strdup_printf (_("%s is not a regular file."),
 							   uri_for_display);
 			break;
 
 		case G_IO_ERROR_TIMED_OUT:
 			*message_details = g_strdup (_("Connection timed out. Please try again."));
+			break;
+
+		default:
+			ret = FALSE;
+			break;
+	}
+
+	return ret;
+}
+
+static gboolean
+parse_gedit_error (gint          code,
+	           gchar       **error_message,
+	           gchar       **message_details,
+	           GFile        *location,
+	           const gchar  *uri_for_display)
+{
+	gboolean ret = TRUE;
+
+	switch (code)
+	{
+		case GEDIT_DOCUMENT_ERROR_TOO_BIG:
+			*message_details = g_strdup (_("The file is too big."));
 			break;
 
 		default:
@@ -298,6 +365,14 @@ parse_error (const GError *error,
 				       location,
 				       uri_for_display);
 	}
+	else if (error->domain == GEDIT_DOCUMENT_ERROR)
+	{
+		ret = parse_gedit_error (error->code,
+					 error_message,
+					 message_details,
+					 location,
+					 uri_for_display);
+	}
 
 	if (!ret)
 	{
@@ -310,7 +385,7 @@ parse_error (const GError *error,
 
 GtkWidget *
 gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
-						  const GError *error)
+						      const GError *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
@@ -321,8 +396,8 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_LOADER_ERROR ||
-			      error->domain == G_IO_ERROR, NULL);
+	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) ||
+			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -334,12 +409,12 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_FOUND))
 	{
-		message_details = g_strdup (_("Cannot find the requested file. "
+		message_details = g_strdup (_("gedit cannot find the file. "
 					      "Perhaps it has recently been deleted."));
 	}
 	else
@@ -349,7 +424,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 
 	if (error_message == NULL)
 	{
-		error_message = g_strdup_printf (_("Could not revert the file “%s”."),
+		error_message = g_strdup_printf (_("Could not revert the file %s."),
 						 uri_for_display);
 	}
 
@@ -402,75 +477,6 @@ create_combo_box (GtkWidget *info_bar,
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 }
 
-GtkWidget *
-gedit_network_unavailable_info_bar_new (GFile *location)
-{
-	GtkWidget *info_bar;
-	GtkWidget *hbox_content;
-	GtkWidget *vbox;
-	gchar *primary_markup;
-	gchar *secondary_markup;
-	GtkWidget *primary_label;
-	GtkWidget *secondary_label;
-	gchar *primary_text;
-	const gchar *secondary_text;
-	gchar *full_formatted_uri;
-	gchar *uri_for_display;
-	gchar *temp_uri_for_display;
-
-	g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-	full_formatted_uri = g_file_get_parse_name (location);
-
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
-							        MAX_URI_IN_DIALOG_LENGTH);
-	g_free (full_formatted_uri);
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
-	g_free (temp_uri_for_display);
-
-	info_bar = gtk_info_bar_new ();
-	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
-				       GTK_MESSAGE_WARNING);
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
-
-	primary_text = g_strdup_printf (_("The location “%s” is not currently reachable."),
-	                                uri_for_display);
-	g_free (uri_for_display);
-
-	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
-	g_free (primary_text);
-	primary_label = gtk_label_new (primary_markup);
-	g_free (primary_markup);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, TRUE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_widget_set_halign (primary_label, GTK_ALIGN_START);
-	gtk_widget_set_can_focus (primary_label, TRUE);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
-
-	secondary_text = _("Your system is offline. Check your network.");
-	secondary_markup = g_strdup_printf ("<small>%s</small>",
-					    secondary_text);
-	secondary_label = gtk_label_new (secondary_markup);
-	g_free (secondary_markup);
-
-	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, TRUE, TRUE, 0);
-	gtk_widget_set_can_focus (secondary_label, TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	gtk_widget_set_halign (secondary_label, GTK_ALIGN_START);
-
-	gtk_widget_show_all (hbox_content);
-	set_contents (info_bar, hbox_content);
-
-	return info_bar;
-}
-
 static GtkWidget *
 create_conversion_error_info_bar (const gchar *primary_text,
 				  const gchar *secondary_text,
@@ -478,6 +484,7 @@ create_conversion_error_info_bar (const gchar *primary_text,
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -485,11 +492,11 @@ create_conversion_error_info_bar (const gchar *primary_text,
 	GtkWidget *secondary_label;
 
 	info_bar = gtk_info_bar_new ();
-	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
 
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Retry"),
-				 GTK_RESPONSE_OK);
+	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
+					     _("_Retry"),
+					     GTK_STOCK_REDO,
+					     GTK_RESPONSE_OK);
 
 	if (edit_anyway)
 	{
@@ -507,7 +514,15 @@ create_conversion_error_info_bar (const gchar *primary_text,
 					       GTK_MESSAGE_ERROR);
 	}
 
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 GTK_STOCK_CANCEL,
+				 GTK_RESPONSE_CANCEL);
+
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+
+	image = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -544,13 +559,14 @@ create_conversion_error_info_bar (const gchar *primary_text,
 }
 
 GtkWidget *
-gedit_io_loading_error_info_bar_new (GFile                   *location,
-				     const GtkSourceEncoding *encoding,
-				     const GError            *error)
+gedit_io_loading_error_info_bar_new (GFile               *location,
+				     const GeditEncoding *encoding,
+				     const GError        *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
 	gchar *full_formatted_uri;
+	gchar *encoding_name;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 	GtkWidget *info_bar;
@@ -558,11 +574,11 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	gboolean convert_error = FALSE;
 
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_LOADER_ERROR ||
-			      error->domain == G_IO_ERROR ||
-			      error->domain == G_CONVERT_ERROR, NULL);
+	g_return_val_if_fail ((error->domain == G_CONVERT_ERROR) ||
+			      (error->domain == GEDIT_DOCUMENT_ERROR) ||
+			      (error->domain == G_IO_ERROR), NULL);
 
-	if (location != NULL)
+	if (location)
 	{
 		full_formatted_uri = g_file_get_parse_name (location);
 	}
@@ -579,8 +595,13 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
+
+	if (encoding != NULL)
+		encoding_name = gedit_encoding_to_string (encoding);
+	else
+		encoding_name = g_strdup ("UTF-8");
 
 	if (is_gio_error (error, G_IO_ERROR_TOO_MANY_LINKS))
 	{
@@ -591,18 +612,19 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 		message_details = g_strdup (_("You do not have the permissions necessary to open the file."));
 	}
 	else if ((is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding == NULL) ||
-		 (error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
-		  error->code == GTK_SOURCE_FILE_LOADER_ERROR_ENCODING_AUTO_DETECTION_FAILED))
+	         (error->domain == GEDIT_DOCUMENT_ERROR &&
+	         error->code == GEDIT_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
 	{
-		message_details = g_strconcat (_("Unable to detect the character encoding."), "\n",
+		message_details = g_strconcat (_("gedit has not been able to detect "
+					         "the character encoding."), "\n",
 					       _("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a character encoding from the menu and try again."), NULL);
 		convert_error = TRUE;
 	}
-	else if (error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
-		 error->code == GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK)
+	else if (error->domain == GEDIT_DOCUMENT_ERROR &&
+	         error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 	{
-		error_message = g_strdup_printf (_("There was a problem opening the file “%s”."),
+		error_message = g_strdup_printf (_("There was a problem opening the file %s."),
 						 uri_for_display);
 		message_details = g_strconcat (_("The file you opened has some invalid characters. "
 					       "If you continue editing this file you could corrupt this "
@@ -614,16 +636,12 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	}
 	else if (is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding != NULL)
 	{
-		gchar *encoding_name = gtk_source_encoding_to_string (encoding);
-
-		error_message = g_strdup_printf (_("Could not open the file “%s” using the “%s” character encoding."),
+		error_message = g_strdup_printf (_("Could not open the file %s using the %s character encoding."),
 						 uri_for_display,
 						 encoding_name);
 		message_details = g_strconcat (_("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a different character encoding from the menu and try again."), NULL);
 		convert_error = TRUE;
-
-		g_free (encoding_name);
 	}
 	else
 	{
@@ -632,7 +650,7 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 
 	if (error_message == NULL)
 	{
-		error_message = g_strdup_printf (_("Could not open the file “%s”."),
+		error_message = g_strdup_printf (_("Could not open the file %s."),
 						 uri_for_display);
 	}
 
@@ -650,6 +668,7 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	}
 
 	g_free (uri_for_display);
+	g_free (encoding_name);
 	g_free (error_message);
 	g_free (message_details);
 
@@ -657,9 +676,9 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 }
 
 GtkWidget *
-gedit_conversion_error_while_saving_info_bar_new (GFile                   *location,
-						  const GtkSourceEncoding *encoding,
-						  const GError            *error)
+gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
+						  const GeditEncoding *encoding,
+						  const GError        *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
@@ -685,12 +704,12 @@ gedit_conversion_error_while_saving_info_bar_new (GFile                   *locat
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
-	encoding_name = gtk_source_encoding_to_string (encoding);
+	encoding_name = gedit_encoding_to_string (encoding);
 
-	error_message = g_strdup_printf (_("Could not save the file “%s” using the “%s” character encoding."),
+	error_message = g_strdup_printf (_("Could not save the file %s using the %s character encoding."),
 					 uri_for_display,
 					 encoding_name);
 	message_details = g_strconcat (_("The document contains one or more characters that cannot be encoded "
@@ -709,7 +728,7 @@ gedit_conversion_error_while_saving_info_bar_new (GFile                   *locat
 	return info_bar;
 }
 
-const GtkSourceEncoding *
+const GeditEncoding *
 gedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
 {
 	gpointer menu;
@@ -731,6 +750,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -754,7 +774,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -766,17 +786,21 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 	/* Translators: the access key chosen for this string should be
 	 different from other main menu access keys (Open, Edit, View...) */
-				 _("D_on’t Edit"),
+				 _("D_on't Edit"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
+	image = gtk_image_new_from_stock ("gtk-dialog-warning", GTK_ICON_SIZE_DIALOG);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_halign (image, GTK_ALIGN_START);
+
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	primary_text = g_strdup_printf (_("This file “%s” is already open in another window."), uri_for_display);
+	primary_text = g_strdup_printf (_("This file (%s) is already open in another gedit window."), uri_for_display);
 	g_free (uri_for_display);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
@@ -790,7 +814,8 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	gtk_widget_set_can_focus (primary_label, TRUE);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("Do you want to edit it anyway?");
+	secondary_text = _("gedit opened this instance of the file in a non-editable way. "
+			   "Do you want to edit it anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
 	secondary_label = gtk_label_new (secondary_markup);
@@ -814,6 +839,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -827,8 +853,8 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_SAVER_ERROR, NULL);
-	g_return_val_if_fail (error->code == GTK_SOURCE_FILE_SAVER_ERROR_EXTERNALLY_MODIFIED, NULL);
+	g_return_val_if_fail (error->domain == GEDIT_DOCUMENT_ERROR, NULL);
+	g_return_val_if_fail (error->code == GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED, NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -840,21 +866,26 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
 
+	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
+					     _("S_ave Anyway"),
+					     GTK_STOCK_SAVE,
+					     GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("S_ave Anyway"),
-				 GTK_RESPONSE_YES);
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on’t Save"),
+				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+
+	image = gtk_image_new_from_stock ("gtk-dialog-warning", GTK_ICON_SIZE_DIALOG);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -863,7 +894,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 	 * could be interpreted as the changes he made in the document. beside "reading" is
 	 * not accurate (since last load/save)
 	 */
-	primary_text = g_strdup_printf (_("The file “%s” has been modified since reading it."),
+	primary_text = g_strdup_printf (_("The file %s has been modified since reading it."),
 					uri_for_display);
 	g_free (uri_for_display);
 
@@ -902,6 +933,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -917,8 +949,10 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == G_IO_ERROR &&
-			      error->code == G_IO_ERROR_CANT_CREATE_BACKUP, NULL);
+	g_return_val_if_fail (((error->domain == GEDIT_DOCUMENT_ERROR &&
+			        error->code == GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP) ||
+			       (error->domain == G_IO_ERROR &&
+			        error->code == G_IO_ERROR_CANT_CREATE_BACKUP)), NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -930,21 +964,26 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
 
+	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
+					     _("S_ave Anyway"),
+					     GTK_STOCK_SAVE,
+					     GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("S_ave Anyway"),
-				 GTK_RESPONSE_YES);
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on’t Save"),
+				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+
+	image = gtk_image_new_from_stock ("gtk-dialog-warning", GTK_ICON_SIZE_DIALOG);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -958,12 +997,12 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	/* FIXME: review this messages */
 	if (create_backup_copy)
 	{
-		primary_text = g_strdup_printf (_("Could not create a backup file while saving “%s”"),
+		primary_text = g_strdup_printf (_("Could not create a backup file while saving %s"),
 						uri_for_display);
 	}
 	else
 	{
-		primary_text = g_strdup_printf (_("Could not create a temporary backup file while saving “%s”"),
+		primary_text = g_strdup_printf (_("Could not create a temporary backup file while saving %s"),
 						uri_for_display);
 	}
 
@@ -980,7 +1019,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	gtk_widget_set_can_focus (primary_label, TRUE);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("Could not back up the old copy of the file before saving the new one. "
+	secondary_text = _("gedit could not back up the old copy of the file before saving the new one. "
 			   "You can ignore this warning and save the file anyway, but if an error "
 			   "occurs while saving, you could lose the old copy of the file. Save anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
@@ -1015,8 +1054,8 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_SAVER_ERROR ||
-			      error->domain == G_IO_ERROR, NULL);
+	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) ||
+			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -1028,7 +1067,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_SUPPORTED))
@@ -1037,10 +1076,10 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 		if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 		{
-			scheme_markup = g_markup_escape_text (scheme_string, -1);
+			scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 			/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-			message_details = g_strdup_printf (_("Cannot handle “%s:” locations in write mode. "
+			message_details = g_strdup_printf (_("gedit cannot handle %s locations in write mode. "
 							     "Please check that you typed the "
 							     "location correctly and try again."),
 							   scheme_markup);
@@ -1048,7 +1087,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 		}
 		else
 		{
-			message_details = g_strdup (_("Cannot handle this location in write mode. "
+			message_details = g_strdup (_("gedit cannot handle this location in write mode. "
 						      "Please check that you typed the "
 						      "location correctly and try again."));
 		}
@@ -1057,7 +1096,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 	}
 	else if (is_gio_error (error, G_IO_ERROR_INVALID_FILENAME))
 	{
-		message_details = g_strdup_printf (_("“%s” is not a valid location. "
+		message_details = g_strdup_printf (_("%s is not a valid location. "
 						     "Please check that you typed the "
 						     "location correctly and try again."),
 						   uri_for_display);
@@ -1090,10 +1129,6 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 					      "a limitation on length of the file names. "
 					      "Please use a shorter name."));
 	}
-#if 0
-	/* FIXME this error can not occur for a file saving. Either remove the
-	 * code here, or improve the GtkSourceFileSaver so this error can occur.
-	 */
 	else if (error->domain == GEDIT_DOCUMENT_ERROR &&
 		 error->code == GEDIT_DOCUMENT_ERROR_TOO_BIG)
 	{
@@ -1102,7 +1137,6 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 					      "a smaller file or saving it to a disk that does not "
 					      "have this limitation."));
 	}
-#endif
 	else
 	{
 		parse_error (error,
@@ -1114,7 +1148,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 	if (error_message == NULL)
 	{
-		error_message = g_strdup_printf (_("Could not save the file “%s”."),
+		error_message = g_strdup_printf (_("Could not save the file %s."),
 						 uri_for_display);
 	}
 
@@ -1137,6 +1171,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 	gchar *primary_text;
+	const gchar *secondary_text;
 	GtkWidget *info_bar;
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
@@ -1151,41 +1186,38 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
-	primary_text = g_strdup_printf (_("The file “%s” changed on disk."),
+	/* FIXME: review this message, it's not clear since for the user the "modification"
+	 * could be interpreted as the changes he made in the document. beside "reading" is
+	 * not accurate (since last load/save)
+	 */
+	primary_text = g_strdup_printf (_("The file %s changed on disk."),
 					uri_for_display);
 	g_free (uri_for_display);
 
+	if (document_modified)
+		secondary_text = _("Do you want to drop your changes and reload the file?");
+	else
+		secondary_text = _("Do you want to reload the file?");
+
 	info_bar = gtk_info_bar_new ();
 
-	if (document_modified)
-	{
-		GtkWidget *box;
-		GtkWidget *button;
-		button = gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-						  _("Drop Changes and _Reload"),
-						  GTK_RESPONSE_OK);
-		box = gtk_info_bar_get_action_area (GTK_INFO_BAR (info_bar));
-		gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (box),
-							  button,
-							  TRUE);
-	}
-	else
-	{
-		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-					 _("_Reload"),
-					 GTK_RESPONSE_OK);
-	}
-
-	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
+	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
+					     _("_Reload"),
+					     GTK_STOCK_REFRESH,
+					     GTK_RESPONSE_OK);
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 GTK_STOCK_CANCEL,
+				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
-	set_info_bar_text (info_bar,
-			   primary_text,
-			   NULL);
+	set_info_bar_text_and_icon (info_bar,
+					"gtk-dialog-warning",
+					primary_text,
+					secondary_text);
 
 	g_free (primary_text);
 
@@ -1197,6 +1229,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
+	GtkWidget *image;
 	GtkWidget *vbox;
 	GtkWidget *primary_label;
 	GtkWidget *secondary_label;
@@ -1220,26 +1253,31 @@ gedit_invalid_character_info_bar_new (GFile *location)
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
+	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
 
+	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
+					     _("S_ave Anyway"),
+					     GTK_STOCK_SAVE,
+					     GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("S_ave Anyway"),
-				 GTK_RESPONSE_YES);
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on’t Save"),
+				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
+	image = gtk_image_new_from_stock ("gtk-dialog-warning", GTK_ICON_SIZE_DIALOG);
+	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
+
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	primary_text = g_strdup_printf (_("Some invalid chars have been detected while saving “%s”"),
+	primary_text = g_strdup_printf (_("Some invalid chars have been detected while saving %s"),
 					uri_for_display);
 
 	g_free (uri_for_display);

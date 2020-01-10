@@ -3,13 +3,11 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/> 
-    <desc>Verifique seus arquivos por erros de escrita.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
-
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Baptiste Mille-Mathias</name>
@@ -22,6 +20,7 @@
     
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
     
+    <desc>Habilitar e usar o recurso de verificação ortográfica</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -66,15 +65,9 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Fontenelle</mal:name>
-      <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016, 2017</mal:years>
+      <mal:name>Rafael Ferreira</mal:name>
+      <mal:email>rafael.f.f1@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
   
@@ -144,13 +137,10 @@
   <section id="define-spell-check-language">
     <title>Definindo o idioma a ser usado para a verificação ortográfica</title>
     <p>Por padrão, o <app>gedit</app> usará seu idioma atual para verificar a ortografia do seu documento. Se você precisar usar outro idioma, escolha <guiseq><gui style="menu">Ferramentas</gui><gui style="menuitem">Definir Idioma...</gui></guiseq> e, então, escolha o idioma que deseja usar.</p>
+    
+  <note>
+    <p>A lista de idiomas disponíveis vai variar dependendo das configurações do seu sistema.</p>
+  </note>
   </section>
 
-  <section id="dict">
-    <title>Dicionários</title>
-
-    <p>O <app>gedit</app> usa <link href="http://www.abisource.com/projects/enchant/">Enchant</link>, um pequeno utilitário de sistema, para verificação ortográfica. Enchant pode usar vários dicionários para verificação de ortografia. Duas retaguardas (back-ends) de dicionário são <em>Hunspell</em> e o <em>Aspell</em>.</p>
-
-    <p>Se o idioma que você deseja usar não estiver disponível no <app>gedit</app>, use o instalador de software do seu computador ou o gerenciador de pacotes para instalar a retaguarda (back-end) desejada de dicionário.</p>
-  </section>
 </page>

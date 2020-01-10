@@ -16,25 +16,44 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_PRINT_JOB_H
-#define GEDIT_PRINT_JOB_H
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
+
+#ifndef __GEDIT_PRINT_JOB_H__
+#define __GEDIT_PRINT_JOB_H__
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-view.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_JOB (gedit_print_job_get_type())
+/*
+ * Type checking and casting macros
+ */
+#define GEDIT_TYPE_PRINT_JOB              (gedit_print_job_get_type())
+#define GEDIT_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_PRINT_JOB, GeditPrintJob))
+#define GEDIT_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_PRINT_JOB, GeditPrintJobClass))
+#define GEDIT_IS_PRINT_JOB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_PRINT_JOB))
+#define GEDIT_IS_PRINT_JOB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PRINT_JOB))
+#define GEDIT_PRINT_JOB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_PRINT_JOB, GeditPrintJobClass))
 
-G_DECLARE_FINAL_TYPE (GeditPrintJob, gedit_print_job, GEDIT, PRINT_JOB, GObject)
 
 typedef enum
 {
+	GEDIT_PRINT_JOB_STATUS_INIT,
 	GEDIT_PRINT_JOB_STATUS_PAGINATING,
-	GEDIT_PRINT_JOB_STATUS_DRAWING
+	GEDIT_PRINT_JOB_STATUS_DRAWING,
+	GEDIT_PRINT_JOB_STATUS_DONE
 } GeditPrintJobStatus;
 
 typedef enum
@@ -44,7 +63,53 @@ typedef enum
 	GEDIT_PRINT_JOB_RESULT_ERROR
 } GeditPrintJobResult;
 
+/* Private structure type */
+typedef struct _GeditPrintJobPrivate GeditPrintJobPrivate;
+
+/*
+ * Main object structure
+ */
+typedef struct _GeditPrintJob GeditPrintJob;
+
+
+struct _GeditPrintJob
+{
+	GObject parent;
+
+	/* <private> */
+	GeditPrintJobPrivate *priv;
+};
+
+/*
+ * Class definition
+ */
+typedef struct _GeditPrintJobClass GeditPrintJobClass;
+
+struct _GeditPrintJobClass
+{
+	GObjectClass parent_class;
+
+        /* Signals */
+	void (* printing)	(GeditPrintJob       *job,
+				 GeditPrintJobStatus  status);
+
+	void (* show_preview)	(GeditPrintJob       *job,
+				 GtkWidget           *preview);
+
+        void (*done)		(GeditPrintJob       *job,
+        			 GeditPrintJobResult  result,
+        			 const GError        *error);
+};
+
+/*
+ * Public methods
+ */
+GType			 gedit_print_job_get_type		(void) G_GNUC_CONST;
+
 GeditPrintJob		*gedit_print_job_new			(GeditView                *view);
+
+void			 gedit_print_job_set_export_filename	(GeditPrintJob            *job,
+								 const gchar              *filename);
 
 GtkPrintOperationResult	 gedit_print_job_print			(GeditPrintJob            *job,
 								 GtkPrintOperationAction   action,
@@ -65,6 +130,6 @@ GtkPageSetup		*gedit_print_job_get_page_setup		(GeditPrintJob            *job);
 
 G_END_DECLS
 
-#endif /* GEDIT_PRINT_JOB_H */
+#endif /* __GEDIT_PRINT_JOB_H__ */
 
 /* ex:set ts=8 noet: */

@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-save-file" xml:lang="es">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-save-file" xml:lang="es">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Guardar el archivo para trabajar con él más tarde.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.12" date="2014-02-13" status="review"/>
-    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
-    </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
@@ -25,7 +18,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
+      <mal:years>2011-2013</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -43,6 +36,6 @@
 
   <title>Guardar un archivo</title>
 
-  <p>Para guardar un archivo en <app>gedit</app>, pulse el botón <gui style="button">Guardar</gui> en la parte derecha de la barra de herramientas o simplemente pulse <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Si está guardando un archivo nuevo, aparecerá un diálogo, y podrá seleccionar un nombre para el archivo, así como la carpeta en la que quiere guardar el archivo.</p>
+  <p>Para guardar un archivo en <app>gedit</app>, pulse en el icono de la unidad de disco con la palabra <gui style="button">Guardar</gui> junto a él. También puede seleccionar <guiseq><gui style="menu">Archivo</gui> <gui style="menuitem">Guardar</gui></guiseq>, o simplemente pulsar <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Si está guardando un archivo nuevo, aparecerá el diálogo <gui>Guardar archivo</gui>, y podrá seleccionar un nombre para el archivo, así como la carpeta en la que quiere guardar el archivo.</p>
 
 </page>

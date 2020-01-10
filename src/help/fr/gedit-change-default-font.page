@@ -2,18 +2,16 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="fr">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Utiliser une police personnalisée pour le texte de gedit.</desc>
+    <link type="seealso" xref="gedit-plugins-text-size"/>
+
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
       <years>2011 2012 2013</years>
     </credit>
-
-   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-
-
+  
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
       <mal:email>vuntz@gnome.org</mal:email>
@@ -57,40 +55,22 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Modification de la police par défaut</title>
 
-  <p><app>gedit</app> utilise par défaut la police système à chasse fixe, mais vous pouvez modifier la police par défaut de <app>gedit</app> pour l’adapter à votre goût.</p>
+  <p><app>gedit</app> utilise par défaut la police système à chasse fixe, mais vous pouvez modifier la police par défaut de <app>gedit</app> pour l'adapter à votre goût.</p>
   
   <steps>
     <title>Pour modifier la police par défaut dans <app>gedit</app> :</title>
-      <item><p>Choisissez <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Préférences</gui><gui>Police et couleurs</gui></guiseq>.</p></item>
+      <item><p>Choisissez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Police et couleurs</gui></guiseq>.</p></item>
       <item><p>Décochez la case à côté de la phrase « Utiliser la police système à chasse fixe ».</p></item>
-      <item><p>Cliquez sur le nom de la police actuelle. <app>gedit</app> ouvre alors une fenêtre de sélection de police, vous permettant de voir les polices disponibles et de choisir celle que vous préférez.</p></item>
-      <item><p>Après avoir sélectionné la police souhaitée, utilisez le <gui>curseur</gui> sous la liste des polices pour définir la taille de police par défaut.</p></item>
+      <item><p>Cliquez sur le nom de la police actuelle. <app>gedit</app> ouvrira une fenêtre de sélection de police, vous permettant de voir les polices disponibles et d'en choisir celle que vous préférez.</p></item>
+      <item><p>Après avoir sélectionné la police souhaitée, utilisez le <gui>curseur</gui> pour définir la taille de police par défaut.</p></item>
       <item><p>Cliquez sur <gui>Sélectionner</gui> puis sur <gui>Fermer</gui>.</p>
       </item>
   </steps>

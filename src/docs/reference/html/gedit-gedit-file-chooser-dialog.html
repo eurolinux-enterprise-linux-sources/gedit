@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GeditFileChooserDialog</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="gedit Reference Manual">
+<link rel="up" href="ch01.html" title="gedit">
+<link rel="prev" href="gedit-gedit-encodings-combo-box.html" title="GeditEncodingsComboBox">
+<link rel="next" href="GeditMessageBus.html" title="GeditMessageBus">
+<meta name="generator" content="GTK-Doc V1.19.1 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gedit-gedit-encodings-combo-box.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">gedit Reference Manual</th>
+<td><a accesskey="n" href="GeditMessageBus.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gedit-gedit-file-chooser-dialog.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gedit-gedit-file-chooser-dialog.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gedit-gedit-file-chooser-dialog.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#gedit-gedit-file-chooser-dialog.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gedit-gedit-file-chooser-dialog"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gedit-gedit-file-chooser-dialog.top_of_page"></a>GeditFileChooserDialog</span></h2>
+<p>GeditFileChooserDialog</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gedit-gedit-file-chooser-dialog.synopsis"></a><h2>Synopsis</h2>
+<a name="GeditFileChooserDialog"></a><pre class="synopsis">                    <a class="link" href="gedit-gedit-file-chooser-dialog.html#GeditFileChooserDialogPrivate" title="GeditFileChooserDialogPrivate">GeditFileChooserDialogPrivate</a>;
+                    <a class="link" href="gedit-gedit-file-chooser-dialog.html#GeditFileChooserDialog-struct" title="GeditFileChooserDialog">GeditFileChooserDialog</a>;
+<span class="returnvalue">GtkWidget</span> *         <a class="link" href="gedit-gedit-file-chooser-dialog.html#gedit-file-chooser-dialog-new" title="gedit_file_chooser_dialog_new ()">gedit_file_chooser_dialog_new</a>       (<em class="parameter"><code>const <span class="type">gchar</span> *title</code></em>,
+                                                         <em class="parameter"><code><span class="type">GtkWindow</span> *parent</code></em>,
+                                                         <em class="parameter"><code><span class="type">GtkFileChooserAction</span> action</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="type">GeditEncoding</span></a> *encoding</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *first_button_text</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gedit-gedit-file-chooser-dialog.html#gedit-file-chooser-dialog-set-encoding" title="gedit_file_chooser_dialog_set_encoding ()">gedit_file_chooser_dialog_set_encoding</a>
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-file-chooser-dialog.html#GeditFileChooserDialog"><span class="type">GeditFileChooserDialog</span></a> *dialog</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="type">GeditEncoding</span></a> *encoding</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-file-chooser-dialog.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkWidget
+               +----GtkContainer
+                     +----GtkBin
+                           +----GtkWindow
+                                 +----GtkDialog
+                                       +----GtkFileChooserDialog
+                                             +----GeditFileChooserDialog
+</pre>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-file-chooser-dialog.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GeditFileChooserDialog implements
+ AtkImplementorIface,  GtkBuildable and  GtkFileChooser.</p>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-file-chooser-dialog.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gedit-gedit-file-chooser-dialog.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GeditFileChooserDialogPrivate"></a><h3>GeditFileChooserDialogPrivate</h3>
+<pre class="programlisting">typedef struct _GeditFileChooserDialogPrivate GeditFileChooserDialogPrivate;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GeditFileChooserDialog-struct"></a><h3>GeditFileChooserDialog</h3>
+<pre class="programlisting">typedef struct _GeditFileChooserDialog GeditFileChooserDialog;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-file-chooser-dialog-new"></a><h3>gedit_file_chooser_dialog_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">GtkWidget</span> *         gedit_file_chooser_dialog_new       (<em class="parameter"><code>const <span class="type">gchar</span> *title</code></em>,
+                                                         <em class="parameter"><code><span class="type">GtkWindow</span> *parent</code></em>,
+                                                         <em class="parameter"><code><span class="type">GtkFileChooserAction</span> action</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="type">GeditEncoding</span></a> *encoding</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *first_button_text</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+Creates a new <a class="link" href="gedit-gedit-file-chooser-dialog.html#GeditFileChooserDialog"><span class="type">GeditFileChooserDialog</span></a>.  This function is analogous to
+<code class="function">gtk_dialog_new_with_buttons()</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>title</code></em> :</span></p></td>
+<td>Title of the dialog, or <code class="literal">NULL</code>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parent</code></em> :</span></p></td>
+<td>Transient parent of the dialog, or <code class="literal">NULL</code>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>action</code></em> :</span></p></td>
+<td>Open or save mode for the dialog</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>first_button_text</code></em> :</span></p></td>
+<td>stock ID or text to go in
+the first button, or <code class="literal">NULL</code>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>Varargs</code></em> :</span></p></td>
+<td>response ID for the first button, then
+additional (button, id) pairs, ending with <code class="literal">NULL</code>. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="gedit-gedit-file-chooser-dialog.html#GeditFileChooserDialog"><span class="type">GeditFileChooserDialog</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gedit-file-chooser-dialog-set-encoding"></a><h3>gedit_file_chooser_dialog_set_encoding ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gedit_file_chooser_dialog_set_encoding
+                                                        (<em class="parameter"><code><a class="link" href="gedit-gedit-file-chooser-dialog.html#GeditFileChooserDialog"><span class="type">GeditFileChooserDialog</span></a> *dialog</code></em>,
+                                                         <em class="parameter"><code>const <a class="link" href="gedit-gedit-encodings.html#GeditEncoding"><span class="type">GeditEncoding</span></a> *encoding</code></em>);</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19.1</div>
+</body>
+</html>

@@ -3,45 +3,38 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Jak použít oprávnění správce k úpravám souboru.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marek Černocký</mal:name>
-      <mal:email>marek@manet.cz</mal:email>
-      <mal:years>2009, 2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Lucas Lommer</mal:name>
-      <mal:email>llommer@svn.gnome.org</mal:email>
-      <mal:years>2009.</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Úprava souborů pod uživatelem root</title>
+  <title>Edit a file as the root user</title>
 
   <note style="warning">
-    <p>Upravovat soubory jako uživatel root je potenciálně rizikové a může vést k narušení vašeho operačního systému. Proto při takovéto práci dávejte obvzlášť pozor, co děláte.</p>
+    <p>Editing files as the root user is potentially dangerous, and may break
+    your system in bad ways. Take great care when editing files as the root
+    user.</p>
   </note>
 
-  <p>Pokud potřebujete upravovat soubory jako superuživatel root, spusťte <app>gedit</app> z terminálu zadáním:</p>
+  <p>To edit files as the root user, launch <app>gedit</app> from the terminal
+  by entering:</p>
   <code>sudo gedit</code>
 
-  <p>Při použití příkazu <cmd>sudo</cmd> budete muset před otevřením aplikace <app>gedit</app> zadat správné heslo.</p>
+  <p>Using the <cmd>sudo</cmd> command, you will need to successfully enter
+  your password before <app>gedit</app> will open.</p>
 
-  <p>Alternativou k příkazu <cmd>sudo</cmd> je získat správcovská oprávnění zadáním:</p>
+  <p>As an alternative to the <cmd>sudo</cmd> command, you may obtain
+  administrative privileges by entering:</p>
   <code>su -</code>
 
-  <p>Po té byste měli <app>gedit</app> spustit příkazem <cmd>gedit</cmd>.</p>
+  <p>You would then launch <app>gedit</app> using the <cmd>gedit</cmd>
+  command.</p>
 
   <note style="tip">
-    <p>Po otevření se správcovskými oprávněními si je <app>gedit</app> uchová, dokud jej nezavřete.</p>
+    <p>Once you have opened <app>gedit</app> with administrative privileges,
+    <app>gedit</app> will keep those privileges until you close it.</p>
   </note>
 
 </page>

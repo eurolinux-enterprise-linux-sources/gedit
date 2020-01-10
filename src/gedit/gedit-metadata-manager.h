@@ -16,12 +16,21 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_METADATA_MANAGER_H
-#define GEDIT_METADATA_MANAGER_H
+/*
+ * Modified by the gedit Team, 2003. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ */
 
+#ifndef __GEDIT_METADATA_MANAGER_H__
+#define __GEDIT_METADATA_MANAGER_H__
+
+#include <glib.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
@@ -39,6 +48,6 @@ void		 gedit_metadata_manager_set		(GFile       *location,
 
 G_END_DECLS
 
-#endif /* GEDIT_METADATA_MANAGER_H */
+#endif /* __GEDIT_METADATA_MANAGER_H__ */
 
 /* ex:set ts=8 noet: */

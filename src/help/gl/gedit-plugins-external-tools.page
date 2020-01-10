@@ -12,10 +12,10 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Execute scripts nos ficheiros actuais e interactúe con outros aplicativos.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Execute scripts dos ficheiros actuais, e interactúe con outros aplicativos.</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -26,24 +26,26 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
 <title>Ferramentas externas</title>
 
-  <p>O engadido <em>Ferramentas externas</em> pode axudarlle a simplificar as tarefas repetitivas. Especificamente, amplía <app>gedit</app> axudándolle a executar scripts nos ficheiros nos que está traballando, e permitíndolle a <app>gedit</app> interactuar con outros programas do seu equipo. Para activar o engadido <app>Ferramentas externas</app>, seleccione <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Preferencias</gui><gui>Engadidos</gui><gui>Ferramentas externas</gui></guiseq>.</p>
+  <p>The <em>External Tools</em> plugin can help simplify repetitive tasks.
+  Specifically, it extends <app>gedit</app> by helping you to run scripts on
+  your working files, and by allowing <app>gedit</app> to interact with other
+  programs on your computer. To enable the <app>External Tools</app> plugin,
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
     <title>Configurar o engadido de ferramentas externas</title>
 
-  <p>Cando teña activado o engadido, terá que configuralo para axustalo ás súas necesidades. As opcións de configuración están dispoñíbeis seleccionando <guiseq><gui>Ferramentas</gui><gui>Xestionar ferramentas externas</gui></guiseq>.</p>
+  <p>Once you have enabled the plugin, you will need to configure it to suit
+  your needs. The configuration options are available by selecting
+  <guiseq><gui>Tools</gui><gui>Manage External Tools</gui></guiseq>.</p>
   
   <note style="caution">
     <p>Este engadido é para usuarios avanzados, e require coñecementos de «scripting» para ser efectivamente útil. Use este engadido con coidado, calquera erro nos seus «scripts» pode afectar ao traballo de formas non intencionada.</p>

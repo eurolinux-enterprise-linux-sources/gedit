@@ -3,13 +3,11 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/> 
-    <desc>Проверка файлов на орфографические ошибки.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
-
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Баптист Милле-Матиас (Baptiste Mille-Mathias)</name>
@@ -22,17 +20,18 @@
     
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
     
+    <desc>Включение функции проверки орфографии</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2018.</mal:years>
+      <mal:years>2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Ivan Komaritsyn</mal:name>
-      <mal:email>vantu5z@mail.ru</mal:email>
-      <mal:years>2017.</mal:years>
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
   
@@ -43,7 +42,9 @@
 
     <steps>
       <item>
-        <p>Выберите <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Параметры</gui> <gui style="tab">Модули</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
       </item>
       <item>
         <p>Выберите <gui style="menuitem">Проверка орфографии</gui>, чтобы включить модуль.</p>
@@ -71,29 +72,40 @@
   <section id="use-spell-check">
     <title>Использование проверки орфографии</title>
 
-    <p>Можно выбрать правильный вариант для замены неправильно написанного слова, используя диалоговое окно Проверка орфографии. Слово с ошибкой будет отмечено модулем проверки орфографии и отображено жирным шрифтом в пункте <gui>Слово с ошибкой:</gui>. Можно выбрать один из следующих вариантов исправления:</p>
+    <p>Можно выбрать правильный вариант для замены неправильно написанного слова, используя диалоговое окно Проверка орфографии. Слово с ошибкой будет отмеченыомодулем проверки орфографии и отображено жирным шрифтом в пункте <gui>Слово с ошибкой:</gui>. Можно выбрать один из следующих вариантов исправления:</p>
 
     <list>
       <item>
-        <p><gui style="input">Заменить на:</gui> — позволяет ввести слово и использовать <gui style="button">контрольное слово</gui> для проверки правильности написания.</p>
+        <p><gui style="input">Заменить на:</gui> позволяет ввести слово и использовать <gui style="button">контрольное слово</gui> для проверки правильности написания.</p>
       </item>
       <item>
-        <p><gui style="menu">Варианты:</gui> — перечисляет доступные варианты замены для слова.</p>
+        <p><gui style="menu">Suggestions:</gui> lists the available
+        substitutions for the word.</p>
       </item>
       <item>
-        <p><gui style="button">Игнорировать</gui> — позволяет обойти проверку орфографии для <em>текущего</em> экземпляра слова.</p>
+        <p><gui style="button">Ignore</gui> allows you to bypass spell check for
+        <em>a</em> instance of current word.</p>
       </item>
       <item>
-        <p><gui style="button">Игнорировать все</gui> — позволяет обойти проверку орфографии для <em>всех</em> экземпляров слова.</p>
+        <p><gui style="button">Ignore All</gui> allows you to bypass spell check
+        for <em>all</em> instances of the current word.</p>
       </item>
       <item>
-        <p><gui style="button">Заменить</gui> — заменяет <em>текущее</em> слово с орфографической ошибкой или неопознанное слово выбранным из списка <gui style="menuitem">Вариантов</gui>.</p>
+        <p><gui style="button">Change</gui> substitutes the misspelt or
+        unrecognized word with <em>a</em> chosen substitute from the
+        <gui style="menuitem">Suggestions:</gui> list.</p>
       </item>
       <item>
-        <p><gui style="button">Заменить все</gui> — заменяет <em>все</em> слова с орфографической ошибкой или неопознанные слова выбранным из списка <gui style="menuitem">Вариантов</gui>.</p>
+        <p><gui style="button">Change all</gui> substitutes <em>all</em>
+        misspelt or unrecognized words with the chosen substitute from the
+        <gui style="menuitem">Suggestions:</gui> list.</p>
       </item>
       <item>
-        <p><gui style="button">Добавить в словарь</gui> — позволяет добавить текущее неопознанное слово в <gui>Словарь пользователя</gui> <app>gedit</app>. Добавление слова в <gui>Словарь пользователя</gui> позволит <app>gedit</app> распознавать его в документах и, следовательно, не выделять как неправильно написанное слово.</p>
+        <p><gui style="button">Add word</gui> allows you to add the current word
+        to the <app>gedit</app> <gui>User dictionary</gui>. Adding custom words
+        to the <gui>User dictionary</gui> will allow <app>gedit</app> to
+        recognize the word in documents and thus will not be highlighted as a
+        misspelt word.</p>
       </item>
     </list>
 
@@ -102,13 +114,10 @@
   <section id="define-spell-check-language">
     <title>Определение языка для проверки орфографии</title>
     <p>По умолчанию, <app>gedit</app> использует для проверки документа текущий язык системы. Если нужно изменить язык на другой, выберите <guiseq><gui style="menu">Сервис</gui><gui style="menuitem">Установить язык…</gui></guiseq>, затем укажите нужный язык.</p>
+    
+  <note>
+    <p>Список доступных языков может быть различным, в зависимости от конфигурации вашей системы.</p>
+  </note>
   </section>
 
-  <section id="dict">
-    <title>Словари</title>
-
-    <p><app>gedit</app> использует <link href="http://www.abisource.com/projects/enchant/">Enchant</link>, небольшую системную утилиту для проверки орфографии. Enchant может использовать несколько различных словарей для проверки правописания. <em>Hunspell</em> и <em>Aspell</em> — два из основных словарей.</p>
-
-    <p>Если нужный язык не доступен в <app>gedit</app>, используйте менеджер пакетов для установки подходящего стороннего словаря.</p>
-  </section>
 </page>

@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_MESSAGE_H
-#define GEDIT_MESSAGE_H
+#ifndef __GEDIT_MESSAGE_H__
+#define __GEDIT_MESSAGE_H__
 
 #include <glib-object.h>
 
@@ -35,9 +35,10 @@ G_BEGIN_DECLS
 #define GEDIT_IS_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MESSAGE))
 #define GEDIT_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MESSAGE, GeditMessageClass))
 
-typedef struct _GeditMessage        GeditMessage;
-typedef struct _GeditMessageClass   GeditMessageClass;
-typedef struct _GeditMessagePrivate GeditMessagePrivate;
+typedef struct _GeditMessage             GeditMessage;
+typedef struct _GeditMessageClass        GeditMessageClass;
+typedef struct _GeditMessagePrivate      GeditMessagePrivate;
+typedef struct _GeditMessageClassPrivate GeditMessageClassPrivate;
 
 struct _GeditMessage
 {
@@ -72,6 +73,6 @@ gchar       *gedit_message_type_identifier      (const gchar  *object_path,
 
 G_END_DECLS
 
-#endif /* GEDIT_MESSAGE_H */
+#endif /* __GEDIT_MESSAGE_H__ */
 
 /* ex:set ts=8 noet: */

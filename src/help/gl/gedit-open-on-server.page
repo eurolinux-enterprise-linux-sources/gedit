@@ -3,13 +3,11 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>Acceder a ficheiros gardados nun computador diferente.</desc>
-    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -20,13 +18,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Marcos Lans </mal:name>
-      <mal:email>marcoslansgarza@gmail.com</mal:email>
-      <mal:years>2018.</mal:years>
+      <mal:years>2011.</mal:years>
     </mal:credit>
   </info>
 
@@ -39,9 +31,8 @@
   <p>Con estas advertencias en mente, realice os seguintes pasos para abrir un ficheiro desde un ficheiro usando <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Na barra do título, prema <gui>Abrir</gui>.</p></item>
-      <item><p>Prema <gui>Outros documentos...</gui>.</p></item>
-      <item><p>Prema <keyseq><key>Ctrl</key><key>L</key></keyseq> no diálogo<gui>Abrir</gui>.</p></item>
+      <item><p>Seleccione <guiseq><gui>Ficheiro</gui><gui>Abrir</gui></guiseq> para mostrar o diálogo <gui>Abrir ficheiros</gui>.</p></item>
+      <item><p>Seleccione a icona <gui>Lapis</gui> na parte superior do diálogo <gui>Abrir ficheiros</gui>.</p></item>
       <item><p>Escriba o enderezo IP ou o URL do servidor axeitado.</p></item>
       <item><p>Buscar e seleccionar o ficheiro que quere abrir.</p></item>
       <item><p>Use a lista despregábel «Codificación de caracteres» para seleccoinar a codificación de caracteres axeitada.</p></item>

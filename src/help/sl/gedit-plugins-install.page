@@ -5,23 +5,18 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>How to install third-party plugins.</desc>
+    <desc>Kako namestiti vstavke tretjih oseb</desc>
   </info>
 
   <title>Dodatni vstavki gedit</title>
 
-  <p>Installing third-party plugins gives you extra functionality that isn't 
-  available in default <app>gedit</app> plugins, or even the extra plugins that 
-  are part of the <app>gedit-plugins</app> package. An online list of 
-  third-party plugins is 
-  <link href="https://wiki.gnome.org/Apps/Gedit">kept here</link>.
-  </p>
+  <p>Nameščanje vstavkov tretjih oseb vam da dodatne zmožnosti, ki privzeto niso vključene v privzetih vstavkih <app>gedit</app> ali dodatnih vstavkih, ki so del paketa <app>gedit-plugins</app>. Spletni seznam vstavkov tretjih oseb lahko najdete  <link href="http://live.gnome.org/Gedit/Plugins#third_party">tukaj</link>.</p>
   
   <p>Namestitev vstavkov tretjih oseb vključuje prejem vstavka, postavitev vstavka v pravo mapo in njegovo omogočitev.</p>
   

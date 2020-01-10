@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-tag-list" xml:lang="lv">
+
+<info>
+  <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
+  <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+  <revision pkgversion="3.8" date="2013-03-22" status="review"/>
+  <credit type="author">
+    <name>Daniel Neel</name>
+    <email>dneelyep@gmail.com</email>
+  </credit>
+  <credit type="author">
+    <name>Jim Campbell</name>
+    <email>jwcampbell@gmail.com</email>
+  </credit>
+  <credit type="editor">
+    <name>Sindhu S</name>
+    <email>sindhus@live.in</email>
+  </credit>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  <desc>Automātiski ievietot birkas, virknes un īpašās rakstzīmes dokumentā</desc>
+</info>
+
+  <title>Birku saraksts</title>
+
+  <p>The <app>Tag List</app> plugin allows you to insert common tags and
+  special characters from a list in the side pane. By default, the plugin can
+  insert tags and special characters for <app>HTML</app>, <app>XHTML</app>,
+  <app>XSLT</app>, <app>XUL</app> and <app>LaTeX</app>.</p>
+
+  <section id="enable-tag-list-plugin">
+    <title>Enable Tag List Plugin</title>
+
+    <p>To enable the <app>Tag List</app> plugin:</p>
+
+    <steps>
+      <item>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Select <gui style="menuitem">Tag List</gui> to enable the
+        plugin.</p>
+      </item>
+      <item>
+        <p>Access the tag list by selecting
+        <guiseq><gui style="menu">View</gui>
+        <gui style="menuitem">Side Pane</gui></guiseq>, or by pressing
+        <key>F9</key>.</p>
+      </item>
+    </steps>
+
+    <p>The side pane will initially show a list of open documents, so to view
+    and use the <app>Tag List</app>, you will need to click on the tab showing
+    the "plus" icon at the bottom of the side pane. The icon will look similar
+    to this:</p>
+
+    <p>
+    <media type="image" mime="image/png" src="figures/gedit-side-pane3.png"/>
+    </p>
+  </section>
+
+  <section id="inserting-tags">
+    <title>Birku un īpašo rakstzīmju ievietošana</title>
+
+    <p><app>Birku saraksts</app> izmanto izkrītošu izvēlni, kas nosaka birku tipu. Piemēram, viens variants ir <gui>HTML - birkas</gui>.</p>
+
+    <p>Lai sāktu ievietot iezīmes, veiciet šādas darbības:</p>
+
+    <steps>
+      <item>
+        <p>Novietojiet kursoru tur, kur vēlaties ievietot iezīmi vai speciālo rakstzīmi.</p>
+      </item>
+      <item>
+        <p>Izvēlieties vēlamo iezīmes tipu no izkrītošās izvēlnes sānu loga augšā.</p>
+      </item>
+      <item>
+        <p>Ritiniet cauri sarakstam, lai atrastu vēlamo iezīmi vai rakstzīmi.</p>
+      </item>
+      <item>
+        <p>Veiciet dubultklikšķi uz birkas sarakstā.</p>
+      </item>
+    </steps>
+
+    <p>The tag or special character you have chosen will then be displayed in
+    your document.</p>
+  </section>
+
+  <section id="tag-list-tips">
+    <title>Birku saraksta padomi</title>
+    <note style="tip">
+      <p>Birku var ievietot arī nospiežot<key>Return</key> vai <keyseq><key>Shift</key><key>Return</key></keyseq>.</p>
+      <p>Nospiežot <key>Return</key> taustiņu, birka tiks ievietota kursora pozīcijā, un fokuss tiks pārslēgts uz dokumentu. Nospiežot  <keyseq><key>Shift</key><key>Return</key></keyseq>, birka tiks ievietota kursora pozīcijā, bet fokuss tiks paturēts <app>birku sarakstā</app>.</p>
+    </note>
+
+    <note style="tip">
+      <p>Jūs varat apskatīt, kāds teksts tiks ievietots katrai birkai un īpašai rakstzīmei, nospiežot uz vārda <gui>Priekšskatījums</gui> sānu rūts apakšā.</p>
+    </note>
+  </section>
+</page>

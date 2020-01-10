@@ -4,12 +4,10 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <desc>Sök ett textstycke i en fil.</desc>
-    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -19,79 +17,77 @@
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email>tyagishobha@gmail.com</email>
-    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Daniel Nylander</mal:name>
-      <mal:email>po@danielnylander.se</mal:email>
-      <mal:years>2007, 2008, 2009</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Anders Jonsson</mal:name>
-      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
-      <mal:years>2016, 2017</mal:years>
-    </mal:credit>
   </info>
 
-  <title>Sök efter text</title>
+  <title>Search for text</title>
   
-    <p>Sökverktyget kan hjälpa dig hitta specifika textsekvenser i din fil.</p>
+    <p>The Find tool can help you find specific sequences of text within in your
+    file.</p>
 
     <steps>
-      <title>Söka efter text</title>
+      <title>Finding text</title>
       <item>
-        <p>Öppna <gui>sökfönstret</gui> genom att klicka <guiseq><gui style="menu">Menyknapp</gui> <gui style="menuitem">Sök…</gui> </guiseq> eller genom att trycka <keyseq><key>Ctrl</key><key>F</key></keyseq>. Detta kommer att förflytta din markör till början av <gui>sökfönstret</gui>.</p>
+        <p>Open the <gui>search window</gui> by clicking 
+        <guiseq><gui style="menu">Search</gui>
+        <gui style="menuitem">Find</gui> </guiseq> or
+        pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move
+        your cursor to the start of the <gui>search window</gui>.</p>
       </item>
       <item>
-        <p>Skriv in texten du vill söka efter i <gui>sökfönstret</gui>.</p>
+        <p>Type the text you wish to search for in the
+        <gui>search window</gui>.</p>
       </item>
       <item>
-        <p>Under tiden du skriver kommer <app>gedit</app> att börja färgmarkera de textstycken som matchar det som du har matat in.</p>
+        <p>As you type, <app>gedit</app> will begin highlighting the portions of
+        text that match what you have entered.</p>
       </item>
     </steps>
     
-    <p>Gör något av följande för att bläddra igenom sökresultaten:</p>
+    <p>To scroll through the search results, do any of the following:</p>
     <list>
       <item>
-        <p>Klicka på <gui style="button">upp</gui>- eller <gui style="button">ner</gui>-pilarna intill <gui>sökfönstret</gui>.</p>
+        <p>Click on the <gui style="button">up</gui> or
+        <gui style="button">down</gui> facing arrows next to the
+        <gui>search window</gui>.</p>
       </item>
       <item>
-        <p>Tryck på tangenterna <key>uppåtpil</key> eller <key>nedåtpil</key> på ditt tangentbord.</p>
+        <p>Press the <key>up arrow</key> or <key>down arrow</key> keys on your
+        keyboard.</p>
       </item>
       <item>
-        <p>Tryck <keyseq><key>Ctrl</key><key>G</key></keyseq> eller <keyseq><key>Ctrl</key><key>Skift</key><key>G</key></keyseq>.</p>
+        <p>Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or
+        <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
+      </item>
+      <item>
+        <p>Press the <key>Ctrl</key> and use your mouse or touchpad's
+        <key>scroll</key> feature to move up or down through the text.</p>
       </item>
     </list>
 
-  <p>För att stänga <gui>sökfönstret</gui>, tryck antingen <key>Esc</key> eller <key>Retur</key>. Att trycka <key>Esc</key> kommer återföra markören till där den var innan du började söka. Att trycka <key>Retur</key> kommer återföra markören till den aktuella positionen i sökresultaten.</p>
+  <p>To close the <gui>search window</gui>, press either <key>Esc</key> or
+  <key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it
+  was before you began your search. Pressing <key>Enter</key> will return the
+  cursor to the current position in the search results.</p>
 
-  <list>
-    <title>Söktips</title>
-    <item>
-      <p>Om du markerar ett textstycke med musen och sedan trycker <keyseq><key>Ctrl</key><key>F</key></keyseq> kommer texten du markerat att dyka upp i sökfönstret.</p>
-    </item>
-    <item>
-      <p>För mer sökalternativ, klicka på <gui style="button">Förstoringsglas</gui>-ikonen i sökfönstret, eller högerklicka var som helst i sökfönstret. Du kan välja ett eller flera av följande sökalternativ:</p>
-      <list>
-        <item>
-          <p>Välj <gui>Gör skillnad på skiftläge</gui> för att göra sökningen skiftlägeskänslig.</p>
-        </item>
-        <item>
-          <p>Välj <gui>Matcha endast hela ord</gui> för att endast söka efter fullständiga ord.</p>
-        </item>
-        <item>
-          <p>Välj <gui>Börja om från början</gui> för att söka text uppifrån och ner och sedan börja om från början igen.</p>
-        </item>
-      </list>
-    </item>
-    <item>
-      <p>Texten som du sökt efter kommer förbli färgmarkerad av gedit, även efter att du har avslutat din sökning. För att ta bort färgmarkeringen, klicka <gui style="menuitem">Rensa färgmarkering</gui>, eller tryck <keyseq><key>Ctrl</key><key>Skift</key><key>K</key></keyseq>.</p>
-    </item>
-  </list>
+    <list>
+      <title>Search tips</title>
+      <item>
+        <p>If you highlight a portion of text with your mouse, and then press
+      <keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted
+      will appear in the search window.</p>
+      </item>
+      <item>
+        <p>For advanced search options, you can click on the
+        <gui style="button">Magnifying Glass</gui> icon in the search window,
+        or you can right-click on any portion of the search window.</p>
+      </item>
+      <item>
+        <p>The text that you've searched for will remain highlighted by gedit,
+        even after you have completed your search. To remove the highlight,
+        click <guiseq><gui>Search</gui><gui>Clear Highlight</gui></guiseq>, or
+        press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      </item>
+    </list>
 
 </page>

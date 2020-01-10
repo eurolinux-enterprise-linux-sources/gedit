@@ -15,11 +15,12 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_FILE_BROWSER_VIEW_H
-#define GEDIT_FILE_BROWSER_VIEW_H
+#ifndef __GEDIT_FILE_BROWSER_VIEW_H__
+#define __GEDIT_FILE_BROWSER_VIEW_H__
 
 #include <gtk/gtk.h>
 
@@ -80,5 +81,5 @@ void		 _gedit_file_browser_view_register_type			(GTypeModule                    
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_VIEW_H */
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_FILE_BROWSER_VIEW_H__ */
+/* ex:ts=8:noet: */

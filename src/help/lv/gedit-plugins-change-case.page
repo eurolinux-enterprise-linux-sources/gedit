@@ -11,20 +11,24 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Mainīt izvēlēta teksta burtu reģistru (lielie, mazie burti).</desc>
+  <desc>Mainīt izvēlēta teksta burtu reģistru (lielie, mazie burti)</desc>
 </info>
 
 <title>Mainīt burtu reģistru</title>
 
-  <p>Šis spraudnis palīdz mainīt burtu reģistru izvēlētajā teksta daļā. To var izmantot, lai pārvērstu visu tekstu mazos vai lielos burtos, mainītu katra burta reģistru uz pretējo, vai sāktu katru vārdu ar lielo burtu. Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Iestatījumi</gui><gui>Spraudņi</gui><gui>Mainīt burtu reģistru</gui></guiseq>.</p>
+  <p>This plugin helps you to change the case of selected portions of text. You
+  can use it to change text to be all lower case, all upper case, to invert the
+  case, or apply title case. To enable this plugin, select
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Change Case</gui></guiseq>.</p>
 
   <p>Kad spraudnis <em>Mainīt burtu reģistru</em> ir ieslēgts, to var lietot, veicot šādus soļus:</p>
 
   <steps>
     <item><p>Iezīmējiet teksta daļu, kuru vēlaties mainīt.</p></item>
-    <item><p>Izvēlieties <guiseq><gui style="menu">gedit</gui><gui>Mainīt reģistru</gui></guiseq></p>
+    <item><p>Select <guiseq><gui style="menu">gedit</gui><gui>Change Case</gui></guiseq></p>
     </item>
     <item><p>Izvēlieties vajadzīgo teksta formatēšanas iespēju.</p></item> 
   </steps>

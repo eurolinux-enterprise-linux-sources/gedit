@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="el">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:ui="http://projectmallard.org/experimental/ui/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="el">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Χρήση των συντομεύσεων πληκτρολογίου για να βοηθηθείτε στην εργασία σας πιο γρήγορα.</desc>
-    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
-    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -25,49 +22,32 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
-    <credit type="author copyright">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μάριος Ζηντίλης</mal:name>
+      <mal:name> Μάριος Ζηντίλης</mal:name>
       <mal:email>m.zindilis@dmajor.org</mal:email>
       <mal:years>2009</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Βασίλης Τσιβίκης</mal:name>
+      <mal:name> Βασίλης Τσιβίκης</mal:name>
       <mal:email>vasitsiv@hotmail.gr</mal:email>
       <mal:years>2011</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Θάνος Τρυφωνίδης</mal:name>
+      <mal:name> Θάνος Τρυφωνίδης</mal:name>
       <mal:email>tomtryf@gmail.com</mal:email>
-      <mal:years>2012, 2014</mal:years>
+      <mal:years>2012</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Δημήτρης Σπίγγος</mal:name>
+      <mal:name> Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014, 2015</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Μαρία Μαυρίδου</mal:name>
-      <mal:email>mavridou@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
+      <mal:years>2013</mal:years>
     </mal:credit>
   </info>
 
@@ -75,18 +55,32 @@
 
   <p>Χρησιμοποιήστε <gui>πλήκτρα συντόμευσης</gui> για να πραγματοποιήσετε συνήθεις εργασίες πιο γρήγορα σε σχέση με το ποντίκι και τα μενού. Οι ακόλουθοι πίνακες απαριθμούν όλες τις συντομεύσεις πληκτρολογίου του <app>gedit</app>.</p>
 
-    <table rules="rows" frame="top bottom" ui:expanded="true">
+<!--  
+Please skip this list for now. I'm not sure if it is needed.
+  <list>
+    <title>Types of shortcut keys</title>
+    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
+    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
+    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
+    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
+    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
+    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
+    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
+  </list>
+-->
+
+    <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Συντομεύσεις πλήκτρων σχετικές με τις καρτέλες</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><p>Μετάβαση στην επόμενη προς τα αριστερά καρτέλα</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>Σελίδα πάνω</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Μετάβαση στην επόμενη προς τα δεξιά καρτέλα</p></td>
@@ -102,55 +96,31 @@
         </tr>
         <tr>
           <td><p>Κλείσιμο όλων των καρτελών</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Άνοιγμα ξανά της πιο πρόσφατης κλεισμένης καρτέλας</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Μετάβαση στην <var>n</var>η καρτέλα</p></td>
           <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
         </tr>
-        <tr>
-          <td><p>Νέα ομάδα καρτελών</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Προηγούμενη ομάδα καρτελών</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Επόμενη ομάδα καρτελών</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
-        </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Συντομεύσεις πλήκτρων για εργασία με αρχεία</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Δημιουργία νέου εγγράφου σε νέο παράθυρο</p></td>
+          <td><p>Δημιουργία νέου εγγράφου</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Δημιουργία νέου εγγράφου σε νέα καρτέλα</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Άνοιγμα ενός εγγράφου</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
-        </tr>
-        <tr>
-           <td><p>Άνοιγμα του παραθύρου <gui>Γρήγορο άνοιγμα</gui>.</p></td>
-           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Αποθήκευση του τρέχοντος εγγράφου</p></td>
@@ -179,12 +149,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Συντομεύσεις πλήκτρων για την επεξεργασία αρχείων</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>
@@ -206,11 +176,11 @@
         </tr>
         <tr>
           <td><p>Μετακίνηση της επιλεγμένης λέξης δεξιά κατά μία λέξη</p></td>
-          <td><p><keyseq><key>Alt</key><key>Right Arrow</key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key>δεξιό βέλος</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Μετακίνηση της επιλεγμένης λέξης αριστερά κατά μία λέξη</p></td>
-          <td><p><keyseq><key>Alt</key><key>Left Arrow</key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key>αριστερό βέλος</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Αναίρεση της τελευταίας ενέργειας</p></td>
@@ -248,55 +218,36 @@
           <td><p>Μετακίνηση της επιλεγμένης γραμμής μια γραμμή κάτω</p></td>
           <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
         </tr>
-        <tr>
-          <td><p>Προσθήκη στάση στηλοθέτη</p></td>
-          <td><p><keyseq><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Αφαίρεση στάσης στηλοθέτη</p></td>
-          <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Μετατροπή του επιλεγμένου κειμένου σε κεφαλαία</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Μετατροπή του επιλεγμένου κειμένου σε πεζά</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Αλλαγή του επιλεγμένου κειμένου σε κεφαλαία-πεζά</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
-        </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Συντομεύσεις πλήκτρων για εμφάνιση και απόκρυψη παραθύρων</title>
+    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <title>Συντομεύσεις πλήκτρων για εμφάνιση και απόκρυψη πλαισίων</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Show / hide the side panel</p></td>
+          <td><p>Εμφάνιση / απόκρυψη της πλευρικής στήλης</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Άνοιγμα του μενού αρχείου</p></td>
-          <td><p><key>F10</key></p></td>  
+          <td><p>Εμφάνιση / απόκρυψη του κάτω παραθύρου.</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Συντομεύσεις πλήκτρων για αναζήτηση</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>
@@ -327,12 +278,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Συντομεύσεις πλήκτρων για εργαλεία</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>
@@ -355,12 +306,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Συντομεύσεις πλήκτρων για την βοήθεια του χρήστη</title>
       <thead>
         <tr>
-          <td><p>Ενέργεια</p></td>
-          <td><p>Συντόμευση πληκτρολογίου</p></td>
+          <td><p>Για να κάνετε αυτό</p></td>
+          <td><p>Πατήστε αυτό</p></td>
         </tr>
       </thead>
       <tbody>

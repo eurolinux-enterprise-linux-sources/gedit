@@ -38,8 +38,18 @@
  * who is the sender and who is the receiver. There is no explicit distinction
  * between methods and signals.
  *
- * Since: 2.26
+ * Since: 2.25.3
+ *
  */
+#define GEDIT_MESSAGE_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_MESSAGE, GeditMessagePrivate))
+
+enum
+{
+	PROP_0,
+
+	PROP_OBJECT_PATH,
+	PROP_METHOD
+};
 
 struct _GeditMessagePrivate
 {
@@ -47,17 +57,7 @@ struct _GeditMessagePrivate
 	gchar *method;
 };
 
-enum
-{
-	PROP_0,
-	PROP_OBJECT_PATH,
-	PROP_METHOD,
-	LAST_PROP
-};
-
-static GParamSpec *properties[LAST_PROP];
-
-G_DEFINE_TYPE_WITH_PRIVATE (GeditMessage, gedit_message, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GeditMessage, gedit_message, G_TYPE_OBJECT)
 
 static void
 gedit_message_finalize (GObject *object)
@@ -134,12 +134,15 @@ gedit_message_class_init (GeditMessageClass *klass)
 	 * The messages object path (e.g. /gedit/object/path).
 	 *
 	 */
-	properties[PROP_OBJECT_PATH] =
-		g_param_spec_string ("object-path",
-		                     "OBJECT_PATH",
-		                     "The message object path",
-		                     NULL,
-		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+	g_object_class_install_property (object_class,
+	                                 PROP_OBJECT_PATH,
+	                                 g_param_spec_string ("object-path",
+	                                                      "OBJECT_PATH",
+	                                                      "The message object path",
+	                                                      NULL,
+	                                                      G_PARAM_READWRITE |
+	                                                      G_PARAM_CONSTRUCT |
+	                                                      G_PARAM_STATIC_STRINGS));
 
 	/**
 	 * GeditMessage:method:
@@ -147,20 +150,23 @@ gedit_message_class_init (GeditMessageClass *klass)
 	 * The messages method.
 	 *
 	 */
-	properties[PROP_METHOD] =
-		g_param_spec_string ("method",
-		                     "METHOD",
-		                     "The message method",
-		                     NULL,
-		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+	g_object_class_install_property (object_class,
+	                                 PROP_METHOD,
+	                                 g_param_spec_string ("method",
+	                                                      "METHOD",
+	                                                      "The message method",
+	                                                      NULL,
+	                                                      G_PARAM_READWRITE |
+	                                                      G_PARAM_CONSTRUCT |
+	                                                      G_PARAM_STATIC_STRINGS));
 
-	g_object_class_install_properties (object_class, LAST_PROP, properties);
+	g_type_class_add_private (object_class, sizeof (GeditMessagePrivate));
 }
 
 static void
 gedit_message_init (GeditMessage *self)
 {
-	self->priv = gedit_message_get_instance_private (self);
+	self->priv = GEDIT_MESSAGE_GET_PRIVATE (self);
 }
 
 /**

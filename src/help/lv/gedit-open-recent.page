@@ -3,29 +3,31 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <desc>Piekļūt datnēm, kas ir nesen atjauninātas.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
   <title>Atvērt nesen lietotu datni</title>
 
   <p>Pēc noklusējuma <app>gedit</app> nodrošina ērtu pieeju pieciem nesen lietotām datnēm. Lai atvērtu nesen lietotu datni:</p>
   <list type="numbered">
-    <item><p>Click the <gui>Open</gui> button.</p></item>
+    <item><p>Nospiediet lejupvērsto bultiņu pa labi no pogas <gui>Atvērt</gui>.</p></item>
     <item><p><app>gedit</app> parādīs piecu pēdējo lietoto datņu sarakstu.</p></item>
     <item><p>Izvēlieties vajadzīgo datni, un tās tiks atvērta jaunā cilnē.</p></item>
   </list>
 
-  <note style="advanced"><p>Lai mainītu nesen lietoto datņu skaitu sarakstā, jāizmanto lietotne <app>dconf-editor</app>.</p>
+  <note style="advanced"><p>To adjust the number of recently-used files that
+  gedit displays, you will need to use the <app>dconf-editor</app>
+  application.</p>
     <list>
-      <item><p>Palaidiet <app>dconf-editor</app> un izvēlieties <guiseq><gui>org</gui> <gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</gui></guiseq>.</p></item>
-      <item><p>Izpildiet dubultklikšķi uz skaitļa līdzās <gui>max-recents</gui> un ierakstiet vēlamo vērtību.</p></item>
+      <item><p>Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui>
+      <gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui>
+      <gui>max-recents</gui></guiseq>.</p></item>
+      <item><p>Double-click on the number next to <gui>max-recents</gui> and
+      change the number to your desired value.</p></item>
     </list>
   </note>
 

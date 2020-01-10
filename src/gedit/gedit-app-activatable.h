@@ -16,20 +16,28 @@
  *  GNU Library General Public License for more details.
  *
  *  You should have received a copy of the GNU Library General Public License
- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_APP_ACTIVATABLE_H
-#define GEDIT_APP_ACTIVATABLE_H
+#ifndef __GEDIT_APP_ACTIVATABLE_H__
+#define __GEDIT_APP_ACTIVATABLE_H__
 
 #include <glib-object.h>
-#include <gedit/gedit-menu-extension.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP_ACTIVATABLE (gedit_app_activatable_get_type ())
+/*
+ * Type checking and casting macros
+ */
+#define GEDIT_TYPE_APP_ACTIVATABLE		(gedit_app_activatable_get_type ())
+#define GEDIT_APP_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_APP_ACTIVATABLE, GeditAppActivatable))
+#define GEDIT_APP_ACTIVATABLE_IFACE(obj)	(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_APP_ACTIVATABLE, GeditAppActivatableInterface))
+#define GEDIT_IS_APP_ACTIVATABLE(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_APP_ACTIVATABLE))
+#define GEDIT_APP_ACTIVATABLE_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_APP_ACTIVATABLE, GeditAppActivatableInterface))
 
-G_DECLARE_INTERFACE (GeditAppActivatable, gedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
+typedef struct _GeditAppActivatable           GeditAppActivatable; /* dummy typedef */
+typedef struct _GeditAppActivatableInterface  GeditAppActivatableInterface;
 
 struct _GeditAppActivatableInterface
 {
@@ -40,25 +48,14 @@ struct _GeditAppActivatableInterface
 	void	(*deactivate)		(GeditAppActivatable *activatable);
 };
 
-void	 gedit_app_activatable_activate			(GeditAppActivatable *activatable);
-void	 gedit_app_activatable_deactivate		(GeditAppActivatable *activatable);
-
-/**
- * gedit_app_activatable_extend_menu:
- * @activatable: A #GeditAppActivatable.
- * @extension_point: the extension point section of the menu to get.
- *
- * Gets the #GeditMenuExtension for the menu @extension_point. Note that
- * the extension point could be in different menus (gear menu, app menu, etc)
- * depending on the platform.
- *
- * Returns: (transfer full): a #GeditMenuExtension for the specific section
- * or %NULL if not found.
+/*
+ * Public methods
  */
-GeditMenuExtension	*gedit_app_activatable_extend_menu	(GeditAppActivatable *activatable,
-								 const gchar *extension_point);
+GType	 gedit_app_activatable_get_type	(void)  G_GNUC_CONST;
+
+void	 gedit_app_activatable_activate	(GeditAppActivatable *activatable);
+void	 gedit_app_activatable_deactivate	(GeditAppActivatable *activatable);
 
 G_END_DECLS
 
-#endif /* GEDIT_APP_ACTIVATABLE_H */
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_APP_ACTIVATABLE_H__ */

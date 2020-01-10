@@ -15,45 +15,82 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_HISTORY_ENTRY_H
-#define GEDIT_HISTORY_ENTRY_H
+/*
+ * Modified by the gedit Team, 2006. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
-#include <gtk/gtk.h>
+#ifndef __GEDIT_HISTORY_ENTRY_H__
+#define __GEDIT_HISTORY_ENTRY_H__
+
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HISTORY_ENTRY (gedit_history_entry_get_type ())
+#define GEDIT_TYPE_HISTORY_ENTRY             (gedit_history_entry_get_type ())
+#define GEDIT_HISTORY_ENTRY(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_HISTORY_ENTRY, GeditHistoryEntry))
+#define GEDIT_HISTORY_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_HISTORY_ENTRY, GeditHistoryEntryClass))
+#define GEDIT_IS_HISTORY_ENTRY(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_HISTORY_ENTRY))
+#define GEDIT_IS_HISTORY_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_HISTORY_ENTRY))
+#define GEDIT_HISTORY_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_HISTORY_ENTRY, GeditHistoryEntryClass))
 
-G_DECLARE_FINAL_TYPE (GeditHistoryEntry, gedit_history_entry, GEDIT, HISTORY_ENTRY, GtkComboBoxText)
 
-GtkWidget	*gedit_history_entry_new			(const gchar       *history_id,
-								 gboolean           enable_completion);
+typedef struct _GeditHistoryEntry        GeditHistoryEntry;
+typedef struct _GeditHistoryEntryClass   GeditHistoryEntryClass;
+typedef struct _GeditHistoryEntryPrivate GeditHistoryEntryPrivate;
 
-void		 gedit_history_entry_prepend_text		(GeditHistoryEntry *entry,
-								 const gchar       *text);
+struct _GeditHistoryEntryClass
+{
+	GtkComboBoxTextClass parent_class;
+};
 
-void		 gedit_history_entry_append_text		(GeditHistoryEntry *entry,
-								 const gchar       *text);
+struct _GeditHistoryEntry
+{
+	GtkComboBoxText parent_instance;
 
-void		 gedit_history_entry_clear			(GeditHistoryEntry *entry);
+	GeditHistoryEntryPrivate *priv;
+};
 
-void		 gedit_history_entry_set_history_length		(GeditHistoryEntry *entry,
-								 guint              max_saved);
+GType		 gedit_history_entry_get_type		(void) G_GNUC_CONST;
 
-guint		 gedit_history_entry_get_history_length		(GeditHistoryEntry *gentry);
+GtkWidget	*gedit_history_entry_new		(const gchar       *history_id,
+							 gboolean           enable_completion);
 
-void		gedit_history_entry_set_enable_completion	(GeditHistoryEntry *entry,
-								 gboolean           enable);
+void		 gedit_history_entry_prepend_text	(GeditHistoryEntry *entry,
+							 const gchar       *text);
 
-gboolean	gedit_history_entry_get_enable_completion	(GeditHistoryEntry *entry);
+void		 gedit_history_entry_append_text	(GeditHistoryEntry *entry,
+							 const gchar       *text);
 
-GtkWidget	*gedit_history_entry_get_entry			(GeditHistoryEntry *entry);
+void		 gedit_history_entry_clear		(GeditHistoryEntry *entry);
+
+void		 gedit_history_entry_set_history_length	(GeditHistoryEntry *entry,
+							 guint              max_saved);
+
+guint		 gedit_history_entry_get_history_length	(GeditHistoryEntry *gentry);
+
+void             gedit_history_entry_set_enable_completion
+							(GeditHistoryEntry *entry,
+							 gboolean           enable);
+
+gboolean         gedit_history_entry_get_enable_completion
+							(GeditHistoryEntry *entry);
+
+GtkWidget	*gedit_history_entry_get_entry		(GeditHistoryEntry *entry);
+
+typedef gchar * (* GeditHistoryEntryEscapeFunc) (const gchar *str);
+void		gedit_history_entry_set_escape_func	(GeditHistoryEntry *entry,
+							 GeditHistoryEntryEscapeFunc escape_func);
 
 G_END_DECLS
 
-#endif /* GEDIT_HISTORY_ENTRY_H */
+#endif /* __GEDIT_HISTORY_ENTRY_H__ */
 
 /* ex:set ts=8 noet: */

@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Modifier la casse du texte sélectionné.</desc>
+  <desc>Modifier la casse du texte sélectionné</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -58,52 +58,34 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alain Lojewski</mal:name>
-      <mal:email>allomervan@gmail.com</mal:email>
-      <mal:years>2011-2014.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Alexandre Franke</mal:name>
+      <mal:name>Alain Lojewski &lt;allomervan@gmail.com&gt;, 2011-2013.Alexandre Franke</mal:name>
       <mal:email>alexandre.franke@gmail.com</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Julien Hardelin</mal:name>
-      <mal:email>jhardlin@orange.fr</mal:email>
-      <mal:years>2013.</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Guillaume Bernard</mal:name>
-      <mal:email>associations@guillaume-bernard.fr</mal:email>
-      <mal:years>2018</mal:years>
-    </mal:credit>
   </info>
 
-<title>Modification de la casse</title>
+<title>Modification la casse</title>
 
-  <p>Ce greffon vous aide à modifier la casse du morceau de texte que vous avez sélectionné. Vous pouvez l’utiliser pour mettre du texte tout en minuscules, tout en majuscules, pour inverser la casse ou pour appliquer une casse de titre. Pour activer ce greffon, choisissez <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Préférences</gui> <gui>Greffons</gui><gui>Modifier la casse</gui></guiseq>.</p>
+  <p>Ce greffon vous aide à modifier la casse du morceau de texte que vous avez sélectionné. Vous pouvez l'utiliser pour mettre du texte tout en minuscules, tout en majuscules, pour inverser la casse ou pour appliquer une casse de titre. Pour activer ce greffon, choisissez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui><gui>Modifier la casse</gui></guiseq>.</p>
 
-  <p>Une fois que le greffon <em>Modifier la casse</em> est activé, vous pouvez l’utiliser de la manière suivante :</p>
+  <p>Une fois que le greffon <em>Modifier la casse</em> est activé, vous pouvez l'utiliser de la manière suivante :</p>
 
   <steps>
     <item><p>Sélectionnez le morceau de texte que vous voulez modifier.</p></item>
-    <item><p>Choisissez  <guiseq><gui style="menu">gedit</gui><gui>Modifier la casse</gui></guiseq></p>
+    <item><p>Choisissez <guiseq><gui>gedit</gui><gui>Modifier la casse</gui></guiseq></p>
     </item>
-    <item><p>Choisissez l’option de mise en forme de texte souhaitée.</p></item> 
+    <item><p>Choisissez l'option de mise en forme de texte souhaitée.</p></item> 
   </steps>
 
-  <p>Les mises à jour du format du texte s’effectuent immédiatement.</p>
+  <p>Les mises à jour du format du texte s'effectuent immédiatement.</p>
 
   <note style="tip">
-    <p>L’option <gui>Inverser la casse</gui> convertit toutes les minuscules en majuscules et réciproquement.</p>
-    <p>L’option <gui>Casse de titre</gui> convertit la première lettre de chaque mot en majuscules. Toutes les autres lettres sont converties en minuscules.</p>
+    <p>L'option <gui>Inverser la casse</gui> convertit toutes les minuscules en majuscules et réciproquement.</p>
+    <p>L'option <gui>Casse de titre</gui> convertit la première lettre de chaque mot en majuscules. Toutes les autres lettres sont converties en minuscules.</p>
   </note>
 
   <note>
-    <p>Si aucun texte n’est sélectionné, la fonction <em>Modifier la casse</em> est grisée (non active). Vous devez sélectionner un morceau de texte avant d’utiliser la fonction <em>Modifier la casse</em>.</p>
+    <p>Si aucun texte n'est sélectionné, la fonction <em>Modifier la casse</em> est grisée (non active). Vous devez sélectionner un morceau de texte avant d'utiliser la fonction <em>Modifier la casse</em>.</p>
   </note>
 
 </page>

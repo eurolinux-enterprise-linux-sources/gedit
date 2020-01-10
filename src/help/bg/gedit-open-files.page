@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-open-files" xml:lang="bg">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-files" xml:lang="bg">
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="second"/>
@@ -7,19 +7,11 @@
     <link type="seealso" xref="gedit-close-file"/>
     <link type="seealso" xref="gedit-open-recent"/>
     <link type="seealso" xref="gedit-quickstart"/>
-    <desc>Open files to start working on them.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
-    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
-
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
-    <credit type="editor">
-      <name>Shobha Tyagi</name>
-      <email its:translate="no">tyagishobha@gmail.com</email>
-    </credit>
-    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>
@@ -43,11 +35,8 @@
   <title>Отваряне на един или няколко файла</title>
 
   <p>За да отворите файл в <app>gedit</app>, натиснете бутона <gui>Отваряне</gui> или натиснете <keyseq><key>Ctrl</key><key>O</key></keyseq>.</p>
-  <p>This will cause the <gui>Open</gui> dialog to appear. Use your mouse
-  or keyboard to select the file that you wish to open, and then click
-  <gui>Open</gui>. The file that you've selected will open in a new tab.</p>
-  <p>To close the <gui>Open</gui> dialog without opening a file, click
-  <gui>Cancel</gui>.</p>
+  <p>Това ще отвори прозореца <gui>Отваряне на файлове</gui>. Използвайте мишката или клавиатурата, за да изберете файла, който искате да се отвори и натиснете <gui>Отваряне</gui>. Файлът, който сте избрали ще се отвори в нов раздел.</p>
+  <p>За да затворите прозореца <gui>Отваряне на файлове</gui>, натиснете <gui>Отмяна</gui>.</p>
 
   <note style="tip"><p>Можете да използвате клавишите <key>Ctrl</key> и <key>Shift</key>, за да отворите няколко файла наведнъж. Ако задържите клавиша <key>Ctrl</key> докато избирате файлове, натискането на <gui>Отваряне</gui> ще отвори всеки избран файл.</p>
 

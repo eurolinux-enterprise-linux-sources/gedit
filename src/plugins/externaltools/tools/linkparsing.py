@@ -18,7 +18,6 @@
 
 import re
 
-
 class Link:
     """
     This class represents a file link from within a string given by the
@@ -35,16 +34,15 @@ class Link:
         start -- the index within the string that the link starts at
         end -- the index within the string where the link ends at
         """
-        self.path = path
+        self.path    = path
         self.line_nr = int(line_nr)
-        self.col_nr = int(col_nr)
-        self.start = start
-        self.end = end
+        self.col_nr  = int(col_nr)
+        self.start   = start
+        self.end     = end
 
     def __repr__(self):
         return "%s[%s][%s](%s:%s)" % (self.path, self.line_nr, self.col_nr,
                                       self.start, self.end)
-
 
 class LinkParser:
     """
@@ -105,7 +103,6 @@ class LinkParser:
 
         return links
 
-
 class AbstractLinkParser(object):
     """The "abstract" base class for link parses"""
 
@@ -120,7 +117,6 @@ class AbstractLinkParser(object):
         text -- the text to parse. This argument is never None.
         """
         raise NotImplementedError("need to implement a parse method")
-
 
 class RegexpLinkParser(AbstractLinkParser):
     """
@@ -162,23 +158,20 @@ class RegexpLinkParser(AbstractLinkParser):
         return links
 
 # gcc 'test.c:13: warning: ...'
-# grep 'test.c:5:int main(...'
 # javac 'Test.java:13: ...'
 # ruby 'test.rb:5: ...'
 # scalac 'Test.scala:5: ...'
-# sbt (scala) '[error] test.scala:4: ...'
 # 6g (go) 'test.go:9: ...'
 REGEXP_STANDARD = r"""
 ^
-(?:\[(?:error|warn)\]\ )?
 (?P<lnk>
-    (?P<pth> [^ \:\n]* )
+    (?P<pth> [^\:\n]* )
     \:
     (?P<ln> \d+)
     \:?
     (?P<col> \d+)?
 )
-\:"""
+\:\s"""
 
 # python '  File "test.py", line 13'
 REGEXP_PYTHON = r"""
@@ -237,16 +230,15 @@ REGEXP_PERL = r"""
 )"""
 
 # mcs (C#) 'Test.cs(12,7): error CS0103: The name `fakeMethod'
-# fpc (Pascal) 'hello.pas(11,1) Fatal: Syntax error, ":" expected but "BEGIN"'
 REGEXP_MCS = r"""
 ^
 (?P<lnk>
-    (?P<pth> \S+ )
+    (?P<pth> .*\.[cC][sS] )
     \(
     (?P<ln> \d+ )
     ,\d+\)
 )
-\:?\s
+\:\s
 """
 
 # ex:ts=4:et:

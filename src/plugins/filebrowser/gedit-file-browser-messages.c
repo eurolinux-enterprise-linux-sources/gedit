@@ -14,7 +14,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include "gedit-file-browser-messages.h"
@@ -27,7 +28,6 @@
 #define WINDOW_DATA_KEY	       	"GeditFileBrowserMessagesWindowData"
 
 #define BUS_CONNECT(bus, name, data) gedit_message_bus_connect(bus, MESSAGE_OBJECT_PATH, #name, (GeditMessageCallback)  message_##name##_cb, data, NULL)
-#define BUS_DISCONNECT(bus, name, data) gedit_message_bus_disconnect_by_func(bus, MESSAGE_OBJECT_PATH, #name, (GeditMessageCallback)  message_##name##_cb, data)
 
 typedef struct
 {
@@ -38,10 +38,13 @@ typedef struct
 typedef struct
 {
 	guint row_inserted_id;
-	guint before_row_deleted_id;
+	guint row_deleted_id;
 	guint root_changed_id;
 	guint begin_loading_id;
 	guint end_loading_id;
+
+	GList *merge_ids;
+	GtkActionGroup *merged_actions;
 
 	GeditMessageBus *bus;
 	GeditFileBrowserWidget *widget;
@@ -63,6 +66,8 @@ window_data_new (GeditWindow            *window,
 		 GeditFileBrowserWidget *widget)
 {
 	WindowData *data = g_slice_new (WindowData);
+	GtkUIManager *manager;
+	GList *groups;
 
 	data->bus = gedit_window_get_message_bus (window);
 	data->widget = widget;
@@ -75,6 +80,14 @@ window_data_new (GeditWindow            *window,
 					       g_str_equal,
 					       (GDestroyNotify)g_free,
 					       NULL);
+
+	manager = gedit_file_browser_widget_get_ui_manager (widget);
+
+	data->merge_ids = NULL;
+	data->merged_actions = gtk_action_group_new ("MessageMergedActions");
+
+	groups = gtk_ui_manager_get_action_groups (manager);
+	gtk_ui_manager_insert_action_group (manager, data->merged_actions, g_list_length (groups));
 
 	g_object_set_data (G_OBJECT (window), WINDOW_DATA_KEY, data);
 
@@ -91,9 +104,20 @@ static void
 window_data_free (GeditWindow *window)
 {
 	WindowData *data = get_window_data (window);
+	GtkUIManager *manager;
+	GList *item;
 
 	g_hash_table_destroy (data->row_tracking);
 	g_hash_table_destroy (data->filters);
+
+	manager = gedit_file_browser_widget_get_ui_manager (data->widget);
+	gtk_ui_manager_remove_action_group (manager, data->merged_actions);
+
+	for (item = data->merge_ids; item; item = item->next)
+		gtk_ui_manager_remove_ui (manager, GPOINTER_TO_INT (item->data));
+
+	g_list_free (data->merge_ids);
+	g_object_unref (data->merged_actions);
 
 	g_slice_free (WindowData, data);
 
@@ -227,7 +251,7 @@ message_set_emblem_cb (GeditMessageBus *bus,
 
 	g_object_get (message, "id", &id, "emblem", &emblem, NULL);
 
-	if (!id)
+	if (!id || !emblem)
 	{
 		g_free (id);
 		g_free (emblem);
@@ -239,103 +263,44 @@ message_set_emblem_cb (GeditMessageBus *bus,
 
 	if (path != NULL)
 	{
-		GtkTreeIter iter;
-		GValue value = G_VALUE_INIT;
-		GdkPixbuf *pixbuf = NULL;
+		GError *error = NULL;
+		GdkPixbuf *pixbuf;
 
-		if (emblem != NULL)
-		{
-			pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-			                                   emblem,
-			                                   10,
-			                                   GTK_ICON_LOOKUP_FORCE_SIZE,
-			                                   NULL);
-		}
-
-		store = gedit_file_browser_widget_get_browser_store (data->widget);
-
-		if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
-		{
-			g_value_init (&value, GDK_TYPE_PIXBUF);
-			g_value_set_object (&value, pixbuf);
-
-			gedit_file_browser_store_set_value (store,
-			                                    &iter,
-			                                    GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
-			                                    &value);
-
-			g_value_unset (&value);
-		}
+		pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+						   emblem,
+						   10,
+						   0,
+						   &error);
 
 		if (pixbuf)
 		{
+			GValue value = { 0, };
+			GtkTreeIter iter;
+
+			store = gedit_file_browser_widget_get_browser_store (data->widget);
+
+			if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+			{
+				g_value_init (&value, GDK_TYPE_PIXBUF);
+				g_value_set_object (&value, pixbuf);
+
+				gedit_file_browser_store_set_value (store,
+								    &iter,
+								    GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
+								    &value);
+
+				g_value_unset (&value);
+			}
+
 			g_object_unref (pixbuf);
 		}
+
+		if (error)
+			g_error_free (error);
 	}
 
 	g_free (id);
 	g_free (emblem);
-}
-
-static void
-message_set_markup_cb (GeditMessageBus *bus,
-		       GeditMessage    *message,
-		       WindowData      *data)
-{
-	gchar *id = NULL;
-	gchar *markup = NULL;
-	GtkTreePath *path;
-	GeditFileBrowserStore *store;
-
-	g_object_get (message, "id", &id, "markup", &markup, NULL);
-
-	if (!id)
-	{
-		g_free (id);
-		g_free (markup);
-
-		return;
-	}
-
-	path = track_row_lookup (data, id);
-
-	if (path != NULL)
-	{
-		GtkTreeIter iter;
-		GValue value = G_VALUE_INIT;
-
-		store = gedit_file_browser_widget_get_browser_store (data->widget);
-
-		if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
-		{
-			if (markup == NULL)
-			{
-				gchar *name;
-
-				gtk_tree_model_get (GTK_TREE_MODEL (store), &iter,
-				                    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
-				                    -1);
-				markup = g_markup_escape_text (name, -1);
-
-				g_free (name);
-			}
-
-			g_value_init (&value, G_TYPE_STRING);
-			g_value_set_string (&value, markup);
-
-			gedit_file_browser_store_set_value (store,
-			                                    &iter,
-			                                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP,
-			                                    &value);
-
-			g_value_unset (&value);
-		}
-
-		gtk_tree_path_free (path);
-	}
-
-	g_free (id);
-	g_free (markup);
 }
 
 static gchar *
@@ -380,13 +345,11 @@ set_item_message (WindowData   *data,
 		  GeditMessage *message)
 {
 	GeditFileBrowserStore *store;
-	gchar *name;
 	GFile *location;
 	guint flags = 0;
 
 	store = gedit_file_browser_widget_get_browser_store (data->widget);
 	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
-			    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
 			    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
 			    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -409,13 +372,6 @@ set_item_message (WindowData   *data,
 		              "location", location,
 		              NULL);
 
-		if (gedit_message_has (message, "name"))
-		{
-			g_object_set (message,
-			              "name", name,
-			              NULL);
-		}
-
 		if (gedit_message_has (message, "is_directory"))
 		{
 			g_object_set (message,
@@ -427,8 +383,6 @@ set_item_message (WindowData   *data,
 		g_free (track_id);
 		g_object_unref (location);
 	}
-
-	g_free (name);
 }
 
 static gboolean
@@ -535,22 +489,6 @@ message_remove_filter_cb (GeditMessageBus *bus,
 }
 
 static void
-message_extend_context_menu_cb (GeditMessageBus *bus,
-				GeditMessage    *message,
-				GeditWindow     *window)
-{
-	WindowData *data;
-	GeditMenuExtension *ext;
-
-	data = get_window_data (window);
-
-	ext = gedit_file_browser_widget_extend_context_menu (data->widget);
-
-	g_object_set (message, "extension", ext, NULL);
-	g_object_unref (ext);
-}
-
-static void
 message_up_cb (GeditMessageBus *bus,
 	       GeditMessage    *message,
 	       WindowData      *data)
@@ -645,6 +583,78 @@ message_show_files_cb (GeditMessageBus *bus,
 }
 
 static void
+message_add_context_item_cb (GeditMessageBus *bus,
+			     GeditMessage    *message,
+			     WindowData      *data)
+{
+	GtkAction *action = NULL;
+	gchar *path = NULL;
+	gchar *name;
+	GtkUIManager *manager;
+	guint merge_id;
+
+	g_object_get (message,
+			   "action", &action,
+			   "path", &path,
+			   NULL);
+
+	if (!action || !path)
+	{
+		if (action)
+			g_object_unref (action);
+
+		g_free (path);
+		return;
+	}
+
+	gtk_action_group_add_action (data->merged_actions, action);
+	manager = gedit_file_browser_widget_get_ui_manager (data->widget);
+	name = g_strconcat (gtk_action_get_name (action), "MenuItem", NULL);
+	merge_id = gtk_ui_manager_new_merge_id (manager);
+
+	gtk_ui_manager_add_ui (manager,
+			       merge_id,
+			       path,
+			       name,
+			       gtk_action_get_name (action),
+			       GTK_UI_MANAGER_AUTO,
+			       FALSE);
+
+	if (gtk_ui_manager_get_widget (manager, path))
+	{
+		data->merge_ids = g_list_prepend (data->merge_ids, GINT_TO_POINTER (merge_id));
+		g_object_set (message, "id", merge_id, NULL);
+	}
+	else
+	{
+		g_object_set (message, "id", 0, NULL);
+	}
+
+	g_object_unref (action);
+	g_free (path);
+	g_free (name);
+}
+
+static void
+message_remove_context_item_cb (GeditMessageBus *bus,
+				GeditMessage    *message,
+				WindowData      *data)
+{
+	guint merge_id = 0;
+	GtkUIManager *manager;
+
+	g_object_get (message, "id", &merge_id, NULL);
+
+	if (merge_id == 0)
+		return;
+
+	manager = gedit_file_browser_widget_get_ui_manager (data->widget);
+
+	data->merge_ids = g_list_remove (data->merge_ids, GINT_TO_POINTER (merge_id));
+	gtk_ui_manager_remove_ui (manager, merge_id);
+}
+
+static void
 message_get_view_cb (GeditMessageBus *bus,
 		     GeditMessage    *message,
 		     WindowData      *data)
@@ -679,11 +689,6 @@ register_methods (GeditWindow            *window,
 	                            "set_emblem");
 
 	gedit_message_bus_register (bus,
-	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,
-	                            MESSAGE_OBJECT_PATH,
-	                            "set_markup");
-
-	gedit_message_bus_register (bus,
 	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,
 	                            MESSAGE_OBJECT_PATH,
 	                            "add_filter");
@@ -694,9 +699,14 @@ register_methods (GeditWindow            *window,
 	                            "remove_filter");
 
 	gedit_message_bus_register (bus,
-	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,
+	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_CONTEXT_ITEM,
 	                            MESSAGE_OBJECT_PATH,
-	                            "extend_context_menu");
+	                            "add_context_item");
+
+	gedit_message_bus_register (bus,
+	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,
+	                            MESSAGE_OBJECT_PATH,
+	                            "remove_context_item");
 
 	gedit_message_bus_register (bus,
 	                            GEDIT_TYPE_MESSAGE,
@@ -746,10 +756,11 @@ register_methods (GeditWindow            *window,
 	BUS_CONNECT (bus, get_root, data);
 	BUS_CONNECT (bus, set_root, data);
 	BUS_CONNECT (bus, set_emblem, data);
-	BUS_CONNECT (bus, set_markup, data);
 	BUS_CONNECT (bus, add_filter, window);
 	BUS_CONNECT (bus, remove_filter, data);
-	BUS_CONNECT (bus, extend_context_menu, window);
+
+	BUS_CONNECT (bus, add_context_item, data);
+	BUS_CONNECT (bus, remove_context_item, data);
 
 	BUS_CONNECT (bus, up, data);
 	BUS_CONNECT (bus, history_back, data);
@@ -788,9 +799,9 @@ store_row_inserted (GeditFileBrowserStore *store,
 }
 
 static void
-store_before_row_deleted (GeditFileBrowserStore *store,
-                          GtkTreePath           *path,
-                          MessageCacheData      *data)
+store_row_deleted (GeditFileBrowserStore *store,
+		   GtkTreePath		 *path,
+		   MessageCacheData      *data)
 {
 	GtkTreeIter iter;
 	guint flags = 0;
@@ -805,17 +816,9 @@ store_before_row_deleted (GeditFileBrowserStore *store,
 	if (!FILE_IS_DUMMY (flags) && !FILE_IS_FILTERED (flags))
 	{
 		WindowData *wdata = get_window_data (data->window);
-		gchar *id;
 
 		set_item_message (wdata, &iter, path, data->message);
-
-		/* Must get the ID before the plugin can modify it */
-		g_object_get (data->message, "id", &id, NULL);
-
 		gedit_message_bus_send_message_sync (wdata->bus, data->message);
-
-		g_hash_table_remove (wdata->row_tracking, id);
-		g_free (id);
 	}
 }
 
@@ -933,10 +936,10 @@ register_signals (GeditWindow            *window,
 	                        "method", "deleted",
 	                        NULL);
 
-	data->before_row_deleted_id =
+	data->row_deleted_id =
 		g_signal_connect_data (store,
-		                       "before-row-deleted",
-		                       G_CALLBACK (store_before_row_deleted),
+		                       "row-deleted",
+		                       G_CALLBACK (store_row_deleted),
 		                       message_cache_data_new (window, message),
 		                       (GClosureNotify)message_cache_data_free,
 		                       0);
@@ -1030,7 +1033,7 @@ cleanup_signals (GeditWindow *window)
 	store = gedit_file_browser_widget_get_browser_store (data->widget);
 
 	g_signal_handler_disconnect (store, data->row_inserted_id);
-	g_signal_handler_disconnect (store, data->before_row_deleted_id);
+	g_signal_handler_disconnect (store, data->row_deleted_id);
 	g_signal_handler_disconnect (store, data->root_changed_id);
 	g_signal_handler_disconnect (store, data->begin_loading_id);
 	g_signal_handler_disconnect (store, data->end_loading_id);
@@ -1042,33 +1045,10 @@ void
 gedit_file_browser_messages_unregister (GeditWindow *window)
 {
 	GeditMessageBus *bus = gedit_window_get_message_bus (window);
-	WindowData *data = get_window_data (window);
 
 	cleanup_signals (window);
-
-	BUS_DISCONNECT (bus, get_root, data);
-	BUS_DISCONNECT (bus, set_root, data);
-	BUS_DISCONNECT (bus, set_emblem, data);
-	BUS_DISCONNECT (bus, set_markup, data);
-	BUS_DISCONNECT (bus, add_filter, window);
-	BUS_DISCONNECT (bus, remove_filter, data);
-
-	BUS_DISCONNECT (bus, up, data);
-	BUS_DISCONNECT (bus, history_back, data);
-	BUS_DISCONNECT (bus, history_forward, data);
-
-	BUS_DISCONNECT (bus, refresh, data);
-
-	BUS_DISCONNECT (bus, set_show_hidden, data);
-	BUS_DISCONNECT (bus, set_show_binary, data);
-
-	BUS_DISCONNECT (bus, show_bookmarks, data);
-	BUS_DISCONNECT (bus, show_files, data);
-
-	BUS_DISCONNECT (bus, get_view, data);
-
 	gedit_message_bus_unregister_all (bus, MESSAGE_OBJECT_PATH);
 
 	window_data_free (window);
 }
-/* ex:set ts=8 noet: */
+/* ex:ts=8:noet: */

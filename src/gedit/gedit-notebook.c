@@ -3,7 +3,6 @@
  * This file is part of gedit
  *
  * Copyright (C) 2005 - Paolo Maggi
- * Copyright (C) 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +15,15 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  */
 
 /* This file is a modified version of the epiphany file ephy-notebook.c
@@ -25,39 +32,144 @@
  *  Copyright (C) 2002 Christophe Fergeau
  *  Copyright (C) 2003 Marco Pesenti Gritti
  *  Copyright (C) 2003, 2004 Christian Persch
+ *
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <glib-object.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
 #include "gedit-notebook.h"
+#include "gedit-tab.h"
 #include "gedit-tab-label.h"
+#include "gedit-window.h"
+#include "gedit-enum-types.h"
+#include "gedit-settings.h"
+#include "gedit-marshal.h"
+
+#define GEDIT_NOTEBOOK_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_NOTEBOOK, GeditNotebookPrivate))
 
 #define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
 
-/* The DND targets defined in GeditView start at 100.
- * Those defined in GtkSourceView start at 200.
- */
-#define TARGET_TAB 150
-
 struct _GeditNotebookPrivate
 {
-	/* History of focused pages. The first element contains the most recent
-	 * one.
-	 */
-	GList *focused_pages;
+	GSettings     *ui_settings;
 
+	GList         *focused_pages;
+
+	GeditNotebookShowTabsModeType show_tabs_mode;
+
+	GtkCssProvider *css;
+
+	guint close_buttons_sensitive : 1;
 	guint ignore_focused_page_update : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
+G_DEFINE_TYPE(GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
 
+/* Properties */
+enum
+{
+	PROP_0,
+	PROP_SHOW_TABS_MODE
+};
+
+/* Signals */
 enum
 {
 	TAB_CLOSE_REQUEST,
 	SHOW_POPUP_MENU,
-	CHANGE_TO_PAGE,
 	LAST_SIGNAL
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
+
+static void
+update_tabs_visibility (GeditNotebook *notebook,
+			gboolean       before_inserting)
+{
+	gboolean show_tabs;
+
+	switch (notebook->priv->show_tabs_mode)
+	{
+		case GEDIT_NOTEBOOK_SHOW_TABS_NEVER:
+			show_tabs = FALSE;
+			break;
+		case GEDIT_NOTEBOOK_SHOW_TABS_AUTO:
+			{
+				guint num;
+
+				num = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
+
+				if (before_inserting)
+					++num;
+
+				show_tabs = num > 1;
+			}
+			break;
+		case GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS:
+		default:
+			show_tabs = TRUE;
+			break;
+	}
+
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), show_tabs);
+}
+
+static void
+gedit_notebook_get_property (GObject    *object,
+			     guint       prop_id,
+			     GValue     *value,
+			     GParamSpec *pspec)
+{
+	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
+
+	switch (prop_id)
+	{
+		case PROP_SHOW_TABS_MODE:
+			g_value_set_enum (value,
+					  notebook->priv->show_tabs_mode);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_notebook_set_property (GObject      *object,
+			     guint         prop_id,
+			     const GValue *value,
+			     GParamSpec   *pspec)
+{
+	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
+
+	switch (prop_id)
+	{
+		case PROP_SHOW_TABS_MODE:
+			notebook->priv->show_tabs_mode = g_value_get_enum (value);
+			update_tabs_visibility (notebook, FALSE);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_notebook_dispose (GObject *object)
+{
+	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
+
+	g_clear_object (&notebook->priv->ui_settings);
+	g_clear_object (&notebook->priv->css);
+
+	G_OBJECT_CLASS (gedit_notebook_parent_class)->dispose (object);
+}
 
 static void
 gedit_notebook_finalize (GObject *object)
@@ -72,17 +184,14 @@ gedit_notebook_finalize (GObject *object)
 static void
 gedit_notebook_grab_focus (GtkWidget *widget)
 {
-	GtkNotebook *notebook = GTK_NOTEBOOK (widget);
-	gint current_page;
+	GtkNotebook *nb = GTK_NOTEBOOK (widget);
 	GtkWidget *tab;
+	gint current_page;
 
-	current_page = gtk_notebook_get_current_page (notebook);
-	tab = gtk_notebook_get_nth_page (notebook, current_page);
+	current_page = gtk_notebook_get_current_page (nb);
+	tab = gtk_notebook_get_nth_page (nb, current_page);
 
-	if (tab != NULL)
-	{
-		gtk_widget_grab_focus (tab);
-	}
+	gtk_widget_grab_focus (tab);
 }
 
 static gint
@@ -90,60 +199,55 @@ find_tab_num_at_pos (GtkNotebook *notebook,
                      gint         screen_x,
                      gint         screen_y)
 {
+	GtkNotebook *nb = GTK_NOTEBOOK (notebook);
 	GtkPositionType tab_pos;
+	GtkWidget *page;
 	GtkAllocation tab_allocation;
-	gint page_num;
+	gint page_num = 0;
 
-	tab_pos = gtk_notebook_get_tab_pos (notebook);
+	tab_pos = gtk_notebook_get_tab_pos (GTK_NOTEBOOK (notebook));
 
-	for (page_num = 0; ; page_num++)
+	while ((page = gtk_notebook_get_nth_page (nb, page_num)))
 	{
-		GtkWidget *page;
-		GtkWidget *tab_label;
+		GtkWidget *tab;
 		gint max_x, max_y, x_root, y_root;
 
-		page = gtk_notebook_get_nth_page (notebook, page_num);
+		tab = gtk_notebook_get_tab_label (nb, page);
+		g_return_val_if_fail (tab != NULL, -1);
 
-		if (page == NULL)
+		if (!gtk_widget_get_mapped (GTK_WIDGET (tab)))
 		{
-			break;
-		}
-
-		tab_label = gtk_notebook_get_tab_label (notebook, page);
-		g_return_val_if_fail (tab_label != NULL, -1);
-
-		if (!gtk_widget_get_mapped (tab_label))
-		{
+			page_num++;
 			continue;
 		}
 
-		gdk_window_get_origin (gtk_widget_get_window (tab_label), &x_root, &y_root);
+		gdk_window_get_origin (gtk_widget_get_window (tab), &x_root, &y_root);
 
-		gtk_widget_get_allocation (tab_label, &tab_allocation);
+		gtk_widget_get_allocation (tab, &tab_allocation);
 		max_x = x_root + tab_allocation.x + tab_allocation.width;
 		max_y = y_root + tab_allocation.y + tab_allocation.height;
 
-		if ((tab_pos == GTK_POS_TOP || tab_pos == GTK_POS_BOTTOM) &&
-		    screen_x <= max_x)
+		if ((tab_pos == GTK_POS_TOP || tab_pos == GTK_POS_BOTTOM) && screen_x <= max_x)
 		{
 			return page_num;
 		}
 
-		if ((tab_pos == GTK_POS_LEFT || tab_pos == GTK_POS_RIGHT) &&
-		    screen_y <= max_y)
+		if ((tab_pos == GTK_POS_LEFT || tab_pos == GTK_POS_RIGHT) && screen_y <= max_y)
 		{
 			return page_num;
 		}
+
+		page_num++;
 	}
 
 	return -1;
 }
 
 static gboolean
-gedit_notebook_button_press_event (GtkWidget      *widget,
-				   GdkEventButton *event)
+gedit_notebook_button_press (GtkWidget      *widget,
+                             GdkEventButton *event)
 {
-	GtkNotebook *notebook = GTK_NOTEBOOK (widget);
+	GtkNotebook *nb = GTK_NOTEBOOK (widget);
 
 	if (event->type == GDK_BUTTON_PRESS &&
 	    event->button == GDK_BUTTON_SECONDARY &&
@@ -151,16 +255,16 @@ gedit_notebook_button_press_event (GtkWidget      *widget,
 	{
 		gint tab_clicked;
 
-		tab_clicked = find_tab_num_at_pos (notebook, event->x_root, event->y_root);
+		tab_clicked = find_tab_num_at_pos (nb, event->x_root, event->y_root);
 		if (tab_clicked >= 0)
 		{
 			GtkWidget *tab;
 
-			tab = gtk_notebook_get_nth_page (notebook, tab_clicked);
+			tab = gtk_notebook_get_nth_page (nb, tab_clicked);
 
 			g_signal_emit (G_OBJECT (widget), signals[SHOW_POPUP_MENU], 0, event, tab);
 
-			return GDK_EVENT_STOP;
+			return TRUE;
 		}
 	}
 
@@ -175,16 +279,14 @@ static gboolean
 gedit_notebook_change_current_page (GtkNotebook *notebook,
 				    gint         offset)
 {
+	gboolean wrap_around;
 	gint current;
 
 	current = gtk_notebook_get_current_page (notebook);
 
 	if (current != -1)
 	{
-		gint target;
-		gboolean wrap_around;
-
-		target = current + offset;
+		current = current + offset;
 
 		g_object_get (gtk_widget_get_settings (GTK_WIDGET (notebook)),
 			      "gtk-keynav-wrap-around", &wrap_around,
@@ -192,17 +294,17 @@ gedit_notebook_change_current_page (GtkNotebook *notebook,
 
 		if (wrap_around)
 		{
-			if (target < 0)
+			if (current < 0)
 			{
-				target = gtk_notebook_get_n_pages (notebook) - 1;
+				current = gtk_notebook_get_n_pages (notebook) - 1;
 			}
-			else if (target >= gtk_notebook_get_n_pages (notebook))
+			else if (current >= gtk_notebook_get_n_pages (notebook))
 			{
-				target = 0;
+				current = 0;
 			}
 		}
 
-		gtk_notebook_set_current_page (notebook, target);
+		gtk_notebook_set_current_page (notebook, current);
 	}
 	else
 	{
@@ -217,39 +319,43 @@ gedit_notebook_switch_page (GtkNotebook *notebook,
                             GtkWidget   *page,
                             guint        page_num)
 {
-	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
+	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
+
+	if (!nb->priv->ignore_focused_page_update)
+	{
+		gint prev_page;
+		GtkWidget *previous_page;
+
+		prev_page = gtk_notebook_get_current_page (notebook);
+		previous_page = gtk_notebook_get_nth_page (notebook, prev_page);
+
+		/* Remove the old page, we dont want to grow unnecessarily
+		 * the list */
+		if (nb->priv->focused_pages)
+		{
+			nb->priv->focused_pages =
+				g_list_remove (nb->priv->focused_pages, previous_page);
+		}
+
+		nb->priv->focused_pages = g_list_append (nb->priv->focused_pages,
+		                                         previous_page);
+	}
 
 	GTK_NOTEBOOK_CLASS (gedit_notebook_parent_class)->switch_page (notebook, page, page_num);
-
-	if (!priv->ignore_focused_page_update)
-	{
-		gint page_num;
-
-		/* Get again page_num and page, the signal handler may have
-		 * changed them.
-		 */
-		page_num = gtk_notebook_get_current_page (notebook);
-		if (page_num != -1)
-		{
-			GtkWidget *page = gtk_notebook_get_nth_page (notebook, page_num);
-			g_assert (page != NULL);
-
-			/* Remove the old page, we dont want to grow unnecessarily
-			 * the list.
-			 */
-			priv->focused_pages = g_list_remove (priv->focused_pages, page);
-
-			priv->focused_pages = g_list_prepend (priv->focused_pages, page);
-		}
-	}
 
 	/* give focus to the tab */
 	gtk_widget_grab_focus (page);
 }
 
 static void
-close_button_clicked_cb (GeditTabLabel *tab_label,
-			 GeditNotebook *notebook)
+on_tab_label_destroyed (GtkWidget *tab_label,
+                        GeditTab  *tab)
+{
+	g_object_set_data (G_OBJECT (tab), "tab-label", NULL);
+}
+
+static void
+close_button_clicked_cb (GeditTabLabel *tab_label, GeditNotebook *notebook)
 {
 	GeditTab *tab;
 
@@ -258,68 +364,35 @@ close_button_clicked_cb (GeditTabLabel *tab_label,
 }
 
 static void
-switch_to_last_focused_page (GeditNotebook *notebook,
-			     GeditTab      *tab)
+smart_tab_switching_on_closure (GeditNotebook *nb,
+				GeditTab      *tab)
 {
-	if (notebook->priv->focused_pages != NULL)
+	if (nb->priv->focused_pages)
 	{
-		GList *node;
-		GtkWidget *page;
+		GList *l;
+		GtkWidget *child;
 		gint page_num;
 
-		node = notebook->priv->focused_pages;
-		page = GTK_WIDGET (node->data);
+		/* activate the last focused tab */
+		l = g_list_last (nb->priv->focused_pages);
+		child = GTK_WIDGET (l->data);
 
-		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), page);
-		g_return_if_fail (page_num != -1);
+		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
+		                                  child);
 
-		gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook), page_num);
+		gtk_notebook_set_current_page (GTK_NOTEBOOK (nb),
+		                               page_num);
 	}
 }
 
-static void
-drag_data_received_cb (GtkWidget        *widget,
-		       GdkDragContext   *context,
-		       gint              x,
-		       gint              y,
-		       GtkSelectionData *selection_data,
-		       guint             info,
-		       guint             timestamp)
+static GtkWidget *
+get_tab_label (GeditTab *tab)
 {
-	GtkWidget *notebook;
-	GtkWidget *new_notebook;
-	GtkWidget *page;
+	GObject *tab_label;
 
-	if (info != TARGET_TAB)
-	{
-		return;
-	}
+	tab_label = g_object_get_data (G_OBJECT (tab), "tab-label");
 
-	notebook = gtk_drag_get_source_widget (context);
-
-	if (!GTK_IS_WIDGET (notebook))
-	{
-		return;
-	}
-
-	page = *(GtkWidget **) gtk_selection_data_get_data (selection_data);
-	g_return_if_fail (page != NULL);
-
-	/* We need to iterate and get the notebook of the target view
-	 * because we can have several notebooks per window.
-	 */
-	new_notebook = gtk_widget_get_ancestor (widget, GEDIT_TYPE_NOTEBOOK);
-	g_return_if_fail (new_notebook != NULL);
-
-	if (notebook != new_notebook)
-	{
-		gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
-					 GEDIT_NOTEBOOK (new_notebook),
-					 GEDIT_TAB (page),
-					 0);
-	}
-
-	gtk_drag_finish (context, TRUE, TRUE, timestamp);
+	return (tab_label != NULL) ? GTK_WIDGET (tab_label) : NULL;
 }
 
 static void
@@ -327,19 +400,40 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
                              GtkWidget   *page,
                              guint        page_num)
 {
-	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
-	gboolean current_page;
+	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
+	gint num_pages;
+	gint curr;
+	GtkWidget *tab_label;
 
-	/* The page removed was the current page. */
-	current_page = (priv->focused_pages != NULL &&
-			priv->focused_pages->data == page);
+	tab_label = get_tab_label (GEDIT_TAB (page));
 
-	priv->focused_pages = g_list_remove (priv->focused_pages, page);
-
-	if (current_page)
+	if (tab_label != NULL)
 	{
-		switch_to_last_focused_page (GEDIT_NOTEBOOK (notebook),
-					     GEDIT_TAB (page));
+		g_signal_handlers_disconnect_by_func (tab_label,
+		                                      G_CALLBACK (on_tab_label_destroyed),
+		                                      page);
+		g_signal_handlers_disconnect_by_func (tab_label,
+		                                      G_CALLBACK (close_button_clicked_cb),
+		                                      nb);
+	}
+
+	/* Remove the page from the focused pages list */
+	nb->priv->focused_pages =  g_list_remove (nb->priv->focused_pages,
+	                                          page);
+
+	curr = gtk_notebook_get_current_page (notebook);
+
+	if (page_num == curr)
+	{
+		smart_tab_switching_on_closure (nb, GEDIT_TAB (page));
+	}
+
+	num_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (nb));
+
+	/* If there is no tabs, calling this is pointless */
+	if (num_pages > 0)
+	{
+		update_tabs_visibility (nb, FALSE);
 	}
 }
 
@@ -348,120 +442,82 @@ gedit_notebook_page_added (GtkNotebook *notebook,
                            GtkWidget   *page,
                            guint        page_num)
 {
+	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
 	GtkWidget *tab_label;
-	GeditView *view;
 
-	g_return_if_fail (GEDIT_IS_TAB (page));
+	tab_label = get_tab_label (GEDIT_TAB (page));
 
-	tab_label = gtk_notebook_get_tab_label (notebook, page);
-	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
+	g_signal_connect (tab_label,
+	                  "destroy",
+	                  G_CALLBACK (on_tab_label_destroyed),
+	                  page);
 
-	/* For a DND from one notebook to another, the same tab_label can be
-	 * used, so we need to connect the signal here.
-	 * More precisely, the same tab_label is used when the drop zone is in
-	 * the tab labels (not the GeditView), that is, when the DND is handled
-	 * by the GtkNotebook implementation.
-	 */
 	g_signal_connect (tab_label,
 	                  "close-clicked",
 	                  G_CALLBACK (close_button_clicked_cb),
-	                  notebook);
+	                  nb);
 
-	view = gedit_tab_get_view (GEDIT_TAB (page));
-	g_signal_connect (view,
-			  "drag-data-received",
-			  G_CALLBACK (drag_data_received_cb),
-			  NULL);
+	update_tabs_visibility (GEDIT_NOTEBOOK (notebook), FALSE);
 }
 
 static void
 gedit_notebook_remove (GtkContainer *container,
                        GtkWidget    *widget)
 {
-	GtkNotebook *notebook = GTK_NOTEBOOK (container);
-	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (container)->priv;
-	GtkWidget *tab_label;
-	GeditView *view;
-
-	g_return_if_fail (GEDIT_IS_TAB (widget));
-
-	tab_label = gtk_notebook_get_tab_label (notebook, widget);
-	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
-
-	/* For a DND from one notebook to another, the same tab_label can be
-	 * used, so we need to disconnect the signal.
-	 */
-	g_signal_handlers_disconnect_by_func (tab_label,
-					      G_CALLBACK (close_button_clicked_cb),
-					      notebook);
-
-	view = gedit_tab_get_view (GEDIT_TAB (widget));
-	g_signal_handlers_disconnect_by_func (view, drag_data_received_cb, NULL);
+	GeditNotebook *nb;
 
 	/* This is where GtkNotebook will remove the page. By doing so, it
-	 * will also switch to a new page, messing up our focus list. So we
-	 * set a flag here to ignore the switch temporarily.
-	 */
-	priv->ignore_focused_page_update = TRUE;
+	   will also switch to a new page, messing up our focus list. So we
+	   set a flag here to ignore the switch temporarily */
 
-	if (GTK_CONTAINER_CLASS (gedit_notebook_parent_class)->remove != NULL)
-	{
-		GTK_CONTAINER_CLASS (gedit_notebook_parent_class)->remove (container,
-									   widget);
-	}
+	nb = GEDIT_NOTEBOOK (container);
 
-	priv->ignore_focused_page_update = FALSE;
-}
+	nb->priv->ignore_focused_page_update = TRUE;
 
-static gboolean
-gedit_notebook_change_to_page (GeditNotebook *notebook,
-                               gint           page_num)
-{
-	gint n_pages;
+	GTK_CONTAINER_CLASS (gedit_notebook_parent_class)->remove (container,
+	                                                           widget);
 
-	n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
-
-	if (page_num >= n_pages)
-	{
-		return FALSE;
-	}
-
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
-	                               page_num);
-
-	return TRUE;
+	nb->priv->ignore_focused_page_update = FALSE;
 }
 
 static void
 gedit_notebook_class_init (GeditNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+	GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
 	GtkNotebookClass *notebook_class = GTK_NOTEBOOK_CLASS (klass);
-	GtkBindingSet *binding_set;
-	gint i;
+	GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
 
+	object_class->dispose = gedit_notebook_dispose;
 	object_class->finalize = gedit_notebook_finalize;
+	object_class->get_property = gedit_notebook_get_property;
+	object_class->set_property = gedit_notebook_set_property;
 
-	widget_class->grab_focus = gedit_notebook_grab_focus;
-	widget_class->button_press_event = gedit_notebook_button_press_event;
-
-	container_class->remove = gedit_notebook_remove;
+	gtkwidget_class->grab_focus = gedit_notebook_grab_focus;
+	gtkwidget_class->button_press_event = gedit_notebook_button_press;
 
 	notebook_class->change_current_page = gedit_notebook_change_current_page;
 	notebook_class->switch_page = gedit_notebook_switch_page;
 	notebook_class->page_removed = gedit_notebook_page_removed;
 	notebook_class->page_added = gedit_notebook_page_added;
 
-	klass->change_to_page = gedit_notebook_change_to_page;
+	container_class->remove = gedit_notebook_remove;
+
+	g_object_class_install_property (object_class, PROP_SHOW_TABS_MODE,
+					 g_param_spec_enum ("show-tabs-mode",
+							    "Show Tabs Mode",
+							    "When tabs should be shown",
+							    GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
+							    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
+							    G_PARAM_READWRITE));
 
 	signals[TAB_CLOSE_REQUEST] =
 		g_signal_new ("tab-close-request",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditNotebookClass, tab_close_request),
-			      NULL, NULL, NULL,
+			      NULL, NULL,
+			      g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -471,29 +527,14 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditNotebookClass, show_popup_menu),
-			      NULL, NULL, NULL,
+			      NULL, NULL,
+			      gedit_marshal_VOID__BOXED_OBJECT,
 			      G_TYPE_NONE,
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_TAB);
 
-	signals[CHANGE_TO_PAGE] =
-		g_signal_new ("change-to-page",
-		              G_TYPE_FROM_CLASS (object_class),
-		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		              G_STRUCT_OFFSET (GeditNotebookClass, change_to_page),
-		              NULL, NULL, NULL,
-		              G_TYPE_BOOLEAN, 1,
-		              G_TYPE_INT);
-
-	binding_set = gtk_binding_set_by_class (klass);
-	for (i = 1; i < 10; i++)
-	{
-		gtk_binding_entry_add_signal (binding_set,
-		                              GDK_KEY_0 + i, GDK_MOD1_MASK,
-		                              "change-to-page", 1,
-		                              G_TYPE_INT, i - 1);
-	}
+	g_type_class_add_private (object_class, sizeof (GeditNotebookPrivate));
 }
 
 /**
@@ -512,7 +553,12 @@ gedit_notebook_new (void)
 static void
 gedit_notebook_init (GeditNotebook *notebook)
 {
-	notebook->priv = gedit_notebook_get_instance_private (notebook);
+	notebook->priv = GEDIT_NOTEBOOK_GET_PRIVATE (notebook);
+
+	notebook->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+
+	notebook->priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
+	notebook->priv->close_buttons_sensitive = TRUE;
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
@@ -520,72 +566,67 @@ gedit_notebook_init (GeditNotebook *notebook)
 	gtk_notebook_set_group_name (GTK_NOTEBOOK (notebook),
 	                             GEDIT_NOTEBOOK_GROUP_NAME);
 	gtk_container_set_border_width (GTK_CONTAINER (notebook), 0);
+
+	g_settings_bind (notebook->priv->ui_settings,
+			 GEDIT_SETTINGS_SHOW_TABS_MODE,
+			 notebook,
+			 "show-tabs-mode",
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+}
+
+static GtkWidget *
+create_tab_label (GeditNotebook *nb,
+		  GeditTab      *tab)
+{
+	GtkWidget *tab_label;
+
+	tab_label = gedit_tab_label_new (tab);
+
+	g_object_set_data (G_OBJECT (tab), "tab-label", tab_label);
+
+	return tab_label;
 }
 
 /**
  * gedit_notebook_add_tab:
- * @notebook: a #GeditNotebook
+ * @nb: a #GeditNotebook
  * @tab: a #GeditTab
  * @position: the position where the @tab should be added
  * @jump_to: %TRUE to set the @tab as active
  *
- * Adds the specified @tab to the @notebook.
+ * Adds the specified @tab to the @nb.
  */
 void
-gedit_notebook_add_tab (GeditNotebook *notebook,
+gedit_notebook_add_tab (GeditNotebook *nb,
 		        GeditTab      *tab,
 		        gint           position,
 		        gboolean       jump_to)
 {
 	GtkWidget *tab_label;
-	GeditView *view;
-	GtkTargetList *target_list;
 
-	g_return_if_fail (GEDIT_IS_NOTEBOOK (notebook));
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	tab_label = gedit_tab_label_new (tab);
+	tab_label = create_tab_label (nb, tab);
 
-	gtk_notebook_insert_page (GTK_NOTEBOOK (notebook),
+	gtk_notebook_insert_page (GTK_NOTEBOOK (nb),
 				  GTK_WIDGET (tab),
 				  tab_label,
 				  position);
-
-	gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook),
+	gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (nb),
 	                                  GTK_WIDGET (tab),
 	                                  TRUE);
-
-	gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (notebook),
+	gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (nb),
 	                                 GTK_WIDGET (tab),
 	                                 TRUE);
 
-	gtk_container_child_set (GTK_CONTAINER (notebook),
-				 GTK_WIDGET (tab),
-				 "tab-expand", TRUE,
-				 NULL);
-
-	/* Drag and drop support: move a tab to another notebook, with the drop
-	 * zone in the GeditView. The drop zone in the tab labels is already
-	 * implemented by GtkNotebook.
-	 */
-	view = gedit_tab_get_view (tab);
-	target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
-
-	if (target_list != NULL)
-	{
-		gtk_target_list_add (target_list,
-		                     gdk_atom_intern_static_string ("GTK_NOTEBOOK_TAB"),
-		                     GTK_TARGET_SAME_APP,
-		                     TARGET_TAB);
-	}
-
 	/* The signal handler may have reordered the tabs */
-	position = gtk_notebook_page_num (GTK_NOTEBOOK (notebook),
+	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
 					  GTK_WIDGET (tab));
 
 	if (jump_to)
 	{
-		gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook), position);
+		gtk_notebook_set_current_page (GTK_NOTEBOOK (nb), position);
 		gtk_widget_grab_focus (GTK_WIDGET (tab));
 	}
 }
@@ -598,7 +639,7 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
  * @dest_position: the position for @tab
  *
  * Moves @tab from @src to @dest.
- * If @dest_position is greater than or equal to the number of tabs
+ * If dest_position is greater than or equal to the number of tabs
  * of the destination nootebook or negative, tab will be moved to the
  * end of the tabs.
  */
@@ -613,52 +654,91 @@ gedit_notebook_move_tab (GeditNotebook *src,
 	g_return_if_fail (src != dest);
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	/* Make sure the tab isn't destroyed while we move it. */
+	/* make sure the tab isn't destroyed while we move it */
 	g_object_ref (tab);
-
-	/* Make sure the @src notebook isn't destroyed during the tab
-	 * detachment, to prevent a crash in gtk_notebook_detach_tab(). In fact,
-	 * if @tab is the last tab of @src, and if @src is not the last notebook
-	 * of the GeditMultiNotebook, then @src will be destroyed when
-	 * gtk_container_remove() is called by gtk_notebook_detach_tab().
-	 */
-	g_object_ref (src);
-	gtk_notebook_detach_tab (GTK_NOTEBOOK (src), GTK_WIDGET (tab));
-	g_object_unref (src);
-
+	gtk_container_remove (GTK_CONTAINER (src), GTK_WIDGET (tab));
 	gedit_notebook_add_tab (dest, tab, dest_position, TRUE);
-
 	g_object_unref (tab);
 }
 
 /**
  * gedit_notebook_remove_all_tabs:
- * @notebook: a #GeditNotebook
+ * @nb: a #GeditNotebook
  *
- * Removes all #GeditTab from @notebook.
+ * Removes all #GeditTab from @nb.
  */
 void
-gedit_notebook_remove_all_tabs (GeditNotebook *notebook)
+gedit_notebook_remove_all_tabs (GeditNotebook *nb)
 {
-	GList *tabs;
-	GList *t;
+	GList *tabs, *t;
 
-	g_return_if_fail (GEDIT_IS_NOTEBOOK (notebook));
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
 
-	g_list_free (notebook->priv->focused_pages);
-	notebook->priv->focused_pages = NULL;
+	g_list_free (nb->priv->focused_pages);
+	nb->priv->focused_pages = NULL;
 
 	/* Remove tabs in reverse order since it is faster
-	 * due to how GtkNotebook works.
-	 */
-	tabs = gtk_container_get_children (GTK_CONTAINER (notebook));
+	 * due to how gtknotebook works */
+	tabs = gtk_container_get_children (GTK_CONTAINER (nb));
 	for (t = g_list_last (tabs); t != NULL; t = t->prev)
 	{
-		GtkWidget *tab = t->data;
-		gtk_container_remove (GTK_CONTAINER (notebook), tab);
+		gtk_container_remove (GTK_CONTAINER (nb), GTK_WIDGET (t->data));
 	}
 
 	g_list_free (tabs);
+}
+
+static void
+set_close_buttons_sensitivity (GeditTab      *tab,
+                               GeditNotebook *nb)
+{
+	GtkWidget *tab_label;
+
+	tab_label = get_tab_label (tab);
+
+	gedit_tab_label_set_close_button_sensitive (GEDIT_TAB_LABEL (tab_label),
+						    nb->priv->close_buttons_sensitive);
+}
+
+/**
+ * gedit_notebook_set_close_buttons_sensitive:
+ * @nb: a #GeditNotebook
+ * @sensitive: %TRUE to make the buttons sensitive
+ *
+ * Sets whether the close buttons in the tabs of @nb are sensitive.
+ */
+void
+gedit_notebook_set_close_buttons_sensitive (GeditNotebook *nb,
+					    gboolean       sensitive)
+{
+	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
+
+	sensitive = (sensitive != FALSE);
+
+	if (sensitive == nb->priv->close_buttons_sensitive)
+		return;
+
+	nb->priv->close_buttons_sensitive = sensitive;
+
+	gtk_container_foreach (GTK_CONTAINER (nb),
+			       (GtkCallback)set_close_buttons_sensitivity,
+			       nb);
+}
+
+/**
+ * gedit_notebook_get_close_buttons_sensitive:
+ * @nb: a #GeditNotebook
+ *
+ * Whether the close buttons are sensitive.
+ *
+ * Returns: %TRUE if the close buttons are sensitive
+ */
+gboolean
+gedit_notebook_get_close_buttons_sensitive (GeditNotebook *nb)
+{
+	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (nb), TRUE);
+
+	return nb->priv->close_buttons_sensitive;
 }
 
 /* ex:set ts=8 noet: */

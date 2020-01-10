@@ -10,43 +10,26 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>查看文档统计。</desc>
+  <desc>查看文档统计</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Document statistics</title>
 
-<title>文档统计</title>
-
-  <p><em>文档统计</em>插件可以显示当前文档的多项信息，要启用此插件，点菜单 <guiseq><gui style="menu">gedit</gui><gui style="menuitem">首选项</gui> <gui>插件</gui><gui>文档统计</gui></guiseq>。</p>
+  <p>The <em>Document Statistics</em> plugin shows you various statistics about
+  your current document. To enable this plugin, select 
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Document Statistics</gui></guiseq>.</p>
 
 <section id="using-doc-stats">
   <title>使用文档统计</title>
 
-  <p>一旦启用此插件，点菜单 <guiseq><gui>工具</gui><gui>文档统计</gui></guiseq>，就会出现一个窗口，显示文档的统计信息，包括单词数、行数、字符数和非空格的字符数，以及文件的字节数。</p>
+  <p>Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui>
+  <gui>Document Statistics</gui></guiseq>. A window will display the
+  statistical information of your document, including the number of words,
+  lines, characters, non-space characters, and the size of your file in
+  bytes.</p>
 
   <p>您还可以让<em>文档统计</em>只显示部分文档的信息，要做到这一点，用鼠标选中想要统计的文本，然后点菜单 <guiseq><gui>工具</gui><gui>文档统计</gui></guiseq>，<app>Gedit</app> 除了显示整个文档的信息外，还会显示您选中这部分文档的信息。</p>
 </section>

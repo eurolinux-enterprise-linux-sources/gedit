@@ -15,7 +15,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include <string.h>
@@ -425,9 +426,7 @@ parse_emacs_modeline (gchar           *s,
 				options->set |= MODELINE_SET_TAB_WIDTH;
 			}
 		}
-		else if (strcmp (key->str, "indent-offset") == 0 ||
-		         strcmp (key->str, "c-basic-offset") == 0 ||
-		         strcmp (key->str, "js-indent-level") == 0)
+		else if (strcmp (key->str, "indent-offset") == 0)
 		{
 			intval = atoi (value->str);
 
@@ -574,21 +573,18 @@ parse_kate_modeline (gchar           *s,
  * Line numbers are counted starting at one.
  */
 static void
-parse_modeline (gchar           *line,
+parse_modeline (gchar           *s,
 		gint             line_number,
 		gint             line_count,
 		ModelineOptions *options)
 {
-	gchar *s = line;
+	gchar prev;
 
 	/* look for the beginning of a modeline */
-	while (s != NULL && *s != '\0')
+	for (prev = ' '; (s != NULL) && (*s != '\0'); prev = *(s++))
 	{
-		if (s > line && !g_ascii_isspace (*(s - 1)))
-		{
-			s++;
+		if (!g_ascii_isspace (prev))
 			continue;
-		}
 
 		if ((line_number <= 3 || line_number > line_count - 3) &&
 		    (strncmp (s, "ex:", 3) == 0 ||
@@ -597,12 +593,8 @@ parse_modeline (gchar           *line,
 		{
 			gedit_debug_message (DEBUG_PLUGINS, "Vim modeline on line %d", line_number);
 
-			while (*s != ':')
-			{
-				s++;
-			}
-
-			s = parse_vim_modeline (s + 1, options);
+		    	while (*s != ':') s++;
+		    	s = parse_vim_modeline (s + 1, options);
 		}
 		else if (line_number <= 2 && strncmp (s, "-*-", 3) == 0)
 		{
@@ -616,10 +608,6 @@ parse_modeline (gchar           *line,
 			gedit_debug_message (DEBUG_PLUGINS, "Kate modeline on line %d", line_number);
 
 			s = parse_kate_modeline (s + 5, options);
-		}
-		else
-		{
-			s++;
 		}
 	}
 }

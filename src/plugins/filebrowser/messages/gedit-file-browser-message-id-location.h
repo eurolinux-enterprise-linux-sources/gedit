@@ -3,8 +3,7 @@
  * gedit-file-browser-message-id-location.h
  * This file is part of gedit
  *
- * Copyright (C) 2013 - Garrett Regier
- * Copyright (C) 2014 - Jesse van den Kieboom
+ * Copyright (C) 2011 - Jesse van den Kieboom
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +21,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H
+#ifndef __GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H__
+#define __GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H__
 
 #include <gedit/gedit-message.h>
 
@@ -67,4 +66,4 @@ GType gedit_file_browser_message_id_location_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H */
+#endif /* __GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H__ */

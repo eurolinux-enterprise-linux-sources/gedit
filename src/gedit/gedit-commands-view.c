@@ -17,154 +17,126 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
-
 #include <gtk/gtk.h>
 
+#include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-window.h"
-#include "gedit-highlight-mode-dialog.h"
-#include "gedit-highlight-mode-selector.h"
+#include "gedit-window-private.h"
+
 
 void
-_gedit_cmd_view_focus_active (GSimpleAction *action,
-                              GVariant      *state,
-                              gpointer       user_data)
+_gedit_cmd_view_show_toolbar (GtkAction   *action,
+			      GeditWindow *window)
 {
-	GeditView *active_view;
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	active_view = gedit_window_get_active_view (window);
-
-	if (active_view)
-	{
-		gtk_widget_grab_focus (GTK_WIDGET (active_view));
-	}
-}
-
-void
-_gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
-                                   GVariant      *state,
-                                   gpointer       user_data)
-{
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GtkWidget *panel;
 	gboolean visible;
 
 	gedit_debug (DEBUG_COMMANDS);
 
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	gtk_widget_set_visible (window->priv->toolbar, visible);
+}
+
+void
+_gedit_cmd_view_show_statusbar (GtkAction   *action,
+			        GeditWindow *window)
+{
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+	gtk_widget_set_visible (window->priv->statusbar, visible);
+}
+
+void
+_gedit_cmd_view_show_side_panel (GtkAction   *action,
+			         GeditWindow *window)
+{
+	gboolean visible;
+	GeditPanel *panel;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 	panel = gedit_window_get_side_panel (window);
 
-	visible = g_variant_get_boolean (state);
-	gtk_widget_set_visible (panel, visible);
+	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
 
 	if (visible)
 	{
-		gtk_widget_grab_focus (panel);
+		gtk_widget_grab_focus (GTK_WIDGET (panel));
 	}
-
-	g_simple_action_set_state (action, state);
 }
 
 void
-_gedit_cmd_view_toggle_bottom_panel (GSimpleAction *action,
-                                     GVariant      *state,
-                                     gpointer       user_data)
+_gedit_cmd_view_show_bottom_panel (GtkAction   *action,
+				   GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GtkWidget *panel;
 	gboolean visible;
+	GeditPanel *panel;
 
 	gedit_debug (DEBUG_COMMANDS);
 
+	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 	panel = gedit_window_get_bottom_panel (window);
 
-	visible = g_variant_get_boolean (state);
-	gtk_widget_set_visible (panel, visible);
+	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
 
 	if (visible)
 	{
-		gtk_widget_grab_focus (panel);
+		gtk_widget_grab_focus (GTK_WIDGET (panel));
 	}
-
-	g_simple_action_set_state (action, state);
 }
 
 void
-_gedit_cmd_view_toggle_fullscreen_mode (GSimpleAction *action,
-                                        GVariant      *state,
-                                        gpointer       user_data)
+_gedit_cmd_view_toggle_fullscreen_mode (GtkAction   *action,
+					GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
-
 	gedit_debug (DEBUG_COMMANDS);
 
-	if (g_variant_get_boolean (state))
-	{
-		_gedit_window_fullscreen (window);
-	}
-	else
-	{
+	if (_gedit_window_is_fullscreen (window))
 		_gedit_window_unfullscreen (window);
-	}
+	else
+		_gedit_window_fullscreen (window);
 }
 
 void
-_gedit_cmd_view_leave_fullscreen_mode (GSimpleAction *action,
-                                       GVariant      *parameter,
-                                       gpointer       user_data)
+_gedit_cmd_view_leave_fullscreen_mode (GtkAction   *action,
+				       GeditWindow *window)
 {
-	_gedit_window_unfullscreen (GEDIT_WINDOW (user_data));
-}
+	GtkAction *view_action;
 
-static void
-on_language_selected (GeditHighlightModeSelector *sel,
-                      GtkSourceLanguage          *language,
-                      GeditWindow                *window)
-{
-	GeditDocument *doc;
-
-	doc = gedit_window_get_active_document (window);
-	if (doc)
-	{
-		gedit_document_set_language (doc, language);
-	}
-}
-
-void
-_gedit_cmd_view_highlight_mode (GSimpleAction *action,
-                                GVariant      *parameter,
-                                gpointer       user_data)
-{
-	GtkWindow *window = GTK_WINDOW (user_data);
-	GtkWidget *dlg;
-	GeditHighlightModeSelector *sel;
-	GeditDocument *doc;
-
-	dlg = gedit_highlight_mode_dialog_new (window);
-	sel = gedit_highlight_mode_dialog_get_selector (GEDIT_HIGHLIGHT_MODE_DIALOG (dlg));
-
-	doc = gedit_window_get_active_document (GEDIT_WINDOW (window));
-	if (doc)
-	{
-		gedit_highlight_mode_selector_select_language (sel,
-		                                               gedit_document_get_language (doc));
-	}
-
-	g_signal_connect (sel, "language-selected",
-	                  G_CALLBACK (on_language_selected), window);
-
-	gtk_widget_show (GTK_WIDGET (dlg));
+	view_action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
+						   "ViewFullscreen");
+	g_signal_handlers_block_by_func
+		(view_action, G_CALLBACK (_gedit_cmd_view_toggle_fullscreen_mode),
+		 window);
+	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (view_action),
+				      FALSE);
+	_gedit_window_unfullscreen (window);
+	g_signal_handlers_unblock_by_func (view_action,
+					   G_CALLBACK (_gedit_cmd_view_toggle_fullscreen_mode),
+					   window);
 }
 
 /* ex:set ts=8 noet: */

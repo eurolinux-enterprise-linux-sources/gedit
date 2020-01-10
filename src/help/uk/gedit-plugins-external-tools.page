@@ -12,35 +12,33 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Run scripts on your current files, and interact with other applications.</desc>
-  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+  <desc>Run scripts on your current files, and interact with other applications</desc>
+  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>External tools</title>
 
-<title>Зовнішні інструменти</title>
-
-  <p>Плагін «<em>Зовнішні інструменти</em>» може допомогти спростити повторювані завдання. Особливо, він розширює можливості «<app>gedit</app>», допомагаючи виконувати скрипти в робочих файлах та дозволяє «<app>gedit</app>» взаємодіяти з іншими програмами на Вашому комп'ютері. Щоб увімкнути плагін «<app>Зовнішні інструменти</app>», виберіть <guiseq><gui style="menu">«gedit»</gui> <gui style="menuitem">«Параметри»</gui><gui>«Плагіни»</gui> <gui>«Зовнішні інструменти»</gui></guiseq>.</p>
+  <p>The <em>External Tools</em> plugin can help simplify repetitive tasks.
+  Specifically, it extends <app>gedit</app> by helping you to run scripts on
+  your working files, and by allowing <app>gedit</app> to interact with other
+  programs on your computer. To enable the <app>External Tools</app> plugin,
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">
-    <title>Налаштування плагіну «Зовнішні інструменти»</title>
+    <title>Configure the external tools plugin</title>
 
-  <p>Як тільки плагін увімкнено, його потрібно налаштувати відповідно до своїх потреб. Отримати доступ до опцій налаштування можна вибравши <guiseq><gui>«Інструменти»</gui><gui>«Управління зовнішніми інструментами»</gui></guiseq>.</p>
+  <p>Once you have enabled the plugin, you will need to configure it to suit
+  your needs. The configuration options are available by selecting
+  <guiseq><gui>Tools</gui><gui>Manage External Tools</gui></guiseq>.</p>
   
   <note style="caution">
-    <p>Цей плагін – для досвідчених користувачів і для ефективного використання, він вимагає знання скриптів. Використовуйте цей плагін обережно, оскільки, помилки у скриптах можуть ненавмисно зіпсувати Вашу роботу.</p>
+    <p>This plugin is for advanced users, and requires knowledge of scripting
+    to be used effectively. Use this plugin with care, as mistakes with your
+    scripts can affect your work in unintended ways.</p>
   </note>
   </section>
 

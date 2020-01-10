@@ -1,30 +1,7 @@
-From 7feb8e11020bd14e85339c64e5e547e02755ce74 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@redhat.com>
-Date: Fri, 15 May 2015 11:00:19 -0400
-Subject: [PATCH] Switch from python3 to python2
-
----
- configure.ac                                       |  2 +-
- gedit/gedit-plugins-engine.c                       |  2 +-
- plugins/externaltools/data/send-to-fpaste.tool.in  |  2 +-
- .../externaltools/externaltools.plugin.desktop.in  |  2 +-
- plugins/externaltools/tools/capture.py             |  8 ++++++-
- plugins/externaltools/tools/library.py             | 27 ++++++++++++++++------
- .../pythonconsole/pythonconsole.plugin.desktop.in  |  2 +-
- plugins/quickopen/quickopen.plugin.desktop.in      |  2 +-
- plugins/quickopen/quickopen/__init__.py            |  5 ++--
- plugins/snippets/snippets.plugin.desktop.in        |  2 +-
- plugins/snippets/snippets/helper.py                |  5 +++-
- plugins/snippets/snippets/library.py               |  3 ++-
- plugins/snippets/snippets/shareddata.py            |  3 ++-
- plugins/snippets/snippets/signals.py               |  2 +-
- 14 files changed, 46 insertions(+), 21 deletions(-)
-
-diff --git a/configure.ac b/configure.ac
-index 4f19eb4..0a00552 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -267,7 +267,7 @@ if test "x$enable_python" = "xauto"; then
+diff -up gedit-3.8.3/configure.ac.disable-python gedit-3.8.3/configure.ac
+--- gedit-3.8.3/configure.ac.disable-python	2013-07-17 20:41:04.210713683 -0400
++++ gedit-3.8.3/configure.ac	2013-07-17 20:41:36.763967930 -0400
+@@ -306,7 +306,7 @@ if test "x$enable_python" = "xauto"; the
  fi
  
  if test "x$enable_python" = "xyes"; then
@@ -32,264 +9,86 @@ index 4f19eb4..0a00552 100644
 +	AM_PATH_PYTHON
  	PKG_CHECK_MODULES(PYTHON, [pygobject-3.0 >= $PYGOBJECT_REQUIRED])
  
- 	pyoverridesdir="\$(pyexecdir)/gi/overrides"
-diff --git a/gedit/gedit-plugins-engine.c b/gedit/gedit-plugins-engine.c
-index d3e9dbb..9ac98cd 100644
---- a/gedit/gedit-plugins-engine.c
-+++ b/gedit/gedit-plugins-engine.c
-@@ -51,7 +51,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
- 
- 	gedit_debug (DEBUG_PLUGINS);
+ 	pyoverridesdir=`$PYTHON -c "import gi; print(gi._overridesdir)"`
+diff -up gedit-3.8.3/gedit/gedit-plugins-engine.c.disable-python gedit-3.8.3/gedit/gedit-plugins-engine.c
+--- gedit-3.8.3/gedit/gedit-plugins-engine.c.disable-python	2013-03-12 02:35:32.000000000 -0400
++++ gedit-3.8.3/gedit/gedit-plugins-engine.c	2013-07-17 20:41:04.210713683 -0400
+@@ -66,7 +66,7 @@ gedit_plugins_engine_init (GeditPluginsE
+ 	                                            GEDIT_TYPE_PLUGINS_ENGINE,
+ 	                                            GeditPluginsEnginePrivate);
  
 -	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 +	peas_engine_enable_loader (PEAS_ENGINE (engine), "python");
  
- 	engine->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
+ 	engine->priv->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
  
-diff --git a/plugins/externaltools/data/send-to-fpaste.tool.in b/plugins/externaltools/data/send-to-fpaste.tool.in
-index fb1fdf7..5eb8d8e 100755
---- a/plugins/externaltools/data/send-to-fpaste.tool.in
-+++ b/plugins/externaltools/data/send-to-fpaste.tool.in
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/env python
- 
- import os, urllib, json, sys, urllib.request
- from gi.repository import Gtk, Gdk
-diff --git a/plugins/externaltools/externaltools.plugin.desktop.in b/plugins/externaltools/externaltools.plugin.desktop.in
-index cc7a4da..c56e4e3 100644
 --- a/plugins/externaltools/externaltools.plugin.desktop.in
 +++ b/plugins/externaltools/externaltools.plugin.desktop.in
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,5 @@ 
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=externaltools
  IAge=3
  _Name=External Tools
-diff --git a/plugins/externaltools/tools/capture.py b/plugins/externaltools/tools/capture.py
-index e2e35b4..d5cf9a6 100644
---- a/plugins/externaltools/tools/capture.py
-+++ b/plugins/externaltools/tools/capture.py
-@@ -61,7 +61,13 @@ class Capture(GObject.Object):
-         self.flags = flags
- 
-     def set_input(self, text):
--        self.input_text = text.encode("UTF-8") if text else None
-+        if text:
-+            if isinstance(text, bytes):
-+                self.input_text = text
-+            else:
-+                self.input_text = text.encode("UTF-8")
-+        else:
-+            self.input_text = None
- 
-     def set_cwd(self, cwd):
-         self.cwd = cwd
-diff --git a/plugins/externaltools/tools/library.py b/plugins/externaltools/tools/library.py
-index adfd943..761337c 100644
---- a/plugins/externaltools/tools/library.py
-+++ b/plugins/externaltools/tools/library.py
-@@ -16,6 +16,7 @@
- #    along with this program; if not, write to the Free Software
- #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- 
-+import io
- import os
- import re
- import locale
-@@ -246,7 +247,7 @@ class Tool(object):
-         if filename is None:
-             return
- 
--        fp = open(filename, 'r', 1, encoding='utf-8')
-+        fp = io.open(filename, 'r', 1, encoding='utf-8')
-         in_block = False
-         lang = locale.getlocale(locale.LC_MESSAGES)[0]
- 
-@@ -395,7 +396,7 @@ class Tool(object):
-         if filename is None:
-             return True
- 
--        fp = open(filename, 'r', 1, encoding='utf-8')
-+        fp = io.open(filename, 'r', 1, encoding='utf-8')
-         for line in fp:
-             if line.strip() == '':
-                 continue
-@@ -411,7 +412,7 @@ class Tool(object):
-         if filename is None:
-             return ["#!/bin/sh\n"]
- 
--        fp = open(filename, 'r', 1, encoding='utf-8')
-+        fp = io.open(filename, 'r', 1, encoding='utf-8')
-         lines = list()
- 
-         # before entering the data block
-@@ -445,7 +446,7 @@ class Tool(object):
- 
-     def save_with_script(self, script):
-         filename = self.library.get_full_path(self.filename, 'w')
--        fp = open(filename, 'w', 1, encoding='utf-8')
-+        fp = io.open(filename, 'w', 1, encoding='utf-8')
- 
-         # Make sure to first print header (shebang, modeline), then
-         # properties, and then actual content
-@@ -470,12 +471,24 @@ class Tool(object):
-         # Write out header
-         for line in header:
-             fp.write(line + "\n")
-+            if isinstance(line, bytes):
-+                line = unicode(line + "\n", 'utf8')
-+            else:
-+                line += u"\n"
-+            fp.write(line)
- 
--        fp.write(self._dump_properties())
--        fp.write("\n")
-+        outstr = self._dump_properties()
-+        if isinstance(outstr, bytes):
-+            outstr = unicode(outstr, 'utf8')
-+        fp.write(outstr)
-+        fp.write(u"\n")
- 
-         for line in content:
--            fp.write(line + "\n")
-+            if isinstance(line, bytes):
-+                line = unicode(line + "\n", 'utf8')
-+            else:
-+                line += u"\n"
-+            fp.write(line)
- 
-         fp.close()
-         os.chmod(filename, 0o750)
-diff --git a/plugins/pythonconsole/pythonconsole.plugin.desktop.in b/plugins/pythonconsole/pythonconsole.plugin.desktop.in
-index 21283e8..4309667 100644
 --- a/plugins/pythonconsole/pythonconsole.plugin.desktop.in
 +++ b/plugins/pythonconsole/pythonconsole.plugin.desktop.in
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,5 @@ 
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=pythonconsole
  IAge=3
  _Name=Python Console
-diff --git a/plugins/quickopen/quickopen.plugin.desktop.in b/plugins/quickopen/quickopen.plugin.desktop.in
-index 68b6faa..17edecc 100644
 --- a/plugins/quickopen/quickopen.plugin.desktop.in
 +++ b/plugins/quickopen/quickopen.plugin.desktop.in
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,5 @@ 
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=quickopen
  IAge=3
  _Name=Quick Open
-diff --git a/plugins/quickopen/quickopen/__init__.py b/plugins/quickopen/quickopen/__init__.py
-index 7d63126..4f612da 100644
---- a/plugins/quickopen/quickopen/__init__.py
-+++ b/plugins/quickopen/quickopen/__init__.py
-@@ -15,6 +15,7 @@
- #  You should have received a copy of the GNU General Public License
- #  along with this program; if not, see <http://www.gnu.org/licenses/>.
- 
-+import io
- import os
- 
- import gi
-@@ -126,7 +127,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
- 
-         paths = []
- 
--        for line in open(filename, 'r', encoding='utf-8'):
-+        for line in io.open(filename, 'r', encoding='utf-8'):
-             uri = line.strip().split(" ")[0]
-             f = Gio.file_new_for_uri(uri)
- 
-@@ -153,7 +154,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
-         desktopdir = None
- 
-         if os.path.isfile(config):
--            for line in open(config, 'r', encoding='utf-8'):
-+            for line in io.open(config, 'r', encoding='utf-8'):
-                 line = line.strip()
- 
-                 if line.startswith('XDG_DESKTOP_DIR'):
-diff --git a/plugins/snippets/snippets.plugin.desktop.in b/plugins/snippets/snippets.plugin.desktop.in
-index 8551b6b..f41a626 100644
 --- a/plugins/snippets/snippets.plugin.desktop.in
 +++ b/plugins/snippets/snippets.plugin.desktop.in
-@@ -1,5 +1,5 @@
+@@ -1,5 +1,5 @@ 
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=snippets
  IAge=3
  _Name=Snippets
-diff --git a/plugins/snippets/snippets/helper.py b/plugins/snippets/snippets/helper.py
-index 2fa3b3f..ee3f3b7 100644
---- a/plugins/snippets/snippets/helper.py
-+++ b/plugins/snippets/snippets/helper.py
-@@ -124,8 +124,11 @@ def _write_node(node, file, cdata_nodes=(), indent=0):
-             if node.text or len(node):
-                 file.write(">")
-                 if node.text and node.text.strip() != "":
-+                    node_txt = node.text
-+                    if isinstance(node_txt, unicode):
-+                        node_txt = node_txt.encode('utf8')
-                     if tag in cdata_nodes:
--                        file.write(_cdata(node.text))
-+                        file.write(_cdata(node_txt))
-                     else:
-                         file.write(saxutils.escape(node.text))
-                 else:
-diff --git a/plugins/snippets/snippets/library.py b/plugins/snippets/snippets/library.py
-index 455ac91..1b454f3 100644
---- a/plugins/snippets/snippets/library.py
-+++ b/plugins/snippets/snippets/library.py
-@@ -15,6 +15,7 @@
- #    along with this program; if not, write to the Free Software
- #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- 
-+import io
- import os
- import weakref
- import sys
-@@ -453,7 +454,7 @@ class SnippetsSystemFile:
-         self.insnippet = False
- 
-         try:
--            f = open(self.path, "r", encoding='utf-8')
-+            f = io.open(self.path, "r", encoding='utf-8')
-         except IOError:
-             self.ok = False
-             return
-diff --git a/plugins/snippets/snippets/shareddata.py b/plugins/snippets/snippets/shareddata.py
-index be6fd14..64ffcc4 100644
 --- a/plugins/snippets/snippets/shareddata.py
 +++ b/plugins/snippets/snippets/shareddata.py
-@@ -23,7 +23,8 @@ from gi.repository import Gtk
- # To register the GeditSnippetsManager type
- from .manager import Manager
+@@ -20,7 +20,10 @@ import os
+ 
+ from gi.repository import Gtk
  
 -class SharedData(object, metaclass=Singleton):
++
 +class SharedData(object):
 +    __metaclass__ = Singleton
++
      def __init__(self):
          self.dlg = None
          self.dlg_default_size = None
-diff --git a/plugins/snippets/snippets/signals.py b/plugins/snippets/snippets/signals.py
-index 647b616..9aaa95a 100644
---- a/plugins/snippets/snippets/signals.py
-+++ b/plugins/snippets/snippets/signals.py
-@@ -17,7 +17,7 @@
- #  You should have received a copy of the GNU General Public License
- #  along with this program; if not, see <http://www.gnu.org/licenses/>.
+@@ -29,7 +32,7 @@ class SharedData(object, metaclass=Singl
  
--class Signals:
-+class Signals(object):
-     def __init__(self):
-         self._signals = {}
+     def register_controller(self, view, controller):
+         self.controller_registry[view] = controller
+-    
++
+     def unregister_controller(self, view, controller):
+         if self.controller_registry[view] == controller:
+             del self.controller_registry[view]
+@@ -72,7 +75,8 @@ class SharedData(object, metaclass=Singl
+             self.dlg.connect('destroy', self.manager_destroyed)
  
--- 
-1.8.3.1
+             if self.dlg_default_size:
+-                self.dlg.set_default_size(self.dlg_default_size[0], self.dlg_default_size[1])
++                self.dlg.set_default_size(self.dlg_default_size[0],
++                                          self.dlg_default_size[1])
+ 
+         self.dlg.set_transient_for(window)
+         self.dlg.present()
 

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="de">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:ui="http://projectmallard.org/experimental/ui/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="de">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Verwenden Sie Tastenkombinationen, um Ihre Arbeit schneller zu erledigen.</desc>
-    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
-    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -25,19 +22,8 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
-    <credit type="author copyright">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -54,14 +40,8 @@
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
-      <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2017</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Benjamin Steinwender</mal:name>
-      <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014-2015</mal:years>
+      <mal:email>Christian.Kirbach@gmail.com</mal:email>
+      <mal:years>2011, 2012, 2013</mal:years>
     </mal:credit>
   </info>
 
@@ -69,12 +49,26 @@
 
   <p>Verwenden Sie <gui>Tastenkürzel</gui>, um häufig vorkommende Aufgaben schneller als mit der Maus oder über die Menüs auszuführen. In den folgenden Tabellen werden alle Tastenkürzel von <app>gedit</app> aufgelistet.</p>
 
-    <table rules="rows" frame="top bottom" ui:expanded="true">
+<!--  
+Please skip this list for now. I'm not sure if it is needed.
+  <list>
+    <title>Types of shortcut keys</title>
+    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
+    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
+    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
+    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
+    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
+    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
+    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
+  </list>
+-->
+
+    <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Tastenkombinationen für Reiter</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>
@@ -99,52 +93,28 @@
           <td><p><keyseq><key>Strg</key><key>Umschalttaste</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Den zuletzt geschlossenen Reiter erneut öffnen</p></td>
-          <td><p><keyseq><key>Strg</key><key>Umschalttaste</key><key>T</key></keyseq></p></td>
-        </tr>
-        <tr>
           <td><p>Den <var>n</var>-ten Reiter aktivieren</p></td>
           <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Neue Reitergruppe</p></td>
-          <td><p><keyseq><key>Strg</key><key>Alt</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Vorherige Reitergruppe</p></td>
-          <td><p><keyseq><key>Strg</key><key>Umschalt</key><key>Alt</key><key>Bild↑</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Nächste Reitergruppe</p></td>
-          <td><p><keyseq><key>Strg</key><key>Umschalt</key><key>Alt</key><key>Bild↓</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Tastenkombinationen zum Arbeiten mit Dateien</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Eine neues Dokument in einem neuen Fenster anlegen</p></td>
+          <td><p>Eine neues Dokument anlegen</p></td>
           <td><p><keyseq><key>Strg</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Eine neues Dokument in einem neuen Reiter anlegen</p></td>
-          <td><p><keyseq><key>Strg</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Ein Dokument öffnen</p></td>
           <td><p><keyseq><key>Strg</key><key>O</key></keyseq></p></td>
-        </tr>
-        <tr>
-           <td><p>Öffnen Sie das Fenster <gui>Schnelles Öffnen</gui></p></td>
-           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Das aktuelle Dokument speichern</p></td>
@@ -173,12 +143,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Tastenkombinationen zum Bearbeiten von Dokumenten</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>
@@ -242,35 +212,15 @@
           <td><p>Die markierte Zeile um eine Position nach unten verschieben</p></td>
           <td><p><keyseq><key>Alt</key><key>↓</key></keyseq></p></td>
         </tr>
-        <tr>
-          <td><p>Eine Tabulatorposition hinzufügen</p></td>
-          <td><p><keyseq><key>Tabulator</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Eine Tabulatorposition entfernen</p></td>
-          <td><p><keyseq><key>Shift</key><key>Tabulator</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Den markierten Text in Großbuchstaben umwandeln</p></td>
-          <td><p><keyseq><key>Strg</key><key>U</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Den markierten Text in Kleinbuchstaben umwandeln</p></td>
-          <td><p><keyseq><key>Strg</key><key>L</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Die Groß-/Kleinschreibung für den ausgewählten Text umschalten</p></td>
-          <td><p><keyseq><key>Strg</key><key>~</key></keyseq></p></td>
-        </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Tastenkombinationen zum Anzeigen und Verbergen von Leisten</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>
@@ -279,24 +229,25 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Das Dateimenü öffnen</p></td>
-          <td><p><key>F10</key></p></td>  
+          <td><p>Die Fußleiste anzeigen/verbergen</p></td>
+          <td><p><keyseq><key>Strg</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Tastenkombinationen zum Suchen</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><p>Eine Zeichenkette suchen</p></td>
-          <td><p><keyseq><key>Strg</key><key>F</key></keyseq></p></td>
+          <td><p><keyseq><key>Strg</key><key>F</key></keyseq>.</p></td>
         </tr>
         <tr>
           <td><p>Das nächste Vorkommen der Zeichenkette suchen</p></td>
@@ -321,12 +272,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Tastenkombinationen für Werkzeuge</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>
@@ -349,12 +300,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Tastenkombinationen für Hilfe</title>
       <thead>
         <tr>
-          <td><p>Aktion</p></td>
-          <td><p>Tastenkombination</p></td>
+          <td><p>Um dies zu tun</p></td>
+          <td><p>Drücken Sie dies</p></td>
         </tr>
       </thead>
       <tbody>

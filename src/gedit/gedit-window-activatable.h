@@ -15,19 +15,28 @@
  *  GNU Library General Public License for more details.
  *
  *  You should have received a copy of the GNU Library General Public License
- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_WINDOW_ACTIVATABLE_H
-#define GEDIT_WINDOW_ACTIVATABLE_H
+#ifndef __GEDIT_WINDOW_ACTIVATABLE_H__
+#define __GEDIT_WINDOW_ACTIVATABLE_H__
 
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_WINDOW_ACTIVATABLE (gedit_window_activatable_get_type ())
+/*
+ * Type checking and casting macros
+ */
+#define GEDIT_TYPE_WINDOW_ACTIVATABLE		(gedit_window_activatable_get_type ())
+#define GEDIT_WINDOW_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE, GeditWindowActivatable))
+#define GEDIT_WINDOW_ACTIVATABLE_IFACE(obj)	(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE, GeditWindowActivatableInterface))
+#define GEDIT_IS_WINDOW_ACTIVATABLE(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE))
+#define GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE, GeditWindowActivatableInterface))
 
-G_DECLARE_INTERFACE (GeditWindowActivatable, gedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE, GObject)
+typedef struct _GeditWindowActivatable           GeditWindowActivatable; /* dummy typedef */
+typedef struct _GeditWindowActivatableInterface  GeditWindowActivatableInterface;
 
 struct _GeditWindowActivatableInterface
 {
@@ -39,11 +48,15 @@ struct _GeditWindowActivatableInterface
 	void	(*update_state)		(GeditWindowActivatable *activatable);
 };
 
+/*
+ * Public methods
+ */
+GType	 gedit_window_activatable_get_type	(void)  G_GNUC_CONST;
+
 void	 gedit_window_activatable_activate	(GeditWindowActivatable *activatable);
 void	 gedit_window_activatable_deactivate	(GeditWindowActivatable *activatable);
 void	 gedit_window_activatable_update_state	(GeditWindowActivatable *activatable);
 
 G_END_DECLS
 
-#endif /* GEDIT_WINDOW_ACTIVATABLE_H */
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_WINDOW_ACTIVATABLE_H__ */

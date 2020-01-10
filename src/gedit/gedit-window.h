@@ -15,17 +15,27 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_WINDOW_H
-#define GEDIT_WINDOW_H
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
-#include <gtksourceview/gtksource.h>
+#ifndef __GEDIT_WINDOW_H__
+#define __GEDIT_WINDOW_H__
+
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
 #include <gedit/gedit-tab.h>
+#include <gedit/gedit-panel.h>
 #include <gedit/gedit-message-bus.h>
 
 G_BEGIN_DECLS
@@ -80,20 +90,20 @@ GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 GeditTab	*gedit_window_create_tab		(GeditWindow         *window,
 							 gboolean             jump_to);
 
-GeditTab	*gedit_window_create_tab_from_location	(GeditWindow             *window,
-							 GFile                   *location,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos,
-							 gboolean                 create,
-							 gboolean                 jump_to);
+GeditTab	*gedit_window_create_tab_from_location	(GeditWindow         *window,
+							 GFile               *location,
+							 const GeditEncoding *encoding,
+							 gint                 line_pos,
+							 gint                 column_pos,
+							 gboolean             create,
+							 gboolean             jump_to);
 
-GeditTab	*gedit_window_create_tab_from_stream	(GeditWindow             *window,
-							 GInputStream            *stream,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos,
-							 gboolean                 jump_to);
+GeditTab	*gedit_window_create_tab_from_stream	(GeditWindow         *window,
+							 GInputStream        *stream,
+							 const GeditEncoding *encoding,
+							 gint                 line_pos,
+							 gint                 column_pos,
+							 gboolean             jump_to);
 
 void		 gedit_window_close_tab			(GeditWindow         *window,
 							 GeditTab            *tab);
@@ -124,11 +134,13 @@ GList		*gedit_window_get_views			(GeditWindow         *window);
 
 GtkWindowGroup  *gedit_window_get_group			(GeditWindow         *window);
 
-GtkWidget	*gedit_window_get_side_panel		(GeditWindow         *window);
+GeditPanel	*gedit_window_get_side_panel		(GeditWindow         *window);
 
-GtkWidget	*gedit_window_get_bottom_panel		(GeditWindow         *window);
+GeditPanel	*gedit_window_get_bottom_panel		(GeditWindow         *window);
 
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
+
+GtkUIManager	*gedit_window_get_ui_manager		(GeditWindow         *window);
 
 GeditWindowState gedit_window_get_state 		(GeditWindow         *window);
 
@@ -144,12 +156,8 @@ GeditMessageBus	*gedit_window_get_message_bus		(GeditWindow         *window);
 GtkWidget	*_gedit_window_get_multi_notebook	(GeditWindow         *window);
 GtkWidget	*_gedit_window_get_notebook		(GeditWindow         *window);
 
-GMenuModel	*_gedit_window_get_hamburger_menu	(GeditWindow         *window);
-
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
 							 GeditTab            *tab);
-void             _gedit_window_move_tab_to_new_tab_group(GeditWindow         *window,
-                                                         GeditTab            *tab);
 gboolean	 _gedit_window_is_removing_tabs		(GeditWindow         *window);
 
 GFile		*_gedit_window_get_default_location 	(GeditWindow         *window);
@@ -165,10 +173,15 @@ gboolean	 _gedit_window_is_fullscreen		(GeditWindow         *window);
 
 GList		*_gedit_window_get_all_tabs		(GeditWindow         *window);
 
-GFile		*_gedit_window_pop_last_closed_doc	(GeditWindow         *window);
+/* these are in gedit-window because of screen safety */
+void		 _gedit_recent_add			(GeditWindow	     *window,
+							 GFile               *location,
+							 const gchar         *mime);
+void		 _gedit_recent_remove			(GeditWindow         *window,
+							 GFile               *location);
 
 G_END_DECLS
 
-#endif  /* GEDIT_WINDOW_H  */
+#endif  /* __GEDIT_WINDOW_H__  */
 
 /* ex:set ts=8 noet: */

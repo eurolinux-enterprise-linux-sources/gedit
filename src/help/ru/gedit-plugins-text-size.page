@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-text-size" xml:lang="ru">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <link type="seealso" xref="gedit-change-default-font"/>
+    <revision version="3.4" date="2013-02-24" status="review"/>
+    <credit type="author">
+      <name>Джим Кэмпбелл (Jim Campbell)</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+    <credit type="author">
+      <name>Синдху С (Sindhu S)</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+    <desc>Увеличение или уменьшение размера текста</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stas Solovey</mal:name>
+      <mal:email>whats_up@tut.by</mal:email>
+      <mal:years>2011, 2012, 2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Размер текста</title>
+
+  <p>Модуль <em>Размер текста</em> позволяет временно изменять размер текста в <app>gedit</app> для лучшей читаемости, без изменения размера текста по умолчанию.</p>
+
+  <section id="enable-text-size">
+    <title>Включение модуля Размер текста</title>
+
+    <p>Чтобы включить модуль Размер текста:</p>
+    <steps>
+      <item>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Выберите <gui style="menuitem">Размер текста</gui>, чтобы включить модуль.</p>
+      </item>
+    </steps>
+  </section>
+
+  <section id="use-text-size">
+    <title>Использование модуля Размер текста</title>
+      <p>После включения модуля, чтобы изменить размер текста в <app>gedit</app>, выполните одно из следующих действий:</p>
+
+      <list>
+        <item>
+          <p>Чтобы <em>увеличить</em> размер текста, нажмите <keyseq><key>Ctrl</key><key>+</key></keyseq>.</p>
+        </item>
+        <item>
+          <p>Чтобы <em>уменьшить</em> размер текста, нажмите <keyseq><key>Ctrl</key><key>-</key></keyseq>.</p>
+        </item>
+        <item>
+          <p>Чтобы восстановить размер текста по умолчанию, нажмите <keyseq><key>Ctrl</key><key>0</key></keyseq>.</p>
+        </item>
+    </list>
+  </section>
+</page>

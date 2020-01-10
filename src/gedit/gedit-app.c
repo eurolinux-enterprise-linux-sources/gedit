@@ -15,22 +15,29 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-app.h"
-#include "gedit-app-private.h"
-
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #include <glib/gi18n.h>
-#include <gio/gio.h>
 #include <libpeas/peas-extension-set.h>
 #include <gtksourceview/gtksource.h>
 
@@ -38,7 +45,8 @@
 #include <girepository.h>
 #endif
 
-#include "gedit-commands-private.h"
+#include "gedit-app.h"
+#include "gedit-commands.h"
 #include "gedit-notebook.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
@@ -49,152 +57,154 @@
 #include "gedit-plugins-engine.h"
 #include "gedit-commands.h"
 #include "gedit-preferences-dialog.h"
-#include "gedit-tab.h"
-#include "gedit-tab-private.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
+#define METADATA_FILE "gedit-metadata.xml"
 #endif
 
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
 #define GEDIT_PRINT_SETTINGS_FILE	"gedit-print-settings"
 
-typedef struct
+#define GEDIT_APP_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_APP, GeditAppPrivate))
+
+/* Properties */
+enum
+{
+	PROP_0,
+	PROP_LOCKDOWN
+};
+
+struct _GeditAppPrivate
 {
 	GeditPluginsEngine *engine;
-
-	GtkCssProvider     *theme_provider;
 
 	GeditLockdownMask  lockdown;
 
 	GtkPageSetup      *page_setup;
 	GtkPrintSettings  *print_settings;
 
-	GeditSettings     *settings;
-	GSettings         *ui_settings;
+	GObject           *settings;
 	GSettings         *window_settings;
 
-	GMenuModel        *hamburger_menu;
-	GMenuModel        *notebook_menu;
-	GMenuModel        *tab_width_menu;
-	GMenuModel        *line_col_menu;
-
 	PeasExtensionSet  *extensions;
-	GNetworkMonitor   *monitor;
-
-	/* command line parsing */
-	gboolean new_window;
-	gboolean new_document;
-	const GtkSourceEncoding *encoding;
-	GInputStream *stdin_stream;
-	GSList *file_list;
-	gint line_position;
-	gint column_position;
-	GApplicationCommandLine *command_line;
-} GeditAppPrivate;
-
-enum
-{
-	PROP_0,
-	PROP_LOCKDOWN,
-	LAST_PROP
 };
 
-static GParamSpec *properties[LAST_PROP];
+static gboolean help = FALSE;
+static gboolean version = FALSE;
+static gboolean list_encodings = FALSE;
+static gchar *encoding_charset = NULL;
+static gboolean new_window = FALSE;
+static gboolean new_document = FALSE;
+static gchar *geometry = NULL;
+static gboolean wait = FALSE;
+static gboolean standalone = FALSE;
+static gchar **remaining_args = NULL;
+static const GeditEncoding *encoding = NULL;
+static GInputStream *stdin_stream = NULL;
+static GSList *file_list = NULL;
+static gint line_position = 0;
+static gint column_position = 0;
+static GApplicationCommandLine *command_line = NULL;
 
 static const GOptionEntry options[] =
 {
+	/* Help */
+	{
+		"help", '?', 0, G_OPTION_ARG_NONE, &help,
+		N_("Show the application's help"), NULL
+	},
+
 	/* Version */
 	{
-		"version", 'V', 0, G_OPTION_ARG_NONE, NULL,
-		N_("Show the application’s version"), NULL
+		"version", 'V', 0, G_OPTION_ARG_NONE, &version,
+		N_("Show the application's version"), NULL
 	},
 
 	/* List available encodings */
 	{
-		"list-encodings", '\0', 0, G_OPTION_ARG_NONE, NULL,
+		"list-encodings", '\0', 0, G_OPTION_ARG_NONE, &list_encodings,
 		N_("Display list of possible values for the encoding option"),
 		NULL
 	},
 
 	/* Encoding */
 	{
-		"encoding", '\0', 0, G_OPTION_ARG_STRING, NULL,
+		"encoding", '\0', 0, G_OPTION_ARG_STRING,
+		&encoding_charset,
 		N_("Set the character encoding to be used to open the files listed on the command line"),
 		N_("ENCODING")
 	},
 
 	/* Open a new window */
 	{
-		"new-window", '\0', 0, G_OPTION_ARG_NONE, NULL,
+		"new-window", '\0', 0, G_OPTION_ARG_NONE,
+		&new_window,
 		N_("Create a new top-level window in an existing instance of gedit"),
 		NULL
 	},
 
 	/* Create a new empty document */
 	{
-		"new-document", '\0', 0, G_OPTION_ARG_NONE, NULL,
+		"new-document", '\0', 0, G_OPTION_ARG_NONE,
+		&new_document,
 		N_("Create a new document in an existing instance of gedit"),
 		NULL
 	},
 
+	/* Window geometry */
+	{
+		"geometry", 'g', 0, G_OPTION_ARG_STRING,
+		&geometry,
+		N_("Set the size and position of the window (WIDTHxHEIGHT+X+Y)"),
+		N_("GEOMETRY")
+	},
+
 	/* Wait for closing documents */
 	{
-		"wait", 'w', 0, G_OPTION_ARG_NONE, NULL,
+		"wait", 'w', 0, G_OPTION_ARG_NONE,
+		&wait,
 		N_("Open files and block process until files are closed"),
 		NULL
 	},
 
 	/* New instance */
 	{
-		"standalone", 's', 0, G_OPTION_ARG_NONE, NULL,
+		"standalone", 's', 0, G_OPTION_ARG_NONE,
+		&standalone,
 		N_("Run gedit in standalone mode"),
 		NULL
 	},
 
 	/* collects file arguments */
 	{
-		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, NULL, NULL,
-		N_("[FILE…] [+LINE[:COLUMN]]")
+		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY,
+		&remaining_args,
+		NULL,
+		N_("[FILE...] [+LINE[:COLUMN]]")
 	},
 
 	{NULL}
 };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GeditApp, gedit_app, GTK_TYPE_APPLICATION)
+G_DEFINE_ABSTRACT_TYPE(GeditApp, gedit_app, GTK_TYPE_APPLICATION)
 
 static void
 gedit_app_dispose (GObject *object)
 {
-	GeditAppPrivate *priv;
+	GeditApp *app = GEDIT_APP (object);
 
-	priv = gedit_app_get_instance_private (GEDIT_APP (object));
+	g_clear_object (&app->priv->window_settings);
+	g_clear_object (&app->priv->settings);
 
-	g_clear_object (&priv->ui_settings);
-	g_clear_object (&priv->window_settings);
-	g_clear_object (&priv->settings);
-
-	g_clear_object (&priv->page_setup);
-	g_clear_object (&priv->print_settings);
+	g_clear_object (&app->priv->page_setup);
+	g_clear_object (&app->priv->print_settings);
 
 	/* Note that unreffing the extensions will automatically remove
-	 * all extensions which in turn will deactivate the extension
-	 */
-	g_clear_object (&priv->extensions);
+	   all extensions which in turn will deactivate the extension */
+	g_clear_object (&app->priv->extensions);
 
-	g_clear_object (&priv->engine);
-
-	if (priv->theme_provider != NULL)
-	{
-		gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
-		                                              GTK_STYLE_PROVIDER (priv->theme_provider));
-		g_clear_object (&priv->theme_provider);
-	}
-
-	g_clear_object (&priv->hamburger_menu);
-	g_clear_object (&priv->notebook_menu);
-	g_clear_object (&priv->tab_width_menu);
-	g_clear_object (&priv->line_col_menu);
+	g_clear_object (&app->priv->engine);
 
 	G_OBJECT_CLASS (gedit_app_parent_class)->dispose (object);
 }
@@ -255,7 +265,7 @@ gedit_app_show_help_impl (GeditApp    *app,
 
 	link = GEDIT_APP_GET_CLASS (app)->help_link_id (app, name, link_id);
 
-	ret = gtk_show_uri_on_window (GTK_WINDOW (parent),
+	ret = gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (parent)),
 	                    link,
 	                    GDK_CURRENT_TIME,
 	                    &error);
@@ -296,6 +306,218 @@ gedit_app_set_window_title_impl (GeditApp    *app,
                                  const gchar *title)
 {
 	gtk_window_set_title (GTK_WINDOW (window), title);
+}
+
+static void
+new_window_activated (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
+{
+	GeditApp *app;
+	GeditWindow *window;
+
+	app = GEDIT_APP (user_data);
+	window = gedit_app_create_window (app, NULL);
+
+	gedit_debug_message (DEBUG_APP, "Show window");
+	gtk_widget_show (GTK_WIDGET (window));
+
+	gedit_debug_message (DEBUG_APP, "Create tab");
+	gedit_window_create_tab (window, TRUE);
+
+	gtk_window_present (GTK_WINDOW (window));
+}
+
+static void
+preferences_activated (GSimpleAction  *action,
+                       GVariant       *parameter,
+                       gpointer        user_data)
+{
+	GtkApplication *app;
+	GeditWindow *window;
+
+	app = GTK_APPLICATION (user_data);
+	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
+
+	gedit_show_preferences_dialog (window);
+}
+
+static void
+help_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
+{
+	GtkApplication *app;
+	GeditWindow *window;
+
+	app = GTK_APPLICATION (user_data);
+	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
+
+	_gedit_cmd_help_contents (NULL, window);
+}
+
+static void
+about_activated (GSimpleAction  *action,
+                 GVariant       *parameter,
+                 gpointer        user_data)
+{
+	GtkApplication *app;
+	GeditWindow *window;
+
+	app = GTK_APPLICATION (user_data);
+	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
+
+	_gedit_cmd_help_about (NULL, window);
+}
+
+static void
+quit_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
+{
+	_gedit_cmd_file_quit (NULL, NULL);
+}
+
+static GActionEntry app_entries[] = {
+	{ "new_window", new_window_activated, NULL, NULL, NULL },
+	{ "preferences", preferences_activated, NULL, NULL, NULL },
+	{ "help", help_activated, NULL, NULL, NULL },
+	{ "about", about_activated, NULL, NULL, NULL },
+	{ "quit", quit_activated, NULL, NULL, NULL }
+};
+
+static void
+extension_added (PeasExtensionSet *extensions,
+		 PeasPluginInfo   *info,
+		 PeasExtension    *exten,
+		 GeditApp         *app)
+{
+	gedit_app_activatable_activate (GEDIT_APP_ACTIVATABLE (exten));
+}
+
+static void
+extension_removed (PeasExtensionSet *extensions,
+		   PeasPluginInfo   *info,
+		   PeasExtension    *exten,
+		   GeditApp         *app)
+{
+	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
+}
+
+static void
+gedit_app_startup (GApplication *application)
+{
+	GeditApp *app = GEDIT_APP (application);
+	GtkSourceStyleSchemeManager *manager;
+	const gchar *dir;
+	gchar *icon_dir;
+#ifndef ENABLE_GVFS_METADATA
+	const gchar *cache_dir;
+	gchar *metadata_filename;
+#endif
+
+	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
+
+	/* Setup debugging */
+	gedit_debug_init ();
+	gedit_debug_message (DEBUG_APP, "Startup");
+
+	/* Setup locale/gettext */
+	setlocale (LC_ALL, "");
+
+	dir = gedit_dirs_get_gedit_locale_dir ();
+	bindtextdomain (GETTEXT_PACKAGE, dir);
+
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
+
+	gedit_dirs_init ();
+
+	gedit_debug_message (DEBUG_APP, "Set icon");
+
+	dir = gedit_dirs_get_gedit_data_dir ();
+	icon_dir = g_build_filename (dir, "icons", NULL);
+
+	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
+	g_free (icon_dir);
+
+#ifndef ENABLE_GVFS_METADATA
+	/* Setup metadata-manager */
+	cache_dir = gedit_dirs_get_user_cache_dir ();
+
+	metadata_filename = g_build_filename (cache_dir, METADATA_FILE, NULL);
+
+	gedit_metadata_manager_init (metadata_filename);
+
+	g_free (metadata_filename);
+#endif
+
+	/* Load settings */
+	app->priv->settings = gedit_settings_new ();
+	app->priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
+
+	/* initial lockdown state */
+	app->priv->lockdown = gedit_settings_get_lockdown (GEDIT_SETTINGS (app->priv->settings));
+
+	/* app menu */
+	if (_gedit_app_has_app_menu (app))
+	{
+		GtkBuilder *builder;
+		GError *error = NULL;
+
+		g_action_map_add_action_entries (G_ACTION_MAP (app),
+			                         app_entries,
+			                         G_N_ELEMENTS (app_entries),
+			                         app);
+
+		builder = gtk_builder_new ();
+		if (!gtk_builder_add_from_resource (builder,
+		                                    "/org/gnome/gedit/ui/gedit-menu.ui",
+		                                    &error))
+		{
+			g_warning ("loading menu builder file: %s", error->message);
+			g_error_free (error);
+		}
+		else
+		{
+			GMenuModel *app_menu;
+
+			app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
+			gtk_application_set_app_menu (GTK_APPLICATION (application),
+			                              app_menu);
+		}
+
+		g_object_unref (builder);
+	}
+
+	/*
+	 * We use the default gtksourceview style scheme manager so that plugins
+	 * can obtain it easily without a gedit specific api, but we need to
+	 * add our search path at startup before the manager is actually used.
+	 */
+	manager = gtk_source_style_scheme_manager_get_default ();
+	gtk_source_style_scheme_manager_append_search_path (manager,
+	                                                    gedit_dirs_get_user_styles_dir ());
+
+	app->priv->engine = gedit_plugins_engine_get_default ();
+	app->priv->extensions = peas_extension_set_new (PEAS_ENGINE (app->priv->engine),
+	                                                GEDIT_TYPE_APP_ACTIVATABLE,
+	                                                "app", app,
+	                                                NULL);
+
+	g_signal_connect (app->priv->extensions,
+	                  "extension-added",
+	                  G_CALLBACK (extension_added),
+	                  app);
+
+	g_signal_connect (app->priv->extensions,
+	                  "extension-removed",
+	                  G_CALLBACK (extension_removed),
+	                  app);
+
+	peas_extension_set_foreach (app->priv->extensions,
+	                            (PeasExtensionSetForeachFunc) extension_added,
+	                            app);
 }
 
 static gboolean
@@ -376,7 +598,7 @@ get_active_window (GtkApplication *app)
 	{
 		GtkWindow *window = l->data;
 
-		if (GEDIT_IS_WINDOW (window) && is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
+		if (is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
 		{
 			return GEDIT_WINDOW (window);
 		}
@@ -386,38 +608,16 @@ get_active_window (GtkApplication *app)
 }
 
 static void
-set_command_line_wait (GeditApp *app,
-		       GeditTab *tab)
+set_command_line_wait (GeditTab *tab)
 {
-	GeditAppPrivate *priv;
-
-	priv = gedit_app_get_instance_private (app);
-
 	g_object_set_data_full (G_OBJECT (tab),
 	                        "GeditTabCommandLineWait",
-	                        g_object_ref (priv->command_line),
+	                        g_object_ref (command_line),
 	                        (GDestroyNotify)g_object_unref);
 }
 
 static void
-set_command_line_wait_doc (GeditDocument *doc,
-			   GeditApp      *app)
-{
-	GeditTab *tab = gedit_tab_get_from_document (doc);
-
-	set_command_line_wait (app, tab);
-}
-
-static void
-open_files (GApplication            *application,
-	    gboolean                 new_window,
-	    gboolean                 new_document,
-	    gint                     line_position,
-	    gint                     column_position,
-	    const GtkSourceEncoding *encoding,
-	    GInputStream            *stdin_stream,
-	    GSList                  *file_list,
-	    GApplicationCommandLine *command_line)
+gedit_app_activate (GApplication *application)
 {
 	GeditWindow *window = NULL;
 	GeditTab *tab;
@@ -437,6 +637,12 @@ open_files (GApplication            *application,
 		gtk_widget_show (GTK_WIDGET (window));
 	}
 
+	if (geometry)
+	{
+		gtk_window_parse_geometry (GTK_WINDOW (window),
+		                           geometry);
+	}
+
 	if (stdin_stream)
 	{
 		gedit_debug_message (DEBUG_APP, "Load stdin");
@@ -451,8 +657,7 @@ open_files (GApplication            *application,
 
 		if (doc_created && command_line)
 		{
-			set_command_line_wait (GEDIT_APP (application),
-					       tab);
+			set_command_line_wait (tab);
 		}
 		g_input_stream_close (stdin_stream, NULL, NULL);
 	}
@@ -472,7 +677,7 @@ open_files (GApplication            *application,
 
 		if (command_line)
 		{
-			g_slist_foreach (loaded, (GFunc)set_command_line_wait_doc, GEDIT_APP (application));
+			g_slist_foreach (loaded, (GFunc)set_command_line_wait, NULL);
 		}
 		g_slist_free (loaded);
 	}
@@ -484,431 +689,80 @@ open_files (GApplication            *application,
 
 		if (command_line)
 		{
-			set_command_line_wait (GEDIT_APP (application),
-					       tab);
+			set_command_line_wait (tab);
 		}
 	}
 
 	gtk_window_present (GTK_WINDOW (window));
 }
 
-static void
-new_window_activated (GSimpleAction *action,
-                      GVariant      *parameter,
-                      gpointer       user_data)
+static GOptionContext *
+get_option_context (void)
 {
-	GeditApp *app;
-	GeditWindow *window;
+	GOptionContext *context;
 
-	app = GEDIT_APP (user_data);
-	window = gedit_app_create_window (app, NULL);
+	context = g_option_context_new (_("- Edit text files"));
+	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
+	g_option_context_add_group (context, gtk_get_option_group (FALSE));
 
-	gedit_debug_message (DEBUG_APP, "Show window");
-	gtk_widget_show (GTK_WIDGET (window));
+#ifdef ENABLE_INTROSPECTION
+	g_option_context_add_group (context, g_irepository_get_option_group ());
+#endif
 
-	gedit_debug_message (DEBUG_APP, "Create tab");
-	gedit_window_create_tab (window, TRUE);
-
-	gtk_window_present (GTK_WINDOW (window));
-}
-
-static void
-new_document_activated (GSimpleAction *action,
-                        GVariant      *parameter,
-                        gpointer       user_data)
-{
-	GApplication *application = G_APPLICATION (user_data);
-
-	open_files (application,
-	            FALSE,
-	            TRUE,
-	            0,
-	            0,
-	            NULL,
-	            NULL,
-	            NULL,
-	            NULL);
-}
-
-static void
-preferences_activated (GSimpleAction  *action,
-                       GVariant       *parameter,
-                       gpointer        user_data)
-{
-	GtkApplication *app;
-	GeditWindow *window;
-
-	app = GTK_APPLICATION (user_data);
-	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
-
-	gedit_show_preferences_dialog (window);
-}
-
-static void
-keyboard_shortcuts_activated (GSimpleAction *action,
-                              GVariant      *parameter,
-                              gpointer       user_data)
-{
-	GtkApplication *app;
-	GeditWindow *window;
-
-	app = GTK_APPLICATION (user_data);
-	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
-
-	_gedit_cmd_help_keyboard_shortcuts (window);
-}
-
-static void
-help_activated (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       user_data)
-{
-	GtkApplication *app;
-	GeditWindow *window;
-
-	app = GTK_APPLICATION (user_data);
-	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
-
-	_gedit_cmd_help_contents (window);
-}
-
-static void
-about_activated (GSimpleAction  *action,
-                 GVariant       *parameter,
-                 gpointer        user_data)
-{
-	GtkApplication *app;
-	GeditWindow *window;
-
-	app = GTK_APPLICATION (user_data);
-	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
-
-	_gedit_cmd_help_about (window);
-}
-
-static void
-quit_activated (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       user_data)
-{
-	_gedit_cmd_file_quit (NULL, NULL, NULL);
-}
-
-static GActionEntry app_entries[] = {
-	{ "new-window", new_window_activated, NULL, NULL, NULL },
-	{ "new-document", new_document_activated, NULL, NULL, NULL },
-	{ "preferences", preferences_activated, NULL, NULL, NULL },
-	{ "shortcuts", keyboard_shortcuts_activated, NULL, NULL, NULL },
-	{ "help", help_activated, NULL, NULL, NULL },
-	{ "about", about_activated, NULL, NULL, NULL },
-	{ "quit", quit_activated, NULL, NULL, NULL }
-};
-
-static void
-extension_added (PeasExtensionSet *extensions,
-		 PeasPluginInfo   *info,
-		 PeasExtension    *exten,
-		 GeditApp         *app)
-{
-	gedit_app_activatable_activate (GEDIT_APP_ACTIVATABLE (exten));
-}
-
-static void
-extension_removed (PeasExtensionSet *extensions,
-		   PeasPluginInfo   *info,
-		   PeasExtension    *exten,
-		   GeditApp         *app)
-{
-	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
-}
-
-static void
-load_accels (void)
-{
-	gchar *filename;
-
-	filename = g_build_filename (gedit_dirs_get_user_config_dir (),
-				     "accels",
-				     NULL);
-	if (filename != NULL)
-	{
-		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
-		gtk_accel_map_load (filename);
-		g_free (filename);
-	}
-}
-
-static GtkCssProvider *
-load_css_from_resource (const gchar *filename,
-                        gboolean     required)
-{
-	GError *error = NULL;
-	GFile *css_file;
-	GtkCssProvider *provider;
-	gchar *resource_name;
-
-	resource_name = g_strdup_printf ("resource:///org/gnome/gedit/css/%s", filename);
-	css_file = g_file_new_for_uri (resource_name);
-	g_free (resource_name);
-
-	if (!required && !g_file_query_exists (css_file, NULL))
-	{
-		g_object_unref (css_file);
-		return NULL;
-	}
-
-	provider = gtk_css_provider_new ();
-
-	if (gtk_css_provider_load_from_file (provider, css_file, &error))
-	{
-		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-		                                           GTK_STYLE_PROVIDER (provider),
-		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-	}
-	else
-	{
-		g_warning ("Could not load css provider: %s", error->message);
-		g_error_free (error);
-	}
-
-	g_object_unref (css_file);
-	return provider;
-}
-
-static void
-theme_changed (GtkSettings *settings,
-	       GParamSpec  *pspec,
-	       GeditApp    *app)
-{
-	GeditAppPrivate *priv;
-
-	priv = gedit_app_get_instance_private (app);
-
-	gchar *theme, *lc_theme, *theme_css;
-
-	g_object_get (settings, "gtk-theme-name", &theme, NULL);
-	lc_theme = g_ascii_strdown (theme, -1);
-	g_free (theme);
-
-	theme_css = g_strdup_printf ("gedit.%s.css", lc_theme);
-	g_free (lc_theme);
-
-	if (priv->theme_provider != NULL)
-	{
-		gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
-		                                              GTK_STYLE_PROVIDER (priv->theme_provider));
-		g_clear_object (&priv->theme_provider);
-	}
-
-	priv->theme_provider = load_css_from_resource (theme_css, FALSE);
-
-	g_free (theme_css);
-}
-
-static void
-setup_theme_extensions (GeditApp *app)
-{
-	GtkSettings *settings;
-
-	settings = gtk_settings_get_default ();
-	g_signal_connect (settings, "notify::gtk-theme-name",
-	                  G_CALLBACK (theme_changed), app);
-	theme_changed (settings, NULL, app);
-}
-
-static GMenuModel *
-get_menu_model (GeditApp   *app,
-                const char *id)
-{
-	GMenu *menu;
-
-	menu = gtk_application_get_menu_by_id (GTK_APPLICATION (app), id);
-
-	return menu ? G_MENU_MODEL (g_object_ref_sink (menu)) : NULL;
-}
-
-static void
-add_accelerator (GtkApplication *app,
-                 const gchar    *action_name,
-                 const gchar    *accel)
-{
-	const gchar *vaccels[] = {
-		accel,
-		NULL
-	};
-
-	gtk_application_set_accels_for_action (app, action_name, vaccels);
+	return context;
 }
 
 static gboolean
-show_menubar (void)
+option_context_parse (GOptionContext  *context,
+                      gchar          **arguments,
+                      GError         **error)
 {
-	GtkSettings *settings = gtk_settings_get_default ();
-	gboolean result;
+	gint argc;
+	gchar **argv;
+	gint i;
+	gboolean ret;
 
-	g_object_get (settings,
-	              "gtk-shell-shows-menubar", &result,
-	              NULL);
-
-	return result;
-}
-
-static void
-gedit_app_startup (GApplication *application)
-{
-	GeditAppPrivate *priv;
-	GtkCssProvider *css_provider;
-	GtkSourceStyleSchemeManager *manager;
-#ifndef ENABLE_GVFS_METADATA
-	const gchar *cache_dir;
-	gchar *metadata_filename;
-#endif
-
-	priv = gedit_app_get_instance_private (GEDIT_APP (application));
-
-	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
-
-	/* Setup debugging */
-	gedit_debug_init ();
-	gedit_debug_message (DEBUG_APP, "Startup");
-
-	setup_theme_extensions (GEDIT_APP (application));
-
-#ifndef ENABLE_GVFS_METADATA
-	cache_dir = gedit_dirs_get_user_cache_dir ();
-	metadata_filename = g_build_filename (cache_dir, "gedit-metadata.xml", NULL);
-	gedit_metadata_manager_init (metadata_filename);
-	g_free (metadata_filename);
-#endif
-
-	/* Load settings */
-	priv->settings = gedit_settings_new ();
-	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
-	priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
-
-	/* initial lockdown state */
-	priv->lockdown = gedit_settings_get_lockdown (priv->settings);
-
-	g_action_map_add_action_entries (G_ACTION_MAP (application),
-	                                 app_entries,
-	                                 G_N_ELEMENTS (app_entries),
-	                                 application);
-
-	/* menus */
-	if (!show_menubar ())
+	/* We have to make an extra copy of the array, since g_option_context_parse()
+	 * assumes that it can remove strings from the array without freeing them.
+	 */
+	argc = g_strv_length (arguments);
+	argv = g_new (gchar *, argc);
+	for (i = 0; i < argc; i++)
 	{
-		gtk_application_set_menubar (GTK_APPLICATION (application), NULL);
-		priv->hamburger_menu = get_menu_model (GEDIT_APP (application),
-		                                       "hamburger-menu");
+		argv[i] = arguments[i];
 	}
 
-	priv->notebook_menu = get_menu_model (GEDIT_APP (application), "notebook-menu");
-	priv->tab_width_menu = get_menu_model (GEDIT_APP (application), "tab-width-menu");
-	priv->line_col_menu = get_menu_model (GEDIT_APP (application), "line-col-menu");
+	ret = g_option_context_parse (context, &argc, &argv, error);
 
-	/* Accelerators */
-	add_accelerator (GTK_APPLICATION (application), "app.new-window", "<Primary>N");
-	add_accelerator (GTK_APPLICATION (application), "app.quit", "<Primary>Q");
-	add_accelerator (GTK_APPLICATION (application), "app.help", "F1");
+	g_free (argv);
 
-	add_accelerator (GTK_APPLICATION (application), "win.hamburger-menu", "F10");
-	add_accelerator (GTK_APPLICATION (application), "win.open", "<Primary>O");
-	add_accelerator (GTK_APPLICATION (application), "win.save", "<Primary>S");
-	add_accelerator (GTK_APPLICATION (application), "win.save-as", "<Primary><Shift>S");
-	add_accelerator (GTK_APPLICATION (application), "win.save-all", "<Primary><Shift>L");
-	add_accelerator (GTK_APPLICATION (application), "win.new-tab", "<Primary>T");
-	add_accelerator (GTK_APPLICATION (application), "win.reopen-closed-tab", "<Primary><Shift>T");
-	add_accelerator (GTK_APPLICATION (application), "win.close", "<Primary>W");
-	add_accelerator (GTK_APPLICATION (application), "win.close-all", "<Primary><Shift>W");
-	add_accelerator (GTK_APPLICATION (application), "win.print", "<Primary>P");
-	add_accelerator (GTK_APPLICATION (application), "win.find", "<Primary>F");
-	add_accelerator (GTK_APPLICATION (application), "win.find-next", "<Primary>G");
-	add_accelerator (GTK_APPLICATION (application), "win.find-prev", "<Primary><Shift>G");
-	add_accelerator (GTK_APPLICATION (application), "win.replace", "<Primary>H");
-	add_accelerator (GTK_APPLICATION (application), "win.clear-highlight", "<Primary><Shift>K");
-	add_accelerator (GTK_APPLICATION (application), "win.goto-line", "<Primary>I");
-	add_accelerator (GTK_APPLICATION (application), "win.focus-active-view", "Escape");
-	add_accelerator (GTK_APPLICATION (application), "win.side-panel", "F9");
-	add_accelerator (GTK_APPLICATION (application), "win.bottom-panel", "<Primary>F9");
-	add_accelerator (GTK_APPLICATION (application), "win.fullscreen", "F11");
-	add_accelerator (GTK_APPLICATION (application), "win.new-tab-group", "<Primary><Alt>N");
-	add_accelerator (GTK_APPLICATION (application), "win.previous-tab-group", "<Primary><Shift><Alt>Page_Up");
-	add_accelerator (GTK_APPLICATION (application), "win.next-tab-group", "<Primary><Shift><Alt>Page_Down");
-	add_accelerator (GTK_APPLICATION (application), "win.previous-document", "<Primary><Alt>Page_Up");
-	add_accelerator (GTK_APPLICATION (application), "win.next-document", "<Primary><Alt>Page_Down");
-
-	load_accels ();
-
-	/* Load custom css */
-	g_object_unref (load_css_from_resource ("gedit-style.css", TRUE));
-	css_provider = load_css_from_resource ("gedit-style-os.css", FALSE);
-	g_clear_object (&css_provider);
-
-	/*
-	 * We use the default gtksourceview style scheme manager so that plugins
-	 * can obtain it easily without a gedit specific api, but we need to
-	 * add our search path at startup before the manager is actually used.
-	 */
-	manager = gtk_source_style_scheme_manager_get_default ();
-	gtk_source_style_scheme_manager_append_search_path (manager,
-	                                                    gedit_dirs_get_user_styles_dir ());
-
-	priv->engine = gedit_plugins_engine_get_default ();
-	priv->extensions = peas_extension_set_new (PEAS_ENGINE (priv->engine),
-	                                           GEDIT_TYPE_APP_ACTIVATABLE,
-	                                           "app", GEDIT_APP (application),
-	                                           NULL);
-
-	g_signal_connect (priv->extensions,
-	                  "extension-added",
-	                  G_CALLBACK (extension_added),
-	                  application);
-
-	g_signal_connect (priv->extensions,
-	                  "extension-removed",
-	                  G_CALLBACK (extension_removed),
-	                  application);
-
-	peas_extension_set_foreach (priv->extensions,
-	                            (PeasExtensionSetForeachFunc) extension_added,
-	                            application);
+	return ret;
 }
 
 static void
-gedit_app_activate (GApplication *application)
+clear_options (void)
 {
-	GeditAppPrivate *priv;
+	g_free (encoding_charset);
+	g_strfreev (remaining_args);
+	g_free (geometry);
+	g_clear_object (&stdin_stream);
+	g_slist_free_full (file_list, g_object_unref);
 
-	priv = gedit_app_get_instance_private (GEDIT_APP (application));
-
-	open_files (application,
-	            priv->new_window,
-	            priv->new_document,
-	            priv->line_position,
-	            priv->column_position,
-	            priv->encoding,
-	            priv->stdin_stream,
-	            priv->file_list,
-	            priv->command_line);
-}
-
-static void
-clear_options (GeditApp *app)
-{
-	GeditAppPrivate *priv;
-
-	priv = gedit_app_get_instance_private (app);
-
-	g_clear_object (&priv->stdin_stream);
-	g_slist_free_full (priv->file_list, g_object_unref);
-
-	priv->new_window = FALSE;
-	priv->new_document = FALSE;
-	priv->encoding = NULL;
-	priv->file_list = NULL;
-	priv->line_position = 0;
-	priv->column_position = 0;
-	priv->command_line = NULL;
+	help = FALSE;
+	version = FALSE;
+	list_encodings = FALSE;
+	encoding_charset = NULL;
+	new_window = FALSE;
+	new_document = FALSE;
+	geometry = NULL;
+	wait = FALSE;
+	standalone = FALSE;
+	remaining_args = NULL;
+	encoding = NULL;
+	file_list = NULL;
+	line_position = 0;
+	column_position = 0;
+	command_line = NULL;
 }
 
 static void
@@ -940,114 +794,139 @@ static gint
 gedit_app_command_line (GApplication            *application,
                         GApplicationCommandLine *cl)
 {
-	GeditAppPrivate *priv;
-	GVariantDict *options;
-	const gchar *encoding_charset;
-	const gchar **remaining_args;
+	gchar **arguments;
+	GOptionContext *context;
+	GError *error = NULL;
 
-	priv = gedit_app_get_instance_private (GEDIT_APP (application));
+	arguments = g_application_command_line_get_arguments (cl, NULL);
 
-	options = g_application_command_line_get_options_dict (cl);
+	context = get_option_context ();
 
-	g_variant_dict_lookup (options, "new-window", "b", &priv->new_window);
-	g_variant_dict_lookup (options, "new-document", "b", &priv->new_document);
+	/* Avoid exit() on the main instance */
+	g_option_context_set_help_enabled (context, FALSE);
 
-	if (g_variant_dict_contains (options, "wait"))
+	if (!option_context_parse (context, arguments, &error))
 	{
-		priv->command_line = cl;
+		/* We should never get here since parsing would have
+		 * failed on the client side... */
+		g_application_command_line_printerr (cl,
+		                                     _("%s\nRun '%s --help' to see a full list of available command line options.\n"),
+		                                     error->message, arguments[0]);
+
+		g_error_free (error);
+		g_application_command_line_set_exit_status (cl, 1);
 	}
-
-	if (g_variant_dict_lookup (options, "encoding", "&s", &encoding_charset))
+	else
 	{
-		priv->encoding = gtk_source_encoding_get_from_charset (encoding_charset);
-
-		if (priv->encoding == NULL)
+		if (wait)
 		{
-			g_application_command_line_printerr (cl,
-							     _("%s: invalid encoding."),
-							     encoding_charset);
+			command_line = cl;
 		}
-	}
 
-	/* Parse filenames */
-	if (g_variant_dict_lookup (options, G_OPTION_REMAINING, "^a&ay", &remaining_args))
-	{
-		gint i;
-
-		for (i = 0; remaining_args[i]; i++)
+		/* Parse encoding */
+		if (encoding_charset)
 		{
-			if (*remaining_args[i] == '+')
+			encoding = gedit_encoding_get_from_charset (encoding_charset);
+
+			if (encoding == NULL)
 			{
-				if (*(remaining_args[i] + 1) == '\0')
+				g_application_command_line_printerr (cl,
+				                                     _("%s: invalid encoding."),
+				                                     encoding_charset);
+			}
+
+			g_free (encoding_charset);
+		}
+
+		/* Parse filenames */
+		if (remaining_args)
+		{
+			gint i;
+
+			for (i = 0; remaining_args[i]; i++)
+			{
+				if (*remaining_args[i] == '+')
 				{
-					/* goto the last line of the document */
-					priv->line_position = G_MAXINT;
-					priv->column_position = 0;
+					if (*(remaining_args[i] + 1) == '\0')
+					{
+						/* goto the last line of the document */
+						line_position = G_MAXINT;
+						column_position = 0;
+					}
+					else
+					{
+						get_line_column_position (remaining_args[i] + 1,
+							                  &line_position,
+							                  &column_position);
+					}
+				}
+				else if (*remaining_args[i] == '-' && *(remaining_args[i] + 1) == '\0')
+				{
+					stdin_stream = g_application_command_line_get_stdin (cl);
 				}
 				else
 				{
-					get_line_column_position (remaining_args[i] + 1,
-								  &priv->line_position,
-								  &priv->column_position);
+					GFile *file;
+
+					file = g_application_command_line_create_file_for_arg (cl, remaining_args[i]);
+					file_list = g_slist_prepend (file_list, file);
 				}
 			}
-			else if (*remaining_args[i] == '-' && *(remaining_args[i] + 1) == '\0')
-			{
-				priv->stdin_stream = g_application_command_line_get_stdin (cl);
-			}
-			else
-			{
-				GFile *file;
 
-				file = g_application_command_line_create_file_for_arg (cl, remaining_args[i]);
-				priv->file_list = g_slist_prepend (priv->file_list, file);
-			}
+			file_list = g_slist_reverse (file_list);
 		}
 
-		priv->file_list = g_slist_reverse (priv->file_list);
-		g_free (remaining_args);
+		g_application_activate (application);
 	}
 
-	g_application_activate (application);
-	clear_options (GEDIT_APP (application));
+	g_option_context_free (context);
+	g_strfreev (arguments);
+	clear_options ();
 
 	return 0;
 }
 
-static void
-print_all_encodings (void)
+static gboolean
+gedit_app_local_command_line (GApplication   *application,
+                              gchar        ***arguments,
+                              gint           *exit_status)
 {
-	GSList *all_encodings;
-	GSList *l;
+	GOptionContext *context;
+	GError *error = NULL;
+	gboolean ret = FALSE;
 
-	all_encodings = gtk_source_encoding_get_all ();
+	/* Handle some of the option without contacting the main instance */
+	context = get_option_context ();
 
-	for (l = all_encodings; l != NULL; l = l->next)
+	if (!option_context_parse (context, *arguments, &error))
 	{
-		const GtkSourceEncoding *encoding = l->data;
-		g_print ("%s\n", gtk_source_encoding_get_charset (encoding));
+		g_printerr (_("%s\nRun '%s --help' to see a full list of available command line options.\n"),
+		           error->message, (*arguments)[0]);
+
+		g_error_free (error);
+		*exit_status = 1;
+		ret = TRUE;
 	}
-
-	g_slist_free (all_encodings);
-}
-
-static gint
-gedit_app_handle_local_options (GApplication *application,
-                                GVariantDict *options)
-{
-	if (g_variant_dict_contains (options, "version"))
+	else if (version)
 	{
 		g_print ("%s - Version %s\n", g_get_application_name (), VERSION);
-		return 0;
+		ret = TRUE;
 	}
-
-	if (g_variant_dict_contains (options, "list-encodings"))
+	else if (list_encodings)
 	{
-		print_all_encodings ();
-		return 0;
-	}
+		gint i = 0;
+		const GeditEncoding *enc;
 
-	if (g_variant_dict_contains (options, "standalone"))
+		while ((enc = gedit_encoding_get_from_index (i)) != NULL)
+		{
+			g_print ("%s\n", gedit_encoding_get_charset (enc));
+
+			++i;
+		}
+
+		ret = TRUE;
+	}
+	else if (standalone)
 	{
 		GApplicationFlags old_flags;
 
@@ -1055,50 +934,10 @@ gedit_app_handle_local_options (GApplication *application,
 		g_application_set_flags (application, old_flags | G_APPLICATION_NON_UNIQUE);
 	}
 
-	if (g_variant_dict_contains (options, "wait"))
-	{
-		GApplicationFlags old_flags;
+	g_option_context_free (context);
+	clear_options ();
 
-		old_flags = g_application_get_flags (application);
-		g_application_set_flags (application, old_flags | G_APPLICATION_IS_LAUNCHER);
-	}
-
-	return -1;
-}
-
-/* Note: when launched from command line we do not reach this method
- * since we manually handle the command line parameters in order to
- * parse +LINE:COL, stdin, etc.
- * However this method is called when open() is called via dbus, for
- * instance when double clicking on a file in nautilus
- */
-static void
-gedit_app_open (GApplication  *application,
-                GFile        **files,
-                gint           n_files,
-                const gchar   *hint)
-{
-	gint i;
-	GSList *file_list = NULL;
-
-	for (i = 0; i < n_files; i++)
-	{
-		file_list = g_slist_prepend (file_list, files[i]);
-	}
-
-	file_list = g_slist_reverse (file_list);
-
-	open_files (application,
-	            FALSE,
-	            FALSE,
-	            0,
-	            0,
-	            NULL,
-	            NULL,
-	            file_list,
-	            NULL);
-
-	g_slist_free (file_list);
+	return ret ? ret : G_APPLICATION_CLASS (gedit_app_parent_class)->local_command_line (application, arguments, exit_status);
 }
 
 static gboolean
@@ -1162,28 +1001,24 @@ get_page_setup_file (void)
 static void
 save_page_setup (GeditApp *app)
 {
-	GeditAppPrivate *priv;
+	gchar *filename;
+	GError *error = NULL;
 
-	priv = gedit_app_get_instance_private (app);
+	if (app->priv->page_setup == NULL)
+		return;
 
-	if (priv->page_setup != NULL)
+	filename = get_page_setup_file ();
+
+	gtk_page_setup_to_file (app->priv->page_setup,
+				filename,
+				&error);
+	if (error)
 	{
-		gchar *filename;
-		GError *error = NULL;
-
-		filename = get_page_setup_file ();
-
-		gtk_page_setup_to_file (priv->page_setup,
-					filename,
-					&error);
-		if (error)
-		{
-			g_warning ("%s", error->message);
-			g_error_free (error);
-		}
-
-		g_free (filename);
+		g_warning ("%s", error->message);
+		g_error_free (error);
 	}
+
+	g_free (filename);
 }
 
 static gchar *
@@ -1207,28 +1042,24 @@ get_print_settings_file (void)
 static void
 save_print_settings (GeditApp *app)
 {
-	GeditAppPrivate *priv;
+	gchar *filename;
+	GError *error = NULL;
 
-	priv = gedit_app_get_instance_private (app);
+	if (app->priv->print_settings == NULL)
+		return;
 
-	if (priv->print_settings != NULL)
+	filename = get_print_settings_file ();
+
+	gtk_print_settings_to_file (app->priv->print_settings,
+				    filename,
+				    &error);
+	if (error)
 	{
-		gchar *filename;
-		GError *error = NULL;
-
-		filename = get_print_settings_file ();
-
-		gtk_print_settings_to_file (priv->print_settings,
-					    filename,
-					    &error);
-		if (error)
-		{
-			g_warning ("%s", error->message);
-			g_error_free (error);
-		}
-
-		g_free (filename);
+		g_warning ("%s", error->message);
+		g_error_free (error);
 	}
+
+	g_free (filename);
 }
 
 static void
@@ -1243,17 +1074,37 @@ gedit_app_shutdown (GApplication *app)
 	save_page_setup (GEDIT_APP (app));
 	save_print_settings (GEDIT_APP (app));
 
-	/* GTK+ can still hold references to some gedit objects, for example
-	 * GeditDocument for the clipboard. So the metadata-manager should be
-	 * shutdown after.
-	 */
-	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
-
 #ifndef ENABLE_GVFS_METADATA
 	gedit_metadata_manager_shutdown ();
 #endif
 
 	gedit_dirs_shutdown ();
+
+	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
+}
+
+static void
+load_accels (void)
+{
+	gchar *filename;
+
+	filename = g_build_filename (gedit_dirs_get_user_config_dir (),
+				     "accels",
+				     NULL);
+	if (filename != NULL)
+	{
+		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
+		gtk_accel_map_load (filename);
+		g_free (filename);
+	}
+}
+
+static void
+gedit_app_constructed (GObject *object)
+{
+	G_OBJECT_CLASS (gedit_app_parent_class)->constructed (object);
+
+	load_accels ();
 }
 
 static gboolean
@@ -1271,7 +1122,7 @@ window_delete_event (GeditWindow *window,
 		return TRUE;
 	}
 
-	_gedit_cmd_file_quit (NULL, NULL, window);
+	_gedit_cmd_file_quit (NULL, window);
 
 	/* Do not destroy the window */
 	return TRUE;
@@ -1302,12 +1153,12 @@ gedit_app_class_init (GeditAppClass *klass)
 
 	object_class->dispose = gedit_app_dispose;
 	object_class->get_property = gedit_app_get_property;
+	object_class->constructed = gedit_app_constructed;
 
 	app_class->startup = gedit_app_startup;
 	app_class->activate = gedit_app_activate;
 	app_class->command_line = gedit_app_command_line;
-	app_class->handle_local_options = gedit_app_handle_local_options;
-	app_class->open = gedit_app_open;
+	app_class->local_command_line = gedit_app_local_command_line;
 	app_class->shutdown = gedit_app_shutdown;
 
 	klass->show_help = gedit_app_show_help_impl;
@@ -1315,31 +1166,31 @@ gedit_app_class_init (GeditAppClass *klass)
 	klass->set_window_title = gedit_app_set_window_title_impl;
 	klass->create_window = gedit_app_create_window_impl;
 
-	properties[PROP_LOCKDOWN] =
-		g_param_spec_flags ("lockdown",
-		                    "Lockdown",
-		                    "The lockdown mask",
-		                    GEDIT_TYPE_LOCKDOWN_MASK,
-		                    0,
-		                    G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+	g_object_class_install_property (object_class,
+					 PROP_LOCKDOWN,
+					 g_param_spec_flags ("lockdown",
+							     "Lockdown",
+							     "The lockdown mask",
+							     GEDIT_TYPE_LOCKDOWN_MASK,
+							     0,
+							     G_PARAM_READABLE |
+							     G_PARAM_STATIC_STRINGS));
 
-	g_object_class_install_properties (object_class, LAST_PROP, properties);
+	g_type_class_add_private (object_class, sizeof (GeditAppPrivate));
 }
 
 static void
 load_page_setup (GeditApp *app)
 {
-	GeditAppPrivate *priv;
 	gchar *filename;
 	GError *error = NULL;
 
-	priv = gedit_app_get_instance_private (app);
-
-	g_return_if_fail (priv->page_setup == NULL);
+	g_return_if_fail (app->priv->page_setup == NULL);
 
 	filename = get_page_setup_file ();
 
-	priv->page_setup = gtk_page_setup_new_from_file (filename, &error);
+	app->priv->page_setup = gtk_page_setup_new_from_file (filename,
+							      &error);
 	if (error)
 	{
 		/* Ignore file not found error */
@@ -1355,37 +1206,29 @@ load_page_setup (GeditApp *app)
 	g_free (filename);
 
 	/* fall back to default settings */
-	if (priv->page_setup == NULL)
-	{
-		priv->page_setup = gtk_page_setup_new ();
-	}
+	if (app->priv->page_setup == NULL)
+		app->priv->page_setup = gtk_page_setup_new ();
 }
 
 static void
 load_print_settings (GeditApp *app)
 {
-	GeditAppPrivate *priv;
 	gchar *filename;
 	GError *error = NULL;
 
-	priv = gedit_app_get_instance_private (app);
-
-	g_return_if_fail (priv->print_settings == NULL);
+	g_return_if_fail (app->priv->print_settings == NULL);
 
 	filename = get_print_settings_file ();
 
-	priv->print_settings = gtk_print_settings_new_from_file (filename, &error);
-	if (error != NULL)
+	app->priv->print_settings = gtk_print_settings_new_from_file (filename,
+								      &error);
+	if (error)
 	{
-		/* - Ignore file not found error.
-		 * - Ignore empty file error, i.e. group not found. This happens
-		 *   when we click on cancel in the print dialog, when using the
-		 *   printing for the first time in gedit.
-		 */
-		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
-		    !g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_GROUP_NOT_FOUND))
+		/* Ignore file not found error */
+		if (error->domain != G_FILE_ERROR ||
+		    error->code != G_FILE_ERROR_NOENT)
 		{
-			g_warning ("Load print settings error: %s", error->message);
+			g_warning ("%s", error->message);
 		}
 
 		g_error_free (error);
@@ -1394,66 +1237,14 @@ load_print_settings (GeditApp *app)
 	g_free (filename);
 
 	/* fall back to default settings */
-	if (priv->print_settings == NULL)
-	{
-		priv->print_settings = gtk_print_settings_new ();
-	}
-}
-
-static void
-get_network_available (GNetworkMonitor *monitor,
-		       gboolean         available,
-		       GeditApp        *app)
-{
-	gboolean enable;
-	GList *windows, *w;
-
-	enable = g_network_monitor_get_network_available (monitor);
-
-	windows = gtk_application_get_windows (GTK_APPLICATION (app));
-
-	for (w = windows; w != NULL; w = w->next)
-	{
-		GeditWindow *window = GEDIT_WINDOW (w->data);
-
-		if (GEDIT_IS_WINDOW (window))
-		{
-			GList *tabs, *t;
-
-			tabs = _gedit_window_get_all_tabs (window);
-
-			for (t = tabs; t != NULL; t = t->next)
-			{
-				_gedit_tab_set_network_available (GEDIT_TAB (t->data),
-					                          enable);
-			}
-
-			g_list_free (tabs);
-		}
-	}
+	if (app->priv->print_settings == NULL)
+		app->priv->print_settings = gtk_print_settings_new ();
 }
 
 static void
 gedit_app_init (GeditApp *app)
 {
-	GeditAppPrivate *priv;
-
-	priv = gedit_app_get_instance_private (app);
-
-	g_set_application_name ("gedit");
-	gtk_window_set_default_icon_name ("gedit");
-
-	priv->monitor = g_network_monitor_get_default ();
-	g_signal_connect (priv->monitor,
-	                  "network-changed",
-	                  G_CALLBACK (get_network_available),
-	                  app);
-
-	g_application_add_main_option_entries (G_APPLICATION (app), options);
-
-#ifdef ENABLE_INTROSPECTION
-	g_application_add_option_group (G_APPLICATION (app), g_irepository_get_option_group ());
-#endif
+	app->priv = GEDIT_APP_GET_PRIVATE (app);
 }
 
 /* Generates a unique string for a window role */
@@ -1485,15 +1276,12 @@ GeditWindow *
 gedit_app_create_window (GeditApp  *app,
 			 GdkScreen *screen)
 {
-	GeditAppPrivate *priv;
 	GeditWindow *window;
 	gchar *role;
 	GdkWindowState state;
 	gint w, h;
 
 	gedit_debug (DEBUG_APP);
-
-	priv = gedit_app_get_instance_private (app);
 
 	window = GEDIT_APP_GET_CLASS (app)->create_window (app);
 
@@ -1506,12 +1294,12 @@ gedit_app_create_window (GeditApp  *app,
 	gtk_window_set_role (GTK_WINDOW (window), role);
 	g_free (role);
 
-	state = g_settings_get_int (priv->window_settings,
-	                            GEDIT_SETTINGS_WINDOW_STATE);
+	state = g_settings_get_int (app->priv->window_settings,
+				    GEDIT_SETTINGS_WINDOW_STATE);
 
-	g_settings_get (priv->window_settings,
-	                GEDIT_SETTINGS_WINDOW_SIZE,
-	                "(ii)", &w, &h);
+	g_settings_get (app->priv->window_settings,
+			GEDIT_SETTINGS_WINDOW_SIZE,
+			"(ii)", &w, &h);
 
 	gtk_window_set_default_size (GTK_WINDOW (window), w, h);
 
@@ -1537,37 +1325,6 @@ gedit_app_create_window (GeditApp  *app,
 }
 
 /**
- * gedit_app_get_main_windows:
- * @app: the #GeditApp
- *
- * Returns all #GeditWindows currently open in #GeditApp.
- * This differs from gtk_application_get_windows() since it does not
- * include the preferences dialog and other auxiliary windows.
- *
- * Return value: (element-type Gedit.Window) (transfer container):
- * a newly allocated list of #GeditWindow objects
- */
-GList *
-gedit_app_get_main_windows (GeditApp *app)
-{
-	GList *res = NULL;
-	GList *windows, *l;
-
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	windows = gtk_application_get_windows (GTK_APPLICATION (app));
-	for (l = windows; l != NULL; l = g_list_next (l))
-	{
-		if (GEDIT_IS_WINDOW (l->data))
-		{
-			res = g_list_prepend (res, l->data);
-		}
-	}
-
-	return g_list_reverse (res);
-}
-
-/**
  * gedit_app_get_documents:
  * @app: the #GeditApp
  *
@@ -1587,11 +1344,8 @@ gedit_app_get_documents	(GeditApp *app)
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		if (GEDIT_IS_WINDOW (l->data))
-		{
-			res = g_list_concat (res,
-			                     gedit_window_get_documents (GEDIT_WINDOW (l->data)));
-		}
+		res = g_list_concat (res,
+				     gedit_window_get_documents (GEDIT_WINDOW (l->data)));
 	}
 
 	return res;
@@ -1617,11 +1371,8 @@ gedit_app_get_views (GeditApp *app)
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		if (GEDIT_IS_WINDOW (l->data))
-		{
-			res = g_list_concat (res,
-			                     gedit_window_get_views (GEDIT_WINDOW (l->data)));
-		}
+		res = g_list_concat (res,
+				     gedit_window_get_views (GEDIT_WINDOW (l->data)));
 	}
 
 	return res;
@@ -1638,13 +1389,9 @@ gedit_app_get_views (GeditApp *app)
 GeditLockdownMask
 gedit_app_get_lockdown (GeditApp *app)
 {
-	GeditAppPrivate *priv;
-
 	g_return_val_if_fail (GEDIT_IS_APP (app), GEDIT_LOCKDOWN_ALL);
 
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->lockdown;
+	return app->priv->lockdown;
 }
 
 gboolean
@@ -1686,71 +1433,16 @@ gedit_app_process_window_event (GeditApp    *app,
     return FALSE;
 }
 
-static GMenuModel *
-find_extension_point_section (GMenuModel  *model,
-                              const gchar *extension_point)
-{
-	gint i, n_items;
-	GMenuModel *section = NULL;
-
-	n_items = g_menu_model_get_n_items (model);
-
-	for (i = 0; i < n_items && !section; i++)
-	{
-		gchar *id = NULL;
-
-		if (g_menu_model_get_item_attribute (model, i, "id", "s", &id) &&
-		    strcmp (id, extension_point) == 0)
-		{
-			section = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
-		}
-		else
-		{
-			GMenuModel *subsection;
-			GMenuModel *submenu;
-			gint j, j_items;
-
-			subsection = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
-
-			if (subsection == NULL)
-			{
-				subsection = model;
-			}
-
-			j_items = g_menu_model_get_n_items (subsection);
-
-			for (j = 0; j < j_items && !section; j++)
-			{
-				submenu = g_menu_model_get_item_link (subsection, j, G_MENU_LINK_SUBMENU);
-				if (submenu)
-				{
-					section = find_extension_point_section (submenu, extension_point);
-				}
-			}
-		}
-
-		g_free (id);
-	}
-
-	return section;
-}
-
 static void
 app_lockdown_changed (GeditApp *app)
 {
-	GeditAppPrivate *priv;
 	GList *windows, *l;
-
-	priv = gedit_app_get_instance_private (app);
 
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		if (GEDIT_IS_WINDOW (l->data))
-		{
-			_gedit_window_set_lockdown (GEDIT_WINDOW (l->data),
-			                            priv->lockdown);
-		}
+		_gedit_window_set_lockdown (GEDIT_WINDOW (l->data),
+		                            app->priv->lockdown);
 	}
 
 	g_object_notify (G_OBJECT (app), "lockdown");
@@ -1760,13 +1452,10 @@ void
 _gedit_app_set_lockdown (GeditApp          *app,
 			 GeditLockdownMask  lockdown)
 {
-	GeditAppPrivate *priv;
-
 	g_return_if_fail (GEDIT_IS_APP (app));
 
-	priv = gedit_app_get_instance_private (app);
+	app->priv->lockdown = lockdown;
 
-	priv->lockdown = lockdown;
 	app_lockdown_changed (app);
 }
 
@@ -1775,20 +1464,12 @@ _gedit_app_set_lockdown_bit (GeditApp          *app,
 			     GeditLockdownMask  bit,
 			     gboolean           value)
 {
-	GeditAppPrivate *priv;
-
 	g_return_if_fail (GEDIT_IS_APP (app));
 
-	priv = gedit_app_get_instance_private (app);
-
 	if (value)
-	{
-		priv->lockdown |= bit;
-	}
+		app->priv->lockdown |= bit;
 	else
-	{
-		priv->lockdown &= ~bit;
-	}
+		app->priv->lockdown &= ~bit;
 
 	app_lockdown_changed (app);
 }
@@ -1797,168 +1478,81 @@ _gedit_app_set_lockdown_bit (GeditApp          *app,
 GtkPageSetup *
 _gedit_app_get_default_page_setup (GeditApp *app)
 {
-	GeditAppPrivate *priv;
-
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	priv = gedit_app_get_instance_private (app);
-
-	if (priv->page_setup == NULL)
-	{
+	if (app->priv->page_setup == NULL)
 		load_page_setup (app);
-	}
 
-	return gtk_page_setup_copy (priv->page_setup);
+	return gtk_page_setup_copy (app->priv->page_setup);
 }
 
 void
 _gedit_app_set_default_page_setup (GeditApp     *app,
 				   GtkPageSetup *page_setup)
 {
-	GeditAppPrivate *priv;
-
 	g_return_if_fail (GEDIT_IS_APP (app));
 	g_return_if_fail (GTK_IS_PAGE_SETUP (page_setup));
 
-	priv = gedit_app_get_instance_private (app);
+	if (app->priv->page_setup != NULL)
+		g_object_unref (app->priv->page_setup);
 
-	g_set_object (&priv->page_setup, page_setup);
+	app->priv->page_setup = g_object_ref (page_setup);
 }
 
 /* Returns a copy */
 GtkPrintSettings *
 _gedit_app_get_default_print_settings (GeditApp *app)
 {
-	GeditAppPrivate *priv;
-
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	priv = gedit_app_get_instance_private (app);
-
-	if (priv->print_settings == NULL)
-	{
+	if (app->priv->print_settings == NULL)
 		load_print_settings (app);
-	}
 
-	return gtk_print_settings_copy (priv->print_settings);
+	return gtk_print_settings_copy (app->priv->print_settings);
 }
 
 void
 _gedit_app_set_default_print_settings (GeditApp         *app,
 				       GtkPrintSettings *settings)
 {
-	GeditAppPrivate *priv;
-
 	g_return_if_fail (GEDIT_IS_APP (app));
 	g_return_if_fail (GTK_IS_PRINT_SETTINGS (settings));
 
-	priv = gedit_app_get_instance_private (app);
+	if (app->priv->print_settings != NULL)
+		g_object_unref (app->priv->print_settings);
 
-	if (priv->print_settings != NULL)
-	{
-		g_object_unref (priv->print_settings);
-	}
-
-	priv->print_settings = g_object_ref (settings);
+	app->priv->print_settings = g_object_ref (settings);
 }
 
-GeditSettings *
+GObject *
 _gedit_app_get_settings (GeditApp *app)
 {
-	GeditAppPrivate *priv;
-
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->settings;
+	return app->priv->settings;
 }
 
-GMenuModel *
-_gedit_app_get_hamburger_menu (GeditApp *app)
+gboolean
+_gedit_app_has_app_menu (GeditApp *app)
 {
-	GeditAppPrivate *priv;
+	GtkSettings *gtk_settings;
+	gboolean show_app_menu;
+	gboolean show_menubar;
 
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+	g_return_val_if_fail (GEDIT_IS_APP (app), FALSE);
 
-	priv = gedit_app_get_instance_private (app);
+	/* We have three cases:
+	 * - GNOME 3: show-app-menu true, show-menubar false -> use the app menu
+	 * - Unity, OSX: show-app-menu and show-menubar true -> use the normal menu
+	 * - Other WM, Windows: show-app-menu and show-menubar false -> use the normal menu
+	 */
+	gtk_settings = gtk_settings_get_default ();
+	g_object_get (G_OBJECT (gtk_settings),
+	              "gtk-shell-shows-app-menu", &show_app_menu,
+	              "gtk-shell-shows-menubar", &show_menubar,
+	              NULL);
 
-	return priv->hamburger_menu;
-}
-
-GMenuModel *
-_gedit_app_get_notebook_menu (GeditApp *app)
-{
-	GeditAppPrivate *priv;
-
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->notebook_menu;
-}
-
-GMenuModel *
-_gedit_app_get_tab_width_menu (GeditApp *app)
-{
-	GeditAppPrivate *priv;
-
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->tab_width_menu;
-}
-
-GMenuModel *
-_gedit_app_get_line_col_menu (GeditApp *app)
-{
-	GeditAppPrivate *priv;
-
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->line_col_menu;
-}
-
-GeditMenuExtension *
-_gedit_app_extend_menu (GeditApp    *app,
-                        const gchar *extension_point)
-{
-	GeditAppPrivate *priv;
-	GMenuModel *model;
-	GMenuModel *section;
-
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-	g_return_val_if_fail (extension_point != NULL, NULL);
-
-	priv = gedit_app_get_instance_private (app);
-
-	/* First look in the gear or window menu */
-	if (priv->hamburger_menu)
-	{
-		model = priv->hamburger_menu;
-	}
-	else
-	{
-		model = gtk_application_get_menubar (GTK_APPLICATION (app));
-	}
-
-	section = find_extension_point_section (model, extension_point);
-
-	/* otherwise look in the app menu */
-	if (section == NULL)
-	{
-		model = gtk_application_get_app_menu (GTK_APPLICATION (app));
-
-		if (model != NULL)
-		{
-			section = find_extension_point_section (model, extension_point);
-		}
-	}
-
-	return section != NULL ? gedit_menu_extension_new (G_MENU (section)) : NULL;
+	return show_app_menu && !show_menubar;
 }
 
 /* ex:set ts=8 noet: */

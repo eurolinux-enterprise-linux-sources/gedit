@@ -17,29 +17,35 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include "gedit-commands.h"
-#include "gedit-commands-private.h"
-
 #include <gtk/gtk.h>
 
+#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-notebook.h"
 #include "gedit-multi-notebook.h"
 #include "gedit-debug.h"
 
 void
-_gedit_cmd_documents_previous_document (GSimpleAction *action,
-                                        GVariant      *parameter,
-                                        gpointer       user_data)
+_gedit_cmd_documents_previous_document (GtkAction   *action,
+					GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -49,11 +55,9 @@ _gedit_cmd_documents_previous_document (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_documents_next_document (GSimpleAction *action,
-                                    GVariant      *parameter,
-                                    gpointer       user_data)
+_gedit_cmd_documents_next_document (GtkAction   *action,
+				    GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -63,11 +67,9 @@ _gedit_cmd_documents_next_document (GSimpleAction *action,
 }
 
 void
-_gedit_cmd_documents_move_to_new_window (GSimpleAction *action,
-                                         GVariant      *parameter,
-                                         gpointer       user_data)
+_gedit_cmd_documents_move_to_new_window (GtkAction   *action,
+					 GeditWindow *window)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -82,27 +84,24 @@ _gedit_cmd_documents_move_to_new_window (GSimpleAction *action,
 
 /* Methods releated with the tab groups */
 void
-_gedit_cmd_documents_new_tab_group (GSimpleAction *action,
-                                    GVariant      *parameter,
-                                    gpointer       user_data)
+_gedit_cmd_documents_new_tab_group (GtkAction   *action,
+				    GeditWindow *window)
 {
-	gedit_multi_notebook_add_new_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
+	gedit_multi_notebook_add_new_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window)));
 }
 
 void
-_gedit_cmd_documents_previous_tab_group (GSimpleAction *action,
-                                         GVariant      *parameter,
-                                         gpointer       user_data)
+_gedit_cmd_documents_previous_tab_group (GtkAction   *action,
+					 GeditWindow *window)
 {
-	gedit_multi_notebook_previous_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
+	gedit_multi_notebook_previous_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window)));
 }
 
 void
-_gedit_cmd_documents_next_tab_group (GSimpleAction *action,
-                                     GVariant      *parameter,
-                                     gpointer       user_data)
+_gedit_cmd_documents_next_tab_group (GtkAction   *action,
+				     GeditWindow *window)
 {
-	gedit_multi_notebook_next_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
+	gedit_multi_notebook_next_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window)));
 }
 
 /* ex:set ts=8 noet: */

@@ -3,50 +3,30 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>高亮文本让它更加易读。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>TeliuTe</mal:name>
-      <mal:email>teliute@163.com</mal:email>
-      <mal:years>2009, 2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Colin Zhao</mal:name>
-      <mal:email>lonely.ibm@gmail.com</mal:email>
-      <mal:years>2011</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>wancheng zhang</mal:name>
-      <mal:email>wancheng.com.cn@gmail.com</mal:email>
-      <mal:years>2012</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Zhe Wei</mal:name>
-      <mal:email>weizhe86@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
   </info>
 
-  <title>打开语法高亮显示</title>
+  <title>Turn on syntax highlighting</title>
 
   <section id="gedit-syntax-highlighting-section">
-    <title>语法高亮显示</title>
+    <title>Syntax Highlighting</title>
     <p><app>gedit</app> 支持广泛的高亮语法，像标记语言、程序语言和科学语言等等，如果 <app>gedit</app> 识别出打开的文件，它将会自动显示高亮文本。</p>
 
-    <p>如果打开一种文件格式或语言后，没有显示高亮语法，您可以通过点菜单 <guiseq><gui style="menu">查看</gui><gui style="menuitem">突出显示模式</gui></guiseq> 来选择一种高亮格式。或者，您还可以从 <app>gedit</app> 窗口底部的格式列表中选择。</p>
+    <p>If your syntax or language is not highlighted upon startup, you can
+    select the appropriate syntax or language by clicking
+    <guiseq><gui style="menu">View</gui>
+    <gui style="menuitem">Highlight Mode</gui></guiseq>,
+    and then choosing the desired syntax. Alternately, you can select the syntax
+    name from a list at the bottom of the <app>gedit</app> window.</p>
   </section>
 
 </page>

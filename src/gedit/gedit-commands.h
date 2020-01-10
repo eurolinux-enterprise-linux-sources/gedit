@@ -18,46 +18,157 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_COMMANDS_H
-#define GEDIT_COMMANDS_H
+/*
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
+ *
+ * $Id$
+ */
 
-#include <gtksourceview/gtksource.h>
+#ifndef __GEDIT_COMMANDS_H__
+#define __GEDIT_COMMANDS_H__
+
+#include <gtk/gtk.h>
 #include <gedit/gedit-window.h>
 
 G_BEGIN_DECLS
 
 /* Do nothing if URI does not exist */
-void		 gedit_commands_load_location		(GeditWindow             *window,
-							 GFile                   *location,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos);
+void		 gedit_commands_load_location		(GeditWindow         *window,
+							 GFile               *location,
+							 const GeditEncoding *encoding,
+							 gint                 line_pos,
+							 gint                 column_pos);
 
 /* Ignore non-existing URIs */
-GSList		*gedit_commands_load_locations		(GeditWindow             *window,
-							 const GSList            *locations,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos) G_GNUC_WARN_UNUSED_RESULT;
+GSList		*gedit_commands_load_locations		(GeditWindow         *window,
+							 const GSList        *locations,
+							 const GeditEncoding *encoding,
+							 gint                 line_pos,
+							 gint                 column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
 void		 gedit_commands_save_document		(GeditWindow         *window,
                                                          GeditDocument       *document);
 
-void		 gedit_commands_save_document_async	(GeditDocument       *document,
-							 GeditWindow         *window,
-							 GCancellable        *cancellable,
-							 GAsyncReadyCallback  callback,
-							 gpointer             user_data);
-
-gboolean	 gedit_commands_save_document_finish	(GeditDocument       *document,
-							 GAsyncResult        *result);
-
 void		 gedit_commands_save_all_documents 	(GeditWindow         *window);
+
+/*
+ * Non-exported functions
+ */
+
+/* Create titled documens for non-existing URIs */
+GSList	        *_gedit_cmd_load_files_from_prompt	(GeditWindow         *window,
+							 GSList              *files,
+							 const GeditEncoding *encoding,
+							 gint                 line_pos,
+							 gint                 column_pos) G_GNUC_WARN_UNUSED_RESULT;
+
+void		_gedit_cmd_file_new			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_open			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_save_tab		(GeditTab    *tab,
+							 GeditWindow *window);
+void		_gedit_cmd_file_save_as_tab		(GeditTab    *tab,
+							 GeditWindow *window);
+void		_gedit_cmd_file_save			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_save_as			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_save_all		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_revert			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_open_uri		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_print_preview		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_print			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_close			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_close_all		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_file_quit			(GtkAction   *action,
+							 GeditWindow *window);
+
+void		_gedit_cmd_edit_undo			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_redo			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_cut			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_copy			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_paste			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_delete			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_select_all		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_edit_preferences		(GtkAction   *action,
+							 GeditWindow *window);
+
+void		_gedit_cmd_view_show_toolbar		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_view_show_statusbar		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_view_show_side_panel		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_view_show_bottom_panel	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_view_toggle_fullscreen_mode	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_view_leave_fullscreen_mode	(GtkAction   *action,
+							 GeditWindow *window);
+
+void		_gedit_cmd_search_find			(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_search_find_next		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_search_find_prev		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_search_replace		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_search_clear_highlight	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_search_goto_line		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_search_incremental_search	(GtkAction   *action,
+							 GeditWindow *window);
+
+void		_gedit_cmd_documents_previous_document	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_documents_next_document	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_documents_move_to_new_window	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_documents_new_tab_group	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_documents_previous_tab_group	(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_documents_next_tab_group	(GtkAction   *action,
+							 GeditWindow *window);
+
+void		_gedit_cmd_help_contents		(GtkAction   *action,
+							 GeditWindow *window);
+void		_gedit_cmd_help_about			(GtkAction   *action,
+							 GeditWindow *window);
+
+void		_gedit_cmd_file_close_tab 		(GeditTab    *tab,
+							 GeditWindow *window);
+
+void		_gedit_cmd_file_save_documents_list	(GeditWindow *window,
+							 GList       *docs);
+
 
 G_END_DECLS
 
-#endif /* GEDIT_COMMANDS_H */
+#endif /* __GEDIT_COMMANDS_H__ */
 /* ex:set ts=8 noet: */

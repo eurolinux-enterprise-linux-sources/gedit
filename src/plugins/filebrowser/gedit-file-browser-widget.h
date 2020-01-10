@@ -15,14 +15,14 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef GEDIT_FILE_BROWSER_WIDGET_H
-#define GEDIT_FILE_BROWSER_WIDGET_H
+#ifndef __GEDIT_FILE_BROWSER_WIDGET_H__
+#define __GEDIT_FILE_BROWSER_WIDGET_H__
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-menu-extension.h>
 #include "gedit-file-browser-store.h"
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-view.h"
@@ -68,14 +68,11 @@ struct _GeditFileBrowserWidgetClass
 					 GList                  *list);
 	gboolean (* confirm_no_trash)	(GeditFileBrowserWidget *widget,
 					 GList                  *list);
-	void (* open_in_terminal)       (GeditFileBrowserWidget *widget,
-	                                 GFile                  *location);
-	void (* set_active_root)        (GeditFileBrowserWidget *widget);
 };
 
 GType		 gedit_file_browser_widget_get_type            (void) G_GNUC_CONST;
 
-GtkWidget	*gedit_file_browser_widget_new            	(void);
+GtkWidget	*gedit_file_browser_widget_new            	(const gchar            *data_dir);
 
 void		 gedit_file_browser_widget_show_bookmarks       (GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_show_files           (GeditFileBrowserWidget *obj);
@@ -92,9 +89,6 @@ gboolean	 gedit_file_browser_widget_get_selected_directory
 								(GeditFileBrowserWidget *obj,
 								 GtkTreeIter            *iter);
 
-void             gedit_file_browser_widget_set_active_root_enabled (GeditFileBrowserWidget *widget,
-                                                                    gboolean                enabled);
-
 GeditFileBrowserStore *
 gedit_file_browser_widget_get_browser_store         		(GeditFileBrowserWidget *obj);
 GeditFileBookmarksStore *
@@ -104,6 +98,9 @@ gedit_file_browser_widget_get_browser_view			(GeditFileBrowserWidget *obj);
 GtkWidget *
 gedit_file_browser_widget_get_filter_entry			(GeditFileBrowserWidget *obj);
 
+GtkUIManager *
+gedit_file_browser_widget_get_ui_manager			(GeditFileBrowserWidget *obj);
+
 gulong gedit_file_browser_widget_add_filter			(GeditFileBrowserWidget *obj,
 								 GeditFileBrowserWidgetFilterFunc func,
 								 gpointer                user_data,
@@ -112,8 +109,7 @@ void		 gedit_file_browser_widget_remove_filter	(GeditFileBrowserWidget *obj,
 								 gulong                  id);
 void		 gedit_file_browser_widget_set_filter_pattern	(GeditFileBrowserWidget *obj,
 								 gchar const            *pattern);
-GeditMenuExtension *
-		 gedit_file_browser_widget_extend_context_menu	(GeditFileBrowserWidget *obj);
+
 void		 gedit_file_browser_widget_refresh		(GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_history_back		(GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_history_forward	(GeditFileBrowserWidget *obj);
@@ -122,5 +118,5 @@ void		 _gedit_file_browser_widget_register_type      (GTypeModule            *ty
 
 G_END_DECLS
 
-#endif /* GEDIT_FILE_BROWSER_WIDGET_H */
-/* ex:set ts=8 noet: */
+#endif /* __GEDIT_FILE_BROWSER_WIDGET_H__ */
+/* ex:ts=8:noet: */

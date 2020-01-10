@@ -11,27 +11,25 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jcampbell@gnome.org</email>
+    <email>jwcampbell@gmail.com</email>
   </credit>
-  <desc>Insert the current date/time at the cursor position.</desc>
+  <desc>Insert the current date/time at the cursor position</desc>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Максим Дзюманенко</mal:name>
-      <mal:email>dziumanenko@gmail.com</mal:email>
-      <mal:years>2007</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Назарій Ріттер</mal:name>
-      <mal:email>nazariy.ritter@gmail.com</mal:email>
-      <mal:years>2014</mal:years>
-    </mal:credit>
-  </info>
+<title>Insert date/time</title>
 
-<title>Вставка дати/часу</title>
+  <p>As this name of this plugin suggests, the <gui>Insert Date/Time</gui>
+  plugin allows you to insert the date and/or time at the current cursor
+  position. To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Insert Date/Time</gui></guiseq>. To use the plugin, press <guiseq>
+  <gui style="menu">Edit</gui><gui>Insert Date and Time</gui></guiseq>.</p>
 
-  <p>Як видно з назви, плагін «<gui>Вставити дату/час</gui>» дозволяє вставити дату та/або час до поточної позиції курсору. Щоб увімкнути цей плагін, виберіть <guiseq><gui style="menu">«gedit»</gui> <gui style="menuitem">«Параметри»</gui><gui>«Плагіни»</gui> <gui>«Вставити дату/час»</gui></guiseq>. Щоб використовувати цей плагін, натисніть <guiseq> <gui style="menu">«Редагувати»</gui><gui>«Вставити дату та час»</gui></guiseq>.</p>
-
-  <p>За замовчуванням, плагін «<gui>Вставити дату/час</gui>» щоразу буде пропонувати вибрати потрібний формат дати/часу. Однак, можна вибрати формат дати та часу за замовчуванням, вибравши <guiseq><gui style="menu">«gedit»</gui><gui style="menuitem">«Параметри»</gui> <gui>«Плагіни»</gui><gui>«Вставити дату/час»</gui><gui>«Налаштувати»</gui></guiseq>.</p>
+  <p>By default, the <gui>Insert Date/Time</gui> plugin will prompt you to
+  choose your preferred date/time format each time that you use the plugin.
+  However, you can choose your own default date and time format by selecting
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></guiseq>.
+  </p>
 
 </page>

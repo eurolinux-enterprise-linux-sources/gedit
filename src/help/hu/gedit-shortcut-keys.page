@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="hu">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:ui="http://projectmallard.org/experimental/ui/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="hu">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Gyorsbillentyűk használata a munka gyorsításához.</desc>
-    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
-    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jcampbell@gnome.org</email>
+      <email>jwcampbell@gmail.com</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -25,31 +22,14 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email its:translate="no">sindhus@live.in</email>
+      <email>sindhus@live.in</email>
     </credit>
-    <credit type="author copyright">
-      <name>Radina Matic</name>
-      <email its:translate="no">radina.matic@gmail.com</email>
-      <years>2013</years>
-    </credit>
-    <credit type="editor">
-      <name>Ekaterina Gerasimova</name>
-      <email its:translate="no">kittykat3756@gmail.com</email>
-      <years>2015</years>
-    </credit>
-
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Hammer Attila</mal:name>
-      <mal:email>hammera at pickup dot hu</mal:email>
-      <mal:years>2014.</mal:years>
-    </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -63,12 +43,26 @@
 
   <p>A <gui>gyorsbillentyűk</gui> segítségével a gyakori feladatok az egér és menük használatánál gyorsabban végezhetők el. A következő táblázatok felsorolják a <app>gedit</app> összes gyorsbillentyűjét.</p>
 
-    <table rules="rows" frame="top bottom" ui:expanded="true">
+<!--  
+Please skip this list for now. I'm not sure if it is needed.
+  <list>
+    <title>Types of shortcut keys</title>
+    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
+    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
+    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
+    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
+    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
+    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
+    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
+  </list>
+-->
+
+    <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Lapokkal kapcsolatos gyorsbillentyűk</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>
@@ -90,55 +84,31 @@
         </tr>
         <tr>
           <td><p>Az összes lap bezárása</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Legutóbb használt lap újranyitása</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Váltás az <var>n</var>. lapra</p></td>
           <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
         </tr>
-        <tr>
-          <td><p>Új lapcsoport</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Váltás az előző lapcsoportra</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Váltás a következő lapcsoportra</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
-        </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Gyorsbillentyűk fájlok kezeléséhez</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Új dokumentum létrehozása új ablakban</p></td>
+          <td><p>Új dokumentum létrehozása</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Új dokumentum létrehozása új lapon</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Dokumentum megnyitása</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
-        </tr>
-        <tr>
-           <td><p>A <gui>Gyors megnyitás</gui> ablak megnyitása</p></td>
-           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>A jelenlegi dokumentum mentése</p></td>
@@ -167,12 +137,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Gyorsbillentyűk fájlok szerkesztéséhez</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>
@@ -236,55 +206,36 @@
           <td><p>A kijelölt sor egy sorral lejjebb mozgatása</p></td>
           <td><p><keyseq><key>Alt</key><key>Le nyíl</key></keyseq></p></td>
         </tr>
-        <tr>
-          <td><p>Tabulátor hozzáadása</p></td>
-          <td><p><keyseq><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>Tabulátor eltávolítása</p></td>
-          <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>A kijelölt szöveg nagybetűssé alakítása</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>A kijelölt szöveg kisbetűssé alakítása</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
-        </tr>
-        <tr>
-          <td><p>A kijelölt szöveg kis- és nagybetűsségének átváltása</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
-        </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Ablaktáblákat elrejtő és megjelenítő gyorsbillentyűk</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Oldalpanel megjelenítése/elrejtése</p></td>
+          <td><p>Oldalsó ablaktábla megjelenítése/elrejtése</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>A Fájl menü megnyitása</p></td>
-          <td><p><key>F10</key></p></td>  
+          <td><p>Alsó ablaktábla megjelenítése/elrejtése</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Gyorsbillentyűk a kereséshez</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>
@@ -315,12 +266,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Gyorsbillentyűk az eszközökhöz</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>
@@ -343,12 +294,12 @@
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <table rules="rows" frame="top bottom" ui:expanded="no">
     <title>Súgó gyorsbillentyűi</title>
       <thead>
         <tr>
-          <td><p>Művelet</p></td>
-          <td><p>Gyorsbillentyű</p></td>
+          <td><p>Ehhez</p></td>
+          <td><p>Nyomja meg ezt</p></td>
         </tr>
       </thead>
       <tbody>

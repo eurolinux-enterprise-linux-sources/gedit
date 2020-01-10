@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-character-map" xml:lang="sl">
+  <info>
+    <revision version="0.2" date="2013-02-24" status="review"/>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <credit type="author">
+      <name>Paul Weaver</name>
+      <email>ch3pjw@bath.ac.uk</email>
+    </credit>
+
+    <desc>Vstavitev posebnih znakov s klikom nanje.</desc>
+  </info>
+
+  <title>Preglednica znakov</title>
+
+  <comment>
+    <cite date="2013-02-24" href="mailto:ch3pjw@bath.ac.uk">Paul Weaver</cite>
+    <p>This assumes the reader knows how to use gedit in general. By the end of
+    this page, the reader will be able to use the character map plugin to
+    insert characters into their documents.</p>
+  </comment>
+
+  <p>The <app>Character Map</app> plugin enables you to insert characters into
+  your document that you may not be able to type easily using your keyboard. To
+  enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Character Map</gui></guiseq>.</p>
+  
+  <section id="using-character-map">
+    <title>Uporaba preglednice znakov</title>
+
+    <p>Once the plugin is enabled, you can add characters from the
+    <em>Character Map</em> tab of the side panel (<guiseq><gui>View</gui>
+    <gui>Side Panel</gui></guiseq>).</p>
+  
+  <steps>
+    <item><p>Premaknite kazalko, kamor želite vstaviti oznako ali poseben znak.</p></item>
+    <item><p>Open the side panel by selecting <guiseq><gui>View</gui>
+    <gui>Side Panel</gui></guiseq>, or by pressing <key>F9</key>.</p></item>
+    <item><p>Izberite zavihek <em>Preglednica znakov</em> v stranskem pultu.</p></item>
+    <item><p>Po potrebi izberite nabor znakov v <em>preglednica znakov</em>, kateremu iskani znak pripada.</p></item>
+    <item><p>Dvokliknite na želen znak za njegovo vstavitev.</p></item>
+  </steps>
+  
+    <note style="tip"><p>Za nadaljevanje z običajnim urejanjem morate kliknite na pogled urejanja.</p></note>
+  </section>
+
+</page>

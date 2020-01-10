@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-bookmarks" xml:lang="ru">
+  <info>
+    <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
+    <revision version="3.4" date="2013-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Джим Кэмпбелл (Jim Campbell)</name>
+      <email>jwcampbell@gmail.com</email>
+    </credit>
+
+    <desc>Обозначение часто посещаемых мест с помощью закладок</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stas Solovey</mal:name>
+      <mal:email>whats_up@tut.by</mal:email>
+      <mal:years>2011, 2012, 2013.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Misha Shnurapet</mal:name>
+      <mal:email>shnurapet@fedoraproject.org</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Закладки</title>
+
+  <p>Закладки gedit позволяют выделить важные строки текста в документе или программе, что позволяет их легче находить. Также можно перемещаться вверх и вниз между закладками, что делает навигацию по документу немного быстрее.</p>
+
+  <p>Чтобы включить модуль закладок, выберите <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Параметры</gui><gui>Модули</gui> <gui>Закладки</gui></guiseq>.</p>
+
+  <steps>
+    <title>Добавление и удаление закладок выполняется одним и тем же способом:</title>
+    <item><p>Перейдите на строку, на которую нужно добавить закладку или с которой надо удалить закладку.</p></item>
+    <item><p>Нажмите <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, или выберите <guiseq><gui style="menu">Правка</gui> <gui style="menuitem">Добавить/удалить закладку</gui></guiseq>.</p></item>
+  </steps>
+  
+  <steps>
+    <title>Для перемещения между закладками:</title>
+    <item><p>Нажмите <keyseq><key>Ctrl</key><key>B</key></keyseq>, чтобы перейти к следующей закладке.</p></item>
+    <item><p>Нажмите <keyseq><key>Ctrl</key><key>Shift</key><key>B</key></keyseq>, чтобы перейти к предыдущей закладке.</p>
+    <note><p>Если вы предпочитаете использовать мышь, нажмите <guiseq> <gui style="menu">gedit</gui> <gui style="menuitem">Перейти к следующей закладке</gui></guiseq> или <guiseq><gui style="menu">Правка</gui> <gui style="menuitem">Перейти к предыдущей закладке</gui></guiseq>.</p></note>
+    </item>
+  </steps>
+    
+  
+
+</page>
