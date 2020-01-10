@@ -2,14 +2,18 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="fr">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
+    <desc>Utiliser une police personnalisée pour le texte de gedit.</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
       <years>2011 2012 2013</years>
     </credit>
-  
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
       <mal:email>vuntz@gnome.org</mal:email>
@@ -78,7 +82,7 @@
   <steps>
     <title>Pour modifier la police par défaut dans <app>gedit</app> :</title>
       <item><p>Choisissez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Police et couleurs</gui></guiseq>.</p></item>
-      <item><p>Dé-cochez la case à côté de la phrase « Utiliser la police système à chasse fixe ».</p></item>
+      <item><p>Décochez la case à côté de la phrase « Utiliser la police système à chasse fixe ».</p></item>
       <item><p>Cliquez sur le nom de la police actuelle. <app>gedit</app> ouvre alors une fenêtre de sélection de police, vous permettant de voir les polices disponibles et de choisir celle que vous préférez.</p></item>
       <item><p>Après avoir sélectionné la police souhaitée, utilisez le <gui>curseur</gui> sous la liste des polices pour définir la taille de police par défaut.</p></item>
       <item><p>Cliquez sur <gui>Sélectionner</gui> puis sur <gui>Fermer</gui>.</p>

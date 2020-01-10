@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Compatibilidade para gedit para os estios dos modos de liñas de Emacs, Kate e Vim.</desc>
+  <desc>Emacs, Kate and Vim-style modelines support for gedit.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>

@@ -5,10 +5,11 @@
     <title type="link">Текстовый редактор gedit</title>
     <title type="text">Текстовый редактор gedit</title>
 
+    <desc>Home page of the gedit help guide.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email its:translate="no">jwcampbell@gmail.com</email>
+      <email its:translate="no">jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Синдху С (Sindhu S)</name>
@@ -21,7 +22,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2014.</mal:years>
+      <mal:years>2011-2015.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

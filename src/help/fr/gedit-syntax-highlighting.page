@@ -3,10 +3,11 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
+    <desc>Colorer le texte en fonction de la syntaxe pour en faciliter la lecture.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>

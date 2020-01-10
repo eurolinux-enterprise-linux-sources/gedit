@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Modifier la casse du texte sélectionné</desc>
+  <desc>Modifier la casse du texte sélectionné.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>

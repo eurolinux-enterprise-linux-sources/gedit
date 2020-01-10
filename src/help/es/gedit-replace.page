@@ -4,11 +4,13 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
+    <desc>Reemplazar fragmentos de texto en un archivo.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
+    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -22,12 +24,20 @@
       <name>Ekaterina Gerasimova</name>
       <email>kittykat3756@gmail.com</email>
     </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email>tyagishobha@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
+    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2014</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -50,7 +60,7 @@
   <steps>
     <title>Reemplazar texto en <app>gedit</app></title>
     <item>
-      <p>Abra la herramienta <gui>Reemplazar</gui> pulsando en <guiseq><gui style="menu">Buscar</gui> <gui style="menuitem">Reemplazar...</gui></guiseq> o pulse <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Abra la herramienta <gui>Reemplazar</gui> pulsando en el <guiseq><gui style="button">Botón del menú</gui><gui style="menuitem">Buscar y reemplazar…</gui></guiseq> o pulse <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>Introduzca el texto que quiere reemplazar en el campo <gui>Buscar</gui>.</p>
@@ -104,7 +114,7 @@
 <section id="escape-sequences">
   <title>Usar secuencias de escape</title>
 
-  <p>Puede usar <em>secuencias de escape</em> para buscar saltos de línea y tabulaciones.</p>
+  <p>Puede usar <em>secuencias de escape</em> para buscar saltos de línea, retornos de carro y tabulaciones.</p>
 
   <terms>
     <item>
@@ -112,12 +122,12 @@
       <p>Nueva línea</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Tabulación</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Retorno de carro</p>
+    </item>
+    <item>
+      <title>\t</title>
+      <p>Tabulación</p>
     </item>
   </terms>
 

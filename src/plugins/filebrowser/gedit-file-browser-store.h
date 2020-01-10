@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_BROWSER_STORE_H__
-#define __GEDIT_FILE_BROWSER_STORE_H__
+#ifndef GEDIT_FILE_BROWSER_STORE_H
+#define GEDIT_FILE_BROWSER_STORE_H
 
 #include <gtk/gtk.h>
 
@@ -98,22 +98,24 @@ struct _GeditFileBrowserStoreClass {
 	GObjectClass parent_class;
 
 	/* Signals */
-	void (* begin_loading)	(GeditFileBrowserStore *model,
-				 GtkTreeIter           *iter);
-	void (* end_loading)	(GeditFileBrowserStore *model,
-				 GtkTreeIter           *iter);
-	void (* error)		(GeditFileBrowserStore *model,
-				 guint                  code,
-				 gchar                 *message);
-	gboolean (* no_trash)	(GeditFileBrowserStore *model,
-				 GList                 *files);
-	void (* rename)		(GeditFileBrowserStore *model,
-				 GFile                 *oldfile,
-				 GFile                *newfile);
-	void (* begin_refresh)	(GeditFileBrowserStore *model);
-	void (* end_refresh)	(GeditFileBrowserStore *model);
-	void (* unload)		(GeditFileBrowserStore *model,
-				 GFile                *location);
+	void (* begin_loading)      (GeditFileBrowserStore *model,
+	                             GtkTreeIter           *iter);
+	void (* end_loading)        (GeditFileBrowserStore *model,
+	                             GtkTreeIter           *iter);
+	void (* error)              (GeditFileBrowserStore *model,
+	                             guint                  code,
+	                             gchar                 *message);
+	gboolean (* no_trash)       (GeditFileBrowserStore *model,
+	                             GList                 *files);
+	void (* rename)             (GeditFileBrowserStore *model,
+	                             GFile                 *oldfile,
+	                             GFile                 *newfile);
+	void (* begin_refresh)      (GeditFileBrowserStore *model);
+	void (* end_refresh)        (GeditFileBrowserStore *model);
+	void (* unload)             (GeditFileBrowserStore *model,
+	                             GFile                 *location);
+	void (* before_row_deleted) (GeditFileBrowserStore *model,
+	                             GtkTreePath           *path);
 };
 
 GType		 gedit_file_browser_store_get_type		(void) G_GNUC_CONST;
@@ -204,5 +206,5 @@ void		 _gedit_file_browser_store_register_type	(GTypeModule                     
 
 G_END_DECLS
 
-#endif /* __GEDIT_FILE_BROWSER_STORE_H__ */
+#endif /* GEDIT_FILE_BROWSER_STORE_H */
 /* ex:set ts=8 noet: */

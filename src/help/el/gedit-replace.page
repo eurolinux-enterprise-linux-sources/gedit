@@ -4,11 +4,13 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
+    <desc>Αντικατάσταση τμημάτων του κειμένου σε ένα αρχείο.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
+    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -22,13 +24,15 @@
       <name>Ekaterina Gerasimova</name>
       <email>kittykat3756@gmail.com</email>
     </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email>tyagishobha@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
+    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Για την Ελληνική μεταφραστική ομάδα GNOME</mal:name>
-      <mal:email>team@gnome.gr</mal:email>
-      <mal:years>2009, 2011, 2012, 2013, 2014</mal:years>
-    </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Μάριος Ζηντίλης</mal:name>
@@ -51,7 +55,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -68,7 +72,7 @@
   <steps>
     <title>Αντικατάσταση κειμένου στο <app>gedit</app></title>
     <item>
-      <p>Ανοίξτε το εργαλείο <gui>Αντικατάσταση</gui> πατώντας <guiseq><gui style="menu">Αναζήτηση</gui> <gui style="menuitem">Αντικατάσταση…</gui></guiseq> ή πατώντας <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Ανοίξτε το εργαλείο <gui>Αντικατάσταση</gui> κάνοντας κλικ στο <guiseq><gui style="button">Μενού</gui><gui style="menuitem">Εύρεση και αντικατάσταση…</gui></guiseq> ή πατώντας <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>Εισάγετε το κείμενο που θέλετε να αντικαταστήσετε στο πεδίο <gui>Αναζήτηση για:</gui>.</p>
@@ -122,7 +126,7 @@
 <section id="escape-sequences">
   <title>Χρήση ακολουθιών διαφυγής</title>
 
-  <p>Μπορείτε να χρησιμοποιήσετε <em>ακολουθίες διαφυγής</em> για αναζήτηση αλλαγών γραμμών και στηλοθετών.</p>
+  <p>Μπορείτε να χρησιμοποιήσετε <em>ακολουθίες διαφυγής</em> για αναζήτηση αλλαγών γραμμών, επαναφορών κεφαλής και στηλοθετών.</p>
 
   <terms>
     <item>
@@ -130,12 +134,12 @@
       <p>Νέα γραμμή</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Στηλοθέτης</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Επαναφορά κεφαλής</p>
+    </item>
+    <item>
+      <title>\t</title>
+      <p>Στηλοθέτης</p>
     </item>
   </terms>
 

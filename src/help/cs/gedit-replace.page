@@ -4,11 +4,13 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
+    <desc>Jak nahradit části textu v souboru.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
+    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -21,6 +23,14 @@
     <credit type="editor">
       <name>Ekaterina Gerasimova</name>
       <email>kittykat3756@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email>tyagishobha@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -44,7 +54,7 @@
   <steps>
     <title>Náhrada textu v editoru <app>gedit</app></title>
     <item>
-      <p>Otevřete nástroj <gui>Nahradit</gui> kliknutím na <guiseq><gui style="menu">Hledat</gui> <gui style="menuitem">Nahradit…</gui></guiseq> nebo zmáčknutím <keyseq><key>Ctrl</key> <key>H</key></keyseq>.</p>
+      <p>Otevřete nástroj <gui>Nahradit</gui> kliknutím na <guiseq><gui style="button">Tlačítko s nabídkou</gui> <gui style="menuitem">Hledat a nahradit…</gui></guiseq> nebo zmáčknutím <keyseq><key>Ctrl</key> <key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>Řetězec, který chcete nahradit, zadejte do pole <gui>Hledat:</gui>.</p>
@@ -84,7 +94,7 @@
       <p>Tuto volbu použijte, když chcete vyhledat slova bez předpon a přípon. Například, když budete chtít vyhledat slovo „pan“ a zaškrtnete tuto volbu, vyhledá se opravdu jen „pan“ a ne třeba „<em>pan</em>da“ nebo „ko<em>pan</em>á“.</p>
     </item>
     <item>
-      <title>Hledat pozpátku</title>
+      <title>Hledat směrem k začátku</title>
       <p>Tato volba v podstatě odpovídá příkazu Najít předchozí. Vyberte ji, pokud chcete při hledání postupovat směrem od konce k začátku.</p>
     </item>
     <item>
@@ -98,7 +108,7 @@
 <section id="escape-sequences">
   <title>Používání řídících sekvencí</title>
 
-  <p>Můžete používat <em>řídící sekvece</em> (tzv. sekvence escape) pro hledání zalomení řádků a tabulátorů.</p>
+  <p>Můžete používat <em>řídící sekvece</em> (tzv. sekvence escape) pro hledání zalomení řádků všech typů a tabulátorů.</p>
 
   <terms>
     <item>
@@ -106,12 +116,12 @@
       <p>Nový řádek (NL)</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Tabulátor</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Na začátek řádku (CR)</p>
+    </item>
+    <item>
+      <title>\t</title>
+      <p>Tabulátor</p>
     </item>
   </terms>
 

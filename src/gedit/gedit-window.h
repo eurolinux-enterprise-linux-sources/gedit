@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_WINDOW_H__
-#define __GEDIT_WINDOW_H__
+#ifndef GEDIT_WINDOW_H
+#define GEDIT_WINDOW_H
 
 #include <gtksourceview/gtksource.h>
 #include <gio/gio.h>
@@ -138,13 +138,13 @@ GeditTab        *gedit_window_get_tab_from_location	(GeditWindow         *window
 /* Message bus */
 GeditMessageBus	*gedit_window_get_message_bus		(GeditWindow         *window);
 
-GMenuModel       *_gedit_window_get_gear_menu           (GeditWindow         *window);
-
 /*
  * Non exported functions
  */
 GtkWidget	*_gedit_window_get_multi_notebook	(GeditWindow         *window);
 GtkWidget	*_gedit_window_get_notebook		(GeditWindow         *window);
+
+GMenuModel	*_gedit_window_get_hamburger_menu	(GeditWindow         *window);
 
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
 							 GeditTab            *tab);
@@ -169,6 +169,6 @@ GFile		*_gedit_window_pop_last_closed_doc	(GeditWindow         *window);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_WINDOW_H__  */
+#endif  /* GEDIT_WINDOW_H  */
 
 /* ex:set ts=8 noet: */

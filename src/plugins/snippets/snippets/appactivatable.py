@@ -16,17 +16,16 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-
-from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 import platform
-
+from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 from .library import Library
 from .shareddata import SharedData
+
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
     __gtype_name__ = "GeditSnippetsAppActivatable"
 
-    app = GObject.property(type=Gedit.App)
+    app = GObject.Property(type=Gedit.App)
 
     def __init__(self):
         GObject.Object.__init__(self)

@@ -23,15 +23,21 @@
 # Bits from gedit Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
-from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
+import gi
+gi.require_version('Gedit', '3.0')
+gi.require_version('Peas', '1.0')
+gi.require_version('PeasGtk', '1.0')
+gi.require_version('Gtk', '3.0')
 
+from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
+
 
 class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"
 
-    window = GObject.property(type=Gedit.Window)
+    window = GObject.Property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)

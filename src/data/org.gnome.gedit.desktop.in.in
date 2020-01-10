@@ -1,13 +1,12 @@
 [Desktop Entry]
-_Name=gedit
-_GenericName=Text Editor
+_Name=Text Editor
 _Comment=Edit text files
 Exec=gedit %U
 Terminal=false
 Type=Application
 StartupNotify=true
 MimeType=text/plain;
-Icon=accessories-text-editor
+Icon=gedit
 Categories=GNOME;GTK;Utility;TextEditor;
 X-GNOME-DocPath=gedit/gedit.xml
 _X-GNOME-FullName=gedit Text Editor
@@ -16,14 +15,14 @@ X-GNOME-Bugzilla-Product=gedit
 X-GNOME-Bugzilla-Component=general
 X-GNOME-Bugzilla-Version=@VERSION@
 X-GNOME-Bugzilla-ExtraInfoScript=@FULL_LIBEXECDIR@/gedit/gedit-bugreport.sh
-Actions=Window;Document;
-_Keywords=Text;Editor;
+Actions=new-window;new-document;
+_Keywords=Text;Editor;Plaintext;Write;
 DBusActivatable=true
 
-[Desktop Action Window]
-_Name=Open a New Window
+[Desktop Action new-window]
+_Name=New Window
 Exec=gedit --new-window
 
-[Desktop Action Document]
-_Name=Open a New Document
+[Desktop Action new-document]
+_Name=New Document
 Exec=gedit --new-document

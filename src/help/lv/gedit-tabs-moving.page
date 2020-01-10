@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Mainīt cilnes novietojumu gedit logā.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -66,8 +67,6 @@
       </item>
     </steps>
 
-    <p>vai, kad pārvietojamā cilne ir atvērta, izvēlieties<guiseq><gui>Dokumenti</gui><gui>Pārvietot uz jaunu logu</gui></guiseq></p>
-
     <note style="tip">
       <p>Lai pārvietotu cilni uz jaunu logu, kad <app>gedit</app> logs ir maksimizēts, velciet cilni uz joslu ekrāna augšā.</p>
     </note>
@@ -95,11 +94,7 @@
     
 
     <note style="tip">
-      <p>You may find it easier to move a tab from one window to another by
-      dragging the tab to the <gui>Activities</gui> hot-corner of
-      <gui>GNOME Shell</gui>. This will reveal each of the open
-      <app>gedit</app> windows. You can then release the tab on the
-      desired <app>gedit</app> window.</p>
+      <p>Jums var likties vieglāk pārvietot cilni no viena loga uz citu, velkot cilni uz <gui>Aktivitātes</gui> karsto stūri <gui>GNOME čaulā</gui>. Tas parādīs katru atvērto <app>gedit</app> logu. Tad jūs varat atlaist cilni vēlamajā <app>gedit</app> logā.</p>
     </note>
 
     <p>Skatiet <link xref="gedit-shortcut-keys">tastatūras saīsnes cilnēm</link>, kas var atvieglot ciļņu pārvaldību.</p>

@@ -5,23 +5,18 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Kā instalēt citus spraudņus</desc>
+    <desc>Kā instalēt citus spraudņus.</desc>
   </info>
 
   <title>Papildu gedit spraudņi</title>
 
-  <p>Installing third-party plugins gives you extra functionality that isn't 
-  available in default <app>gedit</app> plugins, or even the extra plugins that 
-  are part of the <app>gedit-plugins</app> package. An online list of 
-  third-party plugins is 
-  <link href="https://wiki.gnome.org/Apps/Gedit">kept here</link>.
-  </p>
+  <p>Instalējot papildu spraudņus, jūs iegūstat funkcionalitāti, kas nav pieejama noklusējuma <app>gedit</app> un <app>gedit-plugins</app> pakas spraudņos. Ir pieejams <link href="https://wiki.gnome.org/Apps/Gedit">tiešsaistes papildu spraudņu saraksts</link>.</p>
   
   <p>Lai veiktu papildu spraudņa instalēšanu, nepieciešams to lejupielādēt, ievietot datnes pareizajā direktorijā un aktivizēt spraudni.</p>
   

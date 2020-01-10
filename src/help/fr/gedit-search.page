@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Rechercher un morceau de texte dans un fichier.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -91,7 +92,7 @@
     <steps>
       <title>Recherche de texte</title>
       <item>
-        <p>Ouvrez le <gui>champ de recherche</gui> en cliquant sur <guiseq><gui style="menu">Rechercher</gui><gui style="menuitem">Rechercher...</gui></guiseq> ou en appuyant sur <keyseq><key>Ctrl</key><key>F</key></keyseq>. Cela déplace le curseur au début du <gui>champ de recherche</gui>.</p>
+        <p>Ouvrez le <gui>champ de recherche</gui> en cliquant sur le <guiseq><gui style="menu">bouton menu</gui><gui style="menuitem">Rechercher…</gui></guiseq> ou en appuyant sur <keyseq><key>Ctrl</key><key>F</key></keyseq>. Cela déplace le curseur au début du <gui>champ de recherche</gui>.</p>
       </item>
       <item>
         <p>Saisissez le texte que vous voulez rechercher dans le <gui>champ de recherche</gui>.</p>

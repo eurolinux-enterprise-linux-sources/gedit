@@ -6,14 +6,14 @@
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Izmantot fragmentus, lai ātri ievietotu bieži lietotus teksta gabalus</desc>
+    <desc>Izmantot fragmentus, lai ātri ievietotu bieži lietotus teksta gabalus.</desc>
   </info>
 
   <title>Fragmenti</title>
@@ -97,35 +97,23 @@
       <item>
         <p><gui>Pārvaldīt fragmentus</gui> sānu joslā izvēlieties vēlamo sintaksi un spiediet pogu “+”, lai uzskaitītu izvēlētās sintakses fragmentus.</p>
         <note style="tip">
-          <p>To add a snippet that works globally (that is, when no particular
-          syntax or language has been set for the document), select
-          <gui>Global</gui> from the <gui>Manage Snippets</gui> sidebar.</p>
+          <p>Lai pievienotu fragmentu, kas darbojas globāli (tas ir, kad dokumentam nav iestatīta kāda noteikta sintakse vai valoda), izvēlieties <gui>Globāls</gui> no <gui>Pārvaldīt fragmentus</gui> sānu joslas.</p>
         </note>
       </item>
       <item>
-        <p>To add a new snippet, click on the "plus" icon in the
-        <gui>Manage Snippets</gui> sidebar.</p>
+        <p>Lai pievienotu jaunu fragmentu, spiediet “plusa” ikonu <gui>Pārvaldīt fragmentus</gui> sānu joslā.</p>
       </item>
       <item>
-        <p>Input a name for the new snippet. The name of the snippet can be
-        different from the snippet you want to add.</p>
+        <p>Ievadiet fragmenta nosaukumu. Fragmenta nosaukums var atšķirties no fragmenta, kuru vēlaties pievienot.</p>
       </item>
       <item>
-        <p>Under the <gui style="group">Activation</gui> section, you must
-        input a term for the <gui style="input">Tab trigger:</gui> textarea.
-        You will be using this term to insert your snippet.</p>
+        <p>Sadaļā <gui style="group">Aktivizācijas</gui> jums jāievada terms <gui style="input">Tabulācijas trigeris:</gui> teksta laukumam. Jūs izmantosiet šo termu, lai ievietotu savu fragmentu.</p>
         <note style="tip">
-          <p>If you wish to insert a snippet with a keyboard shortcut, then
-          click your mouse pointer on <gui style="input">Shortcut key:</gui>
-          textarea and press the desired combination of keys. Once you have
-          pressed and released the keys, the keyboard shortcut will be set.</p>
+          <p>Ja vēlaties ievietot fragmentu ar tastatūras saīsni, spiediet savu peles rādītāju uz  <gui style="input">Īsinājumtaustiņš:</gui> teksta laukuma un spiediet attiecīgo taustiņu kombināciju. Kad būsiet piespieduši un atlaiduši taustiņus, tastatūras saīsne būs iestatīta.</p>
         </note>
       </item>
       <item>
-        <p>Under the textarea for <gui style="input">Edit:</gui>, input the
-        desired text for the snippet. You may use <code>${n}</code> to indicate
-        variables, where <em>n</em> is replaced with a number that
-        represents the numerical order of variables included.</p>
+        <p>Zem <gui style="input">Rediģēt:</gui> teksta laukuma, ievadiet vēlamo fragmenta tekstu. Jūs varat izmantot <code>${n}</code> lai norādītu mainīgos, kur <em>n</em> norāda skaitli, kas apzīmē iekļauto mainīgo skaitlisko secību.</p>
       </item>
     </steps>
 
@@ -134,27 +122,20 @@
   <section id="example-add-snippet">
     <title>Jauna fragmenta piemērs</title>
 
-    <p>Consider you have created a snippet with the term <var>greetings</var>
-    in <gui style="input">Tab trigger:</gui>. The
-    <gui style="input">Edit:</gui> textarea contains:</p>
+    <p>Pieņemsim, ka izveidojāt fragmentu ar termu <var>sveiciens</var> sadaļā <gui style="input">Tabulācijas trigeris:</gui>. Teksta laukums <gui style="input">Rediģēt:</gui> satur:</p>
 
     <code>
       &lt;sveiciens&gt;Sveika ${1:lieliskā}${2:apbrīnojamā} pasaule!
       &lt;/sveiciens&gt;
     </code>
 
-    <p>You can insert this snippet by typing <var>greetings</var> in the
-    document and pressing the <key>Tab</key> key. The following text snippet
-    will be inserted:</p>
+    <p>Jūs varat ievietot šo fragmentu, dokumentā rakstot <var>sveiciens</var> un spiežot taustiņu <key>Tab</key>. Tiks ievietot šis fragments:</p>
 
     <code>
       &lt;sveiciens&gt;Sveika lieliskāapbrīnojamā pasaule!&lt;/sveiciens&gt;
     </code>
 
-    <p>The words "wonderful" and "amazing" can be retained or deleted depending
-    on your choice of usage. To do so, press <key>Tab</key> to choose between
-    "wonderful" and "amazing" and press <key>Del</key> to delete the least
-    preferred option.</p>
+    <p>Vārdus “lieliskā” un “apbrīnojāmā” var paturēt vai dzēst, atkarībā no lietošanas izvēles. Lai tā darītu, spiediet <key>Tab</key>, lai izvēlētos starp “lieliskā” un “apbrīnojāmā” un spiediet <key>Del</key>, lai dzēstu mazāk vēlamo opciju.</p>
   </section>
 
   <!--TODO: <section id="modifying-snippets">

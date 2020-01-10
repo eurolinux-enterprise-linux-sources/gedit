@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Jak změnit pořadí karet v okně gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -77,8 +78,6 @@
         <p>Uvolněte tlačítko myši.</p>
       </item>
     </steps>
-
-    <p>Nebo, když máte kartu, kterou chcete přetáhnout, otevřenou, zvolte <guiseq><gui>Dokumenty</gui> <gui>Přesunout do nového okna</gui></guiseq>.</p>
 
     <note style="tip">
       <p>Pokud chcete kartu přesunout, když je <app>gedit</app> maximalizovaný, přetáhněte ji na horní lištu v horní části obrazovky.</p>

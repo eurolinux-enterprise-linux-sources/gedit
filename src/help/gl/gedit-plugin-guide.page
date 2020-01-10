@@ -3,11 +3,13 @@
 
   <info>
     <link type="guide" xref="index#gedit-plugins"/>
+    <desc>Use plugins to customize how gedit works for you.</desc> 
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -22,7 +24,7 @@
     </mal:credit>
   </info>
 
-  <title>Configurar e usar os engadidos de gedit</title>
+  <title>Configure and use gedit plugins</title>
   <p>Pode facer máis con <app>gedit</app> usando os engadidos. Varios engadidos están instalados de forma predeterminada, pero existe un gran número de engadidos dispoñíbeis de forma separada.</p>
   
   <note><p>A maioría das distribucións de Linux agrupan estes engadidos nun paquete co nome <app>gedit-plugins</app>. Instale este paquete <app>gedit-plugins</app> para facer que estes engadidos estean dispoñíbeis en <app>gedit</app>.</p></note>

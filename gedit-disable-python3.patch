@@ -1,54 +1,30 @@
-From 1cb46d3837804d69c2b2e12317d3c5a7e60a819a Mon Sep 17 00:00:00 2001
-From: Matěj Cepl <mcepl@redhat.com>
+From 7feb8e11020bd14e85339c64e5e547e02755ce74 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@redhat.com>
 Date: Fri, 15 May 2015 11:00:19 -0400
 Subject: [PATCH] Switch from python3 to python2
 
 ---
- configure.ac                                          |  2 +-
- gedit/gedit-plugins-engine.c                          |  2 +-
- plugins/externaltools/data/send-to-fpaste.tool.in     |  2 +-
- plugins/externaltools/externaltools.plugin.desktop.in |  2 +-
- plugins/externaltools/tools/library.py                | 15 ++++++++-------
- plugins/pythonconsole/pythonconsole.plugin.desktop.in |  2 +-
- plugins/quickopen/quickopen.plugin.desktop.in         |  2 +-
- plugins/snippets/snippets.plugin.desktop.in           |  2 +-
- plugins/snippets/snippets/library.py                  |  3 ++-
- plugins/snippets/snippets/shareddata.py               |  3 ++-
- plugins/snippets/snippets/signals.py                  |  2 +-
- 11 files changed, 20 insertions(+), 17 deletions(-)
+ configure.ac                                       |  2 +-
+ gedit/gedit-plugins-engine.c                       |  2 +-
+ plugins/externaltools/data/send-to-fpaste.tool.in  |  2 +-
+ .../externaltools/externaltools.plugin.desktop.in  |  2 +-
+ plugins/externaltools/tools/capture.py             |  8 ++++++-
+ plugins/externaltools/tools/library.py             | 27 ++++++++++++++++------
+ .../pythonconsole/pythonconsole.plugin.desktop.in  |  2 +-
+ plugins/quickopen/quickopen.plugin.desktop.in      |  2 +-
+ plugins/quickopen/quickopen/__init__.py            |  5 ++--
+ plugins/snippets/snippets.plugin.desktop.in        |  2 +-
+ plugins/snippets/snippets/helper.py                |  5 +++-
+ plugins/snippets/snippets/library.py               |  3 ++-
+ plugins/snippets/snippets/shareddata.py            |  3 ++-
+ plugins/snippets/snippets/signals.py               |  2 +-
+ 14 files changed, 46 insertions(+), 21 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index cf3d734..3acee28 100644
+index 4f19eb4..0a00552 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -276,61 +276,61 @@ if test "x$enable_enchant" = "xyes" ; then
- 				have_iso_codes=no
- 			fi
- 			AC_MSG_RESULT([$result])
- 		fi
- 
- 		if test "x$have_iso_codes" = "xyes"; then
- 			AC_DEFINE_UNQUOTED([ISO_CODES_PREFIX],["`$PKG_CONFIG --variable=prefix iso-codes`"],[ISO codes prefix])
- 			AC_DEFINE([HAVE_ISO_CODES],[1],[Define if you have the iso-codes package])
- 		else
- 			AC_MSG_ERROR([iso-codes is required to build the spell plugin. Use --disable-spell to build without spell plugin.])
- 		fi
- 	else
- 		enable_enchant=no
- 		AC_MSG_ERROR([Enchant library not found or too old. Use --disable-spell to build without spell plugin.])
- 	fi
- fi
- 
- AM_CONDITIONAL(ENABLE_ENCHANT, test x"$enable_enchant" = "xyes")
- 
- AC_ARG_ENABLE([python],
-               AS_HELP_STRING([--enable-python[=@<:@no/auto/yes@:>@]],[Build with python support]),
-               [enable_python=$enableval],
-               [enable_python="auto"])
- 
- if test "x$enable_python" = "xauto"; then
- 	PKG_CHECK_EXISTS([pygobject-3.0 >= $PYGOBJECT_REQUIRED],
- 	                 [enable_python=yes],[enable_python=no])
+@@ -267,7 +267,7 @@ if test "x$enable_python" = "xauto"; then
  fi
  
  if test "x$enable_python" = "xyes"; then
@@ -57,168 +33,64 @@ index cf3d734..3acee28 100644
  	PKG_CHECK_MODULES(PYTHON, [pygobject-3.0 >= $PYGOBJECT_REQUIRED])
  
  	pyoverridesdir="\$(pyexecdir)/gi/overrides"
- 	AC_SUBST(pyoverridesdir)
- fi
- 
- AM_CONDITIONAL(ENABLE_PYTHON, test x"$enable_python" = "xyes")
- 
- dnl ================================================================
- dnl Start of pkg-config checks
- dnl ================================================================
- 
- # Dependencies
- 
- PKG_CHECK_MODULES(GEDIT, [
- 	libxml-2.0 >= $LIBXML_REQUIRED
- 	glib-2.0 >= $GLIB_REQUIRED
- 	gio-2.0 >= $GLIB_REQUIRED
- 	gmodule-2.0
- 	gtk+-3.0 >= $GTK_REQUIRED
- 	gtksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED
- 	libpeas-1.0 >= $LIBPEAS_REQUIRED
- 	libpeas-gtk-1.0 >= $LIBPEAS_REQUIRED
- 	gsettings-desktop-schemas
- ])
- 
- if test "$os_osx" = "no" &&
-    test "$os_win32" = "no"; then
- 	PKG_CHECK_MODULES(X11, [
- 		x11
 diff --git a/gedit/gedit-plugins-engine.c b/gedit/gedit-plugins-engine.c
-index 725cb3b..678809b 100644
+index d3e9dbb..9ac98cd 100644
 --- a/gedit/gedit-plugins-engine.c
 +++ b/gedit/gedit-plugins-engine.c
-@@ -28,61 +28,61 @@
- #include <string.h>
- 
- #include <glib/gi18n.h>
- #include <girepository.h>
- 
- #include "gedit-debug.h"
- #include "gedit-app.h"
- #include "gedit-dirs.h"
- #include "gedit-settings.h"
- #include "gedit-utils.h"
- 
- struct _GeditPluginsEnginePrivate
- {
- 	GSettings *plugin_settings;
- };
- 
- G_DEFINE_TYPE_WITH_PRIVATE (GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
- 
- GeditPluginsEngine *default_engine = NULL;
- 
- static void
- gedit_plugins_engine_init (GeditPluginsEngine *engine)
- {
- 	gchar *typelib_dir;
- 	GError *error = NULL;
+@@ -51,7 +51,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
  
  	gedit_debug (DEBUG_PLUGINS);
- 
- 	engine->priv = gedit_plugins_engine_get_instance_private (engine);
  
 -	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 +	peas_engine_enable_loader (PEAS_ENGINE (engine), "python");
  
- 	engine->priv->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
+ 	engine->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
  
- 	/* Require gedit's typelib. */
- 	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),
- 	                                "girepository-1.0",
- 	                                NULL);
- 
- 	if (!g_irepository_require_private (g_irepository_get_default (),
- 	                                    typelib_dir, "Gedit", "3.0", 0, &error))
- 	{
- 		g_warning ("Could not load Gedit repository: %s", error->message);
- 		g_error_free (error);
- 		error = NULL;
- 	}
- 
- 	g_free (typelib_dir);
- 
- 	/* This should be moved to libpeas */
- 	if (!g_irepository_require (g_irepository_get_default (),
- 	                            "Peas", "1.0", 0, &error))
- 	{
- 		g_warning ("Could not load Peas repository: %s", error->message);
- 		g_error_free (error);
- 		error = NULL;
- 	}
- 
- 	if (!g_irepository_require (g_irepository_get_default (),
- 	                            "PeasGtk", "1.0", 0, &error))
- 	{
 diff --git a/plugins/externaltools/data/send-to-fpaste.tool.in b/plugins/externaltools/data/send-to-fpaste.tool.in
-index d255007..95c2d37 100755
+index fb1fdf7..5eb8d8e 100755
 --- a/plugins/externaltools/data/send-to-fpaste.tool.in
 +++ b/plugins/externaltools/data/send-to-fpaste.tool.in
-@@ -1,27 +1,27 @@
+@@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/env python
  
  import os, urllib, json, sys, urllib.request
  from gi.repository import Gtk, Gdk
- 
- lang = os.getenv('GEDIT_CURRRENT_DOCUMENT_LANGUAGE')
- if lang is None:
-     lang = "text"
- 
- current_document_path = os.getenv('GEDIT_CURRENT_DOCUMENT_PATH')
- selected_text = os.getenv('GEDIT_SELECTED_TEXT')
- 
- if selected_text is None:
-     selected_text = sys.stdin.read()
- 
- url_params = urllib.parse.urlencode({'paste_data': selected_text, 'paste_lang': lang, 'mode':'json', 'api_submit':'true'})
- openfpaste = urllib.request.urlopen("http://fpaste.org", bytes(url_params, 'utf-8')).read().decode("utf-8")
- final_data = json.loads(openfpaste)
- 
- paste_url = "http://fpaste.org/" + final_data['result']['id']
- 
- print(paste_url + " has been copied to clipboard.")
- 
- disp = Gdk.Display.get_default()
- clipper = Gtk.Clipboard.get_for_display(disp, Gdk.SELECTION_CLIPBOARD)
- clipper.set_text(paste_url, len(paste_url))
- clipper.store()
 diff --git a/plugins/externaltools/externaltools.plugin.desktop.in b/plugins/externaltools/externaltools.plugin.desktop.in
 index cc7a4da..c56e4e3 100644
 --- a/plugins/externaltools/externaltools.plugin.desktop.in
 +++ b/plugins/externaltools/externaltools.plugin.desktop.in
-@@ -1,9 +1,9 @@
+@@ -1,5 +1,5 @@
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=externaltools
  IAge=3
  _Name=External Tools
- _Description=Execute external commands and shell scripts.
- Authors=Steve Frécinaux <steve@istique.net>
- Copyright=Copyright © 2005 Steve Frécinaux
- Website=http://www.gedit.org
+diff --git a/plugins/externaltools/tools/capture.py b/plugins/externaltools/tools/capture.py
+index e2e35b4..d5cf9a6 100644
+--- a/plugins/externaltools/tools/capture.py
++++ b/plugins/externaltools/tools/capture.py
+@@ -61,7 +61,13 @@ class Capture(GObject.Object):
+         self.flags = flags
+ 
+     def set_input(self, text):
+-        self.input_text = text.encode("UTF-8") if text else None
++        if text:
++            if isinstance(text, bytes):
++                self.input_text = text
++            else:
++                self.input_text = text.encode("UTF-8")
++        else:
++            self.input_text = None
+ 
+     def set_cwd(self, cwd):
+         self.cwd = cwd
 diff --git a/plugins/externaltools/tools/library.py b/plugins/externaltools/tools/library.py
-index adfd943..4d4bce0 100644
+index adfd943..761337c 100644
 --- a/plugins/externaltools/tools/library.py
 +++ b/plugins/externaltools/tools/library.py
-@@ -1,48 +1,49 @@
- # -*- coding: utf-8 -*-
- #    Gedit External Tools plugin
- #    Copyright (C) 2006  Steve Frécinaux <code@istique.net>
- #
- #    This program is free software; you can redistribute it and/or modify
- #    it under the terms of the GNU General Public License as published by
- #    the Free Software Foundation; either version 2 of the License, or
- #    (at your option) any later version.
- #
- #    This program is distributed in the hope that it will be useful,
- #    but WITHOUT ANY WARRANTY; without even the implied warranty of
- #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- #    GNU General Public License for more details.
- #
- #    You should have received a copy of the GNU General Public License
+@@ -16,6 +16,7 @@
  #    along with this program; if not, write to the Free Software
  #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  
@@ -226,61 +98,7 @@ index adfd943..4d4bce0 100644
  import os
  import re
  import locale
- import platform
- from gi.repository import GLib
- 
- 
- class Singleton(object):
-     _instance = None
- 
-     def __new__(cls, *args, **kwargs):
-         if not cls._instance:
-             cls._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
-             cls._instance.__init_once__()
- 
-         return cls._instance
- 
- 
- class ToolLibrary(Singleton):
-     def __init_once__(self):
-         self.locations = []
- 
-     def set_locations(self, datadir):
-         self.locations = []
- 
-         if platform.platform() != 'Windows':
-             for d in self.get_xdg_data_dirs():
-                 self.locations.append(os.path.join(d, 'gedit', 'plugins', 'externaltools', 'tools'))
- 
-         self.locations.append(datadir)
-@@ -219,61 +220,61 @@ class Tool(object):
-         self.changed = False
-         self._properties = dict()
-         self._transform = {
-             'Languages': [self._to_list, self._from_list]
-         }
-         self._load()
- 
-     def _to_list(self, value):
-         if value.strip() == '':
-             return []
-         else:
-             return [x.strip() for x in value.split(',')]
- 
-     def _from_list(self, value):
-         return ','.join(value)
- 
-     def _parse_value(self, key, value):
-         if key in self._transform:
-             return self._transform[key][0](value)
-         else:
-             return value
- 
-     def _load(self):
-         if self.filename is None:
-             return
- 
-         filename = self.library.get_full_path(self.get_path())
+@@ -246,7 +247,7 @@ class Tool(object):
          if filename is None:
              return
  
@@ -289,61 +107,7 @@ index adfd943..4d4bce0 100644
          in_block = False
          lang = locale.getlocale(locale.LC_MESSAGES)[0]
  
-         for line in fp:
-             if not in_block:
-                 in_block = line.startswith('# [Gedit Tool]')
-                 continue
-             if line.startswith('##') or line.startswith('# #'):
-                 continue
-             if not line.startswith('# '):
-                 break
- 
-             try:
-                 (key, value) = [i.strip() for i in line[2:].split('=', 1)]
-                 m = self.RE_KEY.match(key)
-                 if m.group(3) is None:
-                     self._properties[m.group(1)] = self._parse_value(m.group(1), value)
-                 elif lang is not None and lang.startswith(m.group(3)):
-                     self._properties[m.group(1)] = self._parse_value(m.group(1), value)
-             except ValueError:
-                 break
-         fp.close()
-         self.changed = False
- 
-     def _set_property_if_changed(self, key, value):
-         if value != self._properties.get(key):
-             self._properties[key] = value
- 
-             self.changed = True
- 
-@@ -368,141 +369,141 @@ class Tool(object):
-     def get_save_files(self):
-         save_files = self._properties.get('Save-files')
-         if save_files:
-             return save_files
-         return 'nothing'
- 
-     def set_save_files(self, value):
-         self._set_property_if_changed('Save-files', value)
- 
-     save_files = property(get_save_files, set_save_files)
- 
-     def get_languages(self):
-         languages = self._properties.get('Languages')
-         if languages:
-             return languages
-         return []
- 
-     def set_languages(self, value):
-         self._set_property_if_changed('Languages', value)
- 
-     languages = property(get_languages, set_languages)
- 
-     def has_hash_bang(self):
-         if self.filename is None:
-             return True
- 
-         filename = self.library.get_full_path(self.get_path())
+@@ -395,7 +396,7 @@ class Tool(object):
          if filename is None:
              return True
  
@@ -352,15 +116,7 @@ index adfd943..4d4bce0 100644
          for line in fp:
              if line.strip() == '':
                  continue
-             return line.startswith('#!')
- 
-     # There is no property for this one because this function is quite
-     # expensive to perform
-     def get_script(self):
-         if self.filename is None:
-             return ["#!/bin/sh\n"]
- 
-         filename = self.library.get_full_path(self.get_path())
+@@ -411,7 +412,7 @@ class Tool(object):
          if filename is None:
              return ["#!/bin/sh\n"]
  
@@ -369,33 +125,7 @@ index adfd943..4d4bce0 100644
          lines = list()
  
          # before entering the data block
-         for line in fp:
-             if line.startswith('# [Gedit Tool]'):
-                 break
-             lines.append(line)
-         # in the block:
-         for line in fp:
-             if line.startswith('##'):
-                 continue
-             if not (line.startswith('# ') and '=' in line):
-                 # after the block: strip one emtpy line (if present)
-                 if line.strip() != '':
-                     lines.append(line)
-                 break
-         # after the block
-         for line in fp:
-             lines.append(line)
-         fp.close()
-         return lines
- 
-     def _dump_properties(self):
-         lines = ['# [Gedit Tool]']
-         for item in self._properties.items():
-             if item[0] in self._transform:
-                 lines.append('# %s=%s' % (item[0], self._transform[item[0]][1](item[1])))
-             elif item[1] is not None:
-                 lines.append('# %s=%s' % item)
-         return '\n'.join(lines) + '\n'
+@@ -445,7 +446,7 @@ class Tool(object):
  
      def save_with_script(self, script):
          filename = self.library.get_full_path(self.filename, 'w')
@@ -404,132 +134,119 @@ index adfd943..4d4bce0 100644
  
          # Make sure to first print header (shebang, modeline), then
          # properties, and then actual content
-         header = []
-         content = []
-         inheader = True
- 
-         # Parse
-         for line in script:
-             line = line.rstrip("\n")
-             if not inheader:
-                 content.append(line)
-             elif line.startswith('#!'):
-                 # Shebang (should be always present)
-                 header.append(line)
-             elif line.strip().startswith('#') and ('-*-' in line or 'ex:' in line or 'vi:' in line or 'vim:' in line):
-                 header.append(line)
-             else:
-                 content.append(line)
-                 inheader = False
- 
+@@ -470,12 +471,24 @@ class Tool(object):
          # Write out header
          for line in header:
              fp.write(line + "\n")
++            if isinstance(line, bytes):
++                line = unicode(line + "\n", 'utf8')
++            else:
++                line += u"\n"
++            fp.write(line)
  
 -        fp.write(self._dump_properties())
 -        fp.write("\n")
-+        fp.write(unicode(self._dump_properties(), 'utf8'))
++        outstr = self._dump_properties()
++        if isinstance(outstr, bytes):
++            outstr = unicode(outstr, 'utf8')
++        fp.write(outstr)
 +        fp.write(u"\n")
  
          for line in content:
 -            fp.write(line + "\n")
-+            fp.write(unicode(line + "\n", 'utf8'))
++            if isinstance(line, bytes):
++                line = unicode(line + "\n", 'utf8')
++            else:
++                line += u"\n"
++            fp.write(line)
  
          fp.close()
          os.chmod(filename, 0o750)
-         self.changed = False
- 
-     def save(self):
-         if self.changed:
-             self.save_with_script(self.get_script())
- 
-     def autoset_filename(self):
-         if self.filename is not None:
-             return
-         dirname = self.parent.path
-         if dirname != '':
-             dirname += os.path.sep
- 
-         basename = self.name.lower().replace(' ', '-').replace('/', '-')
- 
-         if self.library.get_full_path(dirname + basename):
-             i = 2
-             while self.library.get_full_path(dirname + "%s-%d" % (basename, i)):
-                 i += 1
-             basename = "%s-%d" % (basename, i)
-         self.filename = basename
- 
- if __name__ == '__main__':
-     library = ToolLibrary()
-     library.set_locations(os.path.expanduser("~/.config/gedit/tools"))
- 
-     def print_tool(t, indent):
 diff --git a/plugins/pythonconsole/pythonconsole.plugin.desktop.in b/plugins/pythonconsole/pythonconsole.plugin.desktop.in
 index 21283e8..4309667 100644
 --- a/plugins/pythonconsole/pythonconsole.plugin.desktop.in
 +++ b/plugins/pythonconsole/pythonconsole.plugin.desktop.in
-@@ -1,10 +1,10 @@
+@@ -1,5 +1,5 @@
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=pythonconsole
  IAge=3
  _Name=Python Console
- _Description=Interactive Python console standing in the bottom panel
- Icon=gnome-mime-text-x-python
- Authors=Steve Frécinaux <steve@istique.net>
- Copyright=Copyright © 2006 Steve Frécinaux
- Website=http://www.gedit.org
 diff --git a/plugins/quickopen/quickopen.plugin.desktop.in b/plugins/quickopen/quickopen.plugin.desktop.in
 index 68b6faa..17edecc 100644
 --- a/plugins/quickopen/quickopen.plugin.desktop.in
 +++ b/plugins/quickopen/quickopen.plugin.desktop.in
-@@ -1,10 +1,10 @@
+@@ -1,5 +1,5 @@
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=quickopen
  IAge=3
  _Name=Quick Open
- _Description=Quickly open files
- Icon=gtk-open
- Authors=Jesse van den Kieboom  <jessevdk@gnome.org>
- Copyright=Copyright © 2009 Jesse van den Kieboom
- Website=http://www.gedit.org
+diff --git a/plugins/quickopen/quickopen/__init__.py b/plugins/quickopen/quickopen/__init__.py
+index 7d63126..4f612da 100644
+--- a/plugins/quickopen/quickopen/__init__.py
++++ b/plugins/quickopen/quickopen/__init__.py
+@@ -15,6 +15,7 @@
+ #  You should have received a copy of the GNU General Public License
+ #  along with this program; if not, see <http://www.gnu.org/licenses/>.
+ 
++import io
+ import os
+ 
+ import gi
+@@ -126,7 +127,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
+ 
+         paths = []
+ 
+-        for line in open(filename, 'r', encoding='utf-8'):
++        for line in io.open(filename, 'r', encoding='utf-8'):
+             uri = line.strip().split(" ")[0]
+             f = Gio.file_new_for_uri(uri)
+ 
+@@ -153,7 +154,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
+         desktopdir = None
+ 
+         if os.path.isfile(config):
+-            for line in open(config, 'r', encoding='utf-8'):
++            for line in io.open(config, 'r', encoding='utf-8'):
+                 line = line.strip()
+ 
+                 if line.startswith('XDG_DESKTOP_DIR'):
 diff --git a/plugins/snippets/snippets.plugin.desktop.in b/plugins/snippets/snippets.plugin.desktop.in
 index 8551b6b..f41a626 100644
 --- a/plugins/snippets/snippets.plugin.desktop.in
 +++ b/plugins/snippets/snippets.plugin.desktop.in
-@@ -1,9 +1,9 @@
+@@ -1,5 +1,5 @@
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=snippets
  IAge=3
  _Name=Snippets
- _Description=Insert often-used pieces of text in a fast way
- Authors=Jesse van den Kieboom <jesse@icecrew.nl>
- Copyright=Copyright © 2005 Jesse van den Kieboom
- Website=http://www.gedit.org
+diff --git a/plugins/snippets/snippets/helper.py b/plugins/snippets/snippets/helper.py
+index 2fa3b3f..ee3f3b7 100644
+--- a/plugins/snippets/snippets/helper.py
++++ b/plugins/snippets/snippets/helper.py
+@@ -124,8 +124,11 @@ def _write_node(node, file, cdata_nodes=(), indent=0):
+             if node.text or len(node):
+                 file.write(">")
+                 if node.text and node.text.strip() != "":
++                    node_txt = node.text
++                    if isinstance(node_txt, unicode):
++                        node_txt = node_txt.encode('utf8')
+                     if tag in cdata_nodes:
+-                        file.write(_cdata(node.text))
++                        file.write(_cdata(node_txt))
+                     else:
+                         file.write(saxutils.escape(node.text))
+                 else:
 diff --git a/plugins/snippets/snippets/library.py b/plugins/snippets/snippets/library.py
 index 455ac91..1b454f3 100644
 --- a/plugins/snippets/snippets/library.py
 +++ b/plugins/snippets/snippets/library.py
-@@ -1,47 +1,48 @@
- #    Gedit snippets plugin
- #    Copyright (C) 2005-2006  Jesse van den Kieboom <jesse@icecrew.nl>
- #
- #    This program is free software; you can redistribute it and/or modify
- #    it under the terms of the GNU General Public License as published by
- #    the Free Software Foundation; either version 2 of the License, or
- #    (at your option) any later version.
- #
- #    This program is distributed in the hope that it will be useful,
- #    but WITHOUT ANY WARRANTY; without even the implied warranty of
- #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- #    GNU General Public License for more details.
- #
- #    You should have received a copy of the GNU General Public License
+@@ -15,6 +15,7 @@
  #    along with this program; if not, write to the Free Software
  #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  
@@ -537,61 +254,7 @@ index 455ac91..1b454f3 100644
  import os
  import weakref
  import sys
- import re
- 
- from gi.repository import Gdk, Gtk
- 
- import xml.etree.ElementTree as et
- from . import helper
- 
- class NamespacedId:
-     def __init__(self, namespace, id):
-         if not id:
-             self.id = None
-         else:
-             if namespace:
-                 self.id = namespace + '-'
-             else:
-                 self.id = 'global-'
- 
-             self.id += id
- 
- class SnippetData:
-     PROPS = {'tag': '', 'text': '', 'description': 'New snippet',
-             'accelerator': '', 'drop-targets': ''}
- 
-     def __init__(self, node, library):
-         self.priv_id = node.attrib.get('id')
- 
-         self.set_library(library)
-@@ -426,61 +427,61 @@ class SnippetsSystemFile:
- 
-         return True
- 
-     def _process_element(self, element):
-         if element.tag == 'snippet':
-             self._add_snippet(element)
-             self.insnippet = False
- 
-         return True
- 
-     def ensure(self):
-         if not self.ok or self.loaded:
-             return
- 
-         self.load()
- 
-     def parse_xml(self, readsize=16384):
-         if not self.path:
-             return
- 
-         elements = []
- 
-         builder = SnippetsTreeBuilder( \
-                 lambda node: elements.append((node, True)), \
-                 lambda node: elements.append((node, False)))
- 
-         parser = et.XMLParser(target=builder)
+@@ -453,7 +454,7 @@ class SnippetsSystemFile:
          self.insnippet = False
  
          try:
@@ -600,60 +263,11 @@ index 455ac91..1b454f3 100644
          except IOError:
              self.ok = False
              return
- 
-         while True:
-             try:
-                 data = f.read(readsize)
-             except IOError:
-                 self.ok = False
-                 break
- 
-             if not data:
-                 break
- 
-             try:
-                 parser.feed(data)
-             except Exception:
-                 self.ok = False
-                 break
- 
-             for element in elements:
-                 yield element
- 
-             del elements[:]
- 
-         f.close()
- 
-     def load(self):
-         if not self.ok:
-             return
 diff --git a/plugins/snippets/snippets/shareddata.py b/plugins/snippets/snippets/shareddata.py
 index be6fd14..64ffcc4 100644
 --- a/plugins/snippets/snippets/shareddata.py
 +++ b/plugins/snippets/snippets/shareddata.py
-@@ -1,56 +1,57 @@
- #    Gedit snippets plugin
- #    Copyright (C) 2011  Jesse van den Kieboom <jessevdk@gnome.org>
- #
- #    This program is free software; you can redistribute it and/or modify
- #    it under the terms of the GNU General Public License as published by
- #    the Free Software Foundation; either version 2 of the License, or
- #    (at your option) any later version.
- #
- #    This program is distributed in the hope that it will be useful,
- #    but WITHOUT ANY WARRANTY; without even the implied warranty of
- #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- #    GNU General Public License for more details.
- #
- #    You should have received a copy of the GNU General Public License
- #    along with this program; if not, write to the Free Software
- #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- 
- from .singleton import Singleton
- import os
- 
- from gi.repository import Gtk
- 
+@@ -23,7 +23,8 @@ from gi.repository import Gtk
  # To register the GeditSnippetsManager type
  from .manager import Manager
  
@@ -663,54 +277,11 @@ index be6fd14..64ffcc4 100644
      def __init__(self):
          self.dlg = None
          self.dlg_default_size = None
-         self.controller_registry = {}
-         self.windows = {}
- 
-     def register_controller(self, view, controller):
-         self.controller_registry[view] = controller
-     
-     def unregister_controller(self, view, controller):
-         if self.controller_registry[view] == controller:
-             del self.controller_registry[view]
- 
-     def register_window(self, window):
-         self.windows[window.window] = window
- 
-     def unregister_window(self, window):
-         if window.window in self.windows:
-             del self.windows[window.window]
- 
-     def update_state(self, window):
-         if window in self.windows:
-             self.windows[window].do_update_state()
- 
-     def get_active_controller(self, window):
-         view = window.get_active_view()
- 
-         if not view or not view in self.controller_registry:
-             return None
- 
 diff --git a/plugins/snippets/snippets/signals.py b/plugins/snippets/snippets/signals.py
 index 647b616..9aaa95a 100644
 --- a/plugins/snippets/snippets/signals.py
 +++ b/plugins/snippets/snippets/signals.py
-@@ -1,50 +1,50 @@
- # -*- coding: utf-8 -*-
- #
- #  signals.py
- #
- #  Copyright (C) 2009 - Jesse van den Kieboom
- #
- #  This program is free software; you can redistribute it and/or modify
- #  it under the terms of the GNU General Public License as published by
- #  the Free Software Foundation; either version 2 of the License, or
- #  (at your option) any later version.
- #
- #  This program is distributed in the hope that it will be useful,
- #  but WITHOUT ANY WARRANTY; without even the implied warranty of
- #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- #  GNU General Public License for more details.
- #
+@@ -17,7 +17,7 @@
  #  You should have received a copy of the GNU General Public License
  #  along with this program; if not, see <http://www.gnu.org/licenses/>.
  
@@ -719,33 +290,6 @@ index 647b616..9aaa95a 100644
      def __init__(self):
          self._signals = {}
  
-     def _connect(self, obj, name, handler, connector):
-         ret = self._signals.setdefault(obj, {})
- 
-         hid = connector(name, handler)
-         ret.setdefault(name, []).append(hid)
- 
-         return hid
- 
-     def connect_signal(self, obj, name, handler):
-         return self._connect(obj, name, handler, obj.connect)
- 
-     def connect_signal_after(self, obj, name, handler):
-         return self._connect(obj, name, handler, obj.connect_after)
- 
-     def disconnect_signals(self, obj):
-         if obj not in self._signals:
-             return False
- 
-         for name in self._signals[obj]:
-             for hid in self._signals[obj][name]:
-                 obj.disconnect(hid)
- 
-         del self._signals[obj]
-         return True
- 
-     def block_signal(self, obj, name):
-         if obj not in self._signals:
 -- 
-2.3.7
+1.8.3.1
 

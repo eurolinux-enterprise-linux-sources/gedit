@@ -54,9 +54,6 @@ static const gchar *formats[] =
 	"%a %d %b %Y %H:%M:%S",
 	"%d/%m/%Y",
 	"%d/%m/%y",
-#ifndef G_OS_WIN32
-	"%D", /* This one is not supported on win32 */
-#endif
 	"%A %d %B %Y",
 	"%A %B %d %Y",
 	"%Y-%m-%d",
@@ -73,9 +70,7 @@ static const gchar *formats[] =
 	"%I.%M %p",
 	"%d/%m/%Y %H:%M:%S",
 	"%d/%m/%y %H:%M:%S",
-#if __GLIBC__ >= 2
 	"%a, %d %b %Y %H:%M:%S %z",
-#endif
 	NULL
 };
 

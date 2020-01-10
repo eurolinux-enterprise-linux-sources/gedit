@@ -16,7 +16,7 @@ DOC_SOURCE_DIR = ../../gedit
 
 # Extra options to supply to gtkdoc-scan.
 # e.g. SCAN_OPTIONS = --deprecated-guards="GTK_DISABLE_DEPRECATED"
-SCAN_OPTIONS = --rebuild-types
+SCAN_OPTIONS = --rebuild-types --deprecated-guards="GEDIT_DISABLE_DEPRECATED"
 
 # Extra options to supply to gtkdoc-mkdb.
 MKDB_OPTIONS = --xml-mode --output-format=xml
@@ -32,7 +32,9 @@ IGNORE_HFILES =					\
 	gedit-app-x11.h				\
 	gedit-close-confirmation-dialog.h 	\
 	gedit-dirs.h				\
+	gedit-document-private.h		\
 	gedit-documents-panel.h			\
+	gedit-encoding-items.h			\
 	gedit-encodings-dialog.h		\
 	gedit-enum-types.h			\
 	gedit-file-chooser-dialog.h		\
@@ -42,7 +44,6 @@ IGNORE_HFILES =					\
 	gedit-highlight-mode-selector.h		\
 	gedit-history-entry.h			\
 	gedit-io-error-info-bar.h		\
-	gedit-marshal.h				\
 	gedit-menu-stack-switcher.h		\
 	gedit-metadata-manager.h		\
 	gedit-multi-notebook.h			\
@@ -50,6 +51,8 @@ IGNORE_HFILES =					\
 	gedit-notebook-popup-menu.h		\
 	gedit-notebook-stack-switcher.h		\
 	gedit-open-document-selector.h		\
+	gedit-open-document-selector-helper.h	\
+	gedit-open-document-selector-store.h	\
 	gedit-open-menu-button.h		\
 	gedit-plugins-engine.h			\
 	gedit-preferences-dialog.h		\
@@ -61,8 +64,8 @@ IGNORE_HFILES =					\
 	gedit-small-button.h			\
 	gedit-status-menu-button.h		\
 	gedit-tab-label.h			\
+	gedit-view-centering.h			\
 	gedit-view-frame.h			\
-	gedit-view-holder.h			\
 	gedit-window-private.h
 
 # Images to copy into HTML directory.

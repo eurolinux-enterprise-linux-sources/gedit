@@ -19,38 +19,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_CHOOSER_DIALOG_GTK_H__
-#define __GEDIT_FILE_CHOOSER_DIALOG_GTK_H__
+#ifndef GEDIT_FILE_CHOOSER_DIALOG_GTK_H
+#define GEDIT_FILE_CHOOSER_DIALOG_GTK_H
 
 #include <gtk/gtk.h>
 #include "gedit-file-chooser-dialog.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK             (gedit_file_chooser_dialog_gtk_get_type ())
-#define GEDIT_FILE_CHOOSER_DIALOG_GTK(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK, GeditFileChooserDialogGtk))
-#define GEDIT_FILE_CHOOSER_DIALOG_GTK_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK, GeditFileChooserDialogGtkClass))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG_GTK(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG_GTK_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK))
-#define GEDIT_FILE_CHOOSER_DIALOG_GTK_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK, GeditFileChooserDialogGtkClass))
+#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK (gedit_file_chooser_dialog_gtk_get_type ())
 
-typedef struct _GeditFileChooserDialogGtk		GeditFileChooserDialogGtk;
-typedef struct _GeditFileChooserDialogGtkClass		GeditFileChooserDialogGtkClass;
-typedef struct _GeditFileChooserDialogGtkPrivate	GeditFileChooserDialogGtkPrivate;
-
-struct _GeditFileChooserDialogGtkClass
-{
-	GtkFileChooserDialogClass parent_class;
-};
-
-struct _GeditFileChooserDialogGtk
-{
-	GtkFileChooserDialog parent_instance;
-
-	GeditFileChooserDialogGtkPrivate *priv;
-};
-
-GType		 	 gedit_file_chooser_dialog_gtk_get_type		(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditFileChooserDialogGtk, gedit_file_chooser_dialog_gtk, GEDIT, FILE_CHOOSER_DIALOG_GTK, GtkFileChooserDialog)
 
 GeditFileChooserDialog	*gedit_file_chooser_dialog_gtk_create		(const gchar             *title,
 									 GtkWindow               *parent,
@@ -63,6 +42,6 @@ GeditFileChooserDialog	*gedit_file_chooser_dialog_gtk_create		(const gchar      
 
 G_END_DECLS
 
-#endif /* __GEDIT_FILE_CHOOSER_DIALOG_GTK_H__ */
+#endif /* GEDIT_FILE_CHOOSER_DIALOG_GTK_H */
 
 /* ex:set ts=8 noet: */

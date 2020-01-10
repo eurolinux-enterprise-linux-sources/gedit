@@ -3,11 +3,13 @@
 
   <info>
     <link type="guide" xref="index#gedit-plugins"/>
+    <desc>Use plugins to customize how gedit works for you.</desc> 
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>TeliuTe</mal:name>
@@ -28,7 +30,7 @@
     </mal:credit>
   </info>
 
-  <title>配置和使用 gedit 插件</title>
+  <title>Configure and use gedit plugins</title>
   <p>您可以通过插件让 <app>gedit</app> 做更多事，一些插件已经默认安装好，但还有更多可用的插件。</p>
   
   <note><p>许多 Linux 发行版会制作一个像 <app>gedit-plugins</app> 这样的软件包，安装这个 <app>gedit-plugins</app> 包，可以在 <app>gedit</app> 中使用更多的外部插件。</p></note>

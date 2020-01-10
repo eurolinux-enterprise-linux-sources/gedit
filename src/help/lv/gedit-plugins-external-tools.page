@@ -12,10 +12,10 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Apstrādāt atvērtās datnes ar skriptiem un mijiedarboties ar citām lietotnēm</desc>
-  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
+  <desc>Apstrādāt atvērtās datnes ar skriptiem un mijiedarboties ar citām lietotnēm.</desc>
+  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
 </info>
 
 <title>Ārējie rīki</title>

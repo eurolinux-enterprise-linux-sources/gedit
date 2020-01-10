@@ -1,6 +1,350 @@
 ============
-gedit 3.14.3
+gedit 3.22.0
 ============
+
+- Misc bugfixes
+- Translation updates
+
+=============
+gedit 3.21.90
+=============
+
+- Misc bugfixes
+- Translation updates
+
+============
+gedit 3.20.2
+============
+
+- Misc bugfixes
+- Translation updates
+
+============
+gedit 3.20.1
+============
+
+- Use a menubar only if gtk-shell-shows-menubar is set to true
+- Misc bugfixes
+- Translation updates
+
+============
+gedit 3.20.0
+============
+
+- Translation updates
+
+============
+gedit 3.19.5
+============
+
+- Spell plugin: adapt code for gspell API changes
+- Save window size properly
+- Translation updates
+
+============
+gedit 3.19.4
+============
+
+New Features and Fixes
+======================
+- Spell plugin: adapt code for gspell API changes
+- CSS updates
+- AppData: add project_group and translation tags
+- Various other code improvements and bug fixes
+
+New and updated translations
+============================
+- de (Mario Blättermann)
+- el (Tom Tryfonidis)
+- es (Daniel Mustieles)
+- hu (Meskó Balázs)
+- kk (Baurzhan Muftakhidinov)
+- lv (Rūdolfs Mazurs)
+- pl (Piotr Drąg)
+- pt_BR (Rafael Fontenelle)
+- sk (Dušan Kazik)
+- zh_TW (Chao-Hsiung Liao)
+
+============
+gedit 3.19.3
+============
+
+New Features and Fixes
+======================
+- Rename to "Text Editor" in the .desktop file
+- Use traditional menubar layout on XFCE, Unity, etc
+- require the latest gspell for the spell plugin
+- New Windows WiX installer
+- CSS updates to track GTK+ changes
+- Various minor code improvements and bug fixes
+
+New and updated translations
+============================
+- cs (Marek Černocký)
+- de (Mario Blättermann)
+- el (Tom Tryfonidis)
+- fi (Jiri Grönroos)
+- he (Yosef Or Boczko)
+- lt (Aurimas Černius)
+- nb (Kjartan Maraas)
+- ru (Stas Solovey)
+- sk (Dušan Kazik)
+- th (Akom Chotiphantawanon)
+- tr (Muhammet Kara)
+- vi (Trần Ngọc Quân)
+
+============
+gedit 3.19.2
+============
+
+New Features and Fixes
+======================
+- Ship our own app icon
+- Add shortcuts window
+- Adapt code for gspell API changes
+- Rename GeditViewHolder -> GeditViewCentering
+- CloseConfirmationDialog: subclass GtkMessageDialog
+- CSS updates to track GTK+ changes
+- Various minor code improvements and bug fixes
+
+New and updated translations
+============================
+- es (Daniel Mustieles)
+- kk (Baurzhan Muftakhidinov)
+- pt
+- sk (Dušan Kazik)
+
+============
+gedit 3.19.1
+============
+
+New Features and Fixes
+======================
+- Change default document title to "Untitled Document"
+- Port the spell plugin to gspell
+- Various minor code improvements and bug fixes
+
+New and updated translations
+============================
+- cs (Marek Černocký)
+- el (Efstathios Iosifidis)
+- es (Daniel Mustieles)
+- eu (Iñaki Larrañaga Murgoitio)
+- fi (Jiri Grönroos)
+- gd (GunChleoc)
+- he (Yosef Or Boczko)
+- is (Sveinn í Felli)
+- lt (Aurimas Černius)
+- lv (Rūdolfs Mazurs)
+- nb (Kjartan Maraas)
+- pt (Pedro Albuquerque)
+- ro (Daniel Șerbănescu)
+- ru (Yuri Myasoedov)
+- sk (Dušan Kazik)
+- th (Akom Chotiphantawanon)
+- vi (Trần Ngọc Quân)
+- zh_CN (Bin Li)
+
+============
+gedit 3.18.1
+============
+
+New Features and Fixes
+======================
+- Make the Replace dialog resizable
+- Various minor code improvements and bug fixes
+
+New and updated translations
+============================
+- ar (Khaled Hosny)
+- fi (Lauri Nurmi)
+- gd (GunChleoc)
+- it (Milo Casagrande)
+- nl (Hannie Dumoleyn)
+- sr@latin (Miloš Popović)
+- sr (Милош Поповић)
+- vi (Trần Ngọc Quân)
+
+============
+gedit 3.18.0
+============
+
+New Features and Fixes
+======================
+- Fix close confirmation dialog regression introduced in 3.17.92
+
+New and updated translations
+============================
+- cs (Marek Černocký)
+- de (Bernd Homuth)
+- el (Tom Tryfonidis)
+- it (Milo Casagrande)
+- ja (Jiro Matsuzawa)
+- lv (Rūdolfs Mazurs)
+- pt_BR (Enrico Nicoletto)
+- ru (Stas Solovey)
+- tr (Muhammet Kara)
+
+=============
+gedit 3.17.92
+=============
+
+New Features and Fixes
+======================
+- Various minor code improvements and bug fixes
+
+New and updated translations
+============================
+- cs (Marek Černocký)
+- da (Kenneth Nielsen)
+- de (Wolfgang Stoeggl)
+- el (Tom Tryfonidis)
+- es (Daniel Mustieles)
+- fa (Arash Mousavi)
+- fr (Alain Lojewski)
+- gl (Fran Dieguez)
+- he (Yosef Or Boczko)
+- hu (Balázs Úr)
+- is (Sveinn í Felli)
+- kk (Baurzhan Muftakhidinov)
+- ko (Changwoo Ryu)
+- nb (Kjartan Maraas)
+- pl (Piotr Drąg)
+- sk (Dušan Kazik)
+- sv (Anders Jonsson)
+- zh_TW (Chao-Hsiung Liao)
+
+=============
+gedit 3.17.90
+=============
+
+New Features and Fixes
+======================
+- Spell checking: fix performance problem and re-organize the code
+- Move minimap settings in the preferences dialog
+- CSS improvements
+- Add a snippet generating RPM SPEC %changelog line
+- Various other code improvements and bug fixes
+
+New and updated translations
+============================
+- ca (Carles Ferrando Garcia)
+- cs (Marek Černocký)
+- de (Benjamin Steinwender)
+- es (Daniel Mustieles)
+- lt (Aurimas Černius)
+- nb (Åka Sikrom)
+- pt (Pedro Albuquerque)
+
+============
+gedit 3.17.2
+============
+
+New Features and Fixes
+======================
+- Lots of cleanups and code improvements to: the document handling code,
+  file printing and the spell checking.
+- gtk-mac-integration support fix
+
+New and updated translations
+============================
+- de (Benjamin Steinwender)
+- he (Yosef Or Boczko)
+- hu (Balázs Úr)
+- hu (Gabor Kelemen)
+- it (Milo Casagrande)
+- oc (Cédric Valmary (totenoc.eu))
+- pt (Pedro Albuquerque)
+- sk (Dušan Kazik)
+- sl (Matej Urbančič)
+- th (Akom Chotiphantawanon)
+
+============
+gedit 3.17.1
+============
+
+New Features and Fixes
+======================
+- Add a menu to toggle the source map
+- Fix print margins
+- Fix the --wait options when passing a list of files
+- Several cleanups and code improvements to the document handling code
+- Various other bug fixes
+
+New and updated translations
+============================
+- ar (Khaled Hosny)
+- ca (Gil Forcada)
+- cs (Marek Černocký)
+- de (Christian Kirbach)
+- el (Dimitris Spingos (Δημήτρης Σπίγγος))
+- es (Daniel Mustieles)
+- he (Yosef Or Boczko)
+- nb (Åka Sikrom)
+- oc (Cédric Valmary (Tot en òc))
+- pl (Piotr Drąg)
+- ro (Daniel Șerbănescu)
+- sk (Dušan Kazik)
+- th (Akom Chotiphantawanon)
+- tr (Necdet Yücel)
+
+============
+gedit 3.17.0
+============
+
+New Features and Fixes
+======================
+- Improve the Encodings dialog
+- Add setting to display a grid pattern
+- Various other bug fixes
+
+New and updated translations
+============================
+- an (Daniel Martinez)
+- cs (Marek Černocký)
+- es (Daniel Mustieles)
+- uk (Назарій Ріттер)
+- vi (Trần Ngọc Quân)
+
+============
+gedit 3.16.1
+============
+
+New Features and Fixes
+======================
+- Improve error reporting when failing to load private lib
+- Performance improvements for groups of text insertions/deletions
+- Do not merge xml translation in gschema files
+- Various other bug fixes
+
+New and updated translations
+============================
+- ar (Khaled Hosny)
+- ca (Gil Forcada)
+- eo (Kristjan SCHMIDT)
+- fr (Alain Lojewski)
+- id (Andika Triwidada)
+- pa (A S Alam)
+
+============
+gedit 3.16.0
+============
+
+New and updated translations
+============================
+
+- an (Daniel Martinez)
+- de (Benjamin Steinwender)
+- eu (Iñaki Larrañaga Murgoitio)
+- fi (Jiri Grönroos)
+- ja (Nobuto Murata)
+- ru (Stas Solovey)
+- th (Akom Chotiphantawanon)
+- zh_TW (Chao-Hsiung Liao)
+
+=============
+gedit 3.15.92
+=============
 
 New Features and Fixes
 ======================
@@ -8,22 +352,102 @@ New Features and Fixes
 
 New and updated translations
 ============================
+- bg (Alexander Shopov)
+- bs (Samir Ribic)
+- da (Kenneth Nielsen)
 - de (Benjamin Steinwender)
+- gl (Fran Dieguez)
+- hu (Gabor Kelemen)
+- kk (Baurzhan Muftakhidinov)
+- ko (Changwoo Ryu)
+- lt (Aurimas Černius)
+- lv (Rūdolfs Mazurs)
+- nb (Åka Sikrom)
+- pl (Paweł Żołnowski)
+- sr@latin (Miroslav Nikolić)
+- sr (Мирослав Николић)
+- sv (Anders Jonsson)
+- sv (Daniel Nylander)
+- tr (Muhammet Kara)
+- vi (Trần Ngọc Quân)
+
+=============
+gedit 3.15.91
+=============
+
+New Features and Fixes
+======================
+- Rework some of the printing code
+- Various bug fixes
+
+New and updated translations
+============================
+- cs (Marek Černocký)
+- el (Tom Tryfonidis)
+- es (Daniel Mustieles)
+- fr (Alain Lojewski)
+- gl (Fran Dieguez)
+- he (Yosef Or Boczko)
+- hu (Balázs Úr)
+- pt_BR (Rafael Ferreira)
+- ru (Stas Solovey)
+- sk (Dušan Kazik)
+- sl (Matej Urbančič)
+- uk (Daniel Korostil)
+- zh_TW (Chao-Hsiung Liao)
+
+=============
+gedit 3.15.90
+=============
+
+New Features and Fixes
+======================
+- Improved documentation
+- Various bug fixes
+
+New and updated translations
+============================
+- an (Daniel Martinez)
+- cs (Marek Černocký)
+- de (Benjamin Steinwender)
+- el (Efstathios Iosifidis)
+- es (Daniel Mustieles)
+- he (Yosef Or Boczko)
 - is (Sveinn í Felli)
+- nb (Åka Sikrom)
+- ru (Ivan Komaritsyn)
+- sk (Dušan Kazik)
+- sv (Anders Jonsson)
 
 ============
-gedit 3.14.2
+gedit 3.15.1
 ============
 
 New Features and Fixes
 ======================
+- Improved open document selector
+- Start to rework the replace dialog
+- Use the new color scheme chooser
 - External tools plugin: fix document saving
-- Various other bug fixes
+- Various bug fixes
 
 New and updated translations
 ============================
+- cs (Marek Černocký)
+- es (Daniel Mustieles)
+- eu (Iñaki Larrañaga Murgoitio)
+- gl (Fran Dieguez)
+- he (Yosef Or Boczko)
+- hu (Balázs Úr)
+- hu (Gabor Kelemen)
+- is (Sveinn í Felli)
 - ja (Hajime Taira)
+- lt (Aurimas Černius)
 - nb (Kjartan Maraas)
+- pt_BR (Rafael Ferreira)
+- ro (Daniel Șerbănescu)
+- ru (Stas Solovey)
+- tr (Muhammet Kara)
 - vi (Trần Ngọc Quân)
 
 ============

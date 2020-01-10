@@ -3,11 +3,13 @@
 
   <info>
     <link type="guide" xref="index#gedit-plugins"/>
+    <desc>Use plugins to customize how gedit works for you.</desc> 
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Ростислав „zbrox“ Райков</mal:name>
@@ -28,7 +30,7 @@
     </mal:credit>
   </info>
 
-  <title>Настройки и употреба</title>
+  <title>Configure and use gedit plugins</title>
   <p>Можете да правите повече с <app>gedit</app> като използвате приставки. По подразбиране са инсталирани няколко приставки, но също са налични за изтегляне голям брой други приставки.</p>
   
   <note><p>Много Линукс дистрибуции правят група от тези приставки, които можете да намерите като пакет <app>gedit-plugins</app>. Инсталирайте го, за да добавите допълнителни приставки към <app>gedit</app>.</p></note>

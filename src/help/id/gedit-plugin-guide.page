@@ -3,11 +3,13 @@
 
   <info>
     <link type="guide" xref="index#gedit-plugins"/>
+    <desc>Use plugins to customize how gedit works for you.</desc> 
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
@@ -16,7 +18,7 @@
     </mal:credit>
   </info>
 
-  <title>Menata dan memakai Plugin gedit</title>
+  <title>Configure and use gedit plugins</title>
   <p>Anda dapat melakukan lebih banyak hal dengan <app>gedit</app> memakai plugin. Beberapa plugin terpasang secara baku, tapi sejumlah besar plugin lain tersedia secara terpisah.</p>
   
   <note><p>Banyak distribusi Linux yang membuat grup plugin ini tersedia sebagai suatu paket <app>gedit-plugins</app>. Pasanglah paket <app>gedit-plugins</app> untuk membuat plugin tambahan ini tersedia bagi <app>gedit</app>.</p></note>

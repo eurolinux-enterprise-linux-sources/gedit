@@ -23,7 +23,6 @@
 #include <glib/gi18n.h>
 
 #include "gedit-settings.h"
-#include "gedit-utils.h"
 
 struct _GeditEncodingItem
 {
@@ -74,63 +73,36 @@ gedit_encoding_item_get_name (GeditEncodingItem *item)
 GSList *
 gedit_encoding_items_get (void)
 {
-	GSList *ret = NULL;
-	const GtkSourceEncoding *utf8_encoding;
 	const GtkSourceEncoding *current_encoding;
-	GSettings *enc_settings;
-	gchar *str;
 	GSList *encodings;
-	gchar **enc_strv;
+	GSList *items = NULL;
+	GSList *l;
 
-	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	encodings = gedit_settings_get_candidate_encodings (NULL);
+
 	current_encoding = gtk_source_encoding_get_current ();
 
-	enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
-
-	if (utf8_encoding != current_encoding)
+	for (l = encodings; l != NULL; l = l->next)
 	{
-		str = gtk_source_encoding_to_string (utf8_encoding);
-	}
-	else
-	{
-		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gtk_source_encoding_get_charset (utf8_encoding));
-	}
+		const GtkSourceEncoding *enc = l->data;
+		gchar *name;
 
-	ret = g_slist_prepend (ret, gedit_encoding_item_new (utf8_encoding, str));
-
-	if (current_encoding != utf8_encoding &&
-	    current_encoding != NULL)
-	{
-		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gtk_source_encoding_get_charset (current_encoding));
-
-		ret = g_slist_prepend (ret, gedit_encoding_item_new (current_encoding, str));
-	}
-
-	enc_strv = g_settings_get_strv (enc_settings, GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU);
-
-	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
-	g_strfreev (enc_strv);
-
-	g_object_unref (enc_settings);
-
-	while (encodings)
-	{
-		const GtkSourceEncoding *enc = encodings->data;
-
-		if (enc != current_encoding &&
-		    enc != utf8_encoding &&
-		    enc != NULL)
+		if (enc == current_encoding)
 		{
-			str = gtk_source_encoding_to_string (enc);
-			ret = g_slist_prepend (ret, gedit_encoding_item_new (enc, str));
+			name = g_strdup_printf (_("Current Locale (%s)"),
+						gtk_source_encoding_get_charset (enc));
+		}
+		else
+		{
+			name = gtk_source_encoding_to_string (enc);
 		}
 
-		encodings = g_slist_delete_link (encodings, encodings);
+		items = g_slist_prepend (items, gedit_encoding_item_new (enc, name));
 	}
 
-	return g_slist_reverse (ret);
+	g_slist_free (encodings);
+
+	return g_slist_reverse (items);
 }
 
 /* ex:set ts=8 noet: */

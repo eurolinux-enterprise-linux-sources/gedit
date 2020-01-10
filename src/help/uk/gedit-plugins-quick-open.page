@@ -7,14 +7,14 @@
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Shobha Tyagi</name>
       <email>tyagishobha@gmail.com</email>
     </credit>
 
-    <desc>Швидко відкриває файли або набір файлів</desc>
+    <desc>Quickly open a file or set of files.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Максим Дзюманенко</mal:name>
@@ -36,9 +36,7 @@
   <p>Як тільки плагін «<app>Швидке відкриття</app>» увімкнено, його можна використовувати як описано нижче:</p>
 
   <steps>
-    <item><p>Open the <app>Quick Open</app> dialog box by pressing
-    <keyseq><key>Ctrl</key><key>Alt</key><key>O</key></keyseq>, or by selecting
-    <guiseq><gui>File</gui><gui>Quick Open</gui></guiseq>.</p>
+    <item><p>Відкрийте діалогове вікно «<app>Швидкого відкриття</app>», натиснувши <keyseq><key>Ctrl</key><key>Alt</key><key>O</key></keyseq>, або вибравши <guiseq><gui>«Файл»</gui><gui>«Швидке відкриття»</gui></guiseq>.</p>
     <p>З'явиться файлове діалогове вікно «<gui>Швидке відкриття</gui>».</p></item>
     <item><p>Використовуйте мишу для вибору файлу або файлів, які потрібно відкрити.</p>
     <p>Щоб вибрати декілька окремих файлів, утримуючи клавішу <key>Ctrl</key>, клацайте на файлах, які потрібно відкрити.</p>

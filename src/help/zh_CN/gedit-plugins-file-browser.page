@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email its:translate="no">jwcampbell@gmail.com</email>
+    <email its:translate="no">jcampbell@gnome.org</email>
   </credit>
-  <desc>使用侧边栏浏览和打开文件</desc>
+  <desc>Use the side pane to browse and open files.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>TeliuTe</mal:name>

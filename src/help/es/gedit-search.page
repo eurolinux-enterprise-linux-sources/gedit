@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Buscar un fragmento de texto e un archivo.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -26,7 +27,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2014</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -49,7 +50,7 @@
     <steps>
       <title>Buscar texto</title>
       <item>
-        <p>Abra la <gui>ventana de búsqueda</gui> pulsando <guiseq><gui style="menu">Buscar</gui> <gui style="menuitem">Buscar</gui> </guiseq> o pulsando <keyseq><key>Ctrl</key><key>F</key></keyseq>. Esto moverá su cursor hasta el principio de la <gui>ventana de búsqueda</gui>.</p>
+        <p>Abra la <gui>ventana de búsqueda</gui> pulsando en el <guiseq><gui style="menu">Botón del menú</gui> <gui style="menuitem">Buscar…</gui> </guiseq> o pulsando <keyseq><key>Ctrl</key><key>F</key></keyseq>. Esto moverá su cursor hasta el principio de la <gui>ventana de búsqueda</gui>.</p>
       </item>
       <item>
         <p>Introduzca el texto que quiere buscar en la <gui>ventana de búsqueda</gui>.</p>

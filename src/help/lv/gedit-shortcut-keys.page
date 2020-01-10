@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Lietojiet tastatūras saīsnes, lai varētu strādāt ātrāk.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
@@ -41,8 +49,8 @@
     <title>Īsinājumtaustiņi darbam ar cilnēm</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>
@@ -67,7 +75,7 @@
           <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Reopen the most recently closed tab</p></td>
+          <td><p>Atkal atvērt pēdējo aizvērto cilni</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
@@ -93,18 +101,26 @@
     <title>Īsinājumtaustiņi darbam ar datnēm</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Izveidot jaunu dokumentu</p></td>
+          <td><p>Izveidot jaunu dokumentu jaunā logā</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Izveidot jaunu dokumentu jaunā cilnē</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Atvērt dokumentu</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Atvērt logu <gui>Ātrā atvēršana</gui></p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Saglabāt pašreizējo dokumentu</p></td>
@@ -137,8 +153,8 @@
     <title>Īsinājumtaustiņi datņu rediģēšanai</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>
@@ -229,8 +245,8 @@
     <title>Īsinājumtaustiņi saskarnes elementu parādīšanai un slēpšanai</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>
@@ -243,6 +259,10 @@
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
         </tr>
+        <tr>
+          <td><p>Atvērt datņu izvēlni</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
       </tbody>
     </table>
 
@@ -250,8 +270,8 @@
     <title>Īsinājumtaustiņi meklēšanai</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>
@@ -286,8 +306,8 @@
     <title>Īsinājumtaustiņi rīkiem</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>
@@ -314,8 +334,8 @@
     <title>Īsinājumtaustiņi palīdzībai</title>
       <thead>
         <tr>
-          <td><p>Veicamā darbība</p></td>
-          <td><p>Īsinājumtaustiņi</p></td>
+          <td><p>Darbība</p></td>
+          <td><p>Tastatūras saīsne</p></td>
         </tr>
       </thead>
       <tbody>

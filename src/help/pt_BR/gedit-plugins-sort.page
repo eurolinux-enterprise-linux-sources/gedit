@@ -10,14 +10,14 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
   <credit type="editor">
     <name>Sindhu S</name>
     <email>sindhus@live.in</email>
   </credit>
   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  <desc>Ordene linhas do texto em ordem alfabética</desc>
+  <desc>Ordene linhas do texto em ordem alfabética.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -62,15 +62,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Ferreira</mal:name>
-      <mal:email>rafael.f.f1@gmail.com</mal:email>
-      <mal:years>2013</mal:years>
+      <mal:name>Enrico Nicoletto</mal:name>
+      <mal:email>liverig@gmail.com</mal:email>
+      <mal:years>2013, 2014</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014.</mal:years>
+      <mal:name>Rafael Fontenelle</mal:name>
+      <mal:email>rafaelff@gnome.org</mal:email>
+      <mal:years>2013, 2016</mal:years>
     </mal:credit>
   </info>
 

@@ -15,15 +15,20 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-from .popup import Popup
 import os
+
+import gi
+gi.require_version('Gedit', '3.0')
+gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gio, GLib, Gtk, Gedit
+
+from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 
 
 class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
-    app = GObject.property(type=Gedit.App)
+    app = GObject.Property(type=Gedit.App)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -42,7 +47,7 @@ class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
 class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "QuickOpenPlugin"
 
-    window = GObject.property(type=Gedit.Window)
+    window = GObject.Property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
@@ -73,8 +78,8 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         doc = self.window.get_active_document()
 
         # Current document directory
-        if doc and doc.is_local():
-            gfile = doc.get_location()
+        if doc and doc.get_file().is_local():
+            gfile = doc.get_file().get_location()
             paths.append(gfile.get_parent())
 
         # File browser root directory

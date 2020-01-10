@@ -16,26 +16,26 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from gi.repository import Gtk, Gedit, GObject
-
 from .snippet import Snippet
 from .library import Library
 from .shareddata import SharedData
 from .signals import Signals
 
+
 class Message(Gedit.Message):
-    view = GObject.property(type=Gedit.View)
-    iter = GObject.property(type=Gtk.TextIter)
+    view = GObject.Property(type=Gedit.View)
+    iter = GObject.Property(type=Gtk.TextIter)
 
 class Activate(Message):
-    trigger = GObject.property(type=str)
+    trigger = GObject.Property(type=str)
 
 class ParseAndActivate(Message):
-    snippet = GObject.property(type=str)
+    snippet = GObject.Property(type=str)
 
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
     __gtype_name__ = "GeditSnippetsWindowActivatable"
 
-    window = GObject.property(type=Gedit.Window)
+    window = GObject.Property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)

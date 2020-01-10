@@ -2,20 +2,18 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="el">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
+    <desc>Χρήση προσαρμοσμένης γραμματοσειράς για το κείμενό σας στο gedit.</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
       <years>2011 2012 2013</years>
     </credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Για την Ελληνική μεταφραστική ομάδα GNOME</mal:name>
-      <mal:email>team@gnome.gr</mal:email>
-      <mal:years>2009, 2011, 2012, 2013, 2014</mal:years>
-    </mal:credit>
-  
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Μάριος Ζηντίλης</mal:name>
       <mal:email>m.zindilis@dmajor.org</mal:email>
@@ -37,7 +35,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -57,7 +55,7 @@
       <item><p>Αποεπιλέξτε το πλαίσιο δίπλα από τη φράση, "Χρήση της προκαθορισμένης γραμματοσειράς σταθερού πλάτους του συστήματος."</p></item>
       <item><p>Πατήστε στο τρέχον όνομα γραμματοσειράς. Το <app>gedit</app> θα ανοίξει ένα παράθυρο επιλογέα γραμματοσειράς, επιτρέποντας σας να δείτε διαθέσιμες γραμματοσειρές και να επιλέξετε αυτή που προτιμάτε.</p></item>
       <item><p>Μετά την επιλογή της νέας σας γραμματοσειράς, χρησιμοποιήστε τον <gui>ολισθητή</gui> κάτω από τη λίστα των γραμματοσειρών για να επιλέξετε το προεπιλεγμένο μέγεθος της.</p></item>
-      <item><p>Πατήστε στο <gui>Επιλογή</gui>, και μετά πατήστε στο <gui>Κλείσιμο</gui>.</p>
+      <item><p>Πατήστε <gui>Επιλογή</gui>, και μετά πατήστε <gui>Κλείσιμο</gui>.</p>
       </item>
   </steps>
   

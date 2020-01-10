@@ -20,38 +20,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-utils.h"
 
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <fcntl.h>
 #include <string.h>
-
-#include <glib.h>
 #include <glib/gi18n.h>
-#include <glib/gstdio.h>
-#include <gio/gio.h>
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #endif
 
-#ifdef G_OS_UNIX
-#include <unistd.h>
-#include <sys/stat.h>
-#endif
-
-#include "gedit-document.h"
 #include "gedit-debug.h"
 
 static void
@@ -253,8 +232,15 @@ gedit_warning (GtkWindow *parent, const gchar *format, ...)
 	gtk_widget_show (dialog);
 }
 
-/*
+/**
+ * gedit_utils_escape_underscores:
+ * @text: some text.
+ * @length: the length.
+ *
  * Doubles underscore to avoid spurious menu accels.
+ *
+ * Returns: the text escaped.
+ * Deprecated: 3.18
  */
 gchar *
 gedit_utils_escape_underscores (const gchar *text,
@@ -414,16 +400,8 @@ gedit_utils_make_valid_utf8 (const char *name)
 	return g_string_free (string, FALSE);
 }
 
-/**
- * gedit_utils_uri_get_dirname:
- * @uri: the URI.
- *
- * Note: this function replace home dir with ~
- *
- * Returns: the directory name.
- */
-gchar *
-gedit_utils_uri_get_dirname (const gchar *uri)
+static gchar *
+uri_get_dirname (const gchar *uri)
 {
 	gchar *res;
 	gchar *str;
@@ -446,6 +424,21 @@ gedit_utils_uri_get_dirname (const gchar *uri)
 	g_free (str);
 
 	return res;
+}
+
+/**
+ * gedit_utils_uri_get_dirname:
+ * @uri: the URI.
+ *
+ * Note: this function replace home dir with ~.
+ *
+ * Returns: the directory name.
+ * Deprecated: 3.18
+ */
+gchar *
+gedit_utils_uri_get_dirname (const gchar *uri)
+{
+	return uri_get_dirname (uri);
 }
 
 /**
@@ -491,11 +484,11 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 
 		if (path == NULL)
 		{
-			dirname = gedit_utils_uri_get_dirname (uri);
+			dirname = uri_get_dirname (uri);
 		}
 		else
 		{
-			dirname = gedit_utils_uri_get_dirname (path);
+			dirname = uri_get_dirname (path);
 		}
 
 		if (dirname == NULL || strcmp (dirname, ".") == 0)
@@ -514,7 +507,7 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 	else
 	{
 		/* fallback for local files or uris without mounts */
-		res = gedit_utils_uri_get_dirname (uri);
+		res = uri_get_dirname (uri);
 	}
 
 	g_free (uri);
@@ -969,6 +962,7 @@ get_ui_objects_with_translation_domain (const gchar  *filename,
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
+ * Deprecated: 3.18
  */
 gboolean
 gedit_utils_get_ui_objects (const gchar  *filename,
@@ -1008,6 +1002,7 @@ gedit_utils_get_ui_objects (const gchar  *filename,
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
+ * Deprecated: 3.18
  */
 gboolean
 gedit_utils_get_ui_objects_with_translation_domain (const gchar  *filename,
@@ -1032,8 +1027,8 @@ gedit_utils_get_ui_objects_with_translation_domain (const gchar  *filename,
 	return ret;
 }
 
-gchar *
-gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
+static gchar *
+make_canonical_uri_from_shell_arg (const gchar *str)
 {
 	GFile *gfile;
 	gchar *uri;
@@ -1069,6 +1064,19 @@ gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 
 	g_object_unref (gfile);
 	return NULL;
+}
+
+/**
+ * gedit_utils_make_canonical_uri_from_shell_arg:
+ * @str: shell arg.
+ *
+ * Returns: canonical URI, or %NULL if @str is not a valid URI and/or filename.
+ * Deprecated: 3.18
+ */
+gchar *
+gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
+{
+	return make_canonical_uri_from_shell_arg (str);
 }
 
 /**
@@ -1184,7 +1192,7 @@ gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 	{
 		gchar *uri;
 
-		uri = gedit_utils_make_canonical_uri_from_shell_arg (uris[i]);
+		uri = make_canonical_uri_from_shell_arg (uris[i]);
 
 		/* Silently ignore malformed URI/filename */
 		if (uri != NULL)
@@ -1460,73 +1468,6 @@ gedit_utils_newline_type_to_string (GtkSourceNewlineType newline_type)
 	}
 
 	return NULL;
-}
-
-static gboolean
-data_exists (GSList         *list,
-	     const gpointer  data)
-{
-	for (; list != NULL; list = g_slist_next (list))
-	{
-		if (list->data == data)
-		{
-			return TRUE;
-		}
-	}
-
-	return FALSE;
-}
-
-GSList *
-_gedit_utils_encoding_strv_to_list (const gchar * const *enc_str)
-{
-	GSList *res = NULL;
-	gchar **p;
-
-	for (p = (gchar **)enc_str; p != NULL && *p != NULL; p++)
-	{
-		const gchar *charset = *p;
-		const GtkSourceEncoding *enc;
-
-		if (g_str_equal (charset, "CURRENT"))
-		{
-			g_get_charset (&charset);
-		}
-
-		g_return_val_if_fail (charset != NULL, NULL);
-		enc = gtk_source_encoding_get_from_charset (charset);
-
-		if (enc != NULL &&
-		    !data_exists (res, (gpointer)enc))
-		{
-			res = g_slist_prepend (res, (gpointer)enc);
-		}
-	}
-
-	return g_slist_reverse (res);
-}
-
-gchar **
-_gedit_utils_encoding_list_to_strv (const GSList *enc_list)
-{
-	GSList *l;
-	GPtrArray *array;
-
-	array = g_ptr_array_sized_new (g_slist_length ((GSList *)enc_list) + 1);
-
-	for (l = (GSList *)enc_list; l != NULL; l = g_slist_next (l))
-	{
-		const GtkSourceEncoding *enc = l->data;
-		const gchar *charset = gtk_source_encoding_get_charset (enc);
-
-		g_return_val_if_fail (charset != NULL, NULL);
-
-		g_ptr_array_add (array, g_strdup (charset));
-	}
-
-	g_ptr_array_add (array, NULL);
-
-	return (gchar **)g_ptr_array_free (array, FALSE);
 }
 
 /* ex:set ts=8 noet: */

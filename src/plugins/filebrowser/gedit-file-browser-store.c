@@ -28,7 +28,6 @@
 #include <gedit/gedit-utils.h>
 
 #include "gedit-file-browser-store.h"
-#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 #include "gedit-file-browser-error.h"
 #include "gedit-file-browser-utils.h"
@@ -226,6 +225,7 @@ enum
 	BEGIN_REFRESH,
 	END_REFRESH,
 	UNLOAD,
+	BEFORE_ROW_DELETED,
 	NUM_SIGNALS
 };
 
@@ -384,67 +384,64 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 	    g_signal_new ("begin-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   begin_loading), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_ITER);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, begin_loading),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	model_signals[END_LOADING] =
 	    g_signal_new ("end-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   end_loading), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_ITER);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, end_loading),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	model_signals[ERROR] =
 	    g_signal_new ("error", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   error), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__UINT_STRING,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, error),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	model_signals[NO_TRASH] =
 	    g_signal_new ("no-trash", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   no_trash), g_signal_accumulator_true_handled, NULL,
-			  gedit_file_browser_marshal_BOOL__POINTER,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, no_trash),
+			  g_signal_accumulator_true_handled, NULL, NULL,
 			  G_TYPE_BOOLEAN, 1, G_TYPE_POINTER);
 	model_signals[RENAME] =
 	    g_signal_new ("rename",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   rename), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__OBJECT_OBJECT,
-			  G_TYPE_NONE, 2,
-			  G_TYPE_FILE,
-			  G_TYPE_FILE);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, rename),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 2, G_TYPE_FILE, G_TYPE_FILE);
 	model_signals[BEGIN_REFRESH] =
 	    g_signal_new ("begin-refresh",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   begin_refresh), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__VOID,
-	    		  G_TYPE_NONE, 0);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, begin_refresh),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 0);
 	model_signals[END_REFRESH] =
 	    g_signal_new ("end-refresh",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   end_refresh), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__VOID,
-	    		  G_TYPE_NONE, 0);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, end_refresh),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 0);
 	model_signals[UNLOAD] =
 	    g_signal_new ("unload",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   unload), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__OBJECT,
-	    		  G_TYPE_NONE, 1,
-	    		  G_TYPE_FILE);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, unload),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, G_TYPE_FILE);
+	model_signals[BEFORE_ROW_DELETED] =
+	    g_signal_new ("before-row-deleted",
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, before_row_deleted),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1,
+			  GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void
@@ -1259,13 +1256,33 @@ row_inserted (GeditFileBrowserStore  *model,
 
 static void
 row_deleted (GeditFileBrowserStore *model,
-	     const GtkTreePath     *path)
+             FileBrowserNode       *node,
+             const GtkTreePath     *path)
 {
-	GtkTreePath *copy = gtk_tree_path_copy (path);
+	gboolean hidden;
+	GtkTreePath *copy;
 
-	/* Delete a copy of the actual path here because the row-deleted
-	   signal may alter the path */
-	gtk_tree_model_row_deleted (GTK_TREE_MODEL(model), copy);
+	/* We should always be called when the row is still inserted */
+	g_return_if_fail (node->inserted == TRUE);
+
+	hidden = FILE_IS_HIDDEN (node->flags);
+	node->flags &= ~GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+
+	/* Create temporary copies of the path as the signals may alter it */
+
+	copy = gtk_tree_path_copy (path);
+	g_signal_emit (model, model_signals[BEFORE_ROW_DELETED], 0, copy);
+	gtk_tree_path_free (copy);
+
+	node->inserted = FALSE;
+
+	if (hidden)
+	{
+		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+	}
+
+	copy = gtk_tree_path_copy (path);
+	gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), copy);
 	gtk_tree_path_free (copy);
 }
 
@@ -1327,8 +1344,7 @@ model_refilter_node (GeditFileBrowserStore  *model,
 		{
 			if (old_visible)
 			{
-				node->inserted = FALSE;
-				row_deleted (model, *path);
+				row_deleted (model, node, *path);
 			}
 			else
 			{
@@ -1576,8 +1592,7 @@ model_remove_node (GeditFileBrowserStore *model,
 	   not the virtual root) */
 	if (model_node_visibility (model, node) && node != model->priv->virtual_root)
 	{
-		node->inserted = FALSE;
-		row_deleted (model, path);
+		row_deleted (model, node, path);
 	}
 
 	if (free_path)
@@ -1645,9 +1660,7 @@ model_clear (GeditFileBrowserStore *model,
 			    model_node_visibility (model, dummy))
 			{
 				path = gtk_tree_path_new_first ();
-
-				dummy->inserted = FALSE;
-				row_deleted (model, path);
+				row_deleted (model, dummy, path);
 				gtk_tree_path_free (path);
 			}
 		}
@@ -1868,8 +1881,7 @@ model_check_dummy (GeditFileBrowserStore *model,
 			path = gedit_file_browser_store_get_path_real (model, dummy);
 			dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
-			dummy->inserted = FALSE;
-			row_deleted (model, path);
+			row_deleted (model, dummy, path);
 			gtk_tree_path_free (path);
 		}
 	}

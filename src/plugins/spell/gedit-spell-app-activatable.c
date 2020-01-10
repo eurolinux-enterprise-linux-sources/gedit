@@ -18,17 +18,24 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-spell-app-activatable.h"
 #include <glib/gi18n.h>
 #include <libpeas/peas-object-module.h>
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-app.h>
-#include "gedit-spell-app-activatable.h"
 
-typedef struct _GeditSpellAppActivatablePrivate
+typedef struct _GeditSpellAppActivatablePrivate GeditSpellAppActivatablePrivate;
+
+struct _GeditSpellAppActivatable
+{
+	GObject parent;
+};
+
+struct _GeditSpellAppActivatablePrivate
 {
 	GeditApp *app;
 	GeditMenuExtension *menu_ext;
-} GeditSpellAppActivatablePrivate;
+};
 
 enum
 {
@@ -141,7 +148,7 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 
-	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.auto-spell");
+	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.inline-spell-checker");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 }

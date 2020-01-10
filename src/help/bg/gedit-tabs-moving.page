@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Change the position of a tab in the gedit window.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Даниел Нийл</name>
@@ -83,8 +84,6 @@
         <p>Отпуснете бутона на мишката.</p>
       </item>
     </steps>
-
-    <p>или натиснете <guiseq><gui>Документи</gui><gui>Преминаване към нов прозорец</gui></guiseq></p>
 
     <note style="tip">
       <p>За да преместите раздел в нов прозорец, когато <app>gedit</app> е максимизиран, провлечете раздела върху лентата в горната част на екрана.</p>

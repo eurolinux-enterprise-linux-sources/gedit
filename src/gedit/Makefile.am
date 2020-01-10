@@ -94,45 +94,49 @@ endif
 
 gedit_built_sources =			\
 	gedit/gedit-enum-types.c	\
-	gedit/gedit-enum-types.h	\
-	gedit/gedit-marshal.c		\
-	gedit/gedit-marshal.h
+	gedit/gedit-enum-types.h
 
-gedit_NOINST_H_FILES =				\
-	gedit/gedit-close-confirmation-dialog.h \
-	gedit/gedit-dirs.h			\
-	gedit/gedit-documents-panel.h		\
-	gedit/gedit-encodings-dialog.h		\
-	gedit/gedit-encoding-items.h		\
-	gedit/gedit-open-document-selector.h	\
-	gedit/gedit-file-chooser-dialog.h	\
-	gedit/gedit-file-chooser-dialog-gtk.h	\
-	gedit/gedit-highlight-mode-dialog.h	\
-	gedit/gedit-highlight-mode-selector.h	\
-	gedit/gedit-history-entry.h		\
-	gedit/gedit-io-error-info-bar.h		\
-	gedit/gedit-menu-stack-switcher.h	\
-	gedit/gedit-multi-notebook.h		\
-	gedit/gedit-notebook.h			\
-	gedit/gedit-notebook-popup-menu.h	\
-	gedit/gedit-notebook-stack-switcher.h	\
-	gedit/gedit-plugins-engine.h		\
-	gedit/gedit-preferences-dialog.h	\
-	gedit/gedit-print-job.h			\
-	gedit/gedit-print-preview.h		\
-	gedit/gedit-recent.h			\
-	gedit/gedit-replace-dialog.h		\
-	gedit/gedit-settings.h			\
-	gedit/gedit-small-button.h		\
-	gedit/gedit-status-menu-button.h	\
-	gedit/gedit-tab-label.h			\
-	gedit/gedit-view-frame.h		\
-	gedit/gedit-view-holder.h		\
+gedit_NOINST_H_FILES =					\
+	gedit/gedit-app-private.h			\
+	gedit/gedit-close-confirmation-dialog.h		\
+	gedit/gedit-commands-private.h			\
+	gedit/gedit-dirs.h				\
+	gedit/gedit-document-private.h			\
+	gedit/gedit-documents-panel.h			\
+	gedit/gedit-encoding-items.h			\
+	gedit/gedit-encodings-dialog.h			\
+	gedit/gedit-file-chooser-dialog-gtk.h		\
+	gedit/gedit-file-chooser-dialog.h		\
+	gedit/gedit-highlight-mode-dialog.h		\
+	gedit/gedit-highlight-mode-selector.h		\
+	gedit/gedit-history-entry.h			\
+	gedit/gedit-io-error-info-bar.h			\
+	gedit/gedit-menu-stack-switcher.h		\
+	gedit/gedit-metadata-manager.h			\
+	gedit/gedit-multi-notebook.h			\
+	gedit/gedit-notebook.h				\
+	gedit/gedit-notebook-popup-menu.h		\
+	gedit/gedit-notebook-stack-switcher.h		\
+	gedit/gedit-open-document-selector.h		\
+	gedit/gedit-open-document-selector-helper.h	\
+	gedit/gedit-open-document-selector-store.h	\
+	gedit/gedit-plugins-engine.h			\
+	gedit/gedit-preferences-dialog.h		\
+	gedit/gedit-print-job.h				\
+	gedit/gedit-print-preview.h			\
+	gedit/gedit-recent.h				\
+	gedit/gedit-replace-dialog.h			\
+	gedit/gedit-settings.h				\
+	gedit/gedit-status-menu-button.h		\
+	gedit/gedit-tab-label.h				\
+	gedit/gedit-tab-private.h			\
+	gedit/gedit-view-centering.h			\
+	gedit/gedit-view-frame.h			\
 	gedit/gedit-window-private.h
 
 gedit_INST_H_FILES =				\
-	gedit/gedit-app.h			\
 	gedit/gedit-app-activatable.h		\
+	gedit/gedit-app.h			\
 	gedit/gedit-commands.h			\
 	gedit/gedit-debug.h			\
 	gedit/gedit-document.h 			\
@@ -144,71 +148,69 @@ gedit_INST_H_FILES =				\
 	gedit/gedit-statusbar.h			\
 	gedit/gedit-tab.h 			\
 	gedit/gedit-utils.h 			\
-	gedit/gedit-view.h 			\
 	gedit/gedit-view-activatable.h		\
-	gedit/gedit-window.h			\
-	gedit/gedit-window-activatable.h
-
-if !ENABLE_GVFS_METADATA
-gedit_NOINST_H_FILES += gedit/gedit-metadata-manager.h
-endif
+	gedit/gedit-view.h 			\
+	gedit/gedit-window-activatable.h	\
+	gedit/gedit-window.h
 
 gedit_headerdir = $(prefix)/include/gedit-$(GEDIT_API_VERSION)/gedit
 gedit_header_HEADERS = $(gedit_INST_H_FILES)
 
-gedit_libgedit_c_files =			\
-	gedit/gedit-app.c			\
-	gedit/gedit-app-activatable.c		\
-	gedit/gedit-view-activatable.c		\
-	gedit/gedit-window-activatable.c	\
-	gedit/gedit-menu-extension.c		\
-	gedit/gedit-resources.c			\
-	gedit/gedit-close-confirmation-dialog.c \
-	gedit/gedit-commands-documents.c	\
-	gedit/gedit-commands-edit.c		\
-	gedit/gedit-commands-file.c		\
-	gedit/gedit-commands-file-print.c	\
-	gedit/gedit-commands-help.c		\
-	gedit/gedit-commands-search.c		\
-	gedit/gedit-commands-view.c		\
-	gedit/gedit-debug.c			\
-	gedit/gedit-dirs.c			\
-	gedit/gedit-document.c 			\
-	gedit/gedit-documents-panel.c		\
-	gedit/gedit-encodings-combo-box.c	\
-	gedit/gedit-encodings-dialog.c		\
-	gedit/gedit-encoding-items.c		\
-	gedit/gedit-open-document-selector.c	\
-	gedit/gedit-file-chooser-dialog.c	\
-	gedit/gedit-file-chooser-dialog-gtk.c	\
-	gedit/gedit-highlight-mode-dialog.c	\
-	gedit/gedit-highlight-mode-selector.c	\
-	gedit/gedit-history-entry.c		\
-	gedit/gedit-io-error-info-bar.c		\
-	gedit/gedit-menu-stack-switcher.c	\
-	gedit/gedit-message-bus.c		\
-	gedit/gedit-message.c			\
-	gedit/gedit-multi-notebook.c		\
-	gedit/gedit-notebook.c			\
-	gedit/gedit-notebook-popup-menu.c	\
-	gedit/gedit-notebook-stack-switcher.c	\
-	gedit/gedit-plugins-engine.c		\
-	gedit/gedit-preferences-dialog.c	\
-	gedit/gedit-print-job.c			\
-	gedit/gedit-print-preview.c		\
-	gedit/gedit-progress-info-bar.c		\
-	gedit/gedit-recent.c			\
-	gedit/gedit-replace-dialog.c		\
-	gedit/gedit-settings.c			\
-	gedit/gedit-small-button.c		\
-	gedit/gedit-statusbar.c			\
-	gedit/gedit-status-menu-button.c	\
-	gedit/gedit-tab.c 			\
-	gedit/gedit-tab-label.c			\
-	gedit/gedit-utils.c 			\
-	gedit/gedit-view.c 			\
-	gedit/gedit-view-frame.c		\
-	gedit/gedit-view-holder.c		\
+gedit_libgedit_c_files =				\
+	gedit/gedit-app-activatable.c			\
+	gedit/gedit-app.c				\
+	gedit/gedit-close-confirmation-dialog.c		\
+	gedit/gedit-commands-documents.c		\
+	gedit/gedit-commands-edit.c			\
+	gedit/gedit-commands-file.c			\
+	gedit/gedit-commands-file-print.c		\
+	gedit/gedit-commands-help.c			\
+	gedit/gedit-commands-search.c			\
+	gedit/gedit-commands-view.c			\
+	gedit/gedit-debug.c				\
+	gedit/gedit-dirs.c				\
+	gedit/gedit-document.c 				\
+	gedit/gedit-documents-panel.c			\
+	gedit/gedit-encoding-items.c			\
+	gedit/gedit-encodings-combo-box.c		\
+	gedit/gedit-encodings-dialog.c			\
+	gedit/gedit-file-chooser-dialog.c		\
+	gedit/gedit-file-chooser-dialog-gtk.c		\
+	gedit/gedit-highlight-mode-dialog.c		\
+	gedit/gedit-highlight-mode-selector.c		\
+	gedit/gedit-history-entry.c			\
+	gedit/gedit-io-error-info-bar.c			\
+	gedit/gedit-menu-extension.c			\
+	gedit/gedit-menu-stack-switcher.c		\
+	gedit/gedit-message-bus.c			\
+	gedit/gedit-message.c				\
+	gedit/gedit-metadata-manager.c			\
+	gedit/gedit-multi-notebook.c			\
+	gedit/gedit-notebook.c				\
+	gedit/gedit-notebook-popup-menu.c		\
+	gedit/gedit-notebook-stack-switcher.c		\
+	gedit/gedit-open-document-selector.c		\
+	gedit/gedit-open-document-selector-helper.c	\
+	gedit/gedit-open-document-selector-store.c	\
+	gedit/gedit-plugins-engine.c			\
+	gedit/gedit-preferences-dialog.c		\
+	gedit/gedit-print-job.c				\
+	gedit/gedit-print-preview.c			\
+	gedit/gedit-progress-info-bar.c			\
+	gedit/gedit-recent.c				\
+	gedit/gedit-replace-dialog.c			\
+	gedit/gedit-resources.c				\
+	gedit/gedit-settings.c				\
+	gedit/gedit-statusbar.c				\
+	gedit/gedit-status-menu-button.c		\
+	gedit/gedit-tab.c 				\
+	gedit/gedit-tab-label.c				\
+	gedit/gedit-utils.c 				\
+	gedit/gedit-view-activatable.c			\
+	gedit/gedit-view.c 				\
+	gedit/gedit-view-centering.c			\
+	gedit/gedit-view-frame.c			\
+	gedit/gedit-window-activatable.c		\
 	gedit/gedit-window.c
 
 gedit_libgedit_la_SOURCES = 		\
@@ -216,10 +218,6 @@ gedit_libgedit_la_SOURCES = 		\
 	$(gedit_libgedit_c_files)	\
 	$(gedit_NOINST_H_FILES)		\
 	$(gedit_INST_H_FILES)
-
-if !ENABLE_GVFS_METADATA
-gedit_libgedit_la_SOURCES += gedit/gedit-metadata-manager.c
-endif
 
 gedit_ENUM_TYPES = 		\
 	gedit/gedit-notebook.h	\
@@ -230,13 +228,6 @@ gedit/gedit-enum-types.h: gedit/gedit-enum-types.h.template $(gedit_ENUM_TYPES) 
 
 gedit/gedit-enum-types.c: gedit/gedit-enum-types.c.template $(gedit_ENUM_TYPES) $(GLIB_MKENUMS)
 	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template gedit/gedit-enum-types.c.template $(gedit_ENUM_TYPES)) > $@
-
-gedit/gedit-marshal.h: gedit/gedit-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=gedit_marshal > $@
-
-gedit/gedit-marshal.c: gedit/gedit-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) echo "#include \"gedit-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
 
 gedit_resource_deps = $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir)/gedit/resources --sourcedir $(builddir)/gedit/resources $(builddir)/gedit/resources/gedit.gresource.xml)
 
@@ -255,19 +246,16 @@ gedit_overrides_PYTHON = gedit/Gedit.py
 endif
 
 gedit_dist_resource_deps = 							\
-	$(filter-out %gedit/resources/css/gedit-style-os.css,$(filter-out %gedit/resources/gtk/menus.ui,$(gedit_resource_deps)))	\
-	gedit/resources/gtk/menus-traditional.ui				\
-	gedit/resources/gtk/menus-default.ui					\
-	gedit/resources/gtk/menus-osx.ui					\
+	$(filter-out %gedit/resources/css/gedit-style-os.css,$(gedit_resource_deps))	\
 	gedit/resources/css/gedit-style-osx.css
 
 EXTRA_DIST += 					\
 	gedit/gedit-enum-types.h.template	\
 	gedit/gedit-enum-types.c.template	\
-	gedit/gedit-marshal.list		\
 	gedit/gedit.rc				\
 	gedit/Gedit-3.0.metadata		\
 	gedit/resources/gedit.gresource.xml.in	\
+	gedit/resources/pixmaps/gedit.ico	\
 	$(gedit_dist_resource_deps)
 
 if HAVE_INTROSPECTION

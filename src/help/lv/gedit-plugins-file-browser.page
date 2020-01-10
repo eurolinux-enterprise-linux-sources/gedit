@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email its:translate="no">jwcampbell@gmail.com</email>
+    <email its:translate="no">jcampbell@gnome.org</email>
   </credit>
-  <desc>Izmantot sānu rūti, lai pārlūkotu un atvērtu datnes</desc>
+  <desc>Izmantot sānu rūti, lai pārlūkotu un atvērtu datnes.</desc>
 </info>
 
 <title>Datņu pārlūka rūts</title>

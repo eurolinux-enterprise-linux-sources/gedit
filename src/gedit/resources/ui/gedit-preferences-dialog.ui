@@ -105,6 +105,36 @@
                     <property name="width">2</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkCheckButton" id="display_overview_map_checkbutton">
+                    <property name="label" translatable="yes">Display _overview map</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="display_grid_checkbutton">
+                    <property name="label" translatable="yes">Display _grid pattern</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -521,6 +551,9 @@
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
+                        <accessibility>
+                          <relation type="controller-for" target="font_button"/>
+                        </accessibility>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -556,6 +589,9 @@
                             <property name="font">Sans 12</property>
                             <property name="title" translatable="yes">Pick the editor font</property>
                             <property name="use_font">True</property>
+                            <accessibility>
+                              <relation type="controlled-by" target="default_font_checkbutton"/>
+                            </accessibility>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -615,12 +651,11 @@
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="shadow_type">etched-in</property>
-                        <property name="min_content_height">140</property>
+                        <property name="min_content_height">200</property>
                         <child>
-                          <object class="GtkListBox" id="schemes_list">
+                          <object class="GtkSourceStyleSchemeChooserWidget" id="schemes_list">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="selection_mode">browse</property>
                           </object>
                         </child>
                       </object>
@@ -753,15 +788,5 @@
     <property name="value">8</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
-  </object>
-  <object class="GtkListStore" id="schemes_treeview_model">
-    <columns>
-      <!-- column-name id -->
-      <column type="gchararray"/>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name description -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>

@@ -30,8 +30,6 @@
 #include "gedit-file-chooser-dialog-gtk.h"
 #endif
 
-#include "gedit-marshal.h"
-
 G_DEFINE_INTERFACE (GeditFileChooserDialog, gedit_file_chooser_dialog, G_TYPE_OBJECT)
 
 static gboolean
@@ -50,33 +48,25 @@ confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
 	return continue_emission;
 }
 
-void
+static void
 gedit_file_chooser_dialog_default_init (GeditFileChooserDialogInterface *iface)
 {
-	static gboolean initialized = FALSE;
+	g_signal_new ("response",
+	              G_TYPE_FROM_INTERFACE (iface),
+	              G_SIGNAL_RUN_LAST,
+	              0,
+	              NULL, NULL, NULL,
+	              G_TYPE_NONE,
+	              1,
+	              G_TYPE_INT);
 
-	if (G_UNLIKELY (!initialized))
-	{
-		g_signal_new ("response",
-		              G_TYPE_FROM_INTERFACE (iface),
-		              G_SIGNAL_RUN_LAST,
-		              0, NULL, NULL,
-		              g_cclosure_marshal_VOID__INT,
-		              G_TYPE_NONE,
-		              1,
-		              G_TYPE_INT);
-
-		g_signal_new ("confirm-overwrite",
-		              G_TYPE_FROM_INTERFACE (iface),
-		              G_SIGNAL_RUN_LAST,
-		              0,
-		              confirm_overwrite_accumulator, NULL,
-		              gedit_marshal_ENUM__VOID,
-		              GTK_TYPE_FILE_CHOOSER_CONFIRMATION,
-		              0);
-
-		initialized = TRUE;
-	}
+	g_signal_new ("confirm-overwrite",
+	              G_TYPE_FROM_INTERFACE (iface),
+	              G_SIGNAL_RUN_LAST,
+	              0,
+	              confirm_overwrite_accumulator, NULL, NULL,
+	              GTK_TYPE_FILE_CHOOSER_CONFIRMATION,
+	              0);
 }
 
 GeditFileChooserDialog *

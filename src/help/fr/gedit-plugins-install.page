@@ -5,13 +5,13 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>Installer des greffons de tierce-partie</desc>
+    <desc>Installer des greffons de tierce-partie.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -78,7 +78,7 @@
 
   <p>L'installation de greffons de tierce-partie procure des fonctionnalités supplémentaires non incluses dans les greffons <app>gedit</app> par défaut et dans le paquet <app>gedit-plugins</app>. Une liste en ligne de greffons de tierce-partie est maintenue à jour <link href="https://wiki.gnome.org/Apps/Gedit">ici</link>.</p>
   
-  <p>L'installation de greffons de tierce-partie signifie téléchargement du greffon, mise en place des fichiers du greffon dans le bon répertoire et activation du greffon.</p>
+  <p>L'installation d'un greffon de tierce-partie consiste à télécharger le greffon, à la mise en place des fichiers du greffon dans le bon répertoire et à l'activation du greffon.</p>
   
   <steps>
     <item><p>Vous pouvez normalement télécharger un greffon à partir du site Web du greffon mais il peut être nécessaire d'installer des programmes de contrôle de version comme <app>git</app>, <app>bazaar</app> ou <app>subversion</app> pour copier un dépôt logiciel de greffon à partir d'internet. Consultez la documentation du greffon pour apprendre comment récupérer le greffon.</p></item>

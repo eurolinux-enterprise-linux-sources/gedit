@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Підтримка режиму рядків в стилі «Emacs», «Kate» та «Vim»</desc>
+  <desc>Emacs, Kate and Vim-style modelines support for gedit.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Максим Дзюманенко</mal:name>

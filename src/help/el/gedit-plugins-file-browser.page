@@ -10,16 +10,10 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email its:translate="no">jwcampbell@gmail.com</email>
+    <email its:translate="no">jcampbell@gnome.org</email>
   </credit>
-  <desc>Χρησιμοποιήστε την πλευρική στήλη για να περιηγηθείτε και να ανοίξετε αρχεία</desc>
+  <desc>Χρησιμοποιήστε την πλευρική στήλη για να περιηγηθείτε και να ανοίξετε αρχεία.</desc>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Για την Ελληνική μεταφραστική ομάδα GNOME</mal:name>
-      <mal:email>team@gnome.gr</mal:email>
-      <mal:years>2009, 2011, 2012, 2013, 2014</mal:years>
-    </mal:credit>
-  
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Μάριος Ζηντίλης</mal:name>
       <mal:email>m.zindilis@dmajor.org</mal:email>
@@ -41,7 +35,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

@@ -27,7 +27,6 @@
 #include "gedit-file-browser-store.h"
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-view.h"
-#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 
 struct _GeditFileBrowserViewPrivate
@@ -301,16 +300,20 @@ static void
 set_click_policy_property (GeditFileBrowserView            *obj,
 			   GeditFileBrowserViewClickPolicy  click_policy)
 {
-	GtkTreeIter iter;
 	GdkDisplay *display;
+	GtkTreeIter iter;
 	GdkWindow *win;
+
+	display = gtk_widget_get_display (GTK_WIDGET (obj));
 
 	obj->priv->click_policy = click_policy;
 
 	if (click_policy == GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_SINGLE)
 	{
 		if (obj->priv->hand_cursor == NULL)
-			obj->priv->hand_cursor = gdk_cursor_new (GDK_HAND2);
+		{
+			obj->priv->hand_cursor = gdk_cursor_new_from_name (display, "pointer");
+		}
 	}
 	else if (click_policy == GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE)
 	{
@@ -332,10 +335,10 @@ set_click_policy_property (GeditFileBrowserView            *obj,
 			win = gtk_widget_get_window (GTK_WIDGET (obj));
 			gdk_window_set_cursor (win, NULL);
 
-			display = gtk_widget_get_display (GTK_WIDGET (obj));
-
 			if (display != NULL)
+			{
 				gdk_display_flush (display);
+			}
 		}
 
 		if (obj->priv->hand_cursor)
@@ -936,33 +939,29 @@ gedit_file_browser_view_class_init (GeditFileBrowserViewClass *klass)
 	    g_signal_new ("error",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   error), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__UINT_STRING,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, error),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	signals[FILE_ACTIVATED] =
 	    g_signal_new ("file-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   file_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, file_activated),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	signals[DIRECTORY_ACTIVATED] =
 	    g_signal_new ("directory-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   directory_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, directory_activated),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	signals[BOOKMARK_ACTIVATED] =
 	    g_signal_new ("bookmark-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   bookmark_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, bookmark_activated),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 }
 

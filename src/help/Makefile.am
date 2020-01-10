@@ -1,3 +1,5 @@
+if ENABLE_USER_HELP
+
 @YELP_HELP_RULES@
 
 HELP_ID = gedit
@@ -49,10 +51,11 @@ HELP_FILES = \
 	gedit-tabs-moving.page \
 	gedit-tabs.page \
 	gedit-undo-recent-action.page \
-	gedit-view-open-files-in-sidepane.page \
 	index.page \
 	legal.xml
 
-HELP_LINGUAS = ar bg ca cs da de el es eu fi fr gl hu id it ja ko lv oc pt_BR ru sl sv te th uk zh_CN zh_HK zh_TW
+HELP_LINGUAS = ar bg ca cs da de el es eu fi fr gl hu id it ja ko lv oc pt_BR ro ru sl sv te th uk zh_CN zh_HK zh_TW
+
+endif
 
 -include $(top_srcdir)/git.mk

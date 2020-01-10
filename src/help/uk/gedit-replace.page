@@ -4,11 +4,13 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
+    <desc>Replace portions of text in a file.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
+    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -21,6 +23,14 @@
     <credit type="editor">
       <name>Катерина Герасимова</name>
       <email>kittykat3756@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email>tyagishobha@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -44,7 +54,10 @@
   <steps>
     <title>Заміна тексту з «<app>gedit</app>»</title>
     <item>
-      <p>Відкрийте інструмент «<gui>Замінити</gui>», клацнувши на <guiseq><gui style="menu">«Знайти»</gui><gui style="menuitem">«Замінити…»</gui></guiseq> або натиснувши <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Open the <gui>Replace</gui> tool by clicking
+      <guiseq><gui style="button">Menu button</gui><gui style="menuitem">Find 
+      and Replace…</gui></guiseq> or press
+      <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>У полі «<gui>Шукати:</gui>» введіть текст, який потрібно замінити.</p>
@@ -98,7 +111,8 @@
 <section id="escape-sequences">
   <title>Використання керівних послідовностей</title>
 
-  <p>Можна використовувати <em>керівні послідовності</em> для пошуку розривів рядків та символів табуляції.</p>
+  <p>You can use <em>escape sequences</em> to search for line breaks, carriage
+  returns, and tabs.</p>
 
   <terms>
     <item>
@@ -106,12 +120,12 @@
       <p>Символ нового рядка</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Символ табуляції</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Символ повернення каретки</p>
+    </item>
+    <item>
+      <title>\t</title>
+      <p>Символ табуляції</p>
     </item>
   </terms>
 

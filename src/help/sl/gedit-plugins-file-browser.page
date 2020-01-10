@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email its:translate="no">jwcampbell@gmail.com</email>
+    <email its:translate="no">jcampbell@gnome.org</email>
   </credit>
-  <desc>Uporabite stranski pladenj za brskanje in odpiranje datotek</desc>
+  <desc>Use the side pane to browse and open files.</desc>
 </info>
 
 <title>Pladenj pregledovalnika datotek</title>

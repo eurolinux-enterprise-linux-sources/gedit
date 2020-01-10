@@ -19,39 +19,17 @@
  */
 
 
-#ifndef __GEDIT_HIGHLIGHT_MODE_DIALOG_H__
-#define __GEDIT_HIGHLIGHT_MODE_DIALOG_H__
+#ifndef GEDIT_HIGHLIGHT_MODE_DIALOG_H
+#define GEDIT_HIGHLIGHT_MODE_DIALOG_H
 
 #include <glib.h>
 #include "gedit-highlight-mode-selector.h"
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG		(gedit_highlight_mode_dialog_get_type ())
-#define GEDIT_HIGHLIGHT_MODE_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, GeditHighlightModeDialog))
-#define GEDIT_HIGHLIGHT_MODE_DIALOG_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, GeditHighlightModeDialog const))
-#define GEDIT_HIGHLIGHT_MODE_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, GeditHighlightModeDialogClass))
-#define GEDIT_IS_HIGHLIGHT_MODE_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG))
-#define GEDIT_IS_HIGHLIGHT_MODE_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG))
-#define GEDIT_HIGHLIGHT_MODE_DIALOG_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG, GeditHighlightModeDialogClass))
+#define GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG (gedit_highlight_mode_dialog_get_type ())
 
-typedef struct _GeditHighlightModeDialog	GeditHighlightModeDialog;
-typedef struct _GeditHighlightModeDialogClass	GeditHighlightModeDialogClass;
-typedef struct _GeditHighlightModeDialogPrivate	GeditHighlightModeDialogPrivate;
-
-struct _GeditHighlightModeDialog
-{
-	GtkDialog parent;
-
-	GeditHighlightModeDialogPrivate *priv;
-};
-
-struct _GeditHighlightModeDialogClass
-{
-	GtkDialogClass parent_class;
-};
-
-GType                       gedit_highlight_mode_dialog_get_type        (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GEDIT, HIGHLIGHT_MODE_DIALOG, GtkDialog)
 
 GtkWidget                  *gedit_highlight_mode_dialog_new             (GtkWindow *parent);
 
@@ -59,6 +37,6 @@ GeditHighlightModeSelector *gedit_highlight_mode_dialog_get_selector    (GeditHi
 
 G_END_DECLS
 
-#endif /* __GEDIT_HIGHLIGHT_MODE_DIALOG_H__ */
+#endif /* GEDIT_HIGHLIGHT_MODE_DIALOG_H */
 
 /* ex:set ts=8 noet: */

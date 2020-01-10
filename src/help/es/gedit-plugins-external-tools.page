@@ -12,15 +12,15 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Ejecutar scripts sobre sus archivos actuales e interactuar con otras aplicaciones</desc>
-  <!--INFOAT: http://live.gnome.org/Gedit/ToolLauncherPlugin-->
+  <desc>Ejecutar scripts sobre sus archivos actuales e interactuar con otras aplicaciones.</desc>
+  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2014</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

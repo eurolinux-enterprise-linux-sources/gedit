@@ -1,62 +1,71 @@
 %global _changelog_trimtime %(date +%s -d "1 year ago")
 
-%define glib2_version 2.39.5
-%define gtk3_version 3.13.6
-%define pygo_version 3.0.0
-%define desktop_file_utils_version 0.9
-%define gtksourceview_version 3.13.4
-%define enchant_version 1.2.0
-%define isocodes_version 0.35
-%define libpeas_version 1.7.0
+%if 0%{?fedora} > 12
+%global with_python3 1
+%else
+%global with_python3 0
+%endif
 
-Summary:	Text editor for the GNOME desktop
+%if %{with_python3}
+%global __python %{__python3}
+%endif
+
+%global glib2_version 2.44
+%global gtk3_version 3.21.3
+%global gtksourceview_version 3.21.2
+%global libpeas_version 1.14.1
+%global gspell_version 0.2.5
+%global pygo_version 3.0.0
+
 Name:		gedit
 Epoch:		2
-Version:	3.14.3
-Release:	9%{?dist}
+Version:	3.22.0
+Release:	3%{?dist}
+Summary:	Text editor for the GNOME desktop
+
 License:	GPLv2+ and GFDL
-Group:		Applications/Editors
-#VCS: git:git://git.gnome.org/gedit
-Source0:	http://download.gnome.org/sources/gedit/3.14/gedit-%{version}.tar.xz
+URL:		https://wiki.gnome.org/Apps/Gedit
+Source0:	https://download.gnome.org/sources/%{name}/3.22/%{name}-%{version}.tar.xz
+Source1:        ja.po
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1016757
 Patch4: gedit-disable-python3.patch
 
-# https://bugzilla.redhat.com/show_bug.cgi?id=1251840
-Patch5: jp-search.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1247999
-Patch6: 0001-po-es-use-single-quote-instead-of-chevrons.patch
-
-URL:		http://projects.gnome.org/gedit/
-
-Requires(post):         desktop-file-utils >= %{desktop_file_utils_version}
-Requires(postun):       desktop-file-utils >= %{desktop_file_utils_version}
-
 BuildRequires: gnome-common
-BuildRequires: glib2-devel >= %{glib2_version}
-BuildRequires: gtk3-devel >= %{gtk3_version}
-BuildRequires: desktop-file-utils >= %{desktop_file_utils_version}
-BuildRequires: enchant-devel >= %{enchant_version}
-BuildRequires: iso-codes-devel >= %{isocodes_version}
-BuildRequires: libattr-devel
-BuildRequires: gtksourceview3-devel >= %{gtksourceview_version}
+BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
+BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(gsettings-desktop-schemas)
+BuildRequires: pkgconfig(gspell-1) >= %{gspell_version}
+BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
+BuildRequires: pkgconfig(gtksourceview-3.0) >= %{gtksourceview_version}
+BuildRequires: pkgconfig(iso-codes)
+BuildRequires: pkgconfig(libpeas-gtk-1.0) >= %{libpeas_version}
+BuildRequires: pkgconfig(libxml-2.0)
+BuildRequires: pkgconfig(pygobject-3.0) >= %{pygo_version}
+BuildRequires: desktop-file-utils
 BuildRequires: gettext
-BuildRequires: pygobject3-devel
-BuildRequires: libpeas-devel >= %{libpeas_version}
-BuildRequires: gsettings-desktop-schemas-devel
 BuildRequires: which
-BuildRequires: autoconf, automake, libtool
 BuildRequires: intltool
-BuildRequires: gobject-introspection-devel
 BuildRequires: yelp-tools
 BuildRequires: itstool
-BuildRequires: vala-tools
+BuildRequires: vala
+%if %{with_python3}
+BuildRequires: python3-devel
+%else
 BuildRequires: python-devel
+%endif
+BuildRequires: /usr/bin/appstream-util
 
 Requires: glib2%{?_isa} >= %{glib2_version}
+Requires: gspell%{?_isa} >= %{gspell_version}
 Requires: gtk3%{?_isa} >= %{gtk3_version}
 Requires: gtksourceview3%{?_isa} >= %{gtksourceview_version}
+%if %{with_python3}
+Requires: libpeas-loader-python3%{?_isa}
+Requires: python3-gobject >= %{pygo_version}
+%else
+Requires: libpeas-loader-python%{?_isa}
+%endif
 # the run-command plugin uses zenity
 Requires: zenity
 Requires: gsettings-desktop-schemas
@@ -78,8 +87,7 @@ gedit-plugins package.
 
 %package devel
 Summary: Support for developing plugins for the gedit text editor
-Group: Development/Libraries
-Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
 gedit is a small, but powerful text editor for the GNOME desktop.
@@ -90,16 +98,16 @@ Install gedit-devel if you want to write plugins for gedit.
 
 %prep
 %setup -q
+cp -f $RPM_SOURCE_DIR/ja.po po
 
 %patch4 -p1 -b .disable-python
-%patch5 -p1 -b .jp-search
-%patch6 -p1 -b .es-po-quotes
 
 autoreconf -i -f
 intltoolize -f
 
 %build
 %configure \
+	--disable-static \
 	--disable-gtk-doc \
 	--enable-introspection=yes \
 	--enable-python=yes \
@@ -108,11 +116,9 @@ intltoolize -f
 make %{_smp_mflags}
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
-## clean up all the static libs for plugins (workaround for no -module)
-/bin/rm -f `find $RPM_BUILD_ROOT%{_libdir} -name "*.a"`
-/bin/rm -f `find $RPM_BUILD_ROOT%{_libdir} -name "*.la"`
+find $RPM_BUILD_ROOT -name '*.la' -delete
 
 %find_lang %{name} --with-gnome
 
@@ -129,6 +135,7 @@ X-RHEL-AliasOf=org.gnome.gedit
 EOF
 
 %check
+appstream-util validate-relax --nonet $RPM_BUILD_ROOT/%{_datadir}/appdata/org.gnome.gedit.appdata.xml
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.gedit.desktop
 
 %post
@@ -148,11 +155,17 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >&/dev/null || :
 glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 
 %files -f %{name}.lang
-%doc README COPYING AUTHORS
+%doc README AUTHORS
+%license COPYING
 %{_datadir}/gedit
 %{_datadir}/applications/*.desktop
 %{_mandir}/man1/*
+%if %{with_python3}
+%{python3_sitearch}/gi/overrides/Gedit.py*
+%{python3_sitearch}/gi/overrides/__pycache__
+%else
 %{python2_sitearch}/gi/overrides/*
+%endif
 %{_libexecdir}/gedit
 %{_libdir}/gedit/girepository-1.0
 %dir %{_libdir}/gedit
@@ -190,15 +203,61 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/dbus-1/services/org.gnome.gedit.service
-
+%{_datadir}/icons/hicolor/*/apps/gedit.png
+%{_datadir}/icons/hicolor/symbolic/apps/gedit-symbolic.svg
 
 %files devel
-%{_includedir}/gedit-3.12
+%{_includedir}/gedit-3.14
 %{_libdir}/pkgconfig/gedit.pc
 %{_datadir}/gtk-doc
 %{_datadir}/vala/
 
 %changelog
+* Tue May 30 2017 Ray Strode <rstrode@redhat.com> - 2:3.22.0-3
+- add improved japanese translation
+  Resolves: #1382638
+
+* Mon Sep 19 2016 Kalev Lember <klember@redhat.com> - 2:3.22.0-1
+- Update to 3.22.0
+- Resolves: #1386863
+
+* Mon Aug 01 2016 Ray Strode <rstrode@redhat.com> - 3.14.3-18
+- Updated version of python3→2 patch from Matej Cepl
+  Resolves: #1360922
+
+* Fri Apr 15 2016 Ray Strode <rstrode@redhat.com> - 3.14.3-17
+- Fix close after save functionality when closing window
+  with unsaved documents
+  Resolves: #1247999
+
+* Fri Apr 15 2016 Mike FABIAN <mfabian@redhat.com> 3.14.3-16
+- Add a shorcut for German for the open button
+  Resolves: #1279299
+
+* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-15
+- Add a snipplet for rpm changelogs
+  Resolves: #1301769
+
+* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-14
+- Fix desktop files for external tools
+  Resolves: #1301764
+
+* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-13
+- Fix spell checker metadata saving
+  Resolves: #1301761
+
+* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-12
+- Fix printing margins
+  Resolves: #1301726
+
+* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-11
+- Fix desktop actions
+  Resolves: #1301760
+
+* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-10
+- Really fix chevrons in schemas
+  Resolves: #1258357
+
 * Wed Sep 23 2015 Ray Strode <rstrode@redhat.com> 3.14.3-9
 - Add X-RHEL-AliasOf=org.gnome.gedit to compat desktop file
   Related: #1259292

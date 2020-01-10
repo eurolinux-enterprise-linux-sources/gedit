@@ -4,11 +4,13 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
+    <desc>Remplacer des portions de texte dans un fichier.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
+    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -21,6 +23,14 @@
     <credit type="editor">
       <name>Ekaterina Gerasimova</name>
       <email>kittykat3756@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email>tyagishobha@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
@@ -92,7 +102,7 @@
   <steps>
     <title>Remplacement de texte dans <app>gedit</app></title>
     <item>
-      <p>Ouvrez l'outil <gui>Remplacer</gui> en cliquant sur <guiseq><gui style="menu">Rechercher</gui><gui style="menuitem">Remplacer…</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Ouvrez l'outil <gui>Remplacer</gui> en cliquant sur le <guiseq><gui style="menu">bouton menu</gui><gui style="menuitem">Rechercher et remplacer…</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>Saisissez le texte que vous voulez remplacer dans le champ <gui>Rechercher</gui>.</p>
@@ -146,7 +156,7 @@
 <section id="escape-sequences">
   <title>Utilisation des séquences d'échappement</title>
 
-  <p>Les <em>séquences d'échappement</em> permettent de rechercher les retours à la ligne et les tabulations.</p>
+  <p>Les <em>séquences d'échappement</em> permettent de rechercher les retours à la ligne, les retours de chariot et les tabulations.</p>
 
   <terms>
     <item>
@@ -154,12 +164,12 @@
       <p>Nouvelle ligne</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Tabulation</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Retour à la ligne</p>
+    </item>
+    <item>
+      <title>\t</title>
+      <p>Tabulation</p>
     </item>
   </terms>
 

@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Usar atajos del teclado para ayudarle a trabajar más rápidamente.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,12 +32,18 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2014</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -59,8 +67,8 @@
     <title>Tecla rápidas relacionadas con las pestañas</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -111,18 +119,26 @@
     <title>Teclas rápidas para trabajar con archivos</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Crear un documento nuevo</p></td>
+          <td><p>Crear un documento nuevo en una ventana nueva</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Crear un documento nuevo en una pestaña nueva</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Abrir un documento</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Abra la ventana <gui>Apertura rápida</gui></p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Guardar el documento actual</p></td>
@@ -155,8 +171,8 @@
     <title>Teclas rápidas para editar archivos</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -247,8 +263,8 @@
     <title>Teclas rápidas para mostrar y ocultar paneles</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -261,6 +277,10 @@
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
         </tr>
+        <tr>
+          <td><p>Abrir el menú del archivo</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
       </tbody>
     </table>
 
@@ -268,8 +288,8 @@
     <title>Teclas rápidas para búsquedas</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -304,8 +324,8 @@
     <title>Teclas rápidas para las herramientas</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -332,8 +352,8 @@
     <title>Teclas rápidas para la ayuda</title>
       <thead>
         <tr>
-          <td><p>Para hacer esto</p></td>
-          <td><p>Pulsar esto</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atajo del teclado</p></td>
         </tr>
       </thead>
       <tbody>

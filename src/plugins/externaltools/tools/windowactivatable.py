@@ -18,7 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', 'OutputPanel', 'Capture', 'UniqueById')
 
-from gi.repository import GLib, Gio, GObject, Gtk, Gedit, PeasGtk
+from gi.repository import GLib, Gio, GObject, Gtk, Gedit
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
 from .capture import Capture
@@ -45,7 +45,8 @@ class ToolActions(object):
 
     def _insert_directory(self, directory):
         for tool in sorted(directory.tools, key=lambda x: x.name.lower()):
-            action_name = 'external-tool_%X_%X' % (id(tool), id(tool.name))
+            # FIXME: find a better way to share the action name
+            action_name = 'external-tool-%X-%X' % (id(tool), id(tool.name))
             self._action_tools[action_name] = tool
 
             action = Gio.SimpleAction(name=action_name)
@@ -75,8 +76,8 @@ class ToolActions(object):
             remote = False
             language = None
         else:
-            titled = document.get_location() is not None
-            remote = not document.is_local()
+            titled = document.get_file().get_location() is not None
+            remote = not document.get_file().is_local()
             language = document.get_language()
 
         states = {
@@ -98,7 +99,7 @@ class ToolActions(object):
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "ExternalToolsWindowActivatable"
 
-    window = GObject.property(type=Gedit.Window)
+    window = GObject.Property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)

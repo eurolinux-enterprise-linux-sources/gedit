@@ -7,19 +7,19 @@
 
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Шобха Тиаджи (Shobha Tyagi)</name>
       <email>tyagishobha@gmail.com</email>
     </credit>
 
-    <desc>Быстро открыть файл или набор файлов</desc>
+    <desc>Quickly open a file or set of files.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2014.</mal:years>
+      <mal:years>2011-2015.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

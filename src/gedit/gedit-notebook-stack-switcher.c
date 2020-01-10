@@ -141,11 +141,22 @@ on_child_changed (GtkWidget                  *widget,
                   GParamSpec                 *pspec,
                   GeditNotebookStackSwitcher *switcher)
 {
+	GtkNotebook *notebook;
 	GtkWidget *child;
 	GtkWidget *nb_child;
+	gint nb_page;
+
+	notebook = GTK_NOTEBOOK (switcher->priv->notebook);
 
 	child = gtk_stack_get_visible_child (GTK_STACK (widget));
 	nb_child = find_notebook_child (switcher, child);
+
+	nb_page = gtk_notebook_page_num (notebook, nb_child);
+
+	g_signal_handlers_block_by_func (widget, on_child_prop_changed, switcher);
+	gtk_notebook_set_current_page (notebook, nb_page);
+	g_signal_handlers_unblock_by_func (widget, on_child_prop_changed, switcher);
+
 	sync_label (switcher, child, nb_child);
 }
 
@@ -195,7 +206,14 @@ on_notebook_switch_page (GtkNotebook                *notebook,
 	GtkWidget *child;
 
 	child = g_object_get_data (G_OBJECT (page), "stack-child");
-	if (child != NULL)
+
+	/* NOTE: we make the assumption here that if there is no visible child
+	 * it means that the child does not contain any child already, this is
+	 * to avoid an assertion when closing gedit, since the remove signal
+	 * runs first on the stack handler so we try to set a visible child
+	 * when the stack already does not handle that child
+	 */
+	if (child != NULL && gtk_stack_get_visible_child (priv->stack) != NULL)
 	{
 		gtk_stack_set_visible_child (priv->stack, child);
 	}

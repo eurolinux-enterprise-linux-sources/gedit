@@ -4,12 +4,13 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins" /> 
+    <desc>Check your files for spelling errors.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Baptiste Mille-Mathias</name>
@@ -22,7 +23,6 @@
     
     <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
     
-    <desc>Enable and use spell-checking feature</desc>
   </info>
   
   <title>Spell-check your document</title>

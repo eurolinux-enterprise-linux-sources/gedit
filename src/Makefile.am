@@ -8,7 +8,6 @@ SUBDIRS += help
 endif
 
 EXTRA_DIST = 			\
-	BUGS			\
 	HACKING			\
 	MAINTAINERS		\
 	gedit.doap		\
@@ -85,15 +84,13 @@ pkglib_LTLIBRARIES        =
 gsettings_SCHEMAS         =
 gsettings_ENUMS           =
 dist_gsettingsschema_DATA =
-TESTS                     =
 BUILT_SOURCES             =
 CLEANFILES                =
 
 include data/Makefile.am
-include pixmaps/Makefile.am
+include data/icons/Makefile.am
 include win32/Makefile.am
 include osx/bundle/data/Makefile.am
-include tests/Makefile.am
 include plugins/Makefile.am
 include gedit/Makefile.am
 
@@ -102,8 +99,6 @@ include gedit/Makefile.am
 CLEANFILES += $(gsettings_SCHEMAS) $(gsettings_ENUMS) $(BUILT_SOURCES)
 DISTCLEANFILES += $(gsettings_SCHEMAS) $(gsettings_ENUMS) $(BUILT_SOURCES)
 MAINTAINERCLEANFILES += $(gsettings_SCHEMAS:.xml=.valid)
-
-noinst_PROGRAMS += $(TESTS)
 
 @INTLTOOL_DESKTOP_RULE@
 @INTLTOOL_XML_RULE@

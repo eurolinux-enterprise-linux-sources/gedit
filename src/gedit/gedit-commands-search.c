@@ -26,6 +26,7 @@
 #endif
 
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
@@ -33,6 +34,8 @@
 
 #include "gedit-debug.h"
 #include "gedit-statusbar.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-view-frame.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
@@ -171,11 +174,12 @@ forward_search_finished (GtkSourceSearchContext *search_context,
 	GtkTextIter match_start;
 	GtkTextIter match_end;
 
-	found = gtk_source_search_context_forward_finish (search_context,
-							  result,
-							  &match_start,
-							  &match_end,
-							  NULL);
+	found = gtk_source_search_context_forward_finish2 (search_context,
+							   result,
+							   &match_start,
+							   &match_end,
+							   NULL,
+							   NULL);
 
 	buffer = gtk_source_search_context_get_buffer (search_context);
 
@@ -276,11 +280,12 @@ backward_search_finished (GtkSourceSearchContext *search_context,
 	GtkTextIter match_end;
 	GtkSourceBuffer *buffer;
 
-	found = gtk_source_search_context_backward_finish (search_context,
-							   result,
-							   &match_start,
-							   &match_end,
-							   NULL);
+	found = gtk_source_search_context_backward_finish2 (search_context,
+							    result,
+							    &match_start,
+							    &match_end,
+							    NULL,
+							    NULL);
 
 	buffer = gtk_source_search_context_get_buffer (search_context);
 
@@ -419,12 +424,12 @@ do_replace (GeditReplaceDialog *dialog,
 
 	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
 
-	gtk_source_search_context_replace (search_context,
-					   &start,
-					   &end,
-					   unescaped_replace_text,
-					   -1,
-					   &error);
+	gtk_source_search_context_replace2 (search_context,
+					    &start,
+					    &end,
+					    unescaped_replace_text,
+					    -1,
+					    &error);
 
 	g_free (unescaped_replace_text);
 
@@ -441,26 +446,36 @@ static void
 do_replace_all (GeditReplaceDialog *dialog,
 		GeditWindow        *window)
 {
-	GeditDocument *doc;
+	GeditView *view;
 	GtkSourceSearchContext *search_context;
+	GtkTextBuffer *buffer;
+	GtkSourceCompletion *completion;
 	const gchar *replace_entry_text;
 	gchar *unescaped_replace_text;
 	gint count;
 	GError *error = NULL;
 
-	doc = gedit_window_get_active_document (window);
+	view = gedit_window_get_active_view (window);
 
-	if (doc == NULL)
+	if (view == NULL)
 	{
 		return;
 	}
 
-	search_context = gedit_document_get_search_context (doc);
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
+	search_context = gedit_document_get_search_context (GEDIT_DOCUMENT (buffer));
 
 	if (search_context == NULL)
 	{
 		return;
 	}
+
+	/* FIXME: this should really be done automatically in gtksoureview, but
+	 * it is an important performance fix, so let's do it here for now.
+	 */
+	completion = gtk_source_view_get_completion (GTK_SOURCE_VIEW (view));
+	gtk_source_completion_block_interactive (completion);
 
 	/* replace text may be "", we just delete all occurrences */
 	replace_entry_text = gedit_replace_dialog_get_replace_text (dialog);
@@ -474,6 +489,8 @@ do_replace_all (GeditReplaceDialog *dialog,
 						       &error);
 
 	g_free (unescaped_replace_text);
+
+	gtk_source_completion_unblock_interactive (completion);
 
 	if (count > 0)
 	{
@@ -571,7 +588,7 @@ _gedit_cmd_search_find (GSimpleAction *action,
 		return;
 	}
 
-	frame = GEDIT_VIEW_FRAME (_gedit_tab_get_view_frame (active_tab));
+	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_popup_search (frame);
 }
 
@@ -648,10 +665,10 @@ _gedit_cmd_search_clear_highlight (GSimpleAction *action,
 		return;
 	}
 
-	frame = GEDIT_VIEW_FRAME (_gedit_tab_get_view_frame (active_tab));
+	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_clear_search (frame);
 
-	doc = gedit_view_frame_get_document (frame);
+	doc = gedit_tab_get_document (active_tab);
 	gedit_document_set_search_context (doc, NULL);
 }
 
@@ -673,7 +690,7 @@ _gedit_cmd_search_goto_line (GSimpleAction *action,
 		return;
 	}
 
-	frame = GEDIT_VIEW_FRAME (_gedit_tab_get_view_frame (active_tab));
+	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_popup_goto_line (frame);
 }
 

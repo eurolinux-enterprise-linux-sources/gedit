@@ -6,9 +6,10 @@
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Додає інтерактивну консоль «Python» до нижньої панелі</desc>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  <desc>Add an interactive Python console to the bottom pane.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Максим Дзюманенко</mal:name>

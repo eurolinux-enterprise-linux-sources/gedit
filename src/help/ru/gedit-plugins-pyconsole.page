@@ -6,14 +6,15 @@
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
   <credit type="author">
     <name>Джим Кэмпбелл (Jim Campbell)</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Добавление интерактивной консоли Python на нижнюю панель</desc>
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  <desc>Add an interactive Python console to the bottom pane.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2014.</mal:years>
+      <mal:years>2011-2015.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

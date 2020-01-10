@@ -5,10 +5,11 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
+    <desc>Īss gedit ievads.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
@@ -22,9 +23,7 @@
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Once <app>gedit</app> launches, you can start writing right away. To save
-  your text, just click the <gui>Save</gui> icon in the <app>gedit</app>
-  toolbar.</p>
+  <p>Kolīdz <app>gedit</app> ir palaista, var sākt rakstīt. Lai saglabātu tekstu, nospiediet <gui>Saglabāt</gui> ikonu <app>gedit</app> rīkjoslā.</p>
 
   <p>Lai uzzinātu par citām <app>gedit</app> funkcijām un gūtu palīdzību citu darbību veikšanā, apskatiet <app>gedit</app> palīdzības <link xref="index">pārējās sadaļas</link>.</p>
 

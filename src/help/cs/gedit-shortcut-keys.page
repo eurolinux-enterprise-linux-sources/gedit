@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Jak používat klávesové zkratky ke zrychlení své práce.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -53,8 +61,8 @@
     <title>Klávesové zkratky vztahující se ke kartám</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>
@@ -105,18 +113,26 @@
     <title>Klávesové zkratky pro práci se soubory</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Vytvořit nový dokument</p></td>
+          <td><p>Vytvořit nový dokument v novém okně</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Vytvořit nový dokument v nové kartě</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Otevřít dokument</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Otevřít okno <gui>Rychlé otevření</gui></p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Uložit aktuální dokument</p></td>
@@ -149,8 +165,8 @@
     <title>Klávesové zkratky pro úpravu souborů</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>
@@ -241,8 +257,8 @@
     <title>Klávesové zkratky pro zobrazování a skrývání panelů</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>
@@ -255,6 +271,10 @@
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
         </tr>
+        <tr>
+          <td><p>Otevřít nabídku pro soubor</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
       </tbody>
     </table>
 
@@ -262,8 +282,8 @@
     <title>Klávesové zkratky pro hledávání</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>
@@ -298,8 +318,8 @@
     <title>Klávesové zkratky pro nástroje</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>
@@ -326,8 +346,8 @@
     <title>Klávesové zkratky pro nápovědu</title>
       <thead>
         <tr>
-          <td><p>aby se provedlo toto</p></td>
-          <td><p>zmáčkněte toto</p></td>
+          <td><p>Činnost</p></td>
+          <td><p>Klávesová zkratka</p></td>
         </tr>
       </thead>
       <tbody>

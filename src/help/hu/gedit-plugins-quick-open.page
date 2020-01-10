@@ -7,14 +7,14 @@
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Shobha Tyagi</name>
       <email>tyagishobha@gmail.com</email>
     </credit>
 
-    <desc>Fájl vagy fájlok gyors megnyitása</desc>
+    <desc>Fájl vagy fájlok gyors megnyitása.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Hammer Attila</mal:name>
@@ -25,7 +25,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

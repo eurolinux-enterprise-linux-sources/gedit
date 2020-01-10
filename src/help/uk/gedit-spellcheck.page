@@ -3,12 +3,13 @@
   
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/> 
+    <desc>Check your files for spelling errors.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Baptiste Mille-Mathias</name>
@@ -21,7 +22,6 @@
     
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
     
-    <desc>Увімкнення та використання перевірки орфографії</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Максим Дзюманенко</mal:name>
@@ -101,10 +101,7 @@
 
   <section id="define-spell-check-language">
     <title>Визначення мови для перевірки орфографії</title>
-    <p>By default, <app>gedit</app> will use your current language to spell
-    check your document. If you need to use another language, choose
-    <guiseq><gui style="menu">Tools</gui><gui style="menuitem">Set
-    Language…</gui></guiseq>, then choose the language you want to use.</p>
+    <p>За замовчуванням, для перевірки орфографії документу використовується поточна мова. Якщо потрібно використовувати іншу мову, виберіть <guiseq><gui style="menu">«Інструменти»</gui><gui style="menuitem">«Встановити мову…»</gui></guiseq>, а потім виберіть потрібну мову.</p>
   </section>
 
   <section id="dict">

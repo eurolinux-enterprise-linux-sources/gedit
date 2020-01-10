@@ -33,14 +33,22 @@
 
 #include "gedit-window-private.h"
 #include "gedit-app.h"
+#include "gedit-app-private.h"
 #include "gedit-recent.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-multi-notebook.h"
 #include "gedit-statusbar.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
+#include "gedit-view-frame.h"
+#include "gedit-view-centering.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 #include "gedit-debug.h"
+#include "gedit-document.h"
+#include "gedit-document-private.h"
 #include "gedit-documents-panel.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-window-activatable.h"
@@ -48,9 +56,6 @@
 #include "gedit-dirs.h"
 #include "gedit-status-menu-button.h"
 #include "gedit-settings.h"
-#include "gedit-marshal.h"
-#include "gedit-document.h"
-#include "gedit-small-button.h"
 #include "gedit-menu-stack-switcher.h"
 #include "gedit-highlight-mode-selector.h"
 #include "gedit-open-document-selector.h"
@@ -58,7 +63,15 @@
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
 #define FULLSCREEN_ANIMATION_SPEED 500
 
-/* Signals */
+enum
+{
+	PROP_0,
+	PROP_STATE,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
+
 enum
 {
 	TAB_ADDED,
@@ -69,13 +82,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
-
-enum
-{
-	PROP_0,
-	PROP_STATE
-};
+static guint signals[LAST_SIGNAL];
 
 enum
 {
@@ -161,12 +168,7 @@ save_window_state (GtkWidget *widget)
 	if ((window->priv->window_state &
 	    (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
 	{
-		GtkAllocation allocation;
-
-		gtk_widget_get_allocation (widget, &allocation);
-
-		window->priv->width = allocation.width;
-		window->priv->height = allocation.height;
+                gtk_window_get_size (GTK_WINDOW (widget), &window->priv->width, &window->priv->height);
 
 		g_settings_set (window->priv->window_settings, GEDIT_SETTINGS_WINDOW_SIZE,
 				"(ii)", window->priv->width, window->priv->height);
@@ -251,6 +253,22 @@ gedit_window_finalize (GObject *object)
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
+/* Center the view when the window is in fullscreen mode. */
+static void
+update_view_centering (GeditTab *tab,
+		       gpointer  user_data)
+{
+	GeditViewFrame *view_frame;
+	GeditViewCentering *view_centering;
+	gboolean is_fullscreen;
+
+	view_frame = _gedit_tab_get_view_frame (tab);
+	view_centering = gedit_view_frame_get_view_centering (view_frame);
+
+	is_fullscreen = GPOINTER_TO_BOOLEAN (user_data);
+	gedit_view_centering_set_centered (view_centering, is_fullscreen);
+}
+
 static void
 update_fullscreen (GeditWindow *window,
                    gboolean     is_fullscreen)
@@ -270,6 +288,10 @@ update_fullscreen (GeditWindow *window,
 			gtk_widget_show (window->priv->statusbar);
 		}
 	}
+
+	gedit_multi_notebook_foreach_tab (window->priv->multi_notebook,
+					  (GtkCallback)update_view_centering,
+					  GBOOLEAN_TO_POINTER (is_fullscreen));
 
 #ifndef OS_OSX
 	if (is_fullscreen)
@@ -397,13 +419,22 @@ gedit_window_class_init (GeditWindowClass *klass)
 	widget_class->configure_event = gedit_window_configure_event;
 	widget_class->key_press_event = gedit_window_key_press_event;
 
+	properties[PROP_STATE] =
+		g_param_spec_flags ("state",
+		                    "State",
+		                    "The window's state",
+		                    GEDIT_TYPE_WINDOW_STATE,
+		                    GEDIT_WINDOW_STATE_NORMAL,
+		                    G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
+
 	signals[TAB_ADDED] =
 		g_signal_new ("tab-added",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, tab_added),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -412,8 +443,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, tab_removed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -422,8 +452,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, tabs_reordered),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__VOID,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
 	signals[ACTIVE_TAB_CHANGED] =
@@ -431,8 +460,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, active_tab_changed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -441,20 +469,9 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, active_tab_state_changed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__VOID,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
-
-	g_object_class_install_property (object_class,
-					 PROP_STATE,
-					 g_param_spec_flags ("state",
-							     "State",
-							     "The window's state",
-							     GEDIT_TYPE_WINDOW_STATE,
-							     GEDIT_WINDOW_STATE_NORMAL,
-							     G_PARAM_READABLE |
-							     G_PARAM_STATIC_STRINGS));
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
@@ -516,7 +533,15 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 	}
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "paste");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+
+	/* Since this is emitted async, the disposal of the actions may have
+	 * already happened. Ensure that we have an action before setting the
+	 * state.
+	 */
+	if (action != NULL)
+	{
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+	}
 
 	g_object_unref (window);
 }
@@ -565,6 +590,7 @@ update_actions_sensitivity (GeditWindow *window)
 	gint num_tabs;
 	GeditTabState state = GEDIT_TAB_STATE_NORMAL;
 	GeditDocument *doc = NULL;
+	GtkSourceFile *file = NULL;
 	GeditView *view = NULL;
 	gint tab_number = -1;
 	GAction *action;
@@ -586,6 +612,7 @@ update_actions_sensitivity (GeditWindow *window)
 		state = gedit_tab_get_state (tab);
 		view = gedit_tab_get_view (tab);
 		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+		file = gedit_document_get_file (doc);
 		tab_number = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (tab));
 		editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
 		empty_search = _gedit_document_get_empty_search (doc);
@@ -598,17 +625,15 @@ update_actions_sensitivity (GeditWindow *window)
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
-	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-	                             (doc != NULL) && !gedit_document_get_readonly (doc) &&
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                             (file != NULL) && !gtk_source_file_is_readonly (file) &&
 	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
 	                              (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
-	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
 	                             (doc != NULL) &&
 	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
@@ -634,7 +659,6 @@ update_actions_sensitivity (GeditWindow *window)
 	                             (state != GEDIT_TAB_STATE_SAVING) &&
 	                             (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
 	                             (state != GEDIT_TAB_STATE_PRINTING) &&
-	                             (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 	                             (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
@@ -802,7 +826,8 @@ on_recent_chooser_item_activated (GeditOpenDocumentSelector *open_document_selec
 		locations = g_slist_prepend (locations, (gpointer) location);
 		loaded = gedit_commands_load_locations (window, locations, NULL, 0, 0);
 
-		if (!loaded || loaded->next) /* if it doesn't contain just 1 element */
+		/* if it doesn't contain just 1 element */
+		if (!loaded || loaded->next)
 		{
 			gedit_recent_remove_if_local (location);
 		}
@@ -1053,6 +1078,7 @@ set_title (GeditWindow *window)
 {
 	GeditTab *tab;
 	GeditDocument *doc = NULL;
+	GtkSourceFile *file;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *main_title = NULL;
@@ -1081,6 +1107,8 @@ set_title (GeditWindow *window)
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (doc != NULL);
 
+	file = gedit_document_get_file (doc);
+
 	name = gedit_document_get_short_name_for_display (doc);
 
 	len = g_utf8_strlen (name, -1);
@@ -1099,7 +1127,6 @@ set_title (GeditWindow *window)
 	}
 	else
 	{
-		GtkSourceFile *file = gedit_document_get_file (doc);
 		GFile *location = gtk_source_file_get_location (file);
 
 		if (location != NULL)
@@ -1128,7 +1155,7 @@ set_title (GeditWindow *window)
 		name = tmp_name;
 	}
 
-	if (gedit_document_get_readonly (doc))
+	if (gtk_source_file_is_readonly (file))
 	{
 		title = g_strdup_printf ("%s [%s]",
 		                         name, _("Read-Only"));
@@ -1479,7 +1506,6 @@ analyze_tab_state (GeditTab    *tab,
 			break;
 
 		case GEDIT_TAB_STATE_PRINTING:
-		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
 			window->priv->state |= GEDIT_WINDOW_STATE_PRINTING;
 			break;
 
@@ -1523,7 +1549,7 @@ update_window_state (GeditWindow *window)
 						  window->priv->state,
 						  window->priv->num_tabs_with_error);
 
-		g_object_notify (G_OBJECT (window), "state");
+		g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_STATE]);
 	}
 	else if (old_num_of_errors != window->priv->num_tabs_with_error)
 	{
@@ -1780,16 +1806,16 @@ static gboolean
 real_fullscreen_controls_leave_notify_event (gpointer data)
 {
 	GeditWindow *window = GEDIT_WINDOW (data);
-	gboolean gear_menu_state;
+	gboolean hamburger_menu_state;
 	gboolean fullscreen_open_button_state;
 
-	gear_menu_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
+	hamburger_menu_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
 	fullscreen_open_button_state =
 	                  gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button));
 
 	window->priv->in_fullscreen_eventbox = FALSE;
 
-	if (!gear_menu_state && !fullscreen_open_button_state)
+	if (!hamburger_menu_state && !fullscreen_open_button_state)
 	{
 		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
 	}
@@ -1832,7 +1858,7 @@ fullscreen_controls_setup (GeditWindow *window)
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (priv->fullscreen_open_button),
 	                             priv->fullscreen_open_document_popover);
 
-	window->priv->fullscreen_open_document_selector = gedit_open_document_selector_new ();
+	window->priv->fullscreen_open_document_selector = gedit_open_document_selector_new (window);
 
 	gtk_container_add (GTK_CONTAINER (priv->fullscreen_open_document_popover),
 	                   GTK_WIDGET (priv->fullscreen_open_document_selector));
@@ -1840,7 +1866,7 @@ fullscreen_controls_setup (GeditWindow *window)
 	gtk_widget_show_all (GTK_WIDGET (priv->fullscreen_open_document_selector));
 
 	g_signal_connect (window->priv->fullscreen_open_document_selector,
-	                  "recent-file-activated",
+	                  "file-activated",
 	                  G_CALLBACK (on_recent_chooser_item_activated),
 	                  window);
 }
@@ -1890,7 +1916,7 @@ selection_changed (GeditDocument *doc,
 }
 
 static void
-readonly_changed (GeditDocument *doc,
+readonly_changed (GtkSourceFile *file,
 		  GParamSpec    *pspec,
 		  GeditWindow   *window)
 {
@@ -1921,6 +1947,7 @@ on_tab_added (GeditMultiNotebook *multi,
 {
 	GeditView *view;
 	GeditDocument *doc;
+	GtkSourceFile *file;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -1928,6 +1955,7 @@ on_tab_added (GeditMultiNotebook *multi,
 
 	view = gedit_tab_get_view (tab);
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
 
 	/* IMPORTANT: remember to disconnect the signal in notebook_tab_removed
 	 * if a new signal is connected here */
@@ -1972,10 +2000,6 @@ on_tab_added (GeditMultiNotebook *multi,
 			  "notify::has-selection",
 			  G_CALLBACK (selection_changed),
 			  window);
-	g_signal_connect (doc,
-			  "notify::read-only",
-			  G_CALLBACK (readonly_changed),
-			  window);
 	g_signal_connect (view,
 			  "notify::overwrite",
 			  G_CALLBACK (overwrite_mode_changed),
@@ -1983,6 +2007,10 @@ on_tab_added (GeditMultiNotebook *multi,
 	g_signal_connect (view,
 			  "notify::editable",
 			  G_CALLBACK (editable_changed),
+			  window);
+	g_signal_connect (file,
+			  "notify::read-only",
+			  G_CALLBACK (readonly_changed),
 			  window);
 
 	update_window_state (window);
@@ -2180,11 +2208,18 @@ on_show_popup_menu (GeditMultiNotebook *multi,
 	GtkWidget *menu;
 
 	if (event == NULL)
+	{
 		return;
+	}
 
 	menu = gedit_notebook_popup_menu_new (window, tab);
-	gtk_widget_show (menu);
 
+	g_signal_connect (menu,
+			  "selection-done",
+			  G_CALLBACK (gtk_widget_destroy),
+			  NULL);
+
+	gtk_widget_show (menu);
 	gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
 			NULL, NULL,
 			event->button, event->time);
@@ -2298,7 +2333,6 @@ side_panel_visibility_changed (GtkWidget   *panel,
 {
 	gboolean visible;
 	GAction *action;
-	GtkStyleContext *context;
 	gchar *layout_desc;
 
 	visible = gtk_widget_get_visible (panel);
@@ -2312,15 +2346,12 @@ side_panel_visibility_changed (GtkWidget   *panel,
 	g_simple_action_set_state (G_SIMPLE_ACTION (action), g_variant_new_boolean (visible));
 
 	/* focus the right widget and set the right styles */
-	context = gtk_widget_get_style_context (window->priv->headerbar);
 	if (visible)
 	{
-		gtk_style_context_add_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (window->priv->side_panel);
 	}
 	else
 	{
-		gtk_style_context_remove_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (GTK_WIDGET (window->priv->multi_notebook));
 	}
 
@@ -2395,12 +2426,6 @@ setup_side_panel (GeditWindow *window)
 	GtkWidget *documents_panel;
 
 	gedit_debug (DEBUG_WINDOW);
-
-	g_object_bind_property (window->priv->side_panel,
-	                        "visible",
-	                        window->priv->side_panel_box,
-	                        "visible",
-	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
 
 	g_signal_connect_after (priv->side_panel,
 	                        "notify::visible",
@@ -2512,12 +2537,6 @@ static void
 setup_bottom_panel (GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
-
-	g_object_bind_property (window->priv->bottom_panel,
-	                        "visible",
-	                        window->priv->bottom_panel_box,
-	                        "visible",
-	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
 
 	g_signal_connect_after (window->priv->bottom_panel,
 	                        "notify::visible",
@@ -2714,8 +2733,8 @@ sync_fullscreen_actions (GeditWindow *window,
 	GPropertyAction *action;
 
 	button = fullscreen ? window->priv->fullscreen_gear_button : window->priv->gear_button;
-	g_action_map_remove_action (G_ACTION_MAP (window), "gear-menu");
-	action = g_property_action_new ("gear-menu", button, "active");
+	g_action_map_remove_action (G_ACTION_MAP (window), "hamburger-menu");
+	action = g_property_action_new ("hamburger-menu", button, "active");
 	g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
 	g_object_unref (action);
 }
@@ -2724,7 +2743,7 @@ static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
-	GMenuModel *gear_menu;
+	GMenuModel *hamburger_menu;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -2757,23 +2776,12 @@ gedit_window_init (GeditWindow *window)
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
 
-	g_object_bind_property (window->priv->side_panel,
-	                        "visible",
-	                        window->priv->side_headerbar,
-	                        "visible",
-	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
-	g_object_bind_property (window->priv->titlebar_paned,
-	                        "position",
-	                        window->priv->hpaned,
-	                        "position",
-	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-
 	/* Setup file popover and file dialog */
 	window->priv->open_document_popover = gtk_popover_new (window->priv->open_button);
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->open_button),
 	                             window->priv->open_document_popover);
 
-	window->priv->open_document_selector = gedit_open_document_selector_new ();
+	window->priv->open_document_selector = gedit_open_document_selector_new (window);
 
 	gtk_container_add (GTK_CONTAINER (window->priv->open_document_popover),
 	                   GTK_WIDGET (window->priv->open_document_selector));
@@ -2781,22 +2789,32 @@ gedit_window_init (GeditWindow *window)
 	gtk_widget_show_all (GTK_WIDGET (window->priv->open_document_selector));
 
 	g_signal_connect (window->priv->open_document_selector,
-	                  "recent-file-activated",
+	                  "file-activated",
 	                  G_CALLBACK (on_recent_chooser_item_activated),
 	                  window);
 
 	fullscreen_controls_setup (window);
 	sync_fullscreen_actions (window, FALSE);
 
-	g_object_bind_property (window->priv->open_document_selector->recent_search_entry,
+	g_object_bind_property (gedit_open_document_selector_get_search_entry (window->priv->open_document_selector),
 	                        "text",
-	                        window->priv->fullscreen_open_document_selector->recent_search_entry,
+	                        gedit_open_document_selector_get_search_entry (window->priv->fullscreen_open_document_selector),
 	                        "text",
 	                        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-	gear_menu = _gedit_app_get_window_menu (GEDIT_APP (g_application_get_default ())),
-	gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);
-	gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, gear_menu);
+	hamburger_menu = _gedit_app_get_hamburger_menu (GEDIT_APP (g_application_get_default ()));
+	if (hamburger_menu)
+	{
+		gtk_menu_button_set_menu_model (window->priv->gear_button, hamburger_menu);
+		gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, hamburger_menu);
+	}
+	else
+	{
+		gtk_widget_hide (GTK_WIDGET (window->priv->gear_button));
+		gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_gear_button));
+		gtk_widget_set_no_show_all (GTK_WIDGET (window->priv->gear_button), TRUE);
+		gtk_widget_set_no_show_all (GTK_WIDGET (window->priv->fullscreen_gear_button), TRUE);
+	}
 
 	g_signal_connect (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button),
 	                  "toggled",
@@ -3048,8 +3066,8 @@ process_create_tab (GeditWindow *window,
  * @window: a #GeditWindow
  * @jump_to: %TRUE to set the new #GeditTab as active
  *
- * Creates a new #GeditTab and adds the new tab to the #GeditNotebook.
- * In case @jump_to is %TRUE the #GeditNotebook switches to that new #GeditTab.
+ * Creates a new #GeditTab and adds the new tab to the #GtkNotebook.
+ * In case @jump_to is %TRUE the #GtkNotebook switches to that new #GeditTab.
  *
  * Returns: (transfer none): a new #GeditTab
  */
@@ -3065,7 +3083,7 @@ gedit_window_create_tab (GeditWindow *window,
 	gedit_debug (DEBUG_WINDOW);
 
 	notebook = _gedit_window_get_notebook (window);
-	tab = GEDIT_TAB (_gedit_tab_new ());
+	tab = _gedit_tab_new ();
 	gtk_widget_show (GTK_WIDGET (tab));
 
 	return process_create_tab (window, notebook, tab, jump_to);
@@ -3082,7 +3100,7 @@ gedit_window_create_tab (GeditWindow *window,
  * @jump_to: %TRUE to set the new #GeditTab as active
  *
  * Creates a new #GeditTab loading the document specified by @uri.
- * In case @jump_to is %TRUE the #GeditNotebook swithes to that new #GeditTab.
+ * In case @jump_to is %TRUE the #GtkNotebook swithes to that new #GeditTab.
  * Whether @create is %TRUE, creates a new empty document if location does
  * not refer to an existing file
  *
@@ -3098,21 +3116,25 @@ gedit_window_create_tab_from_location (GeditWindow             *window,
 				       gboolean                 jump_to)
 {
 	GtkWidget *notebook;
-	GtkWidget *tab;
+	GeditTab *tab;
 
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 
 	gedit_debug (DEBUG_WINDOW);
 
-	notebook = _gedit_window_get_notebook (window);
-	tab = _gedit_tab_new_from_location (location,
-	                                    encoding,
-	                                    line_pos,
-	                                    column_pos,
-	                                    create);
+	tab = _gedit_tab_new ();
 
-	return process_create_tab (window, notebook, GEDIT_TAB (tab), jump_to);
+	_gedit_tab_load (tab,
+			 location,
+			 encoding,
+			 line_pos,
+			 column_pos,
+			 create);
+
+	notebook = _gedit_window_get_notebook (window);
+
+	return process_create_tab (window, notebook, tab, jump_to);
 }
 
 /**
@@ -3135,20 +3157,24 @@ gedit_window_create_tab_from_stream (GeditWindow             *window,
 				     gboolean                 jump_to)
 {
 	GtkWidget *notebook;
-	GtkWidget *tab;
+	GeditTab *tab;
 
 	gedit_debug (DEBUG_WINDOW);
 
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_INPUT_STREAM (stream), NULL);
 
-	notebook = _gedit_window_get_notebook (window);
-	tab = _gedit_tab_new_from_stream (stream,
-	                                  encoding,
-	                                  line_pos,
-	                                  column_pos);
+	tab = _gedit_tab_new ();
 
-	return process_create_tab (window, notebook, GEDIT_TAB (tab), jump_to);
+	_gedit_tab_load_stream (tab,
+				stream,
+				encoding,
+				line_pos,
+				column_pos);
+
+	notebook = _gedit_window_get_notebook (window);
+
+	return process_create_tab (window, notebook, tab, jump_to);
 }
 
 /**

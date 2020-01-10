@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email its:translate="no">jwcampbell@gmail.com</email>
+    <email its:translate="no">jcampbell@gnome.org</email>
   </credit>
-  <desc>Gunakan panel sisi untuk meramban dan membuka berkas</desc>
+  <desc>Use the side pane to browse and open files.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>

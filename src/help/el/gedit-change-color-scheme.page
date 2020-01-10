@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="gedit-change-color-scheme" xml:lang="el">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="gedit-change-color-scheme" xml:lang="el">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
+    <desc>Αλλαγή των χρωμάτων κειμένου και παρασκηνίου στο gedit.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.15" date="2015-01-29" status="final"/>
+
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Για την Ελληνική μεταφραστική ομάδα GNOME</mal:name>
-      <mal:email>team@gnome.gr</mal:email>
-      <mal:years>2009, 2011, 2012, 2013, 2014</mal:years>
-    </mal:credit>
+    <credit type="editor">
+      <name>Jana Svarova</name>
+      <email its:translate="no">jana.svarova@gmail.com</email>
+      <years>2015</years>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Μάριος Ζηντίλης</mal:name>
@@ -36,7 +45,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -50,10 +59,14 @@
 
   <p>Το <app>gedit</app> συμπεριλαμβάνει αρκετούς διαφορετικούς συνδυασμούς χρωμάτων, επιτρέποντάς σας να αλλάξετε την εμφάνιση του κύριου παράθυρου του κειμένου.</p>
 
-  <p>Για να αλλάξετε τον συνδυασμό χρωμάτων, κάντε τα ακόλουθα:</p>
   <steps>
-    <item><p>Επιλέξτε <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Προτιμήσεις</gui> <gui>Γραμματοσειρά &amp; χρώματα</gui></guiseq>.</p></item>
-    <item><p>Επιλέξτε τον επιθυμητό συνδυασμό χρωμάτων.</p></item>
+    <title>Για να αλλάξετε τον συνδυασμό χρωμάτων:</title>
+    <item>
+      <p>Ανοίξτε το μενού του <gui style="menu">gedit</gui> από την πάνω μπάρα, και μετά επιλέξτε <guiseq><gui style="menuitem">Προτιμήσεις</gui><gui>Γραμματοσειρά &amp; Χρώματα</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Επιλέξτε τον επιθυμητό συνδυασμό χρωμάτων.</p>
+    </item>
   </steps>
 
   <p>Ο νέος συνδυασμός χρωμάτων θα εφαρμοστεί άμεσα.</p>
@@ -64,8 +77,10 @@
   I should describe it here.  I'm linking to the wiki for now because the wiki
   page includes downloads and screenshots. I'm open to including the help here,
   though. -->
+
     <p>Μπορείτε επίσης να χρησιμοποιήσετε τους συνδυασμούς χρωμάτων που έχουν δημιουργηθεί από άλλους, ή να δημιουργήσετε και να χρησιμοποιήσετε τους δικούς σας.</p>
-    <p>Οδηγίες για το πώς να εγκαταστήσετε προσαρμοσμένους συνδυασμούς χρωμάτων, όπως και παραδείγματα συνδυασμών χρωμάτων που μπορείτε να κάνετε λήψη και να χρησιμοποιήσετε, είναι διαθέσιμες στο <link href="http://live.gnome.org/GtkSourceView/StyleSchemes">gedit wiki</link>.</p>
+
+    <p>Οδηγίες για το πώς να εγκαταστήσετε προσαρμοσμένους συνδυασμούς χρωμάτων, όπως και παραδείγματα συνδυασμών χρωμάτων που μπορείτε να κάνετε λήψη και να χρησιμοποιήσετε, είναι διαθέσιμες στο <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit wiki</link>.</p>
   </section>
 
 </page>

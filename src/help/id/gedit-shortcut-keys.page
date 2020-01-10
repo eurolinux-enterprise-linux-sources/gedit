@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -47,8 +55,8 @@
     <title>Tombol Pintasan terkait tab</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -99,18 +107,26 @@
     <title>Tombol pintas untuk bekerja dengan berkas</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Buat dokumen baru</p></td>
+          <td><p>Create a new document in a new window</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Create a new document in a new tab</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Buka dokumen</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Simpan dokumen kini</p></td>
@@ -143,8 +159,8 @@
     <title>Tombol pintasan untuk menyunting berkas</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -235,8 +251,8 @@
     <title>Tombol pintasan untuk menampilkan dan menyembunyikan panel</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -245,9 +261,13 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Tampilkan / sembunyikan panel dasar</p></td>
+          <td><p>Show / hide the bottom pane</p></td>
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
+        </tr>
+        <tr>
+          <td><p>Open the file menu</p></td>
+          <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
     </table>
@@ -256,8 +276,8 @@
     <title>Tombol pintas untuk mencari</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -292,8 +312,8 @@
     <title>Tombol pintas untuk perkakas</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -320,8 +340,8 @@
     <title>Tombol pintasan untuk bantuan pengguna</title>
       <thead>
         <tr>
-          <td><p>Untuk Melakukan Ini</p></td>
-          <td><p>Tekan Ini</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>

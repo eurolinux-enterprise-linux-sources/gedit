@@ -19,8 +19,8 @@
  */
 
 
-#ifndef __GEDIT_NOTEBOOK_POPUP_MENU_H__
-#define __GEDIT_NOTEBOOK_POPUP_MENU_H__
+#ifndef GEDIT_NOTEBOOK_POPUP_MENU_H
+#define GEDIT_NOTEBOOK_POPUP_MENU_H
 
 #include <gtk/gtk.h>
 #include "gedit-window.h"
@@ -29,34 +29,11 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_NOTEBOOK_POPUP_MENU			(gedit_notebook_popup_menu_get_type ())
-#define GEDIT_NOTEBOOK_POPUP_MENU(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_NOTEBOOK_POPUP_MENU, GeditNotebookPopupMenu))
-#define GEDIT_NOTEBOOK_POPUP_MENU_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_NOTEBOOK_POPUP_MENU, GeditNotebookPopupMenu const))
-#define GEDIT_NOTEBOOK_POPUP_MENU_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_NOTEBOOK_POPUP_MENU, GeditNotebookPopupMenuClass))
-#define GEDIT_IS_NOTEBOOK_POPUP_MENU(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_NOTEBOOK_POPUP_MENU))
-#define GEDIT_IS_NOTEBOOK_POPUP_MENU_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_NOTEBOOK_POPUP_MENU))
-#define GEDIT_NOTEBOOK_POPUP_MENU_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_NOTEBOOK_POPUP_MENU, GeditNotebookPopupMenuClass))
-
-typedef struct _GeditNotebookPopupMenu		GeditNotebookPopupMenu;
-typedef struct _GeditNotebookPopupMenuClass	GeditNotebookPopupMenuClass;
-typedef struct _GeditNotebookPopupMenuPrivate	GeditNotebookPopupMenuPrivate;
-
-struct _GeditNotebookPopupMenu
-{
-	GtkMenu parent;
-
-	GeditNotebookPopupMenuPrivate *priv;
-};
-
-struct _GeditNotebookPopupMenuClass
-{
-	GtkMenuClass parent_class;
-};
-
-GType                gedit_notebook_popup_menu_get_type     (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditNotebookPopupMenu, gedit_notebook_popup_menu, GEDIT, NOTEBOOK_POPUP_MENU, GtkMenu)
 
 GtkWidget           *gedit_notebook_popup_menu_new          (GeditWindow *window,
                                                              GeditTab    *tab);
 
 G_END_DECLS
 
-#endif /* __GEDIT_NOTEBOOK_POPUP_MENU_H__ */
+#endif /* GEDIT_NOTEBOOK_POPUP_MENU_H */

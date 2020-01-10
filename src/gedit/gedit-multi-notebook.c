@@ -23,8 +23,9 @@
 #include "gedit-multi-notebook.h"
 
 #include "gedit-enum-types.h"
-#include "gedit-marshal.h"
 #include "gedit-settings.h"
+#include "gedit-tab-private.h"
+#include "gedit-tab.h"
 
 struct _GeditMultiNotebookPrivate
 {
@@ -46,10 +47,12 @@ enum
 	PROP_0,
 	PROP_ACTIVE_NOTEBOOK,
 	PROP_ACTIVE_TAB,
-	PROP_SHOW_TABS_MODE
+	PROP_SHOW_TABS_MODE,
+	LAST_PROP
 };
 
-/* Signals */
+static GParamSpec *properties[LAST_PROP];
+
 enum
 {
 	NOTEBOOK_ADDED,
@@ -64,7 +67,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL];
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_GRID)
 
@@ -151,13 +154,34 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 	object_class->get_property = gedit_multi_notebook_get_property;
 	object_class->set_property = gedit_multi_notebook_set_property;
 
+	properties[PROP_ACTIVE_NOTEBOOK] =
+		g_param_spec_object ("active-notebook",
+		                     "Active Notebook",
+		                     "The Active Notebook",
+		                     GEDIT_TYPE_NOTEBOOK,
+		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+	properties[PROP_ACTIVE_TAB] =
+		g_param_spec_object ("active-tab",
+		                     "Active Tab",
+		                     "The Active Tab",
+		                     GEDIT_TYPE_TAB,
+		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+	properties[PROP_SHOW_TABS_MODE] =
+		g_param_spec_enum ("show-tabs-mode",
+		                   "Show Tabs Mode",
+		                   "When tabs should be shown",
+		                   GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
+		                   GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
+		                   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
+
 	signals[NOTEBOOK_ADDED] =
 		g_signal_new ("notebook-added",
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, notebook_added),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_NOTEBOOK);
@@ -166,8 +190,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, notebook_removed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_NOTEBOOK);
@@ -176,8 +199,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, tab_added),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -187,8 +209,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, tab_removed),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -198,8 +219,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, switch_tab),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      4,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -211,8 +231,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, tab_close_request),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -222,8 +241,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMultiNotebookClass, create_window),
-		              NULL, NULL,
-		              gedit_marshal_OBJECT__OBJECT_OBJECT_INT_INT,
+		              NULL, NULL, NULL,
 		              GTK_TYPE_NOTEBOOK, 4,
 		              GEDIT_TYPE_NOTEBOOK, GTK_TYPE_WIDGET,
 		              G_TYPE_INT, G_TYPE_INT);
@@ -232,8 +250,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_FIRST,
 		              G_STRUCT_OFFSET (GeditMultiNotebookClass, page_reordered),
-		              NULL, NULL,
-		              gedit_marshal_VOID__OBJECT_OBJECT_INT,
+		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              3,
 		              GEDIT_TYPE_NOTEBOOK, GTK_TYPE_WIDGET,
@@ -243,37 +260,11 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, show_popup_menu),
-			      NULL, NULL,
-			      gedit_marshal_VOID__BOXED_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_TAB);
-
-	g_object_class_install_property (object_class,
-					 PROP_ACTIVE_NOTEBOOK,
-					 g_param_spec_object ("active-notebook",
-							      "Active Notebook",
-							      "The Active Notebook",
-							      GEDIT_TYPE_NOTEBOOK,
-							      G_PARAM_READABLE |
-							      G_PARAM_STATIC_STRINGS));
-	g_object_class_install_property (object_class,
-					 PROP_ACTIVE_TAB,
-					 g_param_spec_object ("active-tab",
-							      "Active Tab",
-							      "The Active Tab",
-							      GEDIT_TYPE_TAB,
-							      G_PARAM_READABLE |
-							      G_PARAM_STATIC_STRINGS));
-	g_object_class_install_property (object_class,
-					 PROP_SHOW_TABS_MODE,
-					 g_param_spec_enum ("show-tabs-mode",
-							    "Show Tabs Mode",
-							    "When tabs should be shown",
-							    GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
-							    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
-							    G_PARAM_READWRITE));
 }
 
 static void
@@ -320,6 +311,14 @@ notebook_page_reordered (GeditNotebook      *notebook,
 }
 
 static void
+set_active_tab (GeditMultiNotebook *mnb,
+                GeditTab           *tab)
+{
+	mnb->priv->active_tab = tab;
+	g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_TAB]);
+}
+
+static void
 notebook_page_removed (GtkNotebook        *notebook,
 		       GtkWidget          *child,
 		       guint               page_num,
@@ -335,9 +334,7 @@ notebook_page_removed (GtkNotebook        *notebook,
 
 	if (mnb->priv->total_tabs == 0)
 	{
-		mnb->priv->active_tab = NULL;
-
-		g_object_notify (G_OBJECT (mnb), "active-tab");
+		set_active_tab (mnb, NULL);
 	}
 
 	g_signal_emit (G_OBJECT (mnb), signals[TAB_REMOVED], 0, notebook, tab);
@@ -390,12 +387,7 @@ notebook_switch_page (GtkNotebook        *book,
 		GeditTab *old_tab;
 
 		old_tab = mnb->priv->active_tab;
-
-		/* set the active tab */
-		mnb->priv->active_tab = tab;
-
-		g_object_notify (G_OBJECT (mnb), "active-tab");
-
+		set_active_tab (mnb, tab);
 		g_signal_emit (G_OBJECT (mnb), signals[SWITCH_TAB], 0,
 			       mnb->priv->active_notebook, old_tab,
 			       book, tab);
@@ -420,7 +412,7 @@ notebook_set_focus (GtkContainer       *container,
 		notebook_switch_page (GTK_NOTEBOOK (container), NULL,
 				      page_num, mnb);
 
-		g_object_notify (G_OBJECT (mnb), "active-notebook");
+		g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_NOTEBOOK]);
 	}
 }
 
@@ -817,15 +809,17 @@ gedit_multi_notebook_set_active_tab (GeditMultiNotebook *mnb,
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 	g_return_if_fail (GEDIT_IS_TAB (tab) || tab == NULL);
 
-	if (tab == NULL)
+	/* use plain C cast since the active tab can be null */
+	if (tab == (GeditTab *) mnb->priv->active_tab)
 	{
-		mnb->priv->active_tab = NULL;
-
 		return;
 	}
 
-	if (tab == GEDIT_TAB (mnb->priv->active_tab))
+	if (tab == NULL)
+	{
+		set_active_tab (mnb, NULL);
 		return;
+	}
 
 	l = mnb->priv->notebooks;
 
@@ -975,7 +969,7 @@ gedit_multi_notebook_add_new_notebook (GeditMultiNotebook *mnb)
 	notebook = gedit_notebook_new ();
 	add_notebook (mnb, notebook, FALSE);
 
-	tab = GEDIT_TAB (_gedit_tab_new ());
+	tab = _gedit_tab_new ();
 	gtk_widget_show (GTK_WIDGET (tab));
 
 	/* When gtk_notebook_insert_page is called the focus is set in

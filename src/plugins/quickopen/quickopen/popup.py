@@ -19,6 +19,7 @@ import os
 import platform
 import functools
 import fnmatch
+
 from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Gedit
 import xml.sax.saxutils
 from .virtualdirs import VirtualDirectory

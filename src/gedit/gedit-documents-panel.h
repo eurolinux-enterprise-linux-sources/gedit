@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_DOCUMENTS_PANEL_H__
-#define __GEDIT_DOCUMENTS_PANEL_H__
+#ifndef GEDIT_DOCUMENTS_PANEL_H
+#define GEDIT_DOCUMENTS_PANEL_H
 
 #include <gtk/gtk.h>
 
@@ -27,51 +27,14 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_DOCUMENTS_PANEL              (gedit_documents_panel_get_type())
-#define GEDIT_DOCUMENTS_PANEL(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_DOCUMENTS_PANEL, GeditDocumentsPanel))
-#define GEDIT_DOCUMENTS_PANEL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_DOCUMENTS_PANEL, GeditDocumentsPanelClass))
-#define GEDIT_IS_DOCUMENTS_PANEL(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_DOCUMENTS_PANEL))
-#define GEDIT_IS_DOCUMENTS_PANEL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_DOCUMENTS_PANEL))
-#define GEDIT_DOCUMENTS_PANEL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_DOCUMENTS_PANEL, GeditDocumentsPanelClass))
+#define GEDIT_TYPE_DOCUMENTS_PANEL (gedit_documents_panel_get_type())
 
-/* Private structure type */
-typedef struct _GeditDocumentsPanelPrivate GeditDocumentsPanelPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditDocumentsPanel GeditDocumentsPanel;
-
-struct _GeditDocumentsPanel
-{
-	GtkBox vbox;
-
-	/*< private > */
-	GeditDocumentsPanelPrivate *priv;
-};
-
-/*
- * Class definition
- */
-typedef struct _GeditDocumentsPanelClass GeditDocumentsPanelClass;
-
-struct _GeditDocumentsPanelClass
-{
-	GtkBoxClass parent_class;
-};
-
-/*
- * Public methods
- */
-GType 		 gedit_documents_panel_get_type	(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditDocumentsPanel, gedit_documents_panel, GEDIT, DOCUMENTS_PANEL, GtkBox)
 
 GtkWidget	*gedit_documents_panel_new 	(GeditWindow *window);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_DOCUMENTS_PANEL_H__  */
+#endif  /* GEDIT_DOCUMENTS_PANEL_H  */
 
 /* ex:set ts=8 noet: */

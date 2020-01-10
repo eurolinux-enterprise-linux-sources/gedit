@@ -26,9 +26,11 @@
 #include <string.h>
 #include <glib/gi18n.h>
 
+#include "gedit-app-private.h"
 #include "gedit-dirs.h"
 #include "gedit-debug.h"
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 #include "gedit-recent.h"
 
 static GeditWindow *
@@ -149,8 +151,10 @@ ensure_window (GeditAppOSX *app,
 
 @end
 
-struct _GeditAppOSXPrivate
+struct _GeditAppOSX
 {
+	GeditApp parent_instance;
+
 	GeditMenuExtension *recent_files_menu;
 	gulong recent_manager_changed_id;
 
@@ -160,40 +164,38 @@ struct _GeditAppOSXPrivate
 	GeditRecentConfiguration recent_config;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditAppOSX, gedit_app_osx, GEDIT_TYPE_APP)
+G_DEFINE_TYPE (GeditAppOSX, gedit_app_osx, GEDIT_TYPE_APP)
 
 static void
 remove_recent_actions (GeditAppOSX *app)
 {
-	GeditAppOSXPrivate *priv = app->priv;
-
-	while (priv->recent_actions)
+	while (app->recent_actions)
 	{
-		gchar *action_name = priv->recent_actions->data;
+		gchar *action_name = app->recent_actions->data;
 
 		g_action_map_remove_action (G_ACTION_MAP (app), action_name);
 		g_free (action_name);
 
-		priv->recent_actions = g_list_delete_link (priv->recent_actions, priv->recent_actions);
+		app->recent_actions = g_list_delete_link (app->recent_actions,
+		                                          app->recent_actions);
 	}
 }
 
 static void
 gedit_app_osx_finalize (GObject *object)
 {
-	GeditAppOSX *app_osx;
+	GeditAppOSX *app = GEDIT_APP_OSX (object);
 
-	app_osx = GEDIT_APP_OSX (object);
-	g_object_unref (app_osx->priv->recent_files_menu);
+	g_object_unref (app->recent_files_menu);
 
-	remove_recent_actions (app_osx);
+	remove_recent_actions (app);
 
-	g_signal_handler_disconnect (app_osx->priv->recent_config.manager,
-	                             app_osx->priv->recent_manager_changed_id);
+	g_signal_handler_disconnect (app->recent_config.manager,
+	                             app->recent_manager_changed_id);
 
-	gedit_recent_configuration_destroy (&app_osx->priv->recent_config);
+	gedit_recent_configuration_destroy (&app->recent_config);
 
-	[app_osx->priv->app_delegate release];
+	[app->app_delegate release];
 
 	G_OBJECT_CLASS (gedit_app_osx_parent_class)->finalize (object);
 }
@@ -329,15 +331,15 @@ recent_file_activated (GAction        *action,
 }
 
 static void
-recent_files_menu_populate (GeditAppOSX *app_osx)
+recent_files_menu_populate (GeditAppOSX *app)
 {
 	GList *items;
 	gint i = 0;
 
-	gedit_menu_extension_remove_items (app_osx->priv->recent_files_menu);
-	remove_recent_actions (app_osx);
+	gedit_menu_extension_remove_items (app->recent_files_menu);
+	remove_recent_actions (app);
 
-	items = gedit_recent_get_items (&app_osx->priv->recent_config);
+	items = gedit_recent_get_items (&app->recent_config);
 
 	while (items)
 	{
@@ -355,7 +357,7 @@ recent_files_menu_populate (GeditAppOSX *app_osx)
 		action = g_simple_action_new (acname, NULL);
 
 		finfo = g_slice_new (RecentFileInfo);
-		finfo->app = g_object_ref (app_osx);
+		finfo->app = g_object_ref (app);
 		finfo->info = gtk_recent_info_ref (info);
 
 		g_signal_connect_data (action,
@@ -365,16 +367,15 @@ recent_files_menu_populate (GeditAppOSX *app_osx)
 		                       recent_file_info_free,
 		                       0);
 
-		g_action_map_add_action (G_ACTION_MAP (app_osx), G_ACTION (action));
+		g_action_map_add_action (G_ACTION_MAP (app), G_ACTION (action));
 		g_object_unref (action);
 
 		acfullname = g_strdup_printf ("app.%s", acname);
 
-		app_osx->priv->recent_actions = g_list_prepend (app_osx->priv->recent_actions,
-		                                                acname);
+		app->recent_actions = g_list_prepend (app->recent_actions, acname);
 
 		mitem = g_menu_item_new (name, acfullname);
-		gedit_menu_extension_append_menu_item (app_osx->priv->recent_files_menu, mitem);
+		gedit_menu_extension_append_menu_item (app->recent_files_menu, mitem);
 
 		g_free (acfullname);
 
@@ -387,9 +388,9 @@ recent_files_menu_populate (GeditAppOSX *app_osx)
 
 static void
 recent_manager_changed (GtkRecentManager *manager,
-                        GeditAppOSX      *app_osx)
+                        GeditAppOSX      *app)
 {
-	recent_files_menu_populate (app_osx);
+	recent_files_menu_populate (app);
 }
 
 static void
@@ -419,8 +420,6 @@ update_open_sensitivity (GeditAppOSX *app)
 static void
 gedit_app_osx_startup (GApplication *application)
 {
-	GeditAppOSX *app_osx;
-
 	const gchar *replace_accels[] = {
 		"<Primary><Alt>F",
 		NULL
@@ -436,10 +435,11 @@ gedit_app_osx_startup (GApplication *application)
 		NULL
 	};
 
+	GeditAppOSX *app = GEDIT_APP_OSX (application);
+
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
-	app_osx = GEDIT_APP_OSX (application);
-	app_osx->priv->app_delegate = [[[GeditAppOSXDelegate alloc] initWithApp:app_osx] retain];
+	app->app_delegate = [[[GeditAppOSXDelegate alloc] initWithApp:app] retain];
 
 	g_action_map_add_action_entries (G_ACTION_MAP (application),
 	                                 app_entries,
@@ -458,21 +458,20 @@ gedit_app_osx_startup (GApplication *application)
 	                                       "win.fullscreen",
 	                                       fullscreen_accels);
 
-	gedit_recent_configuration_init_default (&app_osx->priv->recent_config);
+	gedit_recent_configuration_init_default (&app->recent_config);
 
-	app_osx->priv->recent_files_menu = _gedit_app_extend_menu (GEDIT_APP (application),
-	                                                           "recent-files-section");
+	app->recent_files_menu = _gedit_app_extend_menu (GEDIT_APP (application),
+	                                                 "recent-files-section");
 
-	app_osx->priv->recent_manager_changed_id =
-		g_signal_connect (app_osx->priv->recent_config.manager,
-		                  "changed",
-		                  G_CALLBACK (recent_manager_changed),
-		                  app_osx);
+	app->recent_manager_changed_id = g_signal_connect (app->recent_config.manager,
+	                                                   "changed",
+	                                                   G_CALLBACK (recent_manager_changed),
+	                                                   app);
 
-	recent_files_menu_populate (app_osx);
+	recent_files_menu_populate (app);
 
 	g_application_hold (application);
-	update_open_sensitivity (app_osx);
+	update_open_sensitivity (app);
 }
 
 static void
@@ -588,8 +587,6 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 static void
 gedit_app_osx_init (GeditAppOSX *app)
 {
-	app->priv = gedit_app_osx_get_instance_private (app);
-
 	/* This is required so that Cocoa is not going to parse the
 	   command line arguments by itself and generate OpenFile events.
 	   We already parse the command line ourselves, so this is needed

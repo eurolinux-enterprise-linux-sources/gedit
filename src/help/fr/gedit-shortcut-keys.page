@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Utiliser les raccourcis clavier pour travailler plus rapidement.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -101,8 +109,8 @@
     <title>Raccourcis clavier en relation avec les onglets</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>
@@ -127,7 +135,7 @@
           <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Réouvrir le dernier onglet fermé</p></td>
+          <td><p>Ré-ouvrir le dernier onglet fermé</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
@@ -153,18 +161,26 @@
     <title>Raccourcis clavier pour la manipulation des fichiers</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Créer un nouveau document</p></td>
+          <td><p>Créer un nouveau document dans une nouvelle fenêtre</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Créer un nouveau document dans un nouvel onglet</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Ouvrir un document</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Ouvrir la boîte de dialogue <gui>Ouverture rapide</gui></p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Enregistrer le document actuel</p></td>
@@ -197,8 +213,8 @@
     <title>Raccourcis pour la modification des documents</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>
@@ -289,8 +305,8 @@
     <title>Raccourcis pour l'affichage et le masquage des panneaux</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>
@@ -303,6 +319,10 @@
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
         </tr>
+        <tr>
+          <td><p>Ouvrir le menu Fichier</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
       </tbody>
     </table>
 
@@ -310,8 +330,8 @@
     <title>Raccourcis pour la recherche</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>
@@ -346,8 +366,8 @@
     <title>Raccourcis pour les outils</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>
@@ -374,8 +394,8 @@
     <title>Raccourcis pour l'aide utilisateur</title>
       <thead>
         <tr>
-          <td><p>Pour faire ceci</p></td>
-          <td><p>Faites cela</p></td>
+          <td><p>Action</p></td>
+          <td><p>Raccourci clavier</p></td>
         </tr>
       </thead>
       <tbody>

@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Die Position der Reiter im gedit-Fenster ändern.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -40,13 +41,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011, 2012, 2013, 2014, 2015</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Benjamin Steinwender</mal:name>
       <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014, 2015</mal:years>
+      <mal:years>2014-2015</mal:years>
     </mal:credit>
   </info>
 
@@ -89,8 +90,6 @@
         <p>Lassen Sie die Maustaste los.</p>
       </item>
     </steps>
-
-    <p>Oder wählen Sie, während der gewünschte Reiter geöffnet ist, <guiseq><gui>Dokumente</gui><gui>In neues Fenster verschieben</gui></guiseq></p>
 
     <note style="tip">
       <p>Um einen Reiter in ein neues Fenster zu verschieben, wenn <app>gedit</app> im maximierten Zustand ist, ziehen Sie den Reiter auf das obere Panel auf dem Bildschirm.</p>

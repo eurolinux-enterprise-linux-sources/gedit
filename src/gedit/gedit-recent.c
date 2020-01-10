@@ -31,48 +31,46 @@
 void
 gedit_recent_add_document (GeditDocument *document)
 {
-	GtkRecentManager *recent_manager;
-	GtkRecentData *recent_data;
 	GtkSourceFile *file;
 	GFile *location;
+	GtkRecentManager *recent_manager;
+	GtkRecentData recent_data;
 	gchar *uri;
+	static gchar *groups[2];
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
-
-	static gchar *groups[2] = {
-		"gedit",
-		NULL
-	};
 
 	file = gedit_document_get_file (document);
 	location = gtk_source_file_get_location (file);
 
-	if (location != NULL)
+	if (location == NULL)
 	{
-		recent_manager = gtk_recent_manager_get_default ();
-
-		recent_data = g_slice_new (GtkRecentData);
-
-		recent_data->display_name = NULL;
-		recent_data->description = NULL;
-		recent_data->mime_type = gedit_document_get_mime_type (document);
-		recent_data->app_name = (gchar *) g_get_application_name ();
-		recent_data->app_exec = g_strjoin (" ", g_get_prgname (), "%u", NULL);
-		recent_data->groups = groups;
-		recent_data->is_private = FALSE;
-
-		uri = g_file_get_uri (location);
-
-		if (!gtk_recent_manager_add_full (recent_manager, uri, recent_data))
-		{
-			g_warning ("Failed to add uri '%s' to the recent manager.", uri);
-		}
-
-		g_free (uri);
-		g_free (recent_data->app_exec);
-		g_free (recent_data->mime_type);
-		g_slice_free (GtkRecentData, recent_data);
+		return;
 	}
+
+	recent_manager = gtk_recent_manager_get_default ();
+
+	groups[0] = (gchar *) g_get_application_name ();
+	groups[1] = NULL;
+
+	recent_data.display_name = NULL;
+	recent_data.description = NULL;
+	recent_data.mime_type = gedit_document_get_mime_type (document);
+	recent_data.app_name = (gchar *) g_get_application_name ();
+	recent_data.app_exec = g_strjoin (" ", g_get_prgname (), "%u", NULL);
+	recent_data.groups = groups;
+	recent_data.is_private = FALSE;
+
+	uri = g_file_get_uri (location);
+
+	if (!gtk_recent_manager_add_full (recent_manager, uri, &recent_data))
+	{
+		g_warning ("Failed to add uri '%s' to the recent manager.", uri);
+	}
+
+	g_free (uri);
+	g_free (recent_data.app_exec);
+	g_free (recent_data.mime_type);
 }
 
 void
@@ -173,6 +171,7 @@ gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
 
 	config->filter = gtk_recent_filter_new ();
 	gtk_recent_filter_add_application (config->filter, g_get_application_name ());
+	gtk_recent_filter_add_mime_type (config->filter, "text/plain");
 	g_object_ref_sink (config->filter);
 
 	settings = g_settings_new ("org.gnome.gedit.preferences.ui");
@@ -208,6 +207,7 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	GList *items;
 	GList *retitems = NULL;
 	gint length;
+	char *substring_filter = NULL;
 
 	if (config->limit == 0)
 	{
@@ -222,6 +222,14 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	}
 
 	needed = gtk_recent_filter_get_needed (config->filter);
+	if (config->substring_filter && *config->substring_filter != '\0')
+	{
+		gchar *filter_normalized;
+
+		filter_normalized = g_utf8_normalize (config->substring_filter, -1, G_NORMALIZE_ALL);
+		substring_filter = g_utf8_casefold (filter_normalized, -1);
+		g_free (filter_normalized);
+	}
 
 	while (items)
 	{
@@ -246,18 +254,21 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 		}
 		else
 		{
-			if (config->substring_filter && *config->substring_filter != '\0')
+			if (substring_filter)
 			{
-				gchar *uri_lower;
+				gchar *uri_normalized;
+				gchar *uri_casefolded;
 
-				uri_lower = g_utf8_strdown (gtk_recent_info_get_uri (info), -1);
+				uri_normalized = g_utf8_normalize (gtk_recent_info_get_uri_display (info), -1, G_NORMALIZE_ALL);
+				uri_casefolded = g_utf8_casefold (uri_normalized, -1);
+				g_free (uri_normalized);
 
-				if (strstr (uri_lower, config->substring_filter) == NULL)
+				if (strstr (uri_casefolded, substring_filter) == NULL)
 				{
 					is_filtered = TRUE;
 				}
 
-				g_free (uri_lower);
+				g_free (uri_casefolded);
 			}
 
 			if (!is_filtered)
@@ -289,6 +300,8 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 
 		items = g_list_delete_link (items, items);
 	}
+
+	g_free (substring_filter);
 
 	if (!retitems)
 	{

@@ -1,13 +1,13 @@
 General Information
 ===================
 
-This is version 3.14.3 of gedit. gedit is a small and lightweight UTF-8 text
+This is version 3.22.0 of gedit. gedit is a small and lightweight UTF-8 text
 editor for the GNOME environment.
 
 gedit is part of GNOME and uses the latest GTK+ and GNOME libraries.
 Complete GNOME integration is featured, with support for Drag and Drop (DnD) 
 from Nautilus (the GNOME file manager), the use of the GNOME help system,
-the GNOME Virtual File System and the GNOME print framework.
+the Virtual File System GVfs and the GTK+ print framework.
 
 gedit uses a Multiple Document Interface (MDI), which lets you edit more than 
 one document at the same time.
@@ -44,8 +44,8 @@ Some of the plugins, packaged and installed with gedit include, among others:
 Other external plugins are also available.
 
 
-gedit is released under the GNU General Public License (GPL) version 2, see
-the file 'COPYING' for more information.
+gedit is released under the GNU General Public License (GPL) version 2 or
+later, see the file 'COPYING' for more information.
 
 
 The official web site is:
@@ -64,14 +64,20 @@ Information about gedit mailing lists can be found at
 Installation
 ============
 
-gedit requires GTK+ >= 3.14.0, GtkSourceView >= 3.14.3 and libpeas >= 1.7.x libraries.
-PyGobject 3.0.x and gobject-introspection 0.9.0 are required to enable python
-plugins support.
+gedit requires GTK+ >= 3.20.0, GtkSourceView >= 3.21.2 and
+libpeas >= 1.14.1 libraries. It also has a run-time dependency on an
+icon theme for its icons. If gedit fails to display icons, installing
+GNOME's default adwaita-icon-theme is a simple way of providing them.
+
+PyGobject 3.0.x and gobject-introspection 0.9.0 are required to enable
+python plugins support.
+
+gspell >= 0.2.3 is required to enable the spell checking plugin.
 
 Simple install procedure:
 
-  % tar Jxf gedit-3.14.3.tar.xz			# unpack the sources
-  % cd gedit-3.14.3				# change to the toplevel directory
+  % tar Jxf gedit-3.22.0.tar.xz			# unpack the sources
+  % cd gedit-3.22.0				# change to the toplevel directory
   % ./configure					# run the `configure' script
   % make					# build gedit
   [ Become root if necessary ]
@@ -83,29 +89,9 @@ See the file 'INSTALL' for more detailed information.
 How to report bugs
 ==================
 
-Bugs should be reported to the GNOME bug tracking system.
-(http://bugzilla.gnome.org, product gedit). You will need to create an
-account for yourself.
+Bugs should be reported to the GNOME bug tracking system:
 
-In the bug report please include:
-
-* Information about your system. For instance:
-
-   - What version of gedit
-   - What operating system and version
-   - What version of the gtk+, glib and gnome libraries
-
-  And anything else you think is relevant.
-
-* How to reproduce the bug. 
-
-* If the bug was a crash, the exact text that was printed out when the
-  crash occurred.
-
-* Further information such as stack traces may be useful, but is not
-  necessary. If you do send a stack trace, and the error is an X error,
-  it will be more useful if the stack trace is produced running the test
-  program with the --sync command line option.
+    https://wiki.gnome.org/Apps/Gedit/ReportingBugs
 
 
 Patches

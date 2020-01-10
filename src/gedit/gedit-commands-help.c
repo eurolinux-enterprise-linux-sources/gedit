@@ -25,6 +25,7 @@
 #endif
 
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
@@ -34,8 +35,38 @@
 #include "gedit-dirs.h"
 
 void
-_gedit_cmd_help_contents (GtkAction   *action,
-			  GeditWindow *window)
+_gedit_cmd_help_keyboard_shortcuts (GeditWindow *window)
+{
+	static GtkWidget *shortcuts_window;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	if (shortcuts_window == NULL)
+	{
+		GtkBuilder *builder;
+
+		builder = gtk_builder_new_from_resource ("/org/gnome/gedit/ui/gedit-shortcuts.ui");
+		shortcuts_window = GTK_WIDGET (gtk_builder_get_object (builder, "shortcuts-gedit"));
+
+		g_signal_connect (shortcuts_window,
+				  "destroy",
+				  G_CALLBACK (gtk_widget_destroyed),
+				  &shortcuts_window);
+
+		g_object_unref (builder);
+	}
+
+	if (GTK_WINDOW (window) != gtk_window_get_transient_for (GTK_WINDOW (shortcuts_window)))
+	{
+		gtk_window_set_transient_for (GTK_WINDOW (shortcuts_window), GTK_WINDOW (window));
+	}
+
+	gtk_widget_show_all (shortcuts_window);
+	gtk_window_present (GTK_WINDOW (shortcuts_window));
+}
+
+void
+_gedit_cmd_help_contents (GeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -46,8 +77,7 @@ _gedit_cmd_help_contents (GtkAction   *action,
 }
 
 void
-_gedit_cmd_help_about (GtkAction   *action,
-		       GeditWindow *window)
+_gedit_cmd_help_about (GeditWindow *window)
 {
 	static const gchar * const authors[] = {
 		"Alex Roberts",
@@ -58,7 +88,7 @@ _gedit_cmd_help_about (GtkAction   *action,
 		"Ignacio Casal Quinteiro <icq@gnome.org>",
 		"James Willcox <jwillcox@gnome.org>",
 		"Jesse van den Kieboom <jessevdk@gnome.org>",
-		"Paolo Borelli <pborelli@katamail.com>",
+		"Paolo Borelli <pborelli@gnome.org>",
 		"Paolo Maggi <paolo@gnome.org>",
 		"S\303\251bastien Lafargue <slafargue@gnome.org>",
 		"S\303\251bastien Wilmet <swilmet@gnome.org>",
@@ -74,24 +104,22 @@ _gedit_cmd_help_about (GtkAction   *action,
 		NULL
 	};
 
-	static const gchar copyright[] = "Copyright \xc2\xa9 1998-2014 - the gedit team";
+	static const gchar copyright[] = "Copyright \xc2\xa9 1998-2016 - the gedit team";
 
 	static const gchar comments[] = \
 		N_("gedit is a small and lightweight text editor for the GNOME Desktop");
 
 	GdkPixbuf *logo;
-	const gchar *data_dir;
-	gchar *logo_file;
+	GError *error = NULL;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	data_dir = gedit_dirs_get_gedit_data_dir ();
-	logo_file = g_build_filename (data_dir,
-				      "logo",
-				      "gedit-logo.png",
-				      NULL);
-	logo = gdk_pixbuf_new_from_file (logo_file, NULL);
-	g_free (logo_file);
+	logo = gdk_pixbuf_new_from_resource ("/org/gnome/gedit/pixmaps/gedit-logo.png", &error);
+	if (error != NULL)
+	{
+		g_warning ("Error when loading the gedit logo: %s", error->message);
+		g_clear_error (&error);
+	}
 
 	gtk_show_about_dialog (GTK_WINDOW (window),
 			       "program-name", "gedit",
@@ -107,8 +135,7 @@ _gedit_cmd_help_about (GtkAction   *action,
 			       "website-label", "www.gedit.org",
 			       NULL);
 
-	if (logo)
-		g_object_unref (logo);
+	g_clear_object (&logo);
 }
 
 /* ex:set ts=8 noet: */

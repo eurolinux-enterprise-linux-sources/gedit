@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Use atalhos de teclado para lhe ajudar a trabalhar mais rapidamente.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -75,15 +83,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Ferreira</mal:name>
-      <mal:email>rafael.f.f1@gmail.com</mal:email>
-      <mal:years>2013</mal:years>
+      <mal:name>Enrico Nicoletto</mal:name>
+      <mal:email>liverig@gmail.com</mal:email>
+      <mal:years>2013, 2014</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014.</mal:years>
+      <mal:name>Rafael Fontenelle</mal:name>
+      <mal:email>rafaelff@gnome.org</mal:email>
+      <mal:years>2013, 2016</mal:years>
     </mal:credit>
   </info>
 
@@ -95,8 +103,8 @@
     <title>Teclas de atalho relacionadas a abas</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -147,18 +155,26 @@
     <title>Teclas de atalho para trabalhar com arquivos</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Cria um novo documento</p></td>
+          <td><p>Cria um novo documento em uma nova janela</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Cria um novo documento uma nova aba</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Abre um documento</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Abre a janela <gui>Abertura rápida</gui></p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Salva o documento atual</p></td>
@@ -191,8 +207,8 @@
     <title>Teclas de atalho para edição de documentos</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -283,8 +299,8 @@
     <title>Teclas de atalhos para mostrar e ocultar painéis</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -297,6 +313,10 @@
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
         </tr>
+        <tr>
+          <td><p>Abre o menu do arquivo</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
       </tbody>
     </table>
 
@@ -304,8 +324,8 @@
     <title>Teclas de atalhos para pesquisas</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -340,8 +360,8 @@
     <title>Teclas de atalho para ferramentas</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -368,8 +388,8 @@
     <title>Teclas de atalho para ajuda</title>
       <thead>
         <tr>
-          <td><p>Para fazer isso</p></td>
-          <td><p>Pressione isso</p></td>
+          <td><p>Ação</p></td>
+          <td><p>Atalhos de teclado</p></td>
         </tr>
       </thead>
       <tbody>

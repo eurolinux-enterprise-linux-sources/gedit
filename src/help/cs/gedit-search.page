@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Jak v souboru najít část textu.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -43,7 +44,7 @@
     <steps>
       <title>Vyhledání textu</title>
       <item>
-        <p>Otevřete <gui>okno hledání</gui> kliknutím na <guiseq><gui style="menu">Hledat</gui> <gui style="menuitem">Hledat</gui></guiseq> nebo zmáčkněte <keyseq><key>Ctrl</key><key>F</key></keyseq>. Kurzor se přemístí na začátek pole v <gui>okně hledání</gui>.</p>
+        <p>Otevřete <gui>okno hledání</gui> kliknutím na <guiseq><gui style="button">Tlačítko s nabídkou</gui> <gui style="menuitem">Hledat…</gui></guiseq> nebo zmáčkněte <keyseq><key>Ctrl</key><key>F</key></keyseq>. Kurzor se přemístí na začátek pole v <gui>okně hledání</gui>.</p>
       </item>
       <item>
         <p>Napište do <gui>okna hledání</gui> text, který si přejete najít.</p>

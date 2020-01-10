@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Localize uma porção de texto dentro de um arquivo.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -66,15 +67,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Ferreira</mal:name>
-      <mal:email>rafael.f.f1@gmail.com</mal:email>
-      <mal:years>2013</mal:years>
+      <mal:name>Enrico Nicoletto</mal:name>
+      <mal:email>liverig@gmail.com</mal:email>
+      <mal:years>2013, 2014</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014.</mal:years>
+      <mal:name>Rafael Fontenelle</mal:name>
+      <mal:email>rafaelff@gnome.org</mal:email>
+      <mal:years>2013, 2016</mal:years>
     </mal:credit>
   </info>
 
@@ -85,7 +86,7 @@
     <steps>
       <title>Localizando texto</title>
       <item>
-        <p>Abra a <gui>janela de pesquisa</gui> clicando em <guiseq><gui style="menu">Pesquisar</gui><gui style="menuitem">Localizar</gui> </guiseq> ou pressionando <keyseq><key>Ctrl</key><key>F</key></keyseq>. Isso irá mover seu cursor para começo da <gui>janela de pesquisa</gui>.</p>
+        <p>Abra a <gui>janela de pesquisa</gui> clicando no botão do <guiseq><gui style="menu">Menu</gui><gui style="menuitem">Localizar…</gui> </guiseq> ou pressionando as teclas <keyseq><key>Ctrl</key><key>F</key></keyseq>. Isso irá mover seu cursor para o início da <gui>janela de pesquisa</gui>.</p>
       </item>
       <item>
         <p>Digite o texto que deseja pesquisar na <gui>janela de pesquisa</gui>.</p>

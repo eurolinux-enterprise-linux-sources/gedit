@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Χρήση των συντομεύσεων πληκτρολογίου για να βοηθηθείτε στην εργασία σας πιο γρήγορα.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,13 +32,13 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Για την Ελληνική μεταφραστική ομάδα GNOME</mal:name>
-      <mal:email>team@gnome.gr</mal:email>
-      <mal:years>2009, 2011, 2012, 2013, 2014</mal:years>
-    </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Μάριος Ζηντίλης</mal:name>
@@ -59,7 +61,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -77,8 +79,8 @@
     <title>Συντομεύσεις πλήκτρων σχετικές με τις καρτέλες</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>
@@ -129,18 +131,26 @@
     <title>Συντομεύσεις πλήκτρων για εργασία με αρχεία</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Δημιουργία νέου εγγράφου</p></td>
+          <td><p>Δημιουργία νέου εγγράφου σε νέο παράθυρο</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Δημιουργία νέου εγγράφου σε νέα καρτέλα</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Άνοιγμα ενός εγγράφου</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Άνοιγμα του παραθύρου <gui>Γρήγορο άνοιγμα</gui>.</p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Αποθήκευση του τρέχοντος εγγράφου</p></td>
@@ -173,8 +183,8 @@
     <title>Συντομεύσεις πλήκτρων για την επεξεργασία αρχείων</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>
@@ -265,8 +275,8 @@
     <title>Συντομεύσεις πλήκτρων για εμφάνιση και απόκρυψη παραθύρων</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>
@@ -275,9 +285,13 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Εμφάνιση / απόκρυψη του κάτω παραθύρου.</p></td>
+          <td><p>Εμφάνιση / απόκρυψη του κάτω παραθύρου</p></td>
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
+        </tr>
+        <tr>
+          <td><p>Άνοιγμα του μενού αρχείου</p></td>
+          <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
     </table>
@@ -286,8 +300,8 @@
     <title>Συντομεύσεις πλήκτρων για αναζήτηση</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>
@@ -322,8 +336,8 @@
     <title>Συντομεύσεις πλήκτρων για εργαλεία</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>
@@ -350,8 +364,8 @@
     <title>Συντομεύσεις πλήκτρων για την βοήθεια του χρήστη</title>
       <thead>
         <tr>
-          <td><p>Για να κάνετε αυτό</p></td>
-          <td><p>Πατήστε αυτό</p></td>
+          <td><p>Ενέργεια</p></td>
+          <td><p>Συντόμευση πληκτρολογίου</p></td>
         </tr>
       </thead>
       <tbody>

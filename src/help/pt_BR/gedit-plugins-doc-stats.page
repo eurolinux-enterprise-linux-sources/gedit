@@ -10,9 +10,9 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Veja estatísticas do documento</desc>
+  <desc>Veja estatísticas do documento.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Wagner Luís de Araújo Menezes Macêdo</mal:name>
@@ -57,15 +57,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Ferreira</mal:name>
-      <mal:email>rafael.f.f1@gmail.com</mal:email>
-      <mal:years>2013</mal:years>
+      <mal:name>Enrico Nicoletto</mal:name>
+      <mal:email>liverig@gmail.com</mal:email>
+      <mal:years>2013, 2014</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014.</mal:years>
+      <mal:name>Rafael Fontenelle</mal:name>
+      <mal:email>rafaelff@gnome.org</mal:email>
+      <mal:years>2013, 2016</mal:years>
     </mal:credit>
   </info>
 
@@ -78,7 +78,7 @@
 
   <p>Assim que o plug-in estiver habilitado, use-o selecionando <guiseq><gui>Ferramentas</gui><gui>Estatísticas do documento</gui></guiseq>. A janela irá exibir as informações estatísticas sobre seu documento, incluindo o número de palavras, linhas, caracteres, caracteres não espaçados, e o tamanho do seu arquivo em bytes.</p>
 
-  <p>Você também pode usar <em>Estatísticas do documento</em> para mostrar-lhe informações sobre apenas uma parte do documento. Para fazer isso, use o ponteiro do mouse para selecionar a parte do texto que você deseja examinar, em seguida, selecione <guiseq><gui>Ferramentas</gui><gui>  Estatísticas do documento</gui></guiseq>.O <app>gedit</app> irá exibir informações para o todo o documento e para a parte do texto que você destacou.</p>
+  <p>Você também pode usar <em>Estatísticas do documento</em> para mostrar-lhe informações sobre apenas uma parte do documento. Para fazer isso, use o ponteiro do mouse para selecionar a parte do texto que você deseja examinar, em seguida, use o item <guiseq><gui>Ferramentas</gui><gui>Estatísticas do documento</gui></guiseq> do botão do menu. O <app>gedit</app> irá exibir informações para o todo o documento e para a parte do texto que você destacou.</p>
 </section>
 
 </page>

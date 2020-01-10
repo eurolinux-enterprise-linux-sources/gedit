@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Εύρεση τμήματος κειμένου μέσα σε ένα αρχείο.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -22,12 +23,6 @@
       <email>tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Για την Ελληνική μεταφραστική ομάδα GNOME</mal:name>
-      <mal:email>team@gnome.gr</mal:email>
-      <mal:years>2009, 2011, 2012, 2013, 2014</mal:years>
-    </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Μάριος Ζηντίλης</mal:name>
@@ -50,7 +45,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Δημήτρης Σπίγγος</mal:name>
       <mal:email>dmtrs32@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -67,7 +62,7 @@
     <steps>
       <title>Εύρεση κειμένου</title>
       <item>
-        <p>Ανοίξτε το <gui>παράθυρο αναζήτησης</gui> πατώντας στο <guiseq><gui style="menu">Αναζήτηση</gui> <gui style="menuitem">Εύρεση</gui> </guiseq> ή πατήστε <keyseq><key>Ctrl</key><key>F</key></keyseq>. Αυτό θα μετακινήσει τον δρομέα σας στην αρχή του <gui>παραθύρου αναζήτησης</gui>.</p>
+        <p>Ανοίξτε το <gui>παράθυρο αναζήτησης</gui> κάνοντας κλικ στο <guiseq><gui style="menu">Μενού</gui> <gui style="menuitem">Εύρεση…</gui> </guiseq> ή πατώντας <keyseq><key>Ctrl</key><key>F</key></keyseq>. Αυτό θα μετακινήσει τον δρομέα σας στην αρχή του <gui>παραθύρου αναζήτησης</gui>.</p>
       </item>
       <item>
         <p>Πληκτρολογήστε το κείμενο που θέλετε να αναζητήσετε στο <gui>παράθυρο αναζήτησης</gui>.</p>

@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Szöveg keresése a fájlban.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -32,7 +33,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -49,7 +50,7 @@
     <steps>
       <title>Szöveg keresése</title>
       <item>
-        <p>A <gui>keresés ablak</gui> megnyitásához válassza a <guiseq><gui style="menu">Keresés</gui><gui style="menuitem">Keresés</gui></guiseq> menüpontot, vagy nyomja meg a <keyseq><key>Ctrl</key><key>F</key></keyseq> kombinációt. Ez a kurzort a <gui>keresés ablak</gui> elejére viszi.</p>
+        <p>A <gui>keresés ablak</gui> megnyitásához válassza a <guiseq><gui style="menu">Menü gomb</gui> <gui style="menuitem">Keresés</gui></guiseq> menüpontot, vagy nyomja meg a <keyseq><key>Ctrl</key><key>F</key></keyseq> kombinációt. Ez a kurzort a <gui>keresés ablak</gui> elejére viszi.</p>
       </item>
       <item>
         <p>Írja be a keresendő szöveget a <gui>keresés ablakba</gui>.</p>

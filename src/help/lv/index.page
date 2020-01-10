@@ -5,10 +5,11 @@
     <title type="link">gedit teksta redaktors</title>
     <title type="text">gedit teksta redaktors</title>
 
+    <desc>Mājas lapa gedit lietotāja ceļvedim.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jwcampbell@gmail.com</email>
+      <email its:translate="no">jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>

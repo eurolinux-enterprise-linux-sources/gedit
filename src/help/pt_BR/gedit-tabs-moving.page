@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Altere a posição de uma aba na janela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -68,15 +69,15 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Ferreira</mal:name>
-      <mal:email>rafael.f.f1@gmail.com</mal:email>
-      <mal:years>2013</mal:years>
+      <mal:name>Enrico Nicoletto</mal:name>
+      <mal:email>liverig@gmail.com</mal:email>
+      <mal:years>2013, 2014</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014.</mal:years>
+      <mal:name>Rafael Fontenelle</mal:name>
+      <mal:email>rafaelff@gnome.org</mal:email>
+      <mal:years>2013, 2016</mal:years>
     </mal:credit>
   </info>
 
@@ -119,8 +120,6 @@
         <p>Solte o botão do mouse.</p>
       </item>
     </steps>
-
-    <p>ou, enquanto a aba movida é aberta, escolha <guiseq><gui>Documentos</gui><gui>Mover para nova janela</gui></guiseq></p>
 
     <note style="tip">
       <p>Para mover a aba para uma nova janela quando o <app>gedit</app> está maximizado, arraste a aba até a barra superior no canto superior da tela.</p>

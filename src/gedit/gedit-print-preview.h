@@ -17,47 +17,23 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_PRINT_PREVIEW_H__
-#define __GEDIT_PRINT_PREVIEW_H__
+#ifndef GEDIT_PRINT_PREVIEW_H
+#define GEDIT_PRINT_PREVIEW_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_PREVIEW            (gedit_print_preview_get_type ())
-#define GEDIT_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GEDIT_TYPE_PRINT_PREVIEW, GeditPrintPreview))
-#define GEDIT_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_PRINT_PREVIEW, GeditPrintPreviewClass))
-#define GEDIT_IS_PRINT_PREVIEW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GEDIT_TYPE_PRINT_PREVIEW))
-#define GEDIT_IS_PRINT_PREVIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PRINT_PREVIEW))
-#define GEDIT_PRINT_PREVIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_PRINT_PREVIEW, GeditPrintPreviewClass))
+#define GEDIT_TYPE_PRINT_PREVIEW (gedit_print_preview_get_type ())
 
-typedef struct _GeditPrintPreview        GeditPrintPreview;
-typedef struct _GeditPrintPreviewPrivate GeditPrintPreviewPrivate;
-typedef struct _GeditPrintPreviewClass   GeditPrintPreviewClass;
+G_DECLARE_FINAL_TYPE (GeditPrintPreview, gedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
 
-struct _GeditPrintPreview
-{
-	GtkGrid parent;
-
-	GeditPrintPreviewPrivate *priv;
-};
-
-struct _GeditPrintPreviewClass
-{
-	GtkGridClass parent_class;
-
-	void (* close)		(GeditPrintPreview          *preview);
-};
-
-
-GType		 gedit_print_preview_get_type	(void) G_GNUC_CONST;
-
-GtkWidget	*gedit_print_preview_new	(GtkPrintOperation		*op,
-						 GtkPrintOperationPreview	*gtk_preview,
-						 GtkPrintContext		*context);
+GtkWidget	*gedit_print_preview_new	(GtkPrintOperation        *operation,
+						 GtkPrintOperationPreview *gtk_preview,
+						 GtkPrintContext          *context);
 
 G_END_DECLS
 
-#endif /* __GEDIT_PRINT_PREVIEW_H__ */
+#endif /* GEDIT_PRINT_PREVIEW_H */
 
 /* ex:set ts=8 noet: */

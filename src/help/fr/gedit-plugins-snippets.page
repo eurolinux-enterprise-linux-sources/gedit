@@ -6,14 +6,14 @@
     <revision pkgversion="3.8" date="2013-03-22" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Utiliser des fragments de code pour insérer rapidement les morceaux de texte fréquemment utilisés</desc>
+    <desc>Utiliser des fragments de code pour insérer rapidement les morceaux de texte fréquemment utilisés.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -180,7 +180,7 @@
   </section>
 
   <section id="example-add-snippet">
-    <title>Exemple de nouveau fragment de code</title>
+    <title>Exemple d'un nouveau fragment de code</title>
 
     <p>Supposons que vous ayez créé un fragment de code avec le terme <var>greetings</var> dans <gui style="input">Mot déclencheur :</gui>. La zone de texte <gui style="input">Édition :</gui> contient :</p>
 

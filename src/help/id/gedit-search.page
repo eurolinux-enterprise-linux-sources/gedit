@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Find a portion of text within a file.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -37,7 +38,11 @@
     <steps>
       <title>Menemukan teks</title>
       <item>
-        <p>Buka <gui>jendela pencarian</gui> dengan mengklik <guiseq><gui style="menu">Cari</gui> <gui style="menuitem">Temukan</gui> </guiseq> atau menekan <keyseq><key>Ctrl</key><key>F</key></keyseq>. Ini akan memindahkan kursor Anda ke awal <gui>jendela pencarian</gui>.</p>
+        <p>Open the <gui>search window</gui> by clicking 
+        <guiseq><gui style="menu">Menu Button</gui>
+        <gui style="menuitem">Find…</gui> </guiseq> or
+        pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move
+        your cursor to the start of the <gui>search window</gui>.</p>
       </item>
       <item>
         <p>Ketikkan teks yang hendak Anda cari dalam <gui>jendela pencarian</gui>.</p>

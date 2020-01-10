@@ -13,6 +13,11 @@
     <value nick="always" value="3"/>
   </enum>
 
+  <enum id="org.gnome.gedit.BackgroundPatternType">
+    <value nick="none" value="0"/>
+    <value nick="grid" value="1"/>
+  </enum>
+
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.gedit" path="/org/gnome/gedit/">
     <child name="preferences" schema="org.gnome.gedit.preferences"/>
     <child name="state" schema="org.gnome.gedit.state"/>
@@ -119,6 +124,16 @@
       <summary>Right Margin Position</summary>
       <description>Specifies the position of the right margin.</description>
     </key>
+    <key name="display-overview-map" type="b">
+      <default>false</default>
+      <summary>Display Overview Map</summary>
+      <description>Whether gedit should display the overview map for the document.</description>
+    </key>
+    <key name="background-pattern" enum="org.gnome.gedit.BackgroundPatternType">
+      <default>'none'</default>
+      <summary>Document background pattern type</summary>
+      <description>Whether the document will get a background pattern painted.</description>
+    </key>
     <key name="smart-home-end" enum="org.gnome.gedit.SmartHomeEnd">
       <aliases>
         <alias value='DISABLED' target='disabled'/>
@@ -222,30 +237,34 @@
       <summary>Line Number Font for Printing</summary>
       <description>Specifies the font to use for line numbers when printing. This will only take effect if the "Print Line Numbers" option is non-zero.</description>
     </key>
+    <key name="margin-left" type="d">
+      <default>25</default>
+      <summary>Margin Left</summary>
+      <description>The left margin, in millimeters.</description>
+    </key>
+    <key name="margin-top" type="d">
+      <default>15</default>
+      <summary>Margin Top</summary>
+      <description>The top margin, in millimeters.</description>
+    </key>
+    <key name="margin-right" type="d">
+      <default>25</default>
+      <summary>Margin Right</summary>
+      <description>The right margin, in millimeters.</description>
+    </key>
+    <key name="margin-bottom" type="d">
+      <default>25</default>
+      <summary>Margin Bottom</summary>
+      <description>The bottom margin, in millimeters.</description>
+    </key>
   </schema>
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.gedit.preferences.encodings" path="/org/gnome/gedit/preferences/encodings/">
-    <key name="auto-detected" type="as">
-      <!-- Translators: This is the sorted list of encodings used by gedit
-           for automatic detection of the file encoding. You may want to customize it adding
-           encodings that are common in your country, for instance the GB18030 encoding
-           for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
-           (covering English and most Western European languages) if you think people
-           in your country will rarely use it.
-           "CURRENT" is a magic value used by gedit and it represents the encoding
-           for the current locale, so please don't translate the "CURRENT" term.
-           Only recognized encodings are used.
-           See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
-           a list of supported encodings -->
-      <default l10n="messages">['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']</default>
-      <summary>Automatically Detected Encodings</summary>
-      <description>Sorted list of encodings used by gedit for automatically detecting the encoding of a file. "CURRENT" represents the current locale encoding. Only recognized encodings are used.</description>
-    </key>
-    <key name="shown-in-menu" type="as">
-      <!-- Translators: This is the list of encodings shown by default in the Character Encoding
-           menu in open/save file selector. Only recognized encodings are displayed.-->
-      <default l10n="messages">['ISO-8859-15']</default>
-      <summary>Encodings shown in menu</summary>
-      <description>List of encodings shown in the Character Encoding menu in open/save file selector. Only recognized encodings are used.</description>
+    <key name="candidate-encodings" type="as">
+      <default>['']</default>
+      <summary>Candidate Encodings</summary>
+      <description>List of candidate encodings shown in the Character Encoding menu in the open/save file chooser.
+      "CURRENT" represents the current locale encoding. Only recognized encodings are used.
+      The default value is the empty list, in which case gedit will choose good defaults depending on the country and language.</description>
     </key>
   </schema>
   <schema id="org.gnome.gedit.state" path="/org/gnome/gedit/state/">

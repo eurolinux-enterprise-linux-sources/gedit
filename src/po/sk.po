@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-10 12:11+0000\n"
-"PO-Revision-Date: 2014-09-12 12:16+0200\n"
+"POT-Creation-Date: 2016-08-21 04:20+0000\n"
+"PO-Revision-Date: 2016-08-21 18:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.8.8\n"
 
 # DK: typujem ze zaciatok vety by mal byt velkym pismenom "Gedit...". Nahlas bug a preloz to velkym.
 # PK: nie, aj inde je gedit malym pismom
@@ -54,35 +54,29 @@ msgstr ""
 "Jeho flexibilný systém zásuvných modulov umožňuje prispôsobenie aplikácie "
 "vašim potrebám."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:774
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Textový editor"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Úprava textových súborov"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit - textový editor"
 
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Text;Editor;Čistý text;Písať;Napísať;Písanie;"
+
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Text;Editor;"
-msgstr "Text;Editor;"
+msgid "New Window"
+msgstr "Nové okno"
 
-# qiucklist
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Window"
-msgstr "Otvoriť nové okno"
-
-# quicklist
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
-msgid "Open a New Document"
-msgstr "Otvoriť nový dokument"
+msgid "New Document"
+msgstr "Nový dokument"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -131,9 +125,6 @@ msgid "Create Backup Copies"
 msgstr "Vytvárať záložné kópie"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
-#| msgid ""
-#| "Whether gedit should restore the previous cursor position when a file is "
-#| "loaded."
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr ""
 "Určuje, či má gedit obnoviť predošlú polohu kurzora pri načítaní súboru."
@@ -278,10 +269,26 @@ msgid "Specifies the position of the right margin."
 msgstr "Určuje pozíciu pravého okraja."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
+msgid "Display Overview Map"
+msgstr "Zobraziť mapu s prehľadom"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+msgid "Whether gedit should display the overview map for the document."
+msgstr "Určuje, či má aplikácia gedit zobraziť mapu s prehľadom pre dokument."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+msgid "Document background pattern type"
+msgstr "Typ vzoru pozadia dokumentu"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+msgid "Whether the document will get a background pattern painted."
+msgstr "Určuje, či bude mať dokument vzor pozadia vyplnený farbou."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Smart Home End"
 msgstr "Inteligentné Home End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -299,57 +306,57 @@ msgstr ""
 "a pri „always“ sa vždy presunie na začiatok/koniec textu namiesto začiatku/"
 "konca riadka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Restore Previous Cursor Position"
 msgstr "Obnoviť predošlú polohu kurzora"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
 "Určuje, či má gedit obnoviť predošlú polohu kurzora pri načítaní súboru."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Enable Syntax Highlighting"
 msgstr "Povoliť zvýrazňovanie syntaxe"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Určuje, či má gedit zapnúť zvýrazňovanie syntaxe."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Enable Search Highlighting"
 msgstr "Povoliť zvýrazňovanie vyhľadávania"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Určuje, či má gedit zvýrazniť všetky výskyty hľadaného textu."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Ensure Trailing Newline"
 msgstr "Zaistiť znak nového riadka na konci"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Určuje, či má gedit zaisťovať, aby dokument vždy končil znakom nového riadka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Toolbar is Visible"
 msgstr "Panel nástrojov je viditeľný"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Určuje, či má byť v oknách editora zobrazený panel nástrojov."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Notebook Show Tabs Mode"
 msgstr "Režim zobrazenia kariet poznámkového bloku"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -361,57 +368,57 @@ msgstr ""
 "viac ako jedna karta. Pamätajte, že tieto hodnoty rozlišujú veľkosť písmen, "
 "takže musia byť napísané presne tak, ako sú tu uvedené."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Status Bar is Visible"
 msgstr "Stavová lišta je viditeľná"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Určuje, či sa má v dolnej časti okna editora zobrazovať stavový riadok."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Side panel is Visible"
 msgstr "Bočný panel je viditeľný"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Určuje, či má byť viditeľný bočný panel v ľavej časti okien na úpravy."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Maximum Recent Files"
 msgstr "Maximálny počet nedávnych súborov"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
 msgstr ""
 "Určuje maximálny počet nedávno otvorených súborov v ponuke „Nedávne súbory“."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Print Syntax Highlighting"
 msgstr "Tlačiť so zvýraznením syntaxe"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Určuje, či má gedit pri tlači zvýrazňovať syntax."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Header"
 msgstr "Tlačiť hlavičku"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Určuje, či má gedit tlačiť aj hlavičku dokumentu."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Printing Line Wrapping Mode"
 msgstr "Režim zalamovania riadkov pri tlači"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -423,11 +430,11 @@ msgstr ""
 "znakov. Pamätajte, že tieto hodnoty rozlišujú veľkosť písmen, takže musia "
 "byť napísané presne tak, ako sú tu uvedené."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid "Print Line Numbers"
 msgstr "Tlačiť čísla riadkov"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -437,29 +444,29 @@ msgstr ""
 "vždy po tu určenom počte riadkov zobrazí číslo riadka."
 
 # predvolene pismo
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Body Font for Printing"
 msgstr "Písmo pre telo pri tlači"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "Určuje písmo používané pre telo dokumentu pri tlači."
 
 # predvolene pismo
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "Header Font for Printing"
 msgstr "Písmo hlavičky pri tlači"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -468,15 +475,15 @@ msgstr ""
 "ak máte zapnutú voľbu „Tlačiť hlavičku“."
 
 # predvolene pismo
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Line Number Font for Printing"
 msgstr "Písmo pre čísla riadkov pre tlač"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -484,58 +491,60 @@ msgstr ""
 "Určuje písmo pre čísla riadkov pri tlači. Toto nastavenie sa prejaví iba ak "
 "je voľba „Tlačiť čísla riadkov“ nastavená na nenulovú hodnotu."
 
-#. Translators: This is the sorted list of encodings used by gedit
-#. for automatic detection of the file encoding. You may want to customize it adding
-#. encodings that are common in your country, for instance the GB18030 encoding
-#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
-#. (covering English and most Western European languages) if you think people
-#. in your country will rarely use it.
-#. "CURRENT" is a magic value used by gedit and it represents the encoding
-#. for the current locale, so please don't translate the "CURRENT" term.
-#. Only recognized encodings are used.
-#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
-#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Left"
+msgstr "Ľavý okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The left margin, in millimeters."
+msgstr "Ľavý okraj, v milimetroch."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Top"
+msgstr "Horný okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The top margin, in millimeters."
+msgstr "Horný okraj, v milimetroch."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+msgid "Margin Right"
+msgstr "Pravý okraj"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+msgid "The right margin, in millimeters."
+msgstr "Pravý okraj, v milimetroch."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+msgid "Margin Bottom"
+msgstr "Dolný okraj"
+
 #: ../data/org.gnome.gedit.gschema.xml.in.h:84
-msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-msgstr "['UTF-8', 'CURRENT', 'ISO-8859-2', 'ISO-8859-15']"
+msgid "The bottom margin, in millimeters."
+msgstr "Dolný okraj, v milimetroch."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:85
-msgid "Automatically Detected Encodings"
-msgstr "Automaticky zistené kódovania"
+msgid "Candidate Encodings"
+msgstr "Kandidáti kódovania"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
-"Sorted list of encodings used by gedit for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
-"recognized encodings are used."
+"List of candidate encodings shown in the Character Encoding menu in the open/"
+"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used. The default value is the empty list, in which "
+"case gedit will choose good defaults depending on the country and language."
 msgstr ""
-"Utriedený zoznam kódovaní používaných pri automatickom určovaní kódovania "
-"súboru. „CURRENT“ znamená kódovanie z aktuálnych miestnych nastavení. "
-"Použijú sa iba podporované kódovania."
+"Zoznam kandidátov kódovaní zobrazený v ponuke Kódovanie znakov pri vyberaní "
+"súborov na otvorenie/uloženie. Voľba „CURRENT“ reprezentuje aktuálne "
+"kódovanie podľa miestneho nastavenia. Použijú sa iba rozpoznané kódovania. "
+"Predvolená hodnota je prázdny zoznam, kedy program gedit zvolí vhodné "
+"predvolené nastavenie v závislosti od krajiny a jazyka."
 
-#. Translators: This is the list of encodings shown by default in the Character Encoding
-#. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
-msgid "['ISO-8859-15']"
-msgstr "['ISO-8859-2', 'ISO-8859-15']"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
-msgid "Encodings shown in menu"
-msgstr "Kódovania zobrazené v ponuke"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
-msgid ""
-"List of encodings shown in the Character Encoding menu in open/save file "
-"selector. Only recognized encodings are used."
-msgstr ""
-"Zoznam kódovaní dostupných v ponuke Kódovanie znakov v dialógu na výber "
-"súboru. Použijú sa iba známe kódovania."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
 msgstr "Aktívne zásuvné moduly"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -545,17 +554,17 @@ msgstr ""
 "gedit-plugin."
 
 # cmd desc
-#: ../gedit/gedit-app.c:104
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Zobrazí verziu aplikácie"
 
 # cmd desc
-#: ../gedit/gedit-app.c:110
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Zobrazí zoznam možných hodnôt voľby kódovania"
 
 # cmd desc
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -563,98 +572,84 @@ msgstr ""
 "Nastaví kódovanie znakov, ktoré bude použité na otvorenie súborov uvedených "
 "v príkazovom riadku"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "KÓDOVANIE"
 
 # cmd desc
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Vytvorí nové hlavné okno v bežiacej inštancii gedit"
 
 # cmd desc
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Vytvorí nový dokument v bežiacej inštancii gedit"
 
 # cmd desc
-#: ../gedit/gedit-app.c:138
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Nastaví veľkosť a pozíciu okna (ŠÍRKAxVÝŠKA+X+Y)"
-
-#: ../gedit/gedit-app.c:139
-msgid "GEOMETRY"
-msgstr "GEOMETRIA"
-
-# cmd desc
-#: ../gedit/gedit-app.c:145
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Otvorí súbory a zablokuje proces do zatvorenia súborov"
 
 # čo je samostatný režim?
 # Ivan: http://mail.gnome.org/archives/commits-list/2010-May/msg00365.html
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Spustí gedit v samostatnom režime"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[SÚBOR…] [+RIADOK[:STĹPEC]]"
 
-#: ../gedit/gedit-app.c:264
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Nastala chyba pri zobrazovaní pomocníka."
 
-#: ../gedit/gedit-app.c:917
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neplatné kódovanie."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:152
-msgid "Question"
-msgstr "Otázka"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:320
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Zavrieť _bez uloženia"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:457 ../gedit/gedit-commands-file.c:586
-#: ../gedit/gedit-commands-file.c:663 ../gedit/gedit-commands-file.c:882
-#: ../gedit/gedit-commands-file.c:1332 ../gedit/gedit-io-error-info-bar.c:134
-#: ../gedit/gedit-io-error-info-bar.c:515
-#: ../gedit/gedit-io-error-info-bar.c:1191
-#: ../gedit/gedit-preferences-dialog.c:868
-#: ../gedit/gedit-progress-info-bar.c:51
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-close-confirmation-dialog.c:278
+#: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
+#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
+#: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-io-error-info-bar.c:130
+#: ../gedit/gedit-io-error-info-bar.c:511
+#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-progress-info-bar.c:49
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:37
+#: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:781
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
-#: ../plugins/spell/gedit-spell-language-dialog.c:124
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Uložiť _ako…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:883 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Uložiť"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:365
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -667,12 +662,12 @@ msgstr[1] "Ak ich neuložíte, zmeny za poslednú sekundu budú natrvalo straten
 msgstr[2] ""
 "Ak ich neuložíte, zmeny za posledné %ld sekundy budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:374
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Ak ich neuložíte, zmeny za poslednú minútu budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:380
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -690,7 +685,7 @@ msgstr[2] ""
 "Ak ich neuložíte, zmeny za poslednú minútu a %ld sekundy budú natrvalo "
 "stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:390
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -703,11 +698,11 @@ msgstr[1] "Ak ich neuložíte, zmeny za poslednú minútu budú natrvalo straten
 msgstr[2] ""
 "Ak ich neuložíte, zmeny za posledné %ld minúty budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:405
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Ak ich neuložíte, zmeny za poslednú hodinu budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:411
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -724,7 +719,7 @@ msgstr[2] ""
 "Ak ich neuložíte, zmeny za poslednú hodinu a %d minúty budú natrvalo "
 "stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:426
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -736,22 +731,22 @@ msgstr[1] "Ak ich neuložíte, zmeny za poslednú hodinu budú natrvalo straten�
 msgstr[2] ""
 "Ak ich neuložíte, zmeny za posledné %d hodiny budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:470
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Zmeny v dokumente „%s“ budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:475
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Uložiť zmeny v dokumente „%s“ pred zatvorením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:490
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Správca systému zakázal ukladanie."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:599
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -759,7 +754,7 @@ msgstr[0] "Zmeny v %d dokumentoch budú natrvalo stratené."
 msgstr[1] "Zmeny v %d dokumente budú natrvalo stratené."
 msgstr[2] "Zmeny v %d dokumentoch budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:607
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -774,24 +769,24 @@ msgstr[2] ""
 "Máte otvorené %d dokumenty, ktoré obsahujú neuložené zmeny. Chcete ich "
 "uložiť pred zatvorením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enty s neuloženými zmenami:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:631
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "Vyberte _súbory, ktoré chcete uložiť:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:655
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ak ich neuložíte, všetky vaše zmeny budú natrvalo stratené."
 
-#: ../gedit/gedit-commands-file.c:256
+#: ../gedit/gedit-commands-file.c:261
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Načítava sa súbor „%s“…"
 
-#: ../gedit/gedit-commands-file.c:265
+#: ../gedit/gedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -799,43 +794,44 @@ msgstr[0] "Načítava sa %d súborov…"
 msgstr[1] "Načítava sa %d súbor…"
 msgstr[2] "Načítavajú sa %d súbory…"
 
-#. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:451
-#: ../gedit/resources/ui/gedit-window.ui.h:4
+#. Translators: "Open" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:456
+msgctxt "window title"
 msgid "Open"
-msgstr "Otvoriť"
+msgstr "Otvorenie"
 
-#: ../gedit/gedit-commands-file.c:458 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/quickopen/quickopen/popup.py:39
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_Otvoriť"
 
-#: ../gedit/gedit-commands-file.c:577
+#: ../gedit/gedit-commands-file.c:558
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Súbor „%s“ je iba na čítanie."
 
-#: ../gedit/gedit-commands-file.c:582
+#: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Chcete sa pokúsiť ho nahradiť tým, ktorý ukladáte?"
 
-#: ../gedit/gedit-commands-file.c:587
+#: ../gedit/gedit-commands-file.c:568
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "Na_hradiť"
 
-#: ../gedit/gedit-commands-file.c:627
+#: ../gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "Uložiť súbor komprimovane?"
 
-#: ../gedit/gedit-commands-file.c:631
+#: ../gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
 msgstr "Uložiť súbor ako čistý text?"
 
-#: ../gedit/gedit-commands-file.c:644
+#: ../gedit/gedit-commands-file.c:625
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -844,11 +840,11 @@ msgstr ""
 "Súbor „%s“ bol predtým uložený ako čistý text a teraz bude uložený "
 "komprimovane."
 
-#: ../gedit/gedit-commands-file.c:648
+#: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "_Uložiť komprimovane"
 
-#: ../gedit/gedit-commands-file.c:653
+#: ../gedit/gedit-commands-file.c:634
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -857,31 +853,33 @@ msgstr ""
 "Súbor „%s“ bol predtým uložený komprimovane a teraz bude uložený ako čistý "
 "text."
 
-#: ../gedit/gedit-commands-file.c:656
+#: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "_Uložiť ako čistý text"
 
-#: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
+#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Ukladá sa súbor „%s“…"
 
-#: ../gedit/gedit-commands-file.c:875
+#. Translators: "Save As" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:847
+msgctxt "window title"
 msgid "Save As"
-msgstr "Uložiť ako"
+msgstr "Uloženie ako"
 
-#: ../gedit/gedit-commands-file.c:1195
+#: ../gedit/gedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Vracia sa obsah dokumentu „%s“…"
 
-#: ../gedit/gedit-commands-file.c:1240
+#: ../gedit/gedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr ""
 "Vrátiť späť obsah súboru a zrušiť tak neuložené zmeny v dokumente „%s“?"
 
-#: ../gedit/gedit-commands-file.c:1249
+#: ../gedit/gedit-commands-file.c:1485
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -894,12 +892,12 @@ msgstr[1] "Zmeny v tomto dokumente za poslednú sekundu budú natrvalo stratené
 msgstr[2] ""
 "Zmeny v tomto dokumente za posledné %ld sekundy budú natrvalo stratené."
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Zmeny v tomto dokumente za poslednú minútu budú natrvalo stratené."
 
-#: ../gedit/gedit-commands-file.c:1264
+#: ../gedit/gedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -917,7 +915,7 @@ msgstr[2] ""
 "Zmeny v tomto dokumente za poslednú minútu a %ld sekundy budú natrvalo "
 "stratené."
 
-#: ../gedit/gedit-commands-file.c:1274
+#: ../gedit/gedit-commands-file.c:1510
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -930,11 +928,11 @@ msgstr[1] "Zmeny v tomto dokumente za poslednú minútu budú natrvalo stratené
 msgstr[2] ""
 "Zmeny v tomto dokumente za posledné %ld minúty budú natrvalo stratené."
 
-#: ../gedit/gedit-commands-file.c:1289
+#: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Zmeny v tomto dokumente za poslednú hodinu budú natrvalo stratené."
 
-#: ../gedit/gedit-commands-file.c:1295
+#: ../gedit/gedit-commands-file.c:1531
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -951,7 +949,7 @@ msgstr[2] ""
 "Zmeny v tomto dokumente za poslednú hodinu a %d minúty budú natrvalo "
 "stratené."
 
-#: ../gedit/gedit-commands-file.c:1310
+#: ../gedit/gedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -963,15 +961,15 @@ msgstr[1] "Zmeny v tomto dokumente za poslednú hodinu budú natrvalo stratené.
 msgstr[2] ""
 "Zmeny v tomto dokumente za posledné %d hodiny budú natrvalo stratené."
 
-#: ../gedit/gedit-commands-file.c:1333
+#: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
 msgstr "V_rátiť"
 
-#: ../gedit/gedit-commands-help.c:78
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit je malý textový editor nenáročný na zdroje pre prostredie GNOME"
 
-#: ../gedit/gedit-commands-help.c:102
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Stanislav Višňovský\n"
@@ -979,7 +977,7 @@ msgstr ""
 "Ivan Masár <helix84@centrum.sk>\n"
 "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../gedit/gedit-commands-search.c:103
+#: ../gedit/gedit-commands-search.c:107
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
@@ -987,75 +985,103 @@ msgstr[0] "Nájdených a nahradených %d výskytov"
 msgstr[1] "Nájdený a nahradený %d výskyt"
 msgstr[2] "Nájdené a nahradené %d výskyty"
 
-#: ../gedit/gedit-commands-search.c:112
+#: ../gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
 msgstr "Nájdený a nahradený jeden výskyt"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:138
+#: ../gedit/gedit-commands-search.c:142
 #, c-format
 msgid "\"%s\" not found"
 msgstr "Výraz „%s“ nebol nájdený"
 
-#: ../gedit/gedit-document.c:953 ../gedit/gedit-document.c:983
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
-msgid "Unsaved Document %d"
+msgid "Untitled Document %d"
 msgstr "Neuložený dokument %d"
 
-#: ../gedit/gedit-documents-panel.c:427
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Skupina kariet %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1133
-#: ../gedit/gedit-window.c:1139 ../gedit/gedit-window.c:1147
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "Len na čítanie"
 
-#: ../gedit/gedit-encodings-combo-box.c:302
-#: ../gedit/gedit-file-chooser-dialog-osx.c:564
+#: ../gedit/gedit-encodings-combo-box.c:299
+#: ../gedit/gedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
 msgstr "Automaticky zistené"
 
-#: ../gedit/gedit-encodings-combo-box.c:331
-#: ../gedit/gedit-file-chooser-dialog-osx.c:573
+#: ../gedit/gedit-encodings-combo-box.c:328
+#: ../gedit/gedit-file-chooser-dialog-osx.c:574
 msgid "Add or Remove..."
 msgstr "Pridať alebo odstrániť…"
 
-#: ../gedit/gedit-encoding-items.c:95 ../gedit/gedit-encoding-items.c:104
+#: ../gedit/gedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Aktuálne miestne nastavenia (%s)"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
-#: ../gedit/gedit-preferences-dialog.c:877
+#: ../gedit/gedit-encodings-dialog.c:95
+#, c-format
+msgid "%s (Current Locale)"
+msgstr "%s (Aktuálne miestne nastavenia)"
+
+#: ../gedit/gedit-encodings-dialog.c:190
+msgid "Do you really want to reset the character encodings' preferences?"
+msgstr "Skutočne chcete obnoviť nastavenia kódovaní znakov?"
+
+#. Reset button
+#: ../gedit/gedit-encodings-dialog.c:195 ../gedit/gedit-encodings-dialog.c:820
+msgid "_Reset"
+msgstr "O_bnoviť"
+
+#: ../gedit/gedit-encodings-dialog.c:731
+msgid "Add"
+msgstr "Pridá"
+
+#: ../gedit/gedit-encodings-dialog.c:774
+msgid "Remove"
+msgstr "Odstráni"
+
+#: ../gedit/gedit-encodings-dialog.c:785
+msgid "Move to a higher priority"
+msgstr "Premiestni na vyššiu prioritu"
+
+#: ../gedit/gedit-encodings-dialog.c:796
+msgid "Move to a lower priority"
+msgstr "Premiestni na nižšiu prioritu"
+
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Všetky súbory"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
 msgid "All Text Files"
 msgstr "Všetky textové súbory"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:305
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
 msgid "C_haracter Encoding:"
 msgstr "_Kódovanie znakov:"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:355
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
 msgid "L_ine Ending:"
 msgstr "Konce _riadkov:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:546
-#| msgid "C_haracter Encoding:"
+#: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "_Kódovanie znakov:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:619
-#| msgid "L_ine Ending:"
+#: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "Konce _riadkov:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1217
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1063,50 +1089,50 @@ msgstr "Konce _riadkov:"
 msgid "Plain Text"
 msgstr "Čistý text"
 
-#: ../gedit/gedit-io-error-info-bar.c:147
-#: ../gedit/gedit-io-error-info-bar.c:495
+#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_Skúsiť znova"
 
-#: ../gedit/gedit-io-error-info-bar.c:167
+#: ../gedit/gedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Nepodarilo sa nájsť súbor „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:169
-#: ../gedit/gedit-io-error-info-bar.c:209
-#: ../gedit/gedit-io-error-info-bar.c:216
+#: ../gedit/gedit-io-error-info-bar.c:165
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Prosím, overte, či ste zadali správne umiestnenie a skúste to znovu."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:188
+#: ../gedit/gedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Nepodarilo sa obslúžiť umiestnenia „%s:“."
 
-#: ../gedit/gedit-io-error-info-bar.c:194
+#: ../gedit/gedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
 msgstr "Nepodarilo sa obslúžiť toto umiestnenie."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
 msgstr "Nedá sa pristúpiť k umiestneniu súboru."
 
 # MČ: je to priečinok, alebo adresár kontaktov, prípadne nejaký LDAP?
 # PK: je to adresar (suborovy system)
-#: ../gedit/gedit-io-error-info-bar.c:207
+#: ../gedit/gedit-io-error-info-bar.c:203
 #, c-format
 msgid "“%s” is a directory."
 msgstr "„%s“ je adresár."
 
-#: ../gedit/gedit-io-error-info-bar.c:214
+#: ../gedit/gedit-io-error-info-bar.c:210
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "„%s“ nie je platné umiestnenie."
 
 # MČ: sprostredkovateľský?
-#: ../gedit/gedit-io-error-info-bar.c:250
+#: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1115,7 +1141,7 @@ msgstr ""
 "Hostiteľ „%s“ nebol nájdený. Prosím, skontrolujte, či sú vaše nastavenia "
 "sprostredkovateľského (proxy) servera správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:265
+#: ../gedit/gedit-io-error-info-bar.c:261
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1124,50 +1150,50 @@ msgstr ""
 "Názov hostiteľa bol neplatný. Prosím, overte, či ste zadali umiestnenie "
 "správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:273
+#: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "„%s“ nie je obyčajný súbor."
 
-#: ../gedit/gedit-io-error-info-bar.c:278
+#: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
 msgstr "Časový limit spojenia vypršal. Prosím, skúste to znova."
 
-#: ../gedit/gedit-io-error-info-bar.c:311
+#: ../gedit/gedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Neočakávaná chyba: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:347
+#: ../gedit/gedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Nedá sa nájsť požadovaný súbor. Pravdepodobne bol nedávno odstránený."
 
-#: ../gedit/gedit-io-error-info-bar.c:357
+#: ../gedit/gedit-io-error-info-bar.c:353
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Nepodarilo sa vrátiť obsah súboru „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:384
+#: ../gedit/gedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
 msgstr "Kódovanie zn_akov:"
 
-#: ../gedit/gedit-io-error-info-bar.c:445
+#: ../gedit/gedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Umiestnenie „%s“ nie je momentálne prístupné."
 
-#: ../gedit/gedit-io-error-info-bar.c:460
+#: ../gedit/gedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
 msgstr "Váš systém je bez pripojenia. Skontrolujte pripojenie k sieti."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:503
-#: ../gedit/gedit-io-error-info-bar.c:772
+#: ../gedit/gedit-io-error-info-bar.c:499
+#: ../gedit/gedit-io-error-info-bar.c:768
 msgid "Edit Any_way"
 msgstr "Upraviť napriek _tomu"
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1175,29 +1201,29 @@ msgstr ""
 "Počet nasledovaných odkazov je obmedzený a vlastný súbor nebol v rámci tohto "
 "limitu nájdený."
 
-#: ../gedit/gedit-io-error-info-bar.c:599
+#: ../gedit/gedit-io-error-info-bar.c:595
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Nemáte potrebné práva na otvorenie súboru."
 
-#: ../gedit/gedit-io-error-info-bar.c:605
+#: ../gedit/gedit-io-error-info-bar.c:601
 msgid "Unable to detect the character encoding."
 msgstr "Nepodarilo sa zistiť kódovanie znakov."
 
-#: ../gedit/gedit-io-error-info-bar.c:606
-#: ../gedit/gedit-io-error-info-bar.c:630
+#: ../gedit/gedit-io-error-info-bar.c:602
+#: ../gedit/gedit-io-error-info-bar.c:626
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Prosím, skontrolujte, či sa nepokúšate otvoriť binárny súbor."
 
-#: ../gedit/gedit-io-error-info-bar.c:607
+#: ../gedit/gedit-io-error-info-bar.c:603
 msgid "Select a character encoding from the menu and try again."
 msgstr "Vyberte kódovanie znakov z ponuky a skúste to znova."
 
-#: ../gedit/gedit-io-error-info-bar.c:613
+#: ../gedit/gedit-io-error-info-bar.c:609
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Nastala chyba pri otváraní súboru „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:615
+#: ../gedit/gedit-io-error-info-bar.c:611
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1205,31 +1231,31 @@ msgstr ""
 "Súbor, ktorý ste otvorili, obsahuje niektoré neplatné znaky. Ak budete "
 "pokračovať v otváraní tohto súboru, mohli by ste tento dokument poškodiť."
 
-#: ../gedit/gedit-io-error-info-bar.c:618
+#: ../gedit/gedit-io-error-info-bar.c:614
 msgid "You can also choose another character encoding and try again."
 msgstr "Môžete tiež vybrať iné kódovanie znakov a skúsiť to znova."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:623
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Nepodarilo sa otvoriť súbor „%s“ použitím kódovania znakov „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:631
-#: ../gedit/gedit-io-error-info-bar.c:706
+#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:702
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Vyberte iné kódovanie znakov z ponuky a skúste to znova."
 
-#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../gedit/gedit-io-error-info-bar.c:639
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Nepodarilo sa otvoriť súbor „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:701
+#: ../gedit/gedit-io-error-info-bar.c:697
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Nepodarilo sa uložiť súbor „%s“ použitím kódovania znakov „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:704
+#: ../gedit/gedit-io-error-info-bar.c:700
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1239,28 +1265,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:777
+#: ../gedit/gedit-io-error-info-bar.c:773
 msgid "D_on't Edit"
 msgstr "Neuprav_ovať"
 
-#: ../gedit/gedit-io-error-info-bar.c:787
+#: ../gedit/gedit-io-error-info-bar.c:783
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Tento súbor „%s“ je už otvorený v inom okne."
 
-#: ../gedit/gedit-io-error-info-bar.c:801
+#: ../gedit/gedit-io-error-info-bar.c:797
 msgid "Do you want to edit it anyway?"
 msgstr "Chcete ho aj tak upravovať?"
 
-#: ../gedit/gedit-io-error-info-bar.c:857
-#: ../gedit/gedit-io-error-info-bar.c:947
-#: ../gedit/gedit-io-error-info-bar.c:1239
+#: ../gedit/gedit-io-error-info-bar.c:853
+#: ../gedit/gedit-io-error-info-bar.c:943
+#: ../gedit/gedit-io-error-info-bar.c:1235
 msgid "S_ave Anyway"
 msgstr "_Uložiť aj napriek tomu"
 
-#: ../gedit/gedit-io-error-info-bar.c:860
-#: ../gedit/gedit-io-error-info-bar.c:950
-#: ../gedit/gedit-io-error-info-bar.c:1242
+#: ../gedit/gedit-io-error-info-bar.c:856
+#: ../gedit/gedit-io-error-info-bar.c:946
+#: ../gedit/gedit-io-error-info-bar.c:1238
 msgid "D_on't Save"
 msgstr "_Neuložiť"
 
@@ -1268,29 +1294,29 @@ msgstr "_Neuložiť"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:874
+#: ../gedit/gedit-io-error-info-bar.c:870
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Súbor „%s“ bol od jeho načítania zmenený."
 
-#: ../gedit/gedit-io-error-info-bar.c:889
+#: ../gedit/gedit-io-error-info-bar.c:885
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Ak ho uložíte, všetky externé zmeny môžu byť stratené. Uložiť ho aj napriek "
 "tomu?"
 
-#: ../gedit/gedit-io-error-info-bar.c:969
+#: ../gedit/gedit-io-error-info-bar.c:965
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Nepodarilo sa vytvoriť záložnú kópiu súboru počas ukladania „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:974
+#: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Nepodarilo sa vytvoriť dočasnú záložnú kópiu súboru počas ukladania „%s“"
 
-#: ../gedit/gedit-io-error-info-bar.c:991
+#: ../gedit/gedit-io-error-info-bar.c:987
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1302,7 +1328,7 @@ msgstr ""
 "Pokračovať napriek tomu?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1051
+#: ../gedit/gedit-io-error-info-bar.c:1047
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1311,7 +1337,7 @@ msgstr ""
 "Nedajú sa obslúžiť umiestnenia „%s:“ v režime zápisu. Prosím, overte, či ste "
 "zadali umiestnenie správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1059
+#: ../gedit/gedit-io-error-info-bar.c:1055
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1319,7 +1345,7 @@ msgstr ""
 "Toto umiestnenie sa nedá obslúžiť v režime zápisu. Prosím, overte, či ste "
 "zadali umiestnenie správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1068
+#: ../gedit/gedit-io-error-info-bar.c:1064
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1328,7 +1354,7 @@ msgstr ""
 "„%s“ nie je platné umiestnenie. Prosím, overte, či ste zadali umiestnenie "
 "správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1075
+#: ../gedit/gedit-io-error-info-bar.c:1071
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1336,7 +1362,7 @@ msgstr ""
 "Nemáte potrebné oprávnenia na uloženie súboru. Prosím, overte, či ste zadali "
 "umiestnenie správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1081
+#: ../gedit/gedit-io-error-info-bar.c:1077
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1344,7 +1370,7 @@ msgstr ""
 "Na disku nie je dostatok miesta na uloženie súboru. Prosím, uvoľnite nejaké "
 "miesto na disku a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1086
+#: ../gedit/gedit-io-error-info-bar.c:1082
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1352,11 +1378,11 @@ msgstr ""
 "Pokúšate sa uložiť súbor na disk určený len na čítanie. Prosím, overte, či "
 "ste zadali umiestnenie správne a skúste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1092
+#: ../gedit/gedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Súbor s takým istým názvom už existuje. Prosím, použite iný názov."
 
-#: ../gedit/gedit-io-error-info-bar.c:1097
+#: ../gedit/gedit-io-error-info-bar.c:1093
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1364,7 +1390,7 @@ msgstr ""
 "Disk, na ktorý sa pokúšate uložiť súbor, má obmedzenú dĺžku názvu súborov. "
 "Prosím, použite kratší názov."
 
-#: ../gedit/gedit-io-error-info-bar.c:1108
+#: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1374,106 +1400,121 @@ msgstr ""
 "Prosím, skúste uložiť menší súbor alebo súbor skúste uložiť na disk, ktorý "
 "toto obmedzenie nemá."
 
-#: ../gedit/gedit-io-error-info-bar.c:1125
+#: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Nepodarilo sa uložiť súbor „%s“."
 
-#: ../gedit/gedit-io-error-info-bar.c:1165
+#: ../gedit/gedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Súbor „%s“ sa na disku zmenil."
 
-#: ../gedit/gedit-io-error-info-bar.c:1176
+#: ../gedit/gedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
 msgstr "Zahodiť zmeny a _znovu načítať"
 
-#: ../gedit/gedit-io-error-info-bar.c:1186
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/resources/gtk/menus-common.ui.h:21
+#: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Znova načítať"
 
-#: ../gedit/gedit-io-error-info-bar.c:1252
+#: ../gedit/gedit-io-error-info-bar.c:1187
+msgid "_Ignore"
+msgstr "_Ignorovať"
+
+#: ../gedit/gedit-io-error-info-bar.c:1248
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Pri ukladaní „%s“ boli zistené niektoré neplatné znaky"
 
-#: ../gedit/gedit-io-error-info-bar.c:1268
+#: ../gedit/gedit-io-error-info-bar.c:1264
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "Ak budete pokračovať v ukladaní tohto súboru, mohli by ste dokument "
 "poškodiť. Uložiť ho napriek tomu?"
 
-#: ../gedit/gedit-open-document-selector.c:409
-msgid "No results"
-msgstr "Žiadne výsledky"
-
-#: ../gedit/gedit-preferences-dialog.c:386
+#: ../gedit/gedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Stlačením tohto tlačidla vyberiete písmo, ktoré editor používa"
 
-#: ../gedit/gedit-preferences-dialog.c:399
+#: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Po_užívať systémové písmo s pevnou šírkou znakov (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:643
+#: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "Adresár „%s“ nebolo možné vytvoriť: g_mkdir_with_parents() zlyhal: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:839
+#: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
 msgstr "Vybranú farebnú schému nebolo možné nainštalovať."
 
-#: ../gedit/gedit-preferences-dialog.c:864
+#: ../gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
 msgstr "Pridať schému"
 
-#: ../gedit/gedit-preferences-dialog.c:869
+#: ../gedit/gedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
 msgstr "Pri_dať schému"
 
-#: ../gedit/gedit-preferences-dialog.c:873
+#: ../gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
 msgstr "Súbory farebnej schémy"
 
-#: ../gedit/gedit-preferences-dialog.c:910
+#: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nepodarilo sa odstrániť farebnú schému „%s“."
 
-#: ../gedit/gedit-print-job.c:555
+#: ../gedit/gedit-print-job.c:227
+msgid "Preparing..."
+msgstr "Pripravuje sa…"
+
+#: ../gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "Súbor: %s"
 
-#: ../gedit/gedit-print-job.c:564
+#: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Stránka %N z %Q"
 
-#: ../gedit/gedit-print-job.c:826
-msgid "Preparing..."
-msgstr "Pripravuje sa…"
+#: ../gedit/gedit-print-job.c:626
+#, c-format
+msgid "Rendering page %d of %d..."
+msgstr "Vykresľuje sa stránka %d z %d…"
 
-#: ../gedit/gedit-print-preview.c:648
+#: ../gedit/gedit-print-preview.c:653
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stránka %d z %d"
 
+#: ../gedit/gedit-replace-dialog.c:690
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Nothing"
+msgstr "Nič"
+
+#: ../gedit/gedit-replace-dialog.c:779
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+msgid "Find and Replace"
+msgstr "Nájsť a nahradiť"
+
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
+#: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
 msgid "OVR"
 msgstr "CEZ"
 
-#: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
+#: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
 msgid "INS"
 msgstr "VKL"
 
-#: ../gedit/gedit-statusbar.c:242
+#: ../gedit/gedit-statusbar.c:244
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1483,105 +1524,100 @@ msgstr[2] "%d karty obsahujú chyby"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:772
+#: ../gedit/gedit-tab.c:814
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Vracia sa %s z %s"
 
-#: ../gedit/gedit-tab.c:779
+#: ../gedit/gedit-tab.c:821
 #, c-format
 msgid "Reverting %s"
 msgstr "Vracia sa %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:792
+#: ../gedit/gedit-tab.c:834
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Načítava sa %s z %s"
 
-#: ../gedit/gedit-tab.c:799
+#: ../gedit/gedit-tab.c:841
 #, c-format
 msgid "Loading %s"
 msgstr "Načítava sa %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:875
+#: ../gedit/gedit-tab.c:921
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Ukladá sa %s do %s"
 
-#: ../gedit/gedit-tab.c:880
+#: ../gedit/gedit-tab.c:926
 #, c-format
 msgid "Saving %s"
 msgstr "Ukladá sa %s"
 
-#. Read only
-#: ../gedit/gedit-tab.c:1443
-msgid "RO"
-msgstr "RO"
-
-#: ../gedit/gedit-tab.c:1491
+#: ../gedit/gedit-tab.c:1529
 #, c-format
 msgid "Error opening file %s"
 msgstr "Chyba pri otváraní súboru %s"
 
-#: ../gedit/gedit-tab.c:1496
+#: ../gedit/gedit-tab.c:1534
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Chyba pri vracaní súboru %s"
 
-#: ../gedit/gedit-tab.c:1501
+#: ../gedit/gedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
 msgstr "Chyba pri ukladaní súboru %s"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1570
 msgid "Name:"
 msgstr "Názov:"
 
-#: ../gedit/gedit-tab.c:1533
+#: ../gedit/gedit-tab.c:1571
 msgid "MIME Type:"
 msgstr "Typ MIME:"
 
-#: ../gedit/gedit-tab.c:1534
+#: ../gedit/gedit-tab.c:1572
 msgid "Encoding:"
 msgstr "Kódovanie:"
 
-#: ../gedit/gedit-utils.c:848
+#: ../gedit/gedit-utils.c:841
 msgid "Please check your installation."
 msgstr "Prosím, skontrolujte svoju inštaláciu."
 
-#: ../gedit/gedit-utils.c:909
+#: ../gedit/gedit-utils.c:902
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nepodarilo sa otvoriť súbor používateľského rozhrania %s. Chyba: %s"
 
-#: ../gedit/gedit-utils.c:928
+#: ../gedit/gedit-utils.c:921
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nepodarilo sa nájst objekt „%s“ v súbore %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1151
+#: ../gedit/gedit-utils.c:1159
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
 
-#: ../gedit/gedit-utils.c:1453
+#: ../gedit/gedit-utils.c:1463
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-utils.c:1455
+#: ../gedit/gedit-utils.c:1465
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-utils.c:1457
+#: ../gedit/gedit-utils.c:1467
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:512
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Zobraziť čísla _riadkov"
@@ -1590,74 +1626,73 @@ msgstr "Zobraziť čísla _riadkov"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:733
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d. z %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:825
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Pokračovať dookola"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:835
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Porovnávať ako _regulárny výraz"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:849
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Porovnávať len _celé slová"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:863
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "Rozlišovať _veľkosť písmen"
 
-#: ../gedit/gedit-view-frame.c:1037
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Reťazec, ktorý chcete hľadať"
 
-#: ../gedit/gedit-view-frame.c:1049
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "Riadok, na ktorý chcete presunúť kurzor"
 
-#: ../gedit/gedit-window.c:972
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Hľadanie zátvoriek je mimo rozsahu"
 
-#: ../gedit/gedit-window.c:977
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Zodpovedajúca zátvorka nebola nájdená"
 
-#: ../gedit/gedit-window.c:982
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Zodpovedajúca zátvorka nájdená na riadku: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1017
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr " Ria %d, Stĺ %d"
 
-#: ../gedit/gedit-window.c:1199
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Šírka tabulátora: %u"
 
-#: ../gedit/gedit-window.c:1569
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Máte neuložené dokumenty"
 
-#: ../gedit/gedit-window.c:2418
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Zmení stránku bočného panela"
 
-#: ../gedit/gedit-window.c:2438 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1679,11 +1714,9 @@ msgid "Move to New Tab _Group"
 msgstr "_Presunúť do novej skupiny kariet"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
-#: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "Za_vrieť"
@@ -1697,275 +1730,271 @@ msgid "Use Spaces"
 msgstr "Používať medzery"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:8
-#| msgid "_Display line numbers"
 msgid "Display line numbers"
 msgstr "Zobraziť čísla _riadkov"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:9
-#| msgid "Display Right Margin"
 msgid "Display right margin"
 msgstr "Zobraziť pravý okraj"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:10
-#| msgid "Highlight current _line"
 msgid "Highlight current line"
 msgstr "Zvýrazniť _aktuálny riadok"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:11
-#| msgid "Text Wrapping"
 msgid "Text wrapping"
 msgstr "Zalamovanie textu"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
-msgid "_New Window"
-msgstr "_Nové okno"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
-msgid "_Preferences"
-msgstr "Nas_tavenia"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:126
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
-msgid "_Help"
-msgstr "_Pomocník"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
-msgid "_About"
-msgstr "_O programe"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
-msgid "_Quit"
-msgstr "U_končiť"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
-msgid "_Print…"
-msgstr "_Tlačiť…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
-msgid "_Fullscreen"
-msgstr "Na _celú obrazovku"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
-msgid "Save _All"
-msgstr "Uložiť _všetky"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
-msgid "_Find…"
-msgstr "_Nájsť…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
-msgid "_Find and Replace…"
-msgstr "Nájsť a n_ahradiť…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
-msgid "_Clear Highlight"
-msgstr "_Zrušiť zvýrazňovanie"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
-msgid "_Go to Line…"
-msgstr "Prejsť na _riadok…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "Zobraziť"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
-msgid "Side _Panel"
-msgstr "_Bočný panel"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
-msgid "_Bottom Panel"
-msgstr "Sp_odný panel"
-
-#  GtkDialog title
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
-msgid "_Highlight Mode…"
-msgstr "Režim z_výrazňovania"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
-#| msgid "_Tools"
-msgid "Tools"
-msgstr "_Nástroje"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
-msgid "_Close All"
-msgstr "Za_vrieť všetky"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-#| msgid "_File"
-msgid "File"
+#: ../gedit/resources/gtk/menus-common.ui.h:12
+msgid "_File"
 msgstr "_Súbor"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/gtk/menus-common.ui.h:14
 msgid "_New"
 msgstr "_Nový"
 
 # quicklist
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
-#| msgid "Open a New Document"
+#: ../gedit/resources/gtk/menus-common.ui.h:16
 msgid "Open _Recent"
 msgstr "Otvoriť nový dokument"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/resources/gtk/menus-common.ui.h:17
 msgid "Reopen Closed _Tab"
 msgstr "Znovu otvoriť zavreté _karty"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
-#| msgid "_Save As…"
+#: ../gedit/resources/gtk/menus-common.ui.h:19
 msgid "Save _As…"
 msgstr "Uložiť _ako…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-#| msgid "_Edit"
-msgid "Edit"
+#: ../gedit/resources/gtk/menus-common.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:1
+msgid "_New Window"
+msgstr "_Nové okno"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+msgid "_Print…"
+msgstr "_Tlačiť…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+msgid "_Quit"
+msgstr "U_končiť"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:24
+msgid "_Edit"
 msgstr "_Upraviť"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-common.ui.h:25
 msgid "_Undo"
 msgstr "_Vrátiť späť"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-common.ui.h:26
 msgid "_Redo"
 msgstr "_Znovu vykonať"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-common.ui.h:27
 msgid "C_ut"
 msgstr "Vys_trihnúť"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-common.ui.h:28
 msgid "_Copy"
 msgstr "_Kopírovať"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-common.ui.h:29
 msgid "_Paste"
 msgstr "_Vložiť"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../gedit/resources/gtk/menus-common.ui.h:30
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "O_dstrániť"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
-#| msgid "File Browser Filter Mode"
+#: ../gedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
 msgstr "Režim filtra prehliadača súborov"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
 msgstr "Vybr_ať všetko"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-#| msgid "_Search"
-msgid "Search"
+#: ../gedit/resources/gtk/menus-common.ui.h:33
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+msgid "_Preferences"
+msgstr "Nas_tavenia"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:34
+msgid "_View"
+msgstr "_Zobraziť"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:35
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+msgid "Side _Panel"
+msgstr "_Bočný panel"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:36
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+msgid "_Bottom Panel"
+msgstr "Sp_odný panel"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+msgid "_Fullscreen"
+msgstr "Na _celú obrazovku"
+
+#  GtkDialog title
+#: ../gedit/resources/gtk/menus-common.ui.h:38
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+msgid "_Highlight Mode…"
+msgstr "Režim z_výrazňovania"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:39
+msgid "_Search"
 msgstr "_Hľadať"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-common.ui.h:40
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+msgid "_Find…"
+msgstr "_Nájsť…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
 msgstr "Hľadať ď_alšie"
 
 # tu nie je podľa mňa správny rod
 # treby vymyslieť ako preložiť find next a find previous
 # Ivan: výskyty
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-common.ui.h:42
 msgid "Find Pre_vious"
 msgstr "Nájsť pre_dchádzajúce"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
-#| msgid "_Find and Replace…"
+#: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
-msgstr "Nájsť a N_ahradiť"
+msgstr "Nájsť a n_ahradiť…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
-#| msgid "_Go to Line…"
+#: ../gedit/resources/gtk/menus-common.ui.h:44
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+msgid "_Clear Highlight"
+msgstr "_Zrušiť zvýrazňovanie"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
 msgstr "Prejsť na _riadok…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
-#| msgid "Save _All"
+#: ../gedit/resources/gtk/menus-common.ui.h:46
+msgid "_Tools"
+msgstr "_Nástroje"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:47
+msgid "_Documents"
+msgstr "_Dokumenty"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:48
 msgid "_Save All"
 msgstr "Uložiť _všetky"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
-#| msgid "Nex_t Tab Group"
+#: ../gedit/resources/gtk/menus-common.ui.h:49
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+msgid "_Close All"
+msgstr "Za_vrieť všetky"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
 msgstr "Nasledovná skupina karie_t"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-common.ui.h:51
 msgid "P_revious Tab Group"
 msgstr "P_redchádzajúca skupina kariet"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-common.ui.h:52
 msgid "Nex_t Tab Group"
 msgstr "Nasledovná skupina karie_t"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-common.ui.h:53
 msgid "_Previous Document"
 msgstr "_Predchádzajúci dokument"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-common.ui.h:54
 msgid "N_ext Document"
 msgstr "Ďalší _dokument"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
-#| msgid "Move to New _Window"
+#: ../gedit/resources/gtk/menus-common.ui.h:55
 msgid "_Move To New Window"
 msgstr "Pre_sunúť do nového okna"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-#| msgid "_Help"
-msgid "Help"
+#: ../gedit/resources/gtk/menus-common.ui.h:56
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../plugins/spell/gedit-spell-plugin.c:246
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+msgid "_Help"
 msgstr "_Pomocník"
 
+#: ../gedit/resources/gtk/menus-common.ui.h:57
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+msgid "_About"
+msgstr "_O programe"
+
+#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové skratky"
+
+#: ../gedit/resources/gtk/menus.ui.h:11
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Save _All"
+msgstr "Uložiť _všetky"
+
+#: ../gedit/resources/gtk/menus.ui.h:13
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+msgid "_Find and Replace…"
+msgstr "Nájsť a n_ahradiť…"
+
+#: ../gedit/resources/gtk/menus.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_Go to Line…"
+msgstr "Prejsť na _riadok…"
+
+#: ../gedit/resources/gtk/menus.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+msgid "View"
+msgstr "Zobraziť"
+
+#: ../gedit/resources/gtk/menus.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "Tools"
+msgstr "_Nástroje"
+
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
-msgid "Character encodings"
+msgid "Character Encodings"
 msgstr "Kódovania znakov"
 
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+msgid "_Apply"
+msgstr "Po_užiť"
+
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:125
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
-msgid "_OK"
-msgstr "_OK"
+msgid "A_vailable Encodings"
+msgstr "_Dostupné kódovania"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
-msgid "A_vailable encodings:"
-msgstr "_Dostupné kódovania:"
+msgid "Cho_sen Encodings"
+msgstr "Zvol_ené kódovania"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
@@ -1974,20 +2003,6 @@ msgstr "_Popis"
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
 msgid "_Encoding"
 msgstr "_Kódovanie"
-
-#. Add to Dictionary
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:8
-#: ../plugins/spell/gedit-automatic-spell-checker.c:506
-msgid "_Add"
-msgstr "Pri_dať"
-
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:9
-msgid "_Remove"
-msgstr "O_dstrániť"
-
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:10
-msgid "E_ncodings shown in menu:"
-msgstr "_Kódovania zobrazené v ponuke:"
 
 #  GtkDialog title
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
@@ -2001,15 +2016,17 @@ msgstr "Vybr_ať"
 # GtkSearchEntry placeholder_text
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode..."
-msgstr "Vyhľadať režim zvýrazňovania…"
+msgstr "Vyhľadajte režim zvýrazňovania…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-#| msgid "_Documents"
+msgid "No results"
+msgstr "Žiadne výsledky"
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Other _Documents…"
 msgstr "Iné _dokumenty"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
-#| msgid "Open a file"
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
 msgid "Open another file"
 msgstr "Otvorí iný súbor"
 
@@ -2026,109 +2043,117 @@ msgid "Display _statusbar"
 msgstr "Zobraziť _stavovú lištu"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+msgid "Display _overview map"
+msgstr "Zobraziť mapu s _prehľadom"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+msgid "Display _grid pattern"
+msgstr "Zobraziť čiary _mriežky"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "Zalamovanie textu"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "Povoliť _zalamovanie riadkov"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "_Nerozdeľovať slová na viac riadkov"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
 msgid "Highlighting"
 msgstr "Zvýrazňovanie"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
 msgstr "Zvýrazniť _aktuálny riadok"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
 msgstr "Zvýrazniť zo_dpovedajúce zátvorky"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
 msgid "Tab Stops"
 msgstr "Tabulátory"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
 msgid "_Tab width:"
 msgstr "Šírka _tabulátorov:"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
 msgid "Insert _spaces instead of tabs"
 msgstr "Vkladať _medzery namiesto tabulátorov"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
 msgid "_Enable automatic indentation"
 msgstr "_Povoliť automatické odsadzovanie"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
 msgid "File Saving"
 msgstr "Ukladanie súborov"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
 msgstr "Vytvárať _záložnú kópiu súborov pred ukladaním"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
 msgstr "_Automaticky ukladať každých"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
 msgid "_minutes"
 msgstr "_minút"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
 msgid "Editor"
 msgstr "Editor"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Písmo"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
 msgstr "Písmo _editora:"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
 msgstr "Vyberte písmo textu"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
 msgstr "Farebná schéma"
 
 # tooltip text
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
 msgid "Install scheme"
 msgstr "Nainštaluje schému"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
 msgid "Install Scheme"
 msgstr "Nainštalovať schému"
 
 # tooltip text
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
 msgid "Uninstall scheme"
 msgstr "Odinštaluje schému"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
 msgid "Uninstall Scheme"
 msgstr "Odinštalovať schému"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
 msgstr "Písmo a farby"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
 msgid "Plugins"
 msgstr "Zásuvné moduly"
 
@@ -2148,12 +2173,12 @@ msgstr "Čísla riadkov"
 msgid "Print line nu_mbers"
 msgstr "Tlačiť čí_sla riadkov"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "Čís_la každých"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "riadkov"
@@ -2191,97 +2216,87 @@ msgstr "_Obnoviť predvolené písma"
 msgid "Show the previous page"
 msgstr "Zobrazí predchádzajúcu stranu"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
-msgid "P_revious Page"
-msgstr "P_redchádzajúca strana"
-
 # tooltip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
 msgid "Show the next page"
 msgstr "Zobrazí nasledujúcu stranu"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:4
-msgid "_Next Page"
-msgstr "Ď_alšia strana"
-
 # tootlip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Current page (Alt+P)"
 msgstr "Aktuálna strana (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
 msgid "of"
 msgstr "z"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
 msgid "Page total"
 msgstr "Spolu strán"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
 msgid "The total number of pages in the document"
 msgstr "Celkový počet stránok v dokumente"
 
 # tootlip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
 msgid "Show multiple pages"
 msgstr "Zobrazí viac stránok"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
 msgid "Zoom 1:1"
 msgstr "Mierka 1:1"
 
 # tooltip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
 msgid "Zoom to fit the whole page"
 msgstr "Zväčší, aby bolo vidieť celú stránku"
 
 # tooltip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
 msgid "Zoom the page in"
 msgstr "Zväčší stranu"
 
 # tooltip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
 msgid "Zoom the page out"
 msgstr "Zmenší stranu"
 
 #  tooltip
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
 msgid "Close print preview"
 msgstr "Zavrie náhľad tlače"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
 msgid "_Close Preview"
 msgstr "_Zavrieť náhľad"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:17
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
 msgid "Page Preview"
 msgstr "Náhľad stránky"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:18
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
 msgid "The preview of a page in the document to be printed"
 msgstr "Náhľad stránky dokumentu, ktorá sa má tlačiť"
-
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-msgid "Replace"
-msgstr "Nahradiť"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
 msgid "Replace _All"
 msgstr "Nahradiť vš_etko"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Nájsť"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-msgid "_Search for: "
-msgstr "_Hľadať:"
+msgctxt "label on the left of the GtkEntry containing text to search"
+msgid "F_ind "
+msgstr "Náj_sť"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
-msgid "Replace _with: "
-msgstr "Nahradiť _za:"
+msgid "Replace _with "
+msgstr "Nahradiť _za "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
 msgid "_Match case"
@@ -2292,17 +2307,273 @@ msgid "Match _entire word only"
 msgstr "Porovnávať _len celé slová"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
-#| msgid "Match as _regular expression"
-msgid "Match as re_gular expression"
-msgstr "Porovnávať ako _regulárny výraz"
+msgid "Re_gular expression"
+msgstr "Re_gulárny výraz"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
 msgstr "Hľadať _dozadu"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-msgid "_Wrap around"
+msgid "Wra_p around"
 msgstr "_Pokračovať dookola"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
+msgid "Create a new document in a tab"
+msgstr "Vytvorenie nového dokumentu na karte"
+
+# quicklist
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
+msgid "Open a document"
+msgstr "Otvorenie dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
+msgid "Save the document"
+msgstr "Uloženie dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
+msgid "Save the document with a new filename"
+msgstr "Uloženie dokumentu s novým názvom súboru"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
+msgid "Save all the documents"
+msgstr "Uloženie všetkých dokumentov"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
+msgid "Close the document"
+msgstr "Zatvorenie dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
+msgid "Close all the documents"
+msgstr "Zatvorenie všetkých dokumentov"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
+msgid "Reopen the most recently closed document"
+msgstr "Znovu otvorenie posledného zatvoreného dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
+msgid "Switch to the next document"
+msgstr "Prepnutie na nasledujúci dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
+msgid "Switch to the previous document"
+msgstr "Prepnutie na predchádzajúci dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to the first - ninth document"
+msgstr "Prepínanie medzi prvým až deviatym dokumentom"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
+msgid "Windows and Panels"
+msgstr "Okná a panely"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
+msgid "Create a new document in a window"
+msgstr "Vytvorenie nového dokumentu v okne"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
+msgid "Create a new tab group"
+msgstr "Vytvorenie novej skupiny kariet"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
+msgid "Show side panel"
+msgstr "Zobrazenie bočného panelu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
+msgid "Show bottom panel"
+msgstr "Zobrazenie spodného panelu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
+msgid "Fullscreen on / off"
+msgstr "Zapnutie alebo vypnutie režimu na celú obrazovku"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Ukončenie aplikácie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Nájdenie a nahradenie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Nájdenie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
+msgid "Find the next match"
+msgstr "Nájdenie nasledujúcej zhody"
+
+# tooltip
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
+msgid "Find the previous match"
+msgstr "Nájdenie predchádzajúcej zhody"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
+msgid "Clear highlight"
+msgstr "Vymazanie zvýraznenia"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
+msgid "Go to line"
+msgstr "Prejdenie na riadok"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
+msgid "Copy and Paste"
+msgstr "Kopírovanie a vkladanie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
+msgid "Copy selected text to clipboard"
+msgstr "Skopírovanie vybratého textu do schránky"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
+msgid "Cut selected text to clipboard"
+msgstr "Vystrihnutie vybratého textu do schránky"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
+msgid "Paste text from clipboard"
+msgstr "Vloženie textu zo schránky"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
+msgid "Undo and Redo"
+msgstr "Vrátenie späť a zopakovanie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
+msgid "Undo previous command"
+msgstr "Vrátenie späť predchádzajúceho príkazu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
+msgid "Redo previous command"
+msgstr "Zopakovanie predchádzajúceho príkazu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Výber"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
+msgid "Select all text"
+msgstr "Výber celého textu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Upravovanie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
+msgid "Toggle insert / overwrite"
+msgstr "Prepnutie režimu vkladania alebo prepisovania"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
+msgid "Delete current line"
+msgstr "Odstránenie aktuálneho riadku"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
+msgid "Join selected lines"
+msgstr "Spojenie vybratých riadkov"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
+msgid "Move current line up"
+msgstr "Presun aktuálneho riadku hore"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
+msgid "Move current line down"
+msgstr "Presun aktuálneho riadku dole"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
+msgid "Move current word left"
+msgstr "Presun aktuálneho slova doľava"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
+msgid "Move current word right"
+msgstr "Presun aktuálneho slova doprava"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
+msgid "Convert to uppercase"
+msgstr "Zmena textu na veľké písmená"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
+msgid "Convert to lowercase"
+msgstr "Zmena textu na malé písmená"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
+msgid "Invert case"
+msgstr "Obrátenie veľkosti písmen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
+msgid "Increment number at cursor"
+msgstr "Navýšenie čísla na kurzore"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
+msgid "Decrement number at cursor"
+msgstr "Zníženie čísla na kurzore"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Nástroje"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
+msgid "Check spelling"
+msgstr "Kontrola pravopisu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
+msgid "Print the document"
+msgstr "Tlač dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
+msgid "Show completion window"
+msgstr "Zobrazenie okna dopĺňania"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2311,6 +2582,10 @@ msgstr "Zavrieť dokument"
 #: ../gedit/resources/ui/gedit-window.ui.h:2
 msgid "Open a file"
 msgstr "Otvorí súbor"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgid "Open"
+msgstr "Otvoriť"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
@@ -2333,13 +2608,13 @@ msgid "Hide panel"
 msgstr "Skryť panel"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:11
-#| msgid "Open a file"
 msgid "Open a file dialog"
 msgstr "Otvorí súbor"
 
+# tooltip
 #: ../gedit/resources/ui/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
-msgstr "Opustiť režim na celú obrazovku"
+msgstr "Opustí režim na celú obrazovku"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
@@ -2374,12 +2649,12 @@ msgstr ""
 "môžete túto verziu ignorovať a počkať na ďalšiu"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Ignorovať verziu"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Ignorovať verziu do vydania ďalšej verzie."
 
@@ -2484,12 +2759,12 @@ msgstr "Externé nástroje"
 msgid "Execute external commands and shell scripts."
 msgstr "Spustí externé príkazy a skripty shellu."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Určuje, či použiť systémové písmo"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2498,8 +2773,8 @@ msgstr ""
 "platné pre celé pracovné prostredie (ak má toto písmo pevnú šírku znaku). V "
 "opačnom prípade použijú najpodobnejšie písmo."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Názov písma Pango. Príklad: „Sans 12“ alebo „Monospace Bold 14“."
 
@@ -2516,19 +2791,19 @@ msgstr "Externé _nástroje"
 msgid "Could not execute command: %s"
 msgstr "Nepodarilo sa spustiť príkaz %s."
 
-#: ../plugins/externaltools/tools/functions.py:182
+#: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
 msgstr "Aby ste mohli spustiť tento príkaz, musíte byť vnútri slova"
 
-#: ../plugins/externaltools/tools/functions.py:316
+#: ../plugins/externaltools/tools/functions.py:302
 msgid "Running tool:"
 msgstr "Spúšťa sa nástroj:"
 
-#: ../plugins/externaltools/tools/functions.py:347
+#: ../plugins/externaltools/tools/functions.py:333
 msgid "Done."
 msgstr "Hotovo."
 
-#: ../plugins/externaltools/tools/functions.py:349
+#: ../plugins/externaltools/tools/functions.py:335
 msgid "Exited"
 msgstr "Ukončené"
 
@@ -2593,10 +2868,6 @@ msgstr "Iba vzdialené súbory"
 #: ../plugins/externaltools/tools/tools.ui.h:6
 msgid "Untitled documents only"
 msgstr "Iba nepomenované dokumenty"
-
-#: ../plugins/externaltools/tools/tools.ui.h:7
-msgid "Nothing"
-msgstr "Nič"
 
 #: ../plugins/externaltools/tools/tools.ui.h:8
 msgid "Current document"
@@ -2690,7 +2961,7 @@ msgstr "Vý_stup:"
 msgid "_Applicability:"
 msgstr "_Aplikovateľnosť:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "Výstup nástroja"
 
@@ -2711,44 +2982,44 @@ msgstr "Domov"
 msgid "File System"
 msgstr "Súborový systém"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Prehliadač súborov"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Nastala chyba počas vytvárania nového adresára"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Nastala chyba počas vytvárania nového súboru"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Nastala chyba počas premenovávania súboru alebo adresára"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Nastala chyba počas odstraňovania súboru alebo adresára"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr ""
 "Nastala chyba počas otvárania súboru alebo adresára v správcovi súborov"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Nastala chyba počas nastavovania koreňového adresára"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Nastala chyba počas načítavania adresára"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Vyskytla sa chyba"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2756,33 +3027,33 @@ msgstr ""
 "Nie je možné presunúť súbor do Koša.\n"
 "Chcete ho odstrániť natrvalo?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Súbor „%s“ nie je možné presunúť do Koša."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
 msgid "The selected files cannot be moved to the trash."
 msgstr "Vybrané súbory nie je možné presunúť do Koša."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Ste si istý, že chcete natrvalo odstrániť „%s“?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Ste si istý, že chcete natrvalo odstrániť vybrané súbory?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
 msgid "If you delete an item, it is permanently lost."
 msgstr "Ak zmažete položku, bude natrvalo stratená."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1781
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1794
 msgid "(Empty)"
 msgstr "(Prázdny)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3503
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3515
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2791,11 +3062,11 @@ msgstr ""
 "budete musieť prispôsobiť svoje nastavenia filtra"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3760
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3772
 msgid "Untitled File"
 msgstr "Nepomenovaný súbor"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3788
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3800
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2804,11 +3075,11 @@ msgstr ""
 "musieť prispôsobiť vaše nastavenia filtra"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3819
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3831
 msgid "Untitled Folder"
 msgstr "Nepomenovaný priečinok"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3856
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2816,36 +3087,36 @@ msgstr ""
 "Nový adresár je momentálne odfiltrovaný. Aby ste súbor zviditeľnili, budete "
 "musieť prispôsobiť vaše nastavenia filtra"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:754
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1988
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Neexistuje objekt pripojenia pripojeného zväzku: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2065
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nepodarilo sa otvoriť multimediálny súbor %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2112
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2119
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nepodarilo sa pripojiť zväzok: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2774
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Chyba počas načítavania „%s“: Adresár neexistuje"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Otvoriť so stromovým zobrazením"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2853,11 +3124,11 @@ msgstr ""
 "Keď sa načíta zásuvný modul prehliadača súborov, otvoriť zobrazenie stromu "
 "namiesto zobrazenia záložiek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Koreňový adresár prehliadača súborov"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2866,11 +3137,11 @@ msgstr ""
 "zásuvného modulu prehliadača súborov a pri voľbe onload/tree_view nastavenej "
 "na „true“."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Virtuálny koreňový adresár prehliadača súborov"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2881,19 +3152,19 @@ msgstr ""
 "nastavenej na „true“. Virtuálny koreňový adresár musí vždy byť pod skutočným "
 "koreňovým adresárom."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Povoliť obnovenie vzdialených umiestnení"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Nastavuje, či zapnúť obnovovanie vzdialených umiestnení."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Nastaviť umiestnenie na prvý dokument"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2905,11 +3176,11 @@ msgstr ""
 "použitý. (To vo všeobecnosti platí pri otváraní dokumentu z príkazového "
 "riadku alebo z Nautila, atď.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Režim filtra prehliadača súborov"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2919,11 +3190,11 @@ msgstr ""
 "hodnoty sú: none (bez filtrovania), hide-hidden (filtrovať skryté súbory) a "
 "hide-binary (filtrovať binárne súbory)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Vzor filtra prehliadača súborov"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2931,11 +3202,11 @@ msgstr ""
 "Vzor, ktorým filtruje súbory filter prehliadača súborov. Tento filter "
 "funguje nad režimom filtra filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Binárne vzory prehliadača súborov"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Doplnkové vzory, ktoré sa použijú na filtrovanie binárnych suborov."
 
@@ -2987,6 +3258,14 @@ msgstr "Zobraziť _binárne"
 msgid "Match Filename"
 msgstr "Vyhovujúce názvu súboru"
 
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
+msgid "History"
+msgstr "História"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:2
+msgid "Open history menu"
+msgstr "Otvorí ponuku s históriou"
+
 # toto je čo?
 # # Ivan: vysvetlené v dokumentácii
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
@@ -2998,23 +3277,23 @@ msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr ""
 "Podpora riadkov režimu (modelines) v štýle Emacs, Kate a Vim pre gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Farba textu príkazu"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Farba textu príkazu"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Farba textu chyby"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "Farba textu chyby"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3032,7 +3311,7 @@ msgid "_Error color:"
 msgstr "Farba _chyby:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:47
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Konzola Pythonu"
@@ -3041,13 +3320,13 @@ msgstr "Konzola Pythonu"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktívna konzola Pythonu v spodnom paneli"
 
-#: ../plugins/quickopen/quickopen/__init__.py:35
+#: ../plugins/quickopen/quickopen/__init__.py:40
 msgid "Quick Open..."
 msgstr "Rýchle otvorenie…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:32
+#: ../plugins/quickopen/quickopen/popup.py:33
 msgid "Quick Open"
 msgstr "Rýchle otvorenie"
 
@@ -3055,11 +3334,11 @@ msgstr "Rýchle otvorenie"
 msgid "Quickly open files"
 msgstr "Rýchlo otvorí súbory"
 
-#: ../plugins/quickopen/quickopen/popup.py:82
+#: ../plugins/quickopen/quickopen/popup.py:83
 msgid "Type to search..."
 msgstr "Hľadanie začnete písaním…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:82
+#: ../plugins/snippets/snippets/appactivatable.py:81
 msgid "Manage _Snippets..."
 msgstr "_Spravovať ústrižky…"
 
@@ -3304,7 +3583,7 @@ msgstr "Klávesová skratka, ktorá aktivuje ústrižok"
 msgid "_Drop targets:"
 msgstr "Ciele _pustenia:"
 
-#: ../plugins/sort/gedit-sort-plugin.c:431
+#: ../plugins/sort/gedit-sort-plugin.c:243
 msgid "S_ort..."
 msgstr "_Zoradiť…"
 
@@ -3314,181 +3593,43 @@ msgstr "_Zoradiť…"
 msgid "Sort"
 msgstr "Zoradiť"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
-msgid "_Sort"
-msgstr "Zo_radiť"
-
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
 msgid "_Reverse order"
 msgstr "_Opačné poradie"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
 msgid "R_emove duplicates"
 msgstr "O_dstrániť duplikáty"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
-msgid "_Ignore case"
-msgstr "_Ignorovať veľkosť písmen"
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
+msgid "C_ase sensitive"
+msgstr "_Rozlišovať veľkosť písmen"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:8
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
 msgid "S_tart at column:"
 msgstr "_Začiatočný stĺpec:"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:9
-msgid "You cannot undo a sort operation"
-msgstr "Operáciu zoradenia nie je možné vrátiť späť"
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
+msgid "_Sort"
+msgstr "Zo_radiť"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
 msgstr "Zoradí dokument alebo vybraný text."
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
-#. * for the current misspelled word
-#: ../plugins/spell/gedit-automatic-spell-checker.c:412
-#: ../plugins/spell/gedit-spell-checker-dialog.c:424
-msgid "(no suggested words)"
-msgstr "(žiadne návrhy)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:436
-msgid "_More..."
-msgstr "Ďa_lšie…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:491
-msgid "_Ignore All"
-msgstr "_Ignorovať všetky"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:545
-msgid "_Spelling Suggestions..."
-msgstr "_Odporúčania…"
-
-#: ../plugins/spell/gedit-spell-app-activatable.c:136
+#: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Kontrola pravopisu…"
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:140
+#: ../plugins/spell/gedit-spell-app-activatable.c:147
 msgid "Set _Language..."
 msgstr "Nastaviť _jazyk…"
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:144
+#: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "_Zvýrazniť preklepy"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:262
-msgid "Suggestions"
-msgstr "Odporúčania"
-
-#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: ../plugins/spell/gedit-spell-checker-dialog.c:523
-msgid "(correct spelling)"
-msgstr "(správny tvar)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:664
-msgid "Completed spell checking"
-msgstr "Kontrola pravopisu dokončená"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:367
-#: ../plugins/spell/gedit-spell-checker-language.c:373
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:382
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Neznámy (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:488
-msgctxt "language"
-msgid "Default"
-msgstr "Predvolený"
-
-#: ../plugins/spell/gedit-spell-language-dialog.c:129
-msgid "Set language"
-msgstr "Nastaviť jazyk"
-
-#: ../plugins/spell/gedit-spell-language-dialog.c:171
-msgid "Languages"
-msgstr "Jazyky"
-
-#: ../plugins/spell/gedit-spell-plugin.c:791
-msgid "The document is empty."
-msgstr "Dokument je prázdny."
-
-#: ../plugins/spell/gedit-spell-plugin.c:816
-msgid "No misspelled words"
-msgstr "Žiadne nesprávne slová"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Nastaviť jazyk"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:5
-msgid "Select the _language of the current document."
-msgstr "Vybrať _jazyk aktuálneho dokumentu."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check spelling"
-msgstr "Kontrola pravopisu"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Nesprávne slovo:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "slovo"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Zmeniť _na:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Kontrolované _slovo"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Odporúčania:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
-msgid "_Ignore"
-msgstr "_Ignorovať"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Cha_nge"
-msgstr "Z_meniť"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Ignore _All"
-msgstr "I_gnorovať všetky"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Zmeniť vš_etky"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Používateľský slovník:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Pridať slo_vo"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Kontrola pravopisu"
@@ -3506,11 +3647,11 @@ msgid "Available formats"
 msgstr "Dostupné formáty"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Typ výzvy"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3518,25 +3659,25 @@ msgstr ""
 "Určuje, či treba vyzvať používateľa na zadanie formátu, alebo sa má použiť "
 "vlastný formát."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Vybraný formát"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Vybraný formát použitý pri vkladaní dátumu a času."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Vlastný formát"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Vlastný formát použitý pri vkladaní dátumu a času."
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
-msgstr "Vložiť dátum a čas"
+msgstr "Vloženie dátumu a času"
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
@@ -3584,6 +3725,199 @@ msgstr "Vložiť dátum/čas"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
+
+# qiucklist
+#~ msgid "Open a New Window"
+#~ msgstr "Otvoriť nové okno"
+
+# quicklist
+#~ msgid "Open a New Document"
+#~ msgstr "Otvoriť nový dokument"
+
+# cmd desc
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "Nastaví veľkosť a pozíciu okna (ŠÍRKAxVÝŠKA+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "GEOMETRIA"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "File"
+#~ msgstr "_Súbor"
+
+#~ msgid "Edit"
+#~ msgstr "_Upraviť"
+
+#~ msgid "Search"
+#~ msgstr "_Hľadať"
+
+#~ msgid "Help"
+#~ msgstr "_Pomocník"
+
+#~ msgid "Question"
+#~ msgstr "Otázka"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(žiadne návrhy)"
+
+#~ msgid "_More..."
+#~ msgstr "Ďa_lšie…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Ignorovať všetky"
+
+#~ msgid "_Add"
+#~ msgstr "Pri_dať"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Odporúčania…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Chyba pri kontrole pravopisu slova „%s“: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Chyba:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Kontrola pravopisu dokončená"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Žiadne nesprávne slová"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(správny tvar)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Odporúčania"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Neznámy (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Predvolený"
+
+#~ msgid "Set Language"
+#~ msgstr "Nastavenie jazyka"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Vybrať _jazyk aktuálneho dokumentu."
+
+#~ msgid "Check Spelling"
+#~ msgstr "Kontrola pravopisu"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Nesprávne slovo:"
+
+#~ msgid "word"
+#~ msgstr "slovo"
+
+#~ msgid "Change _to:"
+#~ msgstr "Zmeniť _na:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Kontrolované _slovo"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Odporúčania:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "I_gnorovať všetky"
+
+#~ msgid "Cha_nge"
+#~ msgstr "Z_meniť"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Zmeniť vš_etky"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Používateľský slovník:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Pridať slo_vo"
+
+#~ msgid "Minimap is Visible"
+#~ msgstr "Miniatúrny náhľad je viditeľný"
+
+#~ msgid "Whether the minimap for the document should be visible."
+#~ msgstr "Určuje, či má byť viditeľný miniatúrny náhľad dokumentu."
+
+#~ msgid "_Minimap"
+#~ msgstr "_Miniatúrny náhľad"
+
+#~ msgid "_OK"
+#~ msgstr "_OK"
+
+#~ msgid "Set language"
+#~ msgstr "Nastavenie jazyka"
+
+#~ msgid "Languages"
+#~ msgstr "Jazyky"
+
+#~ msgid "The document is empty."
+#~ msgstr "Dokument je prázdny."
+
+#~ msgid "RO"
+#~ msgstr "RO"
+
+#~ msgid "_Ignore case"
+#~ msgstr "_Ignorovať veľkosť písmen"
+
+#~ msgid "You cannot undo a sort operation"
+#~ msgstr "Operáciu zoradenia nie je možné vrátiť späť"
+
+#~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+#~ msgstr "['UTF-8', 'CURRENT', 'ISO-8859-2', 'ISO-8859-15']"
+
+#~ msgid "Automatically Detected Encodings"
+#~ msgstr "Automaticky zistené kódovania"
+
+#~ msgid ""
+#~ "Sorted list of encodings used by gedit for automatically detecting the "
+#~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
+#~ "Only recognized encodings are used."
+#~ msgstr ""
+#~ "Utriedený zoznam kódovaní používaných pri automatickom určovaní kódovania "
+#~ "súboru. „CURRENT“ znamená kódovanie z aktuálnych miestnych nastavení. "
+#~ "Použijú sa iba podporované kódovania."
+
+#~ msgid "['ISO-8859-15']"
+#~ msgstr "['ISO-8859-2', 'ISO-8859-15']"
+
+#~ msgid "Encodings shown in menu"
+#~ msgstr "Kódovania zobrazené v ponuke"
+
+#~ msgid ""
+#~ "List of encodings shown in the Character Encoding menu in open/save file "
+#~ "selector. Only recognized encodings are used."
+#~ msgstr ""
+#~ "Zoznam kódovaní dostupných v ponuke Kódovanie znakov v dialógu na výber "
+#~ "súboru. Použijú sa iba známe kódovania."
+
+#~ msgid "Character encodings"
+#~ msgstr "Kódovania znakov"
+
+#~ msgid "E_ncodings shown in menu:"
+#~ msgstr "_Kódovania zobrazené v ponuke:"
+
+#~ msgid "P_revious Page"
+#~ msgstr "P_redchádzajúca strana"
+
+#~ msgid "_Next Page"
+#~ msgstr "Ď_alšia strana"
+
+#~ msgid "Replace"
+#~ msgstr "Nahradiť"
+
+#~ msgid "_Search for: "
+#~ msgstr "_Hľadať:"
 
 #~ msgid ""
 #~ "Whether gedit should create backup copies for the files it saves. You can "
@@ -3715,9 +4049,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "column"
 #~ msgstr "stĺpec"
 
-#~ msgid "_View"
-#~ msgstr "_Zobraziť"
-
 #~ msgid "_Open..."
 #~ msgstr "_Otvoriť…"
 
@@ -3730,17 +4061,8 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "_Contents"
 #~ msgstr "Ob_sah"
 
-#~ msgid "Open the gedit manual"
-#~ msgstr "Zobrazí príručku gedit"
-
-#~ msgid "About this application"
-#~ msgstr "O aplikácii"
-
 #~ msgid "Save _As..."
 #~ msgstr "Uložiť _ako…"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Uloží aktuálny súbor pod iným menom"
 
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Vráti sa k uloženej verzii súboru"
@@ -3754,9 +4076,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "_Print..."
 #~ msgstr "_Tlačiť…"
 
-#~ msgid "Print the current page"
-#~ msgstr "Vytlačí aktuálnu stranu"
-
 #~ msgid "Undo the last action"
 #~ msgstr "Vráti poslednú operáciu"
 
@@ -3769,14 +4088,8 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "Copy the selection"
 #~ msgstr "Skopíruje výber do schránky"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "Vloží obsah schránky"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "Odstráni vybraný text"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Vyberie celý dokument"
 
 #~ msgid "_Highlight Mode..."
 #~ msgstr "Režim _zvýrazňovania…"
@@ -3813,15 +4126,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 
 #~ msgid "Close all open files"
 #~ msgstr "Zavrie všetky otvorené súbory"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Vytvorí novú skupinu kariet"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Prepne na predchádzajúcu skupinu kariet"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Prepne na nasledovnú skupinu kariet"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Aktivuje predchádzajúci dokument"
@@ -3877,12 +4181,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "All _Lower Case"
 #~ msgstr "Všetko _malými písmenami"
 
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Zmeniť označený text na malé písmená"
-
-#~ msgid "_Invert Case"
-#~ msgstr "_Invertovať veľkosť písmen"
-
 #~ msgid "Invert the case of selected text"
 #~ msgstr "Invertovať veľkosť písmen označeného textu"
 
@@ -3901,12 +4199,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "File Name"
 #~ msgstr "Názov súboru"
 
-#~ msgid "_Tools:"
-#~ msgstr "_Nástroje:"
-
-#~ msgid "_Edit:"
-#~ msgstr "_Upraviť:"
-
 #~ msgid "Opens the External Tools Manager"
 #~ msgstr "Otvorí Správcu externých nástrojov"
 
@@ -3924,9 +4216,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 
 #~ msgid "Sort the current document or selection"
 #~ msgstr "Zoradiť aktuálny dokument alebo výber"
-
-#~ msgid "Check Spelling"
-#~ msgstr "Kontrola pravopisu"
 
 #~ msgid "Check the current document for incorrect spelling"
 #~ msgstr "Kontrola pravopisu aktuálneho dokumentu"

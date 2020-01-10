@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Катерина Герасимова</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -53,8 +61,8 @@
     <title>Комбінації клавіш, пов'язані зі вкладками</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -105,18 +113,26 @@
     <title>Комбінації клавіш для роботи з файлами</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Створити новий документ</p></td>
+          <td><p>Create a new document in a new window</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Create a new document in a new tab</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Відкрити документ</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Зберегти поточний документ</p></td>
@@ -149,8 +165,8 @@
     <title>Комбінації клавіш для редагування файлів</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -241,8 +257,8 @@
     <title>Комбінації клавіш для відображення та приховування панелей</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -251,9 +267,13 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Показати / сховати нижню панель</p></td>
+          <td><p>Show / hide the bottom pane</p></td>
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
+        </tr>
+        <tr>
+          <td><p>Open the file menu</p></td>
+          <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
     </table>
@@ -262,8 +282,8 @@
     <title>Комбінації клавіш для пошуку</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -298,8 +318,8 @@
     <title>Комбінації клавіш для інструментів</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -326,8 +346,8 @@
     <title>Комбінації клавіш для довідки користувача</title>
       <thead>
         <tr>
-          <td><p>Щоб виконати це</p></td>
-          <td><p>Натисніть це</p></td>
+          <td><p>Action</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>

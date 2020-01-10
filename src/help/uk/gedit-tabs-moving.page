@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Change the position of a tab in the gedit window.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -77,8 +78,6 @@
         <p>Відпустіть кнопку миші.</p>
       </item>
     </steps>
-
-    <p>Або, поки вкладка, яку потрібно перемістити, відкрита, виберіть <guiseq><gui>«Документи» </gui><gui>«Перемістити до нового вікна»</gui></guiseq>.</p>
 
     <note style="tip">
       <p>Щоб перемістити вкладку до нового вікна, при розгорнутому вікні «<app>gedit</app>», перетягніть вкладку на верхню панель, що вгорі екрану.</p>

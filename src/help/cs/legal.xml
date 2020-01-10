@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<license xmlns="http://projectmallard.org/1.0/">
-
-<p>Tato práce je licencovaná pod Creative Commons Attribution-ShareAlike 3.0 Unported License. Jestli potřebujete její kopii, navštivte <link xref="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</link> nebo napište na Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
+<license xmlns="http://projectmallard.org/1.0/" href="http://creativecommons.org/licenses/by-sa/3.0/">
+  <p>Tento dokument je licencován pod <link href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</link></p>
 </license>

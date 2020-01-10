@@ -10,9 +10,6 @@
    language is requested. */
 #undef ENABLE_NLS
 
-/* minimum gdk version */
-#undef GDK_VERSION_MIN_REQUIRED
-
 /* Gedit major version */
 #undef GEDIT_MAJOR_VERSION
 
@@ -49,12 +46,6 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define if you have the iso-codes package */
-#undef HAVE_ISO_CODES
-
-/* Define to 1 if you have the `m' library (-lm). */
-#undef HAVE_LIBM
-
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
@@ -79,14 +70,10 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* ISO codes prefix */
-#undef ISO_CODES_PREFIX
-
 /* Description */
 #undef LIBGD_TAGGED_ENTRY
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
 
 /* Defined if os is Mac OSX */
@@ -112,9 +99,6 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
-
-/* Defined if platform is Mac OSX */
-#undef PLATFORM_OSX
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS

@@ -4,11 +4,13 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
+    <desc>Aizvietot daļu teksta datnē.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
+    <revision pkgversion="3.14" date="2014-11-28" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -22,6 +24,14 @@
       <name>Ekaterina Gerasimova</name>
       <email>kittykat3756@gmail.com</email>
     </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email>tyagishobha@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
+    </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
@@ -32,7 +42,7 @@
   <steps>
     <title>Teksta aizvietošana <app>gedit</app></title>
     <item>
-      <p>Atveriet <gui>Aizvietošanas</gui> rīku, izvēloties <guiseq><gui style="menu">Meklēt</gui><gui style="menuitem">Aizvietot…</gui></guiseq> vai nospiežot <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Atveriet <gui>Aizvietošanas</gui> rīku, spiežot <guiseq><gui style="button">Izvēlnes pogu</gui><gui style="menuitem">Meklēt un aizvietot…</gui></guiseq> vai nospiežot <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>Ievietojiet aizvietojamo tekstu lauciņā <gui>Meklēt:</gui></p>
@@ -41,13 +51,10 @@
       <p>Ievietojiet jauno tekstu lauciņā <gui>Aizvietot ar:</gui></p>
     </item>
     <item>
-      <p>Once you have entered the original and replacement text, you can add
-      extra parameters to the search. You can also choose what you want to
-      replace:</p>
+      <p>Kad ievadīts sākotnējais un vēlamais teksts, jūs varat pievienot papildu meklēšanas parametrus. Varat arī izvēlēties, ko vēlaties aizvietot:</p>
       <list>
         <item>
-          <p>To replace <em>only</em> the next match, click
-          <gui>Replace</gui>.</p>
+          <p>Lai aizvietotu <em>tikai</em> nākamo atrasto teksta fragmentu, spiediet <gui>Aizvietot</gui>.</p>
         </item>
         <item>
           <p>Lai aizvietotu meklēto tekstu <em>visās vietās</em>, kur tas atrasts, spiediet <gui>Aizvietot visus</gui>.</p>
@@ -63,11 +70,11 @@
 <section id="replace-options">
   <title>Vairāk iespēju</title>
 
-  <p>If you wish, you can add some extra parameters to your search:</p>
+  <p>Ja vēlaties, varat pievienot papildu parametrus savam meklējumam:</p>
 
   <terms>
     <item>
-      <title>Reģistra saskaņa</title>
+      <title>Reģistrjutīgs</title>
       <p><em>Reģistrjutīgums</em> nosaka, vai atrastā teksta reģistram (mazie vai drukātie burti) jāsaskan ar meklētās frāzes reģistru. Ja šī iespēja ir atzīmēta, meklēšana būs reģistrjūtīga. Ja nav - meklēšana neņems vērā teksta reģistru.</p>
     </item>
     <item>
@@ -89,8 +96,7 @@
 <section id="escape-sequences">
   <title>Izmantot atsoļa virknes</title>
 
-  <p>You can use <em>escape sequences</em> to search for line breaks and
-  tabs.</p>
+  <p>Jūs varat izmantot <em>atsoļu virknes</em>, lai meklētu pāriešanu jaunā rindā, kursora atgriešanu un tabulācijas.</p>
 
   <terms>
     <item>
@@ -98,21 +104,16 @@
       <p>Jauna rinda</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Tabulācija</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Kursora atgriešanās</p>
     </item>
+    <item>
+      <title>\t</title>
+      <p>Tabulācija</p>
+    </item>
   </terms>
 
-  <p>If you actually want to search for a <output>\</output> (backslash) or one
-  of the escape sequences in the text, you need to escape the backslash with an
-  extra backslash. For example, to search for <input>\</input>, you need to
-  enter <input>\\</input> into the search or replace field. You can search for
-  escape sequences in the same way: to search for or replace with a
-  <input>\n</input>, use the <input>\\n</input> term.</p>
+  <p>Ja vēlaties meklēt pašu <output>\</output> (atpakaļvērstā slīpsvītra) vai kādu no atsoļa virknēm paša tekstā, jums vajadzēs veikt atsoli atpakaļvērstajai slīpsvītrai, lai iegūtu vēl vienu atpakaļvērstu slīpsvītru. Piemēram, lai meklētu <input>\</input>, jums jāievada <input>\\</input> meklēšanas vai aizvietošanas laukā. Jūs varat meklēt atsoļa virknes tādā pat veidā — lai meklētu vai aizvietotu <input>\n</input>, lietojiet termu <input>\\n</input>.</p>
 
 </section>
 

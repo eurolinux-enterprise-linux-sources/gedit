@@ -3,6 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
+    <desc>Jak vybrat stránky, které chcete tisknout.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Phil Bull</name>

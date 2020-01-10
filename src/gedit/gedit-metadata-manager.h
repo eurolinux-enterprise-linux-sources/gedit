@@ -19,15 +19,14 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_METADATA_MANAGER_H__
-#define __GEDIT_METADATA_MANAGER_H__
+#ifndef GEDIT_METADATA_MANAGER_H
+#define GEDIT_METADATA_MANAGER_H
 
-#include <glib.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
 
-void		 gedit_metadata_manager_init		(void);
+void		 gedit_metadata_manager_init		(const gchar *metadata_filename);
 
 void		 gedit_metadata_manager_shutdown 	(void);
 
@@ -40,6 +39,6 @@ void		 gedit_metadata_manager_set		(GFile       *location,
 
 G_END_DECLS
 
-#endif /* __GEDIT_METADATA_MANAGER_H__ */
+#endif /* GEDIT_METADATA_MANAGER_H */
 
 /* ex:set ts=8 noet: */

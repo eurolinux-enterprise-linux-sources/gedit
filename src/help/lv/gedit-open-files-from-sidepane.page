@@ -3,11 +3,13 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
+    <desc>Izmantot gedit sānu rūti datņu pārlūku.</desc>
     <revision pkgversion="3.8" date="2013-03-13" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email its:translate="no">jwcampbell@gmail.com</email>
+      <email its:translate="no">jcampbell@gnome.org</email>
     </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
   <title>Skatīt un atvērt datnes, izmantojot sānu rūti</title>

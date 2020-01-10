@@ -5,10 +5,11 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Change the position of a tab in the gedit window.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="collaborator">
       <name>Daniel Neel</name>
@@ -71,8 +72,6 @@
         <p>Lepas tombol tetikus.</p>
       </item>
     </steps>
-
-    <p>atau, ketika tab yang akan dipindah terbuka, pilih <guiseq><gui>Dokumen</gui><gui>Pindah ke Jendela Baru</gui></guiseq></p>
 
     <note style="tip">
       <p>Untuk memindah tab ke jendela baru ketika <app>gedit</app> dimaksimalkan, seret tab ke bilah puncak di bagian atas layar.</p>

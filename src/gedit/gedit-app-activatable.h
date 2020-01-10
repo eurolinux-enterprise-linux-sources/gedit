@@ -19,25 +19,17 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_APP_ACTIVATABLE_H__
-#define __GEDIT_APP_ACTIVATABLE_H__
+#ifndef GEDIT_APP_ACTIVATABLE_H
+#define GEDIT_APP_ACTIVATABLE_H
 
 #include <glib-object.h>
 #include <gedit/gedit-menu-extension.h>
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_APP_ACTIVATABLE		(gedit_app_activatable_get_type ())
-#define GEDIT_APP_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_APP_ACTIVATABLE, GeditAppActivatable))
-#define GEDIT_APP_ACTIVATABLE_IFACE(obj)	(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_APP_ACTIVATABLE, GeditAppActivatableInterface))
-#define GEDIT_IS_APP_ACTIVATABLE(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_APP_ACTIVATABLE))
-#define GEDIT_APP_ACTIVATABLE_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_APP_ACTIVATABLE, GeditAppActivatableInterface))
+#define GEDIT_TYPE_APP_ACTIVATABLE (gedit_app_activatable_get_type ())
 
-typedef struct _GeditAppActivatable           GeditAppActivatable; /* dummy typedef */
-typedef struct _GeditAppActivatableInterface  GeditAppActivatableInterface;
+G_DECLARE_INTERFACE (GeditAppActivatable, gedit_app_activatable, GEDIT, APP_ACTIVATABLE, GObject)
 
 struct _GeditAppActivatableInterface
 {
@@ -47,11 +39,6 @@ struct _GeditAppActivatableInterface
 	void	(*activate)		(GeditAppActivatable *activatable);
 	void	(*deactivate)		(GeditAppActivatable *activatable);
 };
-
-/*
- * Public methods
- */
-GType	 gedit_app_activatable_get_type	(void)  G_GNUC_CONST;
 
 void	 gedit_app_activatable_activate			(GeditAppActivatable *activatable);
 void	 gedit_app_activatable_deactivate		(GeditAppActivatable *activatable);
@@ -73,5 +60,5 @@ GeditMenuExtension	*gedit_app_activatable_extend_menu	(GeditAppActivatable *acti
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_ACTIVATABLE_H__ */
+#endif /* GEDIT_APP_ACTIVATABLE_H */
 /* ex:set ts=8 noet: */

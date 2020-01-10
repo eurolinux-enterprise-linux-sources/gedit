@@ -11,9 +11,9 @@
 
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Insérer la date et l'heure à la position du curseur</desc>
+  <desc>Insérer la date et l'heure actuelle à la position du curseur.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Vincent Untz</mal:name>
@@ -76,7 +76,7 @@
     </mal:credit>
   </info>
 
-<title>Insertion de la date/heure</title>
+<title>Insertion de la date et de l'heure</title>
 
   <p>Comme son nom l'indique, le greffon <gui>Insérer la date et l'heure</gui> vous permet d'insérer la date et/ou l'heure à l'emplacement actuel du curseur. Pour activer ce greffon, choisissez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui><gui>Insérer la date et l'heure</gui></guiseq>. Pour utiliser le greffon, cliquez sur <guiseq><gui>Édition</gui><gui>Insérer la date et l'heure</gui></guiseq>.</p>
 

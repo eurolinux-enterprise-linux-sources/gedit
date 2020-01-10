@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   </info>
 
@@ -43,8 +51,8 @@
     <title>Tab-related Shortcut keys</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -99,18 +107,26 @@
     <title>Shortcut keys for working with files</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document</p></td>
+          <td><p>Create a new document in a new window</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Create a new document in a new tab</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Open a document</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Save the current document</p></td>
@@ -145,8 +161,8 @@
     <title>Shortcut keys for editing files</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -239,8 +255,8 @@
     <title>Shortcut keys for showing and hiding panes</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -249,9 +265,13 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane.</p></td>
+          <td><p>Show / hide the bottom pane</p></td>
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
+        </tr>
+        <tr>
+          <td><p>Open the file menu</p></td>
+          <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
     </table>
@@ -260,8 +280,8 @@
     <title>Shortcut keys for searching</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -297,8 +317,8 @@
     <title>Shortcut keys for tools</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>
@@ -326,8 +346,8 @@
     <title>Shortcut keys for user help</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>
-          <td><p>Press This</p></td>
+          <td><p>Accion</p></td>
+          <td><p>Keyboard shortcut</p></td>
         </tr>
       </thead>
       <tbody>

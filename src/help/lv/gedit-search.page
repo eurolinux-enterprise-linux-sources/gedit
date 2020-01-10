@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Atrastu teksta fragmentu datnē.</desc>
+    <revision pkgversion="3.14" date="2014-12-04" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Daniel Neel</name>
@@ -31,7 +32,7 @@
     <steps>
       <title>Teksta meklēšana</title>
       <item>
-        <p>Atveriet <gui>meklēšanas logu</gui>, izvēloties <guiseq><gui style="menu">Meklēt</gui><gui style="menuitem">Meklēt</gui></guiseq> vai spiežot <keyseq><key>Ctrl</key><key>F</key></keyseq>. Kursors automātiski tiks pārvietots, lai varētu sākt meklēšanu.</p>
+        <p>Atveriet <gui>meklēšanas logu</gui>, izvēloties <guiseq><gui style="menu">Izvēlnes pogu</gui><gui style="menuitem">Meklēt…</gui></guiseq> vai spiežot <keyseq><key>Ctrl</key><key>F</key></keyseq>. Kursors automātiski tiks pārvietots, lai varētu sākt meklēšanu.</p>
       </item>
       <item>
         <p>Ierakstiet tekstu, kuru vēlaties meklēt,  <gui>meklēšanas logā</gui>.</p>
@@ -71,12 +72,10 @@
           <p>Izvēlieties <gui>Reģistrjutīgs</gui>, lai meklējot būtu burtu reģistram būtu nozīme.</p>
         </item>
         <item>
-          <p>Select <gui>Match Entire Word Only</gui> to search only complete
-          words.</p>
+          <p>Izvēlieties <gui>Atlasīt tikai veselus vārdus</gui>, lai meklētu tikai veselus vārdus.</p>
         </item>
         <item>
-          <p>Select <gui>Wrap Around</gui> to search text from top to bottom
-          and cycle back again.</p>
+          <p>Izvēlieties <gui>Apskatīt visu dokumentu</gui>, lai meklētu tekstu no augšas līdz apakšai, un pēc tam turpinātu atkal meklēt no augšas.</p>
         </item>
       </list>
     </item>

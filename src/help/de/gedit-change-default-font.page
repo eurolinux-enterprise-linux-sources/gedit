@@ -2,14 +2,18 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="de">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
+    <desc>Verwenden einer benutzerdefinierten Schriftart für Ihren Text in Gedit.</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
       <years>2011 2012 2013</years>
     </credit>
-  
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jan Arne Petersen</mal:name>
       <mal:email>jap@gnome.org</mal:email>
@@ -25,13 +29,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011, 2012, 2013, 2014, 2015</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Benjamin Steinwender</mal:name>
       <mal:email>b@stbe.at</mal:email>
-      <mal:years>2014, 2015</mal:years>
+      <mal:years>2014-2015</mal:years>
     </mal:credit>
   </info>
 

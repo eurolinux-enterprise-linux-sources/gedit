@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2004-2005 GNOME Foundation
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,42 +19,22 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
-#define __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
+#ifndef GEDIT_CLOSE_CONFIRMATION_DIALOG_H
+#define GEDIT_CLOSE_CONFIRMATION_DIALOG_H
 
 #include <glib.h>
 #include <gtk/gtk.h>
-
 #include <gedit/gedit-document.h>
 
-#define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG		(gedit_close_confirmation_dialog_get_type ())
-#define GEDIT_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, GeditCloseConfirmationDialog))
-#define GEDIT_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, GeditCloseConfirmationDialogClass))
-#define GEDIT_IS_CLOSE_CONFIRMATION_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG))
-#define GEDIT_IS_CLOSE_CONFIRMATION_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG))
-#define GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj),GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, GeditCloseConfirmationDialogClass))
+#define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG (gedit_close_confirmation_dialog_get_type ())
 
-typedef struct _GeditCloseConfirmationDialog 		GeditCloseConfirmationDialog;
-typedef struct _GeditCloseConfirmationDialogClass 	GeditCloseConfirmationDialogClass;
-typedef struct _GeditCloseConfirmationDialogPrivate 	GeditCloseConfirmationDialogPrivate;
-
-struct _GeditCloseConfirmationDialog
-{
-	GtkDialog parent;
-
-	/*< private > */
-	GeditCloseConfirmationDialogPrivate *priv;
-};
-
-struct _GeditCloseConfirmationDialogClass
-{
-	GtkDialogClass parent_class;
-};
-
-GType 		 gedit_close_confirmation_dialog_get_type		(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog,
+		      GEDIT, CLOSE_CONFIRMATION_DIALOG,
+		      GtkMessageDialog)
 
 GtkWidget	*gedit_close_confirmation_dialog_new			(GtkWindow     *parent,
 									 GList         *unsaved_documents);
+
 GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
 									 GeditDocument *doc);
 
@@ -61,6 +42,5 @@ const GList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseC
 
 GList		*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
 
-#endif /* __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__ */
-
+#endif /* GEDIT_CLOSE_CONFIRMATION_DIALOG_H */
 /* ex:set ts=8 noet: */

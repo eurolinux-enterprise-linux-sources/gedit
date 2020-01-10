@@ -26,17 +26,21 @@
 #endif
 
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
+#include "gedit-debug.h"
+#include "gedit-document.h"
+#include "gedit-document-private.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-notebook.h"
-#include "gedit-document.h"
 #include "gedit-statusbar.h"
-#include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-close-confirmation-dialog.h"
@@ -449,7 +453,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 	}
 
 	/* Translators: "Open" is the title of the file chooser window. */
-	open_dialog = gedit_file_chooser_dialog_create (_("Open"),
+	open_dialog = gedit_file_chooser_dialog_create (C_("window title", "Open"),
 							window != NULL ? GTK_WINDOW (window) : NULL,
 							GEDIT_FILE_CHOOSER_OPEN |
 							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
@@ -524,35 +528,6 @@ _gedit_cmd_file_reopen_closed_tab (GSimpleAction *action,
 }
 
 /* File saving */
-
-static gboolean
-is_read_only (GFile *location)
-{
-	gboolean ret = TRUE; /* default to read only */
-	GFileInfo *info;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	info = g_file_query_info (location,
-				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-				  G_FILE_QUERY_INFO_NONE,
-				  NULL,
-				  NULL);
-
-	if (info != NULL)
-	{
-		if (g_file_info_has_attribute (info,
-					       G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-		{
-			ret = !g_file_info_get_attribute_boolean (info,
-								  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-		}
-
-		g_object_unref (info);
-	}
-
-	return ret;
-}
 
 /* FIXME: modify this dialog to be similar to the one provided by gtk+ for
  * already existing files - Paolo (Oct. 11, 2005) */
@@ -798,32 +773,43 @@ static GtkFileChooserConfirmation
 confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 			    gpointer                data)
 {
-	GFile *file;
 	GtkFileChooserConfirmation res;
+	GFile *file;
+	GFileInfo *info;
 
 	gedit_debug (DEBUG_COMMANDS);
 
+	/* fall back to the default confirmation dialog */
+	res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
+
 	file = gedit_file_chooser_dialog_get_file (dialog);
 
-	if (is_read_only (file))
-	{
-		GtkWindow *win;
+	info = g_file_query_info (file,
+				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+				  G_FILE_QUERY_INFO_NONE,
+				  NULL,
+				  NULL);
 
-		win = gedit_file_chooser_dialog_get_window (dialog);
-
-		if (replace_read_only_file (win, file))
-		{
-			res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
-		}
-		else
-		{
-			res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
-		}
-	}
-	else
+	if (info != NULL)
 	{
-		/* fall back to the default confirmation dialog */
-		res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE) &&
+		    !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+		{
+			GtkWindow *win;
+
+			win = gedit_file_chooser_dialog_get_window (dialog);
+
+			if (replace_read_only_file (win, file))
+			{
+				res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+			}
+			else
+			{
+				res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+			}
+		}
+
+		g_object_unref (info);
 	}
 
 	g_object_unref (file);
@@ -857,7 +843,8 @@ save_as_tab_async (GeditTab            *tab,
 	task = g_task_new (tab, cancellable, callback, user_data);
 	g_task_set_task_data (task, g_object_ref (window), g_object_unref);
 
-	save_dialog = gedit_file_chooser_dialog_create (_("Save As"),
+	/* Translators: "Save As" is the title of the file chooser window. */
+	save_dialog = gedit_file_chooser_dialog_create (C_("window title", "Save As"),
 							GTK_WINDOW (window),
 							GEDIT_FILE_CHOOSER_SAVE |
 							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
@@ -999,6 +986,7 @@ gedit_commands_save_document_async (GeditDocument       *document,
 {
 	GTask *task;
 	GeditTab *tab;
+	GtkSourceFile *file;
 	gchar *uri_for_display;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -1010,9 +998,10 @@ gedit_commands_save_document_async (GeditDocument       *document,
 	task = g_task_new (document, cancellable, callback, user_data);
 
 	tab = gedit_tab_get_from_document (document);
+	file = gedit_document_get_file (document);
 
 	if (gedit_document_is_untitled (document) ||
-	    gedit_document_get_readonly (document))
+	    gtk_source_file_is_readonly (file))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
 
@@ -1295,19 +1284,19 @@ save_documents_list (GeditWindow *window,
 		state = gedit_tab_get_state (tab);
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
-		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 
 		if (state == GEDIT_TAB_STATE_NORMAL ||
-		    state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
-		    state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE)
+		    state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 		{
 			if (_gedit_document_needs_saving (doc))
 			{
+				GtkSourceFile *file = gedit_document_get_file (doc);
+
 				/* FIXME: manage the case of local readonly files owned by the
 				   user is running gedit - Paolo (Dec. 8, 2005) */
 				if (gedit_document_is_untitled (doc) ||
-				    gedit_document_get_readonly (doc))
+				    gtk_source_file_is_readonly (file))
 				{
 					if (data == NULL)
 					{
@@ -1333,7 +1322,7 @@ save_documents_list (GeditWindow *window,
 			   - GEDIT_TAB_STATE_REVERTING: we do not save since the user wants
 			     to return back to the version of the file she previously saved
 			   - GEDIT_TAB_STATE_SAVING: well, we are already saving (no need to save again)
-			   - GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
+			   - GEDIT_TAB_STATE_PRINTING: there is not a
 			     real reason for not saving in this case, we do not save to avoid to run
 			     two operations using the message area at the same time (may be we can remove
 			     this limitation in the future). Note that SaveAll, ClosAll
@@ -1715,7 +1704,7 @@ save_and_close_documents (GList         *docs,
 		     the original file has been deleted)
 		   - [*] GEDIT_TAB_STATE_SAVING: invalid, ClosAll
 		     and Quit are unsensitive if the window state is SAVING.
-		   - [*] GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
+		   - [*] GEDIT_TAB_STATE_PRINTING: there is not a
 		     real reason for not closing in this case, we do not save to avoid to run
 		     two operations using the message area at the same time (may be we can remove
 		     this limitation in the future). Note that ClosAll
@@ -1731,7 +1720,6 @@ save_and_close_documents (GList         *docs,
 		*/
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
-		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_SAVING);
 
@@ -1744,13 +1732,15 @@ save_and_close_documents (GList         *docs,
 			    state != GEDIT_TAB_STATE_LOADING_ERROR &&
 			    state != GEDIT_TAB_STATE_REVERTING) /* FIXME: is this the right behavior with REVERTING ?*/
 			{
+				GtkSourceFile *file = gedit_document_get_file (doc);
+
 				/* The document must be saved before closing */
 				g_return_if_fail (_gedit_document_needs_saving (doc));
 
 				/* FIXME: manage the case of local readonly files owned by the
 				 * user is running gedit - Paolo (Dec. 8, 2005) */
 				if (gedit_document_is_untitled (doc) ||
-				    gedit_document_get_readonly (doc))
+				    gtk_source_file_is_readonly (file))
 				{
 					if (data == NULL)
 					{

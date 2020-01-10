@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_VIEW_H__
-#define __GEDIT_VIEW_H__
+#ifndef GEDIT_VIEW_H
+#define GEDIT_VIEW_H
 
 #include <gtk/gtk.h>
 
@@ -30,9 +30,6 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
 #define GEDIT_TYPE_VIEW            (gedit_view_get_type ())
 #define GEDIT_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_VIEW, GeditView))
 #define GEDIT_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_VIEW, GeditViewClass))
@@ -40,26 +37,17 @@ G_BEGIN_DECLS
 #define GEDIT_IS_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_VIEW))
 #define GEDIT_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_VIEW, GeditViewClass))
 
-/* Private structure type */
-typedef struct _GeditViewPrivate	GeditViewPrivate;
-
-/*
- * Main object structure
- */
 typedef struct _GeditView		GeditView;
+typedef struct _GeditViewClass		GeditViewClass;
+typedef struct _GeditViewPrivate	GeditViewPrivate;
 
 struct _GeditView
 {
 	GtkSourceView view;
 
-	/*< private > */
+	/*< private >*/
 	GeditViewPrivate *priv;
 };
-
-/*
- * Class definition
- */
-typedef struct _GeditViewClass		GeditViewClass;
 
 struct _GeditViewClass
 {
@@ -67,13 +55,10 @@ struct _GeditViewClass
 
 	void	 (* drop_uris)			(GeditView	 *view,
 						 gchar          **uri_list);
-	void	 (* change_case)		(GeditView               *view,
-						 GtkSourceChangeCaseType  case_type);
+
+	gpointer padding;
 };
 
-/*
- * Public methods
- */
 GType		 gedit_view_get_type     	(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_view_new			(GeditDocument   *doc);
@@ -87,11 +72,11 @@ void		 gedit_view_select_all		(GeditView       *view);
 void		 gedit_view_scroll_to_cursor 	(GeditView       *view);
 
 void 		 gedit_view_set_font		(GeditView       *view,
-						 gboolean         def,
+						 gboolean         default_font,
 						 const gchar     *font_name);
 
 G_END_DECLS
 
-#endif /* __GEDIT_VIEW_H__ */
+#endif /* GEDIT_VIEW_H */
 
 /* ex:set ts=8 noet: */

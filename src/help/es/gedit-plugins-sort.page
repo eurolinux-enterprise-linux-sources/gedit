@@ -10,19 +10,19 @@
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email>jcampbell@gnome.org</email>
   </credit>
   <credit type="editor">
     <name>Sindhu S</name>
     <email>sindhus@live.in</email>
   </credit>
   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-  <desc>Ordenar líneas de texto alfabéticamente</desc>
+  <desc>Ordenar líneas de texto alfabéticamente.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2014</mal:years>
+      <mal:years>2011-2015</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">

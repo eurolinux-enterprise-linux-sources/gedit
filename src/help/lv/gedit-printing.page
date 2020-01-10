@@ -3,10 +3,11 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
+    <desc>Drukāt datnes, ko veidojāt ar gedit lietotni.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Sindhu S</name>
@@ -34,18 +35,14 @@
     </item>
   </steps>
 
-  <p>A preview of your document will open in the same tab as the file. You can
-  browse this preview with help of navigation buttons and tools in the toolbar
-  at the top of the document preview tab. To close and return to the document
-  click <gui style="button">Close Preview</gui>.</p>
+  <p>Jūsu dokumenta priekšskatījums tiks atvērts tajā pat cilnē kā datne. Jūs varat pārlūkot šo priekšskatījumu ar navigācijas pogām un rīkiem rīku joslā dokumenta augšpusē priekšskatījuma cilnē. Lai aizvērtu un atgrieztos uz dokumentu, spiediet <gui style="button">Aizvērt priekšskatījumu</gui>.</p>
 
   </section>
 
   <section id="printing-to-paper">
     <title>Drukāšana uz papīra</title>
 
-  <p>You can print your documents to paper using a local or remote printer. To
-  print a file:</p>
+  <p>Jūs varat izdrukāt savus dokumentus uz papīra, izmantojot lokālo vai attālināto printeri. Lai izdrukātu datni:</p>
 
   <steps>
     <item>
@@ -55,34 +52,25 @@
       <p>Izvēlieties vēlamo printeri no pieejamo printeru saraksta.</p>
     </item>
     <item>
-      <p>You can preview the file using <gui style="button">Print Preview</gui>
-      and once you are satisfied with the settings, click
-      <gui style="button">Print</gui> to send the file to printer.</p>
+      <p>Jūs varat priekšskatīt datni, izmantojot <gui style="button">Drukāšanas priekšskatījums</gui> un kad jūs apmierina iestatījumi, spiediet <gui style="button">Drukāt</gui>, lai sūtītu datni uz printeri.</p>
     </item>
   </steps>
 
-  <p>Additionally, from <gui style="tab">Page Setup</gui> tab: you can choose
-  <gui style="group">Layout</gui> and <gui style="group">Paper</gui> options. As
-  these settings are available throughout <app>GNOME</app> programs, please
-  consult
-  <link href="help:gnome-help/printing#paper">Layout and Paper options</link>
-  help.</p>
+  <p>Un vēl, cilnē <gui style="tab">Lappuses iestatīšana</gui> varat izvēlēties <gui style="group">Izkārtojums</gui> un <gui style="group">Papīrs</gui> opcijas. Tā kā šie iestatījumi ir pieejami daudzās <app>GNOME</app> lietotnēs, lai uzzinātu vairāk, skatiet <link href="help:gnome-help/printing#paper">Izkārtojums un lappuses iestatījumi</link>.</p>
 
   </section>
 
   <section id="printing-order-select">
-    <title>Print Multiple Copies And Between Specified Ranges</title>
+    <title>Drukāt vairākas kopijas un starp norādītajiem apgabaliem</title>
 
-    <p>You can set <gui style="group">Range</gui> and
-    <gui style="group">Copies</gui> options to help you:</p>
+    <p>Jūs varat iestatīt diapazona (<gui style="group">Drukāt</gui>) un <gui style="group">Kopijas</gui> opcijas, lai jums palīdzētu:</p>
 
   </section>
 
   <section id="printing-to-file">
     <title>Drukāšana datnē</title>
 
-  <p>You can also use <app>gedit</app> to print to a file. To print your
-  document to file of a different format:</p>
+  <p>Jūs varat arī izmantot <app>gedit</app>, lai drukātu datnē. Lai drukātu savu dokumentu datnē ar citu formātu:</p>
 
   <steps>
     <item>

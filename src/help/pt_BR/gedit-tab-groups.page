@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
     <link type="seealso" xref="gedit-shortcut-keys"/>
+    <desc>Agrupe abas similares.</desc>
     <revision pkgversion="3.8" date="2013-06-19" status="draft"/>
 
     <credit type="author copyright">
@@ -59,21 +60,21 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Rafael Ferreira</mal:name>
-      <mal:email>rafael.f.f1@gmail.com</mal:email>
-      <mal:years>2013</mal:years>
+      <mal:name>Enrico Nicoletto</mal:name>
+      <mal:email>liverig@gmail.com</mal:email>
+      <mal:years>2013, 2014</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Enrico Nicoletto</mal:name>
-      <mal:email>liverig@gmail.com</mal:email>
-      <mal:years>2013, 2014.</mal:years>
+      <mal:name>Rafael Fontenelle</mal:name>
+      <mal:email>rafaelff@gnome.org</mal:email>
+      <mal:years>2013, 2016</mal:years>
     </mal:credit>
   </info>
 
   <title>Organizando arquivos em abas agrupadas</title>
 
-  <p>Se você está trabalhando em múltiplas abas no  <app>gedit</app> você pode agrupá-las, deixando mais fácil manter organizados os seus arquivos abertos. Adicionar um novo grupo de abas vai dividir a janela do <app>gedit</app> em dois painéis, abrir um novo "Documento não-salvo" no novo painel e vai torná-lo ativo. Você pode abrir arquivos naquele grupo de abas e mover abas de um grupo para o outro.</p>
+  <p>Se você está trabalhando em múltiplas abas no <app>gedit</app> você pode agrupá-las, deixando mais fácil manter organizados os seus arquivos abertos. Adicionar um novo grupo de abas vai dividir a janela do <app>gedit</app> em dois painéis, abrir um novo "Documento não-salvo" no novo painel e vai torná-lo ativo. Você pode abrir arquivos naquele grupo de abas e mover abas de um grupo para o outro.</p>
 
 <section id="open-new-tab-group">
   <title>Abrindo um novo grupo de abas na janela do gedit</title>

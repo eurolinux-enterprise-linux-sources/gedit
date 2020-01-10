@@ -3,7 +3,9 @@
 
   <info>
     <link type="guide" xref="index"/>
+    <desc>Gyorsbillentyűk használata a munka gyorsításához.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -30,6 +32,12 @@
       <email its:translate="no">radina.matic@gmail.com</email>
       <years>2013</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -41,7 +49,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -59,8 +67,8 @@
     <title>Lapokkal kapcsolatos gyorsbillentyűk</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>
@@ -111,18 +119,26 @@
     <title>Gyorsbillentyűk fájlok kezeléséhez</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Új dokumentum létrehozása</p></td>
+          <td><p>Új dokumentum létrehozása új ablakban</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Új dokumentum létrehozása új lapon</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Dokumentum megnyitása</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>A <gui>Gyors megnyitás</gui> ablak megnyitása</p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>A jelenlegi dokumentum mentése</p></td>
@@ -155,8 +171,8 @@
     <title>Gyorsbillentyűk fájlok szerkesztéséhez</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>
@@ -247,8 +263,8 @@
     <title>Ablaktáblákat elrejtő és megjelenítő gyorsbillentyűk</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>
@@ -261,6 +277,10 @@
           <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
           </td>
         </tr>
+        <tr>
+          <td><p>A Fájl menü megnyitása</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
       </tbody>
     </table>
 
@@ -268,8 +288,8 @@
     <title>Gyorsbillentyűk a kereséshez</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>
@@ -304,8 +324,8 @@
     <title>Gyorsbillentyűk az eszközökhöz</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>
@@ -332,8 +352,8 @@
     <title>Súgó gyorsbillentyűi</title>
       <thead>
         <tr>
-          <td><p>Ehhez</p></td>
-          <td><p>Nyomja meg ezt</p></td>
+          <td><p>Művelet</p></td>
+          <td><p>Gyorsbillentyű</p></td>
         </tr>
       </thead>
       <tbody>

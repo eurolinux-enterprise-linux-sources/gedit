@@ -3,6 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
+    <desc>Izvēlieties lappuses, kuras vēlaties drukāt.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Phil Bull</name>
@@ -17,9 +18,7 @@
 
   <title>Drukāt tikai noteiktas lappuses</title>
 
-  <p>You can selectively print only certain pages from the document. For
-  example, if you enter the page numbers "1,3,5-7,9", then only pages 1, 3,
-  5, 6, 7 and 9 will be printed. To print pages of your choice:</p>
+  <p>Jūs varat drukāt tikai atsevišķas dokumenta lappuses. Piemēram, ja ievadīsiet lappušu numurus “1,3,5-7,9”, tad tiks izdrukātas tikai lappuses 1, 3, 5, 6, 7 un 9. Lai izdrukātu tikai izvēlētās lappuses:</p>
 
   <steps>
    <item>
