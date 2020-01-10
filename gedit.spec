@@ -13,7 +13,7 @@ Summary:	Text editor for the GNOME desktop
 Name:		gedit
 Epoch:		2
 Version:	3.14.3
-Release:	18%{?dist}
+Release:	9%{?dist}
 License:	GPLv2+ and GFDL
 Group:		Applications/Editors
 #VCS: git:git://git.gnome.org/gedit
@@ -27,32 +27,6 @@ Patch5: jp-search.patch
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1247999
 Patch6: 0001-po-es-use-single-quote-instead-of-chevrons.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1301760
-Patch7: 0005-Fix-desktop-actions.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1301726
-Patch8: 0011-Printing-fix-margins.patch
-Patch9: 0012-Printing-set-default-margin-top-to-15mm.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1301761
-Patch10: 0008-spell-don-t-include-gedit-metadata-manager.h-private.patch
-Patch11: 0009-spell-fix-bug-with-document-metadata.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1255556
-Patch12: 0010-Unset-correctly-GVFS-file-attributes.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1301764
-Patch13: 0019-build-fix-generation-of-desktop-files-for-external-t.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1301769
-Patch14: 0024-Add-a-snippet-generating-RPM-SPEC-changelog-line.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1279299
-Patch15: 0025-Add-a-shortcut-for-the-open-button-for-german.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1247999
-Patch16: 0001-gedit-document-fix-close-after-save-functionality.patch
 
 URL:		http://projects.gnome.org/gedit/
 
@@ -120,16 +94,6 @@ Install gedit-devel if you want to write plugins for gedit.
 %patch4 -p1 -b .disable-python
 %patch5 -p1 -b .jp-search
 %patch6 -p1 -b .es-po-quotes
-%patch7 -p1 -b .desktop-actions
-%patch8 -p1 -b .printing-margins
-%patch9 -p1 -b .printing-margins2
-%patch10 -p1 -b .spell
-%patch11 -p1 -b .spell2
-%patch12 -p1 -b .unset-gvfs
-%patch13 -p1 -b .external-tools
-%patch14 -p1 -b .changelog-snipplet
-%patch15 -p1 -b .german-open-shortcut
-%patch16 -p1 -b .fix-close-after-save
 
 autoreconf -i -f
 intltoolize -f
@@ -235,43 +199,6 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_datadir}/vala/
 
 %changelog
-* Mon Aug 01 2016 Ray Strode <rstrode@redhat.com> - 3.14.3-18
-- Updated version of python3→2 patch from Matej Cepl
-  Resolves: #1360922
-
-* Fri Apr 15 2016 Ray Strode <rstrode@redhat.com> - 3.14.3-17
-- Fix close after save functionality when closing window
-  with unsaved documents
-  Resolves: #1247999
-
-* Fri Apr 15 2016 Mike FABIAN <mfabian@redhat.com> 3.14.3-16
-- Add a shorcut for German for the open button
-  Resolves: #1279299
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-15
-- Add a snipplet for rpm changelogs
-  Resolves: #1301769
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-14
-- Fix desktop files for external tools
-  Resolves: #1301764
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-13
-- Fix spell checker metadata saving
-  Resolves: #1301761
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-12
-- Fix printing margins
-  Resolves: #1301726
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-11
-- Fix desktop actions
-  Resolves: #1301760
-
-* Wed Apr  6 2015 Matthias Clasen <mclasen@redhat.com> 3.14.3-10
-- Really fix chevrons in schemas
-  Resolves: #1258357
-
 * Wed Sep 23 2015 Ray Strode <rstrode@redhat.com> 3.14.3-9
 - Add X-RHEL-AliasOf=org.gnome.gedit to compat desktop file
   Related: #1259292

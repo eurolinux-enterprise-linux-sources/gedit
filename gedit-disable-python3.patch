@@ -1,5 +1,5 @@
-From 2315024697904bc00c01caa42e042983491f98f1 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@redhat.com>
+From 1cb46d3837804d69c2b2e12317d3c5a7e60a819a Mon Sep 17 00:00:00 2001
+From: Matěj Cepl <mcepl@redhat.com>
 Date: Fri, 15 May 2015 11:00:19 -0400
 Subject: [PATCH] Switch from python3 to python2
 
@@ -8,17 +8,14 @@ Subject: [PATCH] Switch from python3 to python2
  gedit/gedit-plugins-engine.c                          |  2 +-
  plugins/externaltools/data/send-to-fpaste.tool.in     |  2 +-
  plugins/externaltools/externaltools.plugin.desktop.in |  2 +-
- plugins/externaltools/tools/capture.py                |  8 ++++++-
- plugins/externaltools/tools/library.py                | 27 ++++++++++++++++------
+ plugins/externaltools/tools/library.py                | 15 ++++++++-------
  plugins/pythonconsole/pythonconsole.plugin.desktop.in |  2 +-
  plugins/quickopen/quickopen.plugin.desktop.in         |  2 +-
- plugins/quickopen/quickopen/__init__.py               |  5 ++--
  plugins/snippets/snippets.plugin.desktop.in           |  2 +-
- plugins/snippets/snippets/helper.py                   |  5 +++-
  plugins/snippets/snippets/library.py                  |  3 ++-
  plugins/snippets/snippets/shareddata.py               |  3 ++-
  plugins/snippets/snippets/signals.py                  |  2 +-
- 14 files changed, 46 insertions(+), 21 deletions(-)
+ 11 files changed, 20 insertions(+), 17 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
 index cf3d734..3acee28 100644
@@ -202,81 +199,8 @@ index cc7a4da..c56e4e3 100644
  Authors=Steve Frécinaux <steve@istique.net>
  Copyright=Copyright © 2005 Steve Frécinaux
  Website=http://www.gedit.org
-diff --git a/plugins/externaltools/tools/capture.py b/plugins/externaltools/tools/capture.py
-index 05fcf81..4a77e7a 100644
---- a/plugins/externaltools/tools/capture.py
-+++ b/plugins/externaltools/tools/capture.py
-@@ -34,61 +34,67 @@ class Capture(GObject.Object):
-     CAPTURE_NEEDS_SHELL = 0x04
- 
-     WRITE_BUFFER_SIZE = 0x4000
- 
-     __gsignals__ = {
-         'stdout-line': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
-         'stderr-line': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
-         'begin-execute': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, tuple()),
-         'end-execute': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_INT,))
-     }
- 
-     def __init__(self, command, cwd=None, env={}):
-         GObject.GObject.__init__(self)
-         self.pipe = None
-         self.env = env
-         self.cwd = cwd
-         self.flags = self.CAPTURE_BOTH | self.CAPTURE_NEEDS_SHELL
-         self.command = command
-         self.input_text = None
- 
-     def set_env(self, **values):
-         self.env.update(**values)
- 
-     def set_command(self, command):
-         self.command = command
- 
-     def set_flags(self, flags):
-         self.flags = flags
- 
-     def set_input(self, text):
--        self.input_text = text.encode("UTF-8") if text else None
-+        if text:
-+            if isinstance(text, bytes):
-+                self.input_text = text
-+            else:
-+                self.input_text = text.encode("UTF-8")
-+        else:
-+            self.input_text = None
- 
-     def set_cwd(self, cwd):
-         self.cwd = cwd
- 
-     def execute(self):
-         if self.command is None:
-             return
- 
-         # Initialize pipe
-         popen_args = {
-             'cwd': self.cwd,
-             'shell': self.flags & self.CAPTURE_NEEDS_SHELL,
-             'env': self.env
-         }
- 
-         if self.input_text is not None:
-             popen_args['stdin'] = subprocess.PIPE
-         if self.flags & self.CAPTURE_STDOUT:
-             popen_args['stdout'] = subprocess.PIPE
-         if self.flags & self.CAPTURE_STDERR:
-             popen_args['stderr'] = subprocess.PIPE
- 
-         self.tried_killing = False
-         self.in_channel = None
-         self.out_channel = None
-         self.err_channel = None
-         self.in_channel_id = 0
-         self.out_channel_id = 0
-         self.err_channel_id = 0
- 
 diff --git a/plugins/externaltools/tools/library.py b/plugins/externaltools/tools/library.py
-index adfd943..761337c 100644
+index adfd943..4d4bce0 100644
 --- a/plugins/externaltools/tools/library.py
 +++ b/plugins/externaltools/tools/library.py
 @@ -1,48 +1,49 @@
@@ -392,7 +316,7 @@ index adfd943..761337c 100644
  
              self.changed = True
  
-@@ -368,141 +369,153 @@ class Tool(object):
+@@ -368,141 +369,141 @@ class Tool(object):
      def get_save_files(self):
          save_files = self._properties.get('Save-files')
          if save_files:
@@ -501,27 +425,15 @@ index adfd943..761337c 100644
          # Write out header
          for line in header:
              fp.write(line + "\n")
-+            if isinstance(line, bytes):
-+                line = unicode(line + "\n", 'utf8')
-+            else:
-+                line += u"\n"
-+            fp.write(line)
  
 -        fp.write(self._dump_properties())
 -        fp.write("\n")
-+        outstr = self._dump_properties()
-+        if isinstance(outstr, bytes):
-+            outstr = unicode(outstr, 'utf8')
-+        fp.write(outstr)
++        fp.write(unicode(self._dump_properties(), 'utf8'))
 +        fp.write(u"\n")
  
          for line in content:
 -            fp.write(line + "\n")
-+            if isinstance(line, bytes):
-+                line = unicode(line + "\n", 'utf8')
-+            else:
-+                line += u"\n"
-+            fp.write(line)
++            fp.write(unicode(line + "\n", 'utf8'))
  
          fp.close()
          os.chmod(filename, 0o750)
@@ -584,151 +496,6 @@ index 68b6faa..17edecc 100644
  Authors=Jesse van den Kieboom  <jessevdk@gnome.org>
  Copyright=Copyright © 2009 Jesse van den Kieboom
  Website=http://www.gedit.org
-diff --git a/plugins/quickopen/quickopen/__init__.py b/plugins/quickopen/quickopen/__init__.py
-index b8b54b0..f5e179f 100644
---- a/plugins/quickopen/quickopen/__init__.py
-+++ b/plugins/quickopen/quickopen/__init__.py
-@@ -1,48 +1,49 @@
- # -*- coding: utf-8 -*-
- 
- #  Copyright (C) 2009 - Jesse van den Kieboom
- #
- #  This program is free software; you can redistribute it and/or modify
- #  it under the terms of the GNU General Public License as published by
- #  the Free Software Foundation; either version 2 of the License, or
- #  (at your option) any later version.
- #
- #  This program is distributed in the hope that it will be useful,
- #  but WITHOUT ANY WARRANTY; without even the implied warranty of
- #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- #  GNU General Public License for more details.
- #
- #  You should have received a copy of the GNU General Public License
- #  along with this program; if not, see <http://www.gnu.org/licenses/>.
- 
- from .popup import Popup
-+import io
- import os
- from gi.repository import GObject, Gio, GLib, Gtk, Gedit
- from .virtualdirs import RecentDocumentsDirectory
- from .virtualdirs import CurrentDocumentsDirectory
- 
- 
- class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
-     app = GObject.property(type=Gedit.App)
- 
-     def __init__(self):
-         GObject.Object.__init__(self)
- 
-     def do_activate(self):
-         self.app.add_accelerator("<Primary><Alt>O", "win.quickopen", None)
- 
-         self.menu_ext = self.extend_menu("file-section")
-         item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
-         self.menu_ext.prepend_menu_item(item)
- 
-     def do_deactivate(self):
-         self.app.remove_accelerator("win.quickopen", None)
- 
- 
- class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
-     __gtype_name__ = "QuickOpenPlugin"
- 
-     window = GObject.property(type=Gedit.Window)
- 
-     def __init__(self):
-         GObject.Object.__init__(self)
-@@ -94,88 +95,88 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
- 
-         # Local bookmarks
-         for path in self._local_bookmarks():
-             paths.append(path)
- 
-         # Desktop directory
-         desktopdir = self._desktop_dir()
- 
-         if desktopdir:
-             paths.append(Gio.file_new_for_path(desktopdir))
- 
-         # Home directory
-         paths.append(Gio.file_new_for_path(os.path.expanduser('~')))
- 
-         self._popup = Popup(self.window, paths, self.on_activated)
-         self.window.get_group().add_window(self._popup)
- 
-         self._popup.set_default_size(*self.get_popup_size())
-         self._popup.set_transient_for(self.window)
-         self._popup.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
-         self._popup.connect('destroy', self.on_popup_destroy)
- 
-     def _local_bookmarks(self):
-         filename = os.path.expanduser('~/.config/gtk-3.0/bookmarks')
- 
-         if not os.path.isfile(filename):
-             return []
- 
-         paths = []
- 
--        for line in open(filename, 'r', encoding='utf-8'):
-+        for line in io.open(filename, 'r', encoding='utf-8'):
-             uri = line.strip().split(" ")[0]
-             f = Gio.file_new_for_uri(uri)
- 
-             if f.is_native():
-                 try:
-                     info = f.query_info(Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
-                                         Gio.FileQueryInfoFlags.NONE,
-                                         None)
- 
-                     if info and info.get_file_type() == Gio.FileType.DIRECTORY:
-                         paths.append(f)
-                 except:
-                     pass
- 
-         return paths
- 
-     def _desktop_dir(self):
-         config = os.getenv('XDG_CONFIG_HOME')
- 
-         if not config:
-             config = os.path.expanduser('~/.config')
- 
-         config = os.path.join(config, 'user-dirs.dirs')
-         desktopdir = None
- 
-         if os.path.isfile(config):
--            for line in open(config, 'r', encoding='utf-8'):
-+            for line in io.open(config, 'r', encoding='utf-8'):
-                 line = line.strip()
- 
-                 if line.startswith('XDG_DESKTOP_DIR'):
-                     parts = line.split('=', 1)
-                     desktopdir = parts[1].strip('"').strip("'")
-                     desktopdir = os.path.expandvars(desktopdir)
-                     break
- 
-         if not desktopdir:
-             desktopdir = os.path.expanduser('~/Desktop')
- 
-         return desktopdir
- 
-     # Callbacks
-     def on_quick_open_activate(self, action, parameter, user_data=None):
-         if not self._popup:
-             self._create_popup()
- 
-         self._popup.show()
- 
-     def on_popup_destroy(self, popup, user_data=None):
-         self.set_popup_size(popup.get_final_size())
- 
-         self._popup = None
- 
-     def on_activated(self, gfile, user_data=None):
-         Gedit.commands_load_location(self.window, gfile, None, -1, -1)
-         return True
- 
- # ex:ts=4:et:
 diff --git a/plugins/snippets/snippets.plugin.desktop.in b/plugins/snippets/snippets.plugin.desktop.in
 index 8551b6b..f41a626 100644
 --- a/plugins/snippets/snippets.plugin.desktop.in
@@ -744,77 +511,6 @@ index 8551b6b..f41a626 100644
  Authors=Jesse van den Kieboom <jesse@icecrew.nl>
  Copyright=Copyright © 2005 Jesse van den Kieboom
  Website=http://www.gedit.org
-diff --git a/plugins/snippets/snippets/helper.py b/plugins/snippets/snippets/helper.py
-index 2fa3b3f..ee3f3b7 100644
---- a/plugins/snippets/snippets/helper.py
-+++ b/plugins/snippets/snippets/helper.py
-@@ -97,62 +97,65 @@ def write_xml(node, f, cdata_nodes=()):
- 
-     # Encoding
-     f.write("<?xml version='1.0' encoding='utf-8'?>\n")
- 
-     _write_node(node, f, cdata_nodes)
- 
- def _write_indent(file, text, indent):
-     file.write('  ' * indent + text)
- 
- def _write_node(node, file, cdata_nodes=(), indent=0):
-     # write XML to file
-     tag = node.tag
- 
-     if node is et.Comment:
-         _write_indent(file, "<!-- %s -->\n" % saxutils.escape(node.text), indent)
-     elif node is et.ProcessingInstruction:
-         _write_indent(file, "<?%s?>\n" % saxutils.escape(node.text), indent)
-     else:
-         items = node.items()
- 
-         if items or node.text or len(node):
-             _write_indent(file, "<" + tag, indent)
- 
-             if items:
-                 items.sort() # lexical order
-                 for k, v in items:
-                     file.write(" %s=%s" % (k, saxutils.quoteattr(v)))
-             if node.text or len(node):
-                 file.write(">")
-                 if node.text and node.text.strip() != "":
-+                    node_txt = node.text
-+                    if isinstance(node_txt, unicode):
-+                        node_txt = node_txt.encode('utf8')
-                     if tag in cdata_nodes:
--                        file.write(_cdata(node.text))
-+                        file.write(_cdata(node_txt))
-                     else:
-                         file.write(saxutils.escape(node.text))
-                 else:
-                     file.write("\n")
- 
-                 for n in node:
-                     _write_node(n, file, cdata_nodes, indent + 1)
- 
-                 if not len(node):
-                     file.write("</" + tag + ">\n")
-                 else:
-                     _write_indent(file, "</" + tag + ">\n", \
-                             indent)
-             else:
-                 file.write(" />\n")
- 
-         if node.tail and node.tail.strip() != "":
-             file.write(saxutils.escape(node.tail))
- 
- def _cdata(text):
-     return '<![CDATA[' + text.replace(']]>', ']]]]><![CDATA[>') + ']]>'
- 
- def is_tab_trigger(w):
-     if len(w) == 1 and not (w.isalnum() or w.isspace()):
-         return True
- 
-     if not is_first_tab_trigger_character(w[0]):
-         return False
- 
-     for c in w:
 diff --git a/plugins/snippets/snippets/library.py b/plugins/snippets/snippets/library.py
 index 455ac91..1b454f3 100644
 --- a/plugins/snippets/snippets/library.py
@@ -1051,5 +747,5 @@ index 647b616..9aaa95a 100644
      def block_signal(self, obj, name):
          if obj not in self._signals:
 -- 
-2.7.4
+2.3.7
 
