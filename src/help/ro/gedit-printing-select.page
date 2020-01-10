@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Choose the pages that you want to print.</desc>
+    <desc>Alegeți paginile pe care doriți să le tipăriți.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Phil Bull</name>
@@ -24,28 +24,22 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
-  <title>Only print certain pages</title>
+  <title>Tipărirea numai a unor pagini specifice</title>
 
-  <p>You can selectively print only certain pages from the document. For
-  example, if you enter the page numbers "1,3,5-7,9", then only pages 1, 3,
-  5, 6, 7 and 9 will be printed. To print pages of your choice:</p>
+  <p>Puteți tipări selectiv numai anumite pagini din document. De exemplu dacă introduceți numerele de pagini „1,3,5-7,9”, atunci numai paginile 1, 3, 4, 6, 7, și 9 vor fi tipărite. Pentru a tipări paginile alease de dumneavoastră:</p>
 
   <steps>
    <item>
-    <p>Select <guiseq><gui style="menu">File</gui>
-    <gui style="menuitem">Print…</gui></guiseq>.</p>
+    <p>Selectați <guiseq><gui style="menu">Fișier</gui> <gui style="menuitem">Tipărește…</gui></guiseq>.</p>
    </item>
    <item>
-    <p>In the <gui style="tab">General</gui> tab in the Print dialog choose
-    <gui style="radiobutton">Pages</gui> from the
-    <gui style="group">Range</gui> section.</p></item>
+    <p>În tabul <gui style="tab">Generale</gui> în dialogul Tipărire alegeți <gui style="radiobutton">Pagini</gui> din secțiunea <gui style="group">Interval</gui>.</p></item>
    <item>
-    <p>Type the numbers of the pages you want to print from the document,
-    separated by commas. Use a dash to specify a range of pages.</p>
+    <p>Tastați numerele paginilior pe care doriți să le tipăriți din document, separate de virgule. Utilizați cratima pentrua specifica un interval de pagini.</p>
    </item>
   </steps>
 

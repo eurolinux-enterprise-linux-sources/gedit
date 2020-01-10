@@ -8,6 +8,7 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -37,7 +38,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -66,7 +67,7 @@
       <p>Introduzca el texto que quiere reemplazar en el campo <gui>Buscar</gui>.</p>
     </item>
     <item>
-      <p>Introduzca el nuevo texto de reemplazo en el campo <gui>Reemplazar con:</gui>.</p>
+      <p>Introduzca el nuevo texto de reemplazo en el campo <gui>Reemplazar con</gui>.</p>
     </item>
     <item>
       <p>Una vez que haya introducido el texto original y el de reemplazo, puede añadir parámetros adicionales a la búsqueda. También puede elegir qué quiere reemplazar.</p>

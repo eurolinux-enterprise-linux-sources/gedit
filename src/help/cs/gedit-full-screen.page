@@ -6,6 +6,7 @@
     <desc>Jak nastavit gedit, aby používal celou obrazovku.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -47,7 +48,7 @@
   <section id="turn-off-full-screen">
     <title>Vypnutí režimu celé obrazovky</title>
     <p>Pro vypnutí režimu celé obrazovky a návrat k běžnému oknu <app>gedit</app> zmáčkněte <key>F11</key>.</p>
-    <p>Můžete také přesunout ukazatel myši k horní hraně obrazovky a vyčkat, až se objeví <gui>nabídková lišta</gui>. Po té vyberte <gui>Opustit celou obrazovku</gui>.</p>
+    <p>Můžete také přesunout ukazatel myši k horní hraně obrazovky a vyčkat, až se objeví <gui>nabídková lišta</gui>. Po té zmáčkněte tlačítko <gui>Opustit celou obrazovku</gui>.</p>
   </section>
 
 </page>

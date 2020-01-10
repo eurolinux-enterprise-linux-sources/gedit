@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -33,11 +33,14 @@
   <p>Маючи на увазі ці застереження, виконайте наступні дії для відкриття файлу з сервера, використовуючи «<app>gedit</app>»:</p>
 
     <steps>
-      <item><p>Виберіть <guiseq><gui>«Файл»</gui><gui>«Відкрити»</gui></guiseq>, для відображення діалогового вікна <gui>«Відкрити файли»</gui>.</p></item>
-      <item><p>Виберіть піктограму <gui>«Олівець»</gui> біля верхньої частини діалогового вікна <gui>«Відкрити файли»</gui>.</p></item>
+      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
+      <item><p>Click <gui>Other Documents…</gui>.</p></item>
+      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
+      <gui>Open</gui> dialog.</p></item>
       <item><p>Введіть IP-адресу чи URL потрібного сервера.</p></item>
       <item><p>Знайдіть та виберіть файл, який хочете відкрити.</p></item>
-      <item><p>Виберіть випадаючий список кодування символів, щоб вибрати відповідне кодування.</p></item>
+      <item><p>Use the Character Encoding drop-down list to select the
+      appropriate character coding.</p></item>
       <item><p>Клацніть на <guibutton>«Відкрити»</guibutton>.</p></item>
     </steps>
 

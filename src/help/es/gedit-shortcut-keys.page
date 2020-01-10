@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="es">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="es">
 
   <info>
     <link type="guide" xref="index"/>
     <desc>Usar atajos del teclado para ayudarle a trabajar más rápidamente.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -43,7 +43,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -271,11 +271,6 @@
         <tr>
           <td><p>Mostrar/ocultar el panel lateral</p></td>
           <td><p><key>F9</key></p></td>  
-        </tr>
-        <tr>
-          <td><p>Mostrar/ocultar el panel inferior</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
         </tr>
         <tr>
           <td><p>Abrir el menú del archivo</p></td>

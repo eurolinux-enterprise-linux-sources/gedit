@@ -6,6 +6,7 @@
     <desc>Configure o gedit para usar a tela inteira.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -67,7 +68,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Rafael Fontenelle</mal:name>
       <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016</mal:years>
+      <mal:years>2013, 2016, 2017</mal:years>
     </mal:credit>
   </info>
 
@@ -89,7 +90,7 @@
   <section id="turn-off-full-screen">
     <title>Desativando o modo de tela cheia</title>
     <p>Para desabilitar o modo tela cheia e voltar para a janela padrão do <app>gedit</app>, pressione <key>F11</key>.</p>
-    <p>Você também pode mover o cursor do seu mouse para o topo da tela e esperar aparecer a <gui>barra de menu</gui>. Quando ela aparecer, selecione <gui>Sair de tela cheia</gui>.</p>
+    <p>Você também pode mover o cursor do seu mouse para o topo da tela e esperar aparecer a <gui>barra de menu</gui>. Quando a <gui>barra de menu</gui> aparecer, selecione o botão <gui>Sair de tela cheia</gui>.</p>
   </section>
 
 </page>

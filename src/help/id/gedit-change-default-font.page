@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="id">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use a custom font for your text in gedit.</desc>
+    <desc>Menggunakan fonta kustom untuk teks Anda di gedit.</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
@@ -17,7 +17,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 

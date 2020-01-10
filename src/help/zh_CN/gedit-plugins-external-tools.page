@@ -14,7 +14,7 @@
     <name>Jim Campbell</name>
     <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Run scripts on your current files, and interact with other applications.</desc>
+  <desc>在当前文档上执行脚本，并与其他程序交互。</desc>
   <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -33,6 +33,12 @@
       <mal:name>wancheng zhang</mal:name>
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
     </mal:credit>
   </info>
 

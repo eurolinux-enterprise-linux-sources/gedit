@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index#gedit-working-with-files" group="second"/>
+    <link type="seealso" xref="gedit-tabs-moving"/>
+    <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Tworzenie i zamykanie kart w oknie programu gedit.</desc>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.12" date="2014-02-12" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <credit type="collaborator">
+      <name>Daniel Neel</name>
+      <email>dneelyep@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <credit type="editor">
+      <name>Radina Matic</name>
+      <email its:translate="no">radina.matic@gmail.com</email>
+      <years>2013</years>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email its:translate="no">tyagishobha@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Dodawanie i usuwanie kart</title>
+  <p>Używanie kart w programie <app>gedit</app> umożliwia korzystanie z kilku plików w jednym oknie. Karta szersza od pozostałych wskazuje obecnie otwarty plik. Węższe karty wskazują pozostałe pliki, których można używać.</p>
+
+  <section id="gedit-adding-tabs">
+    <title>Dodawanie kart</title>
+    <p>Aby dodać nową kartę, utwórz plik za pomocą klawiszy <keyseq><key>Ctrl</key> <key>T</key></keyseq>. Karta zostanie dodana na prawo od pozostałych kart.</p>
+  </section>
+
+  <section id="gedit-removing-tabs">
+    <title>Usuwanie kart</title>
+    <p>Aby usunąć kartę, kliknij przycisk <gui style="button">×</gui> po prawej stronie karty. Aby usunąć wszystkie otwarte karty, naciśnij klawisze <keyseq><key>Ctrl</key> <key>Shift</key><key>W</key></keyseq>.</p>
+  </section>
+
+</page>

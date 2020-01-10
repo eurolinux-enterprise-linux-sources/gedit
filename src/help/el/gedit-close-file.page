@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
     <desc>Έξοδος από το αρχείο που χρησιμοποιείτε.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -45,7 +46,10 @@
 
   <title>Κλείσιμο αρχείου</title>
 
-  <p>Για να κλείσετε ένα αρχείο στο <app>gedit</app>, επιλέξτε <guiseq><gui>Αρχείο</gui> <gui>Κλείσιμο</gui></guiseq>. Εναλλακτικά, μπορείτε να πατήσετε στο μικρό "X" που εμφανίζεται στη δεξιά πλευρά της καρτέλας του αρχείου, ή πατώντας <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
+  <p>To close a file in <app>gedit</app>, select 
+  <gui style="menuitem">Close</gui>. Alternately, you can click the small "X" that 
+  appears on the right-side of the file's tab, or press <keyseq><key>Ctrl</key>
+  <key>W</key></keyseq>.</p>
   <p>Οποιαδήποτε από αυτές τις ενέργειες θα κλείσει ένα αρχείο στο <app>gedit</app>. Αν το αρχείο σας περιέχει αλλαγές που δεν έχουν αποθηκευτεί, το <app>gedit</app> θα σας ειδοποιήσει να τις αποθηκεύσετε πριν κλείσετε το αρχείο.</p>
 
 </page>

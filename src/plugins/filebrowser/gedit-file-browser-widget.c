@@ -882,30 +882,30 @@ on_locations_treeview_row_activated (GtkTreeView            *locations_treeview,
 {
 	GeditFileBrowserWidgetPrivate *priv = obj->priv;
 	GtkTreeIter iter;
-	guint id;
+	guint id = G_MAXUINT;
 	GFile *file;
 
-	gtk_tree_model_get_iter (GTK_TREE_MODEL (priv->locations_model), &iter, path);
-	gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model), &iter, COLUMN_ID, &id, -1);
-
-	switch (id)
+	if (gtk_tree_model_get_iter (GTK_TREE_MODEL (priv->locations_model), &iter, path))
 	{
-		case BOOKMARKS_ID:
-			gedit_file_browser_widget_show_bookmarks (obj);
-			break;
+		gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model), &iter, COLUMN_ID, &id, -1);
+	}
 
-		case PATH_ID:
-			gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model),
-			                    &iter,
-			                    COLUMN_FILE,
-			                    &file,
-			                    -1);
+	if (id == BOOKMARKS_ID)
+	{
+		gedit_file_browser_widget_show_bookmarks (obj);
+	}
+	else if (id == PATH_ID)
+	{
+		gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model),
+			            &iter,
+			            COLUMN_FILE,
+			            &file,
+			            -1);
 
-			gedit_file_browser_store_set_virtual_root_from_location (priv->file_store, file);
+		gedit_file_browser_store_set_virtual_root_from_location (priv->file_store, file);
 
-			g_object_unref (file);
-			gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (priv->locations_cellview), path);
-			break;
+		g_object_unref (file);
+		gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (priv->locations_cellview), path);
 	}
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->locations_button), FALSE);
@@ -2369,7 +2369,7 @@ directory_open (GeditFileBrowserWidget *obj,
 
 		uri = g_file_get_uri (location);
 
-		if (!gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (obj)), uri, GDK_CURRENT_TIME, &error))
+		if (!gtk_show_uri_on_window (GTK_WINDOW (obj), uri, GDK_CURRENT_TIME, &error))
 		{
 			g_signal_emit (obj, signals[ERROR], 0,
 				       GEDIT_FILE_BROWSER_ERROR_OPEN_DIRECTORY,
@@ -2766,7 +2766,7 @@ on_location_entry_activate (GtkEntry               *entry,
 		gchar *display_name, *msg;
 
 		display_name = g_file_get_parse_name (new_root);
-		msg = g_strdup_printf (_("Error when loading '%s': "
+		msg = g_strdup_printf (_("Error when loading “%s”: "
 		                         "No such directory"),
 		                       display_name);
 

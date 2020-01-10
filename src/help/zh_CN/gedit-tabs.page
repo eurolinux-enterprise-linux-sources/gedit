@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Create or close tabs in the gedit window.</desc>
+    <desc>在 gedit 窗口中改变标签顺序。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -49,6 +49,12 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>添加和删除标签</title>
@@ -56,9 +62,7 @@
 
   <section id="gedit-adding-tabs">
     <title>添加标签</title>
-    <p>To add a new tab, create a new file with <keyseq><key>Ctrl</key>
-    <key>T</key></keyseq>. The tab will be added to the right side of any other
-    tabs.</p>
+    <p>要添加一个新标签，按组合键  <keyseq><key>Ctrl</key> <key>T</key></keyseq>创建一个新文件。新标签将会放在标签栏的最右边。</p>
   </section>
 
   <section id="gedit-removing-tabs">

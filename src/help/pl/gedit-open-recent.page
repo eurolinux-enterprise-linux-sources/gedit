@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-recent" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="gedit-files-basic" group="fifth"/>
+    <desc>Otwieranie ostatnio zaktualizowanych plików.</desc>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Ponowne otwieranie ostatnio używanego pliku</title>
+
+  <p>Domyślnie <app>gedit</app> zapewnia łatwy dostęp do pięciu ostatnio użytych plików:</p>
+  <list type="numbered">
+    <item><p>Kliknij przycisk <gui>Otwórz</gui>.</p></item>
+    <item><p><app>gedit</app> wyświetli listę pięciu ostatnio używanych plików.</p></item>
+    <item><p>Kliknij wybrany plik, a zostanie on otwarty w nowej karcie.</p></item>
+  </list>
+
+  <note style="advanced"><p>Aby dostosować liczbę ostatnio używanych plików wyświetlanych przez program gedit, należy użyć programu <app>dconf-editor</app>.</p>
+    <list>
+      <item><p>Uruchom <app>dconf-editor</app> i wybierz <guiseq><gui>org</gui> <gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</gui></guiseq>.</p></item>
+      <item><p>Podwójnie kliknij liczbę obok napisu <gui>max-recents</gui> i ją zmień.</p></item>
+    </list>
+  </note>
+
+</page>

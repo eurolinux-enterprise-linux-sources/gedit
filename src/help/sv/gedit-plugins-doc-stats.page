@@ -12,31 +12,31 @@
     <name>Jim Campbell</name>
     <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>View document statistics.</desc>
-</info>
+  <desc>Visa dokumentstatistik.</desc>
 
-<title>Document statistics</title>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
+  </info>
 
-  <p>The <em>Document Statistics</em> plugin shows you various statistics about
-  your current document. To enable this plugin, select 
-  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
-  <gui>Plugins</gui><gui>Document Statistics</gui></guiseq>.</p>
+<title>Dokumentstatistik</title>
+
+  <p>Insticksmodulen <em>Dokumentstatistik</em> visar dig diverse statistik om ditt aktuella dokument. För att aktivera denna insticksmodul, välj <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Inställningar</gui> <gui>Insticksmoduler</gui><gui>Dokumentstatistik</gui></guiseq>.</p>
 
 <section id="using-doc-stats">
-  <title>Using Document Statistics</title>
+  <title>Använda dokumentstatistik</title>
 
-  <p>Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui>
-  <gui>Document Statistics</gui></guiseq>. A window will display the
-  statistical information of your document, including the number of words,
-  lines, characters, non-space characters, and the size of your file in
-  bytes.</p>
+  <p>Då insticksmodulen är aktiverad kan du använda den genom att välja <guiseq><gui>Verktyg</gui> <gui>Dokumentstatistik</gui></guiseq>. Ett fönster kommer att visa statistiken för ditt dokument, detta inkluderar antalet ord, rader, tecken, blankstegsskilda tecken och filstorleken i byte.</p>
 
-  <p>You can also use <em>Document Statistics</em> to show you information about
-  just a portion of your document. To do this, use the mouse pointer to select
-  the portion of text that you want to examine, and then select
-  <guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>.
-  <app>Gedit</app> will display information for both your entire document, and
-  for the portion of text that you highlighted.</p>
+  <p>Du kan också använda <em>Dokumentstatistik</em> för att visa dig information om bara en del av ditt dokument. För att göra detta, använd muspekaren för att markera textstycket som du vill undersöka, och välj sedan <guiseq><gui>Verktyg</gui><gui>Dokumentstatistik</gui></guiseq>. <app>Gedit</app> kommer visa information både för hela ditt dokument och för textstycket som du markerat.</p>
 </section>
 
 </page>

@@ -107,7 +107,7 @@ static const GOptionEntry options[] =
 	/* Version */
 	{
 		"version", 'V', 0, G_OPTION_ARG_NONE, NULL,
-		N_("Show the application's version"), NULL
+		N_("Show the application’s version"), NULL
 	},
 
 	/* List available encodings */
@@ -155,7 +155,7 @@ static const GOptionEntry options[] =
 	/* collects file arguments */
 	{
 		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, NULL, NULL,
-		N_("[FILE...] [+LINE[:COLUMN]]")
+		N_("[FILE…] [+LINE[:COLUMN]]")
 	},
 
 	{NULL}
@@ -255,7 +255,7 @@ gedit_app_show_help_impl (GeditApp    *app,
 
 	link = GEDIT_APP_GET_CLASS (app)->help_link_id (app, name, link_id);
 
-	ret = gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (parent)),
+	ret = gtk_show_uri_on_window (GTK_WINDOW (parent),
 	                    link,
 	                    GDK_CURRENT_TIME,
 	                    &error);
@@ -1711,6 +1711,11 @@ find_extension_point_section (GMenuModel  *model,
 			gint j, j_items;
 
 			subsection = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
+
+			if (subsection == NULL)
+			{
+				subsection = model;
+			}
 
 			j_items = g_menu_model_get_n_items (subsection);
 

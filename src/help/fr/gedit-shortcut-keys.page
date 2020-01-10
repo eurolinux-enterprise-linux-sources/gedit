@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="fr">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="fr">
 
   <info>
     <link type="guide" xref="index"/>
     <desc>Utiliser les raccourcis clavier pour travailler plus rapidement.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -99,11 +99,17 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Raccourcis clavier</title>
 
-  <p>Les <gui>raccourcis clavier</gui> permettent d'effectuer des tâches courantes plus rapidement qu'avec la souris et les menus. Les tableaux suivants énumèrent tous les raccourcis clavier de <app>gedit</app>.</p>
+  <p>Les <gui>raccourcis clavier</gui> permettent d’effectuer des tâches courantes plus rapidement qu’avec la souris et les menus. Les tableaux suivants énumèrent tous les raccourcis clavier de <app>gedit</app>.</p>
 
     <table rules="rows" frame="top bottom" ui:expanded="true">
     <title>Raccourcis clavier en relation avec les onglets</title>
@@ -115,15 +121,15 @@
       </thead>
       <tbody>
         <tr>
-          <td><p>Basculer sur l'onglet suivant vers la gauche</p></td>
+          <td><p>Basculer sur l’onglet suivant vers la gauche</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>Page haut</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Basculer sur l'onglet suivant vers la droite</p></td>
+          <td><p>Basculer sur l’onglet suivant vers la droite</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>Page bas</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Fermer l'onglet</p></td>
+          <td><p>Fermer l’onglet</p></td>
           <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
@@ -143,15 +149,15 @@
           <td><p><keyseq><key>Alt</key><key><var>n</var></key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Nouveau groupe d'onglets</p></td>
+          <td><p>Nouveau groupe d’onglets</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Groupe d'onglets précédent</p></td>
+          <td><p>Groupe d’onglets précédent</p></td>
           <td><p><keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>Page haut</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Groupe d'onglets suivant</p></td>
+          <td><p>Groupe d’onglets suivant</p></td>
           <td><p><keyseq><key>Maj</key><key>Ctrl</key><key>Alt</key><key>Page bas</key></keyseq></p></td>
         </tr>
       </tbody>
@@ -235,11 +241,11 @@
           <td><p><keyseq><key>Ctrl</key><key>Fin</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer le mot sélectionné d'un mot à droite</p></td>
+          <td><p>Déplacer le mot sélectionné d’un mot à droite</p></td>
           <td><p><keyseq><key>Alt</key><key>Flèche droite</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer le mot sélectionné d'un mot à gauche</p></td>
+          <td><p>Déplacer le mot sélectionné d’un mot à gauche</p></td>
           <td><p><keyseq><key>Alt</key><key>Flèche gauche</key></keyseq></p></td>
         </tr>
         <tr>
@@ -271,11 +277,11 @@
           <td><p><keyseq><key>Ctrl</key><key>D</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer la ligne sélectionnée d'une ligne vers le haut</p></td>
+          <td><p>Déplacer la ligne sélectionnée d’une ligne vers le haut</p></td>
           <td><p><keyseq><key>Alt</key><key>Flèche haut</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Déplacer la ligne sélectionnée d'une ligne vers le bas</p></td>
+          <td><p>Déplacer la ligne sélectionnée d’une ligne vers le bas</p></td>
           <td><p><keyseq><key>Alt</key><key>Flèche bas</key></keyseq></p></td>
         </tr>
         <tr>
@@ -302,7 +308,7 @@
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Raccourcis pour l'affichage et le masquage des panneaux</title>
+    <title>Raccourcis pour l’affichage et le masquage des panneaux</title>
       <thead>
         <tr>
           <td><p>Action</p></td>
@@ -313,11 +319,6 @@
         <tr>
           <td><p>Afficher ou masquer le panneau latéral</p></td>
           <td><p><key>F9</key></p></td>  
-        </tr>
-        <tr>
-          <td><p>Afficher ou masquer le panneau inférieur</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
         </tr>
         <tr>
           <td><p>Ouvrir le menu Fichier</p></td>
@@ -344,7 +345,7 @@
           <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Rechercher l'occurrence précédente du texte</p></td>
+          <td><p>Rechercher l’occurrence précédente du texte</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Maj</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
@@ -372,7 +373,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><p>Vérifier l'orthographe</p></td>
+          <td><p>Vérifier l’orthographe</p></td>
           <td><p><keyseq><key>Maj</key><key>F7</key></keyseq></p></td>
         </tr>
         <tr>
@@ -391,7 +392,7 @@
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Raccourcis pour l'aide utilisateur</title>
+    <title>Raccourcis pour l’aide utilisateur</title>
       <thead>
         <tr>
           <td><p>Action</p></td>

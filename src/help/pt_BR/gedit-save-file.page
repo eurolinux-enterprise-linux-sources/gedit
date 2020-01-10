@@ -6,6 +6,7 @@
     <desc>Salve seu arquivo para trabalhar nele posteriormente.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -72,12 +73,12 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Rafael Fontenelle</mal:name>
       <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016</mal:years>
+      <mal:years>2013, 2016, 2017</mal:years>
     </mal:credit>
   </info>
 
   <title>Salvando um arquivo</title>
 
-  <p>Para salvar um arquivo no <app>gedit</app>, clique no botão <gui style="button">Salva o arquivo atual</gui> com o ícone de unidade de disco no lado direito da barra de ferramentas ou apenas pressione <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se você estiver salvando um novo arquivo, o diálogo de <gui>Salvar como</gui> aparecerá e você poderá selecionar um nome para o arquivo, assim como o diretório onde gostaria em que o arquivo fosse salvo.</p>
+  <p>Para salvar um arquivo no <app>gedit</app>, clique no botão <gui style="button">Salvar</gui> no lado direito da barra de ferramentas ou apenas pressione <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se você estiver salvando um novo arquivo, um diálogo aparecerá e você poderá selecionar um nome para o arquivo, assim como o diretório onde gostaria em que o arquivo fosse salvo.</p>
 
 </page>

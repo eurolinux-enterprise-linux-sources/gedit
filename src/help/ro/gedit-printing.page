@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Print the files that you create with gedit.</desc>
+    <desc>Tipăriți fișierele pe care le creeați cu gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -24,96 +24,72 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
-  <title>Printing documents</title>
+  <title>Tipărirea documentelor</title>
 
     <note style="important">
-      <p>Printing with <app>gedit</app> requires that you have connected and
-      configured your printer. If you have not done this, please consult the
-      <link href="help:gnome-help/printing">printing help for GNOME</link>.</p>
+      <p>Tipărirea cu <app>gedit</app> necesită că v-ați conectat și configurat imprimanta. Dacă nu ați făcut acest lucru, consultați <link href="help:gnome-help/printing">documentația de ajutor pentru imprimare GNOME</link>.</p>
     </note>
   
-  <p><app>gedit</app> allows you to print both to a file and to paper.</p>
+  <p><app>gedit</app> vă permite să tipăriți într-un fișier sau pe hârtie.</p>
 
   <section id="print-preview">
-    <title>Print Preview</title>
+    <title>Previzualizarea pentru tipărire</title>
 
-  <p>Prior to printing your document, you can preview how the printed document
-  will look by using <gui>Print Preview</gui>. To preview the document:</p>
+  <p>Înainte să tipăriți documentul, puteți să previzualizați cum va arăta documentul tipărit utilizând <gui>Previzualizare tipărire</gui>. Pentru a previzualiza documentul:</p>
 
   <steps>
     <item>
-      <p>Select <guiseq><gui style="menu">File</gui>
-      <gui style="menuitem">Print Preview</gui></guiseq>. Alternatively, you
-      can press <keyseq><key>Shift</key><key>Ctrl</key>
-      <key>P</key></keyseq>.</p>
+      <p>Selectați <guiseq><gui style="menu">Fișier</gui> <gui style="menuitem">Previzualizare tipărire</gui></guiseq>. Alternativ, puteți apăsa <keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>.</p>
     </item>
   </steps>
 
-  <p>A preview of your document will open in the same tab as the file. You can
-  browse this preview with help of navigation buttons and tools in the toolbar
-  at the top of the document preview tab. To close and return to the document
-  click <gui style="button">Close Preview</gui>.</p>
+  <p>O previzualizare a documentului se va deschide în același tab ca fișierul. Puteți naviga prin această previzualizare cu ajutorul butoanelor de navigare și uneltelor din bara de unelte din partea superioară a tabului de previzualizare. Pentru a închide și a reveni la document apăsați  <gui style="button">Închide previzualizarea</gui>.</p>
 
   </section>
 
   <section id="printing-to-paper">
-    <title>Printing To Paper</title>
+    <title>Tipărirea pe hârtie</title>
 
-  <p>You can print your documents to paper using a local or remote printer. To
-  print a file:</p>
+  <p>Puteți tipări documentele pe hârtie folosind o imprimantă locală sau una la distanță. Pentru a tipări un fișier:</p>
 
   <steps>
     <item>
-      <p>Select <guiseq><gui style="menu">File</gui>
-      <gui style="menuitem">Print</gui>
-      <gui style="tab">General</gui></guiseq>.</p>
+      <p>Selectați <guiseq><gui style="menu">Fișier</gui> <gui style="menuitem">Tipărește</gui> <gui style="tab">Generale</gui></guiseq>.</p>
     </item>
     <item>
-      <p>Select the desired printer from the list of printers available.</p>
+      <p>Alegeți imprimanta dorită din lista de imprimante disponibile.</p>
     </item>
     <item>
-      <p>You can preview the file using <gui style="button">Print Preview</gui>
-      and once you are satisfied with the settings, click
-      <gui style="button">Print</gui> to send the file to printer.</p>
+      <p>Puteți previzualiza fișierul utilizând <gui style="button">Previzualizare tipărire</gui> și odată ce sunteți mulțumit de configurări, apăsați <gui style="button">Tipărește</gui> pentru a trimite fișierul la imprimantă.</p>
     </item>
   </steps>
 
-  <p>Additionally, from <gui style="tab">Page Setup</gui> tab: you can choose
-  <gui style="group">Layout</gui> and <gui style="group">Paper</gui> options. As
-  these settings are available throughout <app>GNOME</app> programs, please
-  consult
-  <link href="help:gnome-help/printing#paper">Layout and Paper options</link>
-  help.</p>
+  <p>Adițional, din tabul <gui style="tab">Opțiuni pagină</gui>: puteți alege opțiuni de <gui style="group">Aspect</gui> și <gui style="group">Hârtie</gui>. După cum aceste opțiuni sunt disponibile în toate programele <app>GNOME</app>, Consultați ajutorul pentru <link href="help:gnome-help/printing#paper">Opțiuni de aspect și hârtie</link>.</p>
 
   </section>
 
   <section id="printing-order-select">
-    <title>Print Multiple Copies And Between Specified Ranges</title>
+    <title>Tipărirea cópiilor multiple și a intervalelor specificate</title>
 
-    <p>You can set <gui style="group">Range</gui> and
-    <gui style="group">Copies</gui> options to help you:</p>
+    <p>Puteți stabili opțiuni de <gui style="group">Intervale</gui> și <gui style="group">Cópii</gui> pentru a vă ajuta la:</p>
 
   </section>
 
   <section id="printing-to-file">
-    <title>Printing To File</title>
+    <title>Tipărirea în fișier</title>
 
-  <p>You can also use <app>gedit</app> to print to a file. To print your
-  document to file of a different format:</p>
+  <p>Puteți de asemenea utiliza <app>gedit</app> pentru a tipări într-un fișier. Pentru a tipări documentul într-un fișier de format diferit:</p>
 
   <steps>
     <item>
-      <p>Select <guiseq><gui style="menu">File</gui>
-      <gui style="menuitem">Print</gui>
-      <gui style="menuitem">Print to File</gui></guiseq>.</p>
+      <p>Selectați <guiseq><gui style="menu">Fișier</gui> <gui style="menuitem">Tipărește</gui> <gui style="menuitem">Tipărește în fișier</gui></guiseq>.</p>
     </item>
     <item>
-      <p>Printing is enabled for the following file formats, you may select
-      from:</p>
+      <p>Tipărirea este activată pentru următoarele formate de fișiere din care puteți selecta:</p>
       <list>
         <item>
           <p>Document de format portabil (.pdf)</p>
@@ -127,8 +103,7 @@
         </list>
     </item>
     <item>
-      <p>To print the document to file, click
-      <gui style="button">Print</gui>.</p>
+      <p>Pentru a tipări documentul în fișier, apăsați pe <gui style="button">Tipărește</gui>.</p>
     </item>
   </steps>
 

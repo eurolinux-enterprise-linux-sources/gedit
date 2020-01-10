@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="sv">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="sv">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
+    <desc>Använd tangentbordsgenvägar för att få hjälp att arbeta snabbare.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -39,320 +39,315 @@
     </credit>
 
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Shortcut keys</title>
+  <title>Kortkommandon</title>
 
-  <p>Use <gui>shortcut keys</gui> to perform common tasks more quickly than with
-  the mouse and menus. The following tables list all of <app>gedit's</app>
-  shortcut keys.</p>
+  <p>Använd <gui>kortkommandon</gui> för att genomföra vanliga uppgifter på ett snabbare sätt än med musen och menyerna. Följande tabell listar alla kortkommandon i <app>gedit</app>.</p>
 
     <table rules="rows" frame="top bottom" ui:expanded="true">
-    <title>Tab-related Shortcut keys</title>
+    <title>Flikrelaterade kortkommandon</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Switch to the next tab to the left</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
-          <key>PageUp</key></keyseq></p></td>
+          <td><p>Växla till nästa flik åt vänster</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Switch to the next tab to the right</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
-          <key>PageDown</key></keyseq></p></td>
+          <td><p>Växla till nästa flik åt höger</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Close tab</p></td>
+          <td><p>Stäng flik</p></td>
           <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Save all tabs</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>L</key></keyseq></p></td>
+          <td><p>Spara alla flikar</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key> <key>L</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Close all tabs</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
+          <td><p>Stäng alla flikar</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Reopen the most recently closed tab</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+          <td><p>Återöppna den senast stängda fliken</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Jump to <var>n</var>th tab</p></td>
-          <td><p><keyseq><key>Alt</key><key>
-          <var>n</var></key></keyseq></p></td>
+          <td><p>Hoppa till flik nummer <var>n</var></p></td>
+          <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>New tab group</p></td>
+          <td><p>Ny flikgrupp</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Previous tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
+          <td><p>Föregående flikgrupp</p></td>
+          <td><p><keyseq><key>Skift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Next tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
+          <td><p>Nästa flikgrupp</p></td>
+          <td><p><keyseq><key>Skift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Shortcut keys for working with files</title>
+    <title>Kortkommandon för arbete med filer</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document in a new window</p></td>
+          <td><p>Skapa ett nytt dokument i ett nytt fönster</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Create a new document in a new tab</p></td>
+          <td><p>Skapa ett nytt dokument i en ny flik</p></td>
           <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Open a document</p></td>
+          <td><p>Öppna ett dokument</p></td>
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p>Öppna fönstret <gui>Snabböppna</gui></p></td>
            <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Save the current document</p></td>
+          <td><p>Spara aktuellt dokument</p></td>
           <td><p><keyseq><key>Ctrl</key><key>S</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Save the current document with a new filename</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>S</key></keyseq></p></td>
+          <td><p>Spara aktuellt dokument med ett nytt filnamn</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key> <key>S</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Print the current document</p></td>
+          <td><p>Skriv ut aktuellt dokument</p></td>
           <td><p><keyseq><key>Ctrl </key><key>P</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Print preview</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>P</key></keyseq></p></td>
+          <td><p>Förhandsvisa utskrift</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key> <key>P</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Close the current document</p></td>
+          <td><p>Stäng aktuellt dokument</p></td>
           <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Quit gedit</p></td>
+          <td><p>Avsluta gedit</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Q</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Shortcut keys for editing files</title>
+    <title>Kortkommandon för redigering av filer</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Move to the beginning of the current line</p></td>
+          <td><p>Gå till början på aktuell rad</p></td>
           <td><p><key>Home</key></p></td>
         </tr>
         <tr>
-          <td><p>Move to the end of the current line</p></td>
+          <td><p>Gå till slutet på aktuell rad</p></td>
           <td><p><key>End</key></p></td>
         </tr>
         <tr>
-          <td><p>Move to the beginning of the document</p></td>
+          <td><p>Gå till början på dokumentet</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move to the end of the document</p></td>
+          <td><p>Gå till slutet på dokumentet</p></td>
           <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected word right one word</p></td>
-          <td><p><keyseq><key>Alt</key><key>Right Arrow</key></keyseq></p></td>
+          <td><p>Flytta markerat ord ett ord till höger</p></td>
+          <td><p><keyseq><key>Alt</key><key>Högerpil</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected word left one word</p></td>
-          <td><p><keyseq><key>Alt</key><key>Left Arrow</key></keyseq></p></td>
+          <td><p>Flytta markerat ord ett ord till vänster</p></td>
+          <td><p><keyseq><key>Alt</key><key>Vänsterpil</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Undo the last action</p></td>
+          <td><p>Ångra föregående åtgärd</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Z</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Redo the last undone action</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>Z</key></keyseq></p></td>
+          <td><p>Gör om senaste ångrade åtgärden</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key> <key>Z</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Cut the selected text or region and place it on the clipboard
-          </p></td>
+          <td><p>Klipp ut markerad text eller område och placera den i urklipp</p></td>
           <td><p><keyseq><key>Ctrl</key><key>X</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Copy the selected text or region onto the clipboard</p></td>
+          <td><p>Kopiera markerad text eller område till urklipp</p></td>
           <td><p><keyseq><key>Ctrl</key><key>C</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Paste the contents of the clipboard</p></td>
+          <td><p>Klistra in innehållet i urklipp</p></td>
           <td><p><keyseq><key>Ctrl</key><key>V</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Select all text in the file</p></td>
+          <td><p>Markera all text i filen</p></td>
           <td><p><keyseq><key>Ctrl</key><key>A</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Delete the current line</p></td>
+          <td><p>Ta bort aktuell rad</p></td>
           <td><p><keyseq><key>Ctrl</key><key>D</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected line up one line</p></td>
-          <td><p><keyseq><key>Alt</key><key>Up Arrow</key></keyseq></p></td>
+          <td><p>Flytta markerad rad en rad uppåt</p></td>
+          <td><p><keyseq><key>Alt</key><key>Uppåtpil</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected line down one line</p></td>
-          <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
+          <td><p>Flytta markerad rad en rad nedåt</p></td>
+          <td><p><keyseq><key>Alt</key><key>Nedåtpil</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Add a tab stop</p></td>
-          <td><p><keyseq><key>Tab</key></keyseq></p></td>
+          <td><p>Lägg till ett tabulatorstopp</p></td>
+          <td><p><keyseq><key>Tabb</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Remove a tab stop</p></td>
-          <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
+          <td><p>Ta bort ett tabulatorstopp</p></td>
+          <td><p><keyseq><key>Skift</key><key>Tabb</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to upper case</p></td>
+          <td><p>Konvertera markerad text till versaler</p></td>
           <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to lower case</p></td>
+          <td><p>Konvertera markerad text till gemener</p></td>
           <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Toggle case of the selected text</p></td>
+          <td><p>Växla skiftläge för markerad text</p></td>
           <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Shortcut keys for showing and hiding panes</title>
+    <title>Kortkommandon för att visa och dölja paneler</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Show / hide the side pane</p></td>
+          <td><p>Visa / dölj sidopanelen</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
-        </tr>
-        <tr>
-          <td><p>Open the file menu</p></td>
+          <td><p>Öppna filmenyn</p></td>
           <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Shortcut keys for searching</title>
+    <title>Kortkommandon för sökning</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Find a string</p></td>
+          <td><p>Sök efter en sträng</p></td>
           <td><p><keyseq><key>Ctrl</key><key>F</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Find the next instance of the string</p></td>
+          <td><p>Sök nästa förekomst av strängen</p></td>
           <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Find the previous instance of the string</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
+          <td><p>Sök föregående förekomst av strängen</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Search and Replace</p></td>
+          <td><p>Sök och ersätt</p></td>
           <td><p><keyseq><key>Ctrl</key><key>H</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Clear highlight</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>K</key></keyseq></p></td>
+          <td><p>Ta bort markering</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key> <key>K</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Goto line</p></td>
+          <td><p>Gå till rad</p></td>
           <td><p><keyseq><key>Ctrl</key><key>I</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Shortcut keys for tools</title>
+    <title>Kortkommandon för verktyg</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Check spelling</p></td>
-          <td><p><keyseq><key>Shift</key><key>F7</key></keyseq></p></td>
+          <td><p>Kontrollera stavning</p></td>
+          <td><p><keyseq><key>Skift</key><key>F7</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Remove trailing spaces (with plugin)</p></td>
+          <td><p>Ta bort eftersläpande blanksteg (med insticksmodul)</p></td>
           <td><p><keyseq><key>Alt</key><key>F12</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Run "make" in the current directory (with plugin)</p></td>
+          <td><p>Kör ”make” i aktuell katalog (med insticksmodul)</p></td>
           <td><p><key>F8</key></p></td>
         </tr>
         <tr>
-          <td><p>Directory listing (with plugin)</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>D</key></keyseq></p></td>
+          <td><p>Kataloglistning (med insticksmodul)</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Skift</key> <key>D</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
 
     <table rules="rows" frame="top bottom" ui:expanded="false">
-    <title>Shortcut keys for user help</title>
+    <title>Kortkommandon för användarhjälp</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Åtgärd</p></td>
+          <td><p>Tangentbordsgenväg</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Open the gedit user guide</p></td>
+          <td><p>Öppna användarguiden för gedit</p></td>
           <td><p><key>F1</key></p></td>
         </tr>
       </tbody>

@@ -6,7 +6,7 @@
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
     <link type="seealso" xref="gedit-shortcut-keys"/>
-    <desc>Group similar tabs together.</desc>
+    <desc>Kelompokkan tab yang sama bersama-sama.</desc>
     <revision pkgversion="3.8" date="2013-06-19" status="draft"/>
 
     <credit type="author copyright">
@@ -20,7 +20,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 

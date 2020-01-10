@@ -13,91 +13,86 @@
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Use snippets to quickly insert often-used pieces of text.</desc>
+    <desc>Använd textsnuttar för att snabbt infoga ofta använda textstycken.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Snippets</title>
+  <title>Textsnuttar</title>
 
-  <p><app>Snippets</app> provide a convenient way of inserting repetitive
-  portions of code into your files. For example, an HTML snippet for the
-  <code><![CDATA[<img>]]></code> tag would insert the opening and closing
-  portions of the tag, as well as fixed places where you can enter image
-  attributes. This can make writing code easier and faster.</p>
+  <p><app>Textsnuttar</app> tillhandahåller ett bekvämt sätt att infoga kodstycken som upprepar sig i dina filer. Till exempel skulle en HTML-textsnutt för taggen <code>&lt;img&gt;</code> infoga start- och slutdelarna för taggen, såväl som fasta platser där du kan ange bildattribut. Detta kan göra det enklare och snabbare att skriva kod.</p>
 
   <section id="enable-snippets">
-    <title>Enable Snippets Plugin</title>
+    <title>Aktivera insticksmodulen Textsnuttar</title>
 
-    <p>To enable the <gui>Snippets</gui> plugin:</p>
+    <p>För att aktivera insticksmodulen <gui>Textsnuttar</gui>:</p>
 
     <steps>
       <item>
-        <p>Select <guiseq><gui style="menu">gedit</gui>
-        <gui style="menuitem">Preferences</gui>
-        <gui style="tab">Plugins</gui></guiseq>.</p>
+        <p>Välj <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Inställningar</gui> <gui style="tab">Insticksmoduler</gui></guiseq>.</p>
       </item>
       <item>
-        <p>Select <gui style="menuitem">Snippets</gui> to enable the
-        plugin.</p>
+        <p>Välj <gui style="menuitem">Textsnuttar</gui> för att aktivera insticksmodulen.</p>
       </item>
     </steps>
   </section>
 
   <section id="browse-snippets">
-    <title>Browse Snippets</title>
+    <title>Bläddra bland textsnuttar</title>
 
-    <p>To browse available snippets:</p>
+    <p>För att bläddra bland tillgängliga textsnuttar:</p>
     <steps>
       <item>
-        <p>Select <guiseq><gui style="menu">Tools</gui>
-        <gui style="menuitem">Manage Snippets</gui></guiseq>.</p>
+        <p>Välj <guiseq><gui style="menu">Verktyg</gui> <gui style="menuitem">Hantera textsnuttar</gui></guiseq>.</p>
         <note style="important">
-          <p>Make sure the syntax is set appropriately. The status bar at the
-          bottom of the <app>gedit</app> window will show the current language
-          setting. This language setting is what allows gedit to insert the
-          proper snippets. <app>Gedit</app> will normally detect the language or
-          syntax of the file that you're using, but sometimes you may need to
-          set it.</p>
+          <p>Säkerställ att syntaxen är lämpligt inställd. Statusraden längst ner på <app>gedit</app>-fönstret kommer visa den aktuella språkinställningen. Denna språkinställning är vad som låter gedit infoga rätt textsnuttar. <app>Gedit</app> kommer vanligtvis att detektera språk eller syntax för filen som du använder, men ibland kan du behöva ställa in det.</p>
           <figure>
-            <desc>In this example, the language is set to HTML.</desc>
+            <desc>I detta exempel är språket inställt till HTML.</desc>
             <media type="image" mime="image/png" src="figures/gedit-html-snippet.png"/>
         </figure>
         </note>
       </item>
       <item>
-        <p>Browse the snippets that are available for your language or
-        syntax.</p>
+        <p>Bläddra bland textsnuttarna som finns tillgängliga för ditt språk eller syntax.</p>
       </item>
     </steps>
   </section>
 
   <section id="using-snippets">
-    <title>Using Snippets</title>
+    <title>Använda textsnuttar</title>
 
-    <p>To insert a snippet into your current document:</p>
+    <p>För att infoga en textsnutt i ditt aktuella dokument:</p>
 
     <steps>
       <item>
-        <p>Type the desired snippet name anywhere in your current document.</p>
+        <p>Skriv namnet på den önskade textsnutten var som helst i ditt aktuella dokument.</p>
       </item>
       <item>
-        <p>Press <key>Tab</key> to insert the snippet associated with the input
-        term.</p>
+        <p>Tryck <key>Tabb</key> för att infoga textsnutten som är associerad med inmatningen.</p>
       </item>
     </steps>
   </section>
 
     <section id="example-insert-snippet">
-    <title>Snippet Example Usage</title>
+    <title>Exempel på användning av textsnutt</title>
 
-    <p>For example, if you have set the syntax to <em>HTML</em>, type
-    <code>head </code>, and press the <key>Tab</key> key. The text would have
-    auto completed into a snippet as:</p>
+    <p>Till exempel, om du ställt in syntax till <em>HTML</em>, skriv <code>head </code>, och tryck ned <key>Tabb</key>-tangenten. Texten autokompletteras då till en textsnutt som:</p>
 
     <code>
-      <![CDATA[<head>
-      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-      <title>Page Title</title>
-      </head>]]>
+      &lt;head&gt;
+      &lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
+      &lt;title&gt;Sidtitel&lt;/title&gt;
+      &lt;/head&gt;
     </code>
 
   </section>
@@ -105,77 +100,54 @@
   <section id="adding-snippets">
     <title>Lägg till textsnuttar</title>
 
-    <p>You can add new Snippets that work either globally (that is, they are
-    language agnostic) or only in a particular syntax.</p>
+    <p>Du kan lägga till nya textsnuttar som antingen fungerar globalt (det vill säga oberoende av språk) eller endast i en specifik syntax.</p>
 
     <steps>
       <item>
-        <p>Select <guiseq style="menu"><gui style="menuitem">Tools</gui>
-        <gui style="menuitem">Manage Snippets</gui></guiseq>.</p>
+        <p>Välj <guiseq style="menu"><gui style="menuitem">Verktyg</gui> <gui style="menuitem">Hantera textsnuttar</gui></guiseq>.</p>
       </item>
       <item>
-        <p>From the <gui>Manage Snippets</gui> sidebar select the desired syntax
-        and click on the "+" button to list existing snippets for the selected
-        syntax.</p>
+        <p>Från sidopanelen <gui>Hantera textsnuttar</gui>, välj den önskade syntaxen och klicka på ”+”-knappen för att lista befintliga textsnuttar för vald syntax.</p>
         <note style="tip">
-          <p>To add a snippet that works globally (that is, when no particular
-          syntax or language has been set for the document), select
-          <gui>Global</gui> from the <gui>Manage Snippets</gui> sidebar.</p>
+          <p>För att lägga till en textsnutt som fungerar globalt (det vill säga då ingen specifik syntax eller språk har ställts in för dokumentet), välj <gui>Global</gui> från sidopanelen <gui>Hantera textsnuttar</gui>.</p>
         </note>
       </item>
       <item>
-        <p>To add a new snippet, click on the "plus" icon in the
-        <gui>Manage Snippets</gui> sidebar.</p>
+        <p>För att lägga till en ny textsnutt, klicka på ”plus”-ikonen i sidopanelen <gui>Hantera textsnuttar</gui>.</p>
       </item>
       <item>
-        <p>Input a name for the new snippet. The name of the snippet can be
-        different from the snippet you want to add.</p>
+        <p>Mata in ett namn för den nya textsnutten. Namnet på textsnutten kan skilja sig från textsnutten som du vill lägga till.</p>
       </item>
       <item>
-        <p>Under the <gui style="group">Activation</gui> section, you must
-        input a term for the <gui style="input">Tab trigger:</gui> textarea.
-        You will be using this term to insert your snippet.</p>
+        <p>Under avsnittet <gui style="group">Aktivering</gui> måste du mata in en term för textområdet <gui style="input">Tabulatorutlösare:</gui>. Du kommer att använda denna term för att infoga din textsnutt.</p>
         <note style="tip">
-          <p>If you wish to insert a snippet with a keyboard shortcut, then
-          click your mouse pointer on <gui style="input">Shortcut key:</gui>
-          textarea and press the desired combination of keys. Once you have
-          pressed and released the keys, the keyboard shortcut will be set.</p>
+          <p>Om du vill infoga en textsnutt med en tangentbordsgenväg klickar du med muspekaren på textområdet <gui style="input">Kortkommando:</gui> och trycker den önskade tangentkombinationen. Då du har tryckt ner och släppt tangenterna kommer kortkommandot att vara inställt.</p>
         </note>
       </item>
       <item>
-        <p>Under the textarea for <gui style="input">Edit:</gui>, input the
-        desired text for the snippet. You may use <code>${n}</code> to indicate
-        variables, where <em>n</em> is replaced with a number that
-        represents the numerical order of variables included.</p>
+        <p>Under textområdet för <gui style="input">Redigera:</gui>, mata in den önskade texten för textsnutten. Du kan använda <code>${n}</code> för att indikera variabler, där <em>n</em> ersätts med ett tal som representerar nummerordningen för inkluderade variabler.</p>
       </item>
     </steps>
 
   </section>
 
   <section id="example-add-snippet">
-    <title>New Snippet Example</title>
+    <title>Nytt textsnuttsexempel</title>
 
-    <p>Consider you have created a snippet with the term <var>greetings</var>
-    in <gui style="input">Tab trigger:</gui>. The
-    <gui style="input">Edit:</gui> textarea contains:</p>
+    <p>Anta att du skapat en textsnutt med termen <var>hälsningar</var> i <gui style="input">Tabulatorutlösare:</gui>. Textområdet <gui style="input">Redigera:</gui> innehåller:</p>
 
     <code>
-      <![CDATA[<greetings>Hello ${1:wonderful}${2:amazing} world!
-      </greetings>]]>
+      &lt;greetings&gt;Hej ${1:underbara}${2:fantastiska} värld!
+      &lt;/greetings&gt;
     </code>
 
-    <p>You can insert this snippet by typing <var>greetings</var> in the
-    document and pressing the <key>Tab</key> key. The following text snippet
-    will be inserted:</p>
+    <p>Du kan infoga denna textsnutt genom att skriva <var>hälsningar</var> i dokumentet och trycka ner <key>Tabb</key>-tangenten. Följande textsnutt kommer att infogas:</p>
 
     <code>
-      <![CDATA[<greetings>Hello wonderfulamazing world!</greetings>]]>
+      &lt;greetings&gt;Hej underbarafantastiska värld!&lt;/greetings&gt;
     </code>
 
-    <p>The words "wonderful" and "amazing" can be retained or deleted depending
-    on your choice of usage. To do so, press <key>Tab</key> to choose between
-    "wonderful" and "amazing" and press <key>Del</key> to delete the least
-    preferred option.</p>
+    <p>Orden ”underbara” och ”fantastiska” kan behållas eller tas bort beroende på vad du väljer att använda. För att göra detta, tryck <key>Tabb</key> för att välja mellan ”underbara” och ”fantastiska” och tryck <key>Del</key> för att ta bort det minst önskade alternativet.</p>
   </section>
 
   <!--TODO: <section id="modifying-snippets">

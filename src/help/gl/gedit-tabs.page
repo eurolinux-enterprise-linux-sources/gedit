@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Create or close tabs in the gedit window.</desc>
+    <desc>Crear ou pechar lapelas na xanela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -41,7 +41,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
@@ -50,16 +56,12 @@
 
   <section id="gedit-adding-tabs">
     <title>Engadir lapelas</title>
-    <p>To add a new tab, create a new file with <keyseq><key>Ctrl</key>
-    <key>T</key></keyseq>. The tab will be added to the right side of any other
-    tabs.</p>
+    <p>Para engadir unha lapela nova, cree un ficheiro con <keyseq><key>Ctrl</key><key>T</key></keyseq>. A lapela engadirase á dereita das outras.</p>
   </section>
 
   <section id="gedit-removing-tabs">
     <title>Eliminar lapelas</title>
-    <p>To remove a tab, click the <gui style="button">×</gui> on the tab's
-    right side. To remove all open tabs, press <keyseq><key>Ctrl</key>
-    <key>Shift</key><key>W</key></keyseq>.</p>
+    <p>Para eliminar unha lapela prema  <gui style="button">×</gui> na parte dereita da lapela. Para eliminar todas as lapelas abertas, prema <keyseq><key>Ctrl</key><key>Maiús</key><key>W</key></keyseq>.</p>
   </section>
 
 </page>

@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Πρόσβαση σε αρχεία που έχετε ενημερώσει πρόσφατα.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -46,7 +47,7 @@
 
   <p>Από προεπιλογή, το <app>gedit</app> παρέχει εύκολη πρόσβαση σε πέντε από τα πιο πρόσφατα αρχεία που χρησιμοποιήσατε. Για να ανοίξετε ένα αρχείο που χρησιμοποιήθηκε πρόσφατα, κάντε τα ακόλουθα:</p>
   <list type="numbered">
-    <item><p>Πατήστε στο βέλος που δείχνει προς τα κάτω στα δεξιά του κουμπιού <gui>Άνοιγμα</gui>.</p></item>
+    <item><p>Click the <gui>Open</gui> button.</p></item>
     <item><p>Το <app>gedit</app> θα εμφανίσει μια λίστα των πέντε πιο πρόσφατων χρησιμοποιημένων αρχείων.</p></item>
     <item><p>Επιλέξτε το επιθυμητό αρχείο, και θα ανοίξει σε νέα καρτέλα.</p></item>
   </list>

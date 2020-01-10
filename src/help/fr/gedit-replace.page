@@ -8,6 +8,7 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -93,6 +94,12 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Remplacement de texte</title>
@@ -102,13 +109,13 @@
   <steps>
     <title>Remplacement de texte dans <app>gedit</app></title>
     <item>
-      <p>Ouvrez l'outil <gui>Remplacer</gui> en cliquant sur le <guiseq><gui style="menu">bouton menu</gui><gui style="menuitem">Rechercher et remplacer…</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Ouvrez l’outil <gui>Remplacer</gui> en cliquant sur le <guiseq><gui style="button">bouton menu</gui><gui style="menuitem">Rechercher et remplacer…</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
       <p>Saisissez le texte que vous voulez remplacer dans le champ <gui>Rechercher</gui>.</p>
     </item>
     <item>
-      <p>Saisissez le nouveau texte de remplacement dans le champ <gui>Remplacer par :</gui>.</p>
+      <p>Saisissez le nouveau texte de remplacement dans le champ <gui>Remplacer par</gui>.</p>
     </item>
     <item>
       <p>Une fois que vous avez saisi le texte original et de remplacement, vous pouvez ajouter des conditions supplémentaires de recherche. Vous pouvez aussi choisir les options de remplacement souhaitées :</p>
@@ -135,11 +142,11 @@
   <terms>
     <item>
       <title>Respect de la casse</title>
-      <p>L'option <em>Respecter la casse</em> vous permet d'indiquer si la recherche à réaliser est sensible à la casse (distinction entre minuscules et majuscules). Si cette option est sélectionnée, les recherches sont sensibles à la casse.</p>
+      <p>L’option <em>Respecter la casse</em> vous permet d’indiquer si la recherche à réaliser est sensible à la casse (distinction entre minuscules et majuscules). Si cette option est sélectionnée, les recherches sont sensibles à la casse.</p>
     </item>
     <item>
       <title>Mots entiers seulement</title>
-      <p>Utilisez cette option pour rechercher un mot spécifique qui ne comprend pas de parties d'autres mots. Par exemple, si vous recherchez le mot « ou » avec cette option sélectionnée, le mot « ou » correspond mais les mots « verr<em>ou</em> » et « b<em>ou</em>t » ne correspondent pas.</p>
+      <p>Utilisez cette option pour rechercher un mot spécifique qui ne comprend pas de parties d’autres mots. Par exemple, si vous recherchez le mot « ou » avec cette option sélectionnée, le mot « ou » correspond mais les mots « verr<em>ou</em> » et « b<em>ou</em>t » ne correspondent pas.</p>
     </item>
     <item>
       <title>Recherche en arrière</title>
@@ -147,16 +154,16 @@
     </item>
     <item>
       <title>Recherche circulaire</title>
-      <p>Avec l'option <app>Recherche circulaire</app> activée, <app>gedit</app> reprend l'action rechercher/remplacer en haut du fichier après qu'il a atteint la fin du fichier. Cela vous permet d'être sûr que l'action rechercher/remplacer s'effectue sur la totalité du fichier.</p>
+      <p>Avec l’option <app>Recherche circulaire</app> activée, <app>gedit</app> reprend l’action rechercher/remplacer en haut du fichier après qu’il a atteint la fin du fichier. Cela vous permet d’être sûr que l’action rechercher/remplacer s’effectue sur la totalité du fichier.</p>
     </item>
   </terms>
 
 </section>
 
 <section id="escape-sequences">
-  <title>Utilisation des séquences d'échappement</title>
+  <title>Utilisation des séquences d’échappement</title>
 
-  <p>Les <em>séquences d'échappement</em> permettent de rechercher les retours à la ligne, les retours de chariot et les tabulations.</p>
+  <p>Les <em>séquences d’échappement</em> permettent de rechercher les retours à la ligne, les retours de chariot et les tabulations.</p>
 
   <terms>
     <item>
@@ -173,7 +180,7 @@
     </item>
   </terms>
 
-  <p>Si vous souhaitez rechercher des <output>\</output> (barres obliques inverses) ou une des séquences d'échappement dans le texte, vous devez doubler les barres obliques inverses. Par exemple, pour trouver <output>\</output>, vous devez saisir <output>\\</output> dans le champ de recherche ou de remplacement. La méthode est la même pour trouver des séquences d'échappement : pour rechercher ou remplacer <output>\n</output>, saisissez <output>\\n</output>.</p>
+  <p>Si vous souhaitez rechercher des <output>\</output> (barres obliques inverses) ou une des séquences d’échappement dans le texte, vous devez doubler les barres obliques inverses. Par exemple, pour trouver <input>\</input>, vous devez saisir <input>\\</input> dans le champ de recherche ou de remplacement. La méthode est la même pour trouver des séquences d’échappement : pour rechercher ou remplacer <input>\n</input>, saisissez <input>\\n</input>.</p>
 
 </section>
 

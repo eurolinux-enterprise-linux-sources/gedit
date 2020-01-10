@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -39,11 +39,14 @@
   <p>Tiedostojen avaaminen verkkopalvelimelta <app>geditillä</app> onnistuu seuraavasti:</p>
 
     <steps>
-      <item><p>Valitse <guiseq><gui>Tiedosto</gui><gui>Avaa</gui></guiseq> ja <gui>Avaa tiedostoja</gui> -ikkuna avautuu.</p></item>
-      <item><p>Napsauta <gui>kynää</gui> <gui>Avaa tiedostoja</gui> -ikkunan yläreunassa.</p></item>
+      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
+      <item><p>Click <gui>Other Documents…</gui>.</p></item>
+      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
+      <gui>Open</gui> dialog.</p></item>
       <item><p>Anna palvelimen IP- tai verkko-osoite.</p></item>
       <item><p>Etsi ja valitse haluamasi tiedosto.</p></item>
-      <item><p>Valitse Merkistökoodaus-pudotusvalikosta tiedostolle asianmukainen merkistökoodaus.</p></item>
+      <item><p>Use the Character Encoding drop-down list to select the
+      appropriate character coding.</p></item>
       <item><p>Napsauta <gui>Avaa</gui>.</p></item>
     </steps>
 

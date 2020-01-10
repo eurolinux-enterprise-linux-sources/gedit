@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="ro">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="ro">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
+    <desc>Folosiți scurtături de tastatură pentru a lucra mai eficient.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -49,7 +49,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
@@ -61,20 +61,18 @@
     <title>Tab-uri legate de taste pentru scurtături</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><p>Comutați la tab-ul următor din stânga</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
-          <key>PageUp</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>.</p></td>
         </tr>
         <tr>
           <td><p>Comutați la tab-ul următor din dreapta</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
-          <key>PageDown</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Închideți tab-ul</p></td>
@@ -82,32 +80,30 @@
         </tr>
         <tr>
           <td><p>Salvați toate filele</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>L</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Închideți toate tab-urile</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Reopen the most recently closed tab</p></td>
+          <td><p>Redeschide tabul închis cel mai recent</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Salt la al <var>n</var>-lea tab</p></td>
-          <td><p><keyseq><key>Alt</key><key>
-          <var>n</var></key></keyseq></p></td>
+          <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>New tab group</p></td>
+          <td><p>Grup nou de taburi</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Previous tab group</p></td>
+          <td><p>Grupul precedent de taburi</p></td>
           <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Next tab group</p></td>
+          <td><p>Grupul următor de taburi</p></td>
           <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
         </tr>
       </tbody>
@@ -117,17 +113,17 @@
     <title>Taste pentru scurtături pentru lucrul cu fișiere</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document in a new window</p></td>
+          <td><p>Creează un nou document într-o nouă fereastră</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Create a new document in a new tab</p></td>
+          <td><p>Creaează un nou document într-un tab nou</p></td>
           <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
@@ -135,7 +131,7 @@
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p>Deschide fereastra <gui>Deschidere rapidă</gui></p></td>
            <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
@@ -144,8 +140,7 @@
         </tr>
         <tr>
           <td><p>Salvați documentul curent cu un nou nume de fișier</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>S</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Printați documentul curent</p></td>
@@ -153,8 +148,7 @@
         </tr>
         <tr>
           <td><p>Previzualizare printare</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>P</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Închideți documentul curent</p></td>
@@ -171,33 +165,33 @@
     <title>Taste pentru scurtături pentru editarea fișierelor</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Move to the beginning of the current line</p></td>
+          <td><p>Mută cursorul la începutul liniei curente</p></td>
           <td><p><key>Home</key></p></td>
         </tr>
         <tr>
-          <td><p>Move to the end of the current line</p></td>
+          <td><p>Mută cursorul la sfârșitul liniei curente</p></td>
           <td><p><key>End</key></p></td>
         </tr>
         <tr>
-          <td><p>Move to the beginning of the document</p></td>
+          <td><p>Mută cursorul la începutul documentului</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move to the end of the document</p></td>
+          <td><p>Mută cursorul la sfârșitul documentului</p></td>
           <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected word right one word</p></td>
+          <td><p>Mută cuvântul selectat la dreapta cu un cuvânt</p></td>
           <td><p><keyseq><key>Alt</key><key>Right Arrow</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected word left one word</p></td>
+          <td><p>Mută cuvântul selectat la stânga cu un cuvânt</p></td>
           <td><p><keyseq><key>Alt</key><key>Left Arrow</key></keyseq></p></td>
         </tr>
         <tr>
@@ -206,8 +200,7 @@
         </tr>
         <tr>
           <td><p>Refaceți ultima acțiune anulată</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>Z</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Tăiați textul sau regiunea selectată și plasați-o pe clipboard</p></td>
@@ -238,23 +231,23 @@
           <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Add a tab stop</p></td>
+          <td><p>Adaugă un tab</p></td>
           <td><p><keyseq><key>Tab</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Remove a tab stop</p></td>
+          <td><p>Elimină un tab</p></td>
           <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to upper case</p></td>
+          <td><p>Convertește textul selectat în majuscule</p></td>
           <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to lower case</p></td>
+          <td><p>Convertește textul selectat în minuscule</p></td>
           <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Toggle case of the selected text</p></td>
+          <td><p>Comută majuscule sau minuscule pentru textul selectat</p></td>
           <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
         </tr>
       </tbody>
@@ -264,8 +257,8 @@
     <title>Taste pentru scurtături pentru afișarea și ascunderea panourilor</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>
@@ -274,12 +267,7 @@
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
-        </tr>
-        <tr>
-          <td><p>Open the file menu</p></td>
+          <td><p>Deschide meniul fișier</p></td>
           <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
@@ -289,8 +277,8 @@
     <title>Taste pentru scurtături pentru căutare</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>
@@ -312,8 +300,7 @@
         </tr>
         <tr>
           <td><p>Stergeți evidențierea</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>K</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Mergeți la linia</p></td>
@@ -326,8 +313,8 @@
     <title>Taste pentru scurtățuri pentru unelte</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>
@@ -345,8 +332,7 @@
         </tr>
         <tr>
           <td><p>Listare director (cu plugin)</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
-          <key>D</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -355,8 +341,8 @@
     <title>Taste pentru scurtățuri pentru ajutorul folositorului</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acțiune</p></td>
+          <td><p>Scurtătură de tastatură</p></td>
         </tr>
       </thead>
       <tbody>

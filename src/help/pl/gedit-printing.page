@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="gedit-printing" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index#gedit-printing-guide"/>
+    <desc>Drukowanie plików tworzonych w programie gedit.</desc>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <credit type="author">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Drukowanie dokumentów</title>
+
+    <note style="important">
+      <p>Drukowanie w programie <app>gedit</app> wymaga podłączenia i skonfigurowania drukarki. <link href="help:gnome-help/printing">Pomoc GNOME na temat drukowania</link> zawiera informacje, jak to zrobić.</p>
+    </note>
+  
+  <p><app>gedit</app> umożliwia drukowanie do pliku i na papierze.</p>
+
+  <section id="print-preview">
+    <title>Podgląd wydruku</title>
+
+  <p>Przed wydrukowaniem dokumentu można wyświetlić podgląd tego, jak będzie on wyglądał. Aby to zrobić:</p>
+
+  <steps>
+    <item>
+      <p>Wybierz <guiseq><gui style="menu">Plik</gui> <gui style="menuitem">Podgląd wydruku</gui></guiseq>. Można także nacisnąć klawisze <keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>.</p>
+    </item>
+  </steps>
+
+  <p>Podgląd dokumentu zostanie otwarty w tej samej karcie, co plik. Można przeglądać go za pomocą przycisków nawigacji i narzędzi na pasku narzędziowym na górze karty. Aby zamknąć podgląd i wrócić do dokumentu, kliknij przycisk <gui style="button">Zamknij podgląd</gui>.</p>
+
+  </section>
+
+  <section id="printing-to-paper">
+    <title>Drukowanie na papierze</title>
+
+  <p>Można drukować dokumentu na papierze za pomocą lokalnej lub zdalnej drukarki. Aby wydrukować plik:</p>
+
+  <steps>
+    <item>
+      <p>Wybierz <guiseq><gui style="menu">Plik</gui> <gui style="menuitem">Wydrukuj</gui> <gui style="tab">Ogólne</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Wybierz drukarkę z listy dostępnych.</p>
+    </item>
+    <item>
+      <p>Po sprawdzeniu podglądu za pomocą opcji <gui style="button">Podgląd wydruku</gui> i ustawieniu odpowiednich opcji, kliknij przycisk <gui style="button">Wydrukuj</gui>, aby wysłać plik do drukarki.</p>
+    </item>
+  </steps>
+
+  <p>Dodatkowo, na karcie <gui style="tab">Ustawienia strony</gui> można wybrać opcje <gui style="group">Układu</gui> i <gui style="group">Papieru</gui>. Strona <link href="help:gnome-help/printing#paper">Opcje układu i papieru</link> zawiera więcej informacji na temat tych ustawień, jako że są one dostępne w każdym programie środowiska <app>GNOME</app>.</p>
+
+  </section>
+
+  <section id="printing-order-select">
+    <title>Drukowanie wielu kopii i tylko wybranych stron</title>
+
+    <p>Można ustawić opcje <gui style="group">Zakres</gui> i <gui style="group">Kopie</gui>.</p>
+
+  </section>
+
+  <section id="printing-to-file">
+    <title>Drukowanie do pliku</title>
+
+  <p>Za pomocą programu <app>gedit</app> można także drukować do pliku. Aby wydrukować dokument do pliku o innym formacie:</p>
+
+  <steps>
+    <item>
+      <p>Wybierz <guiseq><gui style="menu">Plik</gui> <gui style="menuitem">Wydrukuj</gui> <gui style="menuitem">Wydruk do pliku</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Można drukować do tych formatów:</p>
+      <list>
+        <item>
+          <p>PDF (.pdf)</p>
+        </item>
+        <item>
+          <p>PostScript (.ps)</p>
+        </item>
+        <item>
+          <p>SVG (.svg)</p>
+        </item>
+        </list>
+    </item>
+    <item>
+      <p>Aby wydrukować dokument do pliku, kliknij przycisk <gui style="button">Wydrukuj</gui>.</p>
+    </item>
+  </steps>
+
+  </section>
+
+</page>

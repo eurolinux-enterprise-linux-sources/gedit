@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="first"/>
-    <desc>Learn the basics of how to work with files in gedit.</desc>
+    <desc>Învățați lucrurile de bază pentru a lucra cu fișiere în gedit.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -20,7 +20,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 

@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Use administrative privileges to edit a file.</desc>
+    <desc>使用管理权限编辑文件。</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -28,12 +28,18 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>以 root(管理员)身份编辑文件</title>
 
   <note style="warning">
-    <p>以 root 身份编辑文件可能带来潜在危险，会因操作失误而损坏系统，请特别小心使用 root 身份编辑文件。</p>
+    <p>以 root 身份编辑文件可能带来潜在危险，会因操作失误而损坏系统。请特别小心使用 root 身份编辑文件。</p>
   </note>
 
   <p>要以 root 身份编辑文件，在终端运行下列命令：</p>
@@ -44,7 +50,7 @@
   <p>作为 <cmd>sudo</cmd> 命令的替代，您也可以通过输入下列命令来获取管理员权限：</p>
   <code>su -</code>
 
-  <p>然后您就可以运行并使用 <app>gedit</app>。</p>
+  <p>然后您就可以使用 <cmd>gedit</cmd> 命令运行  <app>gedit</app> 。</p>
 
   <note style="tip">
     <p>一旦您以管理员身份打开 <app>gedit</app>，在您关闭程序前，它将一直具备管理员权限。</p>

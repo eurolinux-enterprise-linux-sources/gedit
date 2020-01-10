@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="ru">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use a custom font for your text in gedit.</desc>
+    <desc>Использование собственного шрифта для текста в gedit.</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
@@ -17,13 +17,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 

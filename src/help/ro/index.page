@@ -2,10 +2,10 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="ro">
 
   <info>
-    <title type="link">gedit Text Editor</title>
-    <title type="text">gedit Text Editor</title>
+    <title type="link">Editorul de text gedit</title>
+    <title type="text">Editorul de text gedit</title>
 
-    <desc>Home page of the gedit help guide.</desc>
+    <desc>Pagina principală a ghidului gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -28,14 +28,11 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
   
-  <title>
-    <media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/>
-    gedit Text Editor
-  </title>
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/> Editorul de text gedit</title>
   <p>Bine ati venit la ghidul de ajutor <app>gedit</app>. Pentru o scurtă introducere în cele mai de bază două caracteristici ale lui <app>gedit</app>, precum și unele comenzi rapide de la tastatură avansate, vizitați paginile <link xref="gedit-quickstart">Începeți cu gedit</link> și <link xref="gedit-shortcut-keys">Comenzi rapide</link>.</p>
 
   <p>Alte topicuri de ajutor sunt grupate împreună in secțiunile de mai jos. Bucurați-vă de folosirea <app>gedit</app>!</p>

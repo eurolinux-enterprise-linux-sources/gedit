@@ -8,6 +8,7 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -57,10 +58,10 @@
       <p>Otevřete nástroj <gui>Nahradit</gui> kliknutím na <guiseq><gui style="button">Tlačítko s nabídkou</gui> <gui style="menuitem">Hledat a nahradit…</gui></guiseq> nebo zmáčknutím <keyseq><key>Ctrl</key> <key>H</key></keyseq>.</p>
     </item>
     <item>
-      <p>Řetězec, který chcete nahradit, zadejte do pole <gui>Hledat:</gui>.</p>
+      <p>Řetězec, který chcete nahradit, zadejte do pole <gui>Najít</gui>.</p>
     </item>
     <item>
-      <p>Nový řetězec, kterým chcete nahrazovat ten nalezený, zadejte do pole <gui>Nahradit za:</gui>.</p>
+      <p>Nový řetězec, kterým chcete nahrazovat ten nalezený, zadejte do pole <gui>Nahradit za</gui>.</p>
     </item>
     <item>
       <p>Až máte zadán původní a nový text, můžete upravit další parametry hledání. Můžete si také zvolit, co všechno chcete nahradit:</p>

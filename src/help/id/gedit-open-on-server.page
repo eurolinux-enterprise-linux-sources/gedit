@@ -3,8 +3,8 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Akses berkas yang disimpan pada komputer yang berbeda.</desc>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -14,7 +14,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
@@ -27,11 +33,14 @@
   <p>Dengan memahami catatan khusus itu, lakukan langkah-langkah berikut untuk membuka berkas dari suatu server memakai <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Pilih <guiseq><gui>Berkas</gui><gui>Buka</gui></guiseq> untuk menampilkan dialog <gui>Buka Berkas</gui>.</p></item>
-      <item><p>Pilih ikon <gui>Pinsil</gui> dekat puncak dari dialog <gui>Buka Berkas</gui>.</p></item>
+      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
+      <item><p>Click <gui>Other Documents…</gui>.</p></item>
+      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
+      <gui>Open</gui> dialog.</p></item>
       <item><p>Masukkan Alamat IP atau URL dari server yang sesuai.</p></item>
       <item><p>Cari dan pilih berkas yang ingin Anda buka.</p></item>
-      <item><p>Gunakan daftar drop down Pengkodean karakter untuk memilih pengodean karakter yang sesuai.</p></item>
+      <item><p>Use the Character Encoding drop-down list to select the
+      appropriate character coding.</p></item>
       <item><p>Klik <gui>Buka</gui>.</p></item>
     </steps>
 

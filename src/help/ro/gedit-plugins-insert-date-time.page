@@ -13,7 +13,7 @@
     <name>Jim Campbell</name>
     <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Insert the current date/time at the cursor position.</desc>
+  <desc>Introduce data/ora curentă la poziția cursorului.</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Laurențiu Cristian Ion</mal:name>
@@ -24,7 +24,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 

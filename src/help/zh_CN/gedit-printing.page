@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-printing-guide"/>
-    <desc>Print the files that you create with gedit.</desc>
+    <desc>打印您创建的文件。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -32,6 +32,12 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>打印文档</title>
@@ -40,80 +46,59 @@
       <p>在 <app>gedit</app> 中使用打印，需要您连接并配置好打印机，如果您还没有准备好，请查阅<link href="help:gnome-help/printing">GNOME 打印帮助</link>。</p>
     </note>
   
-  <p><app>gedit</app> allows you to print both to a file and to paper.</p>
+  <p>在<app>gedit</app>中，您可以打印到文件和纸张。</p>
 
   <section id="print-preview">
     <title>打印预览</title>
 
-  <p>Prior to printing your document, you can preview how the printed document
-  will look by using <gui>Print Preview</gui>. To preview the document:</p>
+  <p>在您打印文档之前，您可以使用<gui>打印预览</gui>预览打印效果。打印预览的方法：</p>
 
   <steps>
     <item>
-      <p>Select <guiseq><gui style="menu">File</gui>
-      <gui style="menuitem">Print Preview</gui></guiseq>. Alternatively, you
-      can press <keyseq><key>Shift</key><key>Ctrl</key>
-      <key>P</key></keyseq>.</p>
+      <p>选择菜单 <guiseq><gui style="menu">文件</gui> <gui style="menuitem">打印预览</gui></guiseq>。另外，您也可以使用组合键<keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>。</p>
     </item>
   </steps>
 
-  <p>A preview of your document will open in the same tab as the file. You can
-  browse this preview with help of navigation buttons and tools in the toolbar
-  at the top of the document preview tab. To close and return to the document
-  click <gui style="button">Close Preview</gui>.</p>
+  <p>在文件的同一标签下会出现文件预览。您可以使用文件预览顶端工具栏上的导航按钮等工具帮助您浏览文件预览。您可以通过点击 <gui style="button">关闭预览</gui>按钮返回文档。</p>
 
   </section>
 
   <section id="printing-to-paper">
     <title>打印到纸张</title>
 
-  <p>You can print your documents to paper using a local or remote printer. To
-  print a file:</p>
+  <p>您可以通过本地或远程打印机将文档打印到纸张上。打印方法：</p>
 
   <steps>
     <item>
-      <p>Select <guiseq><gui style="menu">File</gui>
-      <gui style="menuitem">Print</gui>
-      <gui style="tab">General</gui></guiseq>.</p>
+      <p>点击菜单<guiseq><gui style="menu">文件</gui> <gui style="menuitem">打印</gui> <gui style="tab">常规</gui></guiseq>。</p>
     </item>
     <item>
-      <p>Select the desired printer from the list of printers available.</p>
+      <p>在可用的打印机列表中选择合适的打印机。</p>
     </item>
     <item>
-      <p>You can preview the file using <gui style="button">Print Preview</gui>
-      and once you are satisfied with the settings, click
-      <gui style="button">Print</gui> to send the file to printer.</p>
+      <p>您可以通过<gui style="button">打印预览</gui>预览效果，如果效果满意可以单击<gui style="button">打印</gui>按钮将文件发送到打印机打印。</p>
     </item>
   </steps>
 
-  <p>Additionally, from <gui style="tab">Page Setup</gui> tab: you can choose
-  <gui style="group">Layout</gui> and <gui style="group">Paper</gui> options. As
-  these settings are available throughout <app>GNOME</app> programs, please
-  consult
-  <link href="help:gnome-help/printing#paper">Layout and Paper options</link>
-  help.</p>
+  <p>此外，从<gui style="tab">页面设置</gui>标签页:您可以更改<gui style="group">布局</gui>和<gui style="group">纸张</gui>选项。这些选项在<app>GNOME</app>所有的程序中都是一致的，所以您可以参考<link href="help:gnome-help/printing#paper">页面与纸张设置</link>的帮助文档。</p>
 
   </section>
 
   <section id="printing-order-select">
-    <title>Print Multiple Copies And Between Specified Ranges</title>
+    <title>为指定的范围打印多份副本</title>
 
-    <p>You can set <gui style="group">Range</gui> and
-    <gui style="group">Copies</gui> options to help you:</p>
+    <p>您可以通过设置<gui style="group">范围</gui>和<gui style="group">副本</gui>选项来帮您实现这个功能:</p>
 
   </section>
 
   <section id="printing-to-file">
     <title>打印到文件</title>
 
-  <p>You can also use <app>gedit</app> to print to a file. To print your
-  document to file of a different format:</p>
+  <p>您也可以使用<app>gedit</app>将文档打印到文件。将文档打印到不同格式的文件：</p>
 
   <steps>
     <item>
-      <p>Select <guiseq><gui style="menu">File</gui>
-      <gui style="menuitem">Print</gui>
-      <gui style="menuitem">Print to File</gui></guiseq>.</p>
+      <p>选择 <guiseq><gui style="menu">文件</gui> <gui style="menuitem">打印</gui> <gui style="menuitem">打印到文件</gui></guiseq>。</p>
     </item>
     <item>
       <p>打印允许使用下列文件格式：</p>
@@ -130,8 +115,7 @@
         </list>
     </item>
     <item>
-      <p>To print the document to file, click
-      <gui style="button">Print</gui>.</p>
+      <p>点击<gui style="button">打印</gui>按钮，文档将打印到文件。</p>
     </item>
   </steps>
 

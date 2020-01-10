@@ -74,6 +74,12 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Impression de pages spécifiques</title>
@@ -85,7 +91,7 @@
     <p>Choisissez <guiseq><gui style="menu">Fichier</gui><gui style="menuitem">Imprimer…</gui></guiseq>.</p>
    </item>
    <item>
-    <p>Dans l'onglet <gui>Général</gui> de la fenêtre <gui>Imprimer</gui>, choisissez <gui style="radiobutton">Pages</gui> dans la colonne <gui style="group">Plage</gui>.</p></item>
+    <p>Dans l’onglet <gui style="tab">Général</gui> de la fenêtre Imprimer, choisissez <gui style="radiobutton">Pages</gui> dans la colonne <gui style="group">Plage</gui>.</p></item>
    <item>
     <p>Saisissez dans le champ de texte les numéros des pages que vous souhaitez imprimer en les séparant par une virgule. Mettez un tiret pour définir une plage de numéros.</p>
    </item>

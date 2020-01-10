@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="first"/>
-    <desc>Open a new file for editing.</desc>
+    <desc>Membuka berkas baru untuk menyunting.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -19,7 +19,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 

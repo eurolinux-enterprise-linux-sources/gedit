@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Change the position of a tab in the gedit window.</desc>
+    <desc>Cambiar a posición dunha lapela na xanela do gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -35,7 +35,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
@@ -52,7 +58,7 @@
         <p>Prema e manteña o botón do rato na lapela.</p>
       </item>
       <item>
-        <p>Move the tab to the desired position among the other tab.</p>
+        <p>Mova a lapela á posición que desexe entre as outras lapelas.</p>
       </item>
       <item>
         <p>Solte o botón do rato.</p>
@@ -94,7 +100,7 @@
         <p>Prema e manteña o botón do rato na lapela.</p>
       </item>
       <item>
-        <p>Drag the tab to the new window.</p>
+        <p>Arrastre a lapela á nova xanela</p>
       </item>
       <item>
         <p>Posiciónea xunto a outras lapelas, na nova xanela..</p>
@@ -106,15 +112,10 @@
     
 
     <note style="tip">
-      <p>You may find it easier to move a tab from one window to another by
-      dragging the tab to the <gui>Activities</gui> hot-corner of
-      <gui>GNOME Shell</gui>. This will reveal each of the open
-      <app>gedit</app> windows. You can then release the tab on the
-      desired <app>gedit</app> window.</p>
+      <p>Pode atopar máis doado mover a lapela desde unha xanela a outra arrastrando a lapela á esquina activa de <gui>Actividades</gui> do <gui>GNOME Shell</gui>. Isto mostrará cada unha das xanelas abertas do <app>gedit</app>. Logo pode soltar a lapela na xanela do <app>gedit</app> desexada.</p>
     </note>
 
-    <p>See the <link xref="gedit-shortcut-keys">tab-related shortcut
-    keys</link> table to make it easier to manage your tabs.</p>
+    <p>Vexa a táboa de <link xref="gedit-shortcut-keys">teclas de atallos relacionados con lapelas</link> para facer máis doado xestionar as lapelas.</p>
 
   </section>
 

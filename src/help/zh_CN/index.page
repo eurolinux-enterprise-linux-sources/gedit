@@ -5,7 +5,7 @@
     <title type="link">gedit 文本编辑器</title>
     <title type="text">gedit 文本编辑器</title>
 
-    <desc>Home page of the gedit help guide.</desc>
+    <desc>gedit 使用指南首页。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -35,6 +35,12 @@
       <mal:name>wancheng zhang</mal:name>
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
     </mal:credit>
   </info>
   

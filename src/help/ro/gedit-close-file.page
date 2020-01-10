@@ -3,8 +3,9 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
-    <desc>Exit from the file you are using.</desc>
+    <desc>Ieșirea din fișierul pe care îl folosiți.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -21,13 +22,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Închiderea unui fișier</title>
 
-  <p>Pentru a închide un fișier în <app>gedit</app>, alegeți <guiseq><gui>Fișier</gui><gui>Închide</gui></guiseq>. Alternativ, apăsați pe micul „X” care apare în partea dreaptă a tabului fișierului, sau apăsați <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
+  <p>Pentru a închide un fișier în <app>gedit</app>, selectați <gui style="menuitem">Închide</gui>. Alternativ, apăsați pe micul „X” care apare în partea dreaptă a tabului fișierului, sau apăsați <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
   <p>Oricare dintre aceste acțiuni va închide un fișier în <app>gedit</app>. Dacă fișierul conține modificări care nu au fost salvate, <app>gedit</app> vă va întreba dacă să salveze modificările înainte de a închide fișierul.</p>
 
 </page>

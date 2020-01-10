@@ -3,8 +3,8 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Accesarea fișierelor care sunt stocate pe un calculator diferit.</desc>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -20,7 +20,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
@@ -33,15 +33,16 @@
   <p>Cu aceste limitări în minte, efectuați următorii pași pentru a deschide un fișier de pe un server folosind <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Alegeți <guiseq><gui>Fișier</gui><gui>Deschide</gui></guiseq> pentru a afișa caseta de dialog <gui>Deschide fișiere</gui>.</p></item>
-      <item><p>Alegeți iconița <gui>creion</gui> de lângă partea de sus a dialogului <gui>Deschide fișiere</gui>.</p></item>
+      <item><p>În bara de titlu, apăsați <gui>Deschide</gui>.</p></item>
+      <item><p>Apăsați <gui>Alte documente…</gui>.</p></item>
+      <item><p>Apăsați <keyseq><key>Ctrl</key><key>L</key></keyseq> în dialogul <gui>Deschidere</gui>.</p></item>
       <item><p>Introduceți adresa IP sau URL-ul serverului corespunzător.</p></item>
       <item><p>Găsiți și alegeți fișierul pe care doriți să-l deschideți.</p></item>
       <item><p>Folosiți lista de selecție de codificare caractere pentru a selecta codificarea de caractere corespunzătoare.</p></item>
       <item><p>Apăsați <gui>Deschide</gui>.</p></item>
     </steps>
 
-  <p>Tipurile valide de URI includ http:, ftp:, file:, și toate metodele acceptate de <app>gvfs</app>.</p>
+  <p>Tipurile valide de URI includ http:, ftp:, file:, și toate metodele suportate de <app>gvfs</app>.</p>
 
   <note>
     <p>Fișierele de la unele tipuri de URI sunt deschise doar în citire, iar modificările trebuie salvate într-o altă locație. De exemplu, HTTP permite numai citirea fișierelor. Fișierele deschise din FTP sunt doar-în-citire, deoarece nu toate serverele FTP ar putea să funcționeze corect cu salvarea fișierelor la distanță.</p>

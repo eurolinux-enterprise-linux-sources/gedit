@@ -91,19 +91,25 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Ajout et suppression d'onglets</title>
-  <p>Le travail avec les onglets dans <app>gedit</app> vous permet de garder un œil sur plusieurs fichiers dans une seule fenêtre. L'onglet plus grand que les autres indique le fichier actuellement ouvert. Les onglets plus petits indiquent les autres fichiers disponibles pour votre travail.</p>
+  <title>Ajout et suppression d’onglets</title>
+  <p>Le travail avec les onglets dans <app>gedit</app> vous permet de garder un œil sur plusieurs fichiers dans une seule fenêtre. L’onglet plus grand que les autres indique le fichier actuellement ouvert. Les onglets plus petits indiquent les autres fichiers disponibles pour votre travail.</p>
 
   <section id="gedit-adding-tabs">
-    <title>Ajout d'onglets</title>
-    <p>Pour ajouter un nouvel onglet, créez un nouveau fichier avec <keyseq><key>Ctrl</key><key>T</key></keyseq>. L'onglet est ajouté à droite de tous les autres onglets.</p>
+    <title>Ajout d’onglets</title>
+    <p>Pour ajouter un nouvel onglet, créez un nouveau fichier avec <keyseq><key>Ctrl</key><key>T</key></keyseq>. L’onglet est ajouté à droite de tous les autres onglets.</p>
   </section>
 
   <section id="gedit-removing-tabs">
-    <title>Suppression d'onglets</title>
-    <p>Pour supprimer un onglet, cliquez sur le <guiseq><gui style="button">X</gui></guiseq> sur le bord droit de l'onglet. Pour fermer tous les onglets ouverts, appuyez sur <keyseq><key>Ctrl</key><key>Maj</key><key>W</key></keyseq>.</p>
+    <title>Suppression d’onglets</title>
+    <p>Pour supprimer un onglet, cliquez sur le <gui style="button">×</gui> sur le bord droit de l’onglet. Pour fermer tous les onglets ouverts, appuyez sur <keyseq><key>Ctrl</key><key>Maj</key><key>W</key></keyseq>.</p>
   </section>
 
 </page>

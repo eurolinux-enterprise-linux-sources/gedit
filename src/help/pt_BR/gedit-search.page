@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Localize uma porção de texto dentro de um arquivo.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -75,7 +76,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Rafael Fontenelle</mal:name>
       <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016</mal:years>
+      <mal:years>2013, 2016, 2017</mal:years>
     </mal:credit>
   </info>
 
@@ -107,9 +108,6 @@
       <item>
         <p>Pressione <keyseq><key>Ctrl</key><key>G</key></keyseq> ou <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Pressione <key>Ctrl</key> e use o recurso de <key>rolagem</key> do seu mouse ou touchpad para mover para cima ou para baixo através do texto.</p>
-      </item>
     </list>
 
   <p>Para fechar a <gui>janela de pesquisa</gui>, pressione <key> Esc</key> ou <key>Enter</key>. Pressionando <key>Esc</key> irá retornar o cursor para onde estava antes de você começar a sua pesquisa. Pressionando <key>Enter</key> irá retornar o cursor para a posição atual nos resultados da pesquisa.</p>
@@ -134,7 +132,7 @@
       </list>
     </item>
     <item>
-      <p>O texto pelo qual você pesquisou permanecerá destacado pelo gedit, ainda depois que você tiver completado sua pesquisa. Para remover o destaque, clique em <guiseq><gui>Pesquisar</gui><gui>Limpar Pesquisa</gui></guiseq> ou pressione <keyseq><key>Ctrl</key><key>Shift</key><key>N</key></keyseq>.</p>
+      <p>O texto pelo qual você pesquisou permanecerá destacado pelo gedit, ainda depois que você tiver completado sua pesquisa. Para remover o destaque, clique em <gui style="menuitem">Limpar Destaque</gui>, ou pressione <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

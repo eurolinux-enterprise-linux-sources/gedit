@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="second"/>
     <link type="seealso" xref="gedit-tabs-moving"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Create or close tabs in the gedit window.</desc>
+    <desc>Skapa eller ta bort flikar i geditfönstret.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -31,26 +31,31 @@
     </credit>
 
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Add and remove tabs</title>
-  <p>Working with tabs in <app>gedit</app> allows you to keep an eye on several
-  files in a single window. The tab that is larger than the other tabs indicates
-  the file that is currently open. The smaller tabs indicate other files that
-  are available to work on.</p>
+  <title>Lägg till och ta bort flikar</title>
+  <p>Att arbeta med flikar i <app>gedit</app> låter dig hålla ett öga på flera filer i ett enda fönster. Fliken som är större än de andra flikarna indikerar filen som är öppen nu. De mindre flikarna står för andra filer som finns tillgängliga att arbeta med.</p>
 
   <section id="gedit-adding-tabs">
-    <title>Adding tabs</title>
-    <p>To add a new tab, create a new file with <keyseq><key>Ctrl</key>
-    <key>T</key></keyseq>. The tab will be added to the right side of any other
-    tabs.</p>
+    <title>Lägga till flikar</title>
+    <p>För att lägga till en ny flik, skapa en ny fil med <keyseq><key>Ctrl</key> <key>T</key></keyseq>. Fliken kommer läggas till på höger sida om alla andra flikar.</p>
   </section>
 
   <section id="gedit-removing-tabs">
-    <title>Removing tabs</title>
-    <p>To remove a tab, click the <gui style="button">×</gui> on the tab's
-    right side. To remove all open tabs, press <keyseq><key>Ctrl</key>
-    <key>Shift</key><key>W</key></keyseq>.</p>
+    <title>Ta bort flikar</title>
+    <p>För att ta bort en flik, klicka på <gui style="button">×</gui> på flikens högra sida. För att ta bort alla öppna flikar, tryck <keyseq><key>Ctrl</key> <key>Skift</key><key>W</key></keyseq>.</p>
   </section>
 
 </page>

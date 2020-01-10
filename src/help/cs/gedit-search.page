@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Jak v souboru najít část textu.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -65,9 +66,6 @@
       <item>
         <p>Zmáčkněte <keyseq><key>Ctrl</key> <key>G</key></keyseq> nebo <keyseq><key>Ctrl</key> <key>Shift</key> <key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Zmáčkněte <key>Ctrl</key> a použijte funkci <key>posuvu</key> (rolovací kolečko) na myši nebo touchpadu pro pohyb nahoru nebo dolů.</p>
-      </item>
     </list>
 
   <p><gui>Okno hledání</gui> můžete zavřít zmáčknutím <key>Esc</key> nebo <key>Enter</key>. Zmáčknutí <key>Esc</key> vrátí kurzor na místo, kde byl před započetím hledání. Zmáčknutí <key>Enter</key> vrátí kurzor na místo nalezeného výsledku.</p>
@@ -92,7 +90,7 @@
       </list>
     </item>
     <item>
-      <p>Text, který jste vyhledali, zůstane zvýrazněný, i po dokončení hledání. Pokud budete chtít zvýraznění odstranit, klikněte na <guiseq><gui>Hledat</gui> <gui>Zrušit zvýrazňování</gui></guiseq> nebo zmáčkněte <keyseq><key>Ctrl</key> <key>Shift</key> <key>K</key></keyseq>.</p>
+      <p>Text, který jste vyhledali, zůstane zvýrazněný, i po dokončení hledání. Pokud budete chtít zvýraznění odstranit, klikněte na <gui style="menuitem">Zrušit zvýrazňování</gui> nebo zmáčkněte <keyseq><key>Ctrl</key> <key>Shift</key> <key>K</key></keyseq>.</p>
     </item>
   </list>
 

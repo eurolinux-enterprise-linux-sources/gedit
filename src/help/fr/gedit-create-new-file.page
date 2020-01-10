@@ -75,12 +75,18 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Création d'un nouveau fichier</title>
+  <title>Création d’un nouveau fichier</title>
 
-  <p>La façon la plus simple pour créer un nouveau fichier dans <app>gedit</app> est de cliquer sur l'icône <gui>Créer un nouveau document</gui> tout à gauche de la barre d'outils, ou d'appuyer sur <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
+  <p>La façon la plus simple pour créer un nouveau fichier dans <app>gedit</app> est de cliquer sur l’icône <gui>Créer un nouveau document</gui> tout à gauche de la barre d’outils, ou d’appuyer sur <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
 
-  <p>N'importe laquelle de ces actions crée un nouveau fichier dans la fenêtre <app>gedit</app>. Si vous avez d'autres fichiers ouverts dans <app>gedit</app>, le nouveau fichier que vous avez créé apparaît dans un nouvel onglet à droite de ces fichiers.</p>
+  <p>N’importe laquelle de ces actions crée un nouveau fichier dans la fenêtre <app>gedit</app>. Si vous avez d’autres fichiers ouverts dans <app>gedit</app>, le nouveau fichier que vous avez créé apparaît dans un nouvel onglet à droite de ces fichiers.</p>
 
 </page>

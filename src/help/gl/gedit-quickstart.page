@@ -5,7 +5,7 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>A brief introduction to gedit.</desc>
+    <desc>Unha breve introdución a gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -26,7 +26,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
@@ -35,9 +41,7 @@
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Once <app>gedit</app> launches, you can start writing right away. To save
-  your text, just click the <gui>Save</gui> icon in the <app>gedit</app>
-  toolbar.</p>
+  <p>Cando inicie o <app>gedit</app> poderá comezar a escribir de inmediato. Para gardar o texto, simplemente prema a icona <gui>Gardar</gui> na barra de ferramentas do <app>gedit</app>.</p>
 
   <p>Para aprender máis sobre as características de <app>gedit</app> e para obter axuda para realizar tarefas adicionais, explore <link xref="index">as outras partes</link> da axuda de <app>gedit</app>.</p>
 

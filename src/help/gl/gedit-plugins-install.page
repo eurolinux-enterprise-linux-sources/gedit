@@ -11,7 +11,7 @@
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>How to install third-party plugins.</desc>
+    <desc>Como instalar engadidos de terceiros.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -22,18 +22,19 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
   <title>Engadidos adicionais de gedit</title>
 
-  <p>Installing third-party plugins gives you extra functionality that isn't 
-  available in default <app>gedit</app> plugins, or even the extra plugins that 
-  are part of the <app>gedit-plugins</app> package. An online list of 
-  third-party plugins is 
-  <link href="https://wiki.gnome.org/Apps/Gedit">kept here</link>.
-  </p>
+  <p>Instalar engadidos de terceiros proporciónalle funcionalidades adicionais que non están incluídas de maneira predeterminada no <app>gedit</app> nin nos engadidos adicionais que forman parte do paquete <app>gedit-plugins</app>. Unha lista de engadidos de terceiros é <link href="https://wiki.gnome.org/Apps/Gedit">mantida aquí</link>.</p>
   
   <p>Instalar un engadido de terceiras partes implica descargar o engadido, copiar os ficheiros do engadido no cartafol correcto e activalo.</p>
   

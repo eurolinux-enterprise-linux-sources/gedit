@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Find a portion of text within a file.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -79,9 +80,6 @@
         <p>Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or
         <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Paina <key>Ctrl</key> pohjaan ja siirry tekstissä ylös- tai alaspäin hiiren tai kosketusalustan <key>vieritysominaisuudella</key>.</p>
-      </item>
     </list>
 
   <p><gui>Haun</gui> sulkeminen onnistuu joko <key>Esc</key>- tai <key>Enter</key>-näppäimellä. <key>Esc</key>-näppäin palauttaa tekstikursorin kohtaan, jossa se oli ennen haun alkua ja <key>Enter</key> puolestaan siirtää tekstikursorin valitun hakutuloksen kohdalle.</p>
@@ -111,7 +109,10 @@
       </list>
     </item>
     <item>
-      <p>gedit korostaa haetun tekstin myös haun valmistumisen jälkeen. Korostuksen poistaminen onnistuu valitsemalla <guiseq><gui>Etsi</gui><gui>Älä korosta osumia</gui></guiseq> tai näppäinyhdistelmällä <keyseq><key>Ctrl</key><key>Vaihto</key><key>K</key></keyseq>.</p>
+      <p>The text that you've searched for will remain highlighted by gedit,
+      even after you have completed your search. To remove the highlight,
+      click <gui style="menuitem">Clear Highlight</gui>, or
+      press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

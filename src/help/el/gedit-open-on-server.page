@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Πρόσβαση αρχείων που είναι αποθηκευμένα σε έναν διαφορετικό υπολογιστή.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -51,11 +51,14 @@
   <p>Με αυτές τις προειδοποιήσεις κατά νου, εκτελέστε τα ακόλουθα βήματα για να ανοίξετε ένα αρχείο από έναν διακομιστή χρησιμοποιώντας το <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Επιλέξτε <guiseq><gui>Αρχείο</gui><gui>Άνοιγμα</gui></guiseq> για να εμφανίσετε το διάλογο <gui>Άνοιγμα αρχείων</gui>.</p></item>
-      <item><p>Επιλέξτε το εικονίδιο <gui>Μολύβι</gui> κοντά στο πάνω μέρος του διαλόγου <gui>Άνοιγμα Αρχείων</gui>.</p></item>
+      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
+      <item><p>Click <gui>Other Documents…</gui>.</p></item>
+      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
+      <gui>Open</gui> dialog.</p></item>
       <item><p>Πληκτρολογήστε τη διεύθυνση IP ή το URL του κατάλληλου διακομιστή.</p></item>
       <item><p>Πληκτρολογήστε την τοποθεσία του αρχείου που θέλετε να ανοίξετε.</p></item>
-      <item><p>Χρησιμοποιήστε την αναδιπλούμενη λίστα κωδικοποίησης χαρακτήρων για να διαλέξετε την κατάλληλη κωδικοποίηση.</p></item>
+      <item><p>Use the Character Encoding drop-down list to select the
+      appropriate character coding.</p></item>
       <item><p>Πατήστε <gui>Άνοιγμα</gui>.</p></item>
     </steps>
 

@@ -4,8 +4,9 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <desc>Find a portion of text within a file.</desc>
+    <desc>Buscar un fragmento de texto nun ficheiro.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -33,7 +34,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
@@ -44,11 +51,7 @@
     <steps>
       <title>Buscar texto</title>
       <item>
-        <p>Open the <gui>search window</gui> by clicking 
-        <guiseq><gui style="menu">Menu Button</gui>
-        <gui style="menuitem">Find…</gui> </guiseq> or
-        pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move
-        your cursor to the start of the <gui>search window</gui>.</p>
+        <p>Abra a <gui>xanela de busca</gui> premendo o  <guiseq><gui style="menu">botón do menú</gui> <gui style="menuitem">Buscar…</gui> </guiseq> ou prema <keyseq><key>Ctrl</key><key>F</key></keyseq>. Isto moverá o cursor até o principio da <gui>xanela de busca</gui>.</p>
       </item>
       <item>
         <p>Escriba o texto que quere buscar na <gui>xanela de busca</gui>.</p>
@@ -61,20 +64,13 @@
     <p>Para desprazarse polos resultados da busca, realice calquera dos seguintes pasos:</p>
     <list>
       <item>
-        <p>Click on the <gui style="button">up</gui> or
-        <gui style="button">down</gui> facing arrows next to the
-        <gui>search window</gui>.</p>
+        <p>Prema nas frechas <gui style="button">arriba</gui> ou <gui style="button">abaixo</gui> a carón da <gui>xanela de busca</gui>.</p>
       </item>
       <item>
-        <p>Press the <key>up arrow</key> or <key>down arrow</key> keys on your
-        keyboard.</p>
+        <p>Prema as teclas <key>frecha arriba</key> ou <key>frecha abaixo</key> no seu teclado.</p>
       </item>
       <item>
-        <p>Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or
-        <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
-      </item>
-      <item>
-        <p>Prema <key>Ctrl</key> e use o <key>deslizador</key> do seu rato ou área táctil para moverse cara arriba ou cara abaixo polo texto</p>
+        <p>Prema <keyseq><key>Ctrl</key><key>G</key></keyseq> ou <keyseq><key>Ctrl</key><key>Maiús</key><key>G</key></keyseq>.</p>
       </item>
     </list>
 
@@ -86,26 +82,21 @@
       <p>Se resalta un fragmento de texto co rato e preme <keyseq><key>Ctrl</key><key>F</key></keyseq>, o texto que resaltou aparecerá na xanela de busca.</p>
     </item>
     <item>
-      <p>For more search options, click on the
-      <gui style="button">Magnifying Glass</gui> icon in the search window,
-      or right-click anywhere in the search window. You can select one or more
-      of the following search options:</p>
+      <p>Para ver máis opcións de busca, prema na icona da  <gui style="button">Lupa</gui> na xanela de busca ou pode premer co botón dereito en calquera parte da xanela de busca. Pode seleccionar unha ou varias das seguintes opcións:</p>
       <list>
         <item>
-          <p>Select <gui>Match Case</gui> to make the search case sensitive.</p>
+          <p>Selecionar <gui>Diferenciar maiúsculas de minúsculas</gui> para facer a busca sensíbel a maiúsculas e minúsculas.</p>
         </item>
         <item>
-          <p>Select <gui>Match Entire Word Only</gui> to search only complete
-          words.</p>
+          <p>Seleccione <gui>Coincidir só coa palabra completa</gui> para buscar termos completos.</p>
         </item>
         <item>
-          <p>Select <gui>Wrap Around</gui> to search text from top to bottom
-          and cycle back again.</p>
+          <p>Seleccionar <gui>Dar a volta</gui> para buscar texto desde o inicio ao remate e volver atrás.</p>
         </item>
       </list>
     </item>
     <item>
-      <p>O texto que buscou permanecerá realzado en gedit, aínda que rematara a busca. Para quitar o resaltado, prema <guiseq><gui>Buscar</gui><gui>Quitar realzado</gui></guiseq>, ou prema <keyseq><key>Ctrl</key><key>Maiús</key><key>K</key></keyseq>.</p>
+      <p>O texto que buscou permanecerá realzado no gedit aínda que rematase a busca. Para retirar o resaltado, prema <gui style="menuitem">Eliminar o realce</gui> ou prema <keyseq><key>Ctrl</key><key>Maiús</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

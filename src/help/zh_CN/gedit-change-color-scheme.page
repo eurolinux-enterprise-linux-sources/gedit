@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Change the text and background colors in gedit.</desc>
+    <desc>更改 gedit 中文字和背景的颜色。</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.15" date="2015-01-29" status="final"/>
 
@@ -41,6 +41,12 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>更改配色方案</title>
@@ -48,11 +54,9 @@
   <p><app>gedit</app> 包含多种不同配色方案，允许您更改主文本窗口的外观。</p>
 
   <steps>
-    <title>To change the color scheme:</title>
+    <title>更改配色方案：</title>
     <item>
-      <p>Open the <gui style="menu">gedit</gui> menu from the top bar, then
-      select <guiseq><gui style="menuitem">Preferences</gui><gui>Font &amp;
-      Colors</gui></guiseq>.</p>
+      <p>打开位于顶栏的 <gui style="menu">gedit</gui> 菜单，然后选择<guiseq><gui style="menuitem">首选项</gui><gui>字体和颜色</gui></guiseq>。</p>
     </item>
     <item>
       <p>选择您想使用的配色方案。</p>
@@ -70,10 +74,7 @@
 
     <p>您也可以使用其他人创建的配色方案，或者使用自己的颜色方案。</p>
 
-    <p>Instructions on how to install custom color schemes, as well as examples
-    of color schemes that you can download and use, are available on the
-    <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit
-    wiki</link>.</p>
+    <p>关于如何安装自定义配色方案的说明，以及您可以下载并使用的配色方案，可以在 <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit wiki</link> 上找到。</p>
   </section>
 
 </page>

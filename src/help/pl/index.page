@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="pl">
+
+  <info>
+    <title type="link">Edytor tekstu gedit</title>
+    <title type="text">Edytor tekstu gedit</title>
+
+    <desc>Główna strona podręcznika programu gedit.</desc>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email its:translate="no">jcampbell@gnome.org</email>
+    </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email its:translate="no">sindhus@live.in</email>
+    </credit>
+
+   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+  
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/> Edytor tekstu gedit</title>
+  <p>Witamy w pomocy programu <app>gedit</app>. Strony <link xref="gedit-quickstart">Pierwsze kroki</link> i <link xref="gedit-shortcut-keys">Klawisze skrótów</link> zawierają krótkie wprowadzenie do podstawowych funkcji programu oraz zaawansowane skróty klawiszowe.</p>
+
+  <p>Pozostałe tematy pomocy znajdują się w sekcjach poniżej. Dziękujemy za wybór programu <app>gedit</app>!</p>
+
+  <section id="gedit-working-with-files">
+    <title>Praca na plikach</title>
+    <links type="topic" groups="first second third fourth fifth sixth last" style="2column"/>
+  </section>
+
+  <section id="configure-gedit" style="2column">
+    <title>Konfiguracja</title>
+  </section> 
+ 
+  <section id="gedit-plugins" style="2column">
+    <title>Wtyczki</title>
+  </section>
+
+  <section id="gedit-printing-guide" style="2column">
+    <title>Drukowanie</title>
+  </section>
+
+</page>

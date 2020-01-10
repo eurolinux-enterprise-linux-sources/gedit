@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Piekļūt datnēm, kas ir nesen atjauninātas.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -16,7 +17,7 @@
 
   <p>Pēc noklusējuma <app>gedit</app> nodrošina ērtu pieeju pieciem nesen lietotām datnēm. Lai atvērtu nesen lietotu datni:</p>
   <list type="numbered">
-    <item><p>Nospiediet lejupvērsto bultiņu pa labi no pogas <gui>Atvērt</gui>.</p></item>
+    <item><p>Click the <gui>Open</gui> button.</p></item>
     <item><p><app>gedit</app> parādīs piecu pēdējo lietoto datņu sarakstu.</p></item>
     <item><p>Izvēlieties vajadzīgo datni, un tās tiks atvērta jaunā cilnē.</p></item>
   </list>

@@ -3,40 +3,45 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Use administrative privileges to edit a file.</desc>
+    <desc>Använd administratörsbehörighet för att redigera en fil.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Edit a file as the root user</title>
+  <title>Redigera en fil som root-användaren</title>
 
   <note style="warning">
-    <p>Editing files as the root user is potentially dangerous, and may break
-    your system in bad ways. Take great care when editing files as the root
-    user.</p>
+    <p>Att redigera filer som root-användaren är potentiellt farligt, och kan förstöra ditt system på otrevliga sätt. Var ytterst försiktig när du redigerar filer som root-användaren.</p>
   </note>
 
-  <p>To edit files as the root user, launch <app>gedit</app> from the terminal
-  by entering:</p>
+  <p>För att redigera filer som root-användaren, starta <app>gedit</app> från terminalen genom att skriva:</p>
   <code>sudo gedit</code>
 
-  <p>Using the <cmd>sudo</cmd> command, you will need to successfully enter
-  your password before <app>gedit</app> will open.</p>
+  <p>Då du använder kommandot <cmd>sudo</cmd> måste du mata in ditt lösenord för att <app>gedit</app> ska öppnas.</p>
 
-  <p>As an alternative to the <cmd>sudo</cmd> command, you may obtain
-  administrative privileges by entering:</p>
+  <p>Som ett alternativ till kommandot <cmd>sudo</cmd> kan du få administratörsbehörighet genom att mata in:</p>
   <code>su -</code>
 
-  <p>You would then launch <app>gedit</app> using the <cmd>gedit</cmd>
-  command.</p>
+  <p>Du skulle då sedan starta <app>gedit</app> med kommandot <cmd>gedit</cmd>.</p>
 
   <note style="tip">
-    <p>Once you have opened <app>gedit</app> with administrative privileges,
-    <app>gedit</app> will keep those privileges until you close it.</p>
+    <p>Då du har öppnat <app>gedit</app> med administratörsbehörighet kommer <app>gedit</app> att behålla denna behörighet tills du stänger det.</p>
   </note>
 
 </page>

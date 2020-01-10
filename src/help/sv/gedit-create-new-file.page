@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="first"/>
-    <desc>Open a new file for editing.</desc>
+    <desc>Öppna en ny fil för redigering.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -15,16 +15,24 @@
       <email its:translate="no">tyagishobha@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Create a new file</title>
+  <title>Skapa en ny fil</title>
 
-  <p>The easiest way to create a new file in <app>gedit</app>, is to click the
-  <gui>Create a new document</gui> button on the left side of the toolbar,
-  or press <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
+  <p>Det enklaste sättet att skapa en ny fil i <app>gedit</app> är att klicka på knappen <gui>Skapa nytt dokument</gui> på vänstersidan av verktygsfältet, eller trycka <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
 
-  <p>Any one of these actions will create a new file in the <app>gedit</app>
-  window. If you have other files open in <app>gedit</app>, the new file that
-  you create will appear as a new tab to the right of those files.</p>
+  <p>Endera av dessa åtgärder kommer att skapa en ny fil i <app>gedit</app>. Om du har andra filer öppna i <app>gedit</app> kommer den nya filen som du skapar att dyka upp som en ny flik till höger om de filerna.</p>
 
 </page>

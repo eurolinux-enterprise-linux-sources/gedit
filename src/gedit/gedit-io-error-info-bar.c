@@ -127,11 +127,10 @@ create_io_loading_error_info_bar (const gchar *primary_text,
 {
 	GtkWidget *info_bar;
 
-	info_bar = gtk_info_bar_new_with_buttons (_("_Cancel"),
-						  GTK_RESPONSE_CANCEL,
-						  NULL);
+	info_bar = gtk_info_bar_new ();
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_ERROR);
+	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
 
 	set_info_bar_text (info_bar,
 			   primary_text,
@@ -241,8 +240,8 @@ parse_gio_error (gint          code,
 						host_markup = g_markup_escape_text (host_name, -1);
 						g_free (host_name);
 
-						/* Translators: %s is a host name */
 						*message_details = g_strdup_printf (
+							/* Translators: %s is a host name */
 							_("Host “%s” could not be found. "
 							"Please check that your proxy settings "
 							"are correct and try again."),
@@ -486,6 +485,7 @@ create_conversion_error_info_bar (const gchar *primary_text,
 	GtkWidget *secondary_label;
 
 	info_bar = gtk_info_bar_new ();
+	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
 
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 				 _("_Retry"),
@@ -506,10 +506,6 @@ create_conversion_error_info_bar (const gchar *primary_text,
 		gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 					       GTK_MESSAGE_ERROR);
 	}
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Cancel"),
-				 GTK_RESPONSE_CANCEL);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 
@@ -770,7 +766,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 	/* Translators: the access key chosen for this string should be
 	 different from other main menu access keys (Open, Edit, View...) */
-				 _("D_on't Edit"),
+				 _("D_on’t Edit"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
@@ -853,7 +849,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 				 _("S_ave Anyway"),
 				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on't Save"),
+				 _("D_on’t Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
@@ -943,7 +939,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 				 _("S_ave Anyway"),
 				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on't Save"),
+				 _("D_on’t Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
@@ -1183,9 +1179,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 					 GTK_RESPONSE_OK);
 	}
 
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Ignore"),
-				 GTK_RESPONSE_CANCEL);
+	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
@@ -1235,7 +1229,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 				 _("S_ave Anyway"),
 				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on't Save"),
+				 _("D_on’t Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);

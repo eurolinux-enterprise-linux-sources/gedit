@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Acceder a archivos que se guardan en otro equipo.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -14,7 +14,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -39,8 +39,9 @@
   <p>Con estas advertencias en mente, realice los siguientes pasos para abrir un archivo desde un servidor usando <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Seleccione <guiseq><gui>Archivo</gui><gui>Abrir</gui></guiseq> para mostrar el diálogo <gui>Abrir archivos</gui>.</p></item>
-      <item><p>Seleccione el icono <gui>Lápiz</gui> en la parte superior del diálogo <gui>Abrir archivos</gui>.</p></item>
+      <item><p>En la barra de título pulse <gui>Abrir</gui>.</p></item>
+      <item><p>Pulse en <gui>Otros documentos…</gui>.</p></item>
+      <item><p>Pulse <keyseq><key>Ctrl</key><key>L</key></keyseq> en el diálogo <gui>Abrir</gui>.</p></item>
       <item><p>Introduzca la dirección IP o el URL del servidor apropiado.</p></item>
       <item><p>Buscar y seleccionar el archivo que quiere abrir.</p></item>
       <item><p>Use la lista desplegable «Codificación de caracteres» para seleccionar la codificación de caracteres apropiada.</p></item>

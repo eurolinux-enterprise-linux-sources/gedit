@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="sv">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use a custom font for your text in gedit.</desc>
+    <desc>Använd ett anpassat typsnitt för din text i gedit.</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
@@ -13,27 +13,31 @@
 
    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
-</info>
 
-  <title>Change the default font</title>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
+  </info>
 
-  <p><app>gedit</app> will use the system fixed-width font by default, 
-  but you can change the default <app>gedit</app> font to suit your preferences.
-  </p>
+  <title>Ändra standardtypsnittet</title>
+
+  <p><app>gedit</app> kommer använda systemets typsnitt med fast breddsteg som standard, men du kan ändra standardtypsnittet för <app>gedit</app> så att det passar dina önskemål.</p>
   
   <steps>
-    <title>To change the default font in <app>gedit</app>:</title>
-      <item><p>Select <guiseq><gui style="menu">gedit</gui>
-      <gui style="menuitem">Preferences</gui>
-      <gui>Font &amp; Colors</gui></guiseq>.</p></item>
-      <item><p>Uncheck the box next to the phrase, "Use the system fixed-width
-      font."</p></item>
-      <item><p>Click on the current font name. <app>gedit</app> will open
-      a font-chooser window, allowing you to see available fonts and choose the
-      one that you prefer.</p></item>
-      <item><p>After you have chosen a new font, use the <gui>slider</gui>
-      under the list of fonts to set the default font size.</p></item>
-      <item><p>Click <gui>Select</gui>, and then click <gui>Close</gui>.</p>
+    <title>För att ändra standardtypsnittet i <app>gedit</app>:</title>
+      <item><p>Välj <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Inställningar</gui> <gui>Typsnitt och färger</gui></guiseq>.</p></item>
+      <item><p>Kryssa ur rutan intill frasen ”Använd systemets typsnitt med fast breddsteg”.</p></item>
+      <item><p>Klicka på det aktuella typsnittsnamnet. <app>gedit</app> kommer att öppna ett typsnittsväljarfönster, vilket låter dig se tillgängliga typsnitt och välja det som du föredrar.</p></item>
+      <item><p>Efter att du har valt ett nytt typsnitt, använd <gui>skjutreglaget</gui> under listan med typsnitt för att ställa in standardtypsnittsstorleken.</p></item>
+      <item><p>Klicka på <gui>Välj</gui>, och klicka sedan på <gui>Stäng</gui>.</p>
       </item>
   </steps>
   

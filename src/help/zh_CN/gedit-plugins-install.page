@@ -11,7 +11,7 @@
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <desc>How to install third-party plugins.</desc>
+    <desc>如何安装第三方插件。</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>TeliuTe</mal:name>
@@ -30,29 +30,24 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>额外的 gedit 插件</title>
 
-  <p>Installing third-party plugins gives you extra functionality that isn't 
-  available in default <app>gedit</app> plugins, or even the extra plugins that 
-  are part of the <app>gedit-plugins</app> package. An online list of 
-  third-party plugins is 
-  <link href="https://wiki.gnome.org/Apps/Gedit">kept here</link>.
-  </p>
+  <p>安装第三方插件，可以让您获得 <app>gedit</app> 的默认插件甚至<app>gedit-plugins</app>中所没有的额外功能。在 <link href="http://live.gnome.org/Gedit/Plugins#third_party">此处</link> 有一个在线的第三方插件列表。</p>
   
-  <p>Installing a third-party plugin involves downloading the plugin, placing 
-  the plugin files in the right directory, and activating the plugin.</p>
+  <p>安装第三方插件需要下载插件，保存在正确的路径下，并激活它。</p>
   
   <steps>
-    <item><p>You can usually download a plugin from the plugin's website, but 
-    may need to use a revision-control program like <app>git</app>, <app>
-    bazaar</app>, or <app>subversion</app> to copy a plugin's software 
-    repository from the internet. Refer to the plugin's documentation for 
-    information on getting the plugin.</p></item>
+    <item><p>通常您可以从插件网站上获取到插件，但您可能需要使用版本控制器例如<app>git</app>，<app> bazaar</app> 或者 <app>subversion</app> 从互联网上的软件仓库中获取插件的拷贝。您可以从插件文档中参考如何获取该插件。</p></item>
     <item><p>将插件放到 <file>/home/<var>用户名</var>/.local/share/gedit/plugins</file> 目录下。</p>
-    <p>Of course, replace the word <var>username</var> with your own username.
-    </p></item>
+    <p>当然，您需要将 <var>username</var> 替换为您的用户名。</p></item>
     <item><p>在您将插件文件复制到正确的文件夹后，插件将会出现在首选项菜单中。选择<guiseq><gui>编辑 </gui><gui style="menuitem">首选项</gui><gui>插件</gui> <gui>[插件名]</gui></guiseq>启用插件。</p></item>
     <item><p>点 <gui>关闭</gui>。</p></item>
   </steps>

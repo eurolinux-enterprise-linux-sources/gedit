@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use gedit's side pane as a file browser.</desc>
+    <desc>Gunakan panel sisi gedit sebagai peramban berkas.</desc>
     <revision pkgversion="3.8" date="2013-03-13" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -14,35 +14,66 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
-  <title>Tilik dan buka berkas dari panel sisi</title>
-  <p>Cara paling umum untuk bertukar antar berkas dalam <app>gedit</app> adalah dengan memakai tab pada puncak jendela <app>gedit</app>. Dalam beberapa kasus, khususnya ketika Anda bekerja dengan sejumlah besar berkas yang terbuka, Anda mungkin merasakan lebih mudah memakai <app>panel sisi</app>.</p> 
+  <title>View and open files from the side panel</title>
+  <p>
+    The most common way to switch between files in <app>gedit</app> is by using
+    the tabs at the top of the <app>gedit</app> window. In some cases, though,
+    particularly when you are working with a large number of open files, you
+    may find it easier to use the side panel.
+  </p> 
 
-  <p>Untuk mengaktifkan <app>panel sisi</app>, pilih <guiseq><gui>Tilikan</gui> <gui>Panel Sisi</gui></guiseq>, atau cukup tekan tombol <key>F9</key>.</p>
+  <p>
+    To activate the side panel, select <guiseq><gui>View</gui>
+    <gui>Side Panel</gui></guiseq>, or just press the <key>F9</key> key.
+  </p>
 
   <note style="note">
-    <p>Anda dapat membuka atau menutup <gui>panel sisi</gui> dengan menekan <key>F9</key> kapanpun.</p>
+    <p>
+      You can toggle the side panel open or closed by pressing
+      <key>F9</key> at any time.
+    </p>
   </note>
 
+<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
-    <title>Membuka berkas dari panel sisi</title>
-    <p>Untuk membuka berkas dari <app>panel sisi</app>, pertama buka <app>panel sisi</app> dengan memilih <guiseq><gui>Tilikan</gui> <gui>Panel Sisi</gui></guiseq>, lalu klik ikon <gui>file-browser</gui> di dasar panel.</p>
+    <title>Opening files from the side panel</title>
+    <p>
+      To open files from the side panel, first open the
+      side panel by selecting <guiseq><gui>View</gui>
+      <gui>Side Panel</gui></guiseq> (or just press
+      <key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown
+      at the top of the panel.
+    </p>
 
-    <media type="image" mime="image/png" src="figures/gedit-side-pane1.png" its:translate="no"/>
-
-    <p>Ini akan mengaktifkan mode <em>peramban-berkas</em> dari <app>panel sisi</app>. Anda kemudian dapat memakai tombol navigasi di puncak panel untuk mencari dan membuka berkas yang Anda inginkan.</p>
+    <p>
+      This will activate the <em>File Browser</em> mode of the
+      side panel. You can then use the navigation buttons at the top
+      of the panel to locate and open your desired files.
+    </p>
   </section>
 
   <section id="sidepane-switch">
-    <title>Menggunakan panel sisi untuk bertukar antara berkas yang terbuka</title>
-    <p>Sekali Anda memiliki beberapa berkas yang terbuka, Anda dapat memakai panel sisi untuk berpindah antara berkas yang terbuka. Untuk mengaktifkan bagian peramban berkas dari <app>panel sisi</app>, klik pada ikon <gui>berkas</gui> di dasar <gui>panel sisi</gui>.</p>
-    
-    <media type="image" mime="image/png" src="figures/gedit-side-pane2.png" its:translate="no"/>
+    <title>Using the side panel to switch between open files</title>
+    <p>
+      Once you have several files open, you can use the side panel to switch
+      between open files. To list open files, choose <gui>Documents</gui>
+      from the dropdown at the top of the panel.
+    </p>
 
-    <p>Mengklik pada sebarang nama berkas pada <gui>panel sisi</gui> akan membuka berkas tersebut untuk penyuntingan.</p>
+    <p>
+      Clicking on any file name in the side panel will open that file
+      for editing.
+    </p>
   </section>
  
  </page>

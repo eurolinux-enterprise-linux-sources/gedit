@@ -72,30 +72,36 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Greffons gedit supplémentaires</title>
 
-  <p>L'installation de greffons de tierce-partie procure des fonctionnalités supplémentaires non incluses dans les greffons <app>gedit</app> par défaut et dans le paquet <app>gedit-plugins</app>. Une liste en ligne de greffons de tierce-partie est maintenue à jour <link href="https://wiki.gnome.org/Apps/Gedit">ici</link>.</p>
+  <p>L’installation de greffons de tierce-partie procure des fonctionnalités supplémentaires non incluses dans les greffons <app>gedit</app> par défaut et dans le paquet <app>gedit-plugins</app>. Une liste en ligne de greffons de tierce-partie est maintenue à jour <link href="https://wiki.gnome.org/Apps/Gedit">ici</link>.</p>
   
-  <p>L'installation d'un greffon de tierce-partie consiste à télécharger le greffon, à la mise en place des fichiers du greffon dans le bon répertoire et à l'activation du greffon.</p>
+  <p>L’installation d’un greffon de tierce-partie consiste à télécharger le greffon, à la mise en place des fichiers du greffon dans le bon répertoire et à l’activation du greffon.</p>
   
   <steps>
-    <item><p>Vous pouvez normalement télécharger un greffon à partir du site Web du greffon mais il peut être nécessaire d'installer des programmes de contrôle de version comme <app>git</app>, <app>bazaar</app> ou <app>subversion</app> pour copier un dépôt logiciel de greffon à partir d'internet. Consultez la documentation du greffon pour apprendre comment récupérer le greffon.</p></item>
+    <item><p>Vous pouvez normalement télécharger un greffon à partir du site Web du greffon mais il peut être nécessaire d’installer des programmes de contrôle de version comme <app>git</app>, <app>bazaar</app> ou <app>subversion</app> pour copier un dépôt logiciel de greffon à partir d’internet. Consultez la documentation du greffon pour apprendre comment récupérer le greffon.</p></item>
     <item><p>Placez les fichiers du greffon dans le dossier <file>/home/<var>nom_utilisateur</var>/.local/share/gedit/plugins</file>.</p>
-    <p>Bien sûr, remplacez le terme <var>nom_utilisateur</var>par votre propre nom d'utilisateur.</p></item>
-    <item><p>Après avoir mis les fichiers du greffon dans le répertoire correct, le greffon apparaît dans le menu Préférences. Sélectionnez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui><gui>[nom du greffon]</gui></guiseq> pour activer le greffon.</p></item>
+    <p>Bien sûr, remplacez le terme <var>nom_utilisateur</var>par votre propre nom d’utilisateur.</p></item>
+    <item><p>Après avoir mis les fichiers du greffon dans le répertoire correct, le greffon apparaît dans le menu Préférences. Sélectionnez <guiseq><gui>Édition</gui><gui style="menuitem">Préférences</gui><gui>Greffons</gui><gui>[nom du greffon]</gui></guiseq> pour activer le greffon.</p></item>
     <item><p>Cliquez sur <gui>Fermer</gui>.</p></item>
   </steps>
   
   <p>Après avoir activé le greffon, il devrait être prêt à être utilisé.</p>
   
   <note style="tip">
-    <p>Le répertoire <file>.local</file> est caché par défaut. Pour l'afficher ainsi que tous les autres fichiers cachés, cliquez sur <guiseq><gui>Affichage</gui><gui>Afficher les fichiers cachés</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+    <p>Le répertoire <file>.local</file> est caché par défaut. Pour l’afficher ainsi que tous les autres fichiers cachés, cliquez sur <guiseq><gui>Affichage</gui><gui>Afficher les fichiers cachés</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
   </note>
 
   <note style="tip">
-    <p>Si le répertoire <file>.local/share/gedit/plugins/</file> n'existe pas, vous devez le créer.</p>
+    <p>Si le répertoire <file>.local/share/gedit/plugins/</file> n’existe pas, vous devez le créer.</p>
   </note>
   
 </page>

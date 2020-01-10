@@ -26,6 +26,13 @@ from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
     app = GObject.Property(type=Gedit.App)
@@ -37,7 +44,7 @@ class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
         self.app.add_accelerator("<Primary><Alt>O", "win.quickopen", None)
 
         self.menu_ext = self.extend_menu("file-section")
-        item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
+        item = Gio.MenuItem.new(_("Quick Open…"), "win.quickopen")
         self.menu_ext.prepend_menu_item(item)
 
     def do_deactivate(self):

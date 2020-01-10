@@ -3,18 +3,29 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="first"/>
-    <desc>Learn the basics of how to work with files in gedit.</desc>
+    <desc>Lär dig grunderna i hur du arbetar med filer i gedit.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>File basics: Open, close, and save files</title>
+  <title>Filgrunder: öppna, stänga och spara filer</title>
 
-  <p>If you are new to <app>gedit</app>, these topics will help you with
-  creating, saving, and opening and closing files.</p>
+  <p>Om du är nybörjare med <app>gedit</app> kommer dessa ämnen att hjälpa dig med att skapa, spara, öppna och stänga filer.</p>
   <links type="topic" groups="first second third fourth fifth sixth" style="2column"/>
 </page>

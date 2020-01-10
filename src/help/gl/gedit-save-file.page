@@ -3,9 +3,10 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Save your file to work on it later.</desc>
+    <desc>Garde o seu ficheiro para traballar nel máis tarde.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -30,18 +31,18 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
   <title>Gardar un ficheiro</title>
 
-  <p>To save a file in <app>gedit</app>, click on the
-  <gui style="button">Save the current file</gui> button with the disk-drive
-  icon on the right side of the toolbar or just press
-  <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>If you are saving a
-  new file, the <gui>Save As</gui> dialog will appear, and you can select a
-  name for the file, as well as the directory where you would like the file
-  to be saved.</p>
+  <p>Para gardar un ficheiro co <app>gedit</app>, prema no botón <gui style="button">Gardar</gui> na parte dereita da barra de ferramentas ou prema <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Se está gardando un ficheiro novo, aparecerá unha caixa de diálogo e poderá seleccionar un nome para o ficheiro así como o cartafol no que quere gardalo.</p>
 
 </page>

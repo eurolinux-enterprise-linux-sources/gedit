@@ -36,7 +36,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -52,7 +52,7 @@
   <p>Daraufhin wird der <gui>Dateien öffnen</gui>-Dialog verborgen. Wählen Sie mit der Maus oder der Tastatur die zu öffnende Datei aus und klicken Sie anschließend auf <gui>Öffnen</gui>. Die von Ihnen ausgewählte Datei wird in einem neuen Reiter geöffnet.</p>
   <p>Um den <gui>Dateien öffnen</gui>-Dialog zu schließen, ohne eine Datei zu öffnen, klicken Sie auf <gui>Abbrechen</gui>.</p>
 
-  <note style="tip"><p>Sie können mit der <key>Strg</key>-Taste und der <key>Umschalttaste</key> mehrere Dateien gleichzeitig öffnen. Halten Sie die <key>Strg</key>-Taste gedrückt, um mehrere Dateien zu öffnen. Ein Klick auf <gui>Öffnen</gui> öffnet dann jede der ausgewählten Dateien</p>
+  <note style="tip"><p>Sie können mit der <key>Strg</key>-Taste und der <key>Umschalttaste</key> mehrere Dateien gleichzeitig öffnen. Halten Sie die <key>Strg</key>-Taste gedrückt, um mehrere Dateien zu öffnen. Ein Klick auf <gui>Öffnen</gui> öffnet dann jede der ausgewählten Dateien.</p>
 
   <!-- Insert Image Here -->
 

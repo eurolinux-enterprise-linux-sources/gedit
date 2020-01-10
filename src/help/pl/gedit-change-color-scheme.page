@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="gedit-change-color-scheme" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index#configure-gedit"/>
+    <desc>Zmiana kolorów tekstu i czcionki w programie gedit.</desc>
+    <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.15" date="2015-01-29" status="final"/>
+
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <credit type="editor">
+      <name>Jana Svarova</name>
+      <email its:translate="no">jana.svarova@gmail.com</email>
+      <years>2015</years>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+  <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Zmiana schematu kolorów</title>
+
+  <p><app>gedit</app> zawiera kilka różnych schematów kolorów, umożliwiając zmianę wyglądu głównego okna.</p>
+
+  <steps>
+    <title>Aby zmienić schemat kolorów:</title>
+    <item>
+      <p>Otwórz menu programu <gui style="menu">gedit</gui> na górnym pasku, a następnie wybierz <guiseq><gui style="menuitem">Preferencje</gui><gui>Czcionka i kolory</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Wybierz schemat kolorów.</p>
+    </item>
+  </steps>
+
+  <p>Nowy schemat kolorów zostanie zastosowany od razu.</p>
+
+  <section id="custom-color-scheme">
+    <title>Niestandardowy schemat kolorów</title>
+  <!-- I'm not sure if I should link to the wiki for this chunk of help, or if
+  I should describe it here.  I'm linking to the wiki for now because the wiki
+  page includes downloads and screenshots. I'm open to including the help here,
+  though. -->
+
+    <p>Można także używać schematów kolorów utworzonych przez innych, albo tworzyć i używać własnych.</p>
+
+    <p><link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">Strona wiki programu gedit</link> zawiera instrukcje instalacji niestandardowych schematów kolorów oraz przykładowe schematy, które można pobrać i używać.</p>
+  </section>
+
+</page>

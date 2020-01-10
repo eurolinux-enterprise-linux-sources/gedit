@@ -3,9 +3,10 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Save your file to work on it later.</desc>
+    <desc>Сохранение файла, чтобы продолжить работу с ним позже.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
       <email>jcampbell@gnome.org</email>
@@ -24,18 +25,18 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 
   <title>Сохранение файла</title>
 
-  <p>Чтобы сохранить файл в <app>gedit</app>, нажмите на кнопку <gui style="button">Сохранить текущий файл</gui> в виде значка диска справа на панели инструментов, или нажмите <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>При сохранении нового файла, появится диалоговое окно <gui>Сохранить как</gui>, в котором можно выбрать имя файла, а также каталог, в который будет сохранён файл.</p>
+  <p>Чтобы сохранить файл в <app>gedit</app>, нажмите на кнопку <gui style="button">Сохранить</gui> справа на панели инструментов, или просто нажмите <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>При сохранении нового файла, появится диалоговое окно, в котором можно выбрать имя файла, а также каталог в который будет сохранён файл.</p>
 
 </page>

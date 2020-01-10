@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Choose the pages that you want to print.</desc>
+    <desc>选择您想要打印的页。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Phil Bull</name>
@@ -32,26 +32,26 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Only print certain pages</title>
+  <title>仅打印特定页</title>
 
-  <p>You can selectively print only certain pages from the document. For
-  example, if you enter the page numbers "1,3,5-7,9", then only pages 1, 3,
-  5, 6, 7 and 9 will be printed. To print pages of your choice:</p>
+  <p>您可以有选择的只打印文档中指定的页。例如，如果您输入页码"1,3,5-7,9"，则只打印1, 3, 5, 6, 7, 9这几页。如何打印选择的页：</p>
 
   <steps>
    <item>
-    <p>Select <guiseq><gui style="menu">File</gui>
-    <gui style="menuitem">Print…</gui></guiseq>.</p>
+    <p>选择菜单 <guiseq><gui style="menu">文件</gui> <gui style="menuitem">打印...</gui></guiseq>。</p>
    </item>
    <item>
-    <p>In the <gui style="tab">General</gui> tab in the Print dialog choose
-    <gui style="radiobutton">Pages</gui> from the
-    <gui style="group">Range</gui> section.</p></item>
+    <p>在打印对话框<gui style="tab">常规</gui>标签页内从<gui style="group">范围</gui>区域中选择<gui style="radiobutton">页面</gui>。</p></item>
    <item>
-    <p>Type the numbers of the pages you want to print from the document,
-    separated by commas. Use a dash to specify a range of pages.</p>
+    <p>输入文档中需要打印的页码，以逗号分隔。使用短横线指定页码范围。</p>
    </item>
   </steps>
 

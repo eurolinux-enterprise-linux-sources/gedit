@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="zh-CN">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="zh-CN">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
+    <desc>使用键盘快捷键可实现更快的操作。</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -57,6 +57,12 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>快捷键</title>
@@ -67,8 +73,8 @@
     <title>标签相关的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>
@@ -90,27 +96,27 @@
         </tr>
         <tr>
           <td><p>关闭全部标签</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Reopen the most recently closed tab</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+          <td><p>重新打开最后关闭的标签</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>跳到第 <var>n</var> 个标签</p></td>
           <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>New tab group</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
+          <td><p>新标签页组</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Previous tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
+          <td><p>上一个标签页组</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Next tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
+          <td><p>下一个标签页组</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -119,17 +125,17 @@
     <title>文件操作的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document in a new window</p></td>
+          <td><p>在新窗口中创建新文档</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Create a new document in a new tab</p></td>
+          <td><p>在新标签中创建新文档</p></td>
           <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
@@ -137,7 +143,7 @@
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p>打开<gui>快速打开</gui>窗口。</p></td>
            <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
@@ -171,33 +177,33 @@
     <title>编辑文档的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Move to the beginning of the current line</p></td>
+          <td><p>移动到行首</p></td>
           <td><p><key>Home</key></p></td>
         </tr>
         <tr>
-          <td><p>Move to the end of the current line</p></td>
+          <td><p>移动到行尾</p></td>
           <td><p><key>End</key></p></td>
         </tr>
         <tr>
-          <td><p>Move to the beginning of the document</p></td>
+          <td><p>移动到文档起始位置</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move to the end of the document</p></td>
+          <td><p>移动到文档末尾位置</p></td>
           <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected word right one word</p></td>
+          <td><p>将选中的单词右移一个单词</p></td>
           <td><p><keyseq><key>Alt</key><key>→</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected word left one word</p></td>
+          <td><p>将选中的单词左移一个单词</p></td>
           <td><p><keyseq><key>Alt</key><key>←</key></keyseq></p></td>
         </tr>
         <tr>
@@ -245,16 +251,16 @@
           <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to upper case</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
+          <td><p>将选中的内容转换为大写</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to lower case</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
+          <td><p>将选中的内容转换为小写</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Toggle case of the selected text</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
+          <td><p>切换选中文本的大小写</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -263,22 +269,17 @@
     <title>显示和隐藏面板的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>显示/隐藏侧边栏</p></td>
+          <td><p>Show / hide the side panel</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
-        </tr>
-        <tr>
-          <td><p>Open the file menu</p></td>
+          <td><p>打开文件菜单</p></td>
           <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
@@ -288,8 +289,8 @@
     <title>搜索的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>
@@ -302,7 +303,7 @@
           <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Find the previous instance of the string</p></td>
+          <td><p>查找上一个匹配的字符串</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
@@ -310,7 +311,7 @@
           <td><p><keyseq><key>Ctrl</key><key>H</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Clear highlight</p></td>
+          <td><p>清除高亮</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq></p></td>
         </tr>
         <tr>
@@ -324,8 +325,8 @@
     <title>使用工具的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>
@@ -352,8 +353,8 @@
     <title>帮助的快捷键</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>操作</p></td>
+          <td><p>键盘快捷键</p></td>
         </tr>
       </thead>
       <tbody>

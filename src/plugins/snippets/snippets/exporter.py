@@ -22,6 +22,14 @@ import shutil
 import xml.etree.ElementTree as et
 from . import helper
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 class Exporter:
     def __init__(self, filename, snippets):
         self.filename = filename
@@ -77,7 +85,7 @@ class Exporter:
             os.chdir(curdir)
 
         if status != 0:
-            return _('The archive "%s" could not be created' % self.filename)
+            return _('The archive “%s” could not be created' % self.filename)
 
         # Remove the temporary directory
         shutil.rmtree(dirname)
@@ -94,10 +102,10 @@ class Exporter:
     def run(self):
         dirname = os.path.dirname(self.filename)
         if not os.path.exists(dirname):
-            return _('Target directory "%s" does not exist') % dirname
+            return _('Target directory “%s” does not exist') % dirname
 
         if not os.path.isdir(dirname):
-            return _('Target directory "%s" is not a valid directory') % dirname
+            return _('Target directory “%s” is not a valid directory') % dirname
 
         (root, ext) = os.path.splitext(self.filename)
 

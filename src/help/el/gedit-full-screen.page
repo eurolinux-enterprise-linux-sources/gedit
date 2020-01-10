@@ -6,6 +6,7 @@
     <desc>Ορισμός του gedit ώστε να χρησιμοποιεί ολόκληρη την οθόνη.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -65,7 +66,9 @@
   <section id="turn-off-full-screen">
     <title>Απενεργοποίηση λειτουργίας πλήρους οθόνης</title>
     <p>Για να απενεργοποιήσετε την κατάσταση πλήρους οθόνης και να επιστρέψετε στο τυπικό παράθυρο <app>gedit</app>, πατήστε <key>F11</key>.</p>
-    <p>Μπορείτε επίσης να μετακινήσετε τον δρομέα του ποντικιού σας στην κορυφή της οθόνης και να περιμένετε μέχρι να εμφανιστεί η <gui>γραμμή μενού</gui>. Όταν εμφανιστεί η <gui>γραμμή μενού</gui>, επιλέξτε <gui>Έξοδος από πλήρη οθόνη</gui>.</p>
+    <p>You can also move your mouse cursor to the top of the screen, and wait
+    for the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui>
+    appears, select the <gui>Leave Fullscreen</gui> button.</p>
   </section>
 
 </page>

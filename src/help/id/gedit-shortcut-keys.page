@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="id">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="id">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
+    <desc>Gunakan cara pintas papan tik untuk membantu Anda bekerja lebih cepat.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -43,7 +43,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
@@ -55,8 +61,8 @@
     <title>Tombol Pintasan terkait tab</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>
@@ -107,17 +113,17 @@
     <title>Tombol pintas untuk bekerja dengan berkas</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document in a new window</p></td>
+          <td><p>Buat dokumen baru di jendela baru.</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Create a new document in a new tab</p></td>
+          <td><p>Buat dokumen baru di tab baru</p></td>
           <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
@@ -125,7 +131,7 @@
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p>Buka jendela <gui>Buka Cepat</gui></p></td>
            <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
@@ -159,8 +165,8 @@
     <title>Tombol pintasan untuk menyunting berkas</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>
@@ -251,22 +257,17 @@
     <title>Tombol pintasan untuk menampilkan dan menyembunyikan panel</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Tampilkan / sembunyikan panel sisi</p></td>
+          <td><p>Show / hide the side panel</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
-        </tr>
-        <tr>
-          <td><p>Open the file menu</p></td>
+          <td><p>Buka menu berkas</p></td>
           <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
@@ -276,8 +277,8 @@
     <title>Tombol pintas untuk mencari</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>
@@ -312,8 +313,8 @@
     <title>Tombol pintas untuk perkakas</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>
@@ -340,8 +341,8 @@
     <title>Tombol pintasan untuk bantuan pengguna</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Aksi</p></td>
+          <td><p>Pintasan Papan Tik</p></td>
         </tr>
       </thead>
       <tbody>

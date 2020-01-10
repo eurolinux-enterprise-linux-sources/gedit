@@ -6,12 +6,7 @@ HELP_ID = gedit
 HELP_MEDIA = \
 	figures/gedit-html-snippet.png \
 	figures/gedit-icon.png \
-	figures/gedit-new-external-tool.png \
-	figures/gedit-open-location.png \
-	figures/gedit3-screenshot.png \
-	figures/gedit-side-pane1.png \
-	figures/gedit-side-pane2.png \
-	figures/gedit-side-pane3.png
+	figures/gedit3-screenshot.png
 
 HELP_FILES = \
 	gedit-change-color-scheme.page \
@@ -54,7 +49,7 @@ HELP_FILES = \
 	index.page \
 	legal.xml
 
-HELP_LINGUAS = ar bg ca cs da de el es eu fi fr gl hu id it ja ko lv oc pt_BR ro ru sl sv te th uk zh_CN zh_HK zh_TW
+HELP_LINGUAS = ar bg ca cs da de el es eu fi fr gl hu id it ja ko lv oc pl pt_BR ro ru sl sv te th uk zh_CN zh_HK zh_TW
 
 endif
 

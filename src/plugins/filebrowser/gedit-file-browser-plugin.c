@@ -792,7 +792,6 @@ on_virtual_root_changed_cb (GeditFileBrowserStore  *store,
 	g_settings_set_string (priv->settings,
 	                       FILEBROWSER_ROOT,
 	                       uri_root);
-	g_free (uri_root);
 
 	virtual_root = gedit_file_browser_store_get_virtual_root (store);
 
@@ -819,6 +818,7 @@ on_virtual_root_changed_cb (GeditFileBrowserStore  *store,
 	g_signal_handlers_disconnect_by_func (priv->window,
 	                                      G_CALLBACK (on_tab_added_cb),
 	                                      plugin);
+	g_free (uri_root);
 }
 
 static void
@@ -871,7 +871,11 @@ get_filename_from_path (GtkTreeModel *model,
 	GFile *location;
 	gchar *ret = NULL;
 
-	gtk_tree_model_get_iter (model, &iter, path);
+	if (!gtk_tree_model_get_iter (model, &iter, path))
+	{
+		return NULL;
+	}
+
 	gtk_tree_model_get (model, &iter,
 			    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
 			    -1);
@@ -900,7 +904,7 @@ on_confirm_no_trash_cb (GeditFileBrowserWidget *widget,
 	if (files->next == NULL)
 	{
 		normal = gedit_file_browser_utils_file_basename (G_FILE (files->data));
-	    	secondary = g_strdup_printf (_("The file \"%s\" cannot be moved to the trash."), normal);
+	    	secondary = g_strdup_printf (_("The file “%s” cannot be moved to the trash."), normal);
 		g_free (normal);
 	}
 	else
@@ -936,7 +940,7 @@ on_confirm_delete_cb (GeditFileBrowserWidget *widget,
 	if (paths->next == NULL)
 	{
 		normal = get_filename_from_path (GTK_TREE_MODEL (store), (GtkTreePath *)(paths->data));
-		message = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), normal);
+		message = g_strdup_printf (_("Are you sure you want to permanently delete “%s”?"), normal);
 		g_free (normal);
 	}
 	else

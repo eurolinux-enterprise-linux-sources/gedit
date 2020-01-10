@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
     <desc>Exit from the file you are using.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
       <email>jcampbell@gnome.org</email>
@@ -33,7 +34,10 @@
 
   <title>Затваряне на файл</title>
 
-  <p>За да затворите файл в <app>gedit</app>, изберете <guiseq><gui>Файл</gui><gui>Затваряне</gui></guiseq>. Също така можете да натиснете малкия „X“, който се намира в дясната част на раздела или да натиснете <keyseq><key>Ctrl</key> <key>W</key></keyseq>.</p>
+  <p>To close a file in <app>gedit</app>, select 
+  <gui style="menuitem">Close</gui>. Alternately, you can click the small "X" that 
+  appears on the right-side of the file's tab, or press <keyseq><key>Ctrl</key>
+  <key>W</key></keyseq>.</p>
   <p>Всяко от тези действия затваря файл в <app>gedit</app>. Ако сте направили промени във файла и не сте ги запазили, <app>gedit</app> ще ви подкани да ги запазите преди файлът да бъде затворен.</p>
 
 </page>

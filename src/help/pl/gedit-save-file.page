@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-save-file" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="gedit-files-basic" group="third"/>
+    <desc>Zapisywanie pliku na później.</desc>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email its:translate="no">tyagishobha@gmail.com</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Zapisywanie pliku</title>
+
+  <p>Aby zapisać plik w programie <app>gedit</app>, kliknij przycisk <gui style="button">Zapisz</gui> po prawej stronie paska narzędziowego lub naciśnij klawisze <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Jeśli zapisywany jest nowy plik, zostanie otwarte okno, w którym można wybrać jego nazwę, a także katalog, w którym go zapisać.</p>
+
+</page>

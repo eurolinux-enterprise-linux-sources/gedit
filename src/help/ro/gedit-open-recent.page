@@ -3,8 +3,9 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <desc>Access files that you have updated recently.</desc>
+    <desc>Accesarea fișierelor pe care le-ați actualizat recent.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -20,7 +21,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
@@ -28,7 +29,7 @@
 
   <p>În mod implicit, <app>gedit</app> oferă acces ușor la cinci din cele mai recent folosite fișiere. Puteți să deschideți un fișier folosit recent astfel:</p>
   <list type="numbered">
-    <item><p>Apăsați pe săgeata din dreapta butonului <gui>Deschidere</gui>.</p></item>
+    <item><p>Apăsați pe butonul <gui>Deschide</gui>.</p></item>
     <item><p><app>gedit</app> va afișa o listă cu cinci dintre cele mai recent folosite fișiere.</p></item>
     <item><p>Alegeți fișierul dorit, și se va deschide într-un tab nou.</p></item>
   </list>

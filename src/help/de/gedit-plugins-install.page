@@ -28,7 +28,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -46,7 +46,7 @@
   
   <steps>
     <item><p>Üblicherweise können Sie ein Plugin von dessen Webseite herunterladen, wofür eventuell ein Versionsverwaltungsprogramm wie <app>git</app>, <app>bazaar</app> oder <app>subversion</app> nötig sein könnte, um den Softwarebestand des Plugins aus dem Internet kopieren zu können. Schauen Sie für weitere Informationen in der Dokumentation zu dem Plugin nach.</p></item>
-    <item><p>Kopieren Sie die Plugindateien in den Ordner <file>/home/<var>Benutzername</var>/.local/share/gedit/plugins</file></p>
+    <item><p>Kopieren Sie die Plugindateien in den Ordner <file>/home/<var>Benutzername</var>/.local/share/gedit/plugins</file>.</p>
     <p>Natürlich müssen Sie das Wort <var>Benutzername</var> durch Ihren eigenen Benutzernamen ersetzen.</p></item>
     <item><p>Sobald Sie die Plugin-Dateien im richtigen Ordner installiert haben, erscheint das Plugin im Einstellungsmenü. Wählen Sie <guiseq><gui>Bearbeiten</gui><gui style="menuitem">Einstellungen</gui><gui>Plugins</gui><gui>[Name des Plugins]</gui></guiseq>, um es zu aktivieren.</p></item>
     <item><p>Klicken Sie auf <gui>Schließen</gui>.</p></item>

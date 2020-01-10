@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
-    <desc>Replace portions of text in a file.</desc>
+    <desc>Ganti bagian dari teks dalam sebuah berkas.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -37,7 +38,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
@@ -48,16 +55,15 @@
   <steps>
     <title>Mengganti teks dalam <app>gedit</app></title>
     <item>
-      <p>Open the <gui>Replace</gui> tool by clicking
-      <guiseq><gui style="button">Menu button</gui><gui style="menuitem">Find 
-      and Replace…</gui></guiseq> or press
-      <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
+      <p>Buka alat <gui>Gantikan</gui> dengan mengklik <guiseq><gui style="button">Tombol Menu</gui><gui style="menuitem">Cari dan Ganti…</gui></guiseq> atau tekan <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
-      <p>Masukkan teks yang hendak Anda ganti ke dalam ruas <gui>Mencari:</gui>.</p>
+      <p>Enter the text that you wish to replace into the <gui>Find</gui>
+      field.</p>
     </item>
     <item>
-      <p>Masukkan teks pengganti yang baru ke dalam ruas <gui>Ganti dengan:</gui>.</p>
+      <p>Enter the new, replacement text into the <gui>Replace with</gui>
+      field.</p>
     </item>
     <item>
       <p>Sekali Anda telah memasukkan teks asli dan pengganti, Anda dapat menambah parameter ekstra ke pencarian. Anda juga bisa memilih apa yang ingin Anda gantikan:</p>
@@ -105,8 +111,7 @@
 <section id="escape-sequences">
   <title>Memakai urutan escape</title>
 
-  <p>You can use <em>escape sequences</em> to search for line breaks, carriage
-  returns, and tabs.</p>
+  <p>Anda dapat memakai <em>urutan escape</em> untuk untuk jeda baris, tombol kembali, dan tab.</p>
 
   <terms>
     <item>

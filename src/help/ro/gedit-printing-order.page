@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="ro">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="ro">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Set the pages to print in a certain order.</desc>
+    <desc>Stabilește paginile de tipărit într-o ordine specifică.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -25,52 +25,41 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
-<title>Getting Copies To Print In The Correct Order</title>
+<title>Obținerea cópiilor de tipărit în ordinea corectă</title>
 
   <section id="printing-reverse">
-    <title>Reverse</title>
+    <title>Inversă</title>
 
-    <p>Printers usually print the first page first, and the last page last, so
-    the pages end up in reverse order when you pick them up. To reverse the
-    order:</p>
+    <p>Imprimantele tipăresc de obicei prima pagină prima și ultima pagină ultima, așa că paginile ajung în ordine inversă când le luați de la imprimantă. Pentru a inversa ordinea:</p>
 
     <steps>
       <item>
-        <p>Select <guiseq><gui style="menu">File</gui>
-        <gui style="menuitem">Print</gui></guiseq>.</p>
+        <p>Selectați <guiseq><gui style="menu">Fișier</gui> <gui style="menuitem">Tipărește</gui></guiseq>.</p>
       </item>
       <item>
-        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
-        <gui style="group">Copies</gui>, check
-        <gui style="checkbox">Reverse</gui>.</p>
+        <p>În tabul <gui style="tab">Generale</gui> al dialogului „Tipărește” sub <gui style="group">Cópii</gui>, bifați <gui style="checkbox">Inversat</gui>.</p>
       </item>
     </steps>
 
-    <p>The last page will be printed first, and so on.</p>
+    <p>Ultima pagină va fi tipărită prima, și așa mai departe.</p>
 </section>
 
   <section id="printing-collate">
-    <title>Collate</title>
+    <title>Asamblat</title>
     
-    <p>If you are printing more than one copy of the document, the print outs
-    will be grouped by page number by default. (e.g. The copies of page one come
-    out, then the copies of page two, etc.) Collating will make each copy come
-    out with its pages grouped together.</p>
+    <p>Dacă tipăriți mai mult de o copie a documentului, rezultatul va fi grupat în mod implicit după numărul paginii. (De exemplu copiile pagini unu sunt gata, apoi copiile paginii doi, etc.) Asamblarea va face ca fiecare copie să iasă cu paginilie grupate împreună.</p>
 
-    <p>To Collate:</p>
+    <p>Pentru a asambla:</p>
     <steps>
       <item>
-        <p>Click <guiseq><gui style="menu">File</gui>
-        <gui style="menuitem">Print</gui></guiseq>.</p>
+        <p>Apăsați pe <guiseq><gui style="menu">Fișier</gui> <gui style="menuitem">Tipărește</gui></guiseq>.</p>
       </item>
       <item>
-        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
-        <gui style="group">Copies</gui> check
-        <gui style="checkbox">Collate</gui>.</p>
+        <p>În tabul <gui style="tab">Generale</gui> al dialogului „Tipărește” sub <gui style="group">Cópii</gui>, bifați <gui style="checkbox">Colaj</gui>.</p>
       </item>
     </steps>
 

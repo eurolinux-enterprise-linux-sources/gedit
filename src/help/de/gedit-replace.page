@@ -8,6 +8,7 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -49,7 +50,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -69,10 +70,10 @@
       <p>Öffnen Sie das Werkzeug <gui>Ersetzen</gui> über <guiseq><gui style="menu">Menü</gui><gui style="menuitem">Suchen und Ersetzen …</gui></guiseq> oder drücken Sie <keyseq><key>Strg</key><key>H</key></keyseq>.</p>
     </item>
     <item>
-      <p>Geben Sie den zu ersetzenden Text im Feld <gui>Suchen nach:</gui> ein.</p>
+      <p>Geben Sie den zu ersetzenden Text im Feld <gui>Suchen</gui> ein.</p>
     </item>
     <item>
-      <p>Geben Sie den neuen Ersatztext im Feld <gui>Ersetzen durch:</gui> ein.</p>
+      <p>Geben Sie den neuen Ersatztext im Feld <gui>Ersetzen durch</gui> ein.</p>
     </item>
     <item>
       <p>Sobald Sie den ursprünglichen als auch den Ersetzungstext eingegeben haben, haben Sie die Möglichkeit zusätzliche Suchparameter festzulegen. Wählen Sie auch aus, was Sie ersetzen wollen:</p>

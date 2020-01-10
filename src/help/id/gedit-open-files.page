@@ -7,7 +7,7 @@
     <link type="seealso" xref="gedit-close-file"/>
     <link type="seealso" xref="gedit-open-recent"/>
     <link type="seealso" xref="gedit-quickstart"/>
-    <desc>Open files to start working on them.</desc>
+    <desc>Membuka berkas untuk mulai bekerja.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
 
@@ -24,7 +24,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 

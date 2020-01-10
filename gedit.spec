@@ -11,16 +11,16 @@
 %endif
 
 %global glib2_version 2.44
-%global gtk3_version 3.21.3
-%global gtksourceview_version 3.21.2
+%global gtk3_version 3.22.0
+%global gtksourceview_version 3.22.0
 %global libpeas_version 1.14.1
 %global gspell_version 0.2.5
 %global pygo_version 3.0.0
 
 Name:		gedit
 Epoch:		2
-Version:	3.22.0
-Release:	3%{?dist}
+Version:	3.28.1
+Release:	1%{?dist}
 Summary:	Text editor for the GNOME desktop
 
 License:	GPLv2+ and GFDL
@@ -98,7 +98,6 @@ Install gedit-devel if you want to write plugins for gedit.
 
 %prep
 %setup -q
-cp -f $RPM_SOURCE_DIR/ja.po po
 
 %patch4 -p1 -b .disable-python
 
@@ -135,7 +134,7 @@ X-RHEL-AliasOf=org.gnome.gedit
 EOF
 
 %check
-appstream-util validate-relax --nonet $RPM_BUILD_ROOT/%{_datadir}/appdata/org.gnome.gedit.appdata.xml
+appstream-util validate-relax --nonet $RPM_BUILD_ROOT/%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.gedit.desktop
 
 %post
@@ -192,7 +191,7 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_libdir}/gedit/plugins/time.plugin
 %{_libdir}/gedit/plugins/libtime.so
 %{_bindir}/*
-%{_datadir}/appdata/org.gnome.gedit.appdata.xml
+%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
 %{_datadir}/GConf/gsettings
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.enums.xml
@@ -213,6 +212,10 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_datadir}/vala/
 
 %changelog
+* Tue Jun 05 2018 Ray Strode <rstrode@redhat.com> - 2:3.28.1-1
+- Update to 3.28.1
+  Resolves: #1567311
+
 * Tue May 30 2017 Ray Strode <rstrode@redhat.com> - 2:3.22.0-3
 - add improved japanese translation
   Resolves: #1382638

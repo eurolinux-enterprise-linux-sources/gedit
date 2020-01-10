@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-open-on-server" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="gedit-files-basic" group="sixth"/>
+    <desc>Otwieranie plików przechowywanych na innym komputerze.</desc>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Otwieranie pliku położonego na serwerze</title>
+
+  <p>Przed otwarciem pliku na serwerze z poziomu programu <app>gedit</app> należy poznać pewne informacje techniczne o serwerze. Na przykład, trzeba znać adres IP lub adres URL serwera, a być może także rodzaj serwera (np. HTTP, FTP itp.).</p>
+
+  <p>Niektóre typy serwerów nakładają ograniczenia na to, co można robić z plikami na nich przechowywanymi. Na przykład, czasami można otwierać pliki z serwera, ale zmiany trzeba zapisywać lokalnie, na własnym komputerze.</p>
+
+  <p>Pamiętając o tym, wykonaj te kroki, aby otworzyć plik z serwera za pomocą programu <app>gedit</app>:</p>
+
+    <steps>
+      <item><p>Kliknij przycisk <gui>Otwórz</gui> na pasku tytułu.</p></item>
+      <item><p>Kliknij przycisk <gui>Inne dokumenty…</gui>.</p></item>
+      <item><p>Naciśnij klawisze <keyseq><key>Ctrl</key><key>L</key></keyseq> w oknie <gui>Otwarcie</gui>.</p></item>
+      <item><p>Wpisz adres IP lub adres URL odpowiedniego serwera.</p></item>
+      <item><p>Znajdź i zaznacz plik do otwarcia.</p></item>
+      <item><p>Użyj rozwijanej listy „Kodowanie znaków”, aby wybrać odpowiednie kodowanie znaków.</p></item>
+      <item><p>Kliknij przycisk <gui>Otwórz</gui>.</p></item>
+    </steps>
+
+  <p>Prawidłowe typy adresów URI to http:, ftp:, file: i wszystkie metody obsługiwane przez bibliotekę <app>gvfs</app>.</p>
+
+  <note>
+    <p>Pliki z niektórych typów adresów URI są otwierane tylko do odczytu, i wszystkie wprowadzone zmiany muszą być zapisywane w innym miejscu. Na przykład, protokół HTTP umożliwia tylko odczyt plików. Pliki otwarte z serwera FTP są tylko do odczytu, ponieważ nie wszystkie serwery FTP poprawnie zapisują zdalne pliki.</p>
+  </note>
+
+</page>

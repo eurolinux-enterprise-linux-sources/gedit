@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files" group="first"/>
-    <desc>Learn the basics of how to work with files in gedit.</desc>
+    <desc>学习对文件的基础操作。</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -27,6 +27,12 @@
       <mal:name>wancheng zhang</mal:name>
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
     </mal:credit>
   </info>
 

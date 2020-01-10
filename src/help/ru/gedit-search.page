@@ -4,8 +4,9 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <desc>Find a portion of text within a file.</desc>
+    <desc>Поиск участка текста в файле.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
       <email>jcampbell@gnome.org</email>
@@ -27,13 +28,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 
@@ -65,9 +66,6 @@
       <item>
         <p>Нажмите <keyseq><key>Ctrl</key><key>G</key></keyseq> или <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Нажмите кнопку <key>Ctrl</key> и с помощью мыши или <key>прокрутки</key> на тачпаде перемещайтесь вверх или вниз по тексту.</p>
-      </item>
     </list>
 
   <p>Чтобы закрыть <gui>окно поиска</gui>, нажмите клавишу <key>Esc</key> или <key>Enter</key>. Нажатие клавиши <key>Esc</key> перенесёт указатель на позицию до начала поиска. Нажатие клавиши <key>Enter</key> перенесёт указатель на позицию текущего результата поиска.</p>
@@ -92,7 +90,7 @@
       </list>
     </item>
     <item>
-      <p>Найденный текст будет оставаться подсвеченным gedit, даже после завершения поиска. Чтобы снять выделение, выберите <guiseq><gui>Поиск</gui><gui>Очистить подсветку</gui></guiseq>, или нажмите <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      <p>Найденный текст будет оставаться подсвеченным gedit, даже после завершения поиска. Чтобы снять выделение, выберите <gui style="menuitem">Очистить подсветку</gui>, или нажмите <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

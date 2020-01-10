@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Use administrative privileges to edit a file.</desc>
+    <desc>Utilizarea privilegiilor administrative pentru a edita un fișier.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -20,28 +20,28 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Editarea unui fișier ca utilizator root</title>
 
   <note style="warning">
-    <p>Editarea fișierelor ca root (administrator) este potențial periculos, și poate strica sistemul în moduri rele. Aveți mare grijă atunci când editați fișiere ca root (administrator).</p>
+    <p>Editarea fișierelor ca root (administrator) este potențial periculoasă, și poate aduce daune sistemului. Aveți mare grijă atunci când editați fișiere ca root (administrator).</p>
   </note>
 
   <p>Pentru a edita fișiere ca administrator, porniți <app>gedit</app> din terminal introducând:</p>
   <code>sudo gedit</code>
 
-  <p>Folosind comanda <cmd>sudo</cmd>, va trebui să introduceți cu succes parola înainte de a se deschide <app>gedit</app>.</p>
+  <p>Folosind comanda <cmd>sudo</cmd>, va trebui să introduceți cu succes parola înainte de a deschide <app>gedit</app>.</p>
 
   <p>Ca alternativă la comanda <cmd>sudo</cmd>, puteți obține privilegii administrative introducând:</p>
   <code>su -</code>
 
-  <p>Apoi ați lansa <app>gedit</app> utilizând comanda <cmd>gedit</cmd>.</p>
+  <p>Apoi puteți lansa <app>gedit</app> utilizând comanda <cmd>gedit</cmd>.</p>
 
   <note style="tip">
-    <p>Odată ce ați deschis <app>gedit</app> cu privilegii administrative, <app>gedit</app> va reține acele privilegii până îl închideți.</p>
+    <p>Odată ce ați deschis <app>gedit</app> cu privilegii administrative, <app>gedit</app> va reține acele privilegii până la închidere.</p>
   </note>
 
 </page>

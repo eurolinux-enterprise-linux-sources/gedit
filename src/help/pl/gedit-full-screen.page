@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="gedit-full-screen" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index#configure-gedit"/>
+    <desc>Używanie programu gedit na pełnym ekranie.</desc>
+    <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email its:translate="no">tyagishobha@gmail.com</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Tryb pełnoekranowy</title>
+
+  <p>Tryb pełnoekranowy programu <app>gedit</app> może ułatwić pracę z dużym dokumentem. Ten tryb ukryje <gui>pasek menu</gui>, <gui>pasek kart</gui> i <gui>pasek narzędziowy</gui>, wyświetlając więcej tekstu i umożliwiając skupienie się na pracy.</p>
+
+  <section id="turn-on-full-screen">
+    <title>Włączanie trybu pełnoekranowego</title>
+    <p>Aby włączyć tryb pełnoekranowy, naciśnij klawisz <key>F11</key>. Paski menu, tytułu i kart programu <app>gedit</app> zostaną ukryte, i wyświetlany będzie tylko tekst bieżącego pliku.</p>
+    <p>Jeśli potrzeba wykonać działanie z menu programu <app>gedit</app> podczas pracy w trybie pełnoekranowym, przesuń kursor myszy na górę ekranu. Pojawi się pasek menu programu <app>gedit</app>, z którego można wybrać odpowiednie działanie.</p>
+
+    <note>
+      <p>Aby przełączyć między otwartymi kartami w trybie pełnoekranowym, naciśnij klawisze <keyseq><key>Ctrl</key><key>Alt</key><key>Page Up</key></keyseq> lub <keyseq><key>Ctrl</key><key>Alt</key><key>Page Down</key></keyseq>.</p>
+    </note>
+
+  </section>
+
+  <section id="turn-off-full-screen">
+    <title>Wyłączanie trybu pełnoekranowego</title>
+    <p>Aby wyłączyć tryb pełnoekranowy i wrócić do standardowego okna programu <app>gedit</app>, naciśnij klawisz <key>F11</key>.</p>
+    <p>Można także przesunąć kursor myszy na górę ekranu i poczekać na pojawienie się <gui>paska menu</gui>, po czym kliknąć przycisk <gui>Wyłącz tryb pełnoekranowy</gui>.</p>
+  </section>
+
+</page>

@@ -5,7 +5,7 @@
     <link type="guide" xref="index"/>
     <link type="seealso" xref="gedit-open-files"/>
     <link type="seealso" xref="gedit-close-file"/>
-    <desc>A brief introduction to gedit.</desc>
+    <desc>En kort introduktion till gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -16,22 +16,27 @@
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Get started with gedit</title>
-  <p><app>gedit</app> is a full-featured text editor for the GNOME desktop
-  environment. You can use it to prepare simple notes and documents, or you
-  can use some of its advanced features, making it your own software
-  development environment.</p>
+  <title>Kom igång med gedit</title>
+  <p><app>gedit</app> är en komplett textredigerare för skrivbordsmiljön GNOME. Du kan använda den för att förbereda enkla anteckningar och dokument, eller så kan du använda några av dess avancerade funktioner så att den blir din egen programvaruutvecklingsmiljö.</p>
 
   <media type="image" mime="image/png" src="figures/gedit3-screenshot.png"/>
 
-  <p>Once <app>gedit</app> launches, you can start writing right away. To save
-  your text, just click the <gui>Save</gui> icon in the <app>gedit</app>
-  toolbar.</p>
+  <p>Då <app>gedit</app> startar kan du börja skriva direkt. För att spara din text klickar du bara på <gui>Spara</gui>-ikonen i <app>gedit</app>-verktygsfältet.</p>
 
-  <p>To learn about additional <app>gedit</app> features and to get assistance
-  with performing additional tasks, explore <link xref="index">the other
-  portions</link> of the <app>gedit</app> help.</p>
+  <p>För att lära dig om ytterligare funktioner i <app>gedit</app> och för att få hjälp med att utföra andra uppgifter, utforska <link xref="index">de andra avsnitten</link> i hjälpen för <app>gedit</app>.</p>
 
 </page>

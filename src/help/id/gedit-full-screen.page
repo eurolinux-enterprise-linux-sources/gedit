@@ -3,9 +3,10 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Set gedit to use the entire screen.</desc>
+    <desc>Setel gedit untuk menggunakan seluruh layar.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -19,7 +20,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
@@ -41,7 +48,9 @@
   <section id="turn-off-full-screen">
     <title>Matikan mode layar penuh</title>
     <p>Untuk mematika mode layar penuh dan kembalik ke jendela <app>gedit</app> standar, tekan <key>F11</key>.</p>
-    <p>Anda juga dapat menggerakkan kursor tetikus Anda ke puncak layar, dan menunggu <gui>bilah menu</gui> muncul. Ketika <gui>bilah menu</gui> muncul, pilih <gui>Tinggalkan Layar Penuh</gui>.</p>
+    <p>You can also move your mouse cursor to the top of the screen, and wait
+    for the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui>
+    appears, select the <gui>Leave Fullscreen</gui> button.</p>
   </section>
 
 </page>

@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Access files that you have updated recently.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
       <email>jcampbell@gnome.org</email>
@@ -34,7 +35,7 @@
 
   <p><app>gedit</app> предоставя бърз достъп до петте последно използвани файла. Ето как можете да отворите последно използван файл:</p>
   <list type="numbered">
-    <item><p>Натиснете стрелката сочеща надолу от дясната страна на бутона <gui>Отваряне</gui>.</p></item>
+    <item><p>Click the <gui>Open</gui> button.</p></item>
     <item><p><app>gedit</app> ще покаже списък на петте последно използвани файла.</p></item>
     <item><p>Изберете желания файл и той ще бъде отворен в нов раздел.</p></item>
   </list>

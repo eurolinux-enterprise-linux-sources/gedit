@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Εύρεση τμήματος κειμένου μέσα σε ένα αρχείο.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -83,9 +84,6 @@
       <item>
         <p>Πατήστε <keyseq><key>Ctrl</key><key>G</key></keyseq> ή <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Πατήστε το <key>Ctrl</key> και χρησιμοποιήστε τη λειτουργία <key>κύλισης</key> του ποντικιού σας ή της πινακίδας αφής για να μετακινηθείτε πάνω ή κάτω στο κείμενο.</p>
-      </item>
     </list>
 
   <p>Για να κλείσετε το <gui>παράθυρο αναζήτησης</gui>, πατήστε είτε το <key>Esc</key> ή το <key>Enter</key>. Πατώντας το <key>Esc</key> ο δρομέας θα επιστρέψει εκεί που ήταν πριν την αναζήτηση. Πατώντας το <key>Enter</key> θα επιστρέψει στην τωρινή θέση των αποτελεσμάτων της αναζήτησης.</p>
@@ -110,7 +108,10 @@
       </list>
     </item>
     <item>
-      <p>Το κείμενο που αναζητήσατε παραμένει σημειωμένο από το gedit, ακόμη και αν έχετε ολοκληρώσει την αναζήτηση σας. Για να αφαιρέσετε την επισήμανση, πατήστε στην <guiseq><gui>Αναζήτηση</gui><gui>Εκκαθάριση επισήμανσης</gui></guiseq>, ή πατήστε press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      <p>The text that you've searched for will remain highlighted by gedit,
+      even after you have completed your search. To remove the highlight,
+      click <gui style="menuitem">Clear Highlight</gui>, or
+      press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

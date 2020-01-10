@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index"/>
+    <desc>Korzystanie ze skrótów klawiszowych, aby przyspieszyć pracę.</desc>
+    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
+    <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email its:translate="no">jcampbell@gnome.org</email>
+    </credit>
+    <credit type="author">
+      <name>Paolo Borelli</name>
+    </credit>
+    <credit type="author">
+      <name>Jesse van den Kieboom</name>
+    </credit>
+    <credit type="author">
+      <name>Steve Frécinaux</name>
+    </credit>
+    <credit type="author">
+      <name>Ignacio Casal Quinteiro</name>
+    </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email its:translate="no">sindhus@live.in</email>
+    </credit>
+    <credit type="author copyright">
+      <name>Radina Matic</name>
+      <email its:translate="no">radina.matic@gmail.com</email>
+      <years>2013</years>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Klawisze skrótów</title>
+
+  <p><gui>Klawisze skrótów</gui> przyspieszają wykonywanie często używanych funkcji. Poniższa lista zawiera wszystkie skróty klawiszowe programu <app>gedit</app>.</p>
+
+    <table rules="rows" frame="top bottom" ui:expanded="true">
+    <title>Skróty związane z kartami</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Przełączenie na następną kartę po lewej</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>Page Up</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przełączenie na następną kartę po prawej</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>Page Down</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zamknięcie karty</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zapisanie wszystkich kart</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zamknięcie wszystkich kart</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Ponowne otwarcie ostatnio zamkniętej karty</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przejście do <var>n</var>-tej karty</p></td>
+          <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Nowa grupa kart</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Poprzednia grupa kart</p></td>
+          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page Up</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Następna grupa kart</p></td>
+          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page Down</key></keyseq></p></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <title>Skróty związane z plikami</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Utworzenie nowego dokumentu w nowym oknie</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Utworzenie nowego dokumentu w nowej karcie</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Otwarcie dokumentu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+           <td><p>Otwarcie okna <gui>Szybkie otwarcie</gui></p></td>
+           <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zapisanie bieżącego dokumentu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>S</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zapisywanie bieżącego dokumentu pod nową nazwą pliku</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wydrukowanie bieżącego dokumentu</p></td>
+          <td><p><keyseq><key>Ctrl </key><key>P</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Podgląd wydruku</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zamknięcie bieżącego dokumentu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zakończenie programu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Q</key></keyseq></p></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <title>Skróty związane z redakcją</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Przejście na początek bieżącego wiersza</p></td>
+          <td><p><key>Home</key></p></td>
+        </tr>
+        <tr>
+          <td><p>Przejście na koniec bieżącego wiersza</p></td>
+          <td><p><key>End</key></p></td>
+        </tr>
+        <tr>
+          <td><p>Przejście na początek dokumentu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przejście na koniec dokumentu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przeniesienie zaznaczonego słowa w prawo o jedno słowo</p></td>
+          <td><p><keyseq><key>Alt</key><key>Strzałka w prawo</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przeniesienie zaznaczonego słowa w lewo o jedno słowo</p></td>
+          <td><p><keyseq><key>Alt</key><key>Strzałka w prawo</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Cofnięcie ostatniego działania</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Z</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Ponowienie ostatnio cofniętego działania</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wycięcie zaznaczonego tekstu lub obszaru i umieszczenie go w schowku</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>X</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Skopiowanie zaznaczonego tekstu lub obszaru do schowka</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>C</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wklejenie zawartości schowka</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>V</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zaznaczenie całego tekstu w pliku</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>A</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Usunięcie bieżącego wiersza</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>D</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przeniesienie zaznaczonego wiersza w górę o jeden wiersz</p></td>
+          <td><p><keyseq><key>Alt</key><key>Strzałka w górę</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przeniesienie zaznaczonego wiersza w dół o jeden wiersz</p></td>
+          <td><p><keyseq><key>Alt</key><key>Strzałka w dół</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Dodanie tabulacji</p></td>
+          <td><p><keyseq><key>Tab</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Usunięcie tabulacji</p></td>
+          <td><p><keyseq><key>Shift</key><key>Tab</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zmiana zaznaczonego tekstu na wielkie znaki</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Zmiana zaznaczonego tekstu na małe znaki</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przełączenie wielkości znaków zaznaczonego tekstu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <title>Skróty do wyświetlania i ukrywania paneli</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Wyświetlenie/ukrycie panelu bocznego</p></td>
+          <td><p><key>F9</key></p></td>  
+        </tr>
+        <tr>
+          <td><p>Otwarcie menu pliku</p></td>
+          <td><p><key>F10</key></p></td>  
+        </tr>
+      </tbody>
+    </table>
+
+    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <title>Skróty do wyszukiwania</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Wyszukanie napisu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wyszukanie następnego wystąpienia napisu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wyszukanie poprzedniego wystąpienia napisu</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wyszukiwanie i zastępowanie</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>H</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wyłączanie wyróżniania</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Przejście do wiersza</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>I</key></keyseq></p></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <title>Skróty narzędzi</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Sprawdzanie pisowni</p></td>
+          <td><p><keyseq><key>Shift</key><key>F7</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Usuwanie spacji na końcach wierszy (za pomocą wtyczki)</p></td>
+          <td><p><keyseq><key>Alt</key><key>F12</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Wykonanie polecenia „make” w bieżącym katalogu (za pomocą wtyczki)</p></td>
+          <td><p><key>F8</key></p></td>
+        </tr>
+        <tr>
+          <td><p>Wyświetlenie zawartości katalogu (za pomocą wtyczki)</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq></p></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table rules="rows" frame="top bottom" ui:expanded="false">
+    <title>Skróty związane z pomocą</title>
+      <thead>
+        <tr>
+          <td><p>Działanie</p></td>
+          <td><p>Skrót klawiszowy</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p>Otwarcie podręcznika programu gedit</p></td>
+          <td><p><key>F1</key></p></td>
+        </tr>
+      </tbody>
+    </table>
+
+</page>

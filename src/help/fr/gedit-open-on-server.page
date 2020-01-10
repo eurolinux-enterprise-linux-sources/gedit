@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Accéder à des fichiers situés sur un autre ordinateur.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -70,29 +70,36 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Ouverture d'un fichier situé sur un serveur</title>
+  <title>Ouverture d’un fichier situé sur un serveur</title>
 
-  <p>Avant d'ouvrir un fichier sur un serveur à partir de <app>gedit</app>, vous devez posséder des informations techniques sur le serveur. Par exemple, vous devez connaître l'adresse IP ou l'URL du serveur et il est possible que vous deviez connaître le type du serveur (par ex. HTTP, FTP, etc.).</p>
+  <p>Avant d’ouvrir un fichier sur un serveur à partir de <app>gedit</app>, vous devez posséder des informations techniques sur le serveur. Par exemple, vous devez connaître l’adresse IP ou l’URL du serveur et il est possible que vous deviez connaître le type du serveur (par ex. HTTP, FTP, etc.).</p>
 
   <p>Certains types de serveurs imposent également des restrictions sur ce que vous pouvez faire avec les fichiers enregistrés sur le serveur. Par exemple, il se peut que vous puissiez ouvrir un fichier du serveur mais que vous deviez enregistrer les modifications du fichier localement sur votre propre ordinateur.</p>
 
-  <p>Après cette mise en garde, réalisez les actions suivantes pour ouvrir un fichier à partir d'un serveur en utilisant <app>gedit</app> :</p>
+  <p>Après cette mise en garde, réalisez les actions suivantes pour ouvrir un fichier à partir d’un serveur en utilisant <app>gedit</app> :</p>
 
     <steps>
-      <item><p>Choisissez <guiseq><gui>Fichier</gui><gui>Ouvrir</gui></guiseq> pour afficher la boîte de dialogue <gui>Ouverture de fichiers</gui>.</p></item>
-      <item><p>Sélectionnez l'icône <gui>Crayon</gui> en haut de la boîte de dialogue <gui>Ouverture de fichiers</gui>.</p></item>
-      <item><p>Saisissez l'adresse IP ou l'URL du serveur approprié.</p></item>
+      <item><p>Dans la barre de titre, cliquez sur <gui>Ouvrir</gui>.</p></item>
+      <item><p>Cliquez sur <gui>Autres documents…</gui>.</p></item>
+      <item><p>Appuyez sur <keyseq><key>Ctrl</key><key>L</key></keyseq> dans la boîte de dialogue <gui>Ouvrir</gui>.</p></item>
+      <item><p>Saisissez l’adresse IP ou l’URL du serveur approprié.</p></item>
       <item><p>Cherchez et sélectionnez le fichier que vous souhaitez ouvrir.</p></item>
       <item><p>Choisissez le codage qui convient dans la liste déroulante Codage des caractères.</p></item>
       <item><p>Cliquez sur <gui>Ouvrir</gui>.</p></item>
     </steps>
 
-  <p>Voici quelques exemples d'URI pouvant être utilisés : http:, ftp:, file: ainsi que toutes les méthodes prises en charge par <app>gvfs</app>.</p>
+  <p>Voici quelques exemples d’URI pouvant être utilisés : http:, ftp:, file: ainsi que toutes les méthodes prises en charge par <app>gvfs</app>.</p>
 
   <note>
-    <p>Les fichiers de certains types d'URI sont ouverts en lecture seule et toute modification d'un tel fichier doit être enregistrée à un autre emplacement. Par exemple, HTTP ne permet que l'accès en lecture aux fichiers. Les fichiers ouverts par FTP sont en lecture seule car certains serveurs FTP ne gèrent pas correctement l'enregistrement de fichiers distants.</p>
+    <p>Les fichiers de certains types d’URI sont ouverts en lecture seule et toute modification d’un tel fichier doit être enregistrée à un autre emplacement. Par exemple, HTTP ne permet que l’accès en lecture aux fichiers. Les fichiers ouverts par FTP sont en lecture seule car certains serveurs FTP ne gèrent pas correctement l’enregistrement de fichiers distants.</p>
   </note>
 
 </page>

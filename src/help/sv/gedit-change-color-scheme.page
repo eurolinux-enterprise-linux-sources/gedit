@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Change the text and background colors in gedit.</desc>
+    <desc>Ändra text- och bakgrundsfärgerna i gedit.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.15" date="2015-01-29" status="final"/>
 
@@ -23,41 +23,46 @@
     </credit>
 
   <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Change the color scheme</title>
+  <title>Ändra färgschemat</title>
 
-  <p><app>gedit</app> includes several different color schemes, allowing you to
-  change the appearance of the main text window.</p>
+  <p><app>gedit</app> inkluderar flera olika färgscheman, vilket låter dig ändra utseendet för huvudtextfönstret.</p>
 
   <steps>
-    <title>To change the color scheme:</title>
+    <title>För att ändra färgschemat:</title>
     <item>
-      <p>Open the <gui style="menu">gedit</gui> menu from the top bar, then
-      select <guiseq><gui style="menuitem">Preferences</gui><gui>Font &amp;
-      Colors</gui></guiseq>.</p>
+      <p>Öppna <gui style="menu">gedit</gui>-menyn från systemraden, välj sedan <guiseq><gui style="menuitem">Inställningar</gui><gui>Typsnitt och färger</gui></guiseq>.</p>
     </item>
     <item>
-      <p>Choose your desired color scheme.</p>
+      <p>Välj ditt önskade färgschema.</p>
     </item>
   </steps>
 
-  <p>The new color scheme will be applied immediately.</p>
+  <p>Det nya färgschemat kommer tillämpas omedelbart.</p>
 
   <section id="custom-color-scheme">
-    <title>Use a Custom Color Scheme</title>
+    <title>Använda ett anpassat färgschema</title>
   <!-- I'm not sure if I should link to the wiki for this chunk of help, or if
   I should describe it here.  I'm linking to the wiki for now because the wiki
   page includes downloads and screenshots. I'm open to including the help here,
   though. -->
 
-    <p>You can also use color schemes that have been created by others, or
-    create and use your own color schemes.</p>
+    <p>Du kan också använda färgscheman som har skapats av andra, eller skapa och använda dina egna färgscheman.</p>
 
-    <p>Instructions on how to install custom color schemes, as well as examples
-    of color schemes that you can download and use, are available on the
-    <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit
-    wiki</link>.</p>
+    <p>Instruktioner för hur du installerar anpassade färgscheman, såväl som exempel på färgscheman som du kan hämta och använda finns tillgängliga på <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">geditwikin</link>.</p>
   </section>
 
 </page>

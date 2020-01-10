@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Change the position of a tab in the gedit window.</desc>
+    <desc>在 gedit 窗口中改变标签顺序。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -43,6 +43,12 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>移动和重排标签顺序</title>
@@ -71,7 +77,7 @@
 
   <section id="tabs-moving-new-window">
     <title>移动标签，创建一个新的 gedit 窗口</title>
-    <p>To create a new window from an existing tab:</p>
+    <p>将标签页移到新窗口：</p>
 
     <steps>
       <item>
@@ -86,8 +92,7 @@
     </steps>
 
     <note style="tip">
-      <p>To move a tab into a new window when <app>gedit</app> is maximized, 
-      drag the tab onto the top bar at the top of the screen.</p>
+      <p>在 <app>gedit</app> 最大化时要将一个标签页移到新窗口，就请将标签页拖拽到屏幕上方的顶栏。</p>
     </note>
   </section>
 
@@ -113,11 +118,7 @@
     
 
     <note style="tip">
-      <p>You may find it easier to move a tab from one window to another by
-      dragging the tab to the <gui>Activities</gui> hot-corner of
-      <gui>GNOME Shell</gui>. This will reveal each of the open
-      <app>gedit</app> windows. You can then release the tab on the
-      desired <app>gedit</app> window.</p>
+      <p>在 <gui>GNOME Shell</gui> 中您可以轻松的将一个窗口中的标签页拖动到 <gui>活动</gui> 热角，然后再拖动到另外一个窗口中。这期间会展示出每一个打开了的 <app>gedit</app> 窗口。然后您就可以把标签页释放到预期的 <app>gedit</app> 窗口中。</p>
     </note>
 
     <p>了解<link xref="gedit-shortcut-keys">与标签相关的快捷键</link>来更容易地管理标签。</p>

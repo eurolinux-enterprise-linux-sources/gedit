@@ -6,6 +6,7 @@
     <desc>Jak uložit soubor, na kterém budete pracovat později.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -36,6 +37,6 @@
 
   <title>Ukládání souboru</title>
 
-  <p>Když chcete v editoru <app>gedit</app> uložit soubor, klikněte na tlačítko <gui style="button">Uložit aktuální soubor</gui> s ikonou pevného disku na pravé straně nástrojové lišty nebo jen zmáčkněte <keyseq><key>Ctrl</key> <key>S</key></keyseq>.</p> <p>Pokud ukládáte nový soubor, objeví se dialogové okno <gui>Uložení jako</gui> a vy si můžete zvolit název souboru a složku, do které se má uložit.</p>
+  <p>Když chcete v editoru <app>gedit</app> uložit soubor, klikněte na tlačítko <gui style="button">Uložit</gui> na pravé straně nástrojové lišty nebo jen zmáčkněte <keyseq><key>Ctrl</key> <key>S</key></keyseq>.</p> <p>Pokud ukládáte nový soubor, objeví se dialogové okno, ve kterém si můžete zvolit název souboru a složku, do které se má uložit.</p>
 
 </page>

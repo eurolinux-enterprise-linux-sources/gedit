@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Atrastu teksta fragmentu datnē.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -53,9 +54,6 @@
       <item>
         <p>Nospiediet <keyseq><key>Ctrl</key><key>G</key></keyseq> vai <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p>
       </item>
-      <item>
-        <p>Turot nospiestu <key>Ctrl</key> taustiņu, izmantojiet peles vai skārienpaliktņa <key>ritināšanas</key> funkciju.</p>
-      </item>
     </list>
 
   <p>Lai aizvērtu <gui>meklēšanas logu</gui>, nospiediet <key>Esc</key> vai <key>Enter</key>. <key>Esc</key> nospiešana atgriezīs kursoru tur, kur tas bija, pirms uzsākāt meklēšanu. <key>Enter</key> nospiešana pārvietos kursoru uz pašreizējo pozīciju meklēšanas rezultātos.</p>
@@ -80,7 +78,10 @@
       </list>
     </item>
     <item>
-      <p>Atrastais teksts paliks izcelts arī pēc meklēšanas beigām. Lai novāktu izcēlumu, izvēlieties <guiseq><gui>Meklēt</gui><gui>Noņemt izcēlumu</gui></guiseq> vai nospiediet <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      <p>The text that you've searched for will remain highlighted by gedit,
+      even after you have completed your search. To remove the highlight,
+      click <gui style="menuitem">Clear Highlight</gui>, or
+      press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

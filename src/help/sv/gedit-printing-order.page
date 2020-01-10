@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-print-order" xml:lang="sv">
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-printing-order" xml:lang="sv">
 
   <info>
     <link type="guide" xref="gedit-printing#printing-order-select"/>
-    <desc>Set the pages to print in a certain order.</desc>
+    <desc>Ställ in sidorna att skrivas ut i en speciell ordning.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
     <credit type="author">
@@ -15,50 +15,51 @@
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-<title>Getting Copies To Print In The Correct Order</title>
+<title>Få exemplar att skrivas ut i korrekt ordning</title>
 
   <section id="printing-reverse">
-    <title>Reverse</title>
+    <title>Omvänd ordning</title>
 
-    <p>Printers usually print the first page first, and the last page last, so
-    the pages end up in reverse order when you pick them up. To reverse the
-    order:</p>
+    <p>Skrivare skriver vanligtvis ut den första sidan först, och den sista sidan sist så sidorna kommer ut i omvänd ordning när du tar dem. För att vända på ordningen:</p>
 
     <steps>
       <item>
-        <p>Select <guiseq><gui style="menu">File</gui>
-        <gui style="menuitem">Print</gui></guiseq>.</p>
+        <p>Välj <guiseq><gui style="menu">Arkiv</gui> <gui style="menuitem">Skriv ut</gui></guiseq>.</p>
       </item>
       <item>
-        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
-        <gui style="group">Copies</gui>, check
-        <gui style="checkbox">Reverse</gui>.</p>
+        <p>I fliken <gui style="tab">Allmänt</gui> i utskriftsdialogen, under <gui style="group">Kopior</gui>, kryssa i <gui style="checkbox">Omvänd</gui>.</p>
       </item>
     </steps>
 
-    <p>The last page will be printed first, and so on.</p>
+    <p>Den sista sidan kommer att skrivas ut först o.s.v.</p>
 </section>
 
   <section id="printing-collate">
-    <title>Collate</title>
+    <title>Sortera</title>
     
-    <p>If you are printing more than one copy of the document, the print outs
-    will be grouped by page number by default. (e.g. The copies of page one come
-    out, then the copies of page two, etc.) Collating will make each copy come
-    out with its pages grouped together.</p>
+    <p>Om du skriver ut mer än ett exemplar av dokumentet kommer utskrifterna att som standard grupperas efter sidnummer. (D.v.s. kommer först exemplar av sida ett att komma ut, sedan exemplar av sida två, o.s.v.) Sortering kommer att få varje exemplar att komma ut med dess sidor grupperade ihop.</p>
 
-    <p>To Collate:</p>
+    <p>För att sortera:</p>
     <steps>
       <item>
-        <p>Click <guiseq><gui style="menu">File</gui>
-        <gui style="menuitem">Print</gui></guiseq>.</p>
+        <p>Klicka <guiseq><gui style="menu">Arkiv</gui> <gui style="menuitem">Skriv ut</gui></guiseq>.</p>
       </item>
       <item>
-        <p>In the <gui style="tab">General</gui> tab of the Print dialog under
-        <gui style="group">Copies</gui> check
-        <gui style="checkbox">Collate</gui>.</p>
+        <p>I fliken <gui style="tab">Allmänt</gui> i utskriftsdialogrutan, under <gui style="group">Kopior</gui>, kryssa i <gui style="checkbox">Sortera</gui>.</p>
       </item>
     </steps>
 

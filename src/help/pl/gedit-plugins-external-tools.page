@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-external-tools" xml:lang="pl">
+
+<!-- TODO: Provide an example or two about using external tools -->
+
+<info>
+  <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
+  <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+  <credit type="author">
+    <name>Daniel Neel</name>
+    <email>dneelyep@gmail.com</email>
+  </credit>
+  <credit type="author">
+    <name>Jim Campbell</name>
+    <email>jcampbell@gnome.org</email>
+  </credit>
+  <desc>Wykonywanie skryptów na bieżących plikach i działanie z innymi programami.</desc>
+  <!--INFOAT: https://wiki.gnome.org/Apps/Gedit/Plugins/ExternalTools -->
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Narzędzia zewnętrzne</title>
+
+  <p>Wtyczka <em>Narzędzia zewnętrzne</em> pomaga uprościć często wykonywane zadania. Konkretnie, rozszerza program <app>gedit</app> o wykonywanie skryptów na plikach roboczych i działanie z innymi programami na komputerze. Aby ją włączyć, wybierz <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Preferencje</gui><gui>Wtyczki</gui> <gui>Narzędzia zewnętrzne</gui></guiseq>.</p>
+
+  <section id="plugin-config-external-tools">
+    <title>Konfiguracja wtyczki narzędzi zewnętrznych</title>
+
+  <p>Po włączeniu wtyczki należy ją skonfigurować. Opcje konfiguracji są dostępne w <guiseq><gui>Narzędzia</gui><gui>Zarządzaj narzędziami zewnętrznymi</gui></guiseq>.</p>
+  
+  <note style="caution">
+    <p>Ta wtyczka jest przeznaczona dla zaawansowanych użytkowników, i wymaga wiedzy o skryptach, aby być przydatna. Używaj jej ostrożnie, jako że pomyłka w skrypcie może wpłynąć na dokumenty na nieprzewidziane sposoby.</p>
+  </note>
+  </section>
+
+</page>

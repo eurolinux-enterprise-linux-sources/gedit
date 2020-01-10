@@ -2,10 +2,10 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="cs">
 
   <info>
-    <title type="link">textový editor gedit</title>
-    <title type="text">textový editor gedit</title>
+    <title type="link">Textový editor gedit</title>
+    <title type="text">Textový editor gedit</title>
 
-    <desc>Domovská tránka uživatelské příručky k aplikaci gedit.</desc>
+    <desc>Domovská stránka uživatelské příručky k aplikaci gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>

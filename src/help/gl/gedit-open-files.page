@@ -7,7 +7,7 @@
     <link type="seealso" xref="gedit-close-file"/>
     <link type="seealso" xref="gedit-open-recent"/>
     <link type="seealso" xref="gedit-quickstart"/>
-    <desc>Open files to start working on them.</desc>
+    <desc>Abrir ficheiros para traballar neles.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
 
@@ -30,18 +30,21 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
   <title>Abrir un ficheiro ou un conxunto de ficheiros</title>
 
   <p>Para abrir un ficheiro en <app>gedit</app>, prema o botón <gui>Abrir</gui> ou prema <keyseq><key>Ctrl</key><key>O</key></keyseq>.</p>
-  <p>This will cause the <gui>Open</gui> dialog to appear. Use your mouse
-  or keyboard to select the file that you wish to open, and then click
-  <gui>Open</gui>. The file that you've selected will open in a new tab.</p>
-  <p>To close the <gui>Open</gui> dialog without opening a file, click
-  <gui>Cancel</gui>.</p>
+  <p>Isto fará que apareza o diálogo <gui>Abrir</gui>. Use o rato ou o seu teclado para seleccionar o ficheiro que quere abrir e prema <gui>Abrir</gui>. O ficheiro seleccionado abrirase nunha xanela nova.</p>
+  <p>Para pechar o diálogo <gui>Abrir</gui> sen abrir un ficheiro, prema <gui>Cancelar</gui>.</p>
 
   <note style="tip"><p>Pode usar as teclas <key>Ctrl</key> e <key>Maiús</key> para abrir máis dun ficheiro ao mesmo tempo. Se mantén premida a tecla <key>Ctrl</key> mentres seleccionar varios ficheiros, ao premer <gui>Abrir</gui> abrirase cada  un dos ficheiros que seleccionou.</p>
 

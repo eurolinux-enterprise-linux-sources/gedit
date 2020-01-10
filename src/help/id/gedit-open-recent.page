@@ -3,8 +3,9 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <desc>Access files that you have updated recently.</desc>
+    <desc>Akses berkas yang telah Anda perbarui baru-baru ini.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -14,7 +15,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
@@ -22,7 +29,7 @@
 
   <p>Secara baku <app>gedit</app> menyediakan akses mudah ke lima berkas yang terakhir Anda pakai. Beginilah cara bagaimana Anda dapat membuka berkas yang baru-baru ini dipakai:</p>
   <list type="numbered">
-    <item><p>Klik panah arah bawah di sebelah kanan tombol <gui>Buka</gui>.</p></item>
+    <item><p>Click the <gui>Open</gui> button.</p></item>
     <item><p><app>gedit</app> akan menampilkan daftar dari berkas yang dipakai terakhir kali.</p></item>
     <item><p>Pilih berkas yang diinginkan, dan itu akan dibuka di tab baru.</p></item>
   </list>

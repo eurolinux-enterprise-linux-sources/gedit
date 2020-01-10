@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Change the position of a tab in the gedit window.</desc>
+    <desc>Изменение расположения вкладок в окне gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
@@ -29,13 +29,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 

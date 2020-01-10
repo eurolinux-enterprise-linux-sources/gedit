@@ -4,6 +4,7 @@
 <info>
   <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision version="3.24" date="2017-09-17" status="review"/>
   <credit type="author">
     <name>Daniel Neel</name>
     <email>dneelyep@gmail.com</email>
@@ -36,10 +37,6 @@
 
   <p>Zásuvný modul <app>Řadit</app> uspořádává vybrané řádky textu v abecedním pořadí.</p>
 
-  <note style="warning">
-    <p>U operace seřazení nelze použít funkci <gui>Zpět</gui>, kterou byste nesprávně provedené <gui>Seřazení</gui> napravili, takže vám doporučujeme před provedením řazení soubor uložit. K uložené verzi se pak po nesprávném seřazení můžete vrátit pomocí <guiseq><gui>Soubor</gui><gui>Vrátit</gui></guiseq>.</p>
-</note>
-
   <section id="enable-sort">
     <title>Povolení zásuvného modul Řadit</title>
 
@@ -66,7 +63,7 @@
         <p>Tažením označte požadované řádky textu.</p>
       </item>
       <item>
-        <p>Vyberte <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Seřadit</gui></guiseq>.</p>
+        <p>Vyberte <guiseq><gui style="menu">Nástroje</gui> <gui style="menuitem">Seřadit…</gui></guiseq></p>
       </item>
       <item>
         <p>Otevře se dialogové okno <gui>Řadit</gui>, ve kterém si můžete navolit, jak se má seřazení provést:</p>

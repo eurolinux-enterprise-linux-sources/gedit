@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="bg">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="bg">
 
   <info>
     <link type="guide" xref="index"/>
     <desc>Use keyboard shortcuts to help you work more quickly.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Джим Къмпбел</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -276,13 +276,8 @@
       </thead>
       <tbody>
         <tr>
-          <td><p>Показване / скриване на страничния панел</p></td>
+          <td><p>Show / hide the side panel</p></td>
           <td><p><key>F9</key></p></td>  
-        </tr>
-        <tr>
-          <td><p>Show / hide the bottom pane</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
         </tr>
         <tr>
           <td><p>Open the file menu</p></td>

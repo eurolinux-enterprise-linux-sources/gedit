@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-plugins-modelines" xml:lang="pl">
+
+<info>
+  <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
+  <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+  <credit type="author">
+    <name>Daniel Neel</name>
+    <email>dneelyep@gmail.com</email>
+  </credit>
+  <credit type="author">
+    <name>Jim Campbell</name>
+    <email>jcampbell@gnome.org</email>
+  </credit>
+  <desc>Obsługa wierszy trybu z programów Emacs, Kate i Vim w programie gedit.</desc>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Wiersze trybu</title>
+
+  <p>Wtyczka <app>Wiersze trybu</app> umożliwia programowi <app>gedit</app> analizowanie wierszy tekstu na początku i końcu pliku, a następnie stosowanie zestawu preferencji dokumentu. Wtyczka <app>Wiersze trybu</app> obsługuje podzestaw opcji używanych przez edytory tekstu <app>Emacs</app>, <app>Kate</app> i <app>Vim</app>.</p>
+
+  <p>Aby włączyć wtyczkę <app>Wiersze trybu</app>, wybierz <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">Preferencje</gui><gui>Wtyczki</gui><gui>Wiersze trybu</gui></guiseq>.</p>
+
+<section id="modelines-general">
+  <title>Ogólne opcje wierszy trybu</title>
+  <p>Za pomocą wierszy trybu programu <app>gedit</app> można ustawiać:</p>
+  <list>
+    <item><p>Szerokość tabulacji</p></item>
+    <item><p>Szerokość wcięć</p></item>
+    <item><p>Wstawianie spacji zamiast tabulacji</p></item>
+    <item><p>Zawijanie tekstu</p></item>
+    <item><p>Szerokość prawego marginesu</p></item>
+  </list>
+
+  <note>
+    <p>Preferencje ustawione za pomocą wierszy trybu mają pierwszeństwo przed tymi ustawionymi w oknie preferencji.</p>
+  </note>
+</section>
+
+<section id="modelines-emacs">
+  <title>Wiersze trybu programu Emacs</title>
+
+  <p>W pierwszych dwóch wierszach dokumentu wyszukiwane są wiersze trybu programu <app>Emacs</app>, a program <app>gedit</app> obsługuje te opcje:</p>
+  <list>
+    <item><p>Szerokość tabulacji</p></item>
+    <item><p>Wyrównanie wcięć</p></item>
+    <item><p>Tryb tabulacji wcięć</p></item>
+    <item><p>Automatyczne zawijanie tekstu</p></item>
+  </list>
+  <p><link href="http://www.gnu.org/software/emacs/manual/emacs.html">Podręcznik programu GNU Emacs</link> zawiera więcej informacji o wierszach trybu programu <app>Emacs</app>.</p>
+</section>
+
+<section id="modelines-kate">
+  <title>Wiersze trybu programu Kate</title>
+
+  <p>W pierwszych i ostatnich dziesięciu wierszach dokumentu wyszukiwane są wiersze trybu programu <app>Kate</app>, a program <app>gedit</app> obsługuje te opcje:</p>
+
+  <list>
+    <item><p>Szerokość tabulacji</p></item>
+    <item><p>Szerokość wcięć</p></item>
+    <item><p>Wcięcia spacji</p></item>
+    <item><p>Zawijanie słów</p></item>
+    <item><p>Kolumna zawijania słów</p></item>
+  </list>
+
+  <p><link href="http://kate-editor.org/">Strona programu Kate</link> zawiera więcej informacji o wierszach trybu programu <app>Kate</app>.</p>
+</section>
+
+<section id="modelines-vim">
+  <title>Wiersze trybu programu Vim</title>
+  <p>W pierwszych i ostatnich trzech wierszach dokumentu wyszukiwane są wiersze trybu programu <app>Vim</app>, a program <app>gedit</app> obsługuje te opcje:</p>
+
+  <list>
+    <item><p>et (rozszerzanie tabulacji)</p></item>
+    <item><p>ts (zatrzymywanie tabulacji)</p></item>
+    <item><p>sw (szerokość Shift)</p></item>
+    <item><p>Zawijanie</p></item>
+    <item><p>Szerokość tekstu</p></item>
+  </list>
+
+  <p><link href="http://www.vim.org/">Strona programu Vim</link> zawiera więcej informacji o wierszach trybu programu <app>Vim</app>.</p>
+</section>
+</page>

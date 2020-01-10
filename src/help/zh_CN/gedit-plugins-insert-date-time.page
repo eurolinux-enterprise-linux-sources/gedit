@@ -13,7 +13,7 @@
     <name>Jim Campbell</name>
     <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Insert the current date/time at the cursor position.</desc>
+  <desc>在光标位置插入当前日期/时间。</desc>
 
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>TeliuTe</mal:name>
@@ -31,6 +31,12 @@
       <mal:name>wancheng zhang</mal:name>
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
     </mal:credit>
   </info>
 

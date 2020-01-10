@@ -6,6 +6,7 @@
     <desc>Iestatīt gedit, lai tas aizņemtu visu ekrānu.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -35,7 +36,9 @@
   <section id="turn-off-full-screen">
     <title>Izslēgt pilnekrāna režīmu</title>
     <p>Lai izslēgtu pilnekrāna režīmu un atgrieztos pie standarta <app>gedit</app> loga, spiediet <key>F11</key>.</p>
-    <p>Jūs varat arī pārvietot peles rādītāju augšup, kamēr parādās <gui>izvēļņu josla</gui>. Tad izvēlieties <gui>Pamest pilnekrānu</gui>.</p>
+    <p>You can also move your mouse cursor to the top of the screen, and wait
+    for the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui>
+    appears, select the <gui>Leave Fullscreen</gui> button.</p>
   </section>
 
 </page>

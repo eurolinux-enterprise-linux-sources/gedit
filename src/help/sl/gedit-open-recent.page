@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Access files that you have updated recently.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -16,7 +17,7 @@
 
   <p>Privzeto omogoča program <app>gedit</app> enostaven dostop do petih nazadnje uporabljenih datotek. Za odpiranje nedavnih datotek je treba:</p>
   <list type="numbered">
-    <item><p>Kliknite navzdol usmerjeno puščico desno od gumba <gui>Odpri</gui>.</p></item>
+    <item><p>Click the <gui>Open</gui> button.</p></item>
     <item><p><app>gedit</app> bo prikazal seznam petih najbolj nedavno uporabljenih datotek.</p></item>
     <item><p>Izberite želeno datoteko in odprla se bo v novem zavihku.</p></item>
   </list>

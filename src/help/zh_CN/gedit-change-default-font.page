@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-change-default-font" xml:lang="zh-CN">
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Use a custom font for your text in gedit.</desc>
+    <desc>在 gedit 中使用自定义的字体。</desc>
     <revision version="3.8" date="2013-03-07" status="final"/>
 
     <credit type="author">
@@ -31,21 +31,25 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>更改默认字体</title>
 
-  <p><app>gedit</app>默认使用系统等宽字体，你可以根据个人习惯修改<app>gedit</app>的默认字体</p>
+  <p><app>gedit</app> 默认使用系统等宽字体，你可以根据个人习惯修改 <app>gedit</app> 的默认字体</p>
   
   <steps>
     <title>要更改 <app>gedit</app> 默认字体：</title>
       <item><p>选择 <guiseq><gui style="menu">gedit</gui> <gui style="menuitem">首选项</gui> <gui>字体和颜色</gui></guiseq>。</p></item>
       <item><p>取消选中“使用系统等宽字体”旁的复选框。</p></item>
-      <item><p>Click on the current font name. <app>gedit</app> will open
-      a font-chooser window, allowing you to see available fonts and choose the
-      one that you prefer.</p></item>
-      <item><p>选择你需要的字体后，使用字体列表下方的<gui>滑动条</gui>调整默认字体的大小</p></item>
-      <item><p>点击<gui>选择</gui>，然后点击<gui>关闭</gui></p>
+      <item><p>点击当前字体名称。<app>gedit</app> 将打开字体选择器，您可以查看可用的字体并且选择所需要使用的字体。</p></item>
+      <item><p>选择你需要的字体后，使用字体列表下方的<gui>滑动条</gui>调整默认字体的大小。</p></item>
+      <item><p>点击<gui>选择</gui>，然后点击<gui>关闭</gui>。</p>
       </item>
   </steps>
   

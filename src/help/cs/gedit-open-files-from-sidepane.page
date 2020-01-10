@@ -25,30 +25,27 @@
   </info>
 
   <title>Zobrazení a otevření souborů z postranního panelu</title>
-  <p>Nějběžnějším způsobem přepínání mezi soubory je v editoru <app>gedit</app> používání karet v horní části okna. V některých případech, třeba když pracujete s opravdu velkým množstvím souborů, může být jednodušší cestou použití <app>postranního panelu</app>.</p> 
+  <p>Nějběžnějším způsobem přepínání mezi soubory je v editoru <app>gedit</app> používání karet v horní části okna. V některých případech, třeba když pracujete s opravdu velkým množstvím souborů, může být jednodušší cestou použití postranního panelu.</p> 
 
-  <p><app>Postranní panel</app> aktivujete tak, že vyberete <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></guiseq> nebo zmáčknete klávesu <key>F9</key>.</p>
+  <p>Postranní panel aktivujete tak, že vyberete <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></guiseq> nebo zmáčknete klávesu <key>F9</key>.</p>
 
   <note style="note">
-    <p>Jestli má být <gui>postranní panel</gui> otevřen nebo zavřen, můžete kdykoliv přepnout zmačknutím <key>F9</key>.</p>
+    <p>Jestli má být postranní panel otevřený nebo zavřený, můžete kdykoliv přepnout zmačknutím <key>F9</key>.</p>
   </note>
 
+<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
     <title>Otevírání souborů z postranního panelu</title>
-    <p>Abyste mohli z <gui>postranního panelu</gui> otevřít soubory, nejdříve jej zobrazte pomocí <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></guiseq> a pak klikněte na ikonu <gui>prohlížeče souborů</gui> ve spodní části panelu.</p>
+    <p>Abyste mohli z postranního panelu otevřít soubory, nejdříve jej zobrazte pomocí <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></guiseq> (nebo jen zmáčkněte <key>F9</key>) a pak zvolte <gui>Prohlížeč souborů</gui> z rozbalovací nabídky v horní části panelu.</p>
 
-    <media type="image" mime="image/png" src="figures/gedit-side-pane1.png" its:translate="no"/>
-
-    <p>Tím se aktivuje režim <em>prohlížeče souborů</em> v <app>postranním panelu</app>. Můžete využít tlačítka v horní části panelu k vyhledání a otevření požadovaných souborů.</p>
+    <p>Tím se aktivuje režim <em>prohlížeče souborů</em> v postranním panelu. Můžete využít tlačítka v horní části panelu k vyhledání a otevření požadovaných souborů.</p>
   </section>
 
   <section id="sidepane-switch">
     <title>Používejte postranní panel k přepínání mezi soubory</title>
-    <p>Když máte otevřeno několik souborů, můžete použít postranní panel k přepínání mezi nimi. Aktivujte prohlížeč souborů v <app>postranním panelu</app> a klikněte na ikonu <gui>souboru</gui> ve spodní části <gui>postranního panelu</gui>.</p>
-    
-    <media type="image" mime="image/png" src="figures/gedit-side-pane2.png" its:translate="no"/>
+    <p>Když máte otevřeno několik souborů, můžete použít postranní panel k přepínání mezi nimi. Pro vypsání souborů zvolte <gui>Dokumenty</gui> z rozbalovací nabídky v horní části panelu.</p>
 
-    <p>Kliknutím na libovolný název souboru v <gui>postranním panelu</gui> dotyčný soubor otevřete pro úpravy.</p>
+    <p>Kliknutím na libovolný název souboru v postranním panelu dotyčný soubor otevřete pro úpravy.</p>
   </section>
  
  </page>

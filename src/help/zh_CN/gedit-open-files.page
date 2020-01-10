@@ -7,7 +7,7 @@
     <link type="seealso" xref="gedit-close-file"/>
     <link type="seealso" xref="gedit-open-recent"/>
     <link type="seealso" xref="gedit-quickstart"/>
-    <desc>Open files to start working on them.</desc>
+    <desc>打开文件开始编辑。</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
 
@@ -38,16 +38,19 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
-  <title>打开一个文件或一组文件。</title>
+  <title>打开一个文件或一组文件</title>
 
   <p>要在 <app>gedit</app> 中打开一个文件，点击 <gui>打开</gui>按钮，或者按组合键 <keyseq><key>Ctrl</key><key>O</key></keyseq>。</p>
-  <p>This will cause the <gui>Open</gui> dialog to appear. Use your mouse
-  or keyboard to select the file that you wish to open, and then click
-  <gui>Open</gui>. The file that you've selected will open in a new tab.</p>
-  <p>To close the <gui>Open</gui> dialog without opening a file, click
-  <gui>Cancel</gui>.</p>
+  <p>然后会出现<gui>打开</gui>对话框，用鼠标或键盘选择想要打开的文件，然后点<gui>打开</gui>按钮，选中的文件将会在新标签页打开。</p>
+  <p>要关闭 <gui>打开文件</gui> 对话框，而不打开任何文件，请点击<gui>取消</gui>按钮。</p>
 
   <note style="tip"><p>您也可以用 <key>Ctrl</key> 和 <key>Shift</key> 键，一次选择打开多个文件，如果按住 <key>Ctrl</key> 键选择多个文件，点<gui>打开</gui>会打开所有点过的文件。</p>
 

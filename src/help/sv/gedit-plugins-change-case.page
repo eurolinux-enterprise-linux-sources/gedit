@@ -13,41 +13,43 @@
     <name>Jim Campbell</name>
     <email>jcampbell@gnome.org</email>
   </credit>
-  <desc>Change the case of selected text.</desc>
-</info>
+  <desc>Ändra skiftläget för markerad text.</desc>
 
-<title>Change case</title>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
+  </info>
 
-  <p>This plugin helps you to change the case of selected portions of text. You
-  can use it to change text to be all lower case, all upper case, to invert the
-  case, or apply title case. To enable this plugin, select
-  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
-  <gui>Plugins</gui><gui>Change Case</gui></guiseq>.</p>
+<title>Ändra skiftläge</title>
 
-  <p>Once the <em>Change Case</em> plugin is enabled, you can use it by
-  completing the following steps:</p>
+  <p>Denna insticksmodul hjälper dig ändra skiftläge för markerade textstycken. Du kan använda den för att ändra all text till gemener, till versaler, för att växla skiftläget eller för att tillämpa inledande versaler på ord. För att aktivera denna insticksmodul, välj <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Inställningar</gui> <gui>Insticksmoduler</gui><gui>Ändra skiftläge</gui></guiseq>.</p>
+
+  <p>Då insticksmodulen <em>Ändra skiftläge</em> är aktiverad kan du använda den genom att utföra följande steg:</p>
 
   <steps>
-    <item><p>Highlight the portion of text that you want to change.</p></item>
-    <item><p>Select <guiseq><gui style="menu">gedit</gui><gui>Change Case</gui></guiseq></p>
+    <item><p>Markera textstycket som du vill ändra.</p></item>
+    <item><p>Välj <guiseq><gui style="menu">gedit</gui><gui>Ändra skiftläge</gui></guiseq></p>
     </item>
-    <item><p>Choose your desired text-formatting option.</p></item> 
+    <item><p>Välj ditt önskade textformateringsalternativ.</p></item> 
   </steps>
 
-  <p>The updates to the text formatting will take place immediately.</p>
+  <p>Uppdateringarna för textformateringen kommer att verkställas omedelbart.</p>
 
   <note style="tip">
-    <p>The <gui>Invert Case</gui> option will convert all lower case letters to
-    upper case, and will convert all upper case letters to lower case.</p>
-    <p>The <gui>Title Case</gui> option will convert the first letter of each
-    word to upper case. All other letters will be converted to lower
-    case.</p>
+    <p>Alternativet <gui>Invertera skiftläge</gui> kommer konvertera alla gemener till versaler och alla versaler till gemener.</p>
+    <p>Alternativet <gui>Versaler inleder ord</gui> kommer konvertera den första bokstaven i varje ord till versal. Alla andra bokstäver kommer konverteras till gemener.</p>
   </note>
 
   <note>
-    <p>If you have not highlighted any text, the <em>Change Case</em> feature
-    will be grayed-out. You need to select a portion of text before you use the
-    <em>Change Case</em> feature.</p>
+    <p>Om du inte har markerat någon text kommer funktionen <em>Ändra skiftläge</em> att vara gråtonad. Du måste välja ett textstycke innan du använder funktionen <em>Ändra skiftläge</em>.</p>
   </note>
 
 </page>

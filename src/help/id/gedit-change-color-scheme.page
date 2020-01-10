@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Change the text and background colors in gedit.</desc>
+    <desc>Ubah teks dan warna latar belakang di gedit.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.15" date="2015-01-29" status="final"/>
 
@@ -27,7 +27,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Andika Triwidada</mal:name>
       <mal:email>andika@gmail.com</mal:email>
-      <mal:years>2013, 2014</mal:years>
+      <mal:years>2013, 2014, 2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kukuh Syafaat</mal:name>
+      <mal:email>syafaatkukuh@gmail.com</mal:email>
+      <mal:years>2016</mal:years>
     </mal:credit>
   </info>
 
@@ -36,11 +42,9 @@
   <p><app>gedit</app> menyertakan beberapa skema warna, yang memungkinkan Anda mengubah penampilan jendela teks utama.</p>
 
   <steps>
-    <title>To change the color scheme:</title>
+    <title>Untuk mengubah skema warna:</title>
     <item>
-      <p>Open the <gui style="menu">gedit</gui> menu from the top bar, then
-      select <guiseq><gui style="menuitem">Preferences</gui><gui>Font &amp;
-      Colors</gui></guiseq>.</p>
+      <p>Buka menu <gui style="menu">gedit</gui> dari bar atas, kemudian pilih <guiseq><gui style="menuitem">Preferensi</gui><gui>Fonta &amp; Warna</gui></guiseq>.</p>
     </item>
     <item>
       <p>Pilih skema warna yang Anda inginkan.</p>
@@ -58,10 +62,7 @@
 
     <p>Anda juga dapat memakai skema warna yang telah dibuat oleh orang lain, atau membuat skema warna Anda sendiri.</p>
 
-    <p>Instructions on how to install custom color schemes, as well as examples
-    of color schemes that you can download and use, are available on the
-    <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit
-    wiki</link>.</p>
+    <p>Petunjuk tentang cara memasang skema warna kustom, serta contoh skema warna yang dapat Anda unduh dan gunakan, tersedia di <link href="http://live.gnome.org/GtkSourceView/StyleSchemes">wiki gedit</link>.</p>
   </section>
 
 </page>

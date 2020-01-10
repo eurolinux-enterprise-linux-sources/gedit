@@ -28,6 +28,14 @@ from .importer import Importer
 from .exporter import Exporter
 from .languagemanager import get_language_manager
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 class Manager(Gtk.Window, Gtk.Buildable):
     NAME_COLUMN = 0
     SORT_COLUMN = 1
@@ -63,7 +71,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         return nodes
 
     def add_new_snippet_node(self, parent):
-        return self.model.append(parent, ('<i>' + _('Add a new snippet...') + \
+        return self.model.append(parent, ('<i>' + _('Add a new snippet…') + \
                 '</i>', '', None, None))
 
     def fill_language(self, piter, expand=True):

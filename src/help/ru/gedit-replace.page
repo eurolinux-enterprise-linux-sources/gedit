@@ -4,10 +4,11 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-search"/>
-    <desc>Replace portions of text in a file.</desc>
+    <desc>Замена участков текста в файле.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
       <email>jcampbell@gnome.org</email>
@@ -29,7 +30,7 @@
       <email>tyagishobha@gmail.com</email>
     </credit>
     <credit type="editor">
-      <name>Young Li</name>
+      <name>Янг Ли (Young Li)</name>
       <email>li.young1618@gmail.com</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
@@ -37,13 +38,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 
@@ -57,10 +58,10 @@
       <p>Откройте инструмент <gui>Заменить</gui>, нажав <guiseq><gui style="button">Кнопку меню</gui><gui style="menuitem">Найти и заменить…</gui></guiseq>, или нажмите <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
-      <p>Введите текст, который нужно заменить, в поле <gui>Найти:</gui>.</p>
+      <p>Введите текст, который нужно заменить, в поле <gui>Найти</gui>.</p>
     </item>
     <item>
-      <p>Введите заменяющий текст в поле <gui>Заменить на:</gui>.</p>
+      <p>Введите заменяющий текст в поле <gui>Заменить на</gui>.</p>
     </item>
     <item>
       <p>После ввода исходного и заменяющего текста, можно указать дополнительные параметры поиска. Также можно выбрать что заменять:</p>
@@ -108,8 +109,7 @@
 <section id="escape-sequences">
   <title>Использование непечатных символов</title>
 
-  <p>You can use <em>escape sequences</em> to search for line breaks, carriage
-  returns, and tabs.</p>
+  <p>Можно использовать <em>непечатные символы</em> для поиска конца строк или знаков табуляции.</p>
 
   <terms>
     <item>

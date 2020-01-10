@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Jak se dostat k souborům, které jsou umístěny na jiném počítači.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -33,8 +33,9 @@
   <p>Vezměte v potaz tato upozornění a můžete se pustit do otevření souboru ze serveru v editoru <app>gedit</app> v následujících krocích:</p>
 
     <steps>
-      <item><p>Zvolte <guiseq><gui>Soubor</gui> <gui>Otevřít</gui></guiseq> a zobrazí se dialogové okno <gui>Otevření souboru</gui></p></item>
-      <item><p>Klikněte na ikonu <gui>tužky</gui> poblíž horní části dialogového okna <gui>Otevření souboru</gui>.</p></item>
+      <item><p>V hlavičkové liště klikněte na <gui>Otevřít</gui>.</p></item>
+      <item><p>Klikněte na <gui>Další dokumenty…</gui>.</p></item>
+      <item><p>V dialogovém okně <gui>Otevření</gui> zmáčkněte <keyseq><key>Ctrl</key><key>L</key></keyseq>.</p></item>
       <item><p>Zadejte IP adresu nebo URL patřičného serveru.</p></item>
       <item><p>Najděte a vyberte soubor, který si přejete otevřít.</p></item>
       <item><p>Použijte rozbalovací seznam <gui>Kódování znaků</gui> k výběru správného kódování znaků.</p></item>

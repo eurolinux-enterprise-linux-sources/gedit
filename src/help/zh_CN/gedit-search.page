@@ -4,8 +4,9 @@
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
     <link type="seealso" xref="gedit-replace"/>
-    <desc>Find a portion of text within a file.</desc>
+    <desc>在文件中查找文本的一部分。</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -41,6 +42,12 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>搜索文本</title>
@@ -50,11 +57,7 @@
     <steps>
       <title>查找文本</title>
       <item>
-        <p>Open the <gui>search window</gui> by clicking 
-        <guiseq><gui style="menu">Menu Button</gui>
-        <gui style="menuitem">Find…</gui> </guiseq> or
-        pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move
-        your cursor to the start of the <gui>search window</gui>.</p>
+        <p>通过点击<guiseq><gui style="menu">菜单按钮</gui> <gui style="menuitem">查找...</gui> </guiseq>或使用组合键<keyseq><key>Ctrl</key><key>F</key></keyseq>可以打开<gui>搜索窗口</gui>。这将移动您的光标到<gui>搜索窗口</gui>的开始位置。</p>
       </item>
       <item>
         <p>在 <gui>搜索窗口</gui> 中输入您想要查找的文本。</p>
@@ -64,7 +67,7 @@
       </item>
     </steps>
     
-    <p>To scroll through the search results, do any of the following:</p>
+    <p>如需滚动显示搜索结果，以下操作均可实现：</p>
     <list>
       <item>
         <p>点击<gui>搜索窗口</gui>旁的<gui style="button">上</gui><gui style="button">下</gui>的箭头。</p>
@@ -73,48 +76,36 @@
         <p>按键盘上的<key>↑</key>或<key>↓</key>键。</p>
       </item>
       <item>
-        <p>Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or
-        <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
-      </item>
-      <item>
-        <p>Press the <key>Ctrl</key> and use your mouse or touchpad's
-        <key>scroll</key> feature to move up or down through the text.</p>
+        <p>按<keyseq><key>Ctrl</key><key>G</key></keyseq>或 <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p>
       </item>
     </list>
 
-  <p>To close the <gui>search window</gui>, press either <key>Esc</key> or
-  <key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it
-  was before you began your search. Pressing <key>Enter</key> will return the
-  cursor to the current position in the search results.</p>
+  <p>按下 <key>Esc</key> 或者 <key>Enter</key> 键都可以关闭 <gui>搜索</gui> 窗口。但使用 <key>Esc</key> 键的话光标会返回到搜索前的位置；而使用 <key>Enter</key> 键，光标则会返回到搜索结果的位置。</p>
 
   <list>
     <title>搜索技巧</title>
     <item>
-      <p>If you highlight a portion of text with your mouse, and then press
-      <keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted
-      will appear in the search window.</p>
+      <p>如果您使用鼠标选中一段文本，然后按 <keyseq><key>Ctrl</key><key>F</key></keyseq> 进行搜索，则这段文本会自动出现在搜索窗口中。</p>
     </item>
     <item>
-      <p>For more search options, click on the
-      <gui style="button">Magnifying Glass</gui> icon in the search window,
-      or right-click anywhere in the search window. You can select one or more
-      of the following search options:</p>
+      <p>更多搜索选项，请点击搜索窗口的 <gui style="button">放大镜</gui> 图标，或右键点击搜索窗口。您可以在以下搜索选项中选择一个或多个：</p>
       <list>
         <item>
-          <p>Select <gui>Match Case</gui> to make the search case sensitive.</p>
+          <p>选择 <gui>区分大小写</gui> 实现对大小写的严格匹配。</p>
         </item>
         <item>
-          <p>Select <gui>Match Entire Word Only</gui> to search only complete
-          words.</p>
+          <p>选择 <gui>只匹配整个单词</gui> 仅搜索完整的单词。</p>
         </item>
         <item>
-          <p>Select <gui>Wrap Around</gui> to search text from top to bottom
-          and cycle back again.</p>
+          <p>选择<gui>回到文档头部继续搜索</gui>从头重新搜索。</p>
         </item>
       </list>
     </item>
     <item>
-      <p>您搜索的文本会保持高亮状态，甚至搜索完毕还会高亮。要取消高亮状态，点菜单 <guiseq><gui>搜索</gui><gui>清除突出显示</gui></guiseq>，或者按组合键 <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>。</p>
+      <p>The text that you've searched for will remain highlighted by gedit,
+      even after you have completed your search. To remove the highlight,
+      click <gui style="menuitem">Clear Highlight</gui>, or
+      press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

@@ -24,31 +24,56 @@
     </mal:credit>
   </info>
 
-  <title>Перегляд та відкриття файлів з бічної панелі</title>
-  <p>Найпоширенішим способом переключення між файлами в «<app>gedit</app>» є використання вкладок, що у верхній частині вікна «<app>gedit</app>». Однак, в деяких випадках, особливо, якщо Ви працюєте з великою кількістю відкритих файлів, може бути простішим користуватися <app>бічною панеллю</app>.</p> 
+  <title>View and open files from the side panel</title>
+  <p>
+    The most common way to switch between files in <app>gedit</app> is by using
+    the tabs at the top of the <app>gedit</app> window. In some cases, though,
+    particularly when you are working with a large number of open files, you
+    may find it easier to use the side panel.
+  </p> 
 
-  <p>Щоб активувати <app>бічну панель</app>, виберіть <guiseq><gui>«Вигляд»</gui> <gui>«Бічна панель»</gui></guiseq> або натисніть клавішу <key>F9</key>.</p>
+  <p>
+    To activate the side panel, select <guiseq><gui>View</gui>
+    <gui>Side Panel</gui></guiseq>, or just press the <key>F9</key> key.
+  </p>
 
   <note style="note">
-    <p>Завжди можна увімкнути/вимкнути <gui>бічну панель</gui>, натиснувши <key>F9</key>.</p>
+    <p>
+      You can toggle the side panel open or closed by pressing
+      <key>F9</key> at any time.
+    </p>
   </note>
 
+<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
-    <title>Відкриття файлів з бічної панелі</title>
-    <p>Для відкриття файлів з <app>бічної панелі</app>, спочатку відкрийте <app>бічну панель</app>, вибравши <guiseq><gui>«Вигляд»</gui> <gui>«Бічна панель»</gui></guiseq>, а потім клацніть на піктограмі <gui>оглядача файлів</gui>, що в нижій частині панелі.</p>
+    <title>Opening files from the side panel</title>
+    <p>
+      To open files from the side panel, first open the
+      side panel by selecting <guiseq><gui>View</gui>
+      <gui>Side Panel</gui></guiseq> (or just press
+      <key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown
+      at the top of the panel.
+    </p>
 
-    <media type="image" mime="image/png" src="figures/gedit-side-pane1.png" its:translate="no"/>
-
-    <p>Це активує режим <em>оглядача файлів</em> <app>бічної панелі</app>. Після цього можна використовувати навігаційні кнопки, що в верхній частині панелі, для розміщування та відкривання потрібних файлів.</p>
+    <p>
+      This will activate the <em>File Browser</em> mode of the
+      side panel. You can then use the navigation buttons at the top
+      of the panel to locate and open your desired files.
+    </p>
   </section>
 
   <section id="sidepane-switch">
-    <title>Використання бічної панелі для переключення між відкритими файлами</title>
-    <p>Як тільки відкрито декілька файлів, можна користуватися бічною панеллю для перемикання між відкритими файлами. Для активації блоку оглядача файлів <app>бічної панелі</app>, клацніть на піктограмі <gui>файлу</gui>, що в нижній частині <gui>бічної панелі</gui>.</p>
-    
-    <media type="image" mime="image/png" src="figures/gedit-side-pane2.png" its:translate="no"/>
+    <title>Using the side panel to switch between open files</title>
+    <p>
+      Once you have several files open, you can use the side panel to switch
+      between open files. To list open files, choose <gui>Documents</gui>
+      from the dropdown at the top of the panel.
+    </p>
 
-    <p>Клацання на назві будь-якого файлу на <gui>бічній панелі</gui> відкриває цей файл для редагування.</p>
+    <p>
+      Clicking on any file name in the side panel will open that file
+      for editing.
+    </p>
   </section>
  
  </page>

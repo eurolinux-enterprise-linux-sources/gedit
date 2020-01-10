@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
     <desc>Saia do arquivo que você está usando.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -63,13 +64,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Rafael Fontenelle</mal:name>
       <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016</mal:years>
+      <mal:years>2013, 2016, 2017</mal:years>
     </mal:credit>
   </info>
 
   <title>Fechando um arquivo</title>
 
-  <p>Para fechar um arquivo no <app>gedit</app>, selecione <guiseq><gui>Arquivo</gui><gui>Fechar</gui></guiseq>. Alternativamente, você pode clicar o pequeno "X" que aparece no canto direito da aba do arquivo ou pressionar <keyseq><key>Ctrl</key><key>W</key></keyseq>.</p>
+  <p>Para fechar um arquivo no <app>gedit</app>, selecione <gui style="menuitem">Fechar</gui>. Alternativamente, você pode clicar o pequeno "X" que aparece no canto direito da aba do arquivo ou pressionar <keyseq><key>Ctrl</key><key>W</key></keyseq>.</p>
   <p>Qualquer uma destas ações irá fechar um arquivo no <app>gedit</app>. Se o seu arquivo contém alterações que não foram salvas, o <app>gedit</app> solicitará que você salve as alterações antes de fechar o arquivo.</p>
 
 </page>

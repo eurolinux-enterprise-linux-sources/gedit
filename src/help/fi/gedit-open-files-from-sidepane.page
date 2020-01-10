@@ -30,39 +30,56 @@
     </mal:credit>
   </info>
 
-  <title>Tiedostojen selaaminen ja avaaminen sivupaneelista</title>
-  <p>Välilehdet <app>geditin</app> ikkunan yläreunassa ovat yleisin tapa avoimien tiedostojen hallintaan. Jos tiedostoja kuitenkin on useita kymmeniä, <app>sivupaneelin</app> käyttäminen saattaa olla parempi vaihtoehto avoimien tiedostojen hallitsemiseen.</p> 
+  <title>View and open files from the side panel</title>
+  <p>
+    The most common way to switch between files in <app>gedit</app> is by using
+    the tabs at the top of the <app>gedit</app> window. In some cases, though,
+    particularly when you are working with a large number of open files, you
+    may find it easier to use the side panel.
+  </p> 
 
   <p>
-    To activate the <app>side pane</app>, select <guiseq><gui>View</gui>
-    <gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key.
+    To activate the side panel, select <guiseq><gui>View</gui>
+    <gui>Side Panel</gui></guiseq>, or just press the <key>F9</key> key.
   </p>
 
   <note style="note">
-    <p><gui>Sivupaneelin</gui> avaaminen tai sulkeminen onnistuu milloin tahansa <key>F9</key>-näppäimellä.</p>
+    <p>
+      You can toggle the side panel open or closed by pressing
+      <key>F9</key> at any time.
+    </p>
   </note>
 
+<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
-    <title>Tiedoston avaaminen sivupalkista</title>
+    <title>Opening files from the side panel</title>
     <p>
-      To open files from the <app>side pane</app>, first open the
-      <app>side pane</app> by selecting <guiseq><gui>View</gui>
-      <gui>Side Pane</gui></guiseq>, then click on the <gui>file-browser</gui>
-      icon at the bottom of the pane.
+      To open files from the side panel, first open the
+      side panel by selecting <guiseq><gui>View</gui>
+      <gui>Side Panel</gui></guiseq> (or just press
+      <key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown
+      at the top of the panel.
     </p>
 
-    <media type="image" mime="image/png" src="figures/gedit-side-pane1.png" its:translate="no"/>
-
-    <p>Tämä avaa <app>sivupaneeliin</app> <em>tiedostoselaimen</em>, jota voit käyttää tiedostojen etsimiseen ja avaamiseen. Tiedostoselainta hallitaan sivupaneelin yläosasta löytyvien painikkeiden avulla.</p>
+    <p>
+      This will activate the <em>File Browser</em> mode of the
+      side panel. You can then use the navigation buttons at the top
+      of the panel to locate and open your desired files.
+    </p>
   </section>
 
   <section id="sidepane-switch">
-    <title>Avoimien tiedostojen hallinta sivupaneelista</title>
-    <p>Sivupaneelia voidaan käyttää myös avoimien asiakirjojen hallintaan. <app>Sivupaneelin</app> asiakirjaselaimen avaaminen onnistuu napsauttamalla <gui>tyhjän asiakirjan</gui> kuvaketta <gui>sivupaneelin</gui> alareunassa.</p>
-    
-    <media type="image" mime="image/png" src="figures/gedit-side-pane2.png" its:translate="no"/>
+    <title>Using the side panel to switch between open files</title>
+    <p>
+      Once you have several files open, you can use the side panel to switch
+      between open files. To list open files, choose <gui>Documents</gui>
+      from the dropdown at the top of the panel.
+    </p>
 
-    <p>Tiedosto avautuu muokattavaksi napsauttamalla sen nimeä <gui>sivupaneelissa</gui>.</p>
+    <p>
+      Clicking on any file name in the side panel will open that file
+      for editing.
+    </p>
   </section>
  
  </page>

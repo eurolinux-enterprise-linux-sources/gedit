@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="hu">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="hu">
 
   <info>
     <link type="guide" xref="index"/>
     <desc>Gyorsbillentyűk használata a munka gyorsításához.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -49,7 +49,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Kelemen Gábor</mal:name>
       <mal:email>kelemeng at gnome dot hu</mal:email>
-      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.</mal:years>
+      <mal:years>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -269,13 +269,8 @@
       </thead>
       <tbody>
         <tr>
-          <td><p>Oldalsó ablaktábla megjelenítése/elrejtése</p></td>
+          <td><p>Oldalpanel megjelenítése/elrejtése</p></td>
           <td><p><key>F9</key></p></td>  
-        </tr>
-        <tr>
-          <td><p>Alsó ablaktábla megjelenítése/elrejtése</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
         </tr>
         <tr>
           <td><p>A Fájl menü megnyitása</p></td>

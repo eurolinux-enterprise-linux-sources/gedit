@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Buscar un fragmento de texto e un archivo.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -27,7 +28,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Mustieles</mal:name>
       <mal:email>daniel.mustieles@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -71,9 +72,6 @@
       <item>
         <p>Pulse <keyseq><key>Ctrl</key><key>G</key></keyseq> or<keyseq><key>Ctrl</key><key>Mayús</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o «touchpad» para moverse hacia arriba o hacia abajo a través del texto.</p>
-      </item>
     </list>
 
   <p>Para cerrar la <gui>ventana de búsqueda</gui> pulse <key>Esc</key> o <key>Intro</key>. Al pulsar <key>Esc</key> el cursor volverá a la posición donde estaba antes de comenzar la búsqueda. Al pulsar <key>Intro</key> el cursor volverá a la posición actual en los resultados de la búsqueda.</p>
@@ -98,7 +96,7 @@
       </list>
     </item>
     <item>
-      <p>El texto que ha buscado permanecerá resaltado en gedit, aunque haya terminado la búsqueda. Para quitar el resaltado, pulse <guiseq><gui>Buscar</gui><gui>Quitar resaltado</gui></guiseq>, o pulse <keyseq><key>Ctrl</key><key>Mayús</key><key>K</key></keyseq>.</p>
+      <p>El texto que ha buscado permanecerá resaltado en gedit, aunque haya terminado la búsqueda. Para quitar el resaltado, pulse <gui style="menuitem">Quitar resaltado</gui>, o pulse <keyseq><key>Ctrl</key><key>Mayús</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

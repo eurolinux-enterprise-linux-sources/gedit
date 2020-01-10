@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Modifier la position d'un onglet dans la fenêtre gedit.</desc>
+    <desc>Modifier la position d’un onglet dans la fenêtre gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -85,42 +85,48 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Déplacement et réorganisation des onglets</title>
-  <p>Les onglets dans <app>gedit</app> peuvent être déplacés pour faciliter votre travail avec les fichiers. Les onglets peuvent être réorganisés dans la même fenêtre, déplacés à l'extérieur de <app>gedit</app> (en créant une nouvelle fenêtre <app>gedit</app>) et déplacés d'une fenêtre à une autre.</p>
+  <p>Les onglets dans <app>gedit</app> peuvent être déplacés pour faciliter votre travail avec les fichiers. Les onglets peuvent être réorganisés dans la même fenêtre, déplacés à l’extérieur de <app>gedit</app> (en créant une nouvelle fenêtre <app>gedit</app>) et déplacés d’une fenêtre à une autre.</p>
 
   <section id="tabs-change-order">
-    <title>Modification de l'ordre des onglets dans la fenêtre gedit</title>
+    <title>Modification de l’ordre des onglets dans la fenêtre gedit</title>
 
-    <p>Pour changer l'ordre des onglets dans une fenêtre :</p>
+    <p>Pour changer l’ordre des onglets dans une fenêtre :</p>
 
     <steps>
       <item>
-        <p>cliquez sur l'onglet sans relâcher le bouton de la souris,</p>
+        <p>cliquez sur l’onglet sans relâcher le bouton de la souris,</p>
       </item>
       <item>
-        <p>déplacez l'onglet à la position souhaitée parmi les autres onglets,</p>
+        <p>déplacez l’onglet à la position souhaitée parmi les autres onglets,</p>
       </item>
       <item>
         <p>relâchez le bouton de la souris.</p>
       </item>
     </steps>
 
-    <p>L'onglet se positionne à la position la plus proche de l'endroit où vous l'avez relâché, immédiatement à côté d'un des autres onglets présents.</p>
+    <p>L’onglet se positionne à la position la plus proche de l’endroit où vous l’avez relâché, immédiatement à côté d’un des autres onglets présents.</p>
 
   </section>
 
   <section id="tabs-moving-new-window">
-    <title>Déplacement d'un onglet en créant une nouvelle fenêtre</title>
-    <p>Pour créer une nouvelle fenêtre à partir d'un onglet existant :</p>
+    <title>Déplacement d’un onglet en créant une nouvelle fenêtre</title>
+    <p>Pour créer une nouvelle fenêtre à partir d’un onglet existant :</p>
 
     <steps>
       <item>
-        <p>cliquez sur l'onglet sans relâcher le bouton de la souris,</p>
+        <p>cliquez sur l’onglet sans relâcher le bouton de la souris,</p>
       </item>
       <item>
-        <p>faites glisser l'onglet en dehors de la fenêtre <app>gedit</app>,</p>
+        <p>faites glisser l’onglet en dehors de la fenêtre <app>gedit</app>,</p>
       </item>
       <item>
         <p>relâchez le bouton de la souris.</p>
@@ -128,24 +134,24 @@
     </steps>
 
     <note style="tip">
-      <p>Pour déplacer un onglet dans une nouvelle fenêtre lorsque <app>gedit</app> est maximisé, déplacez l'onglet sur la barre supérieure en haut de l'écran.</p>
+      <p>Pour déplacer un onglet dans une nouvelle fenêtre lorsque <app>gedit</app> est maximisé, déplacez l’onglet sur la barre supérieure en haut de l’écran.</p>
     </note>
   </section>
 
   <section id="tabs-moving-other-window">
-    <title>Déplacement d'un onglet dans une autre fenêtre gedit</title>
+    <title>Déplacement d’un onglet dans une autre fenêtre gedit</title>
 
-    <p>Si vous voulez déplacer un onglet d'une fenêtre vers une autre :</p>
+    <p>Si vous voulez déplacer un onglet d’une fenêtre vers une autre :</p>
 
     <steps>
       <item>
-        <p>cliquez sur l'onglet sans relâcher le bouton de la souris,</p>
+        <p>cliquez sur l’onglet sans relâcher le bouton de la souris,</p>
       </item>
       <item>
-        <p>faites glisser l'onglet vers la nouvelle fenêtre,</p>
+        <p>faites glisser l’onglet vers la nouvelle fenêtre,</p>
       </item>
       <item>
-        <p>positionnez-le à côté d'un des autres onglets de la nouvelle fenêtre.</p>
+        <p>positionnez-le à côté d’un des autres onglets de la nouvelle fenêtre.</p>
       </item>
       <item>
         <p>relâchez le bouton de la souris.</p>
@@ -154,7 +160,7 @@
     
 
     <note style="tip">
-      <p>Il est cependant plus aisé de déplacer un onglet d'une fenêtre à une autre en le glissant dans le coin <gui>Activités</gui> de <gui>GNOME Shell</gui>, car cette action affiche toutes les fenêtres actives de <app>gedit</app>. Il suffit ensuite de relâcher l'onglet dans la fenêtre choisie de <app>gedit</app>.</p>
+      <p>Il est cependant plus aisé de déplacer un onglet d’une fenêtre à une autre en le glissant dans le coin <gui>Activités</gui> de <gui>GNOME Shell</gui>, car cette action affiche toutes les fenêtres actives de <app>gedit</app>. Il suffit ensuite de relâcher l’onglet dans la fenêtre choisie de <app>gedit</app>.</p>
     </note>
 
     <p>Consultez le tableau des <link xref="gedit-shortcut-keys">Raccourcis clavier</link> pour des raccourcis facilitant la gestion de vos onglets.</p>

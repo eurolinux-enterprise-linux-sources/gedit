@@ -6,6 +6,7 @@
     <desc>Αποθήκευση του αρχείου σας για μεταγενέστερη εργασία.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -54,6 +55,11 @@
 
   <title>Αποθήκευση αρχείου</title>
 
-  <p>Για να αποθηκεύσετε ένα αρχείο στο <app>gedit</app>, κάντε κλικ δεξιά της εργαλειοθήκης στο κουμπί <gui style="button">Αποθήκευση του τρέχοντος αρχείου</gui> με έναν δίσκο για εικονίδιο ή απλά πατήστε <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Αν αποθηκεύετε ένα νέο αρχείο, θα εμφανιστεί ο διάλογος <gui>Αποθήκευση ως</gui>, και μπορείτε να επιλέξετε ένα όνομα για το αρχείο, καθώς επίσης και το φάκελο στον οποίο θα επιθυμούσατε να αποθηκευτεί.</p>
+  <p>To save a file in <app>gedit</app>, click on the
+  <gui style="button">Save</gui> button on the right side of the toolbar or just press
+  <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>If you are saving a
+  new file, a dialog will appear, and you can select a
+  name for the file, as well as the directory where you would like the file
+  to be saved.</p>
 
 </page>

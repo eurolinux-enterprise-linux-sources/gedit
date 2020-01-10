@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Rechercher un morceau de texte dans un fichier.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -83,11 +84,17 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Recherche de texte</title>
   
-    <p>L'outil Recherche peut vous aider à trouver des morceaux de texte particuliers dans votre fichier.</p>
+    <p>L’outil Recherche peut vous aider à trouver des morceaux de texte particuliers dans votre fichier.</p>
 
     <steps>
       <title>Recherche de texte</title>
@@ -102,7 +109,7 @@
       </item>
     </steps>
     
-    <p>Pour parcourir les résultats de recherche, effectuez l'une des opérations suivantes :</p>
+    <p>Pour parcourir les résultats de recherche, effectuez l’une des opérations suivantes :</p>
     <list>
       <item>
         <p>Cliquez sur les flèches <gui style="button">haut</gui> ou <gui style="button">bas</gui> situées à côté du <gui>champ de recherche</gui>.</p>
@@ -113,20 +120,17 @@
       <item>
         <p>Appuyez sur <keyseq><key>Ctrl</key><key>G</key></keyseq> ou <keyseq><key>Ctrl</key><key>Maj</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Pour faire défiler le texte vers le haut ou le bas, maintenez la touche <key>Ctrl</key> enfoncée et utilisez le <key>défilement</key> de votre souris ou de votre pavé tactile.</p>
-      </item>
     </list>
 
-  <p>Pour fermer le <gui>champ de recherche</gui>, appuyez sur la touche <key>Échap</key> ou sur la touche <key>Entrée</key>. La touche <key>Échap</key> positionne le curseur là où il était avant d'avoir lancé la recherche, tandis que la touche <key>Entrée</key> positionne le curseur là où il est dans les résultats de la recherche.</p>
+  <p>Pour fermer le <gui>champ de recherche</gui>, appuyez sur la touche <key>Échap</key> ou sur la touche <key>Entrée</key>. La touche <key>Échap</key> positionne le curseur là où il était avant d’avoir lancé la recherche, tandis que la touche <key>Entrée</key> positionne le curseur là où il est dans les résultats de la recherche.</p>
 
   <list>
     <title>Astuces pour la recherche</title>
     <item>
-      <p>Si vous sélectionnez une portion de texte avant d'appuyer sur <keyseq><key>Ctrl</key><key>F</key></keyseq>, le texte surligné apparaît dans le champ de recherche.</p>
+      <p>Si vous sélectionnez une portion de texte avant d’appuyer sur <keyseq><key>Ctrl</key><key>F</key></keyseq>, le texte surligné apparaît dans le champ de recherche.</p>
     </item>
     <item>
-      <p>Pour accéder à plus d'options de recherche, cliquez sur l'icône <gui style="button">loupe</gui> du champ de recherche, ou faites un clic droit n'importe où dans le champ de recherche. Vous accédez alors à une ou plusieurs de ces options supplémentaires :</p>
+      <p>Pour accéder à plus d’options de recherche, cliquez sur l’icône <gui style="button">loupe</gui> du champ de recherche, ou faites un clic droit n’importe où dans le champ de recherche. Vous accédez alors à une ou plusieurs de ces options supplémentaires :</p>
       <list>
         <item>
           <p>Sélectionnez <gui>Respecter la casse</gui> pour rendre la recherche sensible à la casse.</p>
@@ -135,12 +139,12 @@
           <p>Sélectionnez <gui>Mots entiers seulement</gui> pour ne rechercher que des mots entiers.</p>
         </item>
         <item>
-          <p>Sélectionnez <gui>Recherche circulaire</gui> pour rechercher du texte depuis votre position actuelle jusqu'en bas et recommencer le cycle depuis le haut.</p>
+          <p>Sélectionnez <gui>Recherche circulaire</gui> pour rechercher du texte depuis votre position actuelle jusqu’en bas et recommencer le cycle depuis le haut.</p>
         </item>
       </list>
     </item>
     <item>
-      <p>Le texte que vous avez recherché reste coloré, même après la fin de la recherche. Pour supprimer la coloration, cliquez sur <guiseq><gui>Rechercher</gui><gui>Supprimer la coloration</gui></guiseq> ou appuyez sur <keyseq><key>Ctrl</key><key>Maj</key><key>K</key></keyseq>.</p>
+      <p>Le texte que vous avez recherché reste coloré, même après la fin de la recherche. Pour supprimer la coloration, cliquez sur <gui style="menuitem">Supprimer la coloration</gui> ou appuyez sur <keyseq><key>Ctrl</key><key>Maj</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

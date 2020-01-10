@@ -4,7 +4,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -21,11 +21,14 @@
   <p>S tem v mislih izvedite naslednje korake za odprtje datoteke s strežnika z uporabo <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Izberite <guiseq><gui>Datoteka</gui><gui>Odpri</gui></guiseq> za prikaz pogovornega okna <gui>Odpiranje datotek</gui>.</p></item>
-      <item><p>Izberite ikono <gui>Svinčnik</gui> blizu vrha pogovornega okna <gui>Odpiranje datotek</gui>.</p></item>
+      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
+      <item><p>Click <gui>Other Documents…</gui>.</p></item>
+      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
+      <gui>Open</gui> dialog.</p></item>
       <item><p>Vnesite IP naslov ali URL ustreznega strežnika.</p></item>
       <item><p>Najdite in izberite datoteko, ki jo želite odpreti.</p></item>
-      <item><p>V spustnem seznamu Znakovno kodiranje izberite ustrezno znakovno kodiranje.</p></item>
+      <item><p>Use the Character Encoding drop-down list to select the
+      appropriate character coding.</p></item>
       <item><p>Kliknite <gui>Odpri</gui></p></item>
     </steps>
 

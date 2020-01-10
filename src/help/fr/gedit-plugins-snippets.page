@@ -74,11 +74,17 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Fragments de code</title>
 
-  <p><app>Fragments de code</app> permet une insertion aisée de morceaux de texte fréquemment utilisés dans vos fichiers. Par exemple, un fragment de code HTML pour l'étiquette <code>&lt;img&gt;</code> insère les parties ouvrante et fermante de l'étiquette mais aussi les emplacements fixés où vous pouvez saisir les attributs de l'image. Cela peut accélérer et vous faciliter l'écriture du code.</p>
+  <p><app>Fragments de code</app> permet une insertion aisée de morceaux de texte fréquemment utilisés dans vos fichiers. Par exemple, un fragment de code HTML pour l’étiquette <code>&lt;img&gt;</code> insère les parties ouvrante et fermante de l’étiquette mais aussi les emplacements fixés où vous pouvez saisir les attributs de l’image. Cela peut accélérer et vous faciliter l’écriture du code.</p>
 
   <section id="enable-snippets">
     <title>Activation du greffon Fragments de code</title>
@@ -103,7 +109,7 @@
       <item>
         <p>Choisissez <guiseq><gui style="menu">Outils</gui><gui style="menuitem">Gestion des fragments de code</gui></guiseq>.</p>
         <note style="important">
-          <p>Assurez-vous que la syntaxe est correctement configurée. La barre de statut en bas de la fenêtre <app>gedit</app> affiche le paramétrage actuel de langage. Ce paramétrage est ce qui permet à <app>gedit</app> d'insérer les fragments de code corrects. <app>Gedit</app> devrait normalement détecter le langage ou la syntaxe du fichier que vous êtes en train d'utiliser, mais parfois il est nécessaire de le définir.</p>
+          <p>Assurez-vous que la syntaxe est correctement configurée. La barre de statut en bas de la fenêtre <app>gedit</app> affiche le paramétrage actuel de langage. Ce paramétrage est ce qui permet à gedit d’insérer les fragments de code corrects. <app>Gedit</app> devrait normalement détecter le langage ou la syntaxe du fichier que vous êtes en train d’utiliser, mais parfois il est nécessaire de le définir.</p>
           <figure>
             <desc>Dans cet exemple, le langage est défini à HTML.</desc>
             <media type="image" mime="image/png" src="figures/gedit-html-snippet.png"/>
@@ -123,7 +129,7 @@
 
     <steps>
       <item>
-        <p>Saisissez le nom du fragment de code voulu n'importe où dans le document actuel.</p>
+        <p>Saisissez le nom du fragment de code voulu n’importe où dans le document actuel.</p>
       </item>
       <item>
         <p>Appuyez sur le touche <key>Tab</key> pour insérer le fragment de code associé au nom que vous avez saisi.</p>
@@ -132,9 +138,9 @@
   </section>
 
     <section id="example-insert-snippet">
-    <title>Exemple d'utilisation de fragment de code</title>
+    <title>Exemple d’utilisation de fragment de code</title>
 
-    <p>Par exemple, si vous paramétrez la syntaxe à <em>HTML</em>, saisissez <code>head</code> et appuyez sur la touche <key>Tab</key>. Le texte devrait s'être auto-complété en un fragment de code tel que :</p>
+    <p>Par exemple, si vous paramétrez la syntaxe à <em>HTML</em>, saisissez <code>head</code> et appuyez sur la touche <key>Tab</key>. Le texte devrait s’être auto-complété en un fragment de code tel que :</p>
 
     <code>
       &lt;head&gt;
@@ -148,7 +154,7 @@
   <section id="adding-snippets">
     <title>Ajout de fragments de code</title>
 
-    <p>Vous pouvez ajouter d'autres fragments de code fonctionnant soit globalement (c'est-à-dire indépendamment du langage), soit dans une syntaxe particulière.</p>
+    <p>Vous pouvez ajouter d’autres fragments de code fonctionnant soit globalement (c’est-à-dire indépendamment du langage), soit dans une syntaxe particulière.</p>
 
     <steps>
       <item>
@@ -157,11 +163,11 @@
       <item>
         <p>Dans le panneau latéral de <gui>Gestion des fragments de code</gui>, choisissez la syntaxe voulue et cliquez sur le bouton « + » pour dérouler la liste des fragments de code existants concernant la syntaxe choisie.</p>
         <note style="tip">
-          <p>Pour ajouter un fragment de code fonctionnant globalement (c'est à dire sans qu'aucune syntaxe ou aucun langage n'ait été défini pour le document), choisissez <gui>Global</gui> dans le panneau latéral de <gui>Gestion des fragments de code</gui>.</p>
+          <p>Pour ajouter un fragment de code fonctionnant globalement (c’est à dire sans qu’aucune syntaxe ou aucun langage n’ait été défini pour le document), choisissez <gui>Global</gui> dans le panneau latéral de <gui>Gestion des fragments de code</gui>.</p>
         </note>
       </item>
       <item>
-        <p>Pour ajouter un nouveau fragment de code, cliquez sur l'icône « plus » dans le panneau latéral de <gui>Gestion des fragments de code</gui>.</p>
+        <p>Pour ajouter un nouveau fragment de code, cliquez sur l’icône « plus » dans le panneau latéral de <gui>Gestion des fragments de code</gui>.</p>
       </item>
       <item>
         <p>Saisissez un nom pour le nouveau fragment de code. Ce nom peut être différent du contenu du fragment de code.</p>
@@ -173,14 +179,14 @@
         </note>
       </item>
       <item>
-        <p>Dans la zone de texte <gui style="input">Édition :</gui>, saisissez le texte du fragment de code. Vous pouvez utiliser <code>${n}</code> pour indiquer les variables, où <em>n</em> est à remplacer par un nombre représentant l'ordre numérique des variables incluses.</p>
+        <p>Dans la zone de texte <gui style="input">Édition :</gui>, saisissez le texte du fragment de code. Vous pouvez utiliser <code>${n}</code> pour indiquer les variables, où <em>n</em> est à remplacer par un nombre représentant l’ordre numérique des variables incluses.</p>
       </item>
     </steps>
 
   </section>
 
   <section id="example-add-snippet">
-    <title>Exemple d'un nouveau fragment de code</title>
+    <title>Exemple d’un nouveau fragment de code</title>
 
     <p>Supposons que vous ayez créé un fragment de code avec le terme <var>greetings</var> dans <gui style="input">Mot déclencheur :</gui>. La zone de texte <gui style="input">Édition :</gui> contient :</p>
 
@@ -195,7 +201,7 @@
       &lt;greetings&gt;Hello wonderfulamazing world!&lt;/greetings&gt;
     </code>
 
-    <p>Les mots « wonderfull » et « amazing » peuvent être retenus ou supprimés selon votre choix d'utilisation. Pour ce faire, appuyez sur la touche <key>Tab</key> pour choisir entre « wonderfull » et « amazing » et appuyez sur <key>Suppr</key> pour supprimer l'option à rejeter.</p>
+    <p>Les mots « wonderfull » et « amazing » peuvent être retenus ou supprimés selon votre choix d’utilisation. Pour ce faire, appuyez sur la touche <key>Tab</key> pour choisir entre « wonderfull » et « amazing » et appuyez sur <key>Suppr</key> pour supprimer l’option à rejeter.</p>
   </section>
 
   <!--TODO: <section id="modifying-snippets">

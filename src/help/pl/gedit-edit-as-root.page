@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="gedit-edit-as-root" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index#gedit-working-with-files"/>
+    <desc>Używanie uprawnień administracyjnych do modyfikowania pliku.</desc>
+    <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Modyfikowanie pliku jako root</title>
+
+  <note style="warning">
+    <p>Modyfikowanie plików jako root może być niebezpieczne i może uszkodzić system. Należy uważać podczas modyfikowania plików jako root.</p>
+  </note>
+
+  <p>Aby modyfikować pliki jako root, uruchom program <app>gedit</app> z terminala wpisując:</p>
+  <code>sudo gedit</code>
+
+  <p>Używając polecenia <cmd>sudo</cmd> należy wpisać swoje hasło.</p>
+
+  <p>Oprócz polecenia <cmd>sudo</cmd> można także uzyskać uprawnienia administracyjne wpisując:</p>
+  <code>su -</code>
+
+  <p>Następnie uruchom program <app>gedit</app> za pomocą polecenia <cmd>gedit</cmd>.</p>
+
+  <note style="tip">
+    <p>Po otwarciu programu <app>gedit</app> z uprawnieniami administracyjnymi będzie on je miał do zamknięcia.</p>
+  </note>
+
+</page>

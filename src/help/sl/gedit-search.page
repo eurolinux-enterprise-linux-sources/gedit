@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Find a portion of text within a file.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -61,9 +62,6 @@
         <p>Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or
         <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Pritisnite <key>Ctrl</key> in uporabite zmožnost <key>drsenja</key> svoje miške ali drsne ploščice za premik navzgor ali navzdol po besedilu.</p>
-      </item>
     </list>
 
   <p>Za zaprtje <gui>okna iskanja</gui>, pritisnite <key>Esc</key> ali <key>Enter</key>. Pritisk na <key>Esc</key> bo vrnil kazalko kjer je bila, preden ste začeli iskanje. Pritisk na <key>Enter</key> bo kazalko vrnil na trenutno mesto med rezultati iskanja.</p>
@@ -93,7 +91,10 @@
       </list>
     </item>
     <item>
-      <p>Besedilo, ki ste ga iskali, bo ostalo poudarjeno, tudi ko ste dokončali svoje iskanje. Za odstranitev poudarjanja kliknite <guiseq><gui>Išči</gui><gui>Počisti poudarjanje</gui></guiseq> ali pritisnite <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      <p>The text that you've searched for will remain highlighted by gedit,
+      even after you have completed your search. To remove the highlight,
+      click <gui style="menuitem">Clear Highlight</gui>, or
+      press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Acesse arquivos que você atualizou recentemente.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -62,7 +63,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Rafael Fontenelle</mal:name>
       <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016</mal:years>
+      <mal:years>2013, 2016, 2017</mal:years>
     </mal:credit>
   </info>
 
@@ -70,7 +71,7 @@
 
   <p>Por padrão, <app>gedit</app> fornece fácil acesso a cinco dos últimos arquivos usados recentemente. Veja como você pode abrir um arquivo recentemente usado:</p>
   <list type="numbered">
-    <item><p>Clique na seta virada para baixo à direita do botão <gui>Abrir</gui>.</p></item>
+    <item><p>Clique no botão <gui>Abrir</gui>.</p></item>
     <item><p>O <app>gedit</app> irá exibir uma lista com os cinco arquivos usados mais recentemente.</p></item>
     <item><p>Selecione o arquivo desejado, e este será aberto em uma nova aba.</p></item>
   </list>

@@ -74,6 +74,12 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Activation de la coloration syntaxique</title>
@@ -82,7 +88,7 @@
     <title>Coloration syntaxique</title>
     <p><app>gedit</app> fournit une coloration syntaxique pour un grand nombre de langages de balisage, de programmation et langages scientifiques. Si <app>gedit</app> reconnaît la syntaxe utilisée lorsque vous ouvrez un fichier, il colore automatiquement le texte.</p>
 
-    <p>Si votre syntaxe ou langage n'est pas mis en couleur dès le démarrage, vous pouvez choisir la syntaxe ou le langage approprié en cliquant sur <guiseq><gui style="menu">Affichage</gui><gui style="menuitem">Mode de coloration</gui></guiseq> puis en choisissant la syntaxe désirée. Vous pouvez aussi sélectionner le nom de la syntaxe à partir de la liste déroulante en bas de la fenêtre <app>gedit</app>.</p>
+    <p>Si votre syntaxe ou langage n’est pas mis en couleur dès le démarrage, vous pouvez choisir la syntaxe ou le langage approprié en cliquant sur <guiseq><gui style="menu">Affichage</gui><gui style="menuitem">Mode de coloration</gui></guiseq> puis en choisissant la syntaxe désirée. Vous pouvez aussi sélectionner le nom de la syntaxe à partir de la liste déroulante en bas de la fenêtre <app>gedit</app>.</p>
   </section>
 
 </page>

@@ -6,6 +6,7 @@
     <desc>Stellen Sie Gedit ein, den gesamten Bildschirm zu verwenden.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -31,7 +32,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -59,7 +60,7 @@
   <section id="turn-off-full-screen">
     <title>Den Vollbildmodus ausschalten</title>
     <p>Um den Vollbildmodus zu verlassen und zum normalen <app>gedit</app>-Fenster zurückzukehren, drücken Sie <key>F11</key>.</p>
-    <p>Sie können auch den Mauszeiger an den oberen Rand des Bildschirms bewegen, um die <gui>Menüleiste</gui> anzuzeigen. Klicken Sie dann auf <gui>Vollbild verlassen</gui>.</p>
+    <p>Sie können auch den Mauszeiger an den oberen Rand des Bildschirms bewegen, um die <gui>Menüleiste</gui> anzuzeigen. Wenn die <gui>Menüleiste</gui> erscheint, klicken Sie dann auf <gui>Vollbild verlassen</gui>.</p>
   </section>
 
 </page>

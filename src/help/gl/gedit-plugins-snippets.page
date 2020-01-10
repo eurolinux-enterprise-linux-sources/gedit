@@ -13,7 +13,7 @@
       <email>sindhus@live.in</email>
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
-    <desc>Use snippets to quickly insert often-used pieces of text.</desc>
+    <desc>Use os fragmentos de texto para inserir de forma rápida pequenas pezas de texto usadas frecuentemente.</desc>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Fran Dieguez</mal:name>
@@ -24,7 +24,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
@@ -86,9 +92,7 @@
     <section id="example-insert-snippet">
     <title>Uso de fragmento de exemplo</title>
 
-    <p>For example, if you have set the syntax to <em>HTML</em>, type
-    <code>head </code>, and press the <key>Tab</key> key. The text would have
-    auto completed into a snippet as:</p>
+    <p>Por exemplo, se estabeleceu que a sintaxe é <em>HTML</em>, escriba <code>head </code> e prema a tecla <key>Tab</key>. O texto debería completarse automaticamente nun fragmento así:</p>
 
     <code>
       &lt;head&gt;
@@ -123,17 +127,11 @@
       <item>
         <p>Baixo a sección <gui style="group">Activación</gui>, debe escribir o termo no campo <gui style="input">Disparador de tabulación:</gui>. Usará este termo para inserir o seu fragmento.</p>
         <note style="tip">
-          <p>If you wish to insert a snippet with a keyboard shortcut, then
-          click your mouse pointer on <gui style="input">Shortcut key:</gui>
-          textarea and press the desired combination of keys. Once you have
-          pressed and released the keys, the keyboard shortcut will be set.</p>
+          <p>Se desexa inserir un anaco de texto cun atallo do teclado, prema co punteiro do rato sobre <gui style="input">Atallo do teclado:</gui> área do texto e prema a combinación desexada de teclas. Unha vez premidas e soltadas as teclas, o atallo do teclado estará estabelecido.</p>
         </note>
       </item>
       <item>
-        <p>Under the textarea for <gui style="input">Edit:</gui>, input the
-        desired text for the snippet. You may use <code>${n}</code> to indicate
-        variables, where <em>n</em> is replaced with a number that
-        represents the numerical order of variables included.</p>
+        <p>Baixo a área de texto para <gui style="input">Editar:</gui> insira o texto desexado para o fragmento de texto. Pode usar <code>${n}</code> para indicar variábeis onde <em>n</em> se substitúe cun número que representa a orde numérica das variábeis incluídas.</p>
       </item>
     </steps>
 
@@ -142,9 +140,7 @@
   <section id="example-add-snippet">
     <title>Exemplo de novo fragmento</title>
 
-    <p>Consider you have created a snippet with the term <var>greetings</var>
-    in <gui style="input">Tab trigger:</gui>. The
-    <gui style="input">Edit:</gui> textarea contains:</p>
+    <p>Consider you have created a snippet with the term <var>greetings</var> in <gui style="input">Tab trigger:</gui>. The <gui style="input">Edit:</gui> textarea contains:</p>
 
     <code>
       &lt;saudos&gt;Hola ${1:marabilloso}${2:incríbel} mundo!

@@ -5,7 +5,7 @@
     <link type="guide" xref="index#gedit-working-with-files" group="last"/>
     <link type="seealso" xref="gedit-tabs"/>
     <link type="seealso" xref="gedit-tab-groups"/>
-    <desc>Change the position of a tab in the gedit window.</desc>
+    <desc>Schimbați poziția unui tab în fereastra gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -35,7 +35,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
@@ -49,13 +49,13 @@
 
     <steps>
       <item>
-        <p>Click and hold the mouse button on the tab.</p>
+        <p>Apăsați și țineți mausul pe tab.</p>
       </item>
       <item>
-        <p>Move the tab to the desired position among the other tab.</p>
+        <p>Mutați tabul la poziția dorită printre alte taburi.</p>
       </item>
       <item>
-        <p>Release the mouse button.</p>
+        <p>Eliberați butonul mausului.</p>
       </item>
     </steps>
 
@@ -65,23 +65,22 @@
 
   <section id="tabs-moving-new-window">
     <title>Mutați un tab, creați o fereastră nouă gedit</title>
-    <p>To create a new window from an existing tab:</p>
+    <p>Pentru a creea o nouă fereastră dintr-un tab existent:</p>
 
     <steps>
       <item>
-        <p>Click and hold the mouse button on the tab.</p>
+        <p>Apăsați și țineți mausul pe tab.</p>
       </item>
       <item>
-        <p>Drag the tab out of the <app>gedit</app> window.</p>
+        <p>Trageți și plasați tabul în afara ferestrei <app>gedit</app>.</p>
       </item>
       <item>
-        <p>Release the mouse button.</p>
+        <p>Eliberați butonul mausului.</p>
       </item>
     </steps>
 
     <note style="tip">
-      <p>To move a tab into a new window when <app>gedit</app> is maximized, 
-      drag the tab onto the top bar at the top of the screen.</p>
+      <p>Pentru a muta tabul într-o nouă fereastră când <app>gedit</app> este maximizat, trageți tabul pe bara de sus din partea superioară a ecranului.</p>
     </note>
   </section>
 
@@ -92,30 +91,25 @@
 
     <steps>
       <item>
-        <p>Click and hold the mouse button on the tab.</p>
+        <p>Apăsați și țineți mausul pe tab.</p>
       </item>
       <item>
-        <p>Drag the tab to the new window.</p>
+        <p>Trageți tabul în fereastra nouă.</p>
       </item>
       <item>
-        <p>Place it beside other tabs in the new window.</p>
+        <p>Plasați-l lângă alte taburi în noua fereastră.</p>
       </item>
       <item>
-        <p>Release the mouse button.</p>
+        <p>Eliberați butonul mausului.</p>
       </item>
     </steps>
     
 
     <note style="tip">
-      <p>You may find it easier to move a tab from one window to another by
-      dragging the tab to the <gui>Activities</gui> hot-corner of
-      <gui>GNOME Shell</gui>. This will reveal each of the open
-      <app>gedit</app> windows. You can then release the tab on the
-      desired <app>gedit</app> window.</p>
+      <p>Este posibil ca să vi se pară mai ușor să mutați un tab dintr-o fereastră în alta trăgând tabul către colțul <gui>Activități</gui> din <gui>GNOME Shell</gui>. Aceasta va dezvălui toate ferestrele <app>gedit</app> deschise. Apoi puteți elibera tabul pe fereastra <app>gedit</app> dorită.</p>
     </note>
 
-    <p>See the <link xref="gedit-shortcut-keys">tab-related shortcut
-    keys</link> table to make it easier to manage your tabs.</p>
+    <p>Consultați tabelul <link xref="gedit-shortcut-keys">scurtățuri de tastatură pentru taburi</link> pentru a ușura administrarea taburilor.</p>
 
   </section>
 

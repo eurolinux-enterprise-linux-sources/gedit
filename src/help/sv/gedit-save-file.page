@@ -3,9 +3,10 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="third"/>
-    <desc>Save your file to work on it later.</desc>
+    <desc>Spara din fil för att arbeta med den senare.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -20,16 +21,22 @@
     </credit>
     <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
 
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Save a file</title>
+  <title>Spara en fil</title>
 
-  <p>To save a file in <app>gedit</app>, click on the
-  <gui style="button">Save the current file</gui> button with the disk-drive
-  icon on the right side of the toolbar or just press
-  <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>If you are saving a
-  new file, the <gui>Save As</gui> dialog will appear, and you can select a
-  name for the file, as well as the directory where you would like the file
-  to be saved.</p>
+  <p>För att spara en fil i <app>gedit</app>, klicka på knappen <gui style="button">Spara</gui> till höger i verktygsfältet eller tryck bara <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Om du sparar en ny fil kommer en dialogruta att dyka upp, och du kan välja ett namn på filen, såväl som katalogen där du vill att filen ska sparas.</p>
 
 </page>

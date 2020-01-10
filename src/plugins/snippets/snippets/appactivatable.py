@@ -21,6 +21,13 @@ from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 from .library import Library
 from .shareddata import SharedData
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
     __gtype_name__ = "GeditSnippetsAppActivatable"
@@ -78,7 +85,7 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         action.connect('activate', self.on_action_snippets_activate)
         self.app.add_action(action)
 
-        item = Gio.MenuItem.new(_("Manage _Snippets..."), "app.snippets")
+        item = Gio.MenuItem.new(_("Manage _Snippets…"), "app.snippets")
         self.menu = self.extend_menu("preferences-section")
         self.menu.append_menu_item(item)
 

@@ -73,21 +73,27 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
 <title>Modificateurs</title>
 
-  <p>Le greffon <app>Modificateurs</app> permet à <app>gedit</app> d'analyser les lignes de texte au début et à la fin d'un fichier, puis d'appliquer un ensemble de préférences au fichier. Le greffon <app>Modificateurs</app> prend en charge un sous-ensemble des options utilisées par les éditeurs de texte <app>Emacs</app>, <app>Kate</app> et <app>Vim</app>.</p>
+  <p>Le greffon <app>Modificateurs</app> permet à <app>gedit</app> d’analyser les lignes de texte au début et à la fin d’un fichier, puis d’appliquer un ensemble de préférences au fichier. Le greffon <app>Modificateurs</app> prend en charge un sous-ensemble des options utilisées par les éditeurs de texte <app>Emacs</app>, <app>Kate</app> et <app>Vim</app>.</p>
 
-  <p>Pour activer le greffon <app>Modificateurs</app>, choisissez <guiseq><gui>gedit</gui><gui>Préférences</gui><gui>Greffons</gui><gui>Modificateurs</gui></guiseq>.</p>
+  <p>Pour activer le greffon <app>Modificateurs</app>, choisissez <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Préférences</gui><gui>Greffons</gui><gui>Modificateurs</gui></guiseq>.</p>
 
 <section id="modelines-general">
   <title>Options générales des modificateurs</title>
-  <p>Les options suivantes peuvent être définies en utilisant les modificateurs de <application>gedit</application> :</p>
+  <p>Les options suivantes peuvent être définies en utilisant les modificateurs de <app>gedit</app> :</p>
   <list>
     <item><p>Largeur des tabulations</p></item>
-    <item><p>Largeur d'indentation</p></item>
-    <item><p>Insertion d'espaces au lieu de tabulations</p></item>
+    <item><p>Largeur d’indentation</p></item>
+    <item><p>Insertion d’espaces au lieu de tabulations</p></item>
     <item><p>Renvoi automatique à la ligne</p></item>
     <item><p>Marge de droite à la colonne</p></item>
   </list>
@@ -98,16 +104,16 @@
 </section>
 
 <section id="modelines-emacs">
-  <title>Modificateurs d'Emacs</title>
+  <title>Modificateurs d’Emacs</title>
 
-  <p>Les deux premières lignes d'un document sont analysées pour trouver les modificateurs d'<app>Emacs</app>. <app>gedit</app> prend en charge les options des modificateurs d'<app>Emacs</app> suivantes :</p>
+  <p>Les deux premières lignes d’un document sont analysées pour trouver les modificateurs d’<app>Emacs</app>. <app>gedit</app> prend en charge les options des modificateurs d’<app>Emacs</app> suivantes :</p>
   <list>
     <item><p>Tab-width</p></item>
     <item><p>Indent-offset</p></item>
     <item><p>Indent-tabs-mode</p></item>
     <item><p>Text auto-wrap</p></item>
   </list>
-  <p>Pour plus d'informations sur les modificateurs d'<app>Emacs</app>, consultez le <link href="http://www.gnu.org/software/emacs/manual/emacs.html">manuel de GNU Emacs</link>.</p>
+  <p>Pour plus d’informations sur les modificateurs d’<app>Emacs</app>, consultez le <link href="http://www.gnu.org/software/emacs/manual/emacs.html">manuel de GNU Emacs</link>.</p>
 </section>
 
 <section id="modelines-kate">
@@ -123,7 +129,7 @@
     <item><p>word-wrap-column</p></item>
   </list>
 
-  <p>Pour plus d'informations sur les modificateurs de <app>Kate</app>, consultez le <link href="http://kate-editor.org/">site Web de Kate</link>.</p>
+  <p>Pour plus d’informations sur les modificateurs de <app>Kate</app>, consultez le <link href="http://kate-editor.org/">site Web de Kate</link>.</p>
 </section>
 
 <section id="modelines-vim">
@@ -138,6 +144,6 @@
     <item><p>textwidth</p></item>
   </list>
 
-  <p>Pour plus d'informations sur les modificateurs de <app>Vim</app>, consultez le <link href="http://www.vim.org/">site Web de Vim</link>.</p>
+  <p>Pour plus d’informations sur les modificateurs de <app>Vim</app>, consultez le <link href="http://www.vim.org/">site Web de Vim</link>.</p>
 </section>
 </page>

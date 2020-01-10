@@ -2,10 +2,10 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:e="http://projectmallard.org/experimental/" type="guide" style="2column task" id="index" xml:lang="sv">
 
   <info>
-    <title type="link">gedit Text Editor</title>
-    <title type="text">gedit Text Editor</title>
+    <title type="link">gedit textredigerare</title>
+    <title type="text">gedit textredigerare</title>
 
-    <desc>Home page of the gedit help guide.</desc>
+    <desc>Hemsida för hjälpguiden för gedit.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
@@ -18,36 +18,40 @@
 
    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/> 
 
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Daniel Nylander</mal:name>
+      <mal:email>po@danielnylander.se</mal:email>
+      <mal:years>2007, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Anders Jonsson</mal:name>
+      <mal:email>anders.jonsson@norsjovallen.se</mal:email>
+      <mal:years>2016, 2017</mal:years>
+    </mal:credit>
   </info>
   
-  <title>
-    <media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/>
-    gedit Text Editor
-  </title>
-  <p>Welcome to the <app>gedit</app> help guide. For a quick introduction into
-  both <app>gedit's</app> most basic features, as well as some advanced keyboard
-  shortcuts, visit the <link xref="gedit-quickstart">Get started with
-  gedit</link> and <link xref="gedit-shortcut-keys">Shortcut keys</link>
-  pages.</p>
+  <title><media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no"/> gedit textredigerare</title>
+  <p>Välkommen till hjälpguiden för <app>gedit</app>. För en snabb introduktion till både <app>gedit</app>s mest grundläggande funktioner såväl som några avancerade tangentbordsgenvägar kan du besöka sidorna <link xref="gedit-quickstart">Kom igång med gedit</link> och <link xref="gedit-shortcut-keys">Kortkommandon</link>.</p>
 
-  <p>Other help topics are grouped together into sections below.  Enjoy using
-  <app>gedit</app>!</p>
+  <p>Andra hjälpämnen är grupperade i avsnitten nedan. Ha så kul med <app>gedit</app>!</p>
 
   <section id="gedit-working-with-files">
-    <title>Working With Files</title>
+    <title>Arbeta med filer</title>
     <links type="topic" groups="first second third fourth fifth sixth last" style="2column"/>
   </section>
 
   <section id="configure-gedit" style="2column">
-    <title>Configure gedit</title>
+    <title>Konfigurera gedit</title>
   </section> 
  
   <section id="gedit-plugins" style="2column">
-    <title>gedit Plugins</title>
+    <title>Insticksmoduler för gedit</title>
   </section>
 
   <section id="gedit-printing-guide" style="2column">
-    <title>Printing with gedit</title>
+    <title>Skriva ut med gedit</title>
   </section>
 
 </page>

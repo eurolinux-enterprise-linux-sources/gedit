@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Revert a recent change to one of your files.</desc>
+    <desc>Anulați o schimbare recentă a uneia din fișierele dumneav.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
     <credit type="author">
@@ -34,16 +34,15 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Daniel Șerbănescu</mal:name>
       <mal:email>daniel [at] serbanescu [dot] dk</mal:email>
-      <mal:years>2015</mal:years>
+      <mal:years>2015, 2018</mal:years>
     </mal:credit>
   </info>
 
   <title>Anulați o acțiune recentă</title>
 
-  <p>If you make a mistake while using <app>gedit</app>, you can undo it by
-  pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>.</p>
+  <p>Dacă faceți o greșeală în timp ce utilizați <app>gedit</app>, o puteți anula apăsând <keyseq><key>Ctrl</key><key>Z</key></keyseq>.</p>
     
   <note style="important">
-    <p>You cannot undo a change after you have closed a <app>gedit</app> file.</p>
+    <p>Nu veți putea anula o schimbare după ce ați închis un fișier <app>gedit</app>.</p>
   </note>
 </page>

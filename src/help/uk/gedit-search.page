@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Find a portion of text within a file.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -69,9 +70,6 @@
       <item>
         <p>Натисніть <keyseq><key>Ctrl</key><key>G</key></keyseq> або <keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>.</p>
       </item>
-      <item>
-        <p>Натисніть <key>Ctrl</key> і використовуйте функцію <key>коліщатко</key> миші або сенсорної панелі для переміщення по тексту вгору або вниз.</p>
-      </item>
     </list>
 
   <p>Для закриття <gui>пошукового вікна</gui>, натисніть <key>Esc</key> або <key>Enter</key>. Натиснення <key>Esc</key> поверне курсор на ту позицію, де він знаходився перед початком пошуку. Натиснення <key>Enter</key> – на поточну позицію результатів пошуку.</p>
@@ -96,7 +94,10 @@
       </list>
     </item>
     <item>
-      <p>Шуканий текст буде залишатися виділеним, навіть, після закінчення пошуку. Щоб прибрати виділення, клацніть на <guiseq><gui>«Пошук»</gui><gui>«Очистити виділення»</gui></guiseq> або натисніть <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
+      <p>The text that you've searched for will remain highlighted by gedit,
+      even after you have completed your search. To remove the highlight,
+      click <gui style="menuitem">Clear Highlight</gui>, or
+      press <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" version="1.0 ui/1.0" id="gedit-shortcut-keys" xml:lang="gl">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:ui="http://projectmallard.org/ui/1.0/" type="guide" style="tip" id="gedit-shortcut-keys" xml:lang="gl">
 
   <info>
     <link type="guide" xref="index"/>
-    <desc>Use keyboard shortcuts to help you work more quickly.</desc>
+    <desc>Use atallos do teclado para traballar máis rápido.</desc>
     <revision pkgversion="3.14" date="2014-07-06" status="review"/>
     <revision pkgversion="3.18" date="2015-08-11" status="candidate"/>
-
+    <revision pkgversion="3.24" date="2017-09-17" status="candidate"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email its:translate="no">jcampbell@gnome.org</email>
@@ -49,7 +49,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
@@ -61,8 +67,8 @@
     <title>Atallos de teclado relacionados coas lapelas</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -84,27 +90,27 @@
         </tr>
         <tr>
           <td><p>Pechar todas as lapelas</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq></p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Maiús</key> <key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Reopen the most recently closed tab</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq></p></td>
+          <td><p>Reabrir a lapela pechada máis recentemente</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Maiús</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Saltar á <var>n</var>a lapela</p></td>
           <td><p><keyseq><key>Alt</key><key> <var>n</var></key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>New tab group</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq></p></td>
+          <td><p>Grupo de lapelas novo</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key> <key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Previous tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></keyseq></p></td>
+          <td><p>Grupo de lapelas anterior</p></td>
+          <td><p><keyseq><key>Maiús</key><key>Ctrl</key> <key>Alt</key><key>Av páx</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Next tab group</p></td>
-          <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></keyseq></p></td>
+          <td><p>Grupo de lapelas seguinte</p></td>
+          <td><p><keyseq><key>Maiús</key><key>Ctrl</key> <key>Alt</key><key>Re páx</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -113,17 +119,17 @@
     <title>Atallos de teclado para traballar con ficheiros</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document in a new window</p></td>
+          <td><p>Crear un documento novo nunha xanela nova</p></td>
           <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Create a new document in a new tab</p></td>
+          <td><p>Crear un documento novo nunha lapela nova</p></td>
           <td><p><keyseq><key>Ctrl</key><key>T</key></keyseq></p></td>
         </tr>
         <tr>
@@ -131,7 +137,7 @@
           <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-           <td><p>Open the <gui>Quick Open</gui> window</p></td>
+           <td><p>Abrir a xanela de <gui>Apertura rápida</gui>.</p></td>
            <td><p><keyseq><key>Alt</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
@@ -165,8 +171,8 @@
     <title>Atallos de teclado para editar ficheiros</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -239,15 +245,15 @@
           <td><p><keyseq><key>Maiús</key><key>Tab</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to upper case</p></td>
+          <td><p>Converter o texto seleccionado a maiúsculas</p></td>
           <td><p><keyseq><key>Ctrl</key><key>U</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Convert the selected text to lower case</p></td>
+          <td><p>Converter o texto seleccionado a minúsculas</p></td>
           <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Toggle case of the selected text</p></td>
+          <td><p>Cambiar a capitalización do texto seleccionado</p></td>
           <td><p><keyseq><key>Ctrl</key><key>~</key></keyseq></p></td>
         </tr>
       </tbody>
@@ -257,22 +263,17 @@
     <title>Atallos de teclado para mostrar e ocultar paneis</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Mostrar/agochar o panel lateral</p></td>
+          <td><p>Mostrar / ocultar o panel lateral</p></td>
           <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane</p></td>
-          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
-          </td>
-        </tr>
-        <tr>
-          <td><p>Open the file menu</p></td>
+          <td><p>Abrir o menú de ficheiros</p></td>
           <td><p><key>F10</key></p></td>  
         </tr>
       </tbody>
@@ -282,8 +283,8 @@
     <title>Atallos de teclado para buscas</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -318,8 +319,8 @@
     <title>Atallos de teclado para as ferramentass</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>
@@ -346,8 +347,8 @@
     <title>Atallos de teclado para a axuda</title>
       <thead>
         <tr>
-          <td><p>Action</p></td>
-          <td><p>Keyboard shortcut</p></td>
+          <td><p>Acción</p></td>
+          <td><p>Atallo de teclado</p></td>
         </tr>
       </thead>
       <tbody>

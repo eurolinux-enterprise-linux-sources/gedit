@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Annuler une action récente sur l'un de vos fichiers.</desc>
+    <desc>Annuler une action récente sur l’un de vos fichiers.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
     <credit type="author">
@@ -84,11 +84,17 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Annulation d'une action récente</title>
+  <title>Annulation d’une action récente</title>
 
-  <p>Pour corriger une erreur dans <app>gedit</app>, appuyez sur <keyseq><key>Ctrl</key><key>Z</key></keyseq> pour annuler l'action.</p>
+  <p>Pour corriger une erreur dans <app>gedit</app>, appuyez sur <keyseq><key>Ctrl</key><key>Z</key></keyseq> pour annuler l’action.</p>
     
   <note style="important">
     <p>Vous ne pouvez pas annuler une action après avoir fermé le fichier <app>gedit</app>.</p>

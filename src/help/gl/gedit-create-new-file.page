@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="first"/>
-    <desc>Open a new file for editing.</desc>
+    <desc>Abrir un ficheiro novo para editalo.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.12" date="2014-02-12" status="review"/>
     <credit type="author">
@@ -25,15 +25,19 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Leandro Regueiro</mal:name>
       <mal:email>leandro.regueiro@gmail.com</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:years>2011</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Marcos Lans </mal:name>
+      <mal:email>marcoslansgarza@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
     </mal:credit>
   </info>
 
   <title>Crear un ficheiro novo</title>
 
-  <p>The easiest way to create a new file in <app>gedit</app>, is to click the
-  <gui>Create a new document</gui> button on the left side of the toolbar,
-  or press <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
+  <p>A forma máis sinxela de crear un novo ficheiro no <app>gedit</app>, é premer no botón <gui>Crear un novo documento</gui> na parte esquerda da barra de ferramentas ou premer <keyseq><key>Ctrl</key><key>T</key></keyseq>.</p>
 
   <p>Calquera destas accións creará un ficheiro novo en <app>gedit</app>. Se ten abertos outros ficheiros en <app>gedit</app>, o ficheiro novo que cree aparecerá como unha lapela nova á dereita destes ficheiros.</p>
 

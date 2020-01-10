@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#gedit-working-with-files"/>
-    <desc>Revert a recent change to one of your files.</desc>
+    <desc>撤销最近对您的文件所做的更改。</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-17" status="review"/>
     <credit type="author">
@@ -42,14 +42,19 @@
       <mal:email>wancheng.com.cn@gmail.com</mal:email>
       <mal:years>2012</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Zhe Wei</mal:name>
+      <mal:email>weizhe86@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
   </info>
 
   <title>撤销上一次操作</title>
 
-  <p>If you make a mistake while using <app>gedit</app>, you can undo it by
-  pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>.</p>
+  <p>如果你在要在<app>gedit</app>中发生误操作, 你可以通过组合键 <keyseq><key>Ctrl</key><key>Z</key></keyseq>取消这个操作。</p>
     
   <note style="important">
-    <p>You cannot undo a change after you have closed a <app>gedit</app> file.</p>
+    <p>当您关闭<app>gedit</app>的文件后，将无法取消修改。</p>
   </note>
 </page>

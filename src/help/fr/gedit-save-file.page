@@ -6,6 +6,7 @@
     <desc>Enregistrer votre document.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.12" date="2014-02-13" status="review"/>
+    <revision pkgversion="3.22" date="2014-02-13" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -80,10 +81,16 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
-  <title>Enregistrement d'un document</title>
+  <title>Enregistrement d’un document</title>
 
-  <p>Pour enregistrer un fichier dans <app>gedit</app>, cliquez sur l'icône en forme de disque dur <gui style="button">Enregistrer le fichier actuel</gui> à droite dans la barre d'outils, ou appuyez sur <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Si vous enregistrez un nouveau fichier, la boîte de dialogue <gui>Enregistrer sous</gui> s'affiche et vous pouvez nommer le fichier ainsi que le répertoire dans lequel vous désirez enregistrer le fichier.</p>
+  <p>Pour enregistrer un fichier dans <app>gedit</app>, cliquez sur le bouton <gui style="button">Enregistrer</gui> à droite dans la barre d’outils, ou appuyez sur <keyseq><key>Ctrl</key><key>S</key></keyseq>.</p> <p>Si vous enregistrez un nouveau fichier, une boîte de dialogue s’affiche et vous pouvez nommer le fichier ainsi que le répertoire dans lequel vous désirez l’enregistrer.</p>
 
 </page>

@@ -70,33 +70,36 @@
       <mal:email>jhardlin@orange.fr</mal:email>
       <mal:years>2013.</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Guillaume Bernard</mal:name>
+      <mal:email>associations@guillaume-bernard.fr</mal:email>
+      <mal:years>2018</mal:years>
+    </mal:credit>
   </info>
 
   <title>Affichage et ouverture de fichiers à partir du panneau latéral</title>
-  <p>La façon la plus courante de basculer entre les fichiers dans <app>gedit</app> est d'utiliser les onglets en haut de la fenêtre <app>gedit</app>. Dans certain cas néanmoins, particulièrement lorsque vous travaillez avec un grand nombre de fichiers ouverts, il est possible que vous trouviez plus facile d'utiliser le <app>panneau latéral</app>.</p> 
+  <p>La façon la plus courante de basculer entre les fichiers dans <app>gedit</app> est d’utiliser les onglets en haut de la fenêtre <app>gedit</app>. Dans certain cas néanmoins, particulièrement lorsque vous travaillez avec un grand nombre de fichiers ouverts, il est possible que vous trouviez plus facile d’utiliser le panneau latéral.</p> 
 
-  <p>Pour activer le <app>panneau latéral</app>, choisissez <guiseq><gui>Affichage</gui><gui>Panneau latéral</gui></guiseq> ou appuyez simplement sur la touche <key>F9</key>.</p>
+  <p>Pour activer le panneau latéral, choisissez <guiseq><gui>Affichage</gui> <gui>Panneau latéral</gui></guiseq> ou appuyez simplement sur la touche <key>F9</key>.</p>
 
   <note style="note">
-    <p>Vous pouvez afficher ou masquer le <app>panneau latéral</app> en appuyant sur <key>F9</key> quand vous voulez.</p>
+    <p>Vous pouvez afficher ou masquer le panneau latéral en appuyant sur <key>F9</key> quand vous voulez.</p>
   </note>
 
+<!-- TODO: This section is duplicated from gedit-plugins-file-browser.page; does it make sense here? -->
   <section id="sidepane-open">
     <title>Ouverture de fichiers à partir du panneau latéral</title>
-    <p>Pour ouvrir des fichiers à partir du <app>panneau latéral</app>, commencez par ouvrir le <app>panneau latéral</app> en choisissant <guiseq><gui>Affichage</gui><gui>Panneau latéral</gui></guiseq>, puis cliquez sur l'icône <gui>explorateur de fichiers</gui> en bas du panneau.</p>
+    <p>Pour ouvrir des fichiers à partir du panneau latéral, commencez par ouvrir le panneau latéral en choisissant <guiseq><gui>Affichage</gui><gui>Panneau latéral</gui></guiseq> (ou appuyez sur <key>F9</key>), puis cliquez sur <gui>Navigateur de fichiers</gui> dans le menu déroulant en haut du panneau.</p>
 
-    <media type="image" mime="image/png" src="figures/gedit-side-pane1.png" its:translate="no"/>
-
-    <p>Cela active le mode <em>explorateur de fichiers</em> du <app>panneau latéral</app>. Vous pouvez maintenant utiliser les boutons de navigation en haut du panneau pour localiser et ouvrir les fichiers que vous voulez.</p>
+    <p>Cela active le mode <em>explorateur de fichiers</em> du panneau latéral. Vous pouvez maintenant utiliser les boutons de navigation en haut du panneau pour localiser et ouvrir les fichiers que vous voulez.</p>
   </section>
 
   <section id="sidepane-switch">
     <title>Utilisation du panneau latéral pour basculer entre les fichiers ouverts</title>
-    <p>Une fois que vous avez ouvert plusieurs fichiers, vous pouvez utiliser le panneau latéral pour basculer entre les fichiers ouverts. Pour activer la partie explorateur de fichiers du <app>panneau latéral</app>, cliquez sur l'icône <gui>Documents</gui> en bas du <gui>Panneau latéral</gui>.</p>
-    
-    <media type="image" mime="image/png" src="figures/gedit-side-pane2.png" its:translate="no"/>
+    <p>Une fois que vous avez ouvert plusieurs fichiers, vous pouvez utiliser le panneau latéral pour basculer entre les fichiers ouverts. Pour activer la partie explorateur de fichiers du panneau latéral, cliquez sur l’icône <gui>Documents</gui> dans le menu déroulant en haut du panneau.</p>
 
-    <p>Un clic sur n'importe quel nom de fichier dans le <gui>Panneau latéral</gui> ouvre ce fichier pour l'édition.</p>
+    <p>Un clic sur n’importe quel nom de fichier dans le panneau latéral ouvre ce fichier pour l’édition.</p>
   </section>
  
  </page>

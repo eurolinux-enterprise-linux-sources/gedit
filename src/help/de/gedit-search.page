@@ -6,6 +6,7 @@
     <link type="seealso" xref="gedit-replace"/>
     <desc>Einen Textteil in einer Datei suchen.</desc>
     <revision pkgversion="3.14" date="2014-12-04" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -39,7 +40,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -54,7 +55,7 @@
     <p>Das Suchwerkzeug hilft Ihnen beim Auffinden bestimmter Textteile in Ihrer Datei.</p>
 
     <steps>
-      <title>Text finden</title>
+      <title>Nach Text suchen</title>
       <item>
         <p>Öffnen Sie das <gui>Suchfenster</gui>, indem Sie <guiseq><gui style="menu">Menü</gui> <gui style="menuitem">Suchen …</gui></guiseq> wählen oder <keyseq><key>Strg</key><key>F</key></keyseq> drücken. Dadurch wird die Eingabemarke an den Beginn der Eingabezeile im <gui>Suchfenster</gui> verschoben.</p>
       </item>
@@ -76,9 +77,6 @@
       </item>
       <item>
         <p>Drücken Sie <keyseq><key>Strg</key><key>G</key></keyseq> oder <keyseq><key>Strg</key><key>Umschalttaste</key><key>G</key></keyseq>.</p>
-      </item>
-      <item>
-        <p>Drücken Sie die <key>Strg</key>-Taste und verwenden Sie die <key>Bildlauf</key>-Funktion der Maus oder des Touchpads, um sich nach oben oder unten durch den Text zu bewegen.</p>
       </item>
     </list>
 
@@ -104,7 +102,7 @@
       </list>
     </item>
     <item>
-      <p>Der von Ihnen gesuchte Text wird weiterhin in <app>gedit</app> hervorgehoben, auch nachdem die Suche abgeschlossen ist. Um die Hervorhebung zu entfernen, klicken Sie auf <guiseq><gui>Suchen</gui><gui>Hervorhebung zurücksetzen</gui></guiseq> oder drücken Sie <keyseq><key>Strg</key><key>Umschalttaste</key><key>K</key></keyseq>.</p>
+      <p>Der von Ihnen gesuchte Text wird weiterhin in <app>gedit</app> hervorgehoben, auch nachdem die Suche abgeschlossen ist. Um die Hervorhebung zu entfernen, klicken Sie auf <gui style="menuitem">Hervorhebung zurücksetzen</gui> oder drücken Sie <keyseq><key>Strg</key><key>Umschalttaste</key><key>K</key></keyseq>.</p>
     </item>
   </list>
 

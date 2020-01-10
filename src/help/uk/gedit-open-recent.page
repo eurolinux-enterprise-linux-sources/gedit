@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Access files that you have updated recently.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -28,7 +29,7 @@
 
   <p>За замовчуванням, «<app>gedit</app>» забезпечує легкий доступ до останніх п'яти файлів. Щоб відкрити останні файли:</p>
   <list type="numbered">
-    <item><p>Калцніть на стрілці вниз, що справа від кнопки «<gui>Відкрити</gui>».</p></item>
+    <item><p>Click the <gui>Open</gui> button.</p></item>
     <item><p>Відобразиться список п'яти останніх файлів.</p></item>
     <item><p>Виберіть потрібний файл. Він відкриється в новій вкладці.</p></item>
   </list>

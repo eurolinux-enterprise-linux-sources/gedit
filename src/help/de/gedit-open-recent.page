@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Greifen Sie auf Dateien zu, die Sie kürzlich aktualisiert haben.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -26,7 +27,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Christian Kirbach</mal:name>
       <mal:email>christian.kirbach@gmail.com</mal:email>
-      <mal:years>2011-2015</mal:years>
+      <mal:years>2011-2017</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
@@ -40,7 +41,7 @@
 
   <p>Als Vorgabe ermöglicht <app>gedit</app> einfachen Zugriff auf die fünf am häufigsten verwendeten Dateien. Um eine solche Datei zu öffnen, führen Sie die folgenden Schritte aus:</p>
   <list type="numbered">
-    <item><p>Klicken Sie auf den nach unten weisenden Pfeil rechts vom <gui>Öffnen</gui>-Knopf.</p></item>
+    <item><p>Klicken Sie auf den <gui>Öffnen</gui>-Knopf.</p></item>
     <item><p><app>gedit</app> zeigt daraufhin eine Liste der fünf am häufigsten verwendeten Dateien an.</p></item>
     <item><p>Wählen Sie die gewünschte Datei aus, und sie wird im nächsten verfügbaren Reiter geöffnet.</p></item>
   </list>

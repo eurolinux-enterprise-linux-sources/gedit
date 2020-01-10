@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fourth"/>
     <desc>Iziet no datnes, ko izmantojat.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -15,7 +16,10 @@
 
   <title>Aizvērt datni</title>
 
-  <p>Lai aizvērtu datni <app>gedit</app>, izvēlieties <guiseq><gui>Datne</gui><gui>Aizvērt</gui></guiseq> vai veiciet klikšķi uz "X" datnes cilnes labajā pusē, vai nospiediet <keyseq><key>Ctrl</key><key>W</key></keyseq>.</p>
+  <p>To close a file in <app>gedit</app>, select 
+  <gui style="menuitem">Close</gui>. Alternately, you can click the small "X" that 
+  appears on the right-side of the file's tab, or press <keyseq><key>Ctrl</key>
+  <key>W</key></keyseq>.</p>
   <p>Jebkura no šīm darbībām aizvērs datni <app>gedit</app>. Ja datnē ir nesaglabātas izmaiņas, <app>gedit</app> piedāvās tās saglabāt, pirms aizvērt datni.</p>
 
 </page>

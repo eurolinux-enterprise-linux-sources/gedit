@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-tabs-moving" xml:lang="pl">
+
+  <info>
+    <link type="guide" xref="index#gedit-working-with-files" group="last"/>
+    <link type="seealso" xref="gedit-tabs"/>
+    <link type="seealso" xref="gedit-tab-groups"/>
+    <desc>Zmiana położenia karty w oknie programu gedit.</desc>
+    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email>jcampbell@gnome.org</email>
+    </credit>
+    <credit type="collaborator">
+      <name>Daniel Neel</name>
+      <email>dneelyep@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <credit type="editor">
+      <name>Radina Matic</name>
+      <email its:translate="no">radina.matic@gmail.com</email>
+      <years>2013</years>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Piotr Drąg</mal:name>
+      <mal:email>piotrdrag@gmail.com</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Aviary.pl</mal:name>
+      <mal:email>community-poland@mozilla.org</mal:email>
+      <mal:years>2017</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Przenoszenie i zmienianie kolejności kart</title>
+  <p>Można przenosić karty w programie <app>gedit</app>, ułatwiając pracę na plikach. Można zmieniać kolejność kart w tym samym oknie, przenosić je poza okno programu (tworząc nowe okno) i przenosić z jednego okna do drugiego.</p>
+
+  <section id="tabs-change-order">
+    <title>Zmiana kolejności kart w oknie programu gedit</title>
+
+    <p>Aby zmienić kolejność kart w oknie:</p>
+
+    <steps>
+      <item>
+        <p>Kliknij kartę i przytrzymaj przycisk myszy.</p>
+      </item>
+      <item>
+        <p>Przenieś kartę do wybranego miejsca między pozostałymi kartami.</p>
+      </item>
+      <item>
+        <p>Zwolnij przycisk myszy.</p>
+      </item>
+    </steps>
+
+    <p>Karta zostanie umieszczona w miejscu najbliższym do miejsca zwolnienia karty, zaraz obok pozostałych otwartych kart.</p>
+
+  </section>
+
+  <section id="tabs-moving-new-window">
+    <title>Przenoszenie karty, tworząc nowe okno</title>
+    <p>Aby utworzyć nowe okno z istniejącej karty:</p>
+
+    <steps>
+      <item>
+        <p>Kliknij kartę i przytrzymaj przycisk myszy.</p>
+      </item>
+      <item>
+        <p>Przeciągnij kartę z okna programu <app>gedit</app>.</p>
+      </item>
+      <item>
+        <p>Zwolnij przycisk myszy.</p>
+      </item>
+    </steps>
+
+    <note style="tip">
+      <p>Aby przenieść kartę do nowego okna, kiedy program <app>gedit</app> jest zmaksymalizowany, przeciągnij ją do górnego paska na górze ekranu.</p>
+    </note>
+  </section>
+
+  <section id="tabs-moving-other-window">
+    <title>Przenoszenie karty do innego okna programu</title>
+
+    <p>Aby przenieść kartę z jednego okna do drugiego:</p>
+
+    <steps>
+      <item>
+        <p>Kliknij kartę i przytrzymaj przycisk myszy.</p>
+      </item>
+      <item>
+        <p>Przeciągnij kartę do nowego okna.</p>
+      </item>
+      <item>
+        <p>Umieść ją obok pozostałych kart w nowym oknie.</p>
+      </item>
+      <item>
+        <p>Zwolnij przycisk myszy.</p>
+      </item>
+    </steps>
+    
+
+    <note style="tip">
+      <p>Można łatwiej przenosić karty z jednego okna do drugiego przeciągając je do rogu <gui>Podgląd</gui> <gui>Powłoki GNOME</gui>. Wyświetli to wszystkie otwarte okna programu <app>gedit</app> windows. Można wtedy zwolnić kartę na wybranym oknie.</p>
+    </note>
+
+    <p>Lista <link xref="gedit-shortcut-keys">Skróty związane z kartami</link> ułatwia zarządzanie kartami.</p>
+
+  </section>
+
+</page>

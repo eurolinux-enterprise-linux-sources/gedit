@@ -4,6 +4,7 @@
 <info>
   <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
   <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision version="3.24" date="2017-09-17" status="review"/>
   <credit type="author">
     <name>Daniel Neel</name>
     <email>dneelyep@gmail.com</email>
@@ -36,10 +37,6 @@
 
   <p>Плагін «Сортування» впорядковує виділені текстові рядки в алфавітному порядку.</p>
 
-  <note style="warning">
-    <p>Виправити операцію «<gui>Сортування</gui>» за допомогою команди «<gui>Скасувати</gui>» – неможливо. Тому рекомендуємо зберігати файл безпосередньо перед сортуванням. Якщо при сортуванні було допущено помилку, можна відновити попередньо збережену версію файлу, вибравши <guiseq><gui>«Файл»</gui><gui>«Відновити»</gui></guiseq>.</p>
-</note>
-
   <section id="enable-sort">
     <title>Увімкнення плагіну «Сортування»</title>
 
@@ -66,7 +63,8 @@
         <p>Перемістіть та виберіть потрібні текстові рядки.</p>
       </item>
       <item>
-        <p>Виберіть <guiseq><gui style="menu">«gedit»</gui> <gui style="menuitem">«Сортування»</gui></guiseq>.</p>
+        <p>Select <guiseq><gui style="menu">Tools</gui>
+        <gui style="menuitem">Sort…</gui></guiseq>.</p>
       </item>
       <item>
         <p>Відкриється діалогове вікно «<gui>Сортування</gui>», дозволяючи вибрати між декількома варіантами сортування:</p>

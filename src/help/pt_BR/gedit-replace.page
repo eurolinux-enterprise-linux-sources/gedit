@@ -8,6 +8,7 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.10" date="2013-11-05" status="candidate"/>
     <revision pkgversion="3.14" date="2014-11-28" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -85,7 +86,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Rafael Fontenelle</mal:name>
       <mal:email>rafaelff@gnome.org</mal:email>
-      <mal:years>2013, 2016</mal:years>
+      <mal:years>2013, 2016, 2017</mal:years>
     </mal:credit>
   </info>
 
@@ -99,7 +100,7 @@
       <p>Abra a ferramenta <gui>Localizar e substituir</gui> clicando no botão do <guiseq><gui style="button">Menu</gui><gui style="menuitem">Localizar e substituir…</gui></guiseq> ou pressione as teclas <keyseq><key>Ctrl</key><key>H</key></keyseq>.</p>
     </item>
     <item>
-      <p>Digite o texto que você deseja substituir no campo <gui>Pesquisar por:</gui>.</p>
+      <p>Digite o texto que você deseja substituir no campo <gui>Pesquisar</gui>.</p>
     </item>
     <item>
       <p>Digite o texto substituto novo no campo <gui>Substituir por:</gui>.</p>

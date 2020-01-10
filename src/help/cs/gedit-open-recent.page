@@ -5,6 +5,7 @@
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
     <desc>Jak se dostat k souborům, které byly nedávno změněny.</desc>
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-17" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -28,7 +29,7 @@
 
   <p>Standardně poskytuje <app>gedit</app> přístup k posledním pěti nedávno použitým souborům. Zde je postup, jak můžete nedávno použitý soubor otevřít:</p>
   <list type="numbered">
-    <item><p>Klikněte na šipku ukazující dolů po pravé straně tlačítka <gui>Otevřít</gui>.</p></item>
+    <item><p>Klikněte na tlačítko <gui>Otevřít</gui>.</p></item>
     <item><p><app>gedit</app> zobrazí seznam posledních pěti použitých souborů.</p></item>
     <item><p>Vyberte požadovaný soubor a ten se otevře v nové kartě.</p></item>
   </list>

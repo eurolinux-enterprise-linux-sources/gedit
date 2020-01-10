@@ -3,7 +3,7 @@
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
-    <desc>Change the text and background colors in gedit.</desc>
+    <desc>Изменение цвета текста и фона в gedit.</desc>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
     <revision pkgversion="3.15" date="2015-01-29" status="final"/>
 
@@ -12,7 +12,7 @@
       <email>jcampbell@gnome.org</email>
     </credit>
     <credit type="editor">
-      <name>Jana Svarova</name>
+      <name>Яна Сварова (Jana Svarova)</name>
       <email its:translate="no">jana.svarova@gmail.com</email>
       <years>2015</years>
     </credit>
@@ -27,13 +27,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 
@@ -42,11 +42,9 @@
   <p>Текстовый редактор <app>gedit</app> включает в себя несколько различных цветовых схем, что позволяет изменять внешний вид главного окна.</p>
 
   <steps>
-    <title>To change the color scheme:</title>
+    <title>Для изменения цветовой схемы:</title>
     <item>
-      <p>Open the <gui style="menu">gedit</gui> menu from the top bar, then
-      select <guiseq><gui style="menuitem">Preferences</gui><gui>Font &amp;
-      Colors</gui></guiseq>.</p>
+      <p>Откройте меню <gui style="menu">gedit</gui> на верхней панели, затем выберите <guiseq><gui style="menuitem">Параметры</gui><gui>Шрифты и цвета</gui></guiseq>.</p>
     </item>
     <item>
       <p>Выберите нужную цветовую схему.</p>
@@ -64,10 +62,7 @@
 
     <p>Можно создавать и использовать собственные цветовые схемы, а также использовать цветовые схемы, созданные другими.</p>
 
-    <p>Instructions on how to install custom color schemes, as well as examples
-    of color schemes that you can download and use, are available on the
-    <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit
-    wiki</link>.</p>
+    <p>Инструкции по установке собственных цветовых схем, а также примеры цветовых схем, которые можно загрузить и использовать, доступны в <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit wiki</link>.</p>
   </section>
 
 </page>

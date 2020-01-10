@@ -3,8 +3,8 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
-    <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <desc>Доступ к фалам расположенным на другом компьютере.</desc>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Джим Кэмпбелл (Jim Campbell)</name>
       <email>jcampbell@gnome.org</email>
@@ -14,13 +14,13 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Stas Solovey</mal:name>
       <mal:email>whats_up@tut.by</mal:email>
-      <mal:years>2011-2015.</mal:years>
+      <mal:years>2011-2018.</mal:years>
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Misha Shnurapet</mal:name>
-      <mal:email>shnurapet@fedoraproject.org</mal:email>
-      <mal:years>2011.</mal:years>
+      <mal:name>Ivan Komaritsyn</mal:name>
+      <mal:email>vantu5z@mail.ru</mal:email>
+      <mal:years>2017.</mal:years>
     </mal:credit>
   </info>
 
@@ -33,8 +33,9 @@
   <p>Чтобы открыть файл, который находится на сервере, используя <app>gedit</app>, выполните следующие действия:</p>
 
     <steps>
-      <item><p>Выберите <guiseq><gui>Файл</gui><gui>Открыть</gui></guiseq>, появится диалоговое окно <gui>Открыть файлы</gui>.</p></item>
-      <item><p>Нажмите на значок <gui>Карандаш</gui> в верхней части диалогового окна <gui>Открыть файлы</gui>.</p></item>
+      <item><p>В строке заголовка нажмите <gui>Открыть</gui>.</p></item>
+      <item><p>Нажмите <gui>Другие документы…</gui>.</p></item>
+      <item><p>Нажмите <keyseq><key>Ctrl</key><key>L</key></keyseq> в диалоговом окне <gui>Открыть</gui>.</p></item>
       <item><p>Введите IP-адрес или URL соответствующего сервера.</p></item>
       <item><p>Найдите и выберите файл, который нужно открыть.</p></item>
       <item><p>Используя выпадающий список кодировки символов, выберите подходящую кодировку.</p></item>
