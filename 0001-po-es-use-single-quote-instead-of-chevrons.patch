@@ -1,0 +1,39 @@
+diff -up gedit-3.14.3/po/es.po.es-po-quotes gedit-3.14.3/po/es.po
+--- gedit-3.14.3/po/es.po.es-po-quotes	2015-02-04 06:32:46.000000000 -0500
++++ gedit-3.14.3/po/es.po	2016-04-06 15:31:23.979277863 -0400
+@@ -105,7 +105,7 @@ msgstr ""
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:3
+ msgid "'Monospace 12'"
+-msgstr "«Monospace 12»"
++msgstr "'Monospace 12'"
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:4
+ msgid "Editor Font"
+@@ -456,7 +456,7 @@ msgstr ""
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:64
+ msgid "'Monospace 9'"
+-msgstr "«Monospace 9»"
++msgstr "'Monospace 9'"
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:65
+ msgid "Body Font for Printing"
+@@ -471,7 +471,7 @@ msgstr ""
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:67
+ msgid "'Sans 11'"
+-msgstr "«Sans 11»"
++msgstr "'Sans 11'"
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:68
+ msgid "Header Font for Printing"
+@@ -488,7 +488,7 @@ msgstr ""
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:70
+ msgid "'Sans 8'"
+-msgstr "«Sans 8»"
++msgstr "'Sans 8'"
+ 
+ #: ../data/org.gnome.gedit.gschema.xml.in.h:71
+ msgid "Line Number Font for Printing"

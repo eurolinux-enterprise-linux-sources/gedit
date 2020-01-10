@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="gedit-view-open-files-in-sidepane" xml:lang="uk">
+
+  <info>
+    <link type="guide" xref="index#configure-gedit"/>
+      <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email its:translate="no">jwcampbell@gmail.com</email>
+    </credit>
+    <credit type="author">
+      <name>Daniel Neel</name>
+      <email its:translate="no">dneelyep@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email its:translate="no">sindhus@live.in</email>
+    </credit>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Максим Дзюманенко</mal:name>
+      <mal:email>dziumanenko@gmail.com</mal:email>
+      <mal:years>2007</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Назарій Ріттер</mal:name>
+      <mal:email>nazariy.ritter@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Перегляд списку файлів в бічній панелі</title>
+
+  <p>Відстежувати велику кількість файлів за допомогою вкладок може бути складним. Один спосіб керування великою кількістю файлів – це перегляд їх в бічній панелі. Бічні панелі дозволяють одночасно переглядати більше файлів, ніж при використанні вкладок.</p>
+
+  <p>To view a list of open files in a side pane, click
+  <guiseq><gui style="menu">View</gui> 
+  <gui style="menuitem">Side Pane</gui></guiseq>. A pane will appear to the
+  left of the workspace with a listing of all currently open files. Clicking a
+  file in the side pane will display that file in the workspace.</p>
+
+  <p>Бічна панель також містить елемент «<app>Оглядач файлів</app>». Якщо в бічній панелі замість відкритих файлів, відображається каталог файлу, клацніть на <media type="image" mime="image/png" src="figures/gedit-side-pane2.png" its:translate="no"><span its:translate="yes">піктограма документів</span></media>, що внизу панелі, щоб переключитися на елемент «<app>Документи</app>».</p>
+
+  <note>
+    <p>Бічна панель показує лише файли, що відкриті в поточному вікні. Коли відкрито декілька вікон, то в бічній панелі буде показано лише ті файли, які відкриті в поточному вікні.</p>
+  </note>
+</page>

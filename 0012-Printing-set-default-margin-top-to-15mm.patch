@@ -1,0 +1,26 @@
+From a08e7846a2693747aee2aeba9e44e79fed4bcfcf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9bastien=20Wilmet?= <swilmet@gnome.org>
+Date: Thu, 11 Jun 2015 16:40:38 +0200
+Subject: [PATCH 12/26] Printing: set default margin-top to 15mm
+
+25mm is too much for the top margin.
+---
+ data/org.gnome.gedit.gschema.xml.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/org.gnome.gedit.gschema.xml.in b/data/org.gnome.gedit.gschema.xml.in
+index c34e4db..a1fa8a3 100644
+--- a/data/org.gnome.gedit.gschema.xml.in
++++ b/data/org.gnome.gedit.gschema.xml.in
+@@ -228,7 +228,7 @@
+       <description>The left margin, in millimeters.</description>
+     </key>
+     <key name="margin-top" type="d">
+-      <default>25</default>
++      <default>15</default>
+       <summary>Margin Top</summary>
+       <description>The top margin, in millimeters.</description>
+     </key>
+-- 
+1.8.3.1
+
